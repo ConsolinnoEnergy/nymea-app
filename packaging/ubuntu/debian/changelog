@@ -1,3 +1,12 @@
+nymea-app (1.0.425) bionic; urgency=medium
+
+  [ Michael Zanetti ]
+  * Fix year in imprint
+  * Clip the list in the magic page
+  * Fix wrench icon in energy view missing if all consumers are disabled
+
+ -- Jenkins <jenkins@nymea.io>  Thu, 27 Jan 2022 10:43:14 +0100
+
 nymea-app (1.0.423) bionic; urgency=medium
 
   [ Michael Zanetti ]
