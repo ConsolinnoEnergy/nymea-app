@@ -7,7 +7,7 @@ jobs:
       - run: git config --global credential.helper store
       - run: | 
           cat <<EOF > $HOME/.git-credentials
-          https://${GITLAB_DEPLOY_TOKEN_USER}:${GITLAB_DEPLOY_TOKEN}@gitlab.consolinno-it.de
+          https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de
           EOF
       - uses: lhotari/action-upterm@v1
       - uses: actions/checkout@v2
