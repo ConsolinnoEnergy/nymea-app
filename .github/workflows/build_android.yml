@@ -1,0 +1,21 @@
+name: build-android 
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jurplel/install-qt-action@v2
+        with:
+          version: '5.15.2'
+          target: 'android'
+      - uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r21e
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '8'
+      - uses: android-actions/setup-android@v2
+      - uses: lhotari/action-upterm@v1
+      - run: ls
