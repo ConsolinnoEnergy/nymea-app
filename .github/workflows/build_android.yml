@@ -5,14 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: git config --global credential.helper store
-      - run: |
-        cat <<EOF > $HOME/.git-credentials
-        protocol=https
-        host=gitlab.consolinno-it.de
-        path=leafletfirmware/nymea/nymea-app-consolinno-overlay.git
-        username=${GITLAB_DEPLOY_TOKEN_USER}
-        password=${GITLAB_DEPLOY_TOKEN}
-        EOF
+      - run: | 
+          cat <<EOF > $HOME/.git-credentials
+          protocol=https
+          host=gitlab.consolinno-it.de
+          path=leafletfirmware/nymea/nymea-app-consolinno-overlay.git
+          username=${GITLAB_DEPLOY_TOKEN_USER}
+          password=${GITLAB_DEPLOY_TOKEN}
+          EOF
       - uses: actions/checkout@v2
         with:
           submodules: recursive
