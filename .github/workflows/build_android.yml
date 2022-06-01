@@ -11,7 +11,6 @@ jobs:
           EOF
       - uses: actions/checkout@v2
       - run: git submodule update --init --recursive
-      - uses: lhotari/action-upterm@v1
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
@@ -25,4 +24,4 @@ jobs:
           distribution: 'zulu'
           java-version: '8'
       - uses: android-actions/setup-android@v2
-      - run: ls
+      - uses: lhotari/action-upterm@v1
