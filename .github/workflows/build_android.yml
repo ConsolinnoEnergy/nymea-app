@@ -7,11 +7,7 @@ jobs:
       - run: git config --global credential.helper store
       - run: | 
           cat <<EOF > $HOME/.git-credentials
-          protocol=https
-          host=gitlab.consolinno-it.de
-          path=leafletfirmware/nymea/nymea-app-consolinno-overlay.git
-          username=${GITLAB_DEPLOY_TOKEN_USER}
-          password=${GITLAB_DEPLOY_TOKEN}
+          https://${GITLAB_DEPLOY_TOKEN_USER}:${GITLAB_DEPLOY_TOKEN}@gitlab.consolinno-it.de
           EOF
       - uses: actions/checkout@v2
         with:
