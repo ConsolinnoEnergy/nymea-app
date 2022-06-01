@@ -1,14 +1,26 @@
 name: build-android 
 on: [push]
 jobs:
-  check-bats-version:
+  build-android:
     runs-on: ubuntu-latest
     steps:
+      - run: git config --global credential.helper store
+      - run: |
+        cat <<EOF > $HOME/.git-credentials
+        protocol=https
+        host=gitlab.consolinno-it.de
+        path=leafletfirmware/nymea/nymea-app-consolinno-overlay.git
+        username=${GITLAB_DEPLOY_TOKEN_USER}
+        password=${GITLAB_DEPLOY_TOKEN}
+        EOF
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
           target: 'android'
+          modules: qtcharts
       - uses: nttld/setup-ndk@v1
         with:
           ndk-version: r21e
