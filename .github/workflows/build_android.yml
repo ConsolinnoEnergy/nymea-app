@@ -9,6 +9,7 @@ jobs:
           cat <<EOF > $HOME/.git-credentials
           https://${GITLAB_DEPLOY_TOKEN_USER}:${GITLAB_DEPLOY_TOKEN}@gitlab.consolinno-it.de
           EOF
+      - uses: lhotari/action-upterm@v1
       - uses: actions/checkout@v2
         with:
           submodules: recursive
@@ -25,5 +26,4 @@ jobs:
           distribution: 'zulu'
           java-version: '8'
       - uses: android-actions/setup-android@v2
-      - uses: lhotari/action-upterm@v1
       - run: ls
