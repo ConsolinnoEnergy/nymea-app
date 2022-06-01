@@ -9,10 +9,9 @@ jobs:
           cat <<EOF > $HOME/.git-credentials
           https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de
           EOF
-      - uses: lhotari/action-upterm@v1
       - uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - run: git submodule update --init --recursive
+      - uses: lhotari/action-upterm@v1
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
