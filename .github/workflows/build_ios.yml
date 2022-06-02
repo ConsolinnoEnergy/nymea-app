@@ -13,12 +13,8 @@ jobs:
       - run: git submodule update --init --recursive
       - uses: jurplel/install-qt-action@v2
         with:
-          version: '5.15.2'
+          version: '5.15.6'
           target: 'ios'
           modules: qtcharts
-#      - uses: actions/setup-java@v3
-#        with:
-#          distribution: 'zulu'
-#          java-version: '8'
       - uses: lhotari/action-upterm@v1
       - run: ./build_ios.sh

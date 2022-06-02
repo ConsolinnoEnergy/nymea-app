@@ -13,7 +13,7 @@ jobs:
       - run: git submodule update --init --recursive
       - uses: jurplel/install-qt-action@v2
         with:
-          version: '5.15.2'
+          version: '5.15.6'
           target: 'android'
           modules: qtcharts
       - uses: nttld/setup-ndk@v1
