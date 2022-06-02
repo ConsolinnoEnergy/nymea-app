@@ -25,4 +25,4 @@ jobs:
           java-version: '8'
       - uses: android-actions/setup-android@v2
         #      - uses: lhotari/action-upterm@v1
-      - run: ./build_app.sh
+      - run: ./build_android.sh
