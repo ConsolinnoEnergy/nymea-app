@@ -24,5 +24,12 @@ jobs:
           distribution: 'zulu'
           java-version: '8'
       - uses: android-actions/setup-android@v2
-        #      - uses: lhotari/action-upterm@v1
+      - uses: lhotari/action-upterm@v1
       - run: ./build_android.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: apk-artifact
+          path: |
+            dist
+            !dist/**/*.md
+      - name: Archive code cove
