@@ -32,4 +32,3 @@ jobs:
           path: |
             dist
             !dist/**/*.md
-      - name: Archive code cove
