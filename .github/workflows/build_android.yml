@@ -11,6 +11,10 @@ jobs:
           EOF
       - uses: actions/checkout@v2
       - run: git submodule update --init --recursive
+      - uses: timheuer/base64-to-file@v1
+        with:
+          fileName: 'consolinno.keystore'
+          encodedString: ${{ secrets.KEYSTORE }}
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
@@ -26,3 +30,7 @@ jobs:
       - uses: android-actions/setup-android@v2
         #      - uses: lhotari/action-upterm@v1
       - run: ./build_android.sh
+          env:
+            SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+            SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+            SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
