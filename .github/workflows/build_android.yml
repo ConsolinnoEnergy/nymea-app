@@ -32,7 +32,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '8'
-      #- uses: lhotari/action-upterm@v1
+      - uses: lhotari/action-upterm@v1
       - run: ./build_android.sh
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
