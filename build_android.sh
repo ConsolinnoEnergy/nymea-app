@@ -35,8 +35,8 @@ if [[ -z "${NOSIGN}" ]]; then
     --gradle --aab \
     --jarsigner \
     --sign ${KEYSTORE_PATH} ${SIGNING_KEY_ALIAS} \
-    --storepass '${SIGNING_STORE_PASSWORD}' \
-    --keypass '${SIGNING_KEY_PASSWORD}'
+    --storepass ${SIGNING_STORE_PASSWORD} \
+    --keypass ${SIGNING_KEY_PASSWORD}
 else
     # NOSIGN env is defined -> build unsigned .apk
     $ADEPQT \
