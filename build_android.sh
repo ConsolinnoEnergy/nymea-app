@@ -14,7 +14,7 @@ else
 fi
 
 $QMAKE \
-${ROOT_DIR}/nymea-app/ 
+${ROOT_DIR}/nymea-app/ \
 -spec android-clang \
 CONFIG+=qtquickcompiler \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
