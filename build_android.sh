@@ -34,9 +34,9 @@ if [[ -z "${NOSIGN}" ]]; then
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
     --gradle --aab \
     --jarsigner \
-    --sign $ROOT_DIR/consolinno.keystore ${SIGNING_KEY_ALIAS} \
-    --storepass ${SIGNING_STORE_PASSWORD} \
-    --keypass ${SIGNING_KEY_PASSWORD}
+    --sign ${KEYSTORE_PATH} ${SIGNING_KEY_ALIAS} \
+    --storepass '${SIGNING_STORE_PASSWORD}' \
+    --keypass '${SIGNING_KEY_PASSWORD}'
 else
     # NOSIGN env is defined -> build unsigned .apk
     $ADEPQT \
