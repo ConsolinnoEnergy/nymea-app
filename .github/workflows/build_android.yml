@@ -29,7 +29,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '8'
-      - uses: android-actions/setup-android@v2
+      #- uses: android-actions/setup-android@v2
       - uses: lhotari/action-upterm@v1
       - run: ./build_android.sh
         env:
