@@ -27,13 +27,12 @@ jobs:
           ndk-version: r21e
       # The following shouldn't be necessary but the setup-ndk action sometimes links the wrong ndk version. 
       # Might be a caching issue. 
-      - run:  ln -f -s /usr/local/lib/android/sdk/ndk/21* /usr/local/lib/android/sdk/ndk-bundle
+      - run:  rm /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21* /usr/local/lib/android/sdk/ndk-bundle
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '8'
-      #- uses: android-actions/setup-android@v2
-      - uses: lhotari/action-upterm@v1
+      #- uses: lhotari/action-upterm@v1
       - run: ./build_android.sh
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
