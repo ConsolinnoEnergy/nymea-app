@@ -33,9 +33,8 @@ jobs:
           java-version: '8'
       - uses: lhotari/action-upterm@v1
       - run: ./build_android.sh
-        with:
-          filelocation: ${{ steps.write_keystore.outputs.filePath }}
         env:
+          KEYSTORE_PATH: ${{ steps.write_file.outputs.filePath }}
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
