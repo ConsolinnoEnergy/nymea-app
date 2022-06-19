@@ -13,16 +13,26 @@ else
     ADEPQT=${QT_ROOT}/android/bin/androiddeployqt
 fi
 
+if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
+    MAKE_BIN=make
+else
+    MAKE_BIN=$ANDROID_NDK_ROOT/prebuilt/linux-x86_64/bin/make
+fi
+
+echo "Build tools:"
+echo "qmake: $QMAKE"
+echo "make: $MAKE_BIN"
+echo "androiddeployqt: $ADEPQT"
+
 $QMAKE \
-${ROOT_DIR}/nymea-app/ \
+${ROOT_DIR}/nymea-app/nymea-app.pro \
 -spec android-clang \
-CONFIG+=qtquickcompiler \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
-PKG_CONFIG=/usr/bin/pkg-config \
 'ANDROID_ABIS=armeabi-v7a arm64-v8a'
 
+make -j$(nproc) qmake_all 
 make -j$(nproc)
-make -j$(nproc) apk_install_target
+make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/android-build install
 
 
 if [[ -z "${NOSIGN}" ]]; then
