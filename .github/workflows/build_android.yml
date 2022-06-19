@@ -43,8 +43,10 @@ jobs:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-      - name: Archive android app bundle
+      - name: Archive android apk and aab
         uses: actions/upload-artifact@v3
         with:
-          name: Archive aab 
-          path: build/android/nymea-app/android-build//build/outputs/bundle/release/android-build-release.aab 
+          name: Archive apk and aab
+          path: |
+            build/android/nymea-app/android-build//build/outputs/bundle/release/android-build-release.aab 
+            build/android/nymea-app/android-build//build/outputs/apk/release/android-build-release.apk 
