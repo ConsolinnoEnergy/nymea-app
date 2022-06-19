@@ -31,12 +31,12 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '8'
-      - uses: lhotari/action-upterm@v1
-        env:
-          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+#      - uses: lhotari/action-upterm@v1
+#        env:
+#          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+#          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+#          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+#          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
