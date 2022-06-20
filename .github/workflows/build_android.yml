@@ -1,5 +1,10 @@
 name: build-android 
-on: [push]
+on:
+  push:
+    branches:
+      - develop
+      - feature/add-android-ci
+
 jobs:
   build-android:
     runs-on: ubuntu-latest

@@ -1,14 +1,16 @@
 name: build-windows
-on: [push]
+on:
+  push:
+    branches:
+      - develop
+      - feature/add-windows-build
+
 jobs:
   build-windows:
     runs-on: windows-latest
     steps:
       - run: git config --global credential.helper store
-      - run: | 
-          cat <<EOF > $HOME/.git-credentials
-          https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de
-          EOF
+      - run: echo "https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de" > %UserProfile%\.git-credentials 
       - uses: actions/checkout@v2
       - run: git submodule update --init --recursive
       - uses: jurplel/install-qt-action@v2
@@ -18,4 +20,6 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2019_64'
           modules: qtcharts
-      - run: ./build_windows.sh
+      - name: Build Windows installer
+        shell: cmd
+        run: call .\build_windows.cmd
