@@ -10,9 +10,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: git config --global credential.helper store
-      - run: echo "https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de" > %UserProfile%\.git-credentials 
       - uses: actions/checkout@v2
-      - run: git submodule update --init --recursive
+      - run: git clone "https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de/leafletfirmware/nymea/nymea-app-consolinno-overlay.git" tmp
+      - run: git submodule update --init --recursive --progress
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
