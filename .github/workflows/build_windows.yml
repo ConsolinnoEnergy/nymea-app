@@ -14,8 +14,6 @@ jobs:
       - run: git clone "https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de/leafletfirmware/nymea/nymea-app-consolinno-overlay.git" tmp
       - run: git submodule update --init --recursive --progress
       - uses: ilammy/msvc-dev-cmd@v1
-        with:
-          arch: amd64_x86
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
