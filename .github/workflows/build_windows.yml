@@ -23,6 +23,8 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2019_64'
           modules: qtcharts
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Build Windows installer
         shell: cmd
         run: call .\build_windows.cmd
