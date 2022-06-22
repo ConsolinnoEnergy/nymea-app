@@ -7,4 +7,3 @@ qmake "$ROOT_DIR\nymea-app" OVERLAY_PATH="$ROOT_DIR\nymea-app-consolinno-overlay
 nmake qmake_all
 nmake lrelease
 nmake
-nmake wininstaller
