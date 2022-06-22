@@ -27,10 +27,10 @@ jobs:
 #        uses: mxschmitt/action-tmate@v3
       - name: Build Windows installer
         run: ./build_windows.ps1
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-#      - uses: actions/upload-artifact@v3
-#        with:
-#          name: Archive installer
-#          path: 
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Archive installer
+          path: build/windows/consolinno-energy-win-installer-*.exe
             
