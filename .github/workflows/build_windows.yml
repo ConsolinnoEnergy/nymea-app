@@ -21,16 +21,12 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2019_64'
           modules: qtcharts
-          tools: 'tools_ifw,4.0.0,qt.tools.ifw.40'
-          aqtversion: '==2.0.0'
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3
       - name: Build Windows installer
         run: ./build_windows.ps1
-#      - name: Setup tmate session
-#        uses: mxschmitt/action-tmate@v3
       - uses: actions/upload-artifact@v3
         with:
-          name: Archive installer
+          name: Consolinno HEMS windows installer
           path: build/windows/consolinno-energy-win-installer-*.exe
             
