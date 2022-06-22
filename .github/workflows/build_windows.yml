@@ -21,6 +21,7 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2019_64'
           modules: qtcharts
+          tools: 'tools_ifw'
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       - name: Build Windows installer
