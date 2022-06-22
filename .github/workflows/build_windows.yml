@@ -23,9 +23,14 @@ jobs:
           modules: qtcharts
           tools: 'tools_ifw,4.0.0,qt.tools.ifw.40'
           aqtversion: '==2.0.0'
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v3
       - name: Build Windows installer
         run: ./build_windows.ps1
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          name: Archive installer
+#          path: 
+            
