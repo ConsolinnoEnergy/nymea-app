@@ -22,5 +22,5 @@ jobs:
           version: '5.15.2'
           target: 'ios'
           modules: qtcharts
-          #      - uses: lhotari/action-upterm@v1
       - run: ./build_ios.sh
+      - uses: lhotari/action-upterm@v1
