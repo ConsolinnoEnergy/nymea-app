@@ -10,7 +10,8 @@ export QT_ROOT=$(which qmake | sed 's|/bin/qmake||g')
 sed -i -e 's|<key>BuildSystemType</key>||g' ${QT_ROOT}/mkspecs/macx-xcode/WorkspaceSettings.xcsettings
 sed -i -e 's|<string>Original</string>||g' ${QT_ROOT}/mkspecs/macx-xcode/WorkspaceSettings.xcsettings
 #qmake ${ROOT_DIR}/nymea-app/ CONFIG+=qtquickcompiler OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay   PKG_CONFIG=/usr/bin/pkg-config
-qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang CONFIG+=debug CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug  OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay QMAKE_MAC_XCODE_SETTINGS+=qteam qteam.name="Consolinno Energy GmbH"
- qteam.value=403387  QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
+#qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang CONFIG+=debug CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug  OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay QMAKE_MAC_XCODE_SETTINGS+=qteam qteam.name="Consolinno Energy GmbH"
+# qteam.value=403387  QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
+qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug  OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay QMAKE_MAC_XCODE_SETTINGS+=qteam qteam.name="Consolinno Energy GmbH" qteam.value=J757FFDWU9  QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy QMAKE_DEVELOPMENT_TEAM=J757FFDWU9 QMAKE_PROVISIONING_PROFILE=c756d899-58fc-497f-ac4a-6bd17bb0f406
 make -j $(sysctl -n hw.physicalcpu)
 
