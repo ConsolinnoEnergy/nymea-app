@@ -31,6 +31,7 @@ OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
 'ANDROID_ABIS=armeabi-v7a arm64-v8a'
 
 make -j$(nproc) qmake_all 
+make lrelease
 make -j$(nproc)
 make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/android-build install
 
