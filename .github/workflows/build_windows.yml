@@ -4,6 +4,7 @@ on:
     branches:
       - develop
       - feature/add-windows-build
+      - add-ci
 
 jobs:
   build-windows:
