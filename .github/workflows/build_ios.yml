@@ -58,8 +58,8 @@ jobs:
       #    KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       - run: ./build_ios.sh
       #- uses: lhotari/action-upterm@v1
-      - name: Archive android apk and aab
+      - name: Archive .ipa
         uses: actions/upload-artifact@v3
         with:
-          name: Archive .app
-          path: /Users/runner/work/consolinno-hems-app/consolinno-hems-app/build/ios/nymea-app/Release-iphoneos/consolinno-energy.app 
+          name: Archive .ipa
+          path: /Users/runner/work/consolinno-hems-app/consolinno-hems-app/build/ios/consolinno-hems.ipa 
