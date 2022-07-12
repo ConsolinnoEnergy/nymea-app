@@ -49,12 +49,12 @@ jobs:
           version: '5.15.2'
           target: 'ios'
           modules: qtcharts
-      #- uses: lhotari/action-upterm@v1
-      #  env:
-      #    BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
-      #    P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
-      #    BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
-      #    KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+      - uses: lhotari/action-upterm@v1
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       - run: ./build_ios.sh
       #- uses: lhotari/action-upterm@v1
       - name: Archive .ipa
