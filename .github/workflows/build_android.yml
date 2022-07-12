@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop
+      - add-ci
       - feature/add-android-ci
 
 jobs:

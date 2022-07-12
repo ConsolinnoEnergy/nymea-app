@@ -4,7 +4,7 @@ on:
     branches:
       - develop
       - feature/add-ios-ci
-
+      - add-ci
 
 jobs:
   build-ios:
