@@ -26,3 +26,8 @@ make qmake_all
 make -j $(sysctl -n hw.physicalcpu)
 # First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here.
 make -j $(sysctl -n hw.physicalcpu)
+
+mkdir ./Payload
+cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/consolinno-energy.app" ./Payload
+zip -qyr consolinno-hems.ipa ./Payload
+rm -r ./Payload
