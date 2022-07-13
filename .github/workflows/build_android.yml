@@ -2,7 +2,7 @@ name: build-android
 on:
   push:
     branches:
-      - develop
+      - main
       - add-ci
       - feature/add-android-ci
 

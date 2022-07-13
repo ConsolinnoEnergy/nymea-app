@@ -2,7 +2,7 @@ name: build-windows
 on:
   push:
     branches:
-      - develop
+      - main
       - feature/add-windows-build
       - add-ci
 
