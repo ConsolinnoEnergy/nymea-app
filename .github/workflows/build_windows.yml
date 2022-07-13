@@ -21,7 +21,7 @@ jobs:
           host: 'windows'
           target: 'desktop'
           arch: 'win64_msvc2019_64'
-          modules: qtcharts
+          modules: 'qtcharts qtwebengine'
           aqtversion: '==2.0.0'
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3
