@@ -143,44 +143,44 @@ Drawer {
                 width: parent.width
                 spacing: 0
 
-                NymeaItemDelegate {
-                    Layout.fillWidth: true
-                    text: qsTr("Configure things")
-                    iconName: "../images/things.svg"
-                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
-                             && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureThings)
-                             && root.currentEngine.jsonRpcClient.connected
-                    progressive: false
-                    onClicked: {
-                        root.openThingSettings()
-                        root.close();
-                    }
-                }
-                NymeaItemDelegate {
-                    Layout.fillWidth: true
-                    text: qsTr("Magic")
-                    iconName: "../images/magic.svg"
-                    progressive: false
-                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
-                                 && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
-                                 && root.currentEngine.jsonRpcClient.connected && Configuration.magicEnabled
-                    onClicked: {
-                        root.openMagicSettings();
-                        root.close();
-                    }
-                }
-                NymeaItemDelegate {
-                    Layout.fillWidth: true
-                    text: qsTr("Configure main view")
-                    iconName: "../images/configure.svg"
-                    progressive: false
-                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected &&
-                             !Configuration.hasOwnProperty("mainViewsFilter")
-                    onClicked: {
-                        root.configureMainView();
-                        root.close();
-                    }
-                }
+//                NymeaItemDelegate {
+//                    Layout.fillWidth: true
+//                    text: qsTr("Configure things")
+//                    iconName: "../images/things.svg"
+//                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
+//                             && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureThings)
+//                             && root.currentEngine.jsonRpcClient.connected
+//                    progressive: false
+//                    onClicked: {
+//                        root.openThingSettings()
+//                        root.close();
+//                    }
+//                }
+//                NymeaItemDelegate {
+//                    Layout.fillWidth: true
+//                    text: qsTr("Magic")
+//                    iconName: "../images/magic.svg"
+//                    progressive: false
+//                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
+//                                 && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
+//                                 && root.currentEngine.jsonRpcClient.connected && Configuration.magicEnabled
+//                    onClicked: {
+//                        root.openMagicSettings();
+//                        root.close();
+//                    }
+//                }
+//                NymeaItemDelegate {
+//                    Layout.fillWidth: true
+//                    text: qsTr("Configure main view")
+//                    iconName: "../images/configure.svg"
+//                    progressive: false
+//                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected &&
+//                             !Configuration.hasOwnProperty("mainViewsFilter")
+//                    onClicked: {
+//                        root.configureMainView();
+//                        root.close();
+//                    }
+//                }
                 NymeaItemDelegate {
                     Layout.fillWidth: true
                     text: qsTr("App settings")
