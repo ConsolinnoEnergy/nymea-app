@@ -4,7 +4,7 @@ export ROOT_DIR=$(pwd)
 mkdir -p ./build/android
 cd ./build/android
 export BUILD_DIR=$(pwd)
-
+export ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk-bundle
 if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
     ADEPQT=androiddeployqt
