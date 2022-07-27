@@ -48,6 +48,7 @@ Page {
 
     Component.onCompleted: {
         engine.jsonRpcClient.requestPushButtonAuth("nymea-app (" + PlatformHelper.deviceModel + ")");
+
     }
 
     Connections {
