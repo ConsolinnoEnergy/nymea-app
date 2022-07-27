@@ -2,7 +2,8 @@ name: build-android
 on:
   push:
     branches:
-      - develop
+      - main
+      - add-ci
       - feature/add-android-ci
 
 jobs:
@@ -31,7 +32,7 @@ jobs:
           ndk-version: r21e
       # The following shouldn't be necessary but the setup-ndk action seems to link the wrong ndk version. 
       # Might be a caching issue. Not sure. 
-      - run:  rm /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21* /usr/local/lib/android/sdk/ndk-bundle
+      - run:  rm -rf /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21* /usr/local/lib/android/sdk/ndk-bundle
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
