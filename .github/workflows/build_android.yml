@@ -39,13 +39,12 @@ jobs:
           java-version: '8'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - uses: lhotari/action-upterm@v1
-        env:
-          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-    
+      #- uses: lhotari/action-upterm@v1
+      #  env:
+      #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+      #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+      #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
@@ -58,4 +57,5 @@ jobs:
           name: Archive apk and aab
           path: |
             build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab 
-            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk 
+            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk
+            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed-apksigner.apk
