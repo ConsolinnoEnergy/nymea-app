@@ -91,23 +91,6 @@ Page {
             }
         }
 
-
-
-
-
-        Label {
-            anchors { left: parent.left; right: parent.right; verticalCenter: parent.verticalCenter }
-            horizontalAlignment: Text.AlignHCenter
-            leftPadding: Math.max(menuButton.width, additionalIcons.width)
-            rightPadding: leftPadding
-            elide: Text.ElideRight
-            font: Style.bigFont
-            text: d.configOverlay !== null ?
-                      qsTr("Configure main view")
-                    : swipeView.currentItem.item.title.length > 0 ? swipeView.currentItem.item.title : filteredContentModel.modelData(swipeView.currentIndex, "displayName")
-        }
-
-
         Row {
             id: additionalIcons
             anchors { right: parent.right; top: parent.top }
@@ -138,12 +121,9 @@ Page {
                 model: swipeView.currentItem.item.hasOwnProperty("headerButtons") ? swipeView.currentItem.item.headerButtons : 0
                 delegate: HeaderButton {
                     imageSource: swipeView.currentItem.item.headerButtons[index].iconSource
-                    onClicked: {
-                        swipeView.currentItem.item.headerButtons[index].trigger()
-                    }
+                    onClicked: swipeView.currentItem.item.headerButtons[index].trigger()
                     visible: swipeView.currentItem.item.headerButtons[index].visible
                     color: swipeView.currentItem.item.headerButtons[index].color
-
                 }
             }
         }
@@ -186,14 +166,14 @@ Page {
 
     ListModel {
         id: mainMenuBaseModel
-        ListElement { name: "things"; source: "ThingsView"; displayName: qsTr("Things"); icon: "things"; minVersion: "0.0" }
-        ListElement { name: "favorites"; source: "FavoritesView"; displayName: qsTr("Favorites"); icon: "starred"; minVersion: "2.0" }
-        ListElement { name: "groups"; source: "GroupsView"; displayName: qsTr("Groups"); icon: "groups"; minVersion: "2.0" }
-        ListElement { name: "scenes"; source: "ScenesView"; displayName: qsTr("Scenes"); icon: "slideshow"; minVersion: "2.0" }
-        ListElement { name: "garages"; source: "GaragesView"; displayName: qsTr("Garages"); icon: "garage/garage-100"; minVersion: "2.0" }
-        ListElement { name: "energy"; source: "EnergyView"; displayName: qsTr("Energy"); icon: "smartmeter"; minVersion: "2.0" }
-        ListElement { name: "media"; source: "MediaView"; displayName: qsTr("Media"); icon: "media"; minVersion: "2.0" }
-        ListElement { name: "dashboard"; source: "DashboardView"; displayName: qsTr("Dashboard"); icon: "dashboard"; minVersion: "5.5" }
+       // ListElement { name: "things"; source: "ThingsView"; displayName: qsTr("Things"); icon: "things"; minVersion: "0.0" }
+       // ListElement { name: "favorites"; source: "FavoritesView"; displayName: qsTr("Favorites"); icon: "starred"; minVersion: "2.0" }
+       // ListElement { name: "groups"; source: "GroupsView"; displayName: qsTr("Groups"); icon: "groups"; minVersion: "2.0" }
+       // ListElement { name: "scenes"; source: "ScenesView"; displayName: qsTr("Scenes"); icon: "slideshow"; minVersion: "2.0" }
+       // ListElement { name: "garages"; source: "GaragesView"; displayName: qsTr("Garages"); icon: "garage/garage-100"; minVersion: "2.0" }
+       // ListElement { name: "energy"; source: "EnergyView"; displayName: qsTr("Energy"); icon: "smartmeter"; minVersion: "2.0" }
+       // ListElement { name: "media"; source: "MediaView"; displayName: qsTr("Media"); icon: "media"; minVersion: "2.0" }
+       // ListElement { name: "dashboard"; source: "DashboardView"; displayName: qsTr("Dashboard"); icon: "dashboard"; minVersion: "5.5" }
     }
 
     ListModel {
@@ -462,27 +442,6 @@ Page {
             Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
             visible: opacity > 0
 
-<<<<<<< HEAD
-            MainPageTabButton {
-                id: mainPageTabButton
-                height: tabBar.height
-                alignment: app.landscape ? Qt.Horizontal : Qt.Vertical
-                text: d.configOverlay ? qsTr("Done") : qsTr("Configure")
-                iconSource: "../images/configure.svg"
-                anchors.verticalCenter: parent.verticalCenter
-
-                checked: false
-                checkable: false
-
-                onClicked: {
-
-                    if (d.configOverlay) {
-                        d.configOverlay.destroy()
-                    } else {
-                        PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection)
-                        d.configOverlay = configComponent.createObject(contentContainer)
-                    }
-=======
             checked: true
 
             onClicked: {
@@ -491,7 +450,6 @@ Page {
                 } else {
                     PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection)
                     d.configOverlay = configComponent.createObject(contentContainer)
->>>>>>> 92e8756652ec8341e4555ba403220fccf1eb652d
                 }
             }
         }
@@ -637,49 +595,7 @@ Page {
 //                    }
                 }
 
-<<<<<<< HEAD
-                delegate: ConsolinnoBigTile {
-                    id: configDelegate
-                    width: configListView.delegateWidth
-                    height: configListView.height
-                    property bool isEnabled: mainViewSettings.filterList.indexOf(model.name) >= 0
-                    visible: configListView.draggingIndex !== index
-
-                    leftPadding: 0
-                    rightPadding: 0
-                    topPadding: 0
-                    bottomPadding: 0
-
-
-                    header: RowLayout {
-                        id: headerRow
-                        width: parent.width
-                        Label {
-                            text:  model.displayName
-                            Layout.fillWidth: true
-                            elide: Text.ElideRight
-                        }
-                    }
-
-                    bottom_active: configDelegate.isEnabled
-
-                    contentItem: Item {
-                        Layout.fillWidth: true
-                        implicitHeight: configListView.height - headerRow.height - Style.margins * 2
-
-                        ColorIcon {
-                            anchors.centerIn: parent
-                            width: Math.min(parent.width, parent.height) * .6
-                            height: width
-                            name: Qt.resolvedUrl("images/" + model.icon + ".svg")
-                            color: configDelegate.isEnabled ? Style.accentColor : Style.iconColor
-                        }
-                    }
-                }
-                Item {
-=======
                 NymeaItemDelegate {
->>>>>>> 92e8756652ec8341e4555ba403220fccf1eb652d
                     id: dndItem
                     visible: configListView.dragging
                     y: dndArea.mouseY - dndArea.dragOffset
@@ -974,7 +890,6 @@ Page {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-
                             var component = Qt.createComponent(Qt.resolvedUrl("connection/CertificateDialog.qml"));
                             var popup = component.createObject(app,  {serverUuid: engine.jsonRpcClient.serverUuid, issuerInfo: engine.jsonRpcClient.certificateIssuerInfo});
                             popup.open();
@@ -1012,3 +927,4 @@ Page {
         }
     }
 }
+
