@@ -65,6 +65,7 @@ Item {
         margins.right: 0
         margins.bottom: 0
         margins.top: 0
+        antialiasing: true
 
         title: qsTr("My production history")
         titleColor: Style.foregroundColor
@@ -158,7 +159,7 @@ Item {
             axisY: valueAxis
             color: Style.red
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             name: qsTr("Consumed")
     //        visible: false
 
@@ -191,7 +192,7 @@ Item {
             axisY: valueAxis
             color: Style.orange
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             visible: root.batteries.count > 0
             name: qsTr("To battery")
 
@@ -217,7 +218,7 @@ Item {
             axisY: valueAxis
             color: Style.green
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             name: qsTr("To grid")
     //        visible: false
 

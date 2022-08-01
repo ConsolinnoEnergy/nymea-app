@@ -138,7 +138,7 @@ Item {
 //                series.color = root.colors[i % root.colors.length]
                 series.color = NymeaUtils.generateColor(Style.generationBaseColor, i)
                 series.borderWidth = 0;
-                series.borderColor = series.color
+                series.borderColor = "transparent"
 
                 var map = d.thingsSeriesMap
                 map[thing.id] = series
@@ -172,6 +172,8 @@ Item {
         legend.alignment: Qt.AlignBottom
         legend.labelColor: Style.foregroundColor
         legend.font: Style.extraSmallFont
+
+        antialiasing: true
 
         ValueAxis {
             id: valueAxis
@@ -234,7 +236,7 @@ Item {
             axisY: valueAxis
             color: Style.gray
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             name: qsTr("Unknown")
 
             lowerSeries: LineSeries {

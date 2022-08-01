@@ -303,6 +303,7 @@ StatsBase {
                 y: chartView.plotArea.y
                 height: chartView.plotArea.height
                 width: chartView.plotArea.x - x
+                anchors.rightMargin: 0
 
                 Repeater {
                     model: valueAxis.tickCount
@@ -310,7 +311,7 @@ StatsBase {
                         y: parent.height / (valueAxis.tickCount - 1) * index - font.pixelSize / 2
                         width: parent.width - Style.smallMargins
                         horizontalAlignment: Text.AlignRight
-                        text: ((valueAxis.max - (index * valueAxis.max / (valueAxis.tickCount - 1)))).toFixed(1) + "kWh"
+                        text: ((valueAxis.max - (index * valueAxis.max / (valueAxis.tickCount - 1)))).toFixed(0) + "kWh"
                         verticalAlignment: Text.AlignTop
                         font: Style.extraSmallFont
                     }
@@ -329,11 +330,23 @@ StatsBase {
                     titleVisible: false
                     shadesVisible: false
 
+                    //truncateLabels: false
+
+
                     categories: {
                         var ret = []
                         for (var i = 0; i < timestamps.length; i++) {
-                            ret.push(root.configs[selectionTabs.currentValue.config].toLabel(timestamps[i]))
+
+                            if(selectionTabs.currentValue.config === "months") {
+                                ret.push(root.configs[selectionTabs.currentValue.config].toShortLabel(timestamps[i]))
+                            }
+                            else{
+                                ret.push(root.configs[selectionTabs.currentValue.config].toLabel(timestamps[i]))
+
+                            }
+
                         }
+
                         return ret
                     }
 
@@ -351,9 +364,10 @@ StatsBase {
                     titleVisible: false
                     shadesVisible: false
 
+
                     function adjustMax(newValue) {
                         if (max < newValue) {
-                            max = newValue // Math.ceil(newValue / 100) * 100
+                            max = newValue
                         }
                     }
                 }

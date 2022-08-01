@@ -73,6 +73,7 @@ Item {
         legend.alignment: Qt.AlignBottom
         legend.labelColor: Style.foregroundColor
         legend.font: Style.extraSmallFont
+        antialiasing: true
 
 
         ValueAxis {
@@ -162,7 +163,7 @@ Item {
             axisY: valueAxis
             color: Style.green
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             name: qsTr("Self production")
     //      visible: false
 
@@ -199,7 +200,7 @@ Item {
             axisY: valueAxis
             color: Style.orange
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             name: qsTr("From battery")
             visible: root.batteries.count > 0
 
@@ -224,7 +225,7 @@ Item {
             axisY: valueAxis
             color: Style.red
             borderWidth: 0
-            borderColor: color
+            borderColor: "transparent"
             name: qsTr("From grid")
     //      visible: false
 

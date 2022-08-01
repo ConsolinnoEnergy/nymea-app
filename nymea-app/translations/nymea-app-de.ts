@@ -1068,7 +1068,7 @@
     <name>CurrentConsumptionBalancePieChart</name>
     <message>
         <source>My energy mix</source>
-        <translation>Mein Energiemix</translation>
+        <translation>Mein Strommix</translation>
     </message>
     <message>
         <source>Total</source>
@@ -1091,7 +1091,7 @@
     <name>CurrentProductionBalancePieChart</name>
     <message>
         <source>My energy production</source>
-        <translation>Meine Energieproduktion</translation>
+        <translation type="unfinished">Meine Stromproduktion</translation>
     </message>
     <message>
         <source>Total</source>

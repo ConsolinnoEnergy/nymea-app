@@ -13,6 +13,7 @@ ChartView {
     title: qsTr("My energy mix")
     titleColor: Style.foregroundColor
     legend.visible: false
+    antialiasing: true
 
     margins.left: 0
     margins.right: 0
@@ -39,20 +40,24 @@ ChartView {
 
         PieSlice {
             color: Style.red
-            borderColor: color
-            borderWidth: 0
+            borderColor: Style.backgroundColor
+
             value: consumptionBalanceSeries.fromGrid
         }
         PieSlice {
             color: Style.green
-            borderColor: color
-            borderWidth: 0
+            borderColor: Style.backgroundColor
+
             value: consumptionBalanceSeries.fromProduction
         }
         PieSlice {
             color: Style.orange
-            borderColor: color
-            borderWidth: 0
+            borderColor: Style.backgroundColor
+            value: consumptionBalanceSeries.fromStorage
+        }
+        PieSlice {
+            color: Style.backgroundColor
+            borderColor: Style.backgroundColor
             value: consumptionBalanceSeries.fromStorage
         }
         PieSlice {
