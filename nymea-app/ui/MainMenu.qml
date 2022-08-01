@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
-import Qt.labs.settings 1.1
+import Qt.labs.settings 1.0
 import "components"
 import Nymea 1.0
 
@@ -15,6 +15,7 @@ Drawer {
     signal openMagicSettings();
     signal openAppSettings();
     signal openSystemSettings();
+    signal openCustomPage(string page);
     signal configureMainView();
 
     signal startWirelessSetup();
@@ -209,13 +210,25 @@ Drawer {
                 Repeater {
                     model: Configuration.mainMenuLinks
                     delegate: NymeaItemDelegate {
+                        property var entry: Configuration.mainMenuLinks[index]
                         Layout.fillWidth: true
-                        text: model.text
-                        iconName: model.iconName
+                        text: entry.text
+                        iconName: entry.iconName
                         progressive: false
-                        onClicked: Qt.openUrlExternally(model.url)
-                    }
+                        onClicked: {
+                            if (entry.page !== undefined) {
+                                root.openCustomPage(entry.page)
+                            }
 
+                            if (entry.func !== undefined) {
+                                entry.func(app, root.currentEngine)
+                            }
+                            if (entry.url !== undefined) {
+                                Qt.openUrlExternally(entry.url)
+                            }
+                            root.close()
+                        }
+                    }
                 }
             }
         }

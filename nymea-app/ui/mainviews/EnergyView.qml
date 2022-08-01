@@ -51,7 +51,7 @@ MainViewBase {
             trigger: function() {
                 pageStack.push("energy/EnergySettingsPage.qml", {energyManager: energyManager});
             },
-            visible: energyMeters.count > 1 || allConsumers.count > 0
+            visible: energyMeters.count > 1 || allConsumers.count - Math.min(energyMeters.count, 1) > 0
         }
     ]
 
@@ -97,12 +97,12 @@ MainViewBase {
         contentHeight: energyGrid.childrenRect.height
         visible: !engine.thingManager.fetchingData && engine.jsonRpcClient.experiences.hasOwnProperty("Energy") && engine.jsonRpcClient.experiences["Energy"] >= "0.2"
         topMargin: root.topMargin
+        bottomMargin: root.bottomMargin
 
         // GridLayout directly in a flickable causes problems at initialisation
         Item {
-            width: parent.width
+            width: flickable.width
             height: energyGrid.implicitHeight
-
 
             GridLayout {
                 id: energyGrid
@@ -118,12 +118,14 @@ MainViewBase {
                     Layout.preferredHeight: width
                     energyManager: energyManager
                     visible: producers.count > 0
+                    animationsEnabled: Qt.application.active && root.isCurrentItem
                 }
                 CurrentProductionBalancePieChart {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width
                     energyManager: energyManager
                     visible: producers.count > 0
+                    animationsEnabled: Qt.application.active && root.isCurrentItem
                 }
 
                 PowerConsumptionBalanceHistory {
@@ -145,6 +147,7 @@ MainViewBase {
                     visible: consumers.count > 0
                     colors: root.thingColors
                     consumers: consumers
+                    animationsEnabled: Qt.application.active && root.isCurrentItem
                 }
 
 //                ConsumersBarChart {

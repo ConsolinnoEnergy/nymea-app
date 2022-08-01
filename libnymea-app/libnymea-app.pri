@@ -27,10 +27,14 @@ SOURCES += \
     $$PWD/energy/thingpowerlogs.cpp \
     $$PWD/connection/tunnelproxytransport.cpp \
     $$PWD/models/scriptsproxymodel.cpp \
+    $$PWD/pluginconfigmanager.cpp \
     $$PWD/tagwatcher.cpp \
     $$PWD/zigbee/zigbeenode.cpp \
     $$PWD/zigbee/zigbeenodes.cpp \
     $$PWD/zigbee/zigbeenodesproxy.cpp \
+    $$PWD/zwave/zwavemanager.cpp \
+    $$PWD/zwave/zwavenetwork.cpp \
+    $$PWD/zwave/zwavenode.cpp \
     $${PWD}/logging.cpp \
     $${PWD}/applogcontroller.cpp \
     $${PWD}/wifisetup/btwifisetup.cpp \
@@ -188,10 +192,14 @@ HEADERS += \
     $$PWD/energy/thingpowerlogs.h \
     $$PWD/connection/tunnelproxytransport.h \
     $$PWD/models/scriptsproxymodel.h \
+    $$PWD/pluginconfigmanager.h \
     $$PWD/tagwatcher.h \
     $$PWD/zigbee/zigbeenode.h \
     $$PWD/zigbee/zigbeenodes.h \
     $$PWD/zigbee/zigbeenodesproxy.h \
+    $$PWD/zwave/zwavemanager.h \
+    $$PWD/zwave/zwavenetwork.h \
+    $$PWD/zwave/zwavenode.h \
     $${PWD}/logging.h \
     $${PWD}/applogcontroller.h \
     $${PWD}/wifisetup/btwifisetup.h \

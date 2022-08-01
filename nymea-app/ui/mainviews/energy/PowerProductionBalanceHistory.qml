@@ -14,6 +14,11 @@ Item {
         startTime: dateTimeAxis.min
     }
 
+    property ThingsProxy batteries: ThingsProxy {
+        engine: _engine
+        shownInterfaces: ["energystorage"]
+    }
+
     Component.onCompleted: {
         for (var i = 0; i < powerBalanceLogs.count; i++) {
             var entry = energyLogs.powerBalanceLogs.get(i);
@@ -188,7 +193,7 @@ Item {
             color: Style.orange
             borderWidth: 0
             borderColor: "transparent"
-    //        visible: false
+            visible: root.batteries.count > 0
             name: qsTr("To battery")
 
 
@@ -315,6 +320,7 @@ Item {
                     }
                 }
                 RowLayout {
+                    visible: root.batteries.count > 0
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width

@@ -38,14 +38,17 @@
 
 // WindowManager.LayoutParams
 #define FLAG_TRANSLUCENT_STATUS 0x04000000
+#define FLAG_TRANSLUCENT_NAVIGATION 0x08000000
 #define FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS 0x80000000
 // View
 #define SYSTEM_UI_FLAG_LIGHT_STATUS_BAR 0x00002000
+#define SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR 0x00000010
 
 static PlatformHelperAndroid *m_instance = nullptr;
 
 static JNINativeMethod methods[] = {
     { "darkModeEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::darkModeEnabledChangedJNI },
+    { "notificationActionReceivedJNI", "(Ljava/lang/String;)V", (void *)PlatformHelperAndroid::notificationActionReceivedJNI },
 };
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/)
@@ -75,6 +78,10 @@ PlatformHelperAndroid::PlatformHelperAndroid(QObject *parent) : PlatformHelper(p
 {
     m_instance = this;
 
+    QString notificationData = QtAndroid::androidActivity().callObjectMethod("notificationData", "()Ljava/lang/String;").toString();
+    if (!notificationData.isNull()) {
+        notificationActionReceived(notificationData);
+    }
 }
 
 void PlatformHelperAndroid::requestPermissions()
@@ -197,6 +204,53 @@ void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
 
     if (QtAndroid::androidSdkVersion() < 21)
         return;
+
+    QtAndroid::runOnAndroidThread([=]() {
+        QAndroidJniObject window = getAndroidWindow();
+        window.callMethod<void>("clearFlags", "(I)V", FLAG_TRANSLUCENT_NAVIGATION);
+        window.callMethod<void>("setNavigationBarColor", "(I)V", color.rgba());
+
+        if (((color.red() * 299 + color.green() * 587 + color.blue() * 114) / 1000) > 123) {
+            setBottomPanelTheme(Light);
+        } else {
+            setBottomPanelTheme(Dark);
+        }
+    });
+}
+
+void PlatformHelperAndroid::setTopPanelTheme(PlatformHelperAndroid::Theme theme)
+{
+    if (QtAndroid::androidSdkVersion() < 23)
+        return;
+
+    QtAndroid::runOnAndroidThread([=]() {
+        QAndroidJniObject window = getAndroidWindow();
+        QAndroidJniObject view = window.callObjectMethod("getDecorView", "()Landroid/view/View;");
+        int visibility = view.callMethod<int>("getSystemUiVisibility", "()I");
+        if (theme == Theme::Light)
+            visibility |= SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        else
+            visibility &= ~SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        view.callMethod<void>("setSystemUiVisibility", "(I)V", visibility);
+    });
+}
+
+void PlatformHelperAndroid::setBottomPanelTheme(Theme theme)
+{
+    if (QtAndroid::androidSdkVersion() < 23)
+        return;
+
+    QtAndroid::runOnAndroidThread([=]() {
+        QAndroidJniObject window = getAndroidWindow();
+        QAndroidJniObject view = window.callObjectMethod("getDecorView", "()Landroid/view/View;");
+        int visibility = view.callMethod<int>("getSystemUiVisibility", "()I");
+        if (theme == Theme::Light)
+            visibility |= SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+        else
+            visibility &= ~SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+        view.callMethod<void>("setSystemUiVisibility", "(I)V", visibility);
+    });
+
 }
 
 bool PlatformHelperAndroid::darkModeEnabled() const
@@ -226,19 +280,12 @@ void PlatformHelperAndroid::darkModeEnabledChangedJNI()
     }
 }
 
-void PlatformHelperAndroid::setTopPanelTheme(PlatformHelperAndroid::Theme theme)
+void PlatformHelperAndroid::notificationActionReceivedJNI(JNIEnv *env, jobject, jstring data)
 {
-    if (QtAndroid::androidSdkVersion() < 23)
-        return;
-
-    QtAndroid::runOnAndroidThread([=]() {
-        QAndroidJniObject window = getAndroidWindow();
-        QAndroidJniObject view = window.callObjectMethod("getDecorView", "()Landroid/view/View;");
-        int visibility = view.callMethod<int>("getSystemUiVisibility", "()I");
-        if (theme == Theme::Light)
-            visibility |= SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        else
-            visibility &= ~SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        view.callMethod<void>("setSystemUiVisibility", "(I)V", visibility);
-    });
+    // Only call the platformhelper if it exists yet. We may get this callback before the Qt part is created
+    // and we don't want to create the PlatformHelper on the android thread.
+    PlatformHelper* platformHelper = PlatformHelperAndroid::instance(false);
+    if (platformHelper) {
+        platformHelper->notificationActionReceived(env->GetStringUTFChars(data, nullptr));
+    }
 }

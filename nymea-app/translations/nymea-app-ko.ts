@@ -6197,10 +6197,6 @@ Please only use this if you are sure you want this and consider reporting the is
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Initialiazing...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 things</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6230,6 +6226,10 @@ Please only use this if you are sure you want this and consider reporting the is
     </message>
     <message>
         <source>Associated things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
