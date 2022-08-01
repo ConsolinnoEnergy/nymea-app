@@ -9,7 +9,7 @@ import Nymea 1.0
 ChartView {
     id: consumptionPieChart
     backgroundColor: "transparent"
-    animationOptions: Qt.application.active ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
+    animationOptions: animationsEnabled ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
     title: qsTr("My energy mix")
     titleColor: Style.foregroundColor
     legend.visible: false
@@ -19,6 +19,7 @@ ChartView {
     margins.bottom: 0
     margins.top: 0
 
+    property bool animationsEnabled: true
     property EnergyManager energyManager: null
 
     ThingsProxy {
@@ -38,22 +39,26 @@ ChartView {
 
         PieSlice {
             color: Style.red
-            borderColor: Style.foregroundColor
+            borderColor: color
+            borderWidth: 0
             value: consumptionBalanceSeries.fromGrid
         }
         PieSlice {
             color: Style.green
-            borderColor: Style.foregroundColor
+            borderColor: color
+            borderWidth: 0
             value: consumptionBalanceSeries.fromProduction
         }
         PieSlice {
             color: Style.orange
-            borderColor: Style.foregroundColor
+            borderColor: color
+            borderWidth: 0
             value: consumptionBalanceSeries.fromStorage
         }
         PieSlice {
-            color: Style.backgroundColor
-            borderColor: Style.foregroundColor
+            color: Style.tooltipBackgroundColor
+            borderColor: color
+            borderWidth: 0
             value: consumptionBalanceSeries.fromGrid == 0 && consumptionBalanceSeries.fromProduction == 0 && consumptionBalanceSeries.fromStorage == 0 ? 1 : 0
         }
     }
@@ -104,7 +109,7 @@ ChartView {
                 color: Style.red
                 text: "%1 %2"
                 .arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
-                .arg(absValue > 1000 ? "kWh" : "W")
+                .arg(absValue > 1000 ? "kW" : "W")
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
                 font: Style.smallFont

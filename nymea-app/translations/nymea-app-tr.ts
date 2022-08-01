@@ -6198,10 +6198,6 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Initialiazing...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 things</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6231,6 +6227,10 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     </message>
     <message>
         <source>Associated things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

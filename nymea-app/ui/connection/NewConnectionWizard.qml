@@ -548,6 +548,7 @@ WizardPageBase {
             title: qsTr("Wireless setup")
             text: qsTr("Connecting to the nymea system...")
             showNextButton: false
+            showBackButton: false
 
             content: Item {
                 Layout.fillWidth: true
@@ -565,6 +566,7 @@ WizardPageBase {
             title: qsTr("Wireless setup")
             text: qsTr("Select the WiFi you want to use.")
             showNextButton: false
+            onBack: pageStack.pop()
 
             property var wifiSetup: null
 
@@ -640,6 +642,8 @@ WizardPageBase {
                 wifiSetup.connectDeviceToWiFi(ssid, passwordTextField.password)
                 pageStack.push(wirelessConnectingWiFiComponent)
             }
+
+            onBack: pageStack.pop()
 
             property BtWiFiSetup wifiSetup: null
             property string ssid: ""
@@ -743,6 +747,8 @@ WizardPageBase {
 
             content: ColumnLayout {
                 Layout.fillWidth: true
+                Layout.leftMargin: Style.margins
+                Layout.rightMargin: Style.margins
                 Layout.maximumWidth: 500
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredHeight: visibleContentHeight
@@ -751,6 +757,7 @@ WizardPageBase {
                     wrapMode: Text.WordWrap
                     text: qsTr("You can now go ahead and configure your nymea system.")
                     visible: wirelessConnectionCompletedPage.host != null
+                    horizontalAlignment: Text.AlignHCenter
                 }
                 BusyIndicator {
                     Layout.alignment: Qt.AlignHCenter

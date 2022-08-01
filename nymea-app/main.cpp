@@ -37,7 +37,6 @@
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 
-
 #include "libnymea-app-core.h"
 
 #include "stylecontroller.h"
@@ -71,6 +70,7 @@ int main(int argc, char *argv[])
     // qt.qml.connections warnings are disabled since the replace only exists
     // in Qt 5.12. Remove that once 5.12 is the minimum supported version.
     QLoggingCategory::setFilterRules("*.debug=false\n"
+                                     "Application.debug=true\n"
                                      "qt.qml.connections.warning=false\n"
                                      );
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -95,10 +95,16 @@ int main(int argc, char *argv[])
     parser.addOption(splashOption);
     parser.process(application);
 
-    // Initialize app log controller as early as possible, but after setting app name etc
+    // Initialize app log controller as early as possible, but after setting app name and printing initial startup info
     AppLogController::instance();
 
-    qCDebug(dcApplication()) << "*** nymea:app starting ***" << QDateTime::currentDateTime().toString();
+    qCInfo(dcApplication()) << "*** nymea:app starting ***" << QDateTime::currentDateTime().toString() << application.arguments();
+
+    foreach (const QString &argument, application.arguments()) {
+        if (argument.startsWith("nymea://notification")) {
+            PlatformHelper::instance()->notificationActionReceived(QUrlQuery(QUrl(argument).query()).queryItemValue("nymeaData"));
+        }
+    }
 
     QTranslator qtTranslator;    
     qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
@@ -157,6 +163,7 @@ int main(int argc, char *argv[])
     }
 
     qmlRegisterSingletonType(QUrl("qrc:///styles/" + styleController.currentStyle() + "/Style.qml"), "Nymea", 1, 0, "Style" );
+    qmlRegisterType(QUrl("qrc:///styles/" + styleController.currentStyle() + "/Background.qml"), "Nymea", 1, 0, "Background" );
     qmlRegisterSingletonType(QUrl("qrc:///ui/Configuration.qml"), "Nymea", 1, 0, "Configuration");
 
     engine->rootContext()->setContextProperty("styleController", &styleController);
