@@ -61,12 +61,14 @@ public:
     void setTopPanelColor(const QColor &color) override;
     void setTopPanelTheme(Theme theme);
     void setBottomPanelColor(const QColor &color) override;
+    void setBottomPanelTheme(Theme theme);
 
     bool darkModeEnabled() const override;
 
     void shareFile(const QString &fileName) override;
 
     static void darkModeEnabledChangedJNI();
+    static void notificationActionReceivedJNI(JNIEnv *env, jobject /*thiz*/, jstring data);
 
 private:
     static void permissionRequestFinished(const QtAndroid::PermissionResultMap &);
