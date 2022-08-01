@@ -6228,7 +6228,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     </message>
     <message>
         <source>Initialiazing...</source>
-        <translation>Initialisiere...</translation>
+        <translation type="vanished">Initialisiere...</translation>
     </message>
     <message>
         <source>%1 things</source>
@@ -6261,6 +6261,10 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>Associated things</source>
         <translation>Verknüpfte Geräte</translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
+        <translation>Initialisiere...</translation>
     </message>
 </context>
 <context>
