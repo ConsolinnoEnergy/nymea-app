@@ -166,14 +166,14 @@ Page {
 
     ListModel {
         id: mainMenuBaseModel
-       // ListElement { name: "things"; source: "ThingsView"; displayName: qsTr("Things"); icon: "things"; minVersion: "0.0" }
-       // ListElement { name: "favorites"; source: "FavoritesView"; displayName: qsTr("Favorites"); icon: "starred"; minVersion: "2.0" }
-       // ListElement { name: "groups"; source: "GroupsView"; displayName: qsTr("Groups"); icon: "groups"; minVersion: "2.0" }
-       // ListElement { name: "scenes"; source: "ScenesView"; displayName: qsTr("Scenes"); icon: "slideshow"; minVersion: "2.0" }
-       // ListElement { name: "garages"; source: "GaragesView"; displayName: qsTr("Garages"); icon: "garage/garage-100"; minVersion: "2.0" }
-       // ListElement { name: "energy"; source: "EnergyView"; displayName: qsTr("Energy"); icon: "smartmeter"; minVersion: "2.0" }
-       // ListElement { name: "media"; source: "MediaView"; displayName: qsTr("Media"); icon: "media"; minVersion: "2.0" }
-       // ListElement { name: "dashboard"; source: "DashboardView"; displayName: qsTr("Dashboard"); icon: "dashboard"; minVersion: "5.5" }
+        ListElement { name: "things"; source: "ThingsView"; displayName: qsTr("Things"); icon: "things"; minVersion: "0.0" }
+        ListElement { name: "favorites"; source: "FavoritesView"; displayName: qsTr("Favorites"); icon: "starred"; minVersion: "2.0" }
+        ListElement { name: "groups"; source: "GroupsView"; displayName: qsTr("Groups"); icon: "groups"; minVersion: "2.0" }
+        ListElement { name: "scenes"; source: "ScenesView"; displayName: qsTr("Scenes"); icon: "slideshow"; minVersion: "2.0" }
+        ListElement { name: "garages"; source: "GaragesView"; displayName: qsTr("Garages"); icon: "garage/garage-100"; minVersion: "2.0" }
+        ListElement { name: "energy"; source: "EnergyView"; displayName: qsTr("Energy"); icon: "smartmeter"; minVersion: "2.0" }
+        ListElement { name: "media"; source: "MediaView"; displayName: qsTr("Media"); icon: "media"; minVersion: "2.0" }
+        ListElement { name: "dashboard"; source: "DashboardView"; displayName: qsTr("Dashboard"); icon: "dashboard"; minVersion: "5.5" }
     }
 
     ListModel {
