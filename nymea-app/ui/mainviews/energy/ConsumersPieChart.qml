@@ -14,6 +14,7 @@ ChartView {
     title: qsTr("Consumers balance")
     titleColor: Style.foregroundColor
     legend.visible: false
+    antialiasing: true
 
     margins.left: 0
     margins.right: 0
@@ -84,6 +85,7 @@ ChartView {
             var consumer = consumers.get(i)
             let currentPowerState = consumer.stateByName("currentPower")
             let slice = consumersBalanceSeries.append(consumer.name, currentPowerState.value)
+            slice.borderColor = Style.backgroundColor
 //            slice.color = root.colors[i % root.colors.length]
             slice.color = NymeaUtils.generateColor(Style.generationBaseColor, i)
             colorMap[consumer] = slice.color
@@ -99,6 +101,8 @@ ChartView {
             print("Unknown consumption:", unknownConsumption, "consumption balance", energyManager.currentPowerConsumption, "consumers summation:", consumersSummation)
             d.unknownSlice = consumersBalanceSeries.append(qsTr("Unknown"), unknownConsumption)
             d.unknownSlice.color = Style.gray
+            d.unknownSlice.borderColor = Style.backgroundColor
+
         }
 
         d.thingsColorMap = colorMap
