@@ -348,7 +348,7 @@ WizardPageBase {
                         id: addressTextInput
                         objectName: "addressTextInput"
                         Layout.fillWidth: true
-                        placeholderText: connectionTypeComboBox.currentIndex < 2 ? "127.0.0.1" : "tunnelproxy.nymea.io"
+                        placeholderText: connectionTypeComboBox.currentIndex < 2 ? "127.0.0.1" : "hems-remoteproxy.services-test.consolinno-it.de"
                     }
 
                     Label {

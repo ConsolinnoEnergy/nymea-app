@@ -42,7 +42,7 @@ SettingsPageBase {
     RowLayout {
         Layout.margins: Style.margins
         spacing: Style.margins
-        visible: !engine.jsonRpcClient.pushButtonAuthAvailable
+        //visible: !engine.jsonRpcClient.pushButtonAuthAvailable
         ColorIcon {
             size: Style.hugeIconSize
             source: "../images/account.svg"
@@ -71,7 +71,7 @@ SettingsPageBase {
         Layout.fillWidth: true
         text: qsTr("Change password")
         iconName: "../images/key.svg"
-        visible: !engine.jsonRpcClient.pushButtonAuthAvailable
+        //visible: !engine.jsonRpcClient.pushButtonAuthAvailable
         onClicked: {
             var page = pageStack.push(changePasswordComponent)
             page.confirmed.connect(function(newPassword) {
@@ -99,13 +99,13 @@ SettingsPageBase {
 
     SettingsPageSectionHeader {
         text: qsTr("Admin")
-        visible: (userManager.userInfo.scopes & UserInfo.PermissionScopeAdmin) && !engine.jsonRpcClient.pushButtonAuthAvailable
+        visible: (userManager.userInfo.scopes & UserInfo.PermissionScopeAdmin) //&& !engine.jsonRpcClient.pushButtonAuthAvailable
     }
 
     NymeaItemDelegate {
         Layout.fillWidth: true
         text: qsTr("Manage users")
-        visible: (userManager.userInfo.scopes & UserInfo.PermissionScopeAdmin) && !engine.jsonRpcClient.pushButtonAuthAvailable
+        visible: (userManager.userInfo.scopes & UserInfo.PermissionScopeAdmin) //&& !engine.jsonRpcClient.pushButtonAuthAvailable
         iconName: "../images/contact-group.svg"
         onClicked: {
             pageStack.push(manageUsersComponent)

@@ -71,7 +71,7 @@ Page {
                 text: qsTr("User settings")
                 subText: qsTr("Configure who can log in")
                 visible: engine.jsonRpcClient.ensureServerVersion("4.2")
-                         && engine.jsonRpcClient.authenticated
+                         //&& engine.jsonRpcClient.authenticated
                 onClicked: pageStack.push(Qt.resolvedUrl("system/UsersSettingsPage.qml"))
             }
 
