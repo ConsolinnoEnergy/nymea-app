@@ -2,7 +2,7 @@ name: build-android
 on:
   push:
     branches:
-      - develop
+      - main
       - add-ci
       - feature/add-android-ci
 
@@ -27,22 +27,25 @@ jobs:
           version: '5.15.2'
           target: 'android'
           modules: qtcharts
-      - uses: nttld/setup-ndk@v1
-        with:
-          ndk-version: r21e
-      # The following shouldn't be necessary but the setup-ndk action seems to link the wrong ndk version. 
-      # Might be a caching issue. Not sure. 
-      - run:  rm /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21* /usr/local/lib/android/sdk/ndk-bundle
+      #- uses: nttld/setup-ndk@v1
+      #  with:
+      #    ndk-version: r21e
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '8'
-#      - uses: lhotari/action-upterm@v1
-#        env:
-#          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
-#          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-#          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-#          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Install Android NDK
+        run: sdkmanager  --install "ndk;21.4.7075529"
+      - name: Set symlink to Android NDK
+        run:  rm -rf /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21.4.7075529 /usr/local/lib/android/sdk/ndk-bundle
+      #- uses: lhotari/action-upterm@v1
+      #  env:
+      #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+      #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+      #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
@@ -55,4 +58,5 @@ jobs:
           name: Archive apk and aab
           path: |
             build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab 
-            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk 
+            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk
+            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed-apksigner.apk

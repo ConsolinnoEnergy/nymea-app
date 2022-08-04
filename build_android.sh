@@ -4,7 +4,7 @@ export ROOT_DIR=$(pwd)
 mkdir -p ./build/android
 cd ./build/android
 export BUILD_DIR=$(pwd)
-
+export ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk-bundle
 if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
     ADEPQT=androiddeployqt
@@ -48,6 +48,26 @@ if [[ -z "${NOSIGN}" ]]; then
     --sign ${KEYSTORE_PATH} ${SIGNING_KEY_ALIAS} \
     --storepass ${SIGNING_STORE_PASSWORD} \
     --keypass ${SIGNING_KEY_PASSWORD}
+    
+    # Building unsigned apk and signing it manuallly to use --v2-signing scheme
+     $ADEPQT \
+    --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
+    --output $BUILD_DIR/nymea-app/android-build \
+    --android-platform android-32 \
+    --release \
+    --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
+    --gradle
+    
+    /usr/local/lib/android/sdk//build-tools/32.0.0/apksigner sign \
+    --ks-pass  pass:${SIGNING_STORE_PASSWORD} \
+    --ks ${KEYSTORE_PATH} \
+    --ks-key-alias ${SIGNING_KEY_ALIAS} \
+    --key-pass pass:${SIGNING_KEY_PASSWORD} \
+    --v2-signing-enabled  \
+    -v \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-signed-apksigner.apk \
+    $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
+    
 else
     # NOSIGN env is defined -> build unsigned .apk
     $ADEPQT \
