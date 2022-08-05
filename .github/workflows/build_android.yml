@@ -47,7 +47,7 @@ jobs:
       #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
       #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - name: "Generating Snapshot version number"
-        run: ./gen_snapshot_version.sh
+        run: ./gen_snap_version.sh
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
