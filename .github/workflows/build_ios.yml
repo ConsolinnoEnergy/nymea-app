@@ -56,8 +56,8 @@ jobs:
       #    P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
       #    BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
       #    KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-      - name: "Generating Snapshot version number"
-        run: ./gen_snap_version.sh
+      #- name: "Generating Snapshot version number"
+      #  run: ./gen_snap_version.sh
       - run: ./build_ios.sh
       #- uses: lhotari/action-upterm@v1
       - name: Archive .ipa
@@ -65,3 +65,8 @@ jobs:
         with:
           name: Archive .ipa
           path: /Users/runner/work/consolinno-hems-app/consolinno-hems-app/build/ios/consolinno-hems.ipa 
+      - name: Upload .ipa to AppStore
+        env:
+          IOS_UPLOAD_USER: ${{ secrets.IOS_UPLOAD_USER }}
+          IOS_UPLOAD_PASSWORD: ${{ secrets.IOS_UPLOAD_PASSWORD }}
+        run: xcrun altool --type ios --upload-app --file /Users/runner/work/consolinno-hems-app/consolinno-hems-app/build/ios/consolinno-hems.ipa --username $IOS_UPLOAD_USER --password $IOS_UPLOAD_PASSWORD
