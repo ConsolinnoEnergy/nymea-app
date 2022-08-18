@@ -13,6 +13,7 @@ Drawer {
 
     signal openThingSettings();
     signal openMagicSettings();
+    signal openHelpPage();
     signal openAppSettings();
     signal openSystemSettings();
     signal openCustomPage(string page);
@@ -157,6 +158,22 @@ Drawer {
                         root.close();
                     }
                 }
+
+                NymeaItemDelegate {
+                    Layout.fillWidth: true
+                    text: qsTr("Help")
+                    iconName: "../images/help.svg"
+                    visible: settings.showHiddenOptions
+                    progressive: false
+                    onClicked: {
+                        root.openHelpPage()
+                        root.close();
+                    }
+                }
+
+
+
+
 //                NymeaItemDelegate {
 //                    Layout.fillWidth: true
 //                    text: qsTr("Magic")

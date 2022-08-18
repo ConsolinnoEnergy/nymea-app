@@ -119,6 +119,7 @@ ApplicationWindow {
         configuredHosts: configuredHostsModel
         onOpenThingSettings: rootItem.openThingSettings();
         onOpenMagicSettings: rootItem.openMagicSettings();
+        onOpenHelpPage: rootItem.openHelpPage();
         onOpenAppSettings: rootItem.openAppSettings();
         onOpenSystemSettings: rootItem.openSystemSettings();
         onOpenCustomPage: rootItem.openCustomPage(page);

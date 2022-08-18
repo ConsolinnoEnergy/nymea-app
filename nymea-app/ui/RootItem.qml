@@ -73,6 +73,11 @@ Item {
     function openCustomPage(page) {
         d.pushSettingsPage(page)
     }
+    function openHelpPage() {
+        d.pushSettingsPage("info/Help/HelpPage.qml")
+    }
+
+
 
     function configureMainView() {
         swipeView.currentItem.pageStack.pop(null)
