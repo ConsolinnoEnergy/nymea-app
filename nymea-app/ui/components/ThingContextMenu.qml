@@ -12,9 +12,9 @@ AutoSizeMenu {
     property bool showLogs: true
 
     Component.onCompleted: {
-        if (Configuration.magicEnabled) {
-            root.addItem(menuEntryComponent.createObject(root, {text: qsTr("Magic"), iconSource: "../images/magic.svg", functionName: "openThingMagicPage"}))
-        }
+//        if (Configuration.magicEnabled) {
+//            root.addItem(menuEntryComponent.createObject(root, {text: qsTr("Magic"), iconSource: "../images/magic.svg", functionName: "openThingMagicPage"}))
+//        }
 
         if (root.showDetails) {
             root.addItem(menuEntryComponent.createObject(root, {text: qsTr("Details"), iconSource: "../images/info.svg", functionName: "openGenericThingPage"}))
@@ -24,19 +24,19 @@ AutoSizeMenu {
             root.addItem(menuEntryComponent.createObject(root, {text: qsTr("Logs"), iconSource: "../images/logs.svg", functionName: "openThingLogPage"}))
         }
 
-        root.addItem(menuEntryComponent.createObject(root,
-            {
-                text: Qt.binding(function() { return favoritesProxy.count === 0 ? qsTr("Mark as favorite") : qsTr("Remove from favorites")}),
-                iconSource: Qt.binding(function() { return favoritesProxy.count === 0 ? "../images/starred.svg" : "../images/non-starred.svg"}),
-                functionName: "toggleFavorite"
-            }))
+//        root.addItem(menuEntryComponent.createObject(root,
+//            {
+//                text: Qt.binding(function() { return favoritesProxy.count === 0 ? qsTr("Mark as favorite") : qsTr("Remove from favorites")}),
+//                iconSource: Qt.binding(function() { return favoritesProxy.count === 0 ? "../images/starred.svg" : "../images/non-starred.svg"}),
+//                functionName: "toggleFavorite"
+//            }))
 
-        root.addItem(menuEntryComponent.createObject(root,
-            {
-                text: qsTr("Grouping"),
-                iconSource: "../images/groups.svg",
-                functionName: "addToGroup"
-            }))
+//        root.addItem(menuEntryComponent.createObject(root,
+//            {
+//                text: qsTr("Grouping"),
+//                iconSource: "../images/groups.svg",
+//                functionName: "addToGroup"
+//            }))
 
         print("*** creating menu")
         print("NFC", NfcHelper.isAvailable)
