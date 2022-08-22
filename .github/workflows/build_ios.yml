@@ -49,7 +49,7 @@ jobs:
         with:
           version: '5.15.2'
           target: 'ios'
-          modules: qtcharts
+          modules: qtcharts qtwebengine
       #- uses: lhotari/action-upterm@v1
       #  env:
       #    BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
