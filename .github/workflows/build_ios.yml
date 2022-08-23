@@ -48,8 +48,12 @@ jobs:
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
+          modules: 'qtcharts qtwebengine'
+          aqtversion: '==2.0.0'
+          host: 'mac'
           target: 'ios'
-          modules: qtcharts qtwebengine
+          arch: 'ios'
+
       #- uses: lhotari/action-upterm@v1
       #  env:
       #    BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
