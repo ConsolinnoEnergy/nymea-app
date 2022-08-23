@@ -49,7 +49,7 @@ jobs:
         with:
           version: '5.15.2'
           modules: 'qtcharts qtwebengine'
-          #aqtversion: '==2.0.0'
+          aqtversion: '==2.0.0'
           host: 'mac'
           target: 'ios'
           arch: 'ios'
