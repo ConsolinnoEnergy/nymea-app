@@ -48,8 +48,7 @@ jobs:
       - uses: jurplel/install-qt-action@v2
         with:
           version: '5.15.2'
-          modules: 'qtcharts qtwebengine'
-          aqtversion: '==2.0.0'
+          modules: 'qtcharts'
           host: 'mac'
           target: 'ios'
           arch: 'ios'
