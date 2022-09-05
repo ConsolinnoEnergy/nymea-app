@@ -2167,12 +2167,12 @@ Bitte versuche es erneut.</translation>
         <translation>Bist Du sicher, dass Du das %1 System jetzt neu starten möchtest?</translation>
     </message>
     <message>
-        <source>Shut down %1 system</source>
-        <translation>%1 System herunterfahren</translation>
+        <source>Restart HEMS</source>
+        <translation>HEMS neu starten</translation>
     </message>
     <message>
-        <source>Are you sure you want to shut down your %1 sytem now?</source>
-        <translation>Bist Du sicher, dass Du dein %1 System jetzt herunterfahren möchtest?</translation>
+        <source>Reboot Leaflet</source>
+        <translation>Leaflet neu starten</translation>
     </message>
 </context>
 <context>
@@ -2793,6 +2793,18 @@ Bitte versuche es erneut.</translation>
     <message>
         <source>Set up another...</source>
         <translation>Ein weiteres einrichten...</translation>
+    </message>
+    <message>
+        <source>Configure things</source>
+        <translation type="unfinished">&quot;Things&quot; einrichten</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Hilfe</translation>
+    </message>
+    <message>
+        <source>Configure main view</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4336,6 +4348,10 @@ Möchtest Du fortfahren?</translation>
         <source>Installed integration plugins</source>
         <translation>Installierte Integrationen</translation>
     </message>
+    <message>
+        <source>Install more plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PowerBalanceStats</name>
@@ -5096,6 +5112,14 @@ Möchtest Du fortfahren?</translation>
         <source>Configure how applications can connect to this system</source>
         <translation>Verwalte wie sich Anwendungen zu diesem System verbinden können</translation>
     </message>
+    <message>
+        <source>Z-Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure Z-Wave networks</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -5468,28 +5492,12 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
 <context>
     <name>ThingContextMenu</name>
     <message>
-        <source>Magic</source>
-        <translation>Magie</translation>
-    </message>
-    <message>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
         <source>Logs</source>
         <translation>Protokoll</translation>
-    </message>
-    <message>
-        <source>Mark as favorite</source>
-        <translation>Als Favorit</translation>
-    </message>
-    <message>
-        <source>Remove from favorites</source>
-        <translation>Von Favoriten entfernen</translation>
-    </message>
-    <message>
-        <source>Grouping</source>
-        <translation>Gruppen</translation>
     </message>
     <message>
         <source>Write NFC tag</source>
@@ -6030,6 +6038,340 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     </message>
 </context>
 <context>
+    <name>ZWaveAddNetworkPage</name>
+    <message>
+        <source>Add a new Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected adapter is already in use.</source>
+        <translation type="unfinished">Der ausgewählte Adapter ist bereits in Benutzung.</translation>
+    </message>
+    <message>
+        <source>An error happened in the ZWave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available serial ports</source>
+        <translation type="unfinished">Verfügbare serielle Schnittstellen</translation>
+    </message>
+    <message>
+        <source>Please verify that the Z-Wave adapter is properly connected to a serial port and select the appropriate port.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveNetworkPage</name>
+    <message>
+        <source>Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Hilfe</translation>
+    </message>
+    <message>
+        <source>Network settings</source>
+        <translation type="unfinished">Netzwerkeinstellungen</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened in the Z-Wave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The operation could not be started because the Z-Wave network is busy. Please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An unexpected error happened. Status code: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Include Z-Wave device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Z-Wave network is now accepting new devices for inclusion. Please start the pairing procedure from the Z-Wave device you want to add to the network. Check the device manual for further details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclude Z-Wave device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Z-Wave network is now accepting devices for exclusion. Please start the pairing procedure from the Z-Wave device you want to remove from the network. Check the device manual for further details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished">Netzwerk</translation>
+    </message>
+    <message>
+        <source>Network state:</source>
+        <translation type="unfinished">Netzwerkstatus:</translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished">Online</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished">Offline</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished">Wird gestartet</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Controller type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secondary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device management</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a new device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove a device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected devices</source>
+        <translation type="unfinished">Verbundene Geräte</translation>
+    </message>
+    <message>
+        <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
+        <translation type="unfinished">Es sind noch keine ZigBee Geräte verbunden. Öffne das Netzwerk für neue Geräte und beginne dein Einrichtungsprozess am ZigBee Gerät. Bitte ziehen Sie das Handbuch des Gerätes heran um zu erfahren wie dies am jeweiligen Gerät gemacht wird.</translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
+        <translation type="unfinished">Initialisiere...</translation>
+    </message>
+    <message>
+        <source>%1 things</source>
+        <translation type="unfinished">%1 Geräte</translation>
+    </message>
+    <message>
+        <source>Unrecognized device</source>
+        <translation type="unfinished">Unerkanntes Gerät</translation>
+    </message>
+    <message>
+        <source>Node ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave plus:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished">Ja</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished">Nein</translation>
+    </message>
+    <message>
+        <source>Signal strength:</source>
+        <translation type="unfinished">Signalstärke:</translation>
+    </message>
+    <message>
+        <source>Version:</source>
+        <translation type="unfinished">Version:</translation>
+    </message>
+    <message>
+        <source>Associated things</source>
+        <translation type="unfinished">Verknüpfte Geräte</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished">Entfernen</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
+    </message>
+    <message>
+        <source>Remove Z-Wave node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove this node from the network?</source>
+        <translation type="unfinished">Bist Du sicher, dass dieser Knoten aus dem Netzwerk entfernt werden soll?</translation>
+    </message>
+    <message>
+        <source>Please note that if this node has been assigned to a thing, it will also be removed from the system.</source>
+        <translation type="unfinished">Bitte beachte, dass mit diesem Knoten verknüpfte &quot;Things&quot; auch entfernt werden.</translation>
+    </message>
+    <message>
+        <source>ZigBee network help</source>
+        <translation type="unfinished">ZigBee Netzwerk Hilfe</translation>
+    </message>
+    <message>
+        <source>ZigBee router</source>
+        <translation type="unfinished">ZigBee Router</translation>
+    </message>
+    <message>
+        <source>ZigBee end device</source>
+        <translation type="unfinished">ZigBee Endgerät</translation>
+    </message>
+    <message>
+        <source>Sleepy device</source>
+        <translation type="unfinished">Schlafendes Gerät</translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveNetworkSettingsPage</name>
+    <message>
+        <source>Z-Wave network settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error happened in the ZWave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network information</source>
+        <translation type="unfinished">Netzwerkinformation</translation>
+    </message>
+    <message>
+        <source>Network state</source>
+        <translation type="unfinished">Netzwerk-Status</translation>
+    </message>
+    <message>
+        <source>The network is online</source>
+        <translation type="unfinished">Das Netzwerk ist online</translation>
+    </message>
+    <message>
+        <source>The network is offline</source>
+        <translation type="unfinished">Das Netzwerk ist offline</translation>
+    </message>
+    <message>
+        <source>The network is starting...</source>
+        <translation type="unfinished">Das Netzwerk startet...</translation>
+    </message>
+    <message>
+        <source>The network is in an error state.</source>
+        <translation type="unfinished">Das Netzwerk ist in einem fehlerhaften Zustand.</translation>
+    </message>
+    <message>
+        <source>Home ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hardware information</source>
+        <translation type="unfinished">Geräteinformationen</translation>
+    </message>
+    <message>
+        <source>Serial port</source>
+        <translation type="unfinished">Serielle Schnittstelle</translation>
+    </message>
+    <message>
+        <source>Manage network</source>
+        <translation type="unfinished">Netzwerke verwalten</translation>
+    </message>
+    <message>
+        <source>Reboot controller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove network</source>
+        <translation type="unfinished">Netzwerk entfernen</translation>
+    </message>
+    <message>
+        <source>Factory reset controller</source>
+        <translation type="unfinished">Adapter zurücksetzen</translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveSettingsPage</name>
+    <message>
+        <source>Z-Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are no Z-Wave networks set up yet. In order to use Z-Wave, create a Z-Wave network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add network</source>
+        <translation type="unfinished">Netzwerk hinzufügen</translation>
+    </message>
+    <message>
+        <source>Z-Wave Plus network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network state:</source>
+        <translation type="unfinished">Netzwerkstatus:</translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished">Online</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished">Offline</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished">Wird gestartet</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Adapter:</source>
+        <translation type="unfinished">Adapter:</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n device(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n Gerät</numerusform>
+            <numerusform>%n Geräte</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n device(s) (%1 disconnected)</source>
+        <translation type="unfinished">
+            <numerusform>%n Gerät (%1 getrennt)</numerusform>
+            <numerusform>%n Geräte (%1 getrennt)</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ZigbeeAddNetworkPage</name>
     <message>
         <source>The selected adapter is not available or the selected serial port configration is incorrect.</source>
@@ -6225,10 +6567,6 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
         <translation>Es sind noch keine ZigBee Geräte verbunden. Öffne das Netzwerk für neue Geräte und beginne dein Einrichtungsprozess am ZigBee Gerät. Bitte ziehen Sie das Handbuch des Gerätes heran um zu erfahren wie dies am jeweiligen Gerät gemacht wird.</translation>
-    </message>
-    <message>
-        <source>Initialiazing...</source>
-        <translation type="vanished">Initialisiere...</translation>
     </message>
     <message>
         <source>%1 things</source>

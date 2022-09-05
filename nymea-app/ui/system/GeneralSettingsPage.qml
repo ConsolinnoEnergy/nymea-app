@@ -223,7 +223,7 @@ SettingsPageBase {
         Layout.fillWidth: true
         Layout.leftMargin: app.margins
         Layout.rightMargin: app.margins
-        text: qsTr("Restart %1").arg(Configuration.systemName)
+        text: qsTr("Restart HEMS")
         visible: engine.systemController.powerManagementAvailable && engine.jsonRpcClient.ensureServerVersion("5.1")
         onClicked: {
             var dialog = Qt.createComponent(Qt.resolvedUrl("../components/MeaDialog.qml"));
@@ -246,7 +246,7 @@ SettingsPageBase {
         Layout.fillWidth: true
         Layout.leftMargin: app.margins
         Layout.rightMargin: app.margins
-        text: qsTr("Reboot %1 system").arg(Configuration.systemName)
+        text: qsTr("Reboot Leaflet")
         visible: engine.systemController.powerManagementAvailable
         onClicked: {
             var dialog = Qt.createComponent(Qt.resolvedUrl("../components/MeaDialog.qml"));
@@ -264,28 +264,28 @@ SettingsPageBase {
             })
         }
     }
-    Button {
-        Layout.fillWidth: true
-        Layout.leftMargin: app.margins
-        Layout.rightMargin: app.margins
-        text: qsTr("Shut down %1 system").arg(Configuration.systemName)
-        visible: engine.systemController.powerManagementAvailable
-        onClicked: {
-            var dialog = Qt.createComponent(Qt.resolvedUrl("../components/MeaDialog.qml"));
-            var text = qsTr("Are you sure you want to shut down your %1 sytem now?").arg(Configuration.systemName)
-            var popup = dialog.createObject(app,
-                                            {
-                                                headerIcon: "../images/dialog-warning-symbolic.svg",
-                                                title: qsTr("Shut down %1 system").arg(Configuration.systemName),
-                                                text: text,
-                                                standardButtons: Dialog.Ok | Dialog.Cancel
-                                            });
-            popup.open();
-            popup.accepted.connect(function() {
-                d.pendingCommand = engine.systemController.shutdown()
-            })
-        }
-    }
+//    Button {
+//        Layout.fillWidth: true
+//        Layout.leftMargin: app.margins
+//        Layout.rightMargin: app.margins
+//        text: qsTr("Shut down %1 system").arg(Configuration.systemName)
+//        visible: engine.systemController.powerManagementAvailable
+//        onClicked: {
+//            var dialog = Qt.createComponent(Qt.resolvedUrl("../components/MeaDialog.qml"));
+//            var text = qsTr("Are you sure you want to shut down your %1 sytem now?").arg(Configuration.systemName)
+//            var popup = dialog.createObject(app,
+//                                            {
+//                                                headerIcon: "../images/dialog-warning-symbolic.svg",
+//                                                title: qsTr("Shut down %1 system").arg(Configuration.systemName),
+//                                                text: text,
+//                                                standardButtons: Dialog.Ok | Dialog.Cancel
+//                                            });
+//            popup.open();
+//            popup.accepted.connect(function() {
+//                d.pendingCommand = engine.systemController.shutdown()
+//            })
+//        }
+//    }
 
 
     Component {
