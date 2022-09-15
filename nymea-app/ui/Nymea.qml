@@ -120,6 +120,7 @@ ApplicationWindow {
         onOpenThingSettings: rootItem.openThingSettings();
         onOpenMagicSettings: rootItem.openMagicSettings();
         onOpenHelpPage: rootItem.openHelpPage();
+        onOpenPrivacyPage: rootItem.openPrivacyPage();
         onOpenAppSettings: rootItem.openAppSettings();
         onOpenSystemSettings: rootItem.openSystemSettings();
         onOpenCustomPage: rootItem.openCustomPage(page);

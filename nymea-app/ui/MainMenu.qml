@@ -14,6 +14,7 @@ Drawer {
     signal openThingSettings();
     signal openMagicSettings();
     signal openHelpPage();
+    signal openPrivacyPage();
     signal openAppSettings();
     signal openSystemSettings();
     signal openCustomPage(string page);
@@ -159,19 +160,6 @@ Drawer {
                     }
                 }
 
-                NymeaItemDelegate {
-                    Layout.fillWidth: true
-                    text: qsTr("Help")
-                    iconName: "../images/help.svg"
-                    visible: settings.showHiddenOptions
-                    progressive: false
-                    onClicked: {
-                        root.openHelpPage()
-                        root.close();
-                    }
-                }
-
-
 
 
 //                NymeaItemDelegate {
@@ -222,6 +210,32 @@ Drawer {
 
                     Layout.bottomMargin: app.margins
                 }
+
+
+                NymeaItemDelegate {
+                    Layout.fillWidth: true
+                    text: qsTr("Help")
+                    iconName: "../images/help.svg"
+                    visible: settings.showHiddenOptions
+                    progressive: false
+                    onClicked: {
+                        root.openHelpPage()
+                        root.close();
+                    }
+                }
+
+                NymeaItemDelegate {
+                    Layout.fillWidth: true
+                    text: qsTr("Privacy")
+                    iconName: "../images/smartlock.svg"
+                    visible: settings.showHiddenOptions
+                    progressive: false
+                    onClicked: {
+                        root.openPrivacyPage()
+                        root.close();
+                    }
+                }
+
 
 
                 Repeater {

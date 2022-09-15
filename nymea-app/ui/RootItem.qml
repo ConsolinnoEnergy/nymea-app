@@ -76,6 +76,9 @@ Item {
     function openHelpPage() {
         d.pushSettingsPage("info/Help/HelpPage.qml")
     }
+    function openPrivacyPage() {
+        d.pushSettingsPage("info/Privacy/PrivacyPage.qml")
+    }
 
 
 

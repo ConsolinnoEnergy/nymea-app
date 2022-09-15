@@ -194,8 +194,10 @@ Page {
         onAddThingReply: {
             busyOverlay.shown = false;
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: thingId, message: displayMessage})
+
         }
         onReconfigureThingReply: {
+
             busyOverlay.shown = false;
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: root.thing.id, message: displayMessage})
         }
