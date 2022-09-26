@@ -4504,8 +4504,8 @@ Möchtest Du fortfahren?</translation>
         <translation>Authentifizierung erforderlich</translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway to authenticate this device.</source>
-        <translation>Bitte drücke den Knopf auf deinem %1 Gateway um die Authentifizierung abzuschließen.</translation>
+        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
+        <translation>Bitte drücken Sie den Test-taster an ihren %1 für 5 Sekunden um sich zu authentifizieren.</translation>
     </message>
 </context>
 <context>

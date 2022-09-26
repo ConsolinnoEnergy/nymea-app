@@ -4477,7 +4477,7 @@ Do you want to proceed?</source>
         <translation>Kimlik doğrulama gerekli</translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway to authenticate this device.</source>
+        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
