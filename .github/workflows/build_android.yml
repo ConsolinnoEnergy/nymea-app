@@ -4,7 +4,9 @@ on:
     branches:
       - main
       - feature/add-android-ci
-
+      - feature/add-android-publish
+    tags:
+      - 'v*'
 jobs:
   build-android:
     runs-on: ubuntu-latest
@@ -61,3 +63,27 @@ jobs:
             build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab 
             build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk
             build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed-apksigner.apk
+            
+  publish-android:
+    name: Publish android packages
+    runs-on: ubuntu-latest
+    needs: build-android
+    if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: Archive apk and aab
+      - name: Upload .apk to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: apk/release/android-build-release-signed-apksigner.apk
+          tag: ${{ github.ref }}
+          overwrite: true
+      - name: Upload .aab to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: bundle/release/android-build-release.aab
+          tag: ${{ github.ref }}
+          overwrite: true
+
