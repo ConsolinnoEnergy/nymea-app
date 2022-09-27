@@ -81,11 +81,6 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: Archive .ipa
-      - name: Upload .ipa to AppStore
-        env:
-          IOS_UPLOAD_USER: ${{ secrets.IOS_UPLOAD_USER }}
-          IOS_UPLOAD_PASSWORD: ${{ secrets.IOS_UPLOAD_PASSWORD }}
-        run: xcrun altool --type ios --upload-app --file consolinno-hems.ipa --username $IOS_UPLOAD_USER --password $IOS_UPLOAD_PASSWORD
       - name: Upload ipa package to release
         uses: svenstaro/upload-release-action@v2
         with:
@@ -93,5 +88,10 @@ jobs:
           file: ./*.ipa
           tag: ${{ github.ref }}
           overwrite: true
+      - name: Upload .ipa to AppStore
+        env:
+          IOS_UPLOAD_USER: ${{ secrets.IOS_UPLOAD_USER }}
+          IOS_UPLOAD_PASSWORD: ${{ secrets.IOS_UPLOAD_PASSWORD }}
+        run: xcrun altool --type ios --upload-app --file consolinno-hems.ipa --username $IOS_UPLOAD_USER --password $IOS_UPLOAD_PASSWORD
 
 
