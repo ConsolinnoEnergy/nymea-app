@@ -659,7 +659,7 @@ WizardPageBase {
                     text: ssid
                 }
 
-                PasswordTextField {
+                ConsolinnoPasswordTextField {
                     id: passwordTextField
                     Layout.fillWidth: true
                     signup: false
