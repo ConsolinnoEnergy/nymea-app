@@ -39,6 +39,7 @@ SettingsPageBase {
 
     }
 
+
     RowLayout {
         Layout.margins: Style.margins
         spacing: Style.margins
@@ -268,7 +269,13 @@ SettingsPageBase {
                 HeaderButton {
                     imageSource: Qt.resolvedUrl("../images/add.svg")
                     onClicked: {
-                        pageStack.push(addUserComponent)
+                        var page = pageStack.push(addUserComponent)
+                        page.done.connect(function(){
+                            reloadUserList()
+                            pageStack.pop()
+
+
+                        })
                     }
                 }
             }
@@ -277,18 +284,49 @@ SettingsPageBase {
                 text: qsTr("Manage users for this %1 system").arg(Configuration.systemName)
             }
 
+            ListModel{
+                id: users
+
+            }
+
+            Component.onCompleted: {
+                reloadUserList()
+
+            }
+
+            function reloadUserList(){
+
+                // empty the ListModel so it can reload
+                users.clear()
+
+
+                //header.text = userManager.users.count
+                for(var i = 0; i < userManager.users.count  ; i++ ){
+
+                    if (userManager.users.get(i)){
+
+                        users.append(userManager.users.get(i))
+                    }
+                }
+            }
+
             Repeater {
-                model: userManager.users
+                id: userRepeater
+                model: users
                 delegate: NymeaItemDelegate {
                     Layout.fillWidth: true
-                    text: engine.jsonRpcClient.ensureServerVersion("6.0") && model.displayName !== "" ? model.displayName : model.username
+                    text: engine.jsonRpcClient.ensureServerVersion("6.0") && model.displayName !== "" ? model.displayName : model.username !== "" ? model.username : qsTr("User login via authentication")
                     subText: engine.jsonRpcClient.ensureServerVersion("6.0") && model.displayName ? model.username : ""
                     iconName: "/ui/images/account.svg"
                     iconColor: userManager.userInfo.scopes & UserInfo.PermissionScopeAdmin ? Style.accentColor : Style.iconColor
 
                     canDelete: true
                     onClicked: {
-                        pageStack.push(userDetailsComponent, {userInfo: userManager.users.get(index)})
+                        var page = pageStack.push(userDetailsComponent, {userInfo: userManager.users.get(index)})
+                        page.done.connect(function(){
+                            reloadUserList()
+                            pageStack.pop()
+                        })
                     }
                 }
             }
@@ -297,9 +335,11 @@ SettingsPageBase {
 
     Component {
         id: userDetailsComponent
+
         SettingsPageBase {
             id: userDetailsPage
-            title: qsTr("Manage %1").arg(userInfo.username)
+            title: userInfo.username ? qsTr("Manage %1").arg(userInfo.username) : qsTr("Authenticated user")
+            signal done
 
             property UserInfo userInfo: null
 
@@ -408,7 +448,8 @@ SettingsPageBase {
                         var popup = component.createObject(app, {text: text});
                         popup.open()
                     } else {
-                        pageStack.pop();
+                        userDetailsPage.done()
+                        //pageStack.pop();
                     }
                 }
             }
@@ -422,6 +463,7 @@ SettingsPageBase {
             id: createUserPage
             title: qsTr("Add a user")
 
+            signal done
             property var permissionScopes: UserInfo.PermissionScopeNone
 
             SettingsPageSectionHeader {
@@ -506,6 +548,7 @@ SettingsPageBase {
                     userManager.createUser(usernameTextField.displayText, passwordTextField.password, displayNameTextField.text, emailTextField.text, createUserPage.permissionScopes)
                 }
             }
+
             Connections {
                 target: userManager
                 onCreateUserReply: {
@@ -534,7 +577,9 @@ SettingsPageBase {
                         var popup = component.createObject(app, {text: text});
                         popup.open()
                     } else {
-                        pageStack.pop();
+                        createUserPage.done()
+                        //pageStack.pop();
+
                     }
                 }
             }
