@@ -5847,6 +5847,14 @@ Please only use this if you are sure you want this and consider reporting the is
         <source>User information</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>User login via authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authenticated user</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WeatherDeviceListPage</name>

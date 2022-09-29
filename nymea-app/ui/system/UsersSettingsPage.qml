@@ -306,18 +306,9 @@ SettingsPageBase {
                     if (userManager.users.get(i)){
 
                         users.append(userManager.users.get(i))
-                    }else{
-
-                        // TODO: look at how the authentication User looks like.
-                        // if you actually get a user back look at his name -> check the user and then assign him new info values like displayname and email
-
                     }
                 }
-
             }
-
-
-
 
             Repeater {
                 id: userRepeater
@@ -347,7 +338,7 @@ SettingsPageBase {
 
         SettingsPageBase {
             id: userDetailsPage
-            title: qsTr("Manage %1").arg(userInfo.username)
+            title: userInfo.username ? qsTr("Manage %1").arg(userInfo.username) : qsTr("Authenticated user")
             signal done
 
             property UserInfo userInfo: null

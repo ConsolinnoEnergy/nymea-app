@@ -2628,7 +2628,7 @@ Bitte versuche es erneut.</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation type="unfinished">E-Mail</translation>
+        <translation>E-Mail</translation>
     </message>
 </context>
 <context>
@@ -2796,11 +2796,11 @@ Bitte versuche es erneut.</translation>
     </message>
     <message>
         <source>Configure things</source>
-        <translation type="unfinished">&quot;Things&quot; einrichten</translation>
+        <translation>&quot;Things&quot; einrichten</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>Configure main view</source>
@@ -5862,6 +5862,14 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>User information</source>
         <translation>Benutzerinformationen</translation>
+    </message>
+    <message>
+        <source>User login via authentication</source>
+        <translation>User Login über Authentifizierung</translation>
+    </message>
+    <message>
+        <source>Authenticated user</source>
+        <translation>Authentifizierter User</translation>
     </message>
 </context>
 <context>
