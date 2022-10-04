@@ -1,0 +1,17 @@
+name: build-dummy
+on:
+  push:
+    branches:
+      - add-release-other-repo
+
+jobs:
+  build-dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: git config --global credential.helper store
+      - run: echo "blub" > dummy.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Dummy Content
+          path: dummy.txt
+            

@@ -1,0 +1,33 @@
+name: Publish
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  publish:
+    name: Publish the package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for build and private release
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          running-workflow-name: 'Publish the package'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+      - uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: build_windows.yml  
+      - uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: build_snap.yml    
+      - name: Create release in public repo
+        uses: ncipollo/release-action@v1
+        with:
+          name: "Test Release"
+          repo: consolinno-hems-app
+          owner: ConsolinnoEnergy
+          token: ${{ secrets.REPO_GITLAB_TOKEN }}
+          artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
