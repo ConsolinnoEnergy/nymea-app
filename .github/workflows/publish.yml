@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - 'v*'
+      - 'test-publish-v*'
+      
 jobs:
   publish:
     name: Publish the package
@@ -15,6 +17,7 @@ jobs:
           running-workflow-name: 'Publish the package'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
+          allowed-conclusions: success,skipped,cancelled
       - uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
@@ -26,8 +29,9 @@ jobs:
       - name: Create release in public repo
         uses: ncipollo/release-action@v1
         with:
-          name: "Test Release"
           repo: consolinno-hems-app
           owner: ConsolinnoEnergy
+          omitBody: true
+          removeArtifacts: true
           token: ${{ secrets.REPO_GITLAB_TOKEN }}
           artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
