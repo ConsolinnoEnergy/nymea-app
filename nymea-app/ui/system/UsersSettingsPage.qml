@@ -481,7 +481,8 @@ SettingsPageBase {
                 TextField {
                     id: usernameTextField
                     Layout.fillWidth: true
-                    inputMethodHints: Qt.ImhNoAutoUppercase
+
+                    //inputMethodHints: Qt.ImhLowercaseOnly
                 }
 
                 Label {
@@ -542,10 +543,12 @@ SettingsPageBase {
                 Layout.fillWidth: true
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
-                enabled: usernameTextField.displayText.length >= 3 && passwordTextField.isValid
+                enabled: usernameTextField.length >= 3 && passwordTextField.isValid
                 onClicked: {
                     createUserPage.busy = true
-                    userManager.createUser(usernameTextField.displayText, passwordTextField.password, displayNameTextField.text, emailTextField.text, createUserPage.permissionScopes)
+                    // TOFIX: IT is not possible to give usernameTextField an Uppercase. Otherwise the function just is very buggy
+                    // Also not allowed are: Special character (!"§), german specific signs (?ÄÜ)
+                    userManager.createUser(usernameTextField.text.toLowerCase(), passwordTextField.password, displayNameTextField.text, emailTextField.text, createUserPage.permissionScopes)
                 }
             }
 
