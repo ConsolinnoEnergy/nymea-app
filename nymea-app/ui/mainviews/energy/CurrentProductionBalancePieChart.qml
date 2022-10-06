@@ -53,11 +53,11 @@ ChartView {
             borderColor: Style.backgroundColor
             value: productionBalanceSeries.toStorage
         }
-        PieSlice {
-            color: Style.backgroundColor
-            borderColor: Style.backgroundColor
-            value: productionBalanceSeries.toStorage
-        }
+//        PieSlice {
+//            color: Style.backgroundColor
+//            borderColor: Style.backgroundColor
+//            value: productionBalanceSeries.toStorage
+//        }
         PieSlice {
             color: Style.tooltipBackgroundColor
             borderColor: color
