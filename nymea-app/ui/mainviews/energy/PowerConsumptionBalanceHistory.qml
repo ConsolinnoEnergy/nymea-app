@@ -161,7 +161,7 @@ Item {
             id: selfProductionSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.green
+            color: "#FCE487"
             borderWidth: 0
             borderColor: "transparent"
             name: qsTr("Self production")
@@ -198,7 +198,7 @@ Item {
             id: storageSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.orange
+            color: "#ACE3E2"
             borderWidth: 0
             borderColor: "transparent"
             name: qsTr("From battery")
@@ -223,7 +223,7 @@ Item {
             id: acquisitionSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.red
+            color: "#F37B8E"
             borderWidth: 0
             borderColor: "transparent"
             name: qsTr("From grid")
@@ -314,7 +314,7 @@ Item {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.green
+                        color: "#FCE487"
                     }
 
                     Label {
@@ -334,7 +334,7 @@ Item {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.orange
+                        color: "#ACE3E2"
                     }
 
                     Label {
@@ -353,7 +353,7 @@ Item {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.red
+                        color: "#F37B8E"
                     }
 
                     Label {

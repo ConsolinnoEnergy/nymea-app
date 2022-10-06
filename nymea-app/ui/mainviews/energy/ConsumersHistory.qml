@@ -234,7 +234,7 @@ Item {
             id: consumptionSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.gray
+            color: "#707070"
             borderWidth: 0
             borderColor: "transparent"
             name: qsTr("Unknown")

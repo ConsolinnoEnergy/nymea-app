@@ -105,7 +105,7 @@ ChartView {
             var unknownConsumption = Math.max(0, energyManager.currentPowerConsumption - consumersSummation)
             print("Unknown consumption:", unknownConsumption, "consumption balance", energyManager.currentPowerConsumption, "consumers summation:", consumersSummation)
             d.unknownSlice = consumersBalanceSeries.append(qsTr("Unknown"), unknownConsumption)
-            d.unknownSlice.color = Style.gray
+            d.unknownSlice.color = "#707070"
             d.unknownSlice.borderColor = Style.backgroundColor
             d.unknownSlice.borderWidth = 0
         }

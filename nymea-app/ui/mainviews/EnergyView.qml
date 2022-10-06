@@ -60,7 +60,7 @@ MainViewBase {
         engine: _engine
     }
 
-    property var thingColors: [Style.blue, Style.green, Style.red, Style.yellow, Style.purple, Style.orange, Style.lime, Style.pink, Style.darkBlue]
+    property var thingColors: ["#F37B8E", "#ACE3E2", "#FCE487", "#BDD786", "#F7B772", "#45B4E4", "#ADB9E3", Style.pink, Style.darkBlue]
 
 
     ThingsProxy {
@@ -112,14 +112,16 @@ MainViewBase {
                 rowSpacing: 0
                 columnSpacing: 0
 
+//                 We dont need this one, since it is the same as on the frontpage
+//                CurrentConsumptionBalancePieChart {
+//                    Layout.fillWidth: true
+//                    Layout.preferredHeight: width
+//                    energyManager: energyManager
+//                    visible: producers.count > 0
+//                    animationsEnabled: Qt.application.active && root.isCurrentItem
+//                }
 
-                CurrentConsumptionBalancePieChart {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: width
-                    energyManager: energyManager
-                    visible: producers.count > 0
-                    animationsEnabled: Qt.application.active && root.isCurrentItem
-                }
+                //1
                 CurrentProductionBalancePieChart {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width
@@ -128,18 +130,7 @@ MainViewBase {
                     animationsEnabled: Qt.application.active && root.isCurrentItem
                 }
 
-                PowerConsumptionBalanceHistory {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: width
-                    visible: producers.count > 0
-                }
-
-                PowerProductionBalanceHistory {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: width
-                    visible: producers.count > 0
-                }
-
+                //2
                 ConsumersPieChart {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width
@@ -150,6 +141,25 @@ MainViewBase {
                     animationsEnabled: Qt.application.active && root.isCurrentItem
                 }
 
+
+                //3
+                PowerProductionBalanceHistory {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: width
+                    visible: producers.count > 0
+                }
+
+                //4
+                PowerConsumptionBalanceHistory {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: width
+                    visible: producers.count > 0
+                }
+
+
+
+
+
 //                ConsumersBarChart {
 //                    Layout.fillWidth: true
 //                    Layout.preferredHeight: width
@@ -158,6 +168,8 @@ MainViewBase {
 //                    colors: root.thingColors
 //                    consumers: consumers
 //                }
+
+                //5
                 ConsumersHistory {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width
@@ -166,6 +178,8 @@ MainViewBase {
                     consumers: consumers
                 }
 
+
+                //6
                 PowerBalanceStats {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width
@@ -174,6 +188,8 @@ MainViewBase {
                     producers: producers
                 }
 
+
+                //7
                 ConsumerStats {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width

@@ -38,18 +38,18 @@ ChartView {
         property double toConsumers: -energyManager.currentPowerProduction - toGrid - toStorage
 
         PieSlice {
-            color: Style.red
+            color: "#BDD786"
             borderColor: Style.backgroundColor
             value: productionBalanceSeries.toConsumers
         }
         PieSlice {
-            color: Style.green
+            color: "#F37B8E"
             borderColor: Style.backgroundColor
             borderWidth: 0
             value: productionBalanceSeries.toGrid
         }
         PieSlice {
-            color: Style.orange
+            color: "#ACE3E2"
             borderColor: Style.backgroundColor
             value: productionBalanceSeries.toStorage
         }
