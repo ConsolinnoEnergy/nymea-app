@@ -73,7 +73,7 @@ jobs:
           
   publish-ios:
     name: Publish iOS
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: build-ios
     if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
     steps:
