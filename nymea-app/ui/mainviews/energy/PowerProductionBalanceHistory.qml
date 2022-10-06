@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.3
 import QtCharts 2.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.2
@@ -157,7 +157,7 @@ Item {
             id: selfConsumptionSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.red
+            color: "#BDD786"
             borderWidth: 0
             borderColor: "transparent"
             name: qsTr("Consumed")
@@ -190,7 +190,7 @@ Item {
             id: storageSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.orange
+            color: "#ACE3E2"
             borderWidth: 0
             borderColor: "transparent"
             visible: root.batteries.count > 0
@@ -216,7 +216,7 @@ Item {
             id: acquisitionSeries
             axisX: dateTimeAxis
             axisY: valueAxis
-            color: Style.green
+            color: "#F37B8E"
             borderWidth: 0
             borderColor: "transparent"
             name: qsTr("To grid")
@@ -304,7 +304,7 @@ Item {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.red
+                        color: "#BDD786"
                     }
 
                     Label {
@@ -324,7 +324,7 @@ Item {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.orange
+                        color: "#ACE3E2"
                     }
 
                     Label {
@@ -343,7 +343,7 @@ Item {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.green
+                        color: "#F37B8E"
                     }
 
                     Label {

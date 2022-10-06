@@ -279,21 +279,21 @@ StatsBase {
                 valueAxis.max = 0
                 if (root.hasProducers) {
                     d.consumptionSet = barSeries.append(qsTr("Consumed"), [])
-                    d.consumptionSet.color = Style.blue
-                    d.consumptionSet.borderColor = d.consumptionSet.color
+                    d.consumptionSet.color =  "#BDD786"
+                    d.consumptionSet.borderColor = "transparent"
                     d.consumptionSet.borderWidth = 0
                     d.productionSet = barSeries.append(qsTr("Produced"), [])
-                    d.productionSet.color = Style.yellow
-                    d.productionSet.borderColor = d.productionSet.color
+                    d.productionSet.color = "#FCE487"
+                    d.productionSet.borderColor = "transparent"
                     d.productionSet.borderWidth = 0
                 }
                 d.acquisitionSet = barSeries.append(qsTr("From grid"), [])
-                d.acquisitionSet.color = Style.red
-                d.acquisitionSet.borderColor = d.acquisitionSet.color
+                d.acquisitionSet.color = "#F37B8E"
+                d.acquisitionSet.borderColor = "transparent"
                 d.acquisitionSet.borderWidth = 0
                 d.returnSet = barSeries.append(qsTr("To grid"), [])
-                d.returnSet.color = Style.green
-                d.returnSet.borderColor = d.returnSet.color
+                d.returnSet.color =  "#45B4E4"
+                d.returnSet.borderColor = "transparent"
                 d.returnSet.borderWidth = 0
             }
 
@@ -455,7 +455,7 @@ StatsBase {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.blue
+                        color: "#BDD786"
                     }
                     Label {
                         text: toolTip.visible && d.consumptionSet ? qsTr("Consumed: %1 kWh").arg(d.consumptionSet.at(toolTip.idx).toFixed(2)) : ""
@@ -467,7 +467,7 @@ StatsBase {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.yellow
+                        color: "#FCE487"
                     }
                     Label {
                         text: toolTip.visible && d.productionSet ? qsTr("Produced: %1 kWh").arg(d.productionSet.at(toolTip.idx).toFixed(2)) : ""
@@ -478,7 +478,7 @@ StatsBase {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.red
+                        color: "#F37B8E"
                     }
                     Label {
                         text: toolTip.visible && d.acquisitionSet ? qsTr("From grid: %1 kWh").arg(d.acquisitionSet.at(toolTip.idx).toFixed(2)) : ""
@@ -489,7 +489,7 @@ StatsBase {
                     Rectangle {
                         width: Style.extraSmallFont.pixelSize
                         height: width
-                        color: Style.green
+                        color: "#45B4E4"
                     }
                     Label {
                         text: toolTip.visible && d.returnSet ? qsTr("To grid: %1 kWh").arg(d.returnSet.at(toolTip.idx).toFixed(2)) : ""
