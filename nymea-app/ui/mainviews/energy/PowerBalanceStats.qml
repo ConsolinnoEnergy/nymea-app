@@ -100,10 +100,14 @@ StatsBase {
                     valueAxis.adjustMax(production)
                 }
                 var acquisition = root.energyManager.totalAcquisition - (start ? start.totalAcquisition : 0)
-                d.acquisitionSet.replace(d.acquisitionSet.count - 1, acquisition)
+                if (d.acquisitionSet) {
+                    d.acquisitionSet.replace(d.acquisitionSet.count - 1, acquisition)
+                }
                 valueAxis.adjustMax(acquisition)
                 var ret = root.energyManager.totalReturn - (start ? start.totalReturn : 0)
-                d.returnSet.replace(d.returnSet.count - 1, ret)
+                if (d.returnSet) {
+                    d.returnSet.replace(d.returnSet.count - 1, ret)
+                }
                 valueAxis.adjustMax(ret)
             }
         }
@@ -299,6 +303,7 @@ StatsBase {
                 y: chartView.plotArea.y
                 height: chartView.plotArea.height
                 width: chartView.plotArea.x - x
+                anchors.rightMargin: 0
 
                 Repeater {
                     model: valueAxis.tickCount
@@ -306,7 +311,7 @@ StatsBase {
                         y: parent.height / (valueAxis.tickCount - 1) * index - font.pixelSize / 2
                         width: parent.width - Style.smallMargins
                         horizontalAlignment: Text.AlignRight
-                        text: ((valueAxis.max - (index * valueAxis.max / (valueAxis.tickCount - 1)))).toFixed(1) + "kWh"
+                        text: ((valueAxis.max - (index * valueAxis.max / (valueAxis.tickCount - 1)))).toFixed(0) + "kWh"
                         verticalAlignment: Text.AlignTop
                         font: Style.extraSmallFont
                     }
@@ -325,11 +330,23 @@ StatsBase {
                     titleVisible: false
                     shadesVisible: false
 
+                    //truncateLabels: false
+
+
                     categories: {
                         var ret = []
                         for (var i = 0; i < timestamps.length; i++) {
-                            ret.push(root.configs[selectionTabs.currentValue.config].toLabel(timestamps[i]))
+
+                            if(selectionTabs.currentValue.config === "months") {
+                                ret.push(root.configs[selectionTabs.currentValue.config].toShortLabel(timestamps[i]))
+                            }
+                            else{
+                                ret.push(root.configs[selectionTabs.currentValue.config].toLabel(timestamps[i]))
+
+                            }
+
                         }
+
                         return ret
                     }
 
@@ -347,9 +364,10 @@ StatsBase {
                     titleVisible: false
                     shadesVisible: false
 
+
                     function adjustMax(newValue) {
                         if (max < newValue) {
-                            max = newValue // Math.ceil(newValue / 100) * 100
+                            max = newValue
                         }
                     }
                 }
@@ -375,7 +393,7 @@ StatsBase {
             visible: toolTip.visible
 
             x: idx * parent.width / categoryAxis.count
-            Behavior on x { NumberAnimation { duration: Style.animationDuration } }
+            Behavior on x { enabled: toolTip.animationsEnabled; NumberAnimation { duration: Style.animationDuration } }
         }
     }
 
@@ -411,9 +429,10 @@ StatsBase {
             x: chartWidth - (idx * barWidth + barWidth + Style.smallMargins) > width ?
                    idx * barWidth + barWidth + Style.smallMargins
                  : idx * barWidth - Style.smallMargins - width
-            property double setMaxValue: d.consumptionSet && d.productionSet && d.acquisitionSet && d.returnSet ?
-                                             Math.max(d.consumptionSet.at(idx), Math.max(d.productionSet.at(idx), Math.max(d.acquisitionSet.at(idx), d.returnSet.at(idx))))
-                                           : 0
+            property double setMaxValue: Math.max(d.consumptionSet ? d.consumptionSet.at(idx) : 0,
+                                                  d.productionSet ? d.productionSet.at(idx) : 0,
+                                                  d.acquisitionSet ? d.acquisitionSet.at(idx) : 0,
+                                                  d.returnSet ? d.returnSet.at(idx) : 0)
             y: Math.min(Math.max(mouseArea.height - (setMaxValue * mouseArea.height / valueAxis.max) - height - Style.smallMargins, 0), mouseArea.height - height)
             width: tooltipLayout.implicitWidth + Style.smallMargins * 2
             height: tooltipLayout.implicitHeight + Style.smallMargins * 2
@@ -439,7 +458,7 @@ StatsBase {
                         color: Style.blue
                     }
                     Label {
-                        text: d.consumptionSet ? qsTr("Consumed: %1 kWh").arg(d.consumptionSet.at(toolTip.idx).toFixed(2)) : ""
+                        text: toolTip.visible && d.consumptionSet ? qsTr("Consumed: %1 kWh").arg(d.consumptionSet.at(toolTip.idx).toFixed(2)) : ""
                         font: Style.extraSmallFont
                     }
                 }
@@ -451,7 +470,7 @@ StatsBase {
                         color: Style.yellow
                     }
                     Label {
-                        text: d.productionSet ? qsTr("Produced: %1 kWh").arg(d.productionSet.at(toolTip.idx).toFixed(2)) : ""
+                        text: toolTip.visible && d.productionSet ? qsTr("Produced: %1 kWh").arg(d.productionSet.at(toolTip.idx).toFixed(2)) : ""
                         font: Style.extraSmallFont
                     }
                 }
@@ -462,7 +481,7 @@ StatsBase {
                         color: Style.red
                     }
                     Label {
-                        text: d.acquisitionSet ? qsTr("From grid: %1 kWh").arg(d.acquisitionSet.at(toolTip.idx).toFixed(2)) : ""
+                        text: toolTip.visible && d.acquisitionSet ? qsTr("From grid: %1 kWh").arg(d.acquisitionSet.at(toolTip.idx).toFixed(2)) : ""
                         font: Style.extraSmallFont
                     }
                 }
@@ -473,7 +492,7 @@ StatsBase {
                         color: Style.green
                     }
                     Label {
-                        text: d.returnSet ? qsTr("To grid: %1 kWh").arg(d.returnSet.at(toolTip.idx).toFixed(2)) : ""
+                        text: toolTip.visible && d.returnSet ? qsTr("To grid: %1 kWh").arg(d.returnSet.at(toolTip.idx).toFixed(2)) : ""
                         font: Style.extraSmallFont
                     }
                 }

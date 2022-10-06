@@ -10,10 +10,11 @@ import "qrc:/ui/components"
 ChartView {
     id: root
     backgroundColor: "transparent"
-    animationOptions: Qt.application.active ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
+    animationOptions: animationsEnabled ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
     title: qsTr("Consumers balance")
     titleColor: Style.foregroundColor
     legend.visible: false
+    antialiasing: true
 
     margins.left: 0
     margins.right: 0
@@ -23,6 +24,7 @@ ChartView {
     property EnergyManager energyManager: null
     property ThingsProxy consumers: null
     property var colors: null
+    property bool animationsEnabled: true
 
     readonly property Thing rootMeter: engine.thingManager.fetchingData ? null : engine.thingManager.things.getThing(energyManager.rootMeterId)
     onRootMeterChanged: updateConsumers()
@@ -53,7 +55,9 @@ ChartView {
                 consumersSummation += consumers.get(i).stateByName("currentPower").value
             }
             d.consumersSummation = consumersSummation;
-            d.unknownSlice.value = Math.max(0, energyManager.currentPowerConsumption - consumersSummation)
+            if (d.unknownSlice) {
+                d.unknownSlice.value = Math.max(0, energyManager.currentPowerConsumption - consumersSummation)
+            }
         }
     }
 
@@ -84,8 +88,11 @@ ChartView {
             var consumer = consumers.get(i)
             let currentPowerState = consumer.stateByName("currentPower")
             let slice = consumersBalanceSeries.append(consumer.name, currentPowerState.value)
-//            slice.color = root.colors[i % root.colors.length]
+
+            slice.borderColor = Style.backgroundColor
             slice.color = NymeaUtils.generateColor(Style.generationBaseColor, i)
+            slice.borderWidth = 0
+            slice.borderColor = slice.color
             colorMap[consumer] = slice.color
             currentPowerState.valueChanged.connect(function() {
                 slice.value = currentPowerState.value
@@ -99,12 +106,14 @@ ChartView {
             print("Unknown consumption:", unknownConsumption, "consumption balance", energyManager.currentPowerConsumption, "consumers summation:", consumersSummation)
             d.unknownSlice = consumersBalanceSeries.append(qsTr("Unknown"), unknownConsumption)
             d.unknownSlice.color = Style.gray
+            d.unknownSlice.borderColor = Style.backgroundColor
+            d.unknownSlice.borderWidth = 0
         }
 
         d.thingsColorMap = colorMap
 
         root.animationOptions = Qt.binding(function() {
-            return Qt.application.active ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
+            return root.animationsEnabled ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
         })
     }
 
@@ -186,7 +195,7 @@ ChartView {
                         color: d.thingsColorMap.hasOwnProperty(consumer) ? d.thingsColorMap[consumer] : "transparent"
                         text: "%1 %2"
                         .arg((consumerDelegate.value / (consumerDelegate.value > 1000 ? 1000 : 1)).toFixed(1))
-                        .arg(consumerDelegate.value > 1000 ? "kWh" : "W")
+                        .arg(consumerDelegate.value > 1000 ? "kW" : "W")
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
                         font: Style.smallFont
@@ -230,6 +239,4 @@ ChartView {
         name: "down"
         visible: !centerLayout.atYEnd
     }
-
-
 }

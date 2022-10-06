@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
-import Qt.labs.settings 1.1
+import Qt.labs.settings 1.0
 import "components"
 import Nymea 1.0
 
@@ -13,8 +13,10 @@ Drawer {
 
     signal openThingSettings();
     signal openMagicSettings();
+    signal openHelpPage();
     signal openAppSettings();
     signal openSystemSettings();
+    signal openCustomPage(string page);
     signal configureMainView();
 
     signal startWirelessSetup();
@@ -149,33 +151,49 @@ Drawer {
                     iconName: "../images/things.svg"
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
                              && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureThings)
-                             && root.currentEngine.jsonRpcClient.connected
+                             && root.currentEngine.jsonRpcClient.connected  && settings.showHiddenOptions
                     progressive: false
                     onClicked: {
                         root.openThingSettings()
                         root.close();
                     }
                 }
+
                 NymeaItemDelegate {
                     Layout.fillWidth: true
-                    text: qsTr("Magic")
-                    iconName: "../images/magic.svg"
+                    text: qsTr("Help")
+                    iconName: "../images/help.svg"
+                    visible: settings.showHiddenOptions
                     progressive: false
-                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
-                                 && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
-                                 && root.currentEngine.jsonRpcClient.connected && Configuration.magicEnabled
                     onClicked: {
-                        root.openMagicSettings();
+                        root.openHelpPage()
                         root.close();
                     }
                 }
+
+
+
+
+//                NymeaItemDelegate {
+//                    Layout.fillWidth: true
+//                    text: qsTr("Magic")
+//                    iconName: "../images/magic.svg"
+//                    progressive: false
+//                    visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
+//                                 && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
+//                                 && root.currentEngine.jsonRpcClient.connected && Configuration.magicEnabled
+//                    onClicked: {
+//                        root.openMagicSettings();
+//                        root.close();
+//                    }
+//                }
                 NymeaItemDelegate {
                     Layout.fillWidth: true
                     text: qsTr("Configure main view")
                     iconName: "../images/configure.svg"
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected &&
-                             !Configuration.hasOwnProperty("mainViewsFilter")
+                             !Configuration.hasOwnProperty("mainViewsFilter") && settings.showHiddenOptions
                     onClicked: {
                         root.configureMainView();
                         root.close();
@@ -209,13 +227,25 @@ Drawer {
                 Repeater {
                     model: Configuration.mainMenuLinks
                     delegate: NymeaItemDelegate {
+                        property var entry: Configuration.mainMenuLinks[index]
                         Layout.fillWidth: true
-                        text: model.text
-                        iconName: model.iconName
+                        text: entry.text
+                        iconName: entry.iconName
                         progressive: false
-                        onClicked: Qt.openUrlExternally(model.url)
-                    }
+                        onClicked: {
+                            if (entry.page !== undefined) {
+                                root.openCustomPage(entry.page)
+                            }
 
+                            if (entry.func !== undefined) {
+                                entry.func(app, root.currentEngine)
+                            }
+                            if (entry.url !== undefined) {
+                                Qt.openUrlExternally(entry.url)
+                            }
+                            root.close()
+                        }
+                    }
                 }
             }
         }

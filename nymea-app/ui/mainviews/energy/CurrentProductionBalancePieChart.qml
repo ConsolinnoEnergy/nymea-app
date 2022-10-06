@@ -9,16 +9,18 @@ import Nymea 1.0
 ChartView {
     id: productionPieChart
     backgroundColor: "transparent"
-    animationOptions: Qt.application.active ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
+    animationOptions: animationsEnabled ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
     title: qsTr("My energy production")
     titleColor: Style.foregroundColor
     legend.visible: false
+    antialiasing: true
 
     margins.left: 0
     margins.right: 0
     margins.bottom: 0
     margins.top: 0
 
+    property bool animationsEnabled: true
     property EnergyManager energyManager: null
 
     ThingsProxy {
@@ -37,22 +39,29 @@ ChartView {
 
         PieSlice {
             color: Style.red
-            borderColor: Style.foregroundColor
+            borderColor: Style.backgroundColor
             value: productionBalanceSeries.toConsumers
         }
         PieSlice {
             color: Style.green
-            borderColor: Style.foregroundColor
+            borderColor: Style.backgroundColor
+            borderWidth: 0
             value: productionBalanceSeries.toGrid
         }
         PieSlice {
             color: Style.orange
-            borderColor: Style.foregroundColor
+            borderColor: Style.backgroundColor
             value: productionBalanceSeries.toStorage
         }
+//        PieSlice {
+//            color: Style.backgroundColor
+//            borderColor: Style.backgroundColor
+//            value: productionBalanceSeries.toStorage
+//        }
         PieSlice {
-            color: Style.backgroundColor
-            borderColor: Style.foregroundColor
+            color: Style.tooltipBackgroundColor
+            borderColor: color
+            borderWidth: 0
             value: productionBalanceSeries.toConsumers == 0 && productionBalanceSeries.toGrid == 0 && productionBalanceSeries.toStorage == 0 ? 1 : 0
         }
     }

@@ -144,10 +144,6 @@
         <translation>Über %1</translation>
     </message>
     <message>
-        <source>Cloud login</source>
-        <translation type="vanished">Cloud Login</translation>
-    </message>
-    <message>
         <source>Developer options</source>
         <translation>Entwicklereinstellungen</translation>
     </message>
@@ -166,10 +162,6 @@
     <message>
         <source>Access tools for debugging and error reporting</source>
         <translation>Greife auf Werkzeuge und Fehleranalyse-Werkzeuge zu</translation>
-    </message>
-    <message>
-        <source>Log into %1:cloud and manage connected %1 systems</source>
-        <translation type="vanished">Logge Dich in %1:cloud ein und Verwalte verbundene %1 systeme</translation>
     </message>
 </context>
 <context>
@@ -199,33 +191,6 @@
     <message>
         <source>Blinds</source>
         <translation>Sichtschutz</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothDevice</name>
-    <message>
-        <source>Connecting to %1...</source>
-        <translation>Verbinde zu %1...</translation>
-    </message>
-    <message>
-        <source>Connected to %1</source>
-        <translation>Verbunden mit %1</translation>
-    </message>
-    <message>
-        <source>Disconnecting from %1...</source>
-        <translation>Trenne von %1...</translation>
-    </message>
-    <message>
-        <source>Discovering services of %1...</source>
-        <translation>Suche Dienste auf %1...</translation>
-    </message>
-    <message>
-        <source>%1 connected and discovered.</source>
-        <translation>%1 verbunden und durchsucht.</translation>
-    </message>
-    <message>
-        <source>%1 disconnected.</source>
-        <translation>%1 getrennt.</translation>
     </message>
 </context>
 <context>
@@ -826,70 +791,74 @@
     <name>ConnectPage</name>
     <message>
         <source>Connect %1</source>
-        <translation type="vanished">Verbinde %1</translation>
+        <translation>Verbinde %1</translation>
     </message>
     <message>
         <source>Oh, look!</source>
-        <translation type="vanished">Oh, sieh an!</translation>
+        <translation>Oh, sieh an!</translation>
     </message>
     <message>
         <source>Just a moment...</source>
-        <translation type="vanished">Nur einen Moment...</translation>
+        <translation>Nur einen Moment...</translation>
     </message>
     <message>
         <source>Uh oh</source>
-        <translation type="vanished">Oh oh</translation>
+        <translation>Oh oh</translation>
     </message>
     <message>
         <source>Not the ones you&apos;re looking for? We&apos;re looking for more!</source>
-        <translation type="vanished">Die gesuchte Box ist nicht dabei? Wir suchen nach weiteren!</translation>
+        <translation>Die gesuchte Box ist nicht dabei? Wir suchen nach weiteren!</translation>
     </message>
     <message>
         <source>Start wireless setup</source>
-        <translation type="vanished">Funk-Einrichtung starten</translation>
+        <translation>Funk-Einrichtung starten</translation>
     </message>
     <message>
         <source>Demo mode (online)</source>
-        <translation type="vanished">Demo-Modus (Online)</translation>
+        <translation>Demo-Modus (Online)</translation>
     </message>
     <message>
         <source>Box information</source>
-        <translation type="vanished">Box-Informationen</translation>
+        <translation>Box-Informationen</translation>
     </message>
     <message>
         <source>Available connections</source>
-        <translation type="vanished">Verfügbare Verbindungen</translation>
+        <translation>Verfügbare Verbindungen</translation>
     </message>
     <message>
         <source>Cloud login</source>
-        <translation type="vanished">Cloud Login</translation>
+        <translation>Cloud Login</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation type="vanished">Information</translation>
+        <translation>Information</translation>
     </message>
     <message numerus="yes">
         <source>There are %n %1 systems in your network! Which one would you like to use?</source>
-        <translation type="vanished">
+        <translation>
             <numerusform>Es befindet sich %n %1 System in Deinem Netzwerk.</numerusform>
             <numerusform>Es befinden sich %n %1 Systeme in Deinem Netzwerk. Auf welches möchtest Du zugreifen?</numerusform>
         </translation>
     </message>
     <message>
         <source>We haven&apos;t found a %1 system in your network yet.</source>
-        <translation type="vanished">Wir konnten kein %1 System in Deinem Netzwerk finden.</translation>
+        <translation>Wir konnten kein %1 System in Deinem Netzwerk finden.</translation>
     </message>
     <message>
         <source>There doesn&apos;t seem to be a %1 system installed in your network. Please make sure your %1 system is correctly set up and connected.</source>
-        <translation type="vanished">Es scheint kein %1 System in Deinem Netzwerk installiert zu sein Bitte stelle sicher, dass Dein %1 System korrekt installiert und verbunden ist.</translation>
+        <translation>Es scheint kein %1 System in Deinem Netzwerk installiert zu sein Bitte stelle sicher, dass Dein %1 System korrekt installiert und verbunden ist.</translation>
     </message>
     <message>
         <source>Searching for %1 systems...</source>
-        <translation type="vanished">Suche nach %1 Systemen...</translation>
+        <translation>Suche nach %1 Systemen...</translation>
     </message>
     <message>
         <source>Do you have a %1 system but it&apos;s not connected to your network yet? Use the wireless setup to connect it!</source>
-        <translation type="vanished">Hast Du bereits ein %1 System aber es ist noch nicht mit Deinem Netzwerk verbunden? Benutze die Kabellose Einrichtung um es zu verbinden.</translation>
+        <translation>Hast Du bereits ein %1 System aber es ist noch nicht mit Deinem Netzwerk verbunden? Benutze die Kabellose Einrichtung um es zu verbinden.</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -935,7 +904,7 @@
     </message>
     <message>
         <source>It seems you&apos;re not connected to the network.</source>
-        <translation>Es scheint als sei keine Netzwerkverbingung verfügbar.</translation>
+        <translation>Es scheint als sei keine Netzwerkverbindung verfügbar.</translation>
     </message>
     <message>
         <source>The host has rejected our connection. This probably means that %1 is not running on this host. Perhaps it&apos;s restarting?</source>
@@ -969,10 +938,6 @@
 <context>
     <name>ConnectionInfoDialog</name>
     <message>
-        <source>Box information</source>
-        <translation type="vanished">Box-Informationen</translation>
-    </message>
-    <message>
         <source>Available connections</source>
         <translation>Verfügbare Verbindungen</translation>
     </message>
@@ -1005,26 +970,6 @@
     <message>
         <source>Connection interfaces</source>
         <translation>Verbindungsschnittstellen</translation>
-    </message>
-    <message>
-        <source>TCP server interfaces</source>
-        <translation type="vanished">TCP Server Schnittstellen</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">Hinzufügen</translation>
-    </message>
-    <message>
-        <source>WebSocket server interfaces</source>
-        <translation type="vanished">WebSocket server Schnittstellen</translation>
-    </message>
-    <message>
-        <source>Remote connection server interfaces</source>
-        <translation type="vanished">Fernverbindungsschnittstellen</translation>
-    </message>
-    <message>
-        <source>Server: %1</source>
-        <translation type="vanished">Server: %1</translation>
     </message>
     <message>
         <source>Connection settings</source>
@@ -1123,7 +1068,7 @@
     <name>CurrentConsumptionBalancePieChart</name>
     <message>
         <source>My energy mix</source>
-        <translation>Mein Energiemix</translation>
+        <translation>Mein Strommix</translation>
     </message>
     <message>
         <source>Total</source>
@@ -1146,7 +1091,7 @@
     <name>CurrentProductionBalancePieChart</name>
     <message>
         <source>My energy production</source>
-        <translation>Meine Energieproduktion</translation>
+        <translation type="unfinished">Meine Stromproduktion</translation>
     </message>
     <message>
         <source>Total</source>
@@ -1407,20 +1352,20 @@
         <translation>Protokollkategorien einrichten</translation>
     </message>
     <message>
-        <source>nymea:cloud</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Note: nymea:cloud is deprecated and will be removed in a future version.</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Cloud login</source>
         <translation>Cloud Login</translation>
     </message>
     <message>
         <source>Log into %1:cloud and manage connected %1 systems</source>
         <translation>Logge Dich in %1:cloud ein und Verwalte verbundene %1 systeme</translation>
+    </message>
+    <message>
+        <source>nymea:cloud</source>
+        <translation type="unfinished">nymea:cloud</translation>
+    </message>
+    <message>
+        <source>Note: nymea:cloud is deprecated and will be removed in a future version.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1657,16 +1602,6 @@
     <message>
         <source>When this condition...</source>
         <translation>Wenn diese Bedingung...</translation>
-    </message>
-    <message>
-        <source>Examples:
-• While I&apos;m at home...
-• When the temperature is below 0...
-• Between 9 am and 6 pm...</source>
-        <translation type="vanished">Beispile:
-• Während ich zuhause bin...
-• Wenn die Temperatur unter 0 ist...
-• Zwischen 9 Uhr vormittags und 6 Uhr abends...</translation>
     </message>
     <message>
         <source>When time is in...</source>
@@ -1942,10 +1877,6 @@
         <translation>Installiere ein Energiemessgerät um eine Übersicht über Deinen Energieverbrauch zu erhalten.</translation>
     </message>
     <message>
-        <source>Energy plugin not installed installed.</source>
-        <translation type="vanished">Das Energie-Addon ist nicht installiert.</translation>
-    </message>
-    <message>
         <source>This %1 system does not have the energy extensions installed.</source>
         <translation>Auf diesem %1 System ist die Energieerweiterung nicht installiert.</translation>
     </message>
@@ -1990,10 +1921,6 @@
 </context>
 <context>
     <name>EventDescriptorDelegate</name>
-    <message>
-        <source>%1 - %2</source>
-        <translation type="vanished">%1 - %2</translation>
-    </message>
     <message>
         <source>anytime</source>
         <translation>immer</translation>
@@ -2240,12 +2167,12 @@ Bitte versuche es erneut.</translation>
         <translation>Bist Du sicher, dass Du das %1 System jetzt neu starten möchtest?</translation>
     </message>
     <message>
-        <source>Shut down %1 system</source>
-        <translation>%1 System herunterfahren</translation>
+        <source>Restart HEMS</source>
+        <translation>HEMS neu starten</translation>
     </message>
     <message>
-        <source>Are you sure you want to shut down your %1 sytem now?</source>
-        <translation>Bist Du sicher, dass Du dein %1 System jetzt herunterfahren möchtest?</translation>
+        <source>Reboot Leaflet</source>
+        <translation>Leaflet neu starten</translation>
     </message>
 </context>
 <context>
@@ -2423,941 +2350,6 @@ Bitte versuche es erneut.</translation>
     <message>
         <source>uncategorized</source>
         <translation>nicht kategorisiert</translation>
-    </message>
-</context>
-<context>
-    <name>Interfaces</name>
-    <message>
-        <source>Battery powered devices</source>
-        <translation>Batteriebetriebene Geräte</translation>
-    </message>
-    <message>
-        <source>Battery level is critical</source>
-        <translation>Batterieladung ist kritisch</translation>
-    </message>
-    <message>
-        <source>Battery level entered critical state</source>
-        <translation>Batterieladung betritt kritischen Bereich</translation>
-    </message>
-    <message>
-        <source>Notification services</source>
-        <translation>Benachrichtigungsdienste</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Message body</source>
-        <translation>Nachrichtentext</translation>
-    </message>
-    <message>
-        <source>Send notification</source>
-        <translation>Benachrichtigung senden</translation>
-    </message>
-    <message>
-        <source>Lights</source>
-        <translation>Beleuchtung</translation>
-    </message>
-    <message>
-        <source>Light is turned on</source>
-        <translation>Licht ist an</translation>
-    </message>
-    <message>
-        <source>A light is turned on or off</source>
-        <translation>Ein Licht wurde an oder aus geschaltet</translation>
-    </message>
-    <message>
-        <source>Turn lights on or off</source>
-        <translation>Schalte Licht an oder aus</translation>
-    </message>
-    <message>
-        <source>Temperature sensors</source>
-        <translation>Temperatursensoren</translation>
-    </message>
-    <message>
-        <source>Temperature</source>
-        <translation>Temperatur</translation>
-    </message>
-    <message>
-        <source>Temperature has changed</source>
-        <translation>Temperatur hat sich geändert</translation>
-    </message>
-    <message>
-        <source>Closable things</source>
-        <translation>Schließbare &quot;Things&quot;</translation>
-    </message>
-    <message>
-        <source>Powered things</source>
-        <translation>Einschageschaltete &quot;Things&quot;</translation>
-    </message>
-    <message>
-        <source>Thing is turned on</source>
-        <translation>&quot;Thing&quot; ist eingeschaltet</translation>
-    </message>
-    <message>
-        <source>A thing is turned on or off</source>
-        <translation>Ein Gerät wurde ein oder ausgeschaltet</translation>
-    </message>
-    <message>
-        <source>Turn things on or off</source>
-        <translation>Gerät ein- oder ausschalten</translation>
-    </message>
-    <message>
-        <source>Dimmable lights</source>
-        <translation>Dimmbare Geräte</translation>
-    </message>
-    <message>
-        <source>Light&apos;s brightness is</source>
-        <translation>Die Helligkeit des Lichts ist</translation>
-    </message>
-    <message>
-        <source>A light&apos;s brightness has changed</source>
-        <translation>Die Helligkeit eines Lichts wurde geändert</translation>
-    </message>
-    <message>
-        <source>Set lights brightness</source>
-        <translation>Setze Helligkeit</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Schließen</translation>
-    </message>
-    <message>
-        <source>Presence sensors</source>
-        <translation>Anwesenheitssensoren</translation>
-    </message>
-    <message>
-        <source>Is present</source>
-        <translation>Ist anwesend</translation>
-    </message>
-    <message>
-        <source>Presence changed</source>
-        <translation>Anwesenheit geändert</translation>
-    </message>
-    <message>
-        <source>Blinds</source>
-        <translation>Sichtschutz</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Geöffnet</translation>
-    </message>
-    <message>
-        <source>Awnings</source>
-        <translation>Markisen</translation>
-    </message>
-    <message>
-        <source>Shutters</source>
-        <translation>Rolläden</translation>
-    </message>
-    <message>
-        <source>Humidity sensors</source>
-        <translation>Feuchtigkeitsensoren</translation>
-    </message>
-    <message>
-        <source>Humidity</source>
-        <translation>Feuchtigkeit</translation>
-    </message>
-    <message>
-        <source>Humidity changed</source>
-        <translation>Feuchtigkeit geändert</translation>
-    </message>
-    <message>
-        <source>Daylight sensors</source>
-        <translation>Tageslichtsensoren</translation>
-    </message>
-    <message>
-        <source>Daylight</source>
-        <translation>Tageslicht</translation>
-    </message>
-    <message>
-        <source>Daylight changed</source>
-        <translation>Tageslicht geändert</translation>
-    </message>
-    <message>
-        <source>EV charger</source>
-        <translation>EV Ladegerät</translation>
-    </message>
-    <message>
-        <source>Charging</source>
-        <translation>Ladend</translation>
-    </message>
-    <message>
-        <source>Charging changed</source>
-        <translation>Ladend geändert</translation>
-    </message>
-    <message>
-        <source>Enable charging</source>
-        <translation>Aktiviere Laden</translation>
-    </message>
-    <message>
-        <source>Speakers</source>
-        <translation>Lautsprecher</translation>
-    </message>
-    <message>
-        <source>Increase volume</source>
-        <translation>Lautstärke erhöhen</translation>
-    </message>
-    <message>
-        <source>Decrease volume</source>
-        <translation>Laustärke verringern</translation>
-    </message>
-    <message>
-        <source>Gateways</source>
-        <translation>Gateways</translation>
-    </message>
-    <message>
-        <source>Connected</source>
-        <translation>Verbunden</translation>
-    </message>
-    <message>
-        <source>Connected changed</source>
-        <translation>Verbunden geändert</translation>
-    </message>
-    <message>
-        <source>Heating enabled</source>
-        <translation>Heizung an</translation>
-    </message>
-    <message>
-        <source>Heating enabled changed</source>
-        <translation>Heizung an geändert</translation>
-    </message>
-    <message>
-        <source>Enable heating</source>
-        <translation>Heizung einschalten</translation>
-    </message>
-    <message>
-        <source>Media players</source>
-        <translation>Medienabspielgeräte</translation>
-    </message>
-    <message>
-        <source>Playback status</source>
-        <translation>Wiedergabestatus</translation>
-    </message>
-    <message>
-        <source>Playback status changed</source>
-        <translation>Wiedergabestatus geändert</translation>
-    </message>
-    <message>
-        <source>Set playback status</source>
-        <translation>Setze Wiedergabestatus</translation>
-    </message>
-    <message>
-        <source>Light intensity</source>
-        <translation>Lichtstärke</translation>
-    </message>
-    <message>
-        <source>Light intensity changed</source>
-        <translation>Lichtstärke geändert</translation>
-    </message>
-    <message>
-        <source>Media controllers</source>
-        <translation>Mediensteuerungen</translation>
-    </message>
-    <message>
-        <source>Start playback</source>
-        <translation>Wiedergabe starten</translation>
-    </message>
-    <message>
-        <source>Stop playback</source>
-        <translation>Wiedergabe stoppen</translation>
-    </message>
-    <message>
-        <source>Pause playback</source>
-        <translation>Wiedergabe pausieren</translation>
-    </message>
-    <message>
-        <source>Skip back</source>
-        <translation>Zurück springen</translation>
-    </message>
-    <message>
-        <source>Skip next</source>
-        <translation>Weiter springen</translation>
-    </message>
-    <message>
-        <source>Access control systems</source>
-        <translation>Zutrittsysteme</translation>
-    </message>
-    <message>
-        <source>Access granted</source>
-        <translation>Zutritt erlaubt</translation>
-    </message>
-    <message>
-        <source>Access denied</source>
-        <translation>Zutritt verweigert</translation>
-    </message>
-    <message>
-        <source>Connectable things</source>
-        <translation>Verbundene &quot;Things&quot;</translation>
-    </message>
-    <message>
-        <source>Accounts</source>
-        <translation>Konten</translation>
-    </message>
-    <message>
-        <source>User is logged in</source>
-        <translation>Benutzer ist eingeloggt</translation>
-    </message>
-    <message>
-        <source>User login changed</source>
-        <translation>Butzer-Login geändert</translation>
-    </message>
-    <message>
-        <source>Alert</source>
-        <translation>Alarm</translation>
-    </message>
-    <message>
-        <source>Simple closables</source>
-        <translation>Schließbare Geräte</translation>
-    </message>
-    <message>
-        <source>Closables</source>
-        <translation>Schließbare Geräte</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stop</translation>
-    </message>
-    <message>
-        <source>Barcode scanners</source>
-        <translation>Barcode-Scanner</translation>
-    </message>
-    <message>
-        <source>Content</source>
-        <translation>Inhalt</translation>
-    </message>
-    <message>
-        <source>Code scanned</source>
-        <translation>Inhalt gescannt</translation>
-    </message>
-    <message>
-        <source>Battery level</source>
-        <translation>Batteriezustand</translation>
-    </message>
-    <message>
-        <source>Battery level changed</source>
-        <translation>Batteriezustand geändert</translation>
-    </message>
-    <message>
-        <source>Switches</source>
-        <translation>Schalter</translation>
-    </message>
-    <message>
-        <source>Button pressed</source>
-        <translation>Schalter gedrückt</translation>
-    </message>
-    <message>
-        <source>Closable sensors</source>
-        <translation>Schließ-Sensoren</translation>
-    </message>
-    <message>
-        <source>Closed</source>
-        <translation>Geschlossen</translation>
-    </message>
-    <message>
-        <source>Opened or closed</source>
-        <translation>Geöffnet oder geschlossen</translation>
-    </message>
-    <message>
-        <source>CO2 sensor</source>
-        <translation>CO2 Sensor</translation>
-    </message>
-    <message>
-        <source>CO2 level</source>
-        <translation>CO2-Pegel</translation>
-    </message>
-    <message>
-        <source>CO2 level changed</source>
-        <translation>CO2 Pegel geändert</translation>
-    </message>
-    <message>
-        <source>Color temperature light</source>
-        <translation>Leuchtmittel mit Lichttemperatur</translation>
-    </message>
-    <message>
-        <source>Lights color temperature is</source>
-        <translation>Lighttemperatur ist</translation>
-    </message>
-    <message>
-        <source>A lights color temperature has changed</source>
-        <translation>Die Lichttemperatur einer Lampe wurde geändert</translation>
-    </message>
-    <message>
-        <source>Set lights color temperature</source>
-        <translation>Setze Lichttemperatur</translation>
-    </message>
-    <message>
-        <source>Color lights</source>
-        <translation>Farblampen</translation>
-    </message>
-    <message>
-        <source>Light&apos;s color is</source>
-        <translation>Die Farbe der Lampe ist</translation>
-    </message>
-    <message>
-        <source>A light&apos;s color has changed</source>
-        <translation>Die Farbe einer Lampe wurde geändert</translation>
-    </message>
-    <message>
-        <source>Set lights color</source>
-        <translation>Setze Lichtfarbe</translation>
-    </message>
-    <message>
-        <source>Conductivity sensors</source>
-        <translation>Leitwertsensoren</translation>
-    </message>
-    <message>
-        <source>Conductivity</source>
-        <translation>Leitwert</translation>
-    </message>
-    <message>
-        <source>Conductivity changed</source>
-        <translation>Leitwert geändert</translation>
-    </message>
-    <message>
-        <source>Doorbells</source>
-        <translation>Türklingeln</translation>
-    </message>
-    <message>
-        <source>Doorbell pressed</source>
-        <translation>Türklingel gedrückt</translation>
-    </message>
-    <message>
-        <source>Moving</source>
-        <translation>Bewegung</translation>
-    </message>
-    <message>
-        <source>Moving changed</source>
-        <translation>Bewegung geändert</translation>
-    </message>
-    <message>
-        <source>Maximum charging current</source>
-        <translation>Maximaler Ladestrom</translation>
-    </message>
-    <message>
-        <source>Maximum charging current changed</source>
-        <translation>Maximaler Ladestrom geändert</translation>
-    </message>
-    <message>
-        <source>Set maximum charging current</source>
-        <translation>Setze maximalen Ladestrom</translation>
-    </message>
-    <message>
-        <source>Percentage</source>
-        <translation>Prozent</translation>
-    </message>
-    <message>
-        <source>Percentage changed</source>
-        <translation>Prozent geändert</translation>
-    </message>
-    <message>
-        <source>Set percentage</source>
-        <translation>Setze Prozent</translation>
-    </message>
-    <message>
-        <source>Media</source>
-        <translation>Medien</translation>
-    </message>
-    <message>
-        <source>Fast forward</source>
-        <translation>Vorlauf</translation>
-    </message>
-    <message>
-        <source>Fast rewind</source>
-        <translation>Zurückspulen</translation>
-    </message>
-    <message>
-        <source>Navigation pad</source>
-        <translation>Navigationsfläche</translation>
-    </message>
-    <message>
-        <source>To</source>
-        <translation>Bis</translation>
-    </message>
-    <message>
-        <source>Navigate</source>
-        <translation>Navigieren</translation>
-    </message>
-    <message>
-        <source>Smart meter</source>
-        <translation>Intelligenter Stromzähler</translation>
-    </message>
-    <message>
-        <source>Smart meters</source>
-        <translation>Intelligente Stromzähler</translation>
-    </message>
-    <message>
-        <source>Total energy consumed</source>
-        <translation>Energieverbrauch</translation>
-    </message>
-    <message>
-        <source>Current power</source>
-        <translation>Aktueller Energiefluss</translation>
-    </message>
-    <message>
-        <source>Current power changed</source>
-        <translation>Aktueller Energiefluss geändert</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Stummschalten</translation>
-    </message>
-    <message>
-        <source>Muted</source>
-        <translation>Stummgeschaltet</translation>
-    </message>
-    <message>
-        <source>Volume</source>
-        <translation>Laustärke</translation>
-    </message>
-    <message>
-        <source>Volume changed</source>
-        <translation>Lautstärke geändert</translation>
-    </message>
-    <message>
-        <source>Set volume</source>
-        <translation>Setze Lautstärke</translation>
-    </message>
-    <message>
-        <source>User access control systems</source>
-        <translation>Zugriffskontrollsysteme</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation>Benutzer</translation>
-    </message>
-    <message>
-        <source>Users changed</source>
-        <translation>Benutzer geändert</translation>
-    </message>
-    <message>
-        <source>User</source>
-        <translation>Benutzer</translation>
-    </message>
-    <message>
-        <source>Add user</source>
-        <translation>Benutzer hinzufügen</translation>
-    </message>
-    <message>
-        <source>Remove user</source>
-        <translation>Benutzer entfernen</translation>
-    </message>
-    <message>
-        <source>Fingerprint readers</source>
-        <translation>Fingerabdrucklesegeräte</translation>
-    </message>
-    <message>
-        <source>Finger</source>
-        <translation>Finger</translation>
-    </message>
-    <message>
-        <source>Garage doors</source>
-        <translation>Garagentore</translation>
-    </message>
-    <message>
-        <source>State</source>
-        <translation>Zustand</translation>
-    </message>
-    <message>
-        <source>State changed</source>
-        <translation>Zustand geändert</translation>
-    </message>
-    <message>
-        <source>Intermediate position</source>
-        <translation>Mittelposition</translation>
-    </message>
-    <message>
-        <source>Intermediate position changed</source>
-        <translation>Mittelposition geändert</translation>
-    </message>
-    <message>
-        <source>Incoming events</source>
-        <translation>Einkommende Ereignisse</translation>
-    </message>
-    <message>
-        <source>Triggered</source>
-        <translation>Ausgelöst</translation>
-    </message>
-    <message>
-        <source>Light sensors</source>
-        <translation>Lichtsensoren</translation>
-    </message>
-    <message>
-        <source>Buttons</source>
-        <translation>Tasten</translation>
-    </message>
-    <message>
-        <source>Long pressed</source>
-        <translation>Lange gedrückt</translation>
-    </message>
-    <message>
-        <source>Media sources</source>
-        <translation>Medienquellen</translation>
-    </message>
-    <message>
-        <source>Title changed</source>
-        <translation>Titel geändert</translation>
-    </message>
-    <message>
-        <source>Artist</source>
-        <translation>Künstler</translation>
-    </message>
-    <message>
-        <source>Artist changed</source>
-        <translation>Künstler geändert</translation>
-    </message>
-    <message>
-        <source>Collection</source>
-        <translation>Sammlung</translation>
-    </message>
-    <message>
-        <source>Collection changed</source>
-        <translation>Sammlung geändert</translation>
-    </message>
-    <message>
-        <source>Artwork</source>
-        <translation>Medienbild</translation>
-    </message>
-    <message>
-        <source>Artwork changed</source>
-        <translation>Medienbild geändert</translation>
-    </message>
-    <message>
-        <source>Moisture sensors</source>
-        <translation>Feuchtigkeitssensoren</translation>
-    </message>
-    <message>
-        <source>Moisture</source>
-        <translation>Feuchtigkeit</translation>
-    </message>
-    <message>
-        <source>Moisture changed</source>
-        <translation>Feuchtigkeit geändert</translation>
-    </message>
-    <message>
-        <source>Button name</source>
-        <translation>Tastenname</translation>
-    </message>
-    <message>
-        <source>Pressed</source>
-        <translation>Gedrückt</translation>
-    </message>
-    <message>
-        <source>Noise sensors</source>
-        <translation>Geräuschsensoren</translation>
-    </message>
-    <message>
-        <source>Noise level</source>
-        <translation>Geräuschpegel</translation>
-    </message>
-    <message>
-        <source>Noise level changed</source>
-        <translation>Geräuschpegel geändert</translation>
-    </message>
-    <message>
-        <source>Outgoing events</source>
-        <translation>Ausgehende ereignisse</translation>
-    </message>
-    <message>
-        <source>Trigger</source>
-        <translation>Auslösen</translation>
-    </message>
-    <message>
-        <source>Power sockets</source>
-        <translation>Steckdosen</translation>
-    </message>
-    <message>
-        <source>Powered</source>
-        <translation>Eingeschaltet</translation>
-    </message>
-    <message>
-        <source>Turned on/off</source>
-        <translation>Ein- oder ausgeschaltet</translation>
-    </message>
-    <message>
-        <source>Turn on/off</source>
-        <translation>Ein- oder ausschalten</translation>
-    </message>
-    <message>
-        <source>Power switches</source>
-        <translation>Schalter</translation>
-    </message>
-    <message>
-        <source>Pressure sensors</source>
-        <translation>Drucksensoren</translation>
-    </message>
-    <message>
-        <source>Pressure</source>
-        <translation>Druck</translation>
-    </message>
-    <message>
-        <source>Pressure changed</source>
-        <translation>Druck geändert</translation>
-    </message>
-    <message>
-        <source>Shuffle</source>
-        <translation>Zufallswiedergabe</translation>
-    </message>
-    <message>
-        <source>Shuffle changed</source>
-        <translation>Zufallswiedergabe geändert</translation>
-    </message>
-    <message>
-        <source>Set shuffle</source>
-        <translation>Setze Zufallswiedergabe</translation>
-    </message>
-    <message>
-        <source>Repeat</source>
-        <translation>Wiederholen</translation>
-    </message>
-    <message>
-        <source>Repeat changed</source>
-        <translation>Wiederholen geändert</translation>
-    </message>
-    <message>
-        <source>Set repeat</source>
-        <translation>Setze wiederholen</translation>
-    </message>
-    <message>
-        <source>Smart locks</source>
-        <translation>Smarte Türschlösser</translation>
-    </message>
-    <message>
-        <source>Unlatch</source>
-        <translation>Entriegeln</translation>
-    </message>
-    <message>
-        <source>Thermostats</source>
-        <translation>Thermostate</translation>
-    </message>
-    <message>
-        <source>Target temperature</source>
-        <translation>Wunschtemperatur</translation>
-    </message>
-    <message>
-        <source>Target temperature changed</source>
-        <translation>Wunschtemperatur geändert</translation>
-    </message>
-    <message>
-        <source>Set target temperature</source>
-        <translation>Setze Wunschtemperatur</translation>
-    </message>
-    <message>
-        <source>Weather</source>
-        <translation>Wetter</translation>
-    </message>
-    <message>
-        <source>Weather description</source>
-        <translation>Wetterbeschreibung</translation>
-    </message>
-    <message>
-        <source>Weather description changed</source>
-        <translation>Wetterbeschreibung geändert</translation>
-    </message>
-    <message>
-        <source>Weather condition</source>
-        <translation>Wetter</translation>
-    </message>
-    <message>
-        <source>Weather condition changed</source>
-        <translation>Wetter geändert</translation>
-    </message>
-    <message>
-        <source>Temperature changed</source>
-        <translation>Temperatur geändert</translation>
-    </message>
-    <message>
-        <source>Wind speed changed</source>
-        <translation>Windgeschwindigkeit geändert</translation>
-    </message>
-    <message>
-        <source>Wind direction</source>
-        <translation>Windrichtung</translation>
-    </message>
-    <message>
-        <source>Wind direction changed</source>
-        <translation>Windrichtung geändert</translation>
-    </message>
-    <message>
-        <source>Wind speed sensors</source>
-        <translation>Windsensoren</translation>
-    </message>
-    <message>
-        <source>Wind speed</source>
-        <translation>Windgeschwindigkeit</translation>
-    </message>
-    <message>
-        <source>Wireless devices</source>
-        <translation>Kabellose Geräte</translation>
-    </message>
-    <message>
-        <source>Signal strength</source>
-        <translation>Signalstärke</translation>
-    </message>
-    <message>
-        <source>Signal strength changed</source>
-        <translation>Signalstärke geändert</translation>
-    </message>
-    <message>
-        <source>Sensors</source>
-        <translation>Sensoren</translation>
-    </message>
-    <message>
-        <source>Heating</source>
-        <translation>Heizung</translation>
-    </message>
-    <message>
-        <source>Irrigation</source>
-        <translation>Bewässerung</translation>
-    </message>
-    <message>
-        <source>Ventilation</source>
-        <translation>Belüftung</translation>
-    </message>
-    <message>
-        <source>Navigation pad with menu</source>
-        <translation>Navigationsfläche mit Menü</translation>
-    </message>
-    <message>
-        <source>Operate</source>
-        <translation>Bewegen</translation>
-    </message>
-    <message>
-        <source>Water sensors</source>
-        <translation>Wassersensoren</translation>
-    </message>
-    <message>
-        <source>Water detected</source>
-        <translation>Wasser erkannt</translation>
-    </message>
-    <message>
-        <source>Water detected changed</source>
-        <translation>Wasser erkannt geändert</translation>
-    </message>
-    <message>
-        <source>Charging started or stopped</source>
-        <translation>Laden wurde gestartet oder gestoppt</translation>
-    </message>
-    <message>
-        <source>Discharging</source>
-        <translation>Entladen</translation>
-    </message>
-    <message>
-        <source>Discharging started or stopped</source>
-        <translation>Entladen wurde gestartet oder gestoppt</translation>
-    </message>
-    <message>
-        <source>Plugged in</source>
-        <translation>Eingesteckt</translation>
-    </message>
-    <message>
-        <source>Plugged in or out</source>
-        <translation>Ein- oder ausgesteckt</translation>
-    </message>
-    <message>
-        <source>Cleaning robots</source>
-        <translation>Putzroboter</translation>
-    </message>
-    <message>
-        <source>Robot state</source>
-        <translation>Roboterzustand</translation>
-    </message>
-    <message>
-        <source>Robot state changed</source>
-        <translation>Roboterzustand geändert</translation>
-    </message>
-    <message>
-        <source>Start cleaning</source>
-        <translation>Putzvorgang starten</translation>
-    </message>
-    <message>
-        <source>Stop cleaning</source>
-        <translation>Putzvorgang stoppen</translation>
-    </message>
-    <message>
-        <source>Pause cleaning</source>
-        <translation>Putzvorgang pausieren</translation>
-    </message>
-    <message>
-        <source>Return to base</source>
-        <translation>Zurück zur Basisstation</translation>
-    </message>
-    <message>
-        <source>CO sensor</source>
-        <translation>CO Sensor</translation>
-    </message>
-    <message>
-        <source>CO level</source>
-        <translation>CO Wert</translation>
-    </message>
-    <message>
-        <source>CO level changed</source>
-        <translation>CO Wert geändert</translation>
-    </message>
-    <message>
-        <source>Flammable gas sensor</source>
-        <translation>Sensor für entflammbare Gase</translation>
-    </message>
-    <message>
-        <source>Flammable gas level</source>
-        <translation>Wert für entflammbare Gase</translation>
-    </message>
-    <message>
-        <source>Flammable gas level changed</source>
-        <translation>Wert für Entflammbare Gase geändert</translation>
-    </message>
-    <message>
-        <source>Total consumed energy changed</source>
-        <translation>Gesamtenergieverbraucht geändert</translation>
-    </message>
-    <message>
-        <source>Total energy produced</source>
-        <translation>Gesamte erzeugte Energie</translation>
-    </message>
-    <message>
-        <source>Total produced energy changed</source>
-        <translation>Gesamte erzeugte Energie geändert</translation>
-    </message>
-    <message>
-        <source>Cooling</source>
-        <translation>Kühlung</translation>
-    </message>
-    <message>
-        <source>Cooling enabled</source>
-        <translation>Kühlung aktivert</translation>
-    </message>
-    <message>
-        <source>Cooling enabled changed</source>
-        <translation>Kühlung aktivert oder deaktiviert</translation>
-    </message>
-    <message>
-        <source>Enable cooling</source>
-        <translation>Kühlung aktivieren</translation>
-    </message>
-    <message>
-        <source>Air flow rate</source>
-        <translation>Luftflußrate</translation>
-    </message>
-    <message>
-        <source>Air flow rate changed</source>
-        <translation>Luftflußrate geändert</translation>
-    </message>
-    <message>
-        <source>Set air flow rate</source>
-        <translation>Setze Luftflußrate</translation>
-    </message>
-    <message>
-        <source>Fire sensors</source>
-        <translation>Feuer Sensoren</translation>
-    </message>
-    <message>
-        <source>Fire detected</source>
-        <translation>Feuer erkannt</translation>
-    </message>
-    <message>
-        <source>Fire detected changed</source>
-        <translation>Feuer erkannt geändert</translation>
     </message>
 </context>
 <context>
@@ -3583,32 +2575,12 @@ Bitte versuche es erneut.</translation>
         <translation>Die eingegebene E-Mail Adresse ist ungültig.</translation>
     </message>
     <message>
-        <source>The password you&apos;ve chose is too weak.</source>
-        <translation type="vanished">Das gewählte Passwort ist zu schwach.</translation>
-    </message>
-    <message>
         <source>In order to use your %1 system, please log in.</source>
         <translation>Um Ihr %1 system zu nutzen, melden Sie sich bitte an.</translation>
     </message>
     <message>
-        <source>Your e-mail address:</source>
-        <translation type="vanished">Ihre E-Mail Adresse:</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="vanished">Passwort:</translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation>OK</translation>
-    </message>
-    <message>
-        <source>The email you&apos;ve entered is already used.</source>
-        <translation type="vanished">Die eingegebene E-Mail Adresse ist bereits in Benutzung.</translation>
-    </message>
-    <message>
-        <source>In order to use your %1 system, please enter your email address and set a password for it.</source>
-        <translation type="vanished">Um dein %1 System zu nutzen, gib bitte Deine E-Mail Adresse ein und wähle ein Passwort dafür.</translation>
     </message>
     <message>
         <source>An error happened with the user storage. Please make sure your %1 system is installed correctly.</source>
@@ -3656,7 +2628,7 @@ Bitte versuche es erneut.</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation></translation>
+        <translation>E-Mail</translation>
     </message>
 </context>
 <context>
@@ -3807,18 +2779,6 @@ Bitte versuche es erneut.</translation>
 <context>
     <name>MainMenu</name>
     <message>
-        <source>Configure things</source>
-        <translation>&quot;Things&quot; einrichten</translation>
-    </message>
-    <message>
-        <source>Magic</source>
-        <translation>Magie</translation>
-    </message>
-    <message>
-        <source>Configure main view</source>
-        <translation>Hauptansicht einrichten</translation>
-    </message>
-    <message>
         <source>App settings</source>
         <translation>App Einstellungen</translation>
     </message>
@@ -3827,36 +2787,24 @@ Bitte versuche es erneut.</translation>
         <translation>Systemeinstellungen</translation>
     </message>
     <message>
-        <source>Help</source>
-        <translation type="vanished">Hilfe</translation>
-    </message>
-    <message>
-        <source>Forum</source>
-        <translation type="vanished">Forum</translation>
-    </message>
-    <message>
-        <source>Telegram</source>
-        <translation type="vanished">Telegram</translation>
-    </message>
-    <message>
-        <source>Discord</source>
-        <translation type="vanished">Discord</translation>
-    </message>
-    <message>
-        <source>Twitter</source>
-        <translation type="vanished">Twitter</translation>
-    </message>
-    <message>
-        <source>Facebook</source>
-        <translation type="vanished">Facebook</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>Neue Verbindung</translation>
     </message>
     <message>
         <source>Set up another...</source>
         <translation>Ein weiteres einrichten...</translation>
+    </message>
+    <message>
+        <source>Configure things</source>
+        <translation>&quot;Things&quot; einrichten</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Hilfe</translation>
+    </message>
+    <message>
+        <source>Configure main view</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3922,35 +2870,35 @@ Bitte versuche es erneut.</translation>
     <name>ManualConnectPage</name>
     <message>
         <source>Manual connection</source>
-        <translation type="vanished">Manuelle Verbindung</translation>
+        <translation>Manuelle Verbindung</translation>
     </message>
     <message>
         <source>Protocol</source>
-        <translation type="vanished">Protokoll</translation>
+        <translation>Protokoll</translation>
     </message>
     <message>
         <source>TCP</source>
-        <translation type="vanished">TCP</translation>
+        <translation>TCP</translation>
     </message>
     <message>
         <source>Websocket</source>
-        <translation type="vanished">Websocket</translation>
+        <translation>Websocket</translation>
     </message>
     <message>
         <source>Address:</source>
-        <translation type="vanished">Adresse:</translation>
+        <translation>Adresse:</translation>
     </message>
     <message>
         <source>Port:</source>
-        <translation type="vanished">Port:</translation>
+        <translation>Port:</translation>
     </message>
     <message>
         <source>Encrypted connection:</source>
-        <translation type="vanished">Verschlüsselte Verbindung:</translation>
+        <translation>Verschlüsselte Verbindung:</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">Verbinden</translation>
+        <translation>Verbinden</translation>
     </message>
 </context>
 <context>
@@ -4762,10 +3710,6 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <translation>Verbindung</translation>
     </message>
     <message>
-        <source>Connecting to the nymea system.</source>
-        <translation type="vanished">Das nymea System wird verbunden.</translation>
-    </message>
-    <message>
         <source>Manual connection</source>
         <translation>Manuelle Verbindung</translation>
     </message>
@@ -4800,10 +3744,6 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
     <message>
         <source>Port:</source>
         <translation>Port:</translation>
-    </message>
-    <message>
-        <source>Encrypted connection:</source>
-        <translation type="vanished">Verschlüsselte Verbindung:</translation>
     </message>
     <message>
         <source>Wired connection</source>
@@ -5328,58 +4268,6 @@ Möchtest Du fortfahren?</translation>
         <source>We&apos;re sorry. We couldn&apos;t find any package matching the search term %1.</source>
         <translation>Es tut uns leid. Wir konnten keine Pakete finden, auf denen der Suchbegriff %1 zutrifft.</translation>
     </message>
-    <message>
-        <source>Package information</source>
-        <translation type="vanished">Paket-Informationen</translation>
-    </message>
-    <message>
-        <source>Installed version:</source>
-        <translation type="vanished">Installierte Version:</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="vanished">Nicht installiert</translation>
-    </message>
-    <message>
-        <source>Candidate version:</source>
-        <translation type="vanished">Kandidat-Version:</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="vanished">Aktualisierung</translation>
-    </message>
-    <message>
-        <source>Install</source>
-        <translation type="vanished">Installieren</translation>
-    </message>
-    <message>
-        <source>This will start a system update. Note that the update might take several minutes and your %1 might not be functioning properly or restart during this time.</source>
-        <translation type="vanished">Diese Aktion wird ein System-Update starten. Dies kann mehrere Minuten dauern und Dein %1 System könnte in dieser Zeit gegebenenfalls nicht ordungsgemäß funktionieren.</translation>
-    </message>
-    <message>
-        <source>
-Do you want to proceed?</source>
-        <translation type="vanished">
-Möchtest Du fortfahren?</translation>
-    </message>
-    <message>
-        <source>Start update</source>
-        <translation type="vanished">Aktualisierung starten</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation type="vanished">Entfernen</translation>
-    </message>
-    <message>
-        <source>This will start a system update. Note that the update might take several minutes and your %1 system might not be functioning properly during this time and restart during the process.
-Do you want to proceed?</source>
-        <translation type="vanished">Diese Aktion wird ein System-Update starten. Dies kann mehrere Miuten dauern und Dein %1 System könnte in dieser Zeit gegebenenfalls nicht ordungsgemäß funktionieren.
-Möchtest Du fortfahren?</translation>
-    </message>
-    <message>
-        <source>Remove package</source>
-        <translation type="vanished">Paket entfernen</translation>
-    </message>
 </context>
 <context>
     <name>ParamDescriptorDelegate</name>
@@ -5460,6 +4348,10 @@ Möchtest Du fortfahren?</translation>
         <source>Installed integration plugins</source>
         <translation>Installierte Integrationen</translation>
     </message>
+    <message>
+        <source>Install more plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PowerBalanceStats</name>
@@ -5539,18 +4431,6 @@ Möchtest Du fortfahren?</translation>
         <translation>Netzbezug</translation>
     </message>
     <message>
-        <source>Self production: %1 kW</source>
-        <translation type="vanished">Eigenproduktion: %1 kW</translation>
-    </message>
-    <message>
-        <source>From battery: %1 kW</source>
-        <translation type="vanished">Batterie: %1 kW</translation>
-    </message>
-    <message>
-        <source>From grid: %1 kW</source>
-        <translation type="vanished">Netzbezug: %1 kW</translation>
-    </message>
-    <message>
         <source>Total consumption: %1 %2</source>
         <translation>Gesamtverbrauch: %1 %2</translation>
     </message>
@@ -5584,18 +4464,6 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>To grid</source>
         <translation>Netzeinspeisung</translation>
-    </message>
-    <message>
-        <source>To battery: %1 kW</source>
-        <translation type="vanished">Batterie: %1 kW</translation>
-    </message>
-    <message>
-        <source>To grid: %1 kW</source>
-        <translation type="vanished">Netzeinspeisung: %1 kW</translation>
-    </message>
-    <message>
-        <source>Consumed: %1 kW</source>
-        <translation type="vanished">Verbraucht: %1 kW</translation>
     </message>
     <message>
         <source>Total production: %1 %2</source>
@@ -5636,8 +4504,8 @@ Möchtest Du fortfahren?</translation>
         <translation>Authentifizierung erforderlich</translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway to authenticate this device.</source>
-        <translation>Bitte drücke den Knopf auf deinem %1 Gateway um die Authentifizierung abzuschließen.</translation>
+        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
+        <translation>Bitte drücken Sie den Test-taster an ihren %1 für 5 Sekunden um sich zu authentifizieren.</translation>
     </message>
 </context>
 <context>
@@ -5674,14 +4542,6 @@ Möchtest Du fortfahren?</translation>
         <translation>Neue Verbindung</translation>
     </message>
     <message>
-        <source>The version of the %1 system you are trying to connect to is too old. This app requires at least version %2 but this %1 system only supports %3. Please update your %1 system.</source>
-        <translation type="vanished">Die Version dieses %1 Systems ist zu alt. Diese Anwendung benötigt mindestens Version %2, das %1 System unterstützt jedoch lediglich Version %3. Bitte update Dein %1 System.</translation>
-    </message>
-    <message>
-        <source>The version of the %1 system you are trying to connect to is too new. This app supports only up to version %2 but this %1 system provides %3. Please update %4.</source>
-        <translation type="vanished">Die Version dieses %1 Systems ist zu neu. Diese Anwendung unterstützt bis Version %2, dieses %1 System basiert jedoch auf Version %3. Bitte update %4.</translation>
-    </message>
-    <message>
         <source>The version of the %1 system you are trying to connect to is too old. This app requires at least API version %2 but this %1 system only supports API version %3. Please update your %1 system.</source>
         <translation>Die Version dieses %1 Systems ist zu alt. Diese App benötigt mindestens API Version %2, dieses %1 System unterstützt jedoch nur API Version %3. Bitte update Dein %1 System.</translation>
     </message>
@@ -5707,14 +4567,6 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>Unknown item</source>
         <translation>Unbekanntes Element</translation>
-    </message>
-    <message>
-        <source>True</source>
-        <translation type="vanished">Wahr</translation>
-    </message>
-    <message>
-        <source>False</source>
-        <translation type="vanished">Falsch</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -5961,6 +4813,13 @@ Möchtest Du fortfahren?</translation>
     </message>
 </context>
 <context>
+    <name>SelectStateEventDescriptorParamPage</name>
+    <message>
+        <source>Only consider state change if</source>
+        <translation type="unfinished">Zustandsänderung nur berücksichtigen wenn</translation>
+    </message>
+</context>
+<context>
     <name>SelectStatePage</name>
     <message>
         <source>Select state</source>
@@ -6158,10 +5017,6 @@ Möchtest Du fortfahren?</translation>
         <translation>Systemprotokoll</translation>
     </message>
     <message>
-        <source>Cloud</source>
-        <translation type="vanished">Cloud</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Allgemein</translation>
     </message>
@@ -6172,10 +5027,6 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>View system log</source>
         <translation>Systemprotokoll anzeigen</translation>
-    </message>
-    <message>
-        <source>API interfaces</source>
-        <translation type="vanished">API Schnittstellen</translation>
     </message>
     <message>
         <source>MQTT broker</source>
@@ -6222,10 +5073,6 @@ Möchtest Du fortfahren?</translation>
         <translation>Richte das Netzwerk dieses Systems ein</translation>
     </message>
     <message>
-        <source>Configure how clients interact with this system</source>
-        <translation type="vanished">Richte ein, wie andere Geräte mit diesem System kommunizieren</translation>
-    </message>
-    <message>
         <source>User settings</source>
         <translation>Benutzereinstellungen</translation>
     </message>
@@ -6240,10 +5087,6 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>Configure ZigBee networks</source>
         <translation>ZigBee-Netzwerke einrichten</translation>
-    </message>
-    <message>
-        <source>Connect this %1 system to %1:cloud</source>
-        <translation type="vanished">Verbinde dieses %1 System mit %1:cloud</translation>
     </message>
     <message>
         <source>Update your %1 system</source>
@@ -6268,6 +5111,14 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>Configure how applications can connect to this system</source>
         <translation>Verwalte wie sich Anwendungen zu diesem System verbinden können</translation>
+    </message>
+    <message>
+        <source>Z-Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure Z-Wave networks</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6395,14 +5246,6 @@ Möchtest Du fortfahren?</translation>
         <translation>Drücken um Bedingung zu ändern</translation>
     </message>
     <message>
-        <source>True</source>
-        <translation type="vanished">Wahr</translation>
-    </message>
-    <message>
-        <source>False</source>
-        <translation type="vanished">Falsch</translation>
-    </message>
-    <message>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
@@ -6489,10 +5332,6 @@ A consumer, not consuming anything</extracomment>
         <translation>Einspeisend</translation>
     </message>
     <message>
-        <source>Obtaining</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>At the current rate, the battery will be fully charged at %1.</source>
         <translation>Bei der aktuellen Rate wird die Batterie um %1 vollständig geladen sein.</translation>
     </message>
@@ -6501,20 +5340,8 @@ A consumer, not consuming anything</extracomment>
         <translation>Bei der aktuellen Rate wird die Batterie bis %1 halten.</translation>
     </message>
     <message>
-        <source>A total of %1 kWh has been &lt;b&gt;consumed&lt;/b&gt; in the last 24 hours.</source>
-        <translation type="vanished">Insgesamt wurden in den letzten 24 Stunden %1 kWh &lt;b&gt;verbraucht&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <source>A total of %1 kWh has been &lt;b&gt;obtained&lt;/b&gt; in the last 24 hours.</source>
-        <translation type="vanished">Insgesamt wurden in den letzten 24 Stunden %1 kWh &lt;b&gt;bezogen&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <source>A total of %1 kWh has been &lt;b&gt;produced&lt;/b&gt; in the last 24 hours.</source>
-        <translation type="vanished">Insgesamt wurden in den letzten 24 Stunden %1 kWh &lt;b&gt;erzeugt&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <source>A total of %1 kWh has been &lt;b&gt;returned&lt;/b&gt; in the last 24 hours.</source>
-        <translation type="vanished">Insgesamt wurden in den letzten 24 Stunden %1 kWh &lt;b&gt;eingespeist&lt;/b&gt;.</translation>
+        <source>Obtaining</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6665,28 +5492,12 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
 <context>
     <name>ThingContextMenu</name>
     <message>
-        <source>Magic</source>
-        <translation>Magie</translation>
-    </message>
-    <message>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
         <source>Logs</source>
         <translation>Protokoll</translation>
-    </message>
-    <message>
-        <source>Mark as favorite</source>
-        <translation>Als Favorit</translation>
-    </message>
-    <message>
-        <source>Remove from favorites</source>
-        <translation>Von Favoriten entfernen</translation>
-    </message>
-    <message>
-        <source>Grouping</source>
-        <translation>Gruppen</translation>
     </message>
     <message>
         <source>Write NFC tag</source>
@@ -6917,20 +5728,8 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <translation>Ein unerwarteter Fehler ist beim Ändern des Passwortes aufgetreten. Dies tut uns leid. (Fehlercode: %1)</translation>
     </message>
     <message>
-        <source>User info</source>
-        <translation type="vanished">Benutzerinformationen</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">Benutzername</translation>
-    </message>
-    <message>
         <source>Change password</source>
         <translation>Passwort ändern</translation>
-    </message>
-    <message>
-        <source>Devices / Apps accessing nymea:core</source>
-        <translation type="vanished">Geräte/Apps welche auf nymea:core zugreifen</translation>
     </message>
     <message>
         <source>Created on %1</source>
@@ -7063,6 +5862,14 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>User information</source>
         <translation>Benutzerinformationen</translation>
+    </message>
+    <message>
+        <source>User login via authentication</source>
+        <translation>User Login über Authentifizierung</translation>
+    </message>
+    <message>
+        <source>Authenticated user</source>
+        <translation>Authentifizierter User</translation>
     </message>
 </context>
 <context>
@@ -7239,6 +6046,340 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     </message>
 </context>
 <context>
+    <name>ZWaveAddNetworkPage</name>
+    <message>
+        <source>Add a new Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected adapter is already in use.</source>
+        <translation type="unfinished">Der ausgewählte Adapter ist bereits in Benutzung.</translation>
+    </message>
+    <message>
+        <source>An error happened in the ZWave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available serial ports</source>
+        <translation type="unfinished">Verfügbare serielle Schnittstellen</translation>
+    </message>
+    <message>
+        <source>Please verify that the Z-Wave adapter is properly connected to a serial port and select the appropriate port.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveNetworkPage</name>
+    <message>
+        <source>Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Hilfe</translation>
+    </message>
+    <message>
+        <source>Network settings</source>
+        <translation type="unfinished">Netzwerkeinstellungen</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened in the Z-Wave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The operation could not be started because the Z-Wave network is busy. Please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An unexpected error happened. Status code: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Include Z-Wave device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Z-Wave network is now accepting new devices for inclusion. Please start the pairing procedure from the Z-Wave device you want to add to the network. Check the device manual for further details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclude Z-Wave device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Z-Wave network is now accepting devices for exclusion. Please start the pairing procedure from the Z-Wave device you want to remove from the network. Check the device manual for further details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished">Netzwerk</translation>
+    </message>
+    <message>
+        <source>Network state:</source>
+        <translation type="unfinished">Netzwerkstatus:</translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished">Online</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished">Offline</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished">Wird gestartet</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Controller type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secondary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device management</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a new device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove a device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected devices</source>
+        <translation type="unfinished">Verbundene Geräte</translation>
+    </message>
+    <message>
+        <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
+        <translation type="unfinished">Es sind noch keine ZigBee Geräte verbunden. Öffne das Netzwerk für neue Geräte und beginne dein Einrichtungsprozess am ZigBee Gerät. Bitte ziehen Sie das Handbuch des Gerätes heran um zu erfahren wie dies am jeweiligen Gerät gemacht wird.</translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
+        <translation type="unfinished">Initialisiere...</translation>
+    </message>
+    <message>
+        <source>%1 things</source>
+        <translation type="unfinished">%1 Geräte</translation>
+    </message>
+    <message>
+        <source>Unrecognized device</source>
+        <translation type="unfinished">Unerkanntes Gerät</translation>
+    </message>
+    <message>
+        <source>Node ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave plus:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished">Ja</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished">Nein</translation>
+    </message>
+    <message>
+        <source>Signal strength:</source>
+        <translation type="unfinished">Signalstärke:</translation>
+    </message>
+    <message>
+        <source>Version:</source>
+        <translation type="unfinished">Version:</translation>
+    </message>
+    <message>
+        <source>Associated things</source>
+        <translation type="unfinished">Verknüpfte Geräte</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished">Entfernen</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
+    </message>
+    <message>
+        <source>Remove Z-Wave node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove this node from the network?</source>
+        <translation type="unfinished">Bist Du sicher, dass dieser Knoten aus dem Netzwerk entfernt werden soll?</translation>
+    </message>
+    <message>
+        <source>Please note that if this node has been assigned to a thing, it will also be removed from the system.</source>
+        <translation type="unfinished">Bitte beachte, dass mit diesem Knoten verknüpfte &quot;Things&quot; auch entfernt werden.</translation>
+    </message>
+    <message>
+        <source>ZigBee network help</source>
+        <translation type="unfinished">ZigBee Netzwerk Hilfe</translation>
+    </message>
+    <message>
+        <source>ZigBee router</source>
+        <translation type="unfinished">ZigBee Router</translation>
+    </message>
+    <message>
+        <source>ZigBee end device</source>
+        <translation type="unfinished">ZigBee Endgerät</translation>
+    </message>
+    <message>
+        <source>Sleepy device</source>
+        <translation type="unfinished">Schlafendes Gerät</translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveNetworkSettingsPage</name>
+    <message>
+        <source>Z-Wave network settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error happened in the ZWave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network information</source>
+        <translation type="unfinished">Netzwerkinformation</translation>
+    </message>
+    <message>
+        <source>Network state</source>
+        <translation type="unfinished">Netzwerk-Status</translation>
+    </message>
+    <message>
+        <source>The network is online</source>
+        <translation type="unfinished">Das Netzwerk ist online</translation>
+    </message>
+    <message>
+        <source>The network is offline</source>
+        <translation type="unfinished">Das Netzwerk ist offline</translation>
+    </message>
+    <message>
+        <source>The network is starting...</source>
+        <translation type="unfinished">Das Netzwerk startet...</translation>
+    </message>
+    <message>
+        <source>The network is in an error state.</source>
+        <translation type="unfinished">Das Netzwerk ist in einem fehlerhaften Zustand.</translation>
+    </message>
+    <message>
+        <source>Home ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hardware information</source>
+        <translation type="unfinished">Geräteinformationen</translation>
+    </message>
+    <message>
+        <source>Serial port</source>
+        <translation type="unfinished">Serielle Schnittstelle</translation>
+    </message>
+    <message>
+        <source>Manage network</source>
+        <translation type="unfinished">Netzwerke verwalten</translation>
+    </message>
+    <message>
+        <source>Reboot controller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove network</source>
+        <translation type="unfinished">Netzwerk entfernen</translation>
+    </message>
+    <message>
+        <source>Factory reset controller</source>
+        <translation type="unfinished">Adapter zurücksetzen</translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveSettingsPage</name>
+    <message>
+        <source>Z-Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are no Z-Wave networks set up yet. In order to use Z-Wave, create a Z-Wave network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add network</source>
+        <translation type="unfinished">Netzwerk hinzufügen</translation>
+    </message>
+    <message>
+        <source>Z-Wave Plus network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network state:</source>
+        <translation type="unfinished">Netzwerkstatus:</translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished">Online</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished">Offline</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished">Wird gestartet</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Adapter:</source>
+        <translation type="unfinished">Adapter:</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n device(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n Gerät</numerusform>
+            <numerusform>%n Geräte</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n device(s) (%1 disconnected)</source>
+        <translation type="unfinished">
+            <numerusform>%n Gerät (%1 getrennt)</numerusform>
+            <numerusform>%n Geräte (%1 getrennt)</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ZigbeeAddNetworkPage</name>
     <message>
         <source>The selected adapter is not available or the selected serial port configration is incorrect.</source>
@@ -7388,18 +6529,6 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <translation>Für neue Geräte öffnen</translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation type="vanished">Version</translation>
-    </message>
-    <message>
-        <source>IEEE address</source>
-        <translation type="vanished">IEEE Adresse</translation>
-    </message>
-    <message>
-        <source>Network address</source>
-        <translation type="vanished">Netzwerkadresse</translation>
-    </message>
-    <message>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
@@ -7440,32 +6569,12 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <translation>Verbundene Geräte</translation>
     </message>
     <message>
-        <source>There are no ZigBee devices connectd yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
-        <translation type="vanished">Es sind noch keine ZigBee Geräte verbunden. Öffne das Netzwerk für neue Geräte und starte das Pairing-Verfahren auf dem ZigBee Gerät. Bitte beziehe Dich auf das Handbuch des Gerätes, um mehr Informationen über das Pairing-Verfahren des jeweiligen Gerätes zu erhalten.</translation>
-    </message>
-    <message>
-        <source>Model</source>
-        <translation type="vanished">Modell</translation>
-    </message>
-    <message>
-        <source>Manufacturer</source>
-        <translation type="vanished">Hersteller</translation>
-    </message>
-    <message>
-        <source>Signal strength</source>
-        <translation type="vanished">Signalstärke</translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
         <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
         <translation>Es sind noch keine ZigBee Geräte verbunden. Öffne das Netzwerk für neue Geräte und beginne dein Einrichtungsprozess am ZigBee Gerät. Bitte ziehen Sie das Handbuch des Gerätes heran um zu erfahren wie dies am jeweiligen Gerät gemacht wird.</translation>
-    </message>
-    <message>
-        <source>Initialiazing...</source>
-        <translation>Initialisiere...</translation>
     </message>
     <message>
         <source>%1 things</source>
@@ -7498,6 +6607,10 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>Associated things</source>
         <translation>Verknüpfte Geräte</translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
+        <translation>Initialisiere...</translation>
     </message>
 </context>
 <context>
@@ -7622,14 +6735,6 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <translation>Fehler</translation>
     </message>
     <message>
-        <source>MAC address:</source>
-        <translation type="vanished">MAC Adresse:</translation>
-    </message>
-    <message>
-        <source>Firmware version:</source>
-        <translation type="vanished">Firmware Version:</translation>
-    </message>
-    <message>
         <source>Adapter:</source>
         <translation>Adapter:</translation>
     </message>
@@ -7665,14 +6770,6 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
 </context>
 <context>
     <name>description for buttontemplates</name>
-    <message>
-        <source>Turn on a light</source>
-        <translation type="vanished">Ein Licht einschalten</translation>
-    </message>
-    <message>
-        <source>Turn off a light</source>
-        <translation type="vanished">Ein Licht ausschalten</translation>
-    </message>
     <message>
         <source>Switch a light</source>
         <translation>Ein Licht schalten</translation>
@@ -7758,10 +6855,6 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>Notify me when a device runs out of battery</source>
         <translation>Benachrichtige mich wenn sich die Batterie eines Gerätes zu Ende neight</translation>
-    </message>
-    <message>
-        <source>Notify me when something runs dry</source>
-        <translation type="vanished">Benachrichte mich wenn etwas austrocknet</translation>
     </message>
     <message>
         <source>Notify me when a thing gets disconnected</source>
@@ -7921,10 +7014,6 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <translation>Batterieladung kritisch bei %0</translation>
     </message>
     <message>
-        <source>Notify %1 when %0 runs dry</source>
-        <translation type="vanished">Benachrichtige %1 wenn %0 austrocknet</translation>
-    </message>
-    <message>
         <source>Disconnect alert for %0</source>
         <translation>%0 wurde getrennt</translation>
     </message>
@@ -7975,7 +7064,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <name>ruleNameTemplate for template</name>
     <message>
         <source>%0 ...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

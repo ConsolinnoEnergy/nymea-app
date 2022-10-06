@@ -148,10 +148,6 @@
         <translation>Uygulamanın görünümünü ve davranışını özelleştirin</translation>
     </message>
     <message>
-        <source>Cloud login</source>
-        <translation type="vanished">Bulut giriş</translation>
-    </message>
-    <message>
         <source>Developer options</source>
         <translation>Geliştirmeci özellikleri</translation>
     </message>
@@ -166,10 +162,6 @@
     <message>
         <source>Access tools for debugging and error reporting</source>
         <translation>Hata ayıklama ve hata raporlama için erişim araçları</translation>
-    </message>
-    <message>
-        <source>Log into %1:cloud and manage connected %1 systems</source>
-        <translation type="vanished">%1:bulutta oturum açın ve bağlı %1 sistemlerini yönetin</translation>
     </message>
 </context>
 <context>
@@ -199,33 +191,6 @@
     <message>
         <source>Blinds</source>
         <translation>Panjur</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothDevice</name>
-    <message>
-        <source>Connecting to %1...</source>
-        <translation>%1 ile bağlantı kuruluyor...</translation>
-    </message>
-    <message>
-        <source>Connected to %1</source>
-        <translation>%1 ile bağlantı kuruldu</translation>
-    </message>
-    <message>
-        <source>Disconnecting from %1...</source>
-        <translation>%1 bağlantısı kesiliyor...</translation>
-    </message>
-    <message>
-        <source>Discovering services of %1...</source>
-        <translation>%1 servisleri aranıyor...</translation>
-    </message>
-    <message>
-        <source>%1 connected and discovered.</source>
-        <translation>%1 bağlandı ve tarandı.</translation>
-    </message>
-    <message>
-        <source>%1 disconnected.</source>
-        <translation>%1 bağlantısı kesildi.</translation>
     </message>
 </context>
 <context>
@@ -825,69 +790,73 @@
     <name>ConnectPage</name>
     <message>
         <source>Connect %1</source>
-        <translation type="vanished">%1&apos;i bağla</translation>
+        <translation>%1&apos;i bağla</translation>
     </message>
     <message>
         <source>Oh, look!</source>
-        <translation type="vanished">Oh bak!</translation>
+        <translation>Oh bak!</translation>
     </message>
     <message>
         <source>Just a moment...</source>
-        <translation type="vanished">Bir dakika...</translation>
+        <translation>Bir dakika...</translation>
     </message>
     <message>
         <source>Uh oh</source>
-        <translation type="vanished">Ah vah</translation>
+        <translation>Ah vah</translation>
     </message>
     <message>
         <source>Start wireless setup</source>
-        <translation type="vanished">Kablosuz kurulumu başlat</translation>
+        <translation>Kablosuz kurulumu başlat</translation>
     </message>
     <message>
         <source>Cloud login</source>
-        <translation type="vanished">Bulut girişi</translation>
+        <translation>Bulut girişi</translation>
     </message>
     <message>
         <source>Demo mode (online)</source>
-        <translation type="vanished">Demo modu (çevrimiçi)</translation>
+        <translation>Demo modu (çevrimiçi)</translation>
     </message>
     <message>
         <source>Not the ones you&apos;re looking for? We&apos;re looking for more!</source>
-        <translation type="vanished">Aradığınız kişiler değil mi? Daha fazlasını arıyoruz!</translation>
+        <translation>Aradığınız kişiler değil mi? Daha fazlasını arıyoruz!</translation>
     </message>
     <message>
         <source>Box information</source>
-        <translation type="vanished">Kutu bilgisi</translation>
+        <translation>Kutu bilgisi</translation>
     </message>
     <message>
         <source>Available connections</source>
-        <translation type="vanished">Mevcut bağlantılar</translation>
+        <translation>Mevcut bağlantılar</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation type="vanished">Bilgi</translation>
+        <translation>Bilgi</translation>
     </message>
     <message numerus="yes">
         <source>There are %n %1 systems in your network! Which one would you like to use?</source>
-        <translation type="vanished">
+        <translation>
             <numerusform>Ağınızda %n %1 sistemleri var! Hangisini kullanmak istersin?</numerusform>
         </translation>
     </message>
     <message>
         <source>We haven&apos;t found a %1 system in your network yet.</source>
-        <translation type="vanished">Ağınızda henüz %1 sistemi bulamadık.</translation>
+        <translation>Ağınızda henüz %1 sistemi bulamadık.</translation>
     </message>
     <message>
         <source>There doesn&apos;t seem to be a %1 system installed in your network. Please make sure your %1 system is correctly set up and connected.</source>
-        <translation type="vanished">Ağınızda kurulu bir %1 sistemi yok gibi görünüyor. Lütfen %1 sisteminizin doğru şekilde kurulduğundan ve bağlandığından emin olun.</translation>
+        <translation>Ağınızda kurulu bir %1 sistemi yok gibi görünüyor. Lütfen %1 sisteminizin doğru şekilde kurulduğundan ve bağlandığından emin olun.</translation>
     </message>
     <message>
         <source>Searching for %1 systems...</source>
-        <translation type="vanished">%1 sistem aranıyor...</translation>
+        <translation>%1 sistem aranıyor...</translation>
     </message>
     <message>
         <source>Do you have a %1 system but it&apos;s not connected to your network yet? Use the wireless setup to connect it!</source>
-        <translation type="vanished">%1 sisteminiz var ama henüz ağınıza bağlı değil mi? Bağlamak için kablosuz kurulumu kullanın!</translation>
+        <translation>%1 sisteminiz var ama henüz ağınıza bağlı değil mi? Bağlamak için kablosuz kurulumu kullanın!</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -967,10 +936,6 @@
 <context>
     <name>ConnectionInfoDialog</name>
     <message>
-        <source>Box information</source>
-        <translation type="vanished">Kutu bilgisi</translation>
-    </message>
-    <message>
         <source>Available connections</source>
         <translation type="unfinished">Mevcut bağlantılar</translation>
     </message>
@@ -1003,18 +968,6 @@
     <message>
         <source>Connection interfaces</source>
         <translation>Bağlantı arayüzleri</translation>
-    </message>
-    <message>
-        <source>TCP server interfaces</source>
-        <translation type="vanished">TCP sunucu arayüzleri</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">Ekle</translation>
-    </message>
-    <message>
-        <source>WebSocket server interfaces</source>
-        <translation type="vanished">WebSocket sunucu arayüzleri</translation>
     </message>
     <message>
         <source>Connection settings</source>
@@ -1406,7 +1359,7 @@
     </message>
     <message>
         <source>Cloud login</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bulut girişi</translation>
     </message>
     <message>
         <source>Log into %1:cloud and manage connected %1 systems</source>
@@ -1647,16 +1600,6 @@
     <message>
         <source>When this condition...</source>
         <translation>Bu durum ne zaman...</translation>
-    </message>
-    <message>
-        <source>Examples:
-• While I&apos;m at home...
-• When the temperature is below 0...
-• Between 9 am and 6 pm...</source>
-        <translation type="vanished">Örnekler:
-• Ben evdeyken...
-• Sıcaklık 0&apos;ın altına düştüğünde...
-• sabah 9 ile akşam 6 arası...</translation>
     </message>
     <message>
         <source>When time is in...</source>
@@ -2218,12 +2161,12 @@ Please try again.</source>
         <translation>%1 sisteminizi şimdi yeniden başlatmak istediğinizden emin misiniz?</translation>
     </message>
     <message>
-        <source>Shut down %1 system</source>
-        <translation>%1 sistemi kapat</translation>
+        <source>Restart HEMS</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Are you sure you want to shut down your %1 sytem now?</source>
-        <translation>%1 sisteminizi şimdi kapatmak istediğinizden emin misiniz?</translation>
+        <source>Reboot Leaflet</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2397,941 +2340,6 @@ Please try again.</source>
     </message>
 </context>
 <context>
-    <name>Interfaces</name>
-    <message>
-        <source>Battery powered devices</source>
-        <translation>Pille çalışan cihazlar</translation>
-    </message>
-    <message>
-        <source>Battery level is critical</source>
-        <translation>Pil seviyesi kritik</translation>
-    </message>
-    <message>
-        <source>Battery level entered critical state</source>
-        <translation>Pil seviyesi kritik duruma girdi</translation>
-    </message>
-    <message>
-        <source>Notification services</source>
-        <translation>Bildirim hizmetleri</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Başlık</translation>
-    </message>
-    <message>
-        <source>Message body</source>
-        <translation>Mesaj gövdesi</translation>
-    </message>
-    <message>
-        <source>Send notification</source>
-        <translation>Bildirim gönder</translation>
-    </message>
-    <message>
-        <source>Lights</source>
-        <translation>Işıklar</translation>
-    </message>
-    <message>
-        <source>Light is turned on</source>
-        <translation>Işık açıldı</translation>
-    </message>
-    <message>
-        <source>A light is turned on or off</source>
-        <translation>Bir ışık açılır veya kapanır</translation>
-    </message>
-    <message>
-        <source>Turn lights on or off</source>
-        <translation>Işıkları aç veya kapat</translation>
-    </message>
-    <message>
-        <source>Temperature sensors</source>
-        <translation>Sıcaklık sensörleri</translation>
-    </message>
-    <message>
-        <source>Temperature</source>
-        <translation>Hava sıcaklığı</translation>
-    </message>
-    <message>
-        <source>Temperature has changed</source>
-        <translation>Sıcaklık değişti</translation>
-    </message>
-    <message>
-        <source>Closable things</source>
-        <translation>kapatılabilir şeyler</translation>
-    </message>
-    <message>
-        <source>Powered things</source>
-        <translation>Güçlü şeyler</translation>
-    </message>
-    <message>
-        <source>Thing is turned on</source>
-        <translation>Şey açık</translation>
-    </message>
-    <message>
-        <source>A thing is turned on or off</source>
-        <translation>Bir şey açık veya kapalı</translation>
-    </message>
-    <message>
-        <source>Turn things on or off</source>
-        <translation>Şeyleri aç veya kapat</translation>
-    </message>
-    <message>
-        <source>Dimmable lights</source>
-        <translation>Kısılabilir ışıklar</translation>
-    </message>
-    <message>
-        <source>Light&apos;s brightness is</source>
-        <translation>Işığın parlaklığı</translation>
-    </message>
-    <message>
-        <source>A light&apos;s brightness has changed</source>
-        <translation>Bir ışığın parlaklığı değişti</translation>
-    </message>
-    <message>
-        <source>Set lights brightness</source>
-        <translation>Işık parlaklığını ayarla</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>kapalı</translation>
-    </message>
-    <message>
-        <source>Presence sensors</source>
-        <translation>Varlık sensörleri</translation>
-    </message>
-    <message>
-        <source>Is present</source>
-        <translation>mevcut</translation>
-    </message>
-    <message>
-        <source>Presence changed</source>
-        <translation>Durum değişti</translation>
-    </message>
-    <message>
-        <source>Blinds</source>
-        <translation>panjur</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Açık</translation>
-    </message>
-    <message>
-        <source>Awnings</source>
-        <translation>Tenteler</translation>
-    </message>
-    <message>
-        <source>Shutters</source>
-        <translation>panjurlar</translation>
-    </message>
-    <message>
-        <source>Humidity sensors</source>
-        <translation>Nem sensörleri</translation>
-    </message>
-    <message>
-        <source>Humidity</source>
-        <translation>Nem</translation>
-    </message>
-    <message>
-        <source>Humidity changed</source>
-        <translation>Nem değişti</translation>
-    </message>
-    <message>
-        <source>Daylight sensors</source>
-        <translation>Gün ışığı sensörleri</translation>
-    </message>
-    <message>
-        <source>Daylight</source>
-        <translation>gün ışığı</translation>
-    </message>
-    <message>
-        <source>Daylight changed</source>
-        <translation>Gün ışığı değişti</translation>
-    </message>
-    <message>
-        <source>EV charger</source>
-        <translation>EV şarj cihazı</translation>
-    </message>
-    <message>
-        <source>Charging</source>
-        <translation>Doluyor</translation>
-    </message>
-    <message>
-        <source>Charging changed</source>
-        <translation>Şarj değişti</translation>
-    </message>
-    <message>
-        <source>Enable charging</source>
-        <translation>Şarjı etkinleştir</translation>
-    </message>
-    <message>
-        <source>Speakers</source>
-        <translation>Hoparlörler</translation>
-    </message>
-    <message>
-        <source>Increase volume</source>
-        <translation>Sesi arttır</translation>
-    </message>
-    <message>
-        <source>Decrease volume</source>
-        <translation>Sesi azalt</translation>
-    </message>
-    <message>
-        <source>Gateways</source>
-        <translation>ağ geçitleri</translation>
-    </message>
-    <message>
-        <source>Connected</source>
-        <translation>bağlı</translation>
-    </message>
-    <message>
-        <source>Connected changed</source>
-        <translation>Bağlandı değişti</translation>
-    </message>
-    <message>
-        <source>Heating enabled</source>
-        <translation>Isıtma etkin</translation>
-    </message>
-    <message>
-        <source>Heating enabled changed</source>
-        <translation>Isıtma etkin değiştirildi</translation>
-    </message>
-    <message>
-        <source>Enable heating</source>
-        <translation>Isıtmayı etkinleştir</translation>
-    </message>
-    <message>
-        <source>Media players</source>
-        <translation>Medya oynatıcılar</translation>
-    </message>
-    <message>
-        <source>Playback status</source>
-        <translation>oynatma durumu</translation>
-    </message>
-    <message>
-        <source>Playback status changed</source>
-        <translation>Oynatma durumu değişti</translation>
-    </message>
-    <message>
-        <source>Set playback status</source>
-        <translation>Oynatma durumunu ayarla</translation>
-    </message>
-    <message>
-        <source>Light intensity</source>
-        <translation>Işık şiddeti</translation>
-    </message>
-    <message>
-        <source>Light intensity changed</source>
-        <translation>Işık yoğunluğu değişti</translation>
-    </message>
-    <message>
-        <source>Media controllers</source>
-        <translation>Medya denetleyicileri</translation>
-    </message>
-    <message>
-        <source>Start playback</source>
-        <translation>Oynatmayı başlat</translation>
-    </message>
-    <message>
-        <source>Stop playback</source>
-        <translation>Oynatmayı durdur</translation>
-    </message>
-    <message>
-        <source>Pause playback</source>
-        <translation>Oynatmayı duraklat</translation>
-    </message>
-    <message>
-        <source>Skip back</source>
-        <translation>Geriye Atla</translation>
-    </message>
-    <message>
-        <source>Skip next</source>
-        <translation>Bir sonraki</translation>
-    </message>
-    <message>
-        <source>Access control systems</source>
-        <translation>Erişim kontrol sistemleri</translation>
-    </message>
-    <message>
-        <source>Access granted</source>
-        <translation>Erişim izni</translation>
-    </message>
-    <message>
-        <source>Access denied</source>
-        <translation>Erişim reddedildi</translation>
-    </message>
-    <message>
-        <source>Connectable things</source>
-        <translation>Bağlanabilir şeyler</translation>
-    </message>
-    <message>
-        <source>Accounts</source>
-        <translation>Hesaplar</translation>
-    </message>
-    <message>
-        <source>User is logged in</source>
-        <translation>Kullanıcı giriş yaptı</translation>
-    </message>
-    <message>
-        <source>User login changed</source>
-        <translation>Kullanıcı girişi değişti</translation>
-    </message>
-    <message>
-        <source>Alert</source>
-        <translation>Uyarı</translation>
-    </message>
-    <message>
-        <source>Simple closables</source>
-        <translation>Basit kapatılabilirler</translation>
-    </message>
-    <message>
-        <source>Closables</source>
-        <translation>kapatılabilir</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Durdur</translation>
-    </message>
-    <message>
-        <source>Barcode scanners</source>
-        <translation>Barkod tarayıcılar</translation>
-    </message>
-    <message>
-        <source>Content</source>
-        <translation>İçerik</translation>
-    </message>
-    <message>
-        <source>Code scanned</source>
-        <translation>Kod tarandı</translation>
-    </message>
-    <message>
-        <source>Battery level</source>
-        <translation>Pil seviyesi</translation>
-    </message>
-    <message>
-        <source>Battery level changed</source>
-        <translation>Pil seviyesi değişti</translation>
-    </message>
-    <message>
-        <source>Switches</source>
-        <translation>Anahtarlar</translation>
-    </message>
-    <message>
-        <source>Button pressed</source>
-        <translation>Düğmeye basıldı</translation>
-    </message>
-    <message>
-        <source>Closable sensors</source>
-        <translation>Kapatılabilir sensörler</translation>
-    </message>
-    <message>
-        <source>Closed</source>
-        <translation>Kapalı</translation>
-    </message>
-    <message>
-        <source>Opened or closed</source>
-        <translation>Açık veya kapalı</translation>
-    </message>
-    <message>
-        <source>CO2 sensor</source>
-        <translation>CO2 sensörü</translation>
-    </message>
-    <message>
-        <source>CO2 level</source>
-        <translation>CO2 seviyesi</translation>
-    </message>
-    <message>
-        <source>CO2 level changed</source>
-        <translation>CO2 seviyesi değişti</translation>
-    </message>
-    <message>
-        <source>Color temperature light</source>
-        <translation>Işık renk sıcaklığı</translation>
-    </message>
-    <message>
-        <source>Lights color temperature is</source>
-        <translation>Işıkların renk sıcaklığı</translation>
-    </message>
-    <message>
-        <source>A lights color temperature has changed</source>
-        <translation>Bir ışık renk sıcaklığı değişti</translation>
-    </message>
-    <message>
-        <source>Set lights color temperature</source>
-        <translation>Işıkların renk sıcaklığını ayarla</translation>
-    </message>
-    <message>
-        <source>Color lights</source>
-        <translation>Renkli ışıklar</translation>
-    </message>
-    <message>
-        <source>Light&apos;s color is</source>
-        <translation>Işığın rengi</translation>
-    </message>
-    <message>
-        <source>A light&apos;s color has changed</source>
-        <translation>Bir ışığın rengi değişti</translation>
-    </message>
-    <message>
-        <source>Set lights color</source>
-        <translation>Işık rengini ayarla</translation>
-    </message>
-    <message>
-        <source>Conductivity sensors</source>
-        <translation>İletkenlik sensörleri</translation>
-    </message>
-    <message>
-        <source>Conductivity</source>
-        <translation>İletkenlik</translation>
-    </message>
-    <message>
-        <source>Conductivity changed</source>
-        <translation>İletkenlik değişti</translation>
-    </message>
-    <message>
-        <source>Doorbells</source>
-        <translation>kapı zilleri</translation>
-    </message>
-    <message>
-        <source>Doorbell pressed</source>
-        <translation>kapı zili basıldı</translation>
-    </message>
-    <message>
-        <source>Moving</source>
-        <translation>Hareketli</translation>
-    </message>
-    <message>
-        <source>Moving changed</source>
-        <translation>Taşınma değişti</translation>
-    </message>
-    <message>
-        <source>Maximum charging current</source>
-        <translation>Maksimum şarj akımı</translation>
-    </message>
-    <message>
-        <source>Maximum charging current changed</source>
-        <translation>Maksimum şarj akımı değişti</translation>
-    </message>
-    <message>
-        <source>Set maximum charging current</source>
-        <translation>Maksimum şarj akımını ayarlayın</translation>
-    </message>
-    <message>
-        <source>Percentage</source>
-        <translation>Yüzde</translation>
-    </message>
-    <message>
-        <source>Percentage changed</source>
-        <translation>Yüzde değişti</translation>
-    </message>
-    <message>
-        <source>Set percentage</source>
-        <translation>Yüzde ayarla</translation>
-    </message>
-    <message>
-        <source>Media</source>
-        <translation>medya</translation>
-    </message>
-    <message>
-        <source>Fast forward</source>
-        <translation>İleri sar</translation>
-    </message>
-    <message>
-        <source>Fast rewind</source>
-        <translation>Hızlı geri sarma</translation>
-    </message>
-    <message>
-        <source>Navigation pad</source>
-        <translation>Gezinti pedi</translation>
-    </message>
-    <message>
-        <source>To</source>
-        <translation>ile</translation>
-    </message>
-    <message>
-        <source>Navigate</source>
-        <translation>Gezin</translation>
-    </message>
-    <message>
-        <source>Smart meter</source>
-        <translation>Akıllı sayaç</translation>
-    </message>
-    <message>
-        <source>Smart meters</source>
-        <translation>Akıllı sayaçlar</translation>
-    </message>
-    <message>
-        <source>Total energy consumed</source>
-        <translation>Tüketilen toplam enerji</translation>
-    </message>
-    <message>
-        <source>Current power</source>
-        <translation>Mevcut güç</translation>
-    </message>
-    <message>
-        <source>Current power changed</source>
-        <translation>Mevcut güç değişti</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>sessiz</translation>
-    </message>
-    <message>
-        <source>Muted</source>
-        <translation>sessiz</translation>
-    </message>
-    <message>
-        <source>Volume</source>
-        <translation>Ses</translation>
-    </message>
-    <message>
-        <source>Volume changed</source>
-        <translation>Ses seviyesi değişti</translation>
-    </message>
-    <message>
-        <source>Set volume</source>
-        <translation>Ses seviyesini ayarla</translation>
-    </message>
-    <message>
-        <source>User access control systems</source>
-        <translation>Kullanıcı erişim kontrol sistemleri</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation>Kullanıcılar</translation>
-    </message>
-    <message>
-        <source>Users changed</source>
-        <translation>Kullanıcılar değişti</translation>
-    </message>
-    <message>
-        <source>User</source>
-        <translation>kullanıcı</translation>
-    </message>
-    <message>
-        <source>Add user</source>
-        <translation>Kullanıcı Ekle</translation>
-    </message>
-    <message>
-        <source>Remove user</source>
-        <translation>Kullanıcıyı kaldır</translation>
-    </message>
-    <message>
-        <source>Fingerprint readers</source>
-        <translation>Parmak izi okuyucular</translation>
-    </message>
-    <message>
-        <source>Finger</source>
-        <translation>Parmak</translation>
-    </message>
-    <message>
-        <source>Garage doors</source>
-        <translation>Garaj kapıları</translation>
-    </message>
-    <message>
-        <source>State</source>
-        <translation>Durum</translation>
-    </message>
-    <message>
-        <source>State changed</source>
-        <translation>Durum değişti</translation>
-    </message>
-    <message>
-        <source>Intermediate position</source>
-        <translation>orta pozisyon</translation>
-    </message>
-    <message>
-        <source>Intermediate position changed</source>
-        <translation>Ara pozisyon değişti</translation>
-    </message>
-    <message>
-        <source>Incoming events</source>
-        <translation>Gelen olaylar</translation>
-    </message>
-    <message>
-        <source>Triggered</source>
-        <translation>tetiklendi</translation>
-    </message>
-    <message>
-        <source>Light sensors</source>
-        <translation>Işık sensörleri</translation>
-    </message>
-    <message>
-        <source>Buttons</source>
-        <translation>Düğmeler</translation>
-    </message>
-    <message>
-        <source>Long pressed</source>
-        <translation>Uzun basıldığında</translation>
-    </message>
-    <message>
-        <source>Media sources</source>
-        <translation>Medya kaynakları</translation>
-    </message>
-    <message>
-        <source>Title changed</source>
-        <translation>Başlık değiştirildi</translation>
-    </message>
-    <message>
-        <source>Artist</source>
-        <translation>Sanatçı</translation>
-    </message>
-    <message>
-        <source>Artist changed</source>
-        <translation>Sanatçı değişti</translation>
-    </message>
-    <message>
-        <source>Collection</source>
-        <translation>koleksiyon</translation>
-    </message>
-    <message>
-        <source>Collection changed</source>
-        <translation>Koleksiyon değişti</translation>
-    </message>
-    <message>
-        <source>Artwork</source>
-        <translation>sanat eseri</translation>
-    </message>
-    <message>
-        <source>Artwork changed</source>
-        <translation>Sanat eseri değişti</translation>
-    </message>
-    <message>
-        <source>Moisture sensors</source>
-        <translation>Nem sensörleri</translation>
-    </message>
-    <message>
-        <source>Moisture</source>
-        <translation>Nem</translation>
-    </message>
-    <message>
-        <source>Moisture changed</source>
-        <translation>Nem değişti</translation>
-    </message>
-    <message>
-        <source>Button name</source>
-        <translation>Düğme adı</translation>
-    </message>
-    <message>
-        <source>Pressed</source>
-        <translation>preslenmiş</translation>
-    </message>
-    <message>
-        <source>Noise sensors</source>
-        <translation>Gürültü sensörleri</translation>
-    </message>
-    <message>
-        <source>Noise level</source>
-        <translation>Gürültü seviyesi</translation>
-    </message>
-    <message>
-        <source>Noise level changed</source>
-        <translation>Gürültü seviyesi değişti</translation>
-    </message>
-    <message>
-        <source>Outgoing events</source>
-        <translation>Giden olaylar</translation>
-    </message>
-    <message>
-        <source>Trigger</source>
-        <translation>Tetiklemek</translation>
-    </message>
-    <message>
-        <source>Power sockets</source>
-        <translation>Güç prizleri</translation>
-    </message>
-    <message>
-        <source>Powered</source>
-        <translation>Güçlendirilmiş</translation>
-    </message>
-    <message>
-        <source>Turned on/off</source>
-        <translation>Açık/kapalı</translation>
-    </message>
-    <message>
-        <source>Turn on/off</source>
-        <translation>Açmak / kapamak</translation>
-    </message>
-    <message>
-        <source>Power switches</source>
-        <translation>Güç anahtarları</translation>
-    </message>
-    <message>
-        <source>Pressure sensors</source>
-        <translation>Basınç sensörleri</translation>
-    </message>
-    <message>
-        <source>Pressure</source>
-        <translation>Basınç</translation>
-    </message>
-    <message>
-        <source>Pressure changed</source>
-        <translation>Basınç değişti</translation>
-    </message>
-    <message>
-        <source>Shuffle</source>
-        <translation>Karıştır</translation>
-    </message>
-    <message>
-        <source>Shuffle changed</source>
-        <translation>Karışık değiştirildi</translation>
-    </message>
-    <message>
-        <source>Set shuffle</source>
-        <translation>Karıştırmayı ayarla</translation>
-    </message>
-    <message>
-        <source>Repeat</source>
-        <translation>Tekrar et</translation>
-    </message>
-    <message>
-        <source>Repeat changed</source>
-        <translation>Tekrar değişti</translation>
-    </message>
-    <message>
-        <source>Set repeat</source>
-        <translation>Tekrarlamayı ayarla</translation>
-    </message>
-    <message>
-        <source>Smart locks</source>
-        <translation>Akıllı kilitler</translation>
-    </message>
-    <message>
-        <source>Unlatch</source>
-        <translation>mandalı aç</translation>
-    </message>
-    <message>
-        <source>Thermostats</source>
-        <translation>termostatlar</translation>
-    </message>
-    <message>
-        <source>Target temperature</source>
-        <translation>Hedef sıcaklık</translation>
-    </message>
-    <message>
-        <source>Target temperature changed</source>
-        <translation>Hedef sıcaklık değişti</translation>
-    </message>
-    <message>
-        <source>Set target temperature</source>
-        <translation>Hedef sıcaklığı ayarla</translation>
-    </message>
-    <message>
-        <source>Weather</source>
-        <translation>Hava Durumu</translation>
-    </message>
-    <message>
-        <source>Weather description</source>
-        <translation>Hava durumu açıklaması</translation>
-    </message>
-    <message>
-        <source>Weather description changed</source>
-        <translation>Hava durumu açıklaması değişti</translation>
-    </message>
-    <message>
-        <source>Weather condition</source>
-        <translation>Hava Durumu</translation>
-    </message>
-    <message>
-        <source>Weather condition changed</source>
-        <translation>Hava durumu değişti</translation>
-    </message>
-    <message>
-        <source>Temperature changed</source>
-        <translation>Sıcaklık değişti</translation>
-    </message>
-    <message>
-        <source>Wind speed changed</source>
-        <translation>Rüzgar hızı değişti</translation>
-    </message>
-    <message>
-        <source>Wind direction</source>
-        <translation>Rüzgar yönü</translation>
-    </message>
-    <message>
-        <source>Wind direction changed</source>
-        <translation>Rüzgar yönü değişti</translation>
-    </message>
-    <message>
-        <source>Wind speed sensors</source>
-        <translation>Rüzgar hızı sensörleri</translation>
-    </message>
-    <message>
-        <source>Wind speed</source>
-        <translation>Rüzgar hızı</translation>
-    </message>
-    <message>
-        <source>Wireless devices</source>
-        <translation>Kablosuz cihazlar</translation>
-    </message>
-    <message>
-        <source>Signal strength</source>
-        <translation>Sinyal gücü</translation>
-    </message>
-    <message>
-        <source>Signal strength changed</source>
-        <translation>Sinyal gücü değişti</translation>
-    </message>
-    <message>
-        <source>Sensors</source>
-        <translation>Sensörler</translation>
-    </message>
-    <message>
-        <source>Heating</source>
-        <translation>Isıtma</translation>
-    </message>
-    <message>
-        <source>Irrigation</source>
-        <translation>Sulama</translation>
-    </message>
-    <message>
-        <source>Ventilation</source>
-        <translation>Havalandırma</translation>
-    </message>
-    <message>
-        <source>Navigation pad with menu</source>
-        <translation>Menü ile gezinme pedi</translation>
-    </message>
-    <message>
-        <source>Operate</source>
-        <translation>işletmek</translation>
-    </message>
-    <message>
-        <source>Water sensors</source>
-        <translation>Su sensörleri</translation>
-    </message>
-    <message>
-        <source>Water detected</source>
-        <translation>Su tespit edildi</translation>
-    </message>
-    <message>
-        <source>Water detected changed</source>
-        <translation>Su tespiti değişti</translation>
-    </message>
-    <message>
-        <source>Charging started or stopped</source>
-        <translation>Şarj başladı veya durduruldu</translation>
-    </message>
-    <message>
-        <source>Discharging</source>
-        <translation>boşaltma</translation>
-    </message>
-    <message>
-        <source>Discharging started or stopped</source>
-        <translation>Boşaltma başlatıldı veya durduruldu</translation>
-    </message>
-    <message>
-        <source>Plugged in</source>
-        <translation>Fişe takılı</translation>
-    </message>
-    <message>
-        <source>Plugged in or out</source>
-        <translation>Takılı veya çıktı</translation>
-    </message>
-    <message>
-        <source>Cleaning robots</source>
-        <translation>temizlik robotları</translation>
-    </message>
-    <message>
-        <source>Robot state</source>
-        <translation>robot durumu</translation>
-    </message>
-    <message>
-        <source>Robot state changed</source>
-        <translation>Robot durumu değişti</translation>
-    </message>
-    <message>
-        <source>Start cleaning</source>
-        <translation>Temizlemeye başla</translation>
-    </message>
-    <message>
-        <source>Stop cleaning</source>
-        <translation>Temizlemeyi durdur</translation>
-    </message>
-    <message>
-        <source>Pause cleaning</source>
-        <translation>Temizlemeyi duraklat</translation>
-    </message>
-    <message>
-        <source>Return to base</source>
-        <translation>Üsse geri dön</translation>
-    </message>
-    <message>
-        <source>CO sensor</source>
-        <translation>CO sensörü</translation>
-    </message>
-    <message>
-        <source>CO level</source>
-        <translation>CO seviyesi</translation>
-    </message>
-    <message>
-        <source>CO level changed</source>
-        <translation>CO seviyesi değişti</translation>
-    </message>
-    <message>
-        <source>Flammable gas sensor</source>
-        <translation>Yanıcı gaz sensörü</translation>
-    </message>
-    <message>
-        <source>Flammable gas level</source>
-        <translation>yanıcı gaz seviyesi</translation>
-    </message>
-    <message>
-        <source>Flammable gas level changed</source>
-        <translation>Yanıcı gaz seviyesi değişti</translation>
-    </message>
-    <message>
-        <source>Total consumed energy changed</source>
-        <translation>Toplam tüketilen enerji değişti</translation>
-    </message>
-    <message>
-        <source>Total energy produced</source>
-        <translation>Üretilen toplam enerji</translation>
-    </message>
-    <message>
-        <source>Total produced energy changed</source>
-        <translation>Toplam üretilen enerji değişti</translation>
-    </message>
-    <message>
-        <source>Cooling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cooling enabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cooling enabled changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable cooling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Air flow rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Air flow rate changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set air flow rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fire sensors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fire detected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fire detected changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>IrrigationDevicePage</name>
     <message>
         <source>Turn %1 off at %2</source>
@@ -3450,7 +2458,7 @@ Please try again.</source>
     </message>
     <message>
         <source>Temperature</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sıcaklık</translation>
     </message>
     <message>
         <source>Brightness</source>
@@ -3545,32 +2553,12 @@ Please try again.</source>
         <translation>Girdiğiniz e-posta geçerli değil.</translation>
     </message>
     <message>
-        <source>The email you&apos;ve entered is already used.</source>
-        <translation type="vanished">Girdiğiniz e-posta zaten kullanılıyor.</translation>
-    </message>
-    <message>
-        <source>The password you&apos;ve chose is too weak.</source>
-        <translation type="vanished">Seçtiğiniz şifre çok zayıf.</translation>
-    </message>
-    <message>
         <source>In order to use your %1 system, please log in.</source>
         <translation>%1 sisteminizi kullanmak için lütfen giriş yapınız.</translation>
     </message>
     <message>
-        <source>Your e-mail address:</source>
-        <translation type="vanished">E-posta adresinizi :</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="vanished">Şifre:</translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation>tamam</translation>
-    </message>
-    <message>
-        <source>In order to use your %1 system, please enter your email address and set a password for it.</source>
-        <translation type="vanished">%1 sisteminizi kullanmak için lütfen e-posta adresinizi girin ve bunun için bir şifre belirleyin.</translation>
     </message>
     <message>
         <source>An error happened with the user storage. Please make sure your %1 system is installed correctly.</source>
@@ -3769,18 +2757,6 @@ Please try again.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <source>Configure things</source>
-        <translation>Şeyleri yapılandırın</translation>
-    </message>
-    <message>
-        <source>Magic</source>
-        <translation>sihir</translation>
-    </message>
-    <message>
-        <source>Configure main view</source>
-        <translation>Ana görünümü yapılandır</translation>
-    </message>
-    <message>
         <source>App settings</source>
         <translation>Uygulama ayarları</translation>
     </message>
@@ -3789,16 +2765,24 @@ Please try again.</source>
         <translation>Sistem ayarları</translation>
     </message>
     <message>
-        <source>Help</source>
-        <translation type="vanished">Yardım</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>Yeni bağlantı</translation>
     </message>
     <message>
         <source>Set up another...</source>
         <translation>Başka bir tane ayarla...</translation>
+    </message>
+    <message>
+        <source>Configure things</source>
+        <translation type="unfinished">Şeyleri yapılandırın</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Yardım</translation>
+    </message>
+    <message>
+        <source>Configure main view</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3864,27 +2848,35 @@ Please try again.</source>
     <name>ManualConnectPage</name>
     <message>
         <source>Manual connection</source>
-        <translation type="vanished">Manuel bağlantı</translation>
+        <translation>Manuel bağlantı</translation>
     </message>
     <message>
         <source>Protocol</source>
-        <translation type="vanished">Protokol</translation>
+        <translation>Protokol</translation>
     </message>
     <message>
         <source>Websocket</source>
-        <translation type="vanished">Web yuvası</translation>
+        <translation>Web yuvası</translation>
     </message>
     <message>
         <source>Address:</source>
-        <translation type="vanished">Adres:</translation>
+        <translation>Adres:</translation>
     </message>
     <message>
         <source>Encrypted connection:</source>
-        <translation type="vanished">Şifreli bağlantı:</translation>
+        <translation>Şifreli bağlantı:</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">Bağlamak</translation>
+        <translation>Bağlamak</translation>
+    </message>
+    <message>
+        <source>TCP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4692,10 +3684,6 @@ Use a timeout value greater or equal to 10 ms.</source>
         <translation>Bağlantı</translation>
     </message>
     <message>
-        <source>Connecting to the nymea system.</source>
-        <translation type="vanished">Nymea sistemine bağlanma.</translation>
-    </message>
-    <message>
         <source>Manual connection</source>
         <translation>Manuel bağlantı</translation>
     </message>
@@ -4730,10 +3718,6 @@ Use a timeout value greater or equal to 10 ms.</source>
     <message>
         <source>Port:</source>
         <translation>Bağlantı:</translation>
-    </message>
-    <message>
-        <source>Encrypted connection:</source>
-        <translation type="vanished">Şifreli bağlantı:</translation>
     </message>
     <message>
         <source>Wired connection</source>
@@ -5257,53 +4241,6 @@ Do you want to proceed?</source>
         <source>We&apos;re sorry. We couldn&apos;t find any package matching the search term %1.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Package information</source>
-        <translation type="obsolete">Paket Bilgileri</translation>
-    </message>
-    <message>
-        <source>Installed version:</source>
-        <translation type="obsolete">Yüklü sürüm:</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="obsolete">Yüklü değil</translation>
-    </message>
-    <message>
-        <source>Candidate version:</source>
-        <translation type="obsolete">Aday versiyonu:</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="obsolete">Güncelleme</translation>
-    </message>
-    <message>
-        <source>Install</source>
-        <translation type="obsolete">Yükle</translation>
-    </message>
-    <message>
-        <source>This will start a system update. Note that the update might take several minutes and your %1 might not be functioning properly or restart during this time.</source>
-        <translation type="obsolete">Bu bir sistem güncellemesi başlatacaktır. Güncellemenin birkaç dakika sürebileceğini ve bu süre içinde %1&apos;inizin düzgün çalışmayabileceğini veya yeniden başlamayabileceğini unutmayın.</translation>
-    </message>
-    <message>
-        <source>
-Do you want to proceed?</source>
-        <translation type="obsolete">
-Devam etmek istiyor musunuz?</translation>
-    </message>
-    <message>
-        <source>Start update</source>
-        <translation type="obsolete">Güncellemeyi Başlat</translation>
-    </message>
-    <message>
-        <source>This will start a system update. Note that the update might take several minutes and your %1 system might not be functioning properly during this time and restart during the process.
-Do you want to proceed?</source>
-        <translation type="obsolete">Bu bir sistem güncellemesi başlatacaktır. Güncellemenin birkaç dakika sürebileceğini ve %1 sisteminizin bu süre içinde düzgün çalışmayabileceğini ve işlem sırasında yeniden başlatılabileceğini unutmayın. Devam etmek istiyor musunuz?</translation>
-    </message>
-    <message>
-        <source>Remove package</source>
-        <translation type="obsolete">Paketi kaldır</translation>
-    </message>
 </context>
 <context>
     <name>ParamDescriptorDelegate</name>
@@ -5383,6 +4320,10 @@ Do you want to proceed?</source>
     <message>
         <source>Installed integration plugins</source>
         <translation>Yüklü entegrasyon eklentileri</translation>
+    </message>
+    <message>
+        <source>Install more plugins</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5536,7 +4477,7 @@ Do you want to proceed?</source>
         <translation>Kimlik doğrulama gerekli</translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway to authenticate this device.</source>
+        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5574,14 +4515,6 @@ Do you want to proceed?</source>
         <translation>Yeni bağlantı</translation>
     </message>
     <message>
-        <source>The version of the %1 system you are trying to connect to is too old. This app requires at least version %2 but this %1 system only supports %3. Please update your %1 system.</source>
-        <translation type="vanished">Bağlanmaya çalıştığınız %1 sisteminin sürümü çok eski. Bu uygulama en az %2 sürümünü gerektirir, ancak bu %1 sistemi yalnızca %3&apos;ü destekler. Lütfen %1 sisteminizi güncelleyin.</translation>
-    </message>
-    <message>
-        <source>The version of the %1 system you are trying to connect to is too new. This app supports only up to version %2 but this %1 system provides %3. Please update %4.</source>
-        <translation type="vanished">Bağlanmaya çalıştığınız %1 sisteminin sürümü çok yeni. Bu uygulama yalnızca %2 sürümünü destekler, ancak bu %1 sistemi %3 sağlar. Lütfen %4&apos;ü güncelleyin.</translation>
-    </message>
-    <message>
         <source>The version of the %1 system you are trying to connect to is too old. This app requires at least API version %2 but this %1 system only supports API version %3. Please update your %1 system.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5607,14 +4540,6 @@ Do you want to proceed?</source>
     <message>
         <source>Unknown item</source>
         <translation>Bilinmeyen öğe</translation>
-    </message>
-    <message>
-        <source>True</source>
-        <translation type="vanished">Doğru</translation>
-    </message>
-    <message>
-        <source>False</source>
-        <translation type="vanished">YANLIŞ</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -5861,6 +4786,13 @@ Do you want to proceed?</source>
     </message>
 </context>
 <context>
+    <name>SelectStateEventDescriptorParamPage</name>
+    <message>
+        <source>Only consider state change if</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SelectStatePage</name>
     <message>
         <source>Select state</source>
@@ -6062,14 +4994,6 @@ Do you want to proceed?</source>
         <translation>Sistem günlüğünü görüntüle</translation>
     </message>
     <message>
-        <source>Cloud</source>
-        <translation type="vanished">Bulut</translation>
-    </message>
-    <message>
-        <source>API interfaces</source>
-        <translation type="vanished">API arayüzleri</translation>
-    </message>
-    <message>
         <source>MQTT broker</source>
         <translation>MQTT aracı</translation>
     </message>
@@ -6122,10 +5046,6 @@ Do you want to proceed?</source>
         <translation>Sistemin ağ bağlantısını yapılandırın</translation>
     </message>
     <message>
-        <source>Configure how clients interact with this system</source>
-        <translation type="vanished">İstemcilerin bu sistemle nasıl etkileşime gireceğini yapılandırın</translation>
-    </message>
-    <message>
         <source>User settings</source>
         <translation>Kullanıcı ayarları</translation>
     </message>
@@ -6140,10 +5060,6 @@ Do you want to proceed?</source>
     <message>
         <source>Configure ZigBee networks</source>
         <translation>ZigBee ağlarını yapılandırın</translation>
-    </message>
-    <message>
-        <source>Connect this %1 system to %1:cloud</source>
-        <translation type="vanished">Bu %1 sistemini %1:bulut&apos;a bağlayın</translation>
     </message>
     <message>
         <source>Modbus RTU</source>
@@ -6167,6 +5083,14 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>Configure how applications can connect to this system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure Z-Wave networks</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6293,14 +5217,6 @@ Do you want to proceed?</source>
     <message>
         <source>Press to edit condition</source>
         <translation>Durumu düzenlemek için basın</translation>
-    </message>
-    <message>
-        <source>True</source>
-        <translation type="vanished">Doğru</translation>
-    </message>
-    <message>
-        <source>False</source>
-        <translation type="vanished">Yanlış</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -6547,28 +5463,12 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
 <context>
     <name>ThingContextMenu</name>
     <message>
-        <source>Magic</source>
-        <translation>Sihir</translation>
-    </message>
-    <message>
         <source>Details</source>
         <translation>Detaylar</translation>
     </message>
     <message>
         <source>Logs</source>
         <translation>Kayıtlar</translation>
-    </message>
-    <message>
-        <source>Mark as favorite</source>
-        <translation>Favori olarak işaretle</translation>
-    </message>
-    <message>
-        <source>Remove from favorites</source>
-        <translation>Favorilerden çıkar</translation>
-    </message>
-    <message>
-        <source>Grouping</source>
-        <translation>gruplama</translation>
     </message>
     <message>
         <source>Write NFC tag</source>
@@ -6799,20 +5699,8 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
         <translation>Şifre değiştirilirken beklenmeyen bir hata oluştu. Bunun için üzgünüz. (Hata kodu: %1)</translation>
     </message>
     <message>
-        <source>User info</source>
-        <translation type="vanished">Kullanıcı bilgisi</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">Kullanıcı adı</translation>
-    </message>
-    <message>
         <source>Change password</source>
         <translation>Şifre değiştir</translation>
-    </message>
-    <message>
-        <source>Devices / Apps accessing nymea:core</source>
-        <translation type="vanished">nymea:core&apos;a erişen cihazlar/uygulamalar</translation>
     </message>
     <message>
         <source>Created on %1</source>
@@ -6944,6 +5832,14 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     </message>
     <message>
         <source>User information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User login via authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authenticated user</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7121,6 +6017,338 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     </message>
 </context>
 <context>
+    <name>ZWaveAddNetworkPage</name>
+    <message>
+        <source>Add a new Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected adapter is already in use.</source>
+        <translation type="unfinished">Seçilen bağdaştırıcı zaten kullanımda.</translation>
+    </message>
+    <message>
+        <source>An error happened in the ZWave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available serial ports</source>
+        <translation type="unfinished">Kullanılabilir seri bağlantı noktaları</translation>
+    </message>
+    <message>
+        <source>Please verify that the Z-Wave adapter is properly connected to a serial port and select the appropriate port.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveNetworkPage</name>
+    <message>
+        <source>Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Yardım</translation>
+    </message>
+    <message>
+        <source>Network settings</source>
+        <translation type="unfinished">Ağ ayarları</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened in the Z-Wave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The operation could not be started because the Z-Wave network is busy. Please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An unexpected error happened. Status code: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Include Z-Wave device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Z-Wave network is now accepting new devices for inclusion. Please start the pairing procedure from the Z-Wave device you want to add to the network. Check the device manual for further details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclude Z-Wave device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Z-Wave network is now accepting devices for exclusion. Please start the pairing procedure from the Z-Wave device you want to remove from the network. Check the device manual for further details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished">Ağ</translation>
+    </message>
+    <message>
+        <source>Network state:</source>
+        <translation type="unfinished">Ağ durumu:</translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished">Çevrimiçi</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished">Çevrimdışı</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished">Başlangıç</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Hata</translation>
+    </message>
+    <message>
+        <source>Controller type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secondary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device management</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a new device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove a device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unrecognized device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Node ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave plus:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Signal strength:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Associated things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove Z-Wave node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove this node from the network?</source>
+        <translation type="unfinished">Bu düğümü ağdan kaldırmak istediğinizden emin misiniz?</translation>
+    </message>
+    <message>
+        <source>Please note that if this node has been assigned to a thing, it will also be removed from the system.</source>
+        <translation type="unfinished">Lütfen bu düğüm bir şeye atanmışsa, sistemden de kaldırılacağını unutmayın.</translation>
+    </message>
+    <message>
+        <source>ZigBee network help</source>
+        <translation type="unfinished">ZigBee ağ yardımı</translation>
+    </message>
+    <message>
+        <source>ZigBee router</source>
+        <translation type="unfinished">ZigBee yönlendirici</translation>
+    </message>
+    <message>
+        <source>ZigBee end device</source>
+        <translation type="unfinished">ZigBee uç cihazı</translation>
+    </message>
+    <message>
+        <source>Sleepy device</source>
+        <translation type="unfinished">uykulu cihaz</translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveNetworkSettingsPage</name>
+    <message>
+        <source>Z-Wave network settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error happened in the ZWave backend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network information</source>
+        <translation type="unfinished">ağ bilgileri</translation>
+    </message>
+    <message>
+        <source>Network state</source>
+        <translation type="unfinished">Ağ durumu</translation>
+    </message>
+    <message>
+        <source>The network is online</source>
+        <translation type="unfinished">ağ çevrimiçi</translation>
+    </message>
+    <message>
+        <source>The network is offline</source>
+        <translation type="unfinished">ağ çevrimdışı</translation>
+    </message>
+    <message>
+        <source>The network is starting...</source>
+        <translation type="unfinished">Ağ başlıyor...</translation>
+    </message>
+    <message>
+        <source>The network is in an error state.</source>
+        <translation type="unfinished">Ağ bir hata durumunda.</translation>
+    </message>
+    <message>
+        <source>Home ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hardware information</source>
+        <translation type="unfinished">donanım bilgileri</translation>
+    </message>
+    <message>
+        <source>Serial port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage network</source>
+        <translation type="unfinished">Ağı yönet</translation>
+    </message>
+    <message>
+        <source>Reboot controller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove network</source>
+        <translation type="unfinished">Ağı kaldır</translation>
+    </message>
+    <message>
+        <source>Factory reset controller</source>
+        <translation type="unfinished">Fabrika ayarlarına sıfırlama denetleyicisi</translation>
+    </message>
+</context>
+<context>
+    <name>ZWaveSettingsPage</name>
+    <message>
+        <source>Z-Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are no Z-Wave networks set up yet. In order to use Z-Wave, create a Z-Wave network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add network</source>
+        <translation type="unfinished">Ağ ekle</translation>
+    </message>
+    <message>
+        <source>Z-Wave Plus network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-Wave network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network state:</source>
+        <translation type="unfinished">Ağ durumu:</translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished">Çevrimiçi</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished">Çevrimdışı</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished">Başlangıç</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Hata</translation>
+    </message>
+    <message>
+        <source>Adapter:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n device(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n device(s) (%1 disconnected)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ZigbeeAddNetworkPage</name>
     <message>
         <source>The selected adapter is not available or the selected serial port configration is incorrect.</source>
@@ -7270,18 +6498,6 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
         <translation>Yeni cihazlar için aç</translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation type="vanished">Sürüm</translation>
-    </message>
-    <message>
-        <source>IEEE address</source>
-        <translation type="vanished">IEEE adresi</translation>
-    </message>
-    <message>
-        <source>Network address</source>
-        <translation type="vanished">Ağ adresi</translation>
-    </message>
-    <message>
         <source>Remove</source>
         <translation>Kaldır</translation>
     </message>
@@ -7322,19 +6538,11 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Signal strength</source>
-        <translation type="obsolete">Sinyal gücü</translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Initialiazing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7367,6 +6575,10 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     </message>
     <message>
         <source>Associated things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initializing...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7492,14 +6704,6 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
         <translation>Hata</translation>
     </message>
     <message>
-        <source>MAC address:</source>
-        <translation type="vanished">Mac Adresi:</translation>
-    </message>
-    <message>
-        <source>Firmware version:</source>
-        <translation type="vanished">Yazılım sürümü:</translation>
-    </message>
-    <message>
         <source>Adapter:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7533,14 +6737,6 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
 </context>
 <context>
     <name>description for buttontemplates</name>
-    <message>
-        <source>Turn on a light</source>
-        <translation type="vanished">bir ışık aç</translation>
-    </message>
-    <message>
-        <source>Turn off a light</source>
-        <translation type="vanished">bir ışığı kapat</translation>
-    </message>
     <message>
         <source>Switch a light</source>
         <translation>Işık değiştir</translation>
@@ -7626,10 +6822,6 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     <message>
         <source>Notify me when a device runs out of battery</source>
         <translation>Bir cihazın pili bittiğinde bana bildir</translation>
-    </message>
-    <message>
-        <source>Notify me when something runs dry</source>
-        <translation type="vanished">Bir şey kuruduğunda bana haber ver</translation>
     </message>
     <message>
         <source>Notify me when a thing gets disconnected</source>
@@ -7787,10 +6979,6 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     <message>
         <source>Low battery alert for %0</source>
         <translation>%0 için düşük pil uyarısı</translation>
-    </message>
-    <message>
-        <source>Notify %1 when %0 runs dry</source>
-        <translation type="vanished">%0 kuruduğunda %1&apos;e bildir</translation>
     </message>
     <message>
         <source>Disconnect alert for %0</source>

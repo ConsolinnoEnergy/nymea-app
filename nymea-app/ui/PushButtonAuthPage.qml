@@ -48,6 +48,7 @@ Page {
 
     Component.onCompleted: {
         engine.jsonRpcClient.requestPushButtonAuth("nymea-app (" + PlatformHelper.deviceModel + ")");
+
     }
 
     Connections {
@@ -87,7 +88,7 @@ Page {
         Label {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Please press the button on your %1 gateway to authenticate this device.").arg(Configuration.systemName)
+            text: qsTr("Please press the button on your %1 gateway for 5 seconds to authenticate this device.").arg(Configuration.systemName)
             wrapMode: Text.WordWrap
         }
 

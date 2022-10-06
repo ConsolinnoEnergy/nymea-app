@@ -70,6 +70,15 @@ Item {
     function openSystemSettings() {
         d.pushSettingsPage("SettingsPage.qml")
     }
+    function openCustomPage(page) {
+        d.pushSettingsPage(page)
+    }
+    function openHelpPage() {
+        d.pushSettingsPage("info/Help/HelpPage.qml")
+    }
+
+
+
     function configureMainView() {
         swipeView.currentItem.pageStack.pop(null)
         swipeView.currentItem.pageStack.currentItem.configureViews()
@@ -341,6 +350,7 @@ Item {
                     Connections {
                         target: engine.nymeaConfiguration
                         onFetchingDataChanged: {
+                            print("fetching NymeaConfigration:", engine.nymeaConfiguration.fetchingData)
                             if (!engine.nymeaConfiguration.fetchingData) {
                                 syncRemoteConnection()
                             }
@@ -348,7 +358,12 @@ Item {
                     }
                     Connections {
                         target: engine.nymeaConfiguration.tunnelProxyServerConfigurations
-                        onCountChanged: syncRemoteConnection();
+                        onCountChanged: {
+                            print("tunnel proxy count changed:", engine.nymeaConfiguration.tunnelProxyServerConfigurations.count)
+                            if (!engine.nymeaConfiguration.fetchingData) {
+                                syncRemoteConnection();
+                            }
+                        }
                     }
 
                     function syncRemoteConnection() {
@@ -416,11 +431,56 @@ Item {
                         target: engine.thingManager
                         onFetchingDataChanged: {
                             if (!engine.thingManager.fetchingData) {
+                                processPendingPushNotificationActions();
                                 updatePushNotificationThings()
                             }
                             PlatformHelper.hideSplashScreen();
                         }
                     }
+
+                    Connections {
+                        target: PlatformHelper
+                        onPendingNotificationActionsChanged: {
+                            processPendingPushNotificationActions()
+                        }
+                    }
+                    function processPendingPushNotificationActions() {
+                        print("pending notification actions changed:", PlatformHelper.pendingNotificationActions)
+                        if (PlatformHelper.pendingNotificationActions.length > 0) {
+                            var notificationAction = PlatformHelper.pendingNotificationActions[0]
+                            if (notificationAction.serverUuid.replace(/[{]]/g, "") !== engine.jsonRpcClient.serverUuid.toString().replace(/[{}]/g, "")) {
+                                print("notification action for different server")
+                                return;
+                            }
+                            print("handling action", JSON.stringify(notificationAction))
+
+                            if (notificationAction.dataMap.hasOwnProperty("open")) {
+                                // It could be just a thing ID
+                                var target = notificationAction.dataMap["open"]
+                                var thing = engine.thingManager.things.getThing(target)
+                                if (thing) {
+                                    print("opening thing:", thing.name)
+                                    pageStack.push("/ui/devicepages/" + NymeaUtils.interfaceListToDevicePage(thing.thingClass.interfaces), {thing: thing})
+                                } else {
+                                    // or a view name
+                                    console.log("going to main view:", target)
+                                    pageStack.currentItem.goToView(target, notificationAction.dataMap)
+                                }
+                            }
+
+                            if (notificationAction.dataMap.hasOwnProperty("execute")) {
+                                var action = notificationAction.dataMap["execute"]
+                                var thingId = notificationAction.dataMap["thingId"]
+                                var actionParams = JSON.parse(notificationAction.dataMap["actionParams"])
+                                print("executing:", thingId, action, actionParams)
+                                engine.thingManager.things.getThing(thingId).executeAction(action, actionParams);
+                            }
+
+
+                            PlatformHelper.notificationActionHandled(notificationAction.id)
+                        }
+                    }
+
 
                     Component {
                         id: invalidVersionComponent

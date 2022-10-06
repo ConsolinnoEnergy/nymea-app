@@ -71,7 +71,7 @@ Page {
                 text: qsTr("User settings")
                 subText: qsTr("Configure who can log in")
                 visible: engine.jsonRpcClient.ensureServerVersion("4.2")
-                         && engine.jsonRpcClient.authenticated
+                         //&& engine.jsonRpcClient.authenticated
                 onClicked: pageStack.push(Qt.resolvedUrl("system/UsersSettingsPage.qml"))
             }
 
@@ -119,6 +119,15 @@ Page {
                 subText: qsTr("Configure ZigBee networks")
                 visible: engine.jsonRpcClient.ensureServerVersion("5.3") && NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) && Configuration.zigbeeSettingsEnabled
                 onClicked: pageStack.push(Qt.resolvedUrl("system/ZigbeeSettingsPage.qml"))
+            }
+
+            SettingsTile {
+                Layout.fillWidth: true
+                iconSource: "../images/z-wave.svg"
+                text: qsTr("Z-Wave")
+                subText: qsTr("Configure Z-Wave networks")
+                visible: engine.jsonRpcClient.ensureServerVersion("6.1") && NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) && Configuration.zigbeeSettingsEnabled
+                onClicked: pageStack.push(Qt.resolvedUrl("system/zwave/ZWaveSettingsPage.qml"))
             }
 
             SettingsTile {

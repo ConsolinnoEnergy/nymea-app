@@ -86,7 +86,7 @@ ApplicationWindow {
         property string units: Qt.locale().measurementSystem === Locale.MetricSystem ? "metric" : "imperial"
     }
 
-    property string privacyPolicyUrl: "https://nymea.io/privacy-statement/en/nymea_privacy.html"
+    property string privacyPolicyUrl: "https://consolinno.de/datenschutz/"
 
     Component.onCompleted: {
         styleController.setSystemFont(app.font)
@@ -119,8 +119,10 @@ ApplicationWindow {
         configuredHosts: configuredHostsModel
         onOpenThingSettings: rootItem.openThingSettings();
         onOpenMagicSettings: rootItem.openMagicSettings();
+        onOpenHelpPage: rootItem.openHelpPage();
         onOpenAppSettings: rootItem.openAppSettings();
         onOpenSystemSettings: rootItem.openSystemSettings();
+        onOpenCustomPage: rootItem.openCustomPage(page);
         onConfigureMainView: rootItem.configureMainView();
         onStartManualConnection: rootItem.startManualConnection();
         onStartWirelessSetup: rootItem.startWirelessSetup();

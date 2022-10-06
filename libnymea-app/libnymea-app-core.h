@@ -139,6 +139,10 @@
 #include "energy/energylogs.h"
 #include "energy/powerbalancelogs.h"
 #include "energy/thingpowerlogs.h"
+#include "pluginconfigmanager.h"
+#include "zwave/zwavemanager.h"
+#include "zwave/zwavenetwork.h"
+#include "zwave/zwavenode.h"
 
 #include <QtQml/qqml.h>
 
@@ -250,6 +254,7 @@ void registerQmlTypes() {
     qmlRegisterUncreatableType<Plugin>(uri, 1, 0, "Plugin", "Can't create this in QML. Get it from the Plugins.");
     qmlRegisterUncreatableType<Plugins>(uri, 1, 0, "Plugins", "Can't create this in QML. Get it from the ThingManager.");
     qmlRegisterType<PluginsProxy>(uri, 1, 0, "PluginsProxy");
+    qmlRegisterType<PluginConfigManager>(uri, 1, 0, "PluginConfigManager");
 
     qmlRegisterUncreatableType<NymeaConfiguration>(uri, 1, 0, "NymeaConfiguration", "Get it from Engine");
     qmlRegisterUncreatableType<ServerConfiguration>(uri, 1, 0, "ServerConfiguration", "Get it from NymeaConfiguration");
@@ -326,6 +331,13 @@ void registerQmlTypes() {
     qmlRegisterUncreatableType<ZigbeeNode>(uri, 1, 0, "ZigbeeNode", "Get it from the ZigbeeNodes");
     qmlRegisterUncreatableType<ZigbeeNodes>(uri, 1, 0, "ZigbeeNodes", "Get it from the ZigbeeNetwork");
     qmlRegisterType<ZigbeeNodesProxy>(uri, 1, 0, "ZigbeeNodesProxy");
+
+    qmlRegisterType<ZWaveManager>(uri, 1, 0, "ZWaveManager");
+    qmlRegisterUncreatableType<ZWaveNetworks>(uri, 1, 0, "ZWaveNetworks", "Get it from ZWaveManager");
+    qmlRegisterUncreatableType<ZWaveNetwork>(uri, 1, 0, "ZWaveNetwork", "Get it from ZWaveNetworks");
+    qmlRegisterUncreatableType<ZWaveNodes>(uri, 1, 0, "ZWaveNodes", "Get it from ZWaveNetwork");
+    qmlRegisterUncreatableType<ZWaveNode>(uri, 1, 0, "ZWaveNode", "Get it from ZWaveNodes");
+    qmlRegisterType<ZWaveNodesProxy>(uri, 1, 0, "ZWaveNodesProxy");
 
     qmlRegisterType<ModbusRtuManager>(uri, 1, 0, "ModbusRtuManager");
     qmlRegisterUncreatableType<ModbusRtuMaster>(uri, 1, 0, "ModbusRtuMaster", "Get it from the ModbusRtuMasters");

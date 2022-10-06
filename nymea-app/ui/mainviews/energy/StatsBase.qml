@@ -44,6 +44,7 @@ Item {
                                    count: monthsCount,
                                    startTime: monthsStart,
                                    sampleRate: EnergyLogs.SampleRate1Month,
+                                   toShortLabel: monthShortLabel,
                                    toLabel: monthLabel,
                                    toLongLabel: monthLongLabel
                                },
@@ -135,6 +136,10 @@ Item {
         d.setMonth(d.getMonth() - monthsCount + 1, 1);
         return d;
     }
+    function monthShortLabel(date) {
+            return date.toLocaleString(Qt.locale(), "M")
+    }
+
     function monthLabel(date) {
         return date.toLocaleString(Qt.locale(), "MMM")
     }
