@@ -110,7 +110,8 @@ ChartView {
             }
             Label {
                 property double absValue: productionBalanceSeries.toConsumers
-                color: Style.red
+                color: "#BDD786"
+
                 text: "%1 %2"
                 .arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
                 .arg(absValue > 1000 ? "kWh" : "W")
@@ -131,7 +132,7 @@ ChartView {
                 font: Style.extraSmallFont
             }
             Label {
-                color: Style.green
+                color: "#F37B8E"
                 property double absValue: productionBalanceSeries.toGrid
                 text: "%1 %2".arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
                 .arg(absValue > 1000 ? "kW" : "W")
@@ -151,7 +152,7 @@ ChartView {
                 font: Style.extraSmallFont
             }
             Label {
-                color: Style.orange
+                color: "#ACE3E2"
                 property double absValue: productionBalanceSeries.toStorage
                 text: "%1 %2".arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
                 .arg(absValue > 1000 ? "kW" : "W")
