@@ -195,32 +195,32 @@ ThingPageBase {
         }
 
 
-        ColumnLayout {
-            id: textLayout
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.margins: Style.bigMargins
-            spacing: Style.margins
+//        ColumnLayout {
+//            id: textLayout
+//            Layout.fillHeight: true
+//            Layout.fillWidth: true
+//            Layout.margins: Style.bigMargins
+//            spacing: Style.margins
 
-            Label {
-                Layout.fillWidth: true
-                visible: isBattery
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                textFormat: Text.RichText
-                property bool isCharging: root.chargingState && root.chargingState.value === "charging"
-                property bool isDischarging: root.chargingState && root.chargingState.value === "discharging"
-                property double availableWh: isBattery ? root.capacityState.value * 1000 * root.batteryLevelState.value / 100 : 0
-                property double remainingWh: isCharging ? root.capacityState.value * 1000 - availableWh : availableWh
-                property double remainingHours: isBattery ? remainingWh / Math.abs(root.currentPower) : 0
-                property date endTime: isBattery ? new Date(new Date().getTime() + remainingHours * 60 * 60 * 1000) : new Date()
-                property int n: Math.round(remainingHours)
+//            Label {
+//                Layout.fillWidth: true
+//                visible: isBattery
+//                wrapMode: Text.WordWrap
+//                horizontalAlignment: Text.AlignHCenter
+//                textFormat: Text.RichText
+//                property bool isCharging: root.chargingState && root.chargingState.value === "charging"
+//                property bool isDischarging: root.chargingState && root.chargingState.value === "discharging"
+//                property double availableWh: isBattery ? root.capacityState.value * 1000 * root.batteryLevelState.value / 100 : 0
+//                property double remainingWh: isCharging ? root.capacityState.value * 1000 - availableWh : availableWh
+//                property double remainingHours: isBattery ? remainingWh / Math.abs(root.currentPower) : 0
+//                property date endTime: isBattery ? new Date(new Date().getTime() + remainingHours * 60 * 60 * 1000) : new Date()
+//                property int n: Math.round(remainingHours)
 
-                text: isCharging ? qsTr("At the current rate, the battery will be fully charged at %1.").arg('<span style="font-size:' + Style.bigFont.pixelSize + 'px">' + endTime.toLocaleTimeString(Locale.ShortFormat) + "</span>")
-                                 : isDischarging ? qsTr("At the current rate, the battery will last until %1.").arg('<span style="font-size:' + Style.bigFont.pixelSize + 'px">' + endTime.toLocaleTimeString(Locale.ShortFormat) + "</span>")
-                                                 : ""
-            }
-        }
+//                text: isCharging ? qsTr("At the current rate, the battery will be fully charged at %1.").arg('<span style="font-size:' + Style.bigFont.pixelSize + 'px">' + endTime.toLocaleTimeString(Locale.ShortFormat) + "</span>")
+//                                 : isDischarging ? qsTr("At the current rate, the battery will last until %1.").arg('<span style="font-size:' + Style.bigFont.pixelSize + 'px">' + endTime.toLocaleTimeString(Locale.ShortFormat) + "</span>")
+//                                                 : ""
+//            }
+//        }
     }
 }
 
