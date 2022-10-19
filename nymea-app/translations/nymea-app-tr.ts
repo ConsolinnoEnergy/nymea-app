@@ -2608,6 +2608,14 @@ Please try again.</source>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>If you are the owner and do not have your own account, have your installer create an account for you.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you are an installer and do not have your own account, you can authenticate yourself using the test button on the leaflet (see quick start guide or user manual).</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LookAndFeelSettingsPage</name>
@@ -5306,14 +5314,6 @@ A consumer, not consuming anything</extracomment>
     </message>
     <message>
         <source>Obtaining</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>At the current rate, the battery will be fully charged at %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>At the current rate, the battery will last until %1.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

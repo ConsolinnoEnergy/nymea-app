@@ -2630,6 +2630,14 @@ Bitte versuche es erneut.</translation>
         <source>Email</source>
         <translation>E-Mail</translation>
     </message>
+    <message>
+        <source>If you are the owner and do not have your own account, have your installer create an account for you.</source>
+        <translation>Wenn Sie Anlagenbetreiber sind und kein eigenen Account haben, lassen Sie sich einen Account von ihrem Installateur anlegen.</translation>
+    </message>
+    <message>
+        <source>If you are an installer and do not have your own account, you can authenticate yourself using the test button on the leaflet (see quick start guide or user manual).</source>
+        <translation>Sind sie Installateur und haben keinen eigenen Account, dann können sie sich mit dem Testtaster am Leaflet authentifizieren (siehe Kurzanleitung oder  Gebrauchsanleitung).</translation>
+    </message>
 </context>
 <context>
     <name>LookAndFeelSettingsPage</name>
@@ -5330,14 +5338,6 @@ A consumer, not consuming anything</extracomment>
     <message>
         <source>Returning</source>
         <translation>Einspeisend</translation>
-    </message>
-    <message>
-        <source>At the current rate, the battery will be fully charged at %1.</source>
-        <translation>Bei der aktuellen Rate wird die Batterie um %1 vollständig geladen sein.</translation>
-    </message>
-    <message>
-        <source>At the current rate, the battery will last until %1.</source>
-        <translation>Bei der aktuellen Rate wird die Batterie bis %1 halten.</translation>
     </message>
     <message>
         <source>Obtaining</source>
