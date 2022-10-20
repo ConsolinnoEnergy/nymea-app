@@ -35,4 +35,4 @@ jobs:
           removeArtifacts: true
           token: ${{ secrets.REPO_GITLAB_TOKEN }}
           #artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
-         artifacts: "Consolinno HEMS windows installer/*.exe"
+          artifacts: "Consolinno HEMS windows installer/*.exe"
