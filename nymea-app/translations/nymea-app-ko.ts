@@ -4482,11 +4482,15 @@ Do you want to proceed?</source>
         <translation>미안하지만, 설치 중에 뭔가 잘못됐어요. 다시 시도하십시오.</translation>
     </message>
     <message>
-        <source>Authentication required</source>
-        <translation>인증 필요</translation>
+        <source>Finish authentication</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
+        <source>To complete authentication, press the test button again for 5 sec. until the status LED lights up green.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If the status LED is not green, you have to repeat authentication.(Go back to connection page, press reset button shortly and select leaflet again).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

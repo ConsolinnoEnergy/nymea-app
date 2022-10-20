@@ -4508,12 +4508,16 @@ Möchtest Du fortfahren?</translation>
         <translation>Entschuldigung, bei der Einrichtung ist etwas schief gelaufen. Bitte versuchen Sie es erneut.</translation>
     </message>
     <message>
-        <source>Authentication required</source>
-        <translation>Authentifizierung erforderlich</translation>
+        <source>Finish authentication</source>
+        <translation>Authentifizierung abschließen</translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
-        <translation>Bitte drücken Sie den Test-taster an ihren %1 für 5 Sekunden um sich zu authentifizieren.</translation>
+        <source>To complete authentication, press the test button again for 5 sec. until the status LED lights up green.</source>
+        <translation>Um die Authentifizierung abzuschließen bitte den Testtaster erneut drücken für ca. 5 Sek. bis Status-LED grün leuchtet.</translation>
+    </message>
+    <message>
+        <source>If the status LED is not green, you have to repeat authentication.(Go back to connection page, press reset button shortly and select leaflet again).</source>
+        <translation>Sollte die Status LED nicht grün leuchten, müssen Sie Authentifizierung wiederholen. (Zurückgehen zur Verbindungsseite, Resettaste kurz drücken und Leaflet erneut auswählen).</translation>
     </message>
 </context>
 <context>
