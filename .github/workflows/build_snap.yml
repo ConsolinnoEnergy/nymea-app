@@ -2,8 +2,7 @@ name: build-snap
 on:
   push:
     branches:
-      - main
-      - feature/add-debian-ci
+      - feature/add-snap
     tags:
       - 'v*'
 jobs:
