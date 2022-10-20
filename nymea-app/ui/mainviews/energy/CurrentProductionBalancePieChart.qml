@@ -8,6 +8,8 @@ import Nymea 1.0
 
 ChartView {
     id: productionPieChart
+
+
     backgroundColor: "transparent"
     animationOptions: animationsEnabled ? NymeaUtils.chartsAnimationOptions : ChartView.NoAnimation
     title: qsTr("My energy production")

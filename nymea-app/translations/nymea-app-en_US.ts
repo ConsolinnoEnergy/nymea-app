@@ -2623,6 +2623,14 @@ Please try again.</source>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>If you are the owner and do not have your own account, have your installer create an account for you.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you are an installer and do not have your own account, you can authenticate yourself using the test button on the leaflet (see quick start guide or user manual).</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LookAndFeelSettingsPage</name>
@@ -4487,11 +4495,15 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Authentication required</source>
+        <source>Finish authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please press the button on your %1 gateway for 5 seconds to authenticate this device.</source>
+        <source>To complete authentication, press the test button again for 5 sec. until the status LED lights up green.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If the status LED is not green, you have to repeat authentication.(Go back to connection page, press reset button shortly and select leaflet again).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5320,14 +5332,6 @@ A consumer, not consuming anything</extracomment>
     </message>
     <message>
         <source>Obtaining</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>At the current rate, the battery will be fully charged at %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>At the current rate, the battery will last until %1.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
