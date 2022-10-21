@@ -524,7 +524,8 @@ SettingsPageBase {
                 delegate: CheckDelegate {
                     Layout.fillWidth: true
                     text: model.text
-                    checked: (createUserPage.permissionScopes & model.scope) === model.scope
+                    checked: true
+//                    checked: (createUserPage.permissionScopes & model.scope) === model.scope
                     onClicked: {
                         var scopes = createUserPage.permissionScopes
                         if (checked) {
