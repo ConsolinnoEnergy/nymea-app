@@ -116,7 +116,7 @@ ChartView {
 
                 text: "%1 %2"
                 .arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
-                .arg(absValue > 1000 ? "kWh" : "W")
+                .arg(absValue > 1000 ? "kW" : "W")
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
                 font: Style.smallFont

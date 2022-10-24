@@ -285,8 +285,8 @@ StatsBase {
                 for (var j = 0; j < consumers.count; j++) {
                     var consumer = consumers.get(j)
                     var barSet = barSeries.append(consumer.name, [])
-//                    barSet.color = root.colors[j % root.colors.length]
-                    barSet.color = NymeaUtils.generateColor(Style.generationBaseColor, j)
+                    barSet.color = root.colors[j % root.colors.length]
+                    //barSet.color = NymeaUtils.generateColor(Style.generationBaseColor, j)
                     barSet.borderColor = barSet.color
                     barSet.borderWith = 0
                     map[consumer.id] = barSet
@@ -473,8 +473,8 @@ StatsBase {
                         Rectangle {
                             width: Style.extraSmallFont.pixelSize
                             height: width
-//                            color: root.colors[model.indexInModel % root.colors.length]
-                            color: NymeaUtils.generateColor(Style.generationBaseColor, model.indexInModel)
+                            color: root.colors[model.indexInModel % root.colors.length]
+                           // color: NymeaUtils.generateColor(Style.generationBaseColor, model.indexInModel)
                         }
                         Label {
                             text: "%1: %2 kWh".arg(model.name).arg(model.value)
