@@ -2,10 +2,9 @@ name: build-snap
 on:
   push:
     branches:
-      - main
-      - feature/add-debian-ci
-    tags:
-      - 'v*'
+      - feature/add-snap
+#    tags:
+#      - 'v*'
 jobs:
   build-snap:
     runs-on: ubuntu-18.04

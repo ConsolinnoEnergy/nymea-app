@@ -22,10 +22,10 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: build_windows.yml  
-      - uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: build_snap.yml    
+#      - uses: dawidd6/action-download-artifact@v2
+#        with:
+#          github_token: ${{secrets.GITHUB_TOKEN}}
+#          workflow: build_snap.yml    
       - name: Create release in public repo
         uses: ncipollo/release-action@v1
         with:
@@ -34,4 +34,5 @@ jobs:
           omitBody: true
           removeArtifacts: true
           token: ${{ secrets.REPO_GITLAB_TOKEN }}
-          artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
+          #artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
+          artifacts: "Consolinno HEMS windows installer/*.exe"
