@@ -39,19 +39,19 @@ ChartView {
         property double fromProduction: energyManager.currentPowerConsumption - fromGrid - fromStorage
 
         PieSlice {
-            color: Style.red
+            color: "#f37b8e"
             borderColor: Style.backgroundColor
 
             value: consumptionBalanceSeries.fromGrid
         }
         PieSlice {
-            color: Style.green
+            color: "#fce487"
             borderColor: Style.backgroundColor
 
             value: consumptionBalanceSeries.fromProduction
         }
         PieSlice {
-            color: Style.orange
+            color: "#ace3e2"
             borderColor: Style.backgroundColor
             value: consumptionBalanceSeries.fromStorage
         }
@@ -132,7 +132,7 @@ ChartView {
                 font: Style.extraSmallFont
             }
             Label {
-                color: Style.green
+                color: Style.yellow
                 property double absValue: consumptionBalanceSeries.fromProduction
                 text: "%1 %2".arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
                 .arg(absValue > 1000 ? "kW" : "W")
@@ -152,7 +152,7 @@ ChartView {
                 font: Style.extraSmallFont
             }
             Label {
-                color: Style.orange
+                color: "#78d1ce"
                 property double absValue: consumptionBalanceSeries.fromStorage
                 text: "%1 %2".arg((absValue / (absValue > 1000 ? 1000 : 1)).toFixed(1))
                 .arg(absValue > 1000 ? "kW" : "W")

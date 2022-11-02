@@ -110,20 +110,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>nymea:cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Note: nymea:cloud based remote connection is deprecated and will be removed in a future version.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cloud</source>
-        <translation type="unfinished">클라우드</translation>
-    </message>
-    <message>
-        <source>Connect this %1 system to %1:cloud</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">클라우드</translation>
     </message>
 </context>
 <context>
@@ -191,6 +179,33 @@
     <message>
         <source>Blinds</source>
         <translation type="unfinished">블라인드</translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothDevice</name>
+    <message>
+        <source>Connecting to %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnecting from %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discovering services of %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 connected and discovered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 disconnected.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -790,73 +805,39 @@
     <name>ConnectPage</name>
     <message>
         <source>Connect %1</source>
-        <translation>%1 연결</translation>
+        <translation type="vanished">%1 연결</translation>
     </message>
     <message>
         <source>Oh, look!</source>
-        <translation>오, 보세요!</translation>
+        <translation type="vanished">오, 보세요!</translation>
     </message>
     <message>
         <source>Just a moment...</source>
-        <translation>잠시만요...</translation>
+        <translation type="vanished">잠시만요...</translation>
     </message>
     <message>
         <source>Start wireless setup</source>
-        <translation>무선 설정 시작</translation>
+        <translation type="vanished">무선 설정 시작</translation>
     </message>
     <message>
         <source>Cloud login</source>
-        <translation>클라우드 로그인</translation>
+        <translation type="vanished">클라우드 로그인</translation>
     </message>
     <message>
         <source>Demo mode (online)</source>
-        <translation>데모 모드(온라인)</translation>
+        <translation type="vanished">데모 모드(온라인)</translation>
     </message>
     <message>
         <source>Not the ones you&apos;re looking for? We&apos;re looking for more!</source>
-        <translation>당신이 찾고 있는 게 아니에요? 더 찾고 있어요!</translation>
+        <translation type="vanished">당신이 찾고 있는 게 아니에요? 더 찾고 있어요!</translation>
     </message>
     <message>
         <source>Box information</source>
-        <translation>상자(장치) 정보</translation>
+        <translation type="vanished">상자(장치) 정보</translation>
     </message>
     <message>
         <source>Available connections</source>
-        <translation>사용 가능한 연결</translation>
-    </message>
-    <message>
-        <source>Uh oh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>There are %n %1 systems in your network! Which one would you like to use?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>We haven&apos;t found a %1 system in your network yet.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>There doesn&apos;t seem to be a %1 system installed in your network. Please make sure your %1 system is correctly set up and connected.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Searching for %1 systems...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do you have a %1 system but it&apos;s not connected to your network yet? Use the wireless setup to connect it!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">사용 가능한 연결</translation>
     </message>
 </context>
 <context>
@@ -2341,6 +2322,941 @@ Please try again.</source>
     </message>
 </context>
 <context>
+    <name>Interfaces</name>
+    <message>
+        <source>Access control systems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access granted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access denied</source>
+        <translation type="unfinished">액세스 거부</translation>
+    </message>
+    <message>
+        <source>Connectable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected</source>
+        <translation type="unfinished">연결된</translation>
+    </message>
+    <message>
+        <source>Connected changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gateways</source>
+        <translation type="unfinished">문</translation>
+    </message>
+    <message>
+        <source>Accounts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User is logged in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User login changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Simple closables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation type="unfinished">열기</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">닫기</translation>
+    </message>
+    <message>
+        <source>Closables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Awnings</source>
+        <translation type="unfinished">차양막</translation>
+    </message>
+    <message>
+        <source>Barcode scanners</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code scanned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Battery powered devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Battery level is critical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Battery level entered critical state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Battery level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Battery level changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging</source>
+        <translation type="unfinished">충전중</translation>
+    </message>
+    <message>
+        <source>Charging started or stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discharging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discharging started or stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plugged in</source>
+        <translation type="unfinished">연결됨</translation>
+    </message>
+    <message>
+        <source>Plugged in or out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blinds</source>
+        <translation type="unfinished">블라인드</translation>
+    </message>
+    <message>
+        <source>Switches</source>
+        <translation type="unfinished">스위치</translation>
+    </message>
+    <message>
+        <source>Button pressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sensors</source>
+        <translation type="unfinished">센서</translation>
+    </message>
+    <message>
+        <source>Cleaning robots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Robot state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Robot state changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start cleaning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop cleaning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause cleaning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return to base</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Closable sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opened or closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CO sensor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CO level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CO level changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CO2 sensor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CO2 level</source>
+        <translation type="unfinished">CO2 측정</translation>
+    </message>
+    <message>
+        <source>CO2 level changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flammable gas sensor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flammable gas level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flammable gas level changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Powered things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thing is turned on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A thing is turned on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn things on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lights</source>
+        <translation type="unfinished">전등</translation>
+    </message>
+    <message>
+        <source>Light is turned on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A light is turned on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn lights on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dimmable lights</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Light&apos;s brightness is</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A light&apos;s brightness has changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set lights brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Color temperature light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lights color temperature is</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A lights color temperature has changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set lights color temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Color lights</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Light&apos;s color is</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A light&apos;s color has changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set lights color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Conductivity sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Conductivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Conductivity changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daylight sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daylight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daylight changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Doorbells</source>
+        <translation type="unfinished">초인종</translation>
+    </message>
+    <message>
+        <source>Doorbell pressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EV charger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum charging current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum charging current changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set maximum charging current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Closable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moving changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heating enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heating enabled changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable heating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Percentage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Percentage changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set percentage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cooling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cooling enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cooling enabled changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable cooling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media</source>
+        <translation type="unfinished">미디어</translation>
+    </message>
+    <message>
+        <source>Media controllers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fast forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fast rewind</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shuffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shuffle changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set shuffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeat</source>
+        <translation type="unfinished">반복</translation>
+    </message>
+    <message>
+        <source>Repeat changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set repeat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Navigation pad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation type="unfinished">까지</translation>
+    </message>
+    <message>
+        <source>Navigate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Navigation pad with menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shutters</source>
+        <translation type="unfinished">셔터</translation>
+    </message>
+    <message>
+        <source>Smart meter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Smart meters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total energy consumed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total consumed energy changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current power changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total energy produced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total produced energy changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User access control systems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Users changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation type="unfinished">사용자</translation>
+    </message>
+    <message>
+        <source>Add user</source>
+        <translation type="unfinished">사용자 추가</translation>
+    </message>
+    <message>
+        <source>Remove user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fingerprint readers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finger</source>
+        <translation type="unfinished">손가락</translation>
+    </message>
+    <message>
+        <source>Garage doors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>State changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Intermediate position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Intermediate position changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Humidity sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Humidity</source>
+        <translation type="unfinished">습도</translation>
+    </message>
+    <message>
+        <source>Humidity changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Incoming events</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Triggered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Irrigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Light sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Light intensity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Light intensity changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Long pressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media sources</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">제목</translation>
+    </message>
+    <message>
+        <source>Title changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Artist changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Artwork</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Artwork changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media players</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Playback status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Playback status changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set playback status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moisture sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moisture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moisture changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Button name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Noise sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Noise level</source>
+        <translation type="unfinished">소음 측정</translation>
+    </message>
+    <message>
+        <source>Noise level changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notification services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message body</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Outgoing events</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trigger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power sockets</source>
+        <translation type="unfinished">전원 소켓</translation>
+    </message>
+    <message>
+        <source>Powered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turned on/off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn on/off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power switches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Presence sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is present</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Presence changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pressure sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pressure</source>
+        <translation type="unfinished">압력</translation>
+    </message>
+    <message>
+        <source>Pressure changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Smart locks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlatch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Temperature sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Temperature</source>
+        <translation type="unfinished">온도</translation>
+    </message>
+    <message>
+        <source>Temperature has changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thermostats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target temperature changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set target temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ventilation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Air flow rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Air flow rate changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set air flow rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speakers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather</source>
+        <translation type="unfinished">날씨</translation>
+    </message>
+    <message>
+        <source>Weather description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather description changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather condition changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Temperature changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wind speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wind speed changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wind direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wind direction changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wind speed sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wireless devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Signal strength</source>
+        <translation type="unfinished">신호 강도</translation>
+    </message>
+    <message>
+        <source>Signal strength changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Water sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Water detected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Water detected changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fire sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fire detected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fire detected changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IrrigationDevicePage</name>
     <message>
         <source>Turn %1 off at %2</source>
@@ -2857,35 +3773,31 @@ Please try again.</source>
     <name>ManualConnectPage</name>
     <message>
         <source>Manual connection</source>
-        <translation>수동 연결</translation>
+        <translation type="vanished">수동 연결</translation>
     </message>
     <message>
         <source>Protocol</source>
-        <translation>프로토콜(통신규약)</translation>
+        <translation type="vanished">프로토콜(통신규약)</translation>
     </message>
     <message>
         <source>Websocket</source>
-        <translation>웹소켓</translation>
+        <translation type="vanished">웹소켓</translation>
     </message>
     <message>
         <source>Address:</source>
-        <translation>서버주소:</translation>
+        <translation type="vanished">서버주소:</translation>
     </message>
     <message>
         <source>Port:</source>
-        <translation>포트:</translation>
+        <translation type="vanished">포트:</translation>
     </message>
     <message>
         <source>Encrypted connection:</source>
-        <translation>보안 연결:</translation>
+        <translation type="vanished">보안 연결:</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>접속하기</translation>
-    </message>
-    <message>
-        <source>TCP</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">접속하기</translation>
     </message>
 </context>
 <context>
@@ -4796,13 +5708,6 @@ Do you want to proceed?</source>
     <message>
         <source>Select a state</source>
         <translation type="unfinished">상태 선택</translation>
-    </message>
-</context>
-<context>
-    <name>SelectStateEventDescriptorParamPage</name>
-    <message>
-        <source>Only consider state change if</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
