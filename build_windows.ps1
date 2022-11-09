@@ -8,5 +8,5 @@ nmake qmake_all
 nmake lrelease
 nmake
 aqt.exe install-tool windows desktop tools_ifw
-cp Tools/QtInstallerFramework/4.4/bin/* ../../../Qt/5.15.2/msvc2019_64/bin
+cp Tools/QtInstallerFramework/*/bin/* ../../../Qt/5.15.2/msvc2019_64/bin
 nmake wininstaller
