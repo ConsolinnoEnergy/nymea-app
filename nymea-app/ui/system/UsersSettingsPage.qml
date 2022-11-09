@@ -464,7 +464,8 @@ SettingsPageBase {
             title: qsTr("Add a user")
 
             signal done
-            property var permissionScopes: UserInfo.PermissionScopeNone
+            // Consolinno change: New users are admin by default.
+            property var permissionScopes: UserInfo.PermissionScopeAdmin
 
             SettingsPageSectionHeader {
                 text: qsTr("User information")
@@ -524,8 +525,7 @@ SettingsPageBase {
                 delegate: CheckDelegate {
                     Layout.fillWidth: true
                     text: model.text
-                    checked: true
-//                    checked: (createUserPage.permissionScopes & model.scope) === model.scope
+                    checked: (createUserPage.permissionScopes & model.scope) === model.scope
                     onClicked: {
                         var scopes = createUserPage.permissionScopes
                         if (checked) {
