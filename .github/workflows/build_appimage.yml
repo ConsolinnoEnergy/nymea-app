@@ -1,0 +1,55 @@
+name: build-appimage 
+on:
+  push:
+    branches:
+      - main
+      - feature/appimage
+    tags:
+      - 'v*'
+jobs:
+  build-appimage:
+    runs-on: ubuntu-18.04
+    steps:
+      - run: git config --global credential.helper store
+      - run: | 
+          cat <<EOF > $HOME/.git-credentials
+          https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de
+          EOF
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - uses: jurplel/install-qt-action@v2
+        with:
+          version: '5.15.2'
+          modules: 'qtcharts'
+          target: 'desktop'
+      - run: |
+          wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+          chmod +x linuxdeployqt-*-x86_64.AppImage
+      - run: ./build_appimage.sh
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v3     
+      #  run: ./gen_snap_version.sh
+      #- uses: lhotari/action-upterm@v1
+      - name: Archive AppImage
+        uses: actions/upload-artifact@v3
+        with:
+          name: Archive AppImage
+          path: build/appimage/*.AppImage
+          
+  publish-appimage:
+    name: Publish AppImage
+    runs-on: ubuntu-latest
+    needs: build-appimage
+    if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: Archive AppImage
+      - name: Upload AppImage to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file_glob: true
+          file: ./*.AppImage
+          tag: ${{ github.ref }}
+          overwrite: true

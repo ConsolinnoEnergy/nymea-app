@@ -22,6 +22,10 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: build_windows.yml  
+      - uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: build_appimage.yml  
 #      - uses: dawidd6/action-download-artifact@v2
 #        with:
 #          github_token: ${{secrets.GITHUB_TOKEN}}
@@ -35,4 +39,4 @@ jobs:
           removeArtifacts: true
           token: ${{ secrets.REPO_GITLAB_TOKEN }}
           #artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
-          artifacts: "Consolinno HEMS windows installer/*.exe"
+          artifacts: "Archive AppImage/*.AppImage, Consolinno HEMS windows installer/*.exe"
