@@ -28,7 +28,7 @@ $QMAKE \
 ${ROOT_DIR}/nymea-app/nymea-app.pro \
 -spec android-clang \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
-'ANDROID_ABIS=armeabi-v7a arm64-v8a'
+'ANDROID_ABIS=armeabi-v7a arm64-v8a x86_64'
 
 make -j$(nproc) qmake_all 
 make lrelease
