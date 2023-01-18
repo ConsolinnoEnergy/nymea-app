@@ -28,9 +28,6 @@ jobs:
           version: '5.15.2'
           target: 'android'
           modules: qtcharts
-      #- uses: nttld/setup-ndk@v1
-      #  with:
-      #    ndk-version: r21e
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
@@ -38,10 +35,10 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - name: Install Android NDK
-        run: sdkmanager  --install "ndk;21.4.7075529"
+        run: sdkmanager --install "ndk;21.4.7075529" "platforms;android-31"
       - name: Set symlink to Android NDK
         run:  rm -rf /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21.4.7075529 /usr/local/lib/android/sdk/ndk-bundle
-      #- uses: lhotari/action-upterm@v1
+#     - uses: lhotari/action-upterm@v1
       #  env:
       #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
       #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
@@ -49,7 +46,13 @@ jobs:
       #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - name: "Generating Snapshot version number"
         run: ./gen_snap_version.sh
-      - run: ./build_android.sh
+      #- run: ./build_android.sh
+      #  env:
+      #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+      #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+      #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+      - run: ./build_android_testpatch.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
