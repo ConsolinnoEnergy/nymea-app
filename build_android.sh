@@ -19,6 +19,8 @@ else
     MAKE_BIN=$ANDROID_NDK_ROOT/prebuilt/linux-x86_64/bin/make
 fi
 
+export VERSION=$(cat ${ROOT_DIR}/nymea-app-consolinno-overlay/version.txt | head -n1 | sed 's/\./-/g')
+
 echo "Build tools:"
 echo "qmake: $QMAKE"
 echo "make: $MAKE_BIN"
@@ -28,7 +30,7 @@ $QMAKE \
 ${ROOT_DIR}/nymea-app/nymea-app.pro \
 -spec android-clang \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
-'ANDROID_ABIS=armeabi-v7a arm64-v8a'
+'ANDROID_ABIS=armeabi-v7a arm64-v8a x86_64'
 
 make -j$(nproc) qmake_all 
 make lrelease
@@ -65,7 +67,7 @@ if [[ -z "${NOSIGN}" ]]; then
     --key-pass pass:${SIGNING_KEY_PASSWORD} \
     --v2-signing-enabled  \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-signed-apksigner.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/consolinno-hems-${VERSION}-signed.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
     
 else
