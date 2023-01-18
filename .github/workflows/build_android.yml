@@ -55,14 +55,20 @@ jobs:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+      - run: ./build_android_testpatch.sh
+        env:
+          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - name: Archive android apk and aab
         uses: actions/upload-artifact@v3
         with:
           name: Archive apk and aab
           path: |
             build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab 
-            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk
-            build/android/nymea-app/android-build/build/outputs/apk/release/android-build-release-signed-apksigner.apk
+            build/android/nymea-app/android-build/build/outputs/apk/release/consolinno-hems-*.apk
+            build/android/nymea-app/android-build/build/outputs/apk/release/consolinno-hems-*-testing.apk
             
   publish-android:
     name: Publish android packages
@@ -78,6 +84,12 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file: apk/release/android-build-release-signed-apksigner.apk
+          tag: ${{ github.ref }}
+          overwrite: true
+      - name: Upload  testing .apk to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: apk/release/android-build-release-signed-apksigner-testing.apk
           tag: ${{ github.ref }}
           overwrite: true
       - name: Upload .aab to release
