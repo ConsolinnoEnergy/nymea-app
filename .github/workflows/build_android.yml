@@ -52,7 +52,7 @@ jobs:
       #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
       #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
       #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-      - run: ./build_android_testpatch.sh
+      - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
