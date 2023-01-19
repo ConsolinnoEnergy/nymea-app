@@ -86,13 +86,8 @@ jobs:
       - name: Upload .apk to release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: apk/release/android-build-release-signed-apksigner.apk
-          tag: ${{ github.ref }}
-          overwrite: true
-      - name: Upload  testing .apk to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          file: apk/release/android-build-release-signed-apksigner-testing.apk
+          file_glob: true
+          file: apk/release/consolinno-hems-*.apk
           tag: ${{ github.ref }}
           overwrite: true
       - name: Upload .aab to release
