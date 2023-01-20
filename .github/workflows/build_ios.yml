@@ -4,7 +4,10 @@ on:
     branches:
       - main
       - feature/add-ios-ci
-      - feature/add-ios-publish
+      - feature/add-ios-publish      
+      - feature/debug-ios-ci
+      - feature/test-ios-ci
+
     tags:
       - 'v*'
 
@@ -54,15 +57,16 @@ jobs:
           host: 'mac'
           target: 'ios'
           arch: 'ios'
-
-      #- uses: lhotari/action-upterm@v1
-      #  env:
-      #    BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
-      #    P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
-      #    BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
-      #    KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-      #- name: "Generating Snapshot version number"
-      #  run: ./gen_snap_version.sh
+      - name: "Upterm debug"
+        if: contains(github.ref_name, 'debug') 
+        uses: lhotari/action-upterm@v1
+        with:
+          limit-access-to-actor: true
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       - run: ./build_ios.sh
       #- uses: lhotari/action-upterm@v1
       - name: Archive .ipa

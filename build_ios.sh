@@ -20,9 +20,13 @@ OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
 QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
 
 make qmake_all
+set +e 
+make -j $(sysctl -n hw.physicalcpu) 
+# First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here. 
+# Edit: Now it seems to fail. Thus set +e above  
+set -e 
 make -j $(sysctl -n hw.physicalcpu)
-# First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here.
-make -j $(sysctl -n hw.physicalcpu)
+
 
 mkdir ./Payload
 cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/consolinno-energy.app" ./Payload
