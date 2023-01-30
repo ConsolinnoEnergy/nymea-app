@@ -1,5 +1,5 @@
 # Note: This should be done using a proper QML parser. However I couldn't find 
-# an easy to use one. Thus this scripts uses regex substiution which can 
+# an easy to use one. Thus this scripts uses regex substitution which can 
 # easily go wrong. Be warned!
 import argparse
 import re
@@ -20,6 +20,29 @@ def parse_element_id(el):
         print("Warning: Could not determine id of element.")
         el_id = None 
     return(el_id)
+
+def patch_combox(match):
+    # This sucks, but match does not bring the match number
+    # Would need to refactor the script to get the number in a nicer way
+    global checkbox_match_num
+    checkbox_match_num +=1
+
+    el = match.group()
+    el_id = parse_element_id(el)
+    if not el_id:
+        el_id = f"Checkbox_{checkbox_match_num}"
+
+    lines = el.splitlines()
+    # Let's clean empty lines
+    try:
+        lines.remove("") 
+    except ValueError:
+        pass
+    indent = lines[1].count(" ") # Identation of last attribute line
+    lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
+    lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.ComboBox")
+    return("\n".join(lines))
+
 
 
 def patch_checkbox(match):
@@ -113,6 +136,9 @@ def patch_file(filename, inplace=False):
     res = re.sub("Button\s?{(?s:.*?)}", patch_button, res)
     # Matches TextField{ .... } including line breaks
     res = re.sub("TextField\s?{(?s:.*?)}", patch_textfield, res)
+    # Matches ComboBox{ .... } including line breaks
+    res = re.sub("ComboBox\s?{(?s:.*?)}", patch_combox, res)
+
 
     outfile = filename if inplace == True else filename + ".patched"
     with open(outfile, "w") as f:
