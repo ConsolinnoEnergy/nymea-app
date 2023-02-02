@@ -62,10 +62,12 @@ def patch_combox(match):
         lines.insert(1, (indent-1) * " " + f"id: {qml_id}")
     lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
     lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.ComboBox")
-    delegate = combobox_delegate_template.substitute(elemid=qml_id)
-    # Add in reversed order, because we insert on top of list
-    for dline in reversed(delegate.splitlines()):
-        lines.insert(1, (indent-1) * " " + dline)
+    if el.find("delegate:") == -1:  # Has delegate already
+        # Skips for example ui/delegate/ParamDelegate.qml:271 
+        delegate = combobox_delegate_template.substitute(elemid=qml_id)
+        # Add in reversed order, because we insert on top of list
+        for dline in reversed(delegate.splitlines()):
+            lines.insert(1, (indent-1) * " " + dline)
     return("\n".join(lines))
 
 
