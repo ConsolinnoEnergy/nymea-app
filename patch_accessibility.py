@@ -3,10 +3,27 @@
 # easily go wrong. Be warned!
 import argparse
 import re
+from string import Template
 
 button_match_num = 0
 checkbox_match_num = 0
 textfield_match_num = 0
+
+combobox_delegate_template=Template("""delegate: ItemDelegate {
+              width: $elemid.width
+              contentItem: Text {
+                  text: $elemid.textRole
+                        ? (Array.isArray($elemid.model) ? modelData[$elemid.textRole] : model[$elemid.textRole])
+                        : modelData
+                  font: $elemid.font
+                  elide: Text.ElideRight
+                  Accessible.name: $elemid.textRole
+                                   ? (Array.isArray($elemid.model) ? modelData[$elemid.textRole] : model[$elemid.textRole])
+                                   : modelData
+              }
+              highlighted: $elemid.highlightedIndex === index
+}
+""")
 
 def parse_element_id(el):
     try:
@@ -16,8 +33,7 @@ def parse_element_id(el):
             print("Warning: Unvailid id parsed")
             raise Exception("Parsed id invalid")
     except Exception as e:
-        print(e)
-        print("Warning: Could not determine id of element.")
+        print("Info: No QML id defined for element")
         el_id = None 
     return(el_id)
 
@@ -28,9 +44,12 @@ def patch_combox(match):
     checkbox_match_num +=1
 
     el = match.group()
-    el_id = parse_element_id(el)
+    qml_id = el_id = parse_element_id(el)
+    set_id = False
     if not el_id:
-        el_id = f"Checkbox_{checkbox_match_num}"
+        set_id = True
+        el_id = f"ComboBox_{checkbox_match_num}"
+        qml_id = el_id.lower().replace('_', '')
 
     lines = el.splitlines()
     # Let's clean empty lines
@@ -39,8 +58,14 @@ def patch_combox(match):
     except ValueError:
         pass
     indent = lines[1].count(" ") # Identation of last attribute line
+    if set_id:
+        lines.insert(1, (indent-1) * " " + f"id: {qml_id}")
     lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
     lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.ComboBox")
+    delegate = combobox_delegate_template.substitute(elemid=qml_id)
+    # Add in reversed order, because we insert on top of list
+    for dline in reversed(delegate.splitlines()):
+        lines.insert(1, (indent-1) * " " + dline)
     return("\n".join(lines))
 
 

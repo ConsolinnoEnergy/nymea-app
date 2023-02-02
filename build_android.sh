@@ -76,6 +76,7 @@ else
     --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-32 \
+    --release \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
     --gradle
 fi
