@@ -1,5 +1,5 @@
-# Note: This should be done using a proper QML parser. However I couldn't find 
-# an easy to use one. Thus this scripts uses regex substitution which can 
+# Note: This should be done using a proper QML parser. However I couldn't find
+# an easy to use one. Thus this scripts uses regex substitution which can
 # easily go wrong. Be warned!
 import argparse
 import re
@@ -9,7 +9,8 @@ button_match_num = 0
 checkbox_match_num = 0
 textfield_match_num = 0
 
-combobox_delegate_template=Template("""delegate: ItemDelegate {
+combobox_delegate_template = Template(
+    """delegate: ItemDelegate {
               width: $elemid.width
               contentItem: Text {
                   text: $elemid.textRole
@@ -23,7 +24,9 @@ combobox_delegate_template=Template("""delegate: ItemDelegate {
               }
               highlighted: $elemid.highlightedIndex === index
 }
-""")
+"""
+)
+
 
 def parse_element_id(el):
     try:
@@ -34,14 +37,15 @@ def parse_element_id(el):
             raise Exception("Parsed id invalid")
     except Exception as e:
         print("Info: No QML id defined for element")
-        el_id = None 
-    return(el_id)
+        el_id = None
+    return el_id
+
 
 def patch_combox(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
     global checkbox_match_num
-    checkbox_match_num +=1
+    checkbox_match_num += 1
 
     el = match.group()
     qml_id = el_id = parse_element_id(el)
@@ -49,34 +53,33 @@ def patch_combox(match):
     if not el_id:
         set_id = True
         el_id = f"ComboBox_{checkbox_match_num}"
-        qml_id = el_id.lower().replace('_', '')
+        qml_id = el_id.lower().replace("_", "")
 
     lines = el.splitlines()
     # Let's clean empty lines
     try:
-        lines.remove("") 
+        lines.remove("")
     except ValueError:
         pass
-    indent = lines[1].count(" ") # Identation of last attribute line
+    indent = lines[1].count(" ")  # Identation of last attribute line
     if set_id:
-        lines.insert(1, (indent-1) * " " + f"id: {qml_id}")
-    lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
-    lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.ComboBox")
+        lines.insert(1, (indent - 1) * " " + f"id: {qml_id}")
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
+    lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.ComboBox")
     if el.find("delegate:") == -1:  # Has delegate already
-        # Skips for example ui/delegate/ParamDelegate.qml:271 
+        # Skips for example ui/delegate/ParamDelegate.qml:271
         delegate = combobox_delegate_template.substitute(elemid=qml_id)
         # Add in reversed order, because we insert on top of list
         for dline in reversed(delegate.splitlines()):
-            lines.insert(1, (indent-1) * " " + dline)
-    return("\n".join(lines))
-
+            lines.insert(1, (indent - 1) * " " + dline)
+    return "\n".join(lines)
 
 
 def patch_checkbox(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
     global checkbox_match_num
-    checkbox_match_num +=1
+    checkbox_match_num += 1
 
     el = match.group()
     el_id = parse_element_id(el)
@@ -86,20 +89,21 @@ def patch_checkbox(match):
     lines = el.splitlines()
     # Let's clean empty lines
     try:
-        lines.remove("") 
+        lines.remove("")
     except ValueError:
         pass
-    indent = lines[1].count(" ") # Identation of last attribute line
-    lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
-    lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.CheckBox")
-    lines.insert(1, (indent-1) * " " + "Accessible.checkable: true")
-    return("\n".join(lines))
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
+    lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.CheckBox")
+    lines.insert(1, (indent - 1) * " " + "Accessible.checkable: true")
+    return "\n".join(lines)
+
 
 def patch_button(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
     global button_match_num
-    button_match_num +=1
+    button_match_num += 1
 
     el = match.group()
     el_id = parse_element_id(el)
@@ -109,21 +113,21 @@ def patch_button(match):
     lines = el.splitlines()
     # Let's clean empty lines
     try:
-        lines.remove("") 
+        lines.remove("")
     except ValueError:
         pass
-    indent = lines[1].count(" ") # Identation of last attribute line
-    lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
-    lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.Button")
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
+    lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.Button")
 
-    return("\n".join(lines))
+    return "\n".join(lines)
 
- 
+
 def patch_textfield(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
     global textfield_match_num
-    textfield_match_num +=1
+    textfield_match_num += 1
 
     el = match.group()
     el_id = parse_element_id(el)
@@ -133,47 +137,46 @@ def patch_textfield(match):
     lines = el.splitlines()
     # Let's clean empty lines
     try:
-        lines.remove("") 
+        lines.remove("")
     except ValueError:
         pass
-    indent = lines[1].count(" ") # Identation of last attribute line
-    lines.insert(1, (indent-1) * " " + f"Accessible.name: \"{el_id}\"")
-    lines.insert(1, (indent-1) * " " + f"Accessible.editable: true")
-    lines.insert(1, (indent-1) * " " + f"Accessible.role: Accessible.EditableText")
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
+    lines.insert(1, (indent - 1) * " " + f"Accessible.editable: true")
+    lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.EditableText")
 
-    return("\n".join(lines))
+    return "\n".join(lines)
 
-    
+
 def patch_file(filename, inplace=False):
-    # This sucks, but would need to use smth other than re.sub function 
+    # This sucks, but would need to use smth other than re.sub function
     # to get rid of these global vars
-    global button_match_num 
-    global checkbox_match_num 
-    global textfield_match_num 
+    global button_match_num
+    global checkbox_match_num
+    global textfield_match_num
     button_match_num = 0
     checkbox_match_num = 0
     textfield_match_num = 0
 
     with open(filename) as f:
-              qml = f.read() 
+        qml = f.read()
 
     # Matches CheckBox{ .... } including line breaks
-    res = re.sub("CheckBox\s?{(?s:.*?)}", patch_checkbox, qml)
+    res = re.sub("^[ \t]*CheckBox\s?{(?s:.*?)}", patch_checkbox, qml, flags=re.M)
     # Matches Button{ .... } including line breaks
-    res = re.sub("Button\s?{(?s:.*?)}", patch_button, res)
+    res = re.sub("^[ \t]*Button\s?{(?s:.*?)}", patch_button, res, flags=re.M)
     # Matches TextField{ .... } including line breaks
-    res = re.sub("TextField\s?{(?s:.*?)}", patch_textfield, res)
+    res = re.sub("^[ \t]*TextField\s?{(?s:.*?)}", patch_textfield, res, flags=re.M)
     # Matches ComboBox{ .... } including line breaks
-    res = re.sub("ComboBox\s?{(?s:.*?)}", patch_combox, res)
-
+    res = re.sub("^[ \t]*ComboBox\s?{(?s:.*?)}", patch_combox, res, flags=re.M)
 
     outfile = filename if inplace == True else filename + ".patched"
     with open(outfile, "w") as f:
         f.write(res)
 
+
 def main():
-    p = argparse.ArgumentParser(
-    )
+    p = argparse.ArgumentParser()
     p.add_argument(
         "filename",
         help="Path of QML file to be patched",
@@ -182,10 +185,11 @@ def main():
         "--inplace",
         help="Patch inplace and alter original file",
         action="store_true",
-        default=False
+        default=False,
     )
     args = p.parse_args()
     patch_file(args.filename, inplace=args.inplace)
+
 
 if __name__ == "__main__":
     main()
