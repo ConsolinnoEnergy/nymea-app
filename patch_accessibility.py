@@ -56,6 +56,9 @@ def patch_combox(match):
         qml_id = el_id.lower().replace("_", "")
 
     lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
     # Let's clean empty lines
     try:
         lines.remove("")
@@ -87,6 +90,9 @@ def patch_checkbox(match):
         el_id = f"Checkbox_{checkbox_match_num}"
 
     lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
     # Let's clean empty lines
     try:
         lines.remove("")
@@ -104,13 +110,15 @@ def patch_button(match):
     # Would need to refactor the script to get the number in a nicer way
     global button_match_num
     button_match_num += 1
-
     el = match.group()
     el_id = parse_element_id(el)
     if not el_id:
         el_id = f"Button_{button_match_num}"
 
     lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
     # Let's clean empty lines
     try:
         lines.remove("")
@@ -135,6 +143,9 @@ def patch_textfield(match):
         el_id = f"TextField_{textfield_match_num}"
 
     lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
     # Let's clean empty lines
     try:
         lines.remove("")
@@ -162,13 +173,13 @@ def patch_file(filename, inplace=False):
         qml = f.read()
 
     # Matches CheckBox{ .... } including line breaks
-    res = re.sub("^[ \t]*CheckBox\s?{(?s:.*?)}", patch_checkbox, qml, flags=re.M)
+    res = re.sub("^.*CheckBox\s?{(?s:.*?)}", patch_checkbox, qml, flags=re.M)
     # Matches Button{ .... } including line breaks
-    res = re.sub("^[ \t]*Button\s?{(?s:.*?)}", patch_button, res, flags=re.M)
+    res = re.sub("^.*Button\s?{(?s:.*?)}", patch_button, res, flags=re.M)
     # Matches TextField{ .... } including line breaks
-    res = re.sub("^[ \t]*TextField\s?{(?s:.*?)}", patch_textfield, res, flags=re.M)
+    res = re.sub("^.*TextField\s?{(?s:.*?)}", patch_textfield, res, flags=re.M)
     # Matches ComboBox{ .... } including line breaks
-    res = re.sub("^[ \t]*ComboBox\s?{(?s:.*?)}", patch_combox, res, flags=re.M)
+    res = re.sub("^.*ComboBox\s?{(?s:.*?)}", patch_combox, res, flags=re.M)
 
     outfile = filename if inplace == True else filename + ".patched"
     with open(outfile, "w") as f:
