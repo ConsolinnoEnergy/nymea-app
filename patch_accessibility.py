@@ -41,6 +41,7 @@ def parse_element_id(el):
     return el_id
 
 
+
 def patch_combox(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
@@ -104,6 +105,30 @@ def patch_checkbox(match):
     lines.insert(1, (indent - 1) * " " + "Accessible.checkable: true")
     return "\n".join(lines)
 
+def patch_radiobutton(match):
+    # This sucks, but match does not bring the match number
+    # Would need to refactor the script to get the number in a nicer way
+    global button_match_num
+    button_match_num += 1
+    el = match.group()
+    el_id = parse_element_id(el)
+    if not el_id:
+        el_id = f"RadioButton_{button_match_num}"
+
+    lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
+    # Let's clean empty lines
+    try:
+        lines.remove("")
+    except ValueError:
+        pass
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
+    lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.Button")
+
+    return "\n".join(lines)
 
 def patch_button(match):
     # This sucks, but match does not bring the match number
@@ -129,7 +154,6 @@ def patch_button(match):
     lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.Button")
 
     return "\n".join(lines)
-
 
 def patch_textfield(match):
     # This sucks, but match does not bring the match number
@@ -163,8 +187,10 @@ def patch_file(filename, inplace=False):
     # This sucks, but would need to use smth other than re.sub function
     # to get rid of these global vars
     global button_match_num
+    global radiobutton_match_num
     global checkbox_match_num
     global textfield_match_num
+    radiobutton_match_num = 0
     button_match_num = 0
     checkbox_match_num = 0
     textfield_match_num = 0
@@ -180,6 +206,8 @@ def patch_file(filename, inplace=False):
     res = re.sub("^.*TextField\s?{(?s:.*?)}", patch_textfield, res, flags=re.M)
     # Matches ComboBox{ .... } including line breaks
     res = re.sub("^.*ComboBox\s?{(?s:.*?)}", patch_combox, res, flags=re.M)
+    # Matches RadioDelegate{ .... } including line breaks
+    res = re.sub("^.*RadioDelegate\s?{(?s:.*?)}", patch_radiobutton, res, flags=re.M)
 
     outfile = filename if inplace == True else filename + ".patched"
     with open(outfile, "w") as f:
