@@ -4,7 +4,9 @@ export ROOT_DIR=$(pwd)
 mkdir -p ./build/android
 cd ./build/android
 export BUILD_DIR=$(pwd)
-export ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk-bundle
+if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
+    export ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk-bundle
+fi
 if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
     ADEPQT=androiddeployqt
@@ -25,6 +27,7 @@ echo "Build tools:"
 echo "qmake: $QMAKE"
 echo "make: $MAKE_BIN"
 echo "androiddeployqt: $ADEPQT"
+echo "Android NDK root: $ANDROID_NDK_ROOT"
 
 $QMAKE \
 ${ROOT_DIR}/nymea-app/nymea-app.pro \
@@ -38,7 +41,7 @@ make -j$(nproc)
 make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/android-build install
 
 
-if [[ -z "${NOSIGN}" ]]; then
+if [[ -z "${SELFSIGN}" ]]; then
     # Sign and build .aab file
     $ADEPQT \
     --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
@@ -71,13 +74,24 @@ if [[ -z "${NOSIGN}" ]]; then
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
     
 else
-    # NOSIGN env is defined -> build unsigned .apk
+    # SELFSIGN env is defined -> build .apk and sign with new keypair
     $ADEPQT \
     --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-32 \
-    --release \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
+    --release \
     --gradle
+
+    openssl req -x509 -days 9125 -newkey rsa:1024 -nodes -keyout key.pem -out certificate_x509.pem
+    openssl pkcs8 -topk8 -outform DER -in key.pem -inform PEM -out key.pk8 -nocrypt
+
+    $APKSIGNER_BIN sign \
+    --v2-signing-enabled  \
+    --key $BUILD_DIR/key.pk8 --cert $BUILD_DIR/certificate_x509.pem \
+    -v \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/consolinno-hems-${VERSION}-selfsigned.apk \
+    $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
+
 fi
 

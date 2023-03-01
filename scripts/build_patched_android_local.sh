@@ -1,15 +1,18 @@
 #!/bin/bash
+export ANDROID_HOME=$HOME/Android/Sdk/
+export APKSIGNER_BIN=$HOME/Android/Sdk/build-tools/32.0.0/apksigner
 export ANDROID_NDK_ROOT=$HOME/Android/Sdk/ndk/21.4.7075529 
-export NOSIGN=1
+export SELFSIGN=1
 export QT_ROOT=$HOME/Qt/5.15.2/
-function cleanup()
-{
-    git restore ./
-}
+#function cleanup()
+#{
+#    git restore ./
+#}
+#
+#trap cleanup EXIT
 
-trap cleanup EXIT
 cd ..
-./patch_test_version.sh
-./build_android.sh
+#./patch_test_version.sh
+./build_android_testpatch.sh
 cd -
 
