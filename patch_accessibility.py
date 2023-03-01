@@ -46,15 +46,15 @@ def patch_combox(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
     skip_qml_ids = ["eventParamsComboBox",]
-    global checkbox_match_num
-    checkbox_match_num += 1
+    global combobox_match_num
+    combobox_match_num += 1
 
     el = match.group()
     qml_id = el_id = parse_element_id(el)
     set_id = False
     if not el_id:
         set_id = True
-        el_id = f"ComboBox_{checkbox_match_num}"
+        el_id = f"ComboBox_{combobox_match_num}"
         qml_id = el_id.lower().replace("_", "")
 
     lines = el.splitlines()
@@ -110,12 +110,12 @@ def patch_checkbox(match):
 def patch_radiobutton(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
-    global button_match_num
-    button_match_num += 1
+    global radiobutton_match_num
+    radiobutton_match_num += 1
     el = match.group()
     el_id = parse_element_id(el)
     if not el_id:
-        el_id = f"RadioButton_{button_match_num}"
+        el_id = f"RadioButton_{radiobutton_match_num}"
 
     lines = el.splitlines()
     if lines[0].lstrip().startswith("//"):
@@ -140,7 +140,7 @@ def patch_headerbutton(match):
     el = match.group()
     el_id = parse_element_id(el)
     if not el_id:
-        el_id = f"HeaderButton_{button_match_num}"
+        el_id = f"HeaderButton_{headerbutton_match_num}"
 
     lines = el.splitlines()
     if lines[0].lstrip().startswith("//"):
@@ -219,6 +219,33 @@ def patch_textfield(match):
 
     return "\n".join(lines)
 
+def patch_item_delegate(match):
+    # This sucks, but match does not bring the match number
+    # Would need to refactor the script to get the number in a nicer way
+    global item_delegate_match_num
+    item_delegate_match_num += 1
+
+    el = match.group()
+    el_id = parse_element_id(el)
+    if not el_id:
+        el_id = f"Menu_{item_delegate_match_num}"
+
+    lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
+    # Let's clean empty lines
+    try:
+        lines.remove("")
+    except ValueError:
+        pass
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}_Item_" + index')
+
+    return "\n".join(lines)
+
+
+
 
 def patch_file(filename, inplace=False):
     print(filename)
@@ -229,11 +256,15 @@ def patch_file(filename, inplace=False):
     global radiobutton_match_num
     global checkbox_match_num
     global textfield_match_num
+    global item_delegate_match_num
+    global combobox_match_num
     radiobutton_match_num = 0
     button_match_num = 0
     headerbutton_match_num = 0
     checkbox_match_num = 0
     textfield_match_num = 0
+    combobox_match_num = 0
+    item_delegate_match_num = 0
 
     with open(filename) as f:
         qml = f.read()
@@ -250,6 +281,8 @@ def patch_file(filename, inplace=False):
     res = re.sub("^.*ComboBox\s?{(?s:.*?)}", patch_combox, res, flags=re.M)
     # Matches RadioDelegate{ .... } including line breaks
     res = re.sub("^.*RadioDelegate\s?{(?s:.*?)}", patch_radiobutton, res, flags=re.M)
+    # Matches NymeaItemDelegate{ .... } including line breaks
+    res = re.sub("^.*NymeaItemDelegate\s?{(?s:.*?)}", patch_item_delegate, res, flags=re.M)
 
     outfile = filename if inplace == True else filename + ".patched"
     with open(outfile, "w") as f:

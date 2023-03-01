@@ -83,7 +83,9 @@ else
     --release \
     --gradle
 
-    openssl req -x509 -days 9125 -newkey rsa:1024 -nodes -keyout key.pem -out certificate_x509.pem
+    # Creating keypair 
+    openssl req -x509 -days 9125 -newkey rsa:1024 -nodes -keyout key.pem -out certificate_x509.pem \
+            -subj "/C=DE/ST=Bavaria/L=Regensburg/O=Consolinno energy GmbH/CN=consolinno.de" 
     openssl pkcs8 -topk8 -outform DER -in key.pem -inform PEM -out key.pk8 -nocrypt
 
     $APKSIGNER_BIN sign \
