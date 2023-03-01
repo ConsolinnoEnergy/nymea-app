@@ -240,8 +240,7 @@ def patch_item_delegate(match):
     except ValueError:
         pass
     indent = lines[1].count(" ")  # Identation of last attribute line
-    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}_Item_" + index')
-
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: this.text != null ? "MenuItem_" + this.text.replace(/\\s/g,\'_\') : "{el_id}_Item_" + index')
     return "\n".join(lines)
 
 
