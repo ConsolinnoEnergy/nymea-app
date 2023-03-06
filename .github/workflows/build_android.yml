@@ -46,24 +46,20 @@ jobs:
       #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - name: "Generating Snapshot version number"
         run: ./gen_snap_version.sh
-      #- run: ./build_android.sh
-      #  env:
-      #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
-      #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-      #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-      #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
       - run: ./build_android_testpatch.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
       - name: Archive android apk and aab
         uses: actions/upload-artifact@v3
         with:
