@@ -41,11 +41,12 @@ def parse_element_id(el):
     return el_id
 
 
-
 def patch_combox(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
-    skip_qml_ids = ["eventParamsComboBox",]
+    skip_qml_ids = [
+        "eventParamsComboBox",
+    ]
     global combobox_match_num
     combobox_match_num += 1
 
@@ -71,8 +72,10 @@ def patch_combox(match):
         lines.insert(1, (indent - 1) * " " + f"id: {qml_id}")
     lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
     lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.ComboBox")
-   
-    if el.find("delegate:") == -1 and qml_id not in skip_qml_ids:  # Has delegate already
+
+    if (
+        el.find("delegate:") == -1 and qml_id not in skip_qml_ids
+    ):  # Has delegate already
         # Skips for example ui/delegate/ParamDelegate.qml:271
         delegate = combobox_delegate_template.substitute(elemid=qml_id)
         # Add in reversed order, because we insert on top of list
@@ -107,6 +110,7 @@ def patch_checkbox(match):
     lines.insert(1, (indent - 1) * " " + "Accessible.checkable: true")
     return "\n".join(lines)
 
+
 def patch_radiobutton(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
@@ -132,6 +136,7 @@ def patch_radiobutton(match):
 
     return "\n".join(lines)
 
+
 def patch_headerbutton(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
@@ -154,14 +159,15 @@ def patch_headerbutton(match):
 
     if lines[0].lstrip().startswith("delegate:"):
         indent = lines[1].count(" ")  # Identation of last attribute line
-        lines.insert(1, (indent - 1) * " " + f'Accessible.name: "HeaderButton_rep" + index')
-        lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.Button")       
+        lines.insert(
+            1, (indent - 1) * " " + f'Accessible.name: "HeaderButton_rep" + index'
+        )
+        lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.Button")
     else:
         indent = lines[1].count(" ")  # Identation of last attribute line
         lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
         lines.insert(1, (indent - 1) * " " + f"Accessible.role: Accessible.Button")
     return "\n".join(lines)
-
 
 
 def patch_button(match):
@@ -192,6 +198,7 @@ def patch_button(match):
 
     return "\n".join(lines)
 
+
 def patch_textfield(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
@@ -219,6 +226,33 @@ def patch_textfield(match):
 
     return "\n".join(lines)
 
+
+def patch_slider(match):
+    # This sucks, but match does not bring the match number
+    # Would need to refactor the script to get the number in a nicer way
+    global slider_match_num
+    slider_match_num += 1
+
+    el = match.group()
+    el_id = parse_element_id(el)
+    if not el_id:
+        el_id = f"Slider_{slider_match_num}"
+
+    lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
+    # Let's clean empty lines
+    try:
+        lines.remove("")
+    except ValueError:
+        pass
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(1, (indent - 1) * " " + f'Accessible.name: "{el_id}"')
+
+    return "\n".join(lines)
+
+
 def patch_item_delegate(match):
     # This sucks, but match does not bring the match number
     # Would need to refactor the script to get the number in a nicer way
@@ -240,10 +274,37 @@ def patch_item_delegate(match):
     except ValueError:
         pass
     indent = lines[1].count(" ")  # Identation of last attribute line
-    lines.insert(1, (indent - 1) * " " + f'Accessible.name: this.text != null ? "MenuItem_" + this.text.replace(/\\s/g,\'_\') : "{el_id}_Item_" + index')
+    lines.insert(
+        1,
+        (indent - 1) * " "
+        + f'Accessible.name: this.text != null ? "MenuItem_" + this.text.replace(/\\s/g,\'_\') : "{el_id}_Item_" + index',
+    )
+
     return "\n".join(lines)
 
 
+def patch_label(match):
+    el = match.group()
+    el_id = parse_element_id(el)
+    if not el_id:
+        return el
+
+    lines = el.splitlines()
+    if lines[0].lstrip().startswith("//"):
+        print("Info: Skipping commented element.")
+        return el
+    # Let's clean empty lines
+    try:
+        lines.remove("")
+    except ValueError:
+        pass
+    indent = lines[1].count(" ")  # Identation of last attribute line
+    lines.insert(
+        1,
+        (indent - 1) * " "
+        + f'Accessible.name: this.text != null ? "{el_id}:" + this.text : "{el_id}"',
+    )
+    return "\n".join(lines)
 
 
 def patch_file(filename, inplace=False):
@@ -257,6 +318,7 @@ def patch_file(filename, inplace=False):
     global textfield_match_num
     global item_delegate_match_num
     global combobox_match_num
+    global slider_match_num
     radiobutton_match_num = 0
     button_match_num = 0
     headerbutton_match_num = 0
@@ -264,6 +326,7 @@ def patch_file(filename, inplace=False):
     textfield_match_num = 0
     combobox_match_num = 0
     item_delegate_match_num = 0
+    slider_match_num = 0
 
     with open(filename) as f:
         qml = f.read()
@@ -281,7 +344,13 @@ def patch_file(filename, inplace=False):
     # Matches RadioDelegate{ .... } including line breaks
     res = re.sub("^.*RadioDelegate\s?{(?s:.*?)}", patch_radiobutton, res, flags=re.M)
     # Matches NymeaItemDelegate{ .... } including line breaks
-    res = re.sub("^.*NymeaItemDelegate\s?{(?s:.*?)}", patch_item_delegate, res, flags=re.M)
+    res = re.sub(
+        "^.*NymeaItemDelegate\s?{(?s:.*?)}", patch_item_delegate, res, flags=re.M
+    )
+    # Matches Slider{ .... } including line breaks
+    res = re.sub("^.*Slider\s?{(?s:.*?)}", patch_slider, res, flags=re.M)
+    # Matches Label{ .... } including line breaks
+    res = re.sub("^.*Label\s?{(?s:.*?)}", patch_label, res, flags=re.M)
 
     outfile = filename if inplace == True else filename + ".patched"
     with open(outfile, "w") as f:
