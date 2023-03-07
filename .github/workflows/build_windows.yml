@@ -27,6 +27,8 @@ jobs:
           aqtversion: '==2.0.0'
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3
+      - name: "Apply Consolinno patches"
+        run: ./apply_consolinno_patches.sh
       - name: Build Windows installer
         run: ./build_windows.ps1
       #- name: Create dummy file

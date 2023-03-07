@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - feature/appimage
+      - experimental-build*
     tags:
       - 'v*'
 jobs:
@@ -25,6 +26,8 @@ jobs:
       - run: |
           wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x linuxdeployqt-*-x86_64.AppImage
+      - name: "Apply Consolinno patches"
+        run: ./apply_consolinno_patches.sh
       - run: ./build_appimage.sh
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3     

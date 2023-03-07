@@ -20,6 +20,8 @@ jobs:
         uses: samuelmeuli/action-snapcraft@v1
         with:
           use_lxd: true
+      - name: "Apply Consolinno patches"
+        run: ./apply_consolinno_patches.sh
       - run: ./build_snap.sh
       - name: Archive snap package
         uses: actions/upload-artifact@v3

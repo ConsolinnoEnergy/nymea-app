@@ -5,6 +5,8 @@ on:
       - main
       - feature/add-android-ci
       - feature/add-android-publish
+      - experimental-android*
+      - experimental-build*
     tags:
       - 'v*'
 jobs:
@@ -44,6 +46,8 @@ jobs:
       #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
       #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
       #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+      - name: "Apply Consolinno patches"
+        run: ./apply_consolinno_patches.sh
       - name: "Generating Snapshot version number"
         run: ./gen_snap_version.sh
       - run: ./build_android.sh
