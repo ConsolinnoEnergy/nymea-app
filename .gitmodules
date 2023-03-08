@@ -3,4 +3,4 @@
 	url = https://github.com/ConsolinnoEnergy/nymea-app.git
 [submodule "nymea-app-consolinno-overlay"]
 	path = nymea-app-consolinno-overlay
-	url = https://gitlab.consolinno-it.de/leafletfirmware/nymea/nymea-app-consolinno-overlay.git
+	url = https://github.com/ConsolinnoEnergy/nymea-app-consolinno-overlay.git 
