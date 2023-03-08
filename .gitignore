@@ -2,4 +2,5 @@ build
 .qmake.stash
 *.keystore
 *.qm
+build-nymea-app*
 
