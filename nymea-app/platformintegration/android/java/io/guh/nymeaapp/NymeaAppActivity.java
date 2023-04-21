@@ -12,7 +12,7 @@ import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.os.Vibrator;
 import android.net.Uri;
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 import android.content.res.Configuration;
 import android.content.IntentFilter;
 import android.content.BroadcastReceiver;

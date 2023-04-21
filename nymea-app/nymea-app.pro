@@ -74,7 +74,7 @@ linux:!android:!ubports: {
 android {
     include(../3rdParty/android/android_openssl/openssl.pri)
 
-    ANDROID_MIN_SDK_VERSION = 21
+    ANDROID_MIN_SDK_VERSION = 26
     ANDROID_TARGET_SDK_VERSION = 33
 
     QT += androidextras

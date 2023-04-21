@@ -32,6 +32,8 @@
 #include "platformhelper.h"
 
 #include <QDebug>
+#include "logging.h"
+NYMEA_LOGGING_CATEGORY(dcPushNotif, "PushNotifications")
 
 #if defined Q_OS_ANDROID
 #include <QtAndroid>
@@ -87,17 +89,17 @@ void PushNotifications::setEnabled(bool enabled)
 void PushNotifications::registerForPush()
 {
 #if defined Q_OS_ANDROID && defined WITH_FIREBASE
-    qDebug() << "Checking for play services";
+    qWarning(dcPushNotif()) << "Checking for play services";
     jboolean playServicesAvailable = QAndroidJniObject::callStaticMethod<jboolean>("io.guh.nymeaapp.NymeaAppNotificationService", "checkPlayServices", "()Z");
     if (playServicesAvailable) {
-        qDebug() << "Setting up firebase";
+        qWarning(dcPushNotif()) << "Setting up firebase";
         m_client_pointer = this;
         m_firebaseApp = ::firebase::App::Create(::firebase::AppOptions(), QAndroidJniEnvironment(), QtAndroid::androidActivity().object());
         m_firebase_initializer.Initialize(m_firebaseApp, nullptr, [](::firebase::App * fapp, void *) {
             return ::firebase::messaging::Initialize( *fapp, (::firebase::messaging::Listener *)m_client_pointer);
         });
     } else {
-        qDebug() << "Google Play Services not available. Cannot connect to push client.";
+        qWarning(dcPushNotif()) << "Google Play Services not available. Cannot connect to push client.";
     }
 #endif
 
@@ -140,7 +142,7 @@ QString PushNotifications::token() const
 
 void PushNotifications::setFirebaseRegistrationToken(const QString &firebaseRegistrationToken)
 {
-    qDebug() << "Received Firebase/APNS push notification token:" << firebaseRegistrationToken;
+    qWarning(dcPushNotif()) << "Received Firebase/APNS push notification token:" << firebaseRegistrationToken;
     m_token = firebaseRegistrationToken;
     emit tokenChanged();
 }
@@ -148,13 +150,13 @@ void PushNotifications::setFirebaseRegistrationToken(const QString &firebaseRegi
 #if defined Q_OS_ANDROID && defined WITH_FIREBASE
 void PushNotifications::OnMessage(const firebase::messaging::Message &message)
 {
-    qDebug() << "Firebase message received:" << QString::fromStdString(message.from);
+    qWarning(dcPushNotif()) << "Firebase message received:" << QString::fromStdString(message.from);
 }
 
 void PushNotifications::OnTokenReceived(const char *token)
 {
     m_token = QString(token);
-    qDebug() << "Firebase token received:" << m_token;
+    qWarning(dcPushNotif()) << "Firebase token received:" << m_token;
     emit tokenChanged();
 }
 #endif
