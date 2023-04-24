@@ -9,7 +9,7 @@ on:
       - 'v*'
 jobs:
   build-appimage:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -24,6 +24,7 @@ jobs:
           modules: 'qtcharts'
           target: 'desktop'
       - run: |
+          apt-get update && apt-get -y install fuse libfuse2
           wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x linuxdeployqt-*-x86_64.AppImage
 #      - name: "Apply Consolinno patches"
