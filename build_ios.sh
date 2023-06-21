@@ -24,6 +24,7 @@ set +e
 make -j $(sysctl -n hw.physicalcpu) 
 # First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here. 
 # Edit: Now it seems to fail. Thus set +e above  
+rm /Users/runner/work/consolinno-hems-app-builder/consolinno-hems-app-builder/build/ios/nymea-app/consolinno-energy.build/Release-iphoneos/consolinno-energy.build/LaunchScreen.storyboardc
 set -e 
 make -j $(sysctl -n hw.physicalcpu)
 
