@@ -25,6 +25,7 @@ jobs:
           arch: 'win64_msvc2019_64'
           modules: 'qtcharts qtwebengine'
           aqtversion: '==2.0.0'
+          extra: '--timeout 20'
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3
 #      - name: "Apply Consolinno patches"

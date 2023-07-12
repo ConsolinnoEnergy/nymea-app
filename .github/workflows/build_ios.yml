@@ -57,6 +57,7 @@ jobs:
           host: 'mac'
           target: 'ios'
           arch: 'ios'
+          extra: '--timeout 20'
       - name: "Upterm debug"
         if: contains(github.ref_name, 'debug') 
         uses: lhotari/action-upterm@v1
