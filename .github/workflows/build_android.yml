@@ -44,7 +44,7 @@ jobs:
       - name: Patch build-tools 34.0 to support Gradle plugin 4.x  
         run: cp /usr/local/lib/android/sdk/build-tools/34.0.0/d8  /usr/local/lib/android/sdk/build-tools/34.0.0/dx &&  cp /usr/local/lib/android/sdk/build-tools/34.0.0/lib/d8.jar  /usr/local/lib/android/sdk/build-tools/34.0.0/lib/dx.jar
 
-      - uses: lhotari/action-upterm@v1
+      # - uses: lhotari/action-upterm@v1
       #  env:
       #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
       #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
