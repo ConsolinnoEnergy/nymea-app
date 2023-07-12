@@ -30,6 +30,7 @@ jobs:
           version: '5.15.2'
           target: 'android'
           modules: qtcharts
+          extra: '--timeout 20'
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
