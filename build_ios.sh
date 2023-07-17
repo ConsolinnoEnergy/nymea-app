@@ -14,7 +14,7 @@ sed -i -e 's|<string>Original</string>||g' ${QT_ROOT}/mkspecs/macx-xcode/Workspa
 qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  \
 CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug CONFIG+=release \
 QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="DEVELOPMENT_TEAM" qteam.value=J757FFDWU9  \
-QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=7791032b-bdec-425c-9cc6-1a994a9468af \
+QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=beb37b6b-b1a8-4a7c-8e5b-112c5c8389c9 \
 QMAKE_XCODE_CODE_SIGN_IDENTITY=\""iPhone Distribution\"" \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
 QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
