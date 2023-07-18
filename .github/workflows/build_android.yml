@@ -25,7 +25,7 @@ jobs:
         with:
           fileName: 'consolinno.keystore'
           encodedString: ${{ secrets.KEYSTORE }}
-      - uses: jurplel/install-qt-action@v2
+      - uses: jurplel/install-qt-action@v3
         with:
           version: '5.15.2'
           target: 'android'
