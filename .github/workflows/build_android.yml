@@ -41,13 +41,13 @@ jobs:
         run:  rm -rf /usr/local/lib/android/sdk/ndk-bundle; ln -f -s /usr/local/lib/android/sdk/ndk/21.4.7075529 /usr/local/lib/android/sdk/ndk-bundle
       - name: Patch build-tools 34.0 to support Gradle plugin 4.x  
         run: cp /usr/local/lib/android/sdk/build-tools/34.0.0/d8  /usr/local/lib/android/sdk/build-tools/34.0.0/dx &&  cp /usr/local/lib/android/sdk/build-tools/34.0.0/lib/d8.jar  /usr/local/lib/android/sdk/build-tools/34.0.0/lib/dx.jar
-
-      # - uses: lhotari/action-upterm@v1
-      #  env:
-      #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
-      #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-      #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-      #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+#      - uses: lhotari/action-upterm@v1
+#        env:
+#          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+#          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+#          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+#          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+#          ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
 #      - name: "Apply Consolinno patches"
 #        run: ./apply_consolinno_patches.sh
       - name: "Generating Snapshot version number"
