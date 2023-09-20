@@ -185,7 +185,7 @@ Item {
                             PlatformHelper.hideSplashScreen();
                             if (engine.jsonRpcClient.pushButtonAuthAvailable) {
                                 print("opening push button auth")
-                                var page = pageStack.push(Qt.resolvedUrl("PushButtonAuthPage.qml"))
+                                var page = pageStack.push(Qt.resolvedUrl("wizards/ConsolinnoPushButtonAuthPage.qml"))
                                 page.backPressed.connect(function() {
                                     engine.jsonRpcClient.disconnectFromHost();
                                     init();
