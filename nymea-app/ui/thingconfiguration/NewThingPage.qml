@@ -52,6 +52,7 @@ Page {
         page.done.connect(function() {
             pageStack.pop(root, StackView.Immediate);
             pageStack.pop();
+            pageStack.pop();
         })
         page.aborted.connect(function() {
             pageStack.pop();
