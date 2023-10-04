@@ -16,24 +16,24 @@ jobs:
         with:
           ref: ${{ github.ref }}
           running-workflow-name: 'Publish the package'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GH_TOKEN }}
           wait-interval: 10
           allowed-conclusions: success,skipped,cancelled,failure
       - uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{secrets.GH_TOKEN}}
           workflow: build_windows.yml  
       - uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{secrets.GH_TOKEN}}
           workflow: build_appimage.yml
       - uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{secrets.GH_TOKEN}}
           workflow: build_android.yml 
 #      - uses: dawidd6/action-download-artifact@v2
 #        with:
-#          github_token: ${{secrets.GITHUB_TOKEN}}
+#          github_token: ${{secrets.GH_TOKEN}}
 #          workflow: build_snap.yml    
       - name: Create release in public repo
         uses: ncipollo/release-action@v1
