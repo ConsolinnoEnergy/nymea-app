@@ -188,7 +188,7 @@ Item {
                                 var page = pageStack.push(Qt.resolvedUrl("wizards/ConsolinnoPushButtonAuthPage.qml"))
                                 page.backPressed.connect(function() {
                                     engine.jsonRpcClient.disconnectFromHost();
-                                    init();
+                                    pageStack.pop();
                                 })
                                 return;
                             } else {
@@ -204,7 +204,7 @@ Item {
                                 var page = pageStack.push(Qt.resolvedUrl("connection/LoginPage.qml"));
                                 page.backPressed.connect(function() {
                                     engine.jsonRpcClient.disconnectFromHost()
-                                    init();
+                                    pageStack.pop();
                                 })
                                 return;
                             }
