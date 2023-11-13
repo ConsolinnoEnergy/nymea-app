@@ -97,34 +97,6 @@ Page {
 
             SettingsTile {
                 Layout.fillWidth: true
-                iconSource: "../images/mqtt.svg"
-                text: qsTr("MQTT broker")
-                subText: qsTr("Configure the MQTT broker")
-                visible: engine.jsonRpcClient.ensureServerVersion("1.11") && NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) && Configuration.mqttSettingsEnabled
-                onClicked: pageStack.push(Qt.resolvedUrl("system/MqttBrokerSettingsPage.qml"))
-            }
-
-            SettingsTile {
-                Layout.fillWidth: true
-                iconSource: "../images/stock_website.svg"
-                text: qsTr("Web server")
-                subText: qsTr("Configure the web server")
-                visible: NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin)
-                         && Configuration.webServerSettingsEnabled
-                onClicked: pageStack.push(Qt.resolvedUrl("system/WebServerSettingsPage.qml"))
-            }
-
-            SettingsTile {
-                Layout.fillWidth: true
-                iconSource: "../images/zigbee.svg"
-                text: qsTr("ZigBee")
-                subText: qsTr("Configure ZigBee networks")
-                visible: engine.jsonRpcClient.ensureServerVersion("5.3") && NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) && Configuration.zigbeeSettingsEnabled
-                onClicked: pageStack.push(Qt.resolvedUrl("system/zigbee/ZigbeeSettingsPage.qml"))
-            }
-
-            SettingsTile {
-                Layout.fillWidth: true
                 iconSource: "../images/z-wave.svg"
                 text: qsTr("Z-Wave")
                 subText: qsTr("Configure Z-Wave networks")
