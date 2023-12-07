@@ -48,6 +48,7 @@ Page {
     // a deepter layer as we need to include it in the blurring of the header and footer.
     // We don't want to paint the background on the entire screen twice (overdraw is costly)
     background: null
+    property bool outOfDateHEMS: false
 
     function configureViews() {
         if (Configuration.hasOwnProperty("mainViewsFilter")) {
@@ -266,9 +267,25 @@ Page {
             visible: !engine.thingManager.fetchingData
             Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
 
+            // ListModel which refers to OutOfDate.qml
+            ListModel {
+                id: outOfDateModel
+                ListElement { source: "OutOfDate"; forceVisible: true}
+            }
+
             Repeater {
+                // Function to return the model to use for the main views Repeater
+                // returns outOfDateModel if the HEMS is out of date
+                function getModel() {
+                    if (outOfDateHEMS === true) {
+                        return(outOfDateModel)
+
+                    }
+                    return(d.configOverlay != null ? null : filteredContentModel)
+                }
+
                 id: mainViewsRepeater
-                model: d.configOverlay != null ? null : filteredContentModel
+                model: getModel()
 
                 delegate: Loader {
                     id: mainViewLoader
@@ -276,7 +293,7 @@ Page {
                     height: swipeView.height
                     clip: true
                     source: "mainviews/" + model.source + ".qml"
-                    visible: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
+                    visible: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem || model.forceVisible
 
                     Binding {
                         target: mainViewLoader.item

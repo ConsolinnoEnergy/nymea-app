@@ -80,6 +80,8 @@ Item {
         swipeView.currentItem.pageStack.currentItem.configureViews()
     }
 
+
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
@@ -212,7 +214,13 @@ Item {
 
                         if (engine.jsonRpcClient.connected) {
                             print("Connected to", engine.jsonRpcClient.currentHost.uuid, engine.jsonRpcClient.currentHost.name)
-                            pageStack.push(Qt.resolvedUrl("MainPage.qml"))
+                            var page = Qt.resolvedUrl("MainPage.qml")
+                            if (!checkHEMSVersion(pageStack.currentItem)){
+                                console.warn("Connected to", engine.jsonRpcClient.currentHost.uuid, engine.jsonRpcClient.currentHost.name)
+                                pageStack.push(page, {"outOfDateHEMS": true})
+                                return
+                            }
+                            pageStack.push(page)
                             return;
                         }
 
@@ -220,6 +228,41 @@ Item {
                         page.cancel.connect(function(){
                             engine.jsonRpcClient.disconnectFromHost();
                         })
+                    }
+
+                    function compareSemanticVersions(version1, version2) {
+                        // Returns 0 if version1 == version2
+                        // Returns 1 if version1 > version2
+                        // Returns -1 if version1 < version2
+
+                        var v1 = version1.split('.').map(function(part) { return parseInt(part); });
+                        var v2 = version2.split('.').map(function(part) { return parseInt(part); });
+
+                        for (var i = 0; i < Math.max(v1.length, v2.length); i++) {
+                            var num1 = i < v1.length ? v1[i] : 0;
+                            var num2 = i < v2.length ? v2[i] : 0;
+
+                            if (num1 < num2) {
+                                return -1; // version1 is lower
+                            } else if (num1 > num2) {
+                                return 1; // version1 is higher
+                            }
+                        }
+
+                        return 0; // versions are equal
+                    }
+
+                    function checkHEMSVersion(page){
+                        var minSysVersion = Configuration.minSysVersion
+                        // Checks if System version is less or equal to minSysVersion
+                        if ([-1].includes(compareSemanticVersions(engine.jsonRpcClient.experiences.Hems, minSysVersion)))
+                        {
+                            //var popup = invalidHEMSVersionComponent.createObject(page)
+                            //popup.message = qsTr("Please upgrade your Consolinno HEMS to at least version %1. Your version is %2.".arg(minSysVersion).arg(engine.jsonRpcClient.experiences.Hems))
+                            //popup.open();
+                            return false
+                        }
+                        return true
                     }
 
                     function handleAndroidBackButton() {
@@ -308,6 +351,7 @@ Item {
                                 }
                             }
                             init();
+
                         }
 
                         onAuthenticationRequiredChanged: {

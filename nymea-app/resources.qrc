@@ -318,5 +318,6 @@
         <file>ui/devicepages/EventLogPage.qml</file>
         <file>../LICENSE.APACHE2</file>
         <file>../LICENSE.UFL</file>
+        <file>ui/InvalidHEMSVersionPopup.qml</file>
     </qresource>
 </RCC>
