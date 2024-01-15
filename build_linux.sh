@@ -1,4 +1,6 @@
 #!/bin/bash
+# Example usage to start app in german: 
+# QT_ROOT=<PATH_TO_QT>/Qt/5.15.2 ./build_linux.sh run de_DE
 set -e
 
 export ROOT_DIR=$(pwd)
@@ -29,6 +31,6 @@ make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/linux-build install
 # If run in args then run the app
 if [[ "$1" == "run" ]]; then
     echo "Running nymea-app"
-    ${BUILD_DIR}/nymea-app/linux-build/usr/bin/consolinno-energy
+    LANGUAGE=$2 ${BUILD_DIR}/nymea-app/linux-build/usr/bin/consolinno-energy
 fi
 
