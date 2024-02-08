@@ -55,12 +55,13 @@ ItemDelegate {
     property string thumbnail
     property int iconSize: Style.iconSize
     property color iconColor: Style.accentColor
+    property color backgroundColor: "transparent"
     property alias secondaryIconName: secondaryIcon.name
     property alias secondaryIconColor: secondaryIcon.color
-    property alias secondaryIconClickable: secondaryIconMouseArea.enabled
+    property alias secondaryIconClickable: secondaryIconMouseArea
     property alias tertiaryIconName: tertiaryIcon.name
     property alias tertiaryIconColor: tertiaryIcon.color
-    property alias tertiaryIconClickable: tertiaryIconMouseArea.enabled
+    property alias tertiaryIconClickable: tertiaryIconMouseArea
 
     property var contextOptions: []
 
@@ -87,6 +88,16 @@ ItemDelegate {
 
         property var finalContextOptions: root.contextOptions.concat(d.deleteContextOption)
     }
+
+    background: Rectangle {
+           implicitWidth: 100
+           implicitHeight: 40
+           color: root.backgroundColor
+           Behavior on color {
+               ColorAnimation { duration: 400 }
+           }
+       }
+
 
     contentItem: RowLayout {
         id: innerLayout

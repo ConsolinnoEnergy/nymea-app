@@ -1,7 +1,8 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import Qt.labs.settings 1.0
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import Qt.labs.settings 1.1
 import "components"
 import Nymea 1.0
 import NymeaApp.Utils 1.0
@@ -68,45 +69,102 @@ Drawer {
                     }
                 }
 
-                ListView {
-                    id: hostsListView
+                ListViewDragComponent {
+                    id: connectionsListView
+
                     Layout.fillWidth: true
-                    Layout.preferredHeight: count * Style.smallDelegateHeight
-                    model: root.configuredHosts
+                    Layout.preferredHeight: model && Math.min(8 * Style.smallDelegateHeight, model.count * Style.smallDelegateHeight)
                     clip: true
-                    interactive: false
-                    moveDisplaced: Transition {
-                        NumberAnimation { property: "y"; duration: Style.animationDuration; easing.type: Easing.InOutQuad }
+                    onClicked: {
+                        if (topSectionLayout.configureConnections) {
+                            var nymeaHost = nymeaDiscovery.nymeaHosts.find(hostDelegate.configuredHost.uuid);
+                            if (nymeaHost) {
+                                var connectionInfoDialog = Qt.createComponent("/ui/components/ConnectionInfoDialog.qml")
+                                var popup = connectionInfoDialog.createObject(app,{nymeaEngine: configuredHost.engine, nymeaHost: nymeaHost})
+                                popup.open()
+                                popup.connectionSelected.connect(function(connection) {
+                                    print("...")
+                                    configuredHost.engine.jsonRpcClient.disconnectFromHost();
+                                    configuredHost.engine.jsonRpcClient.connectToHost(nymeaHost, connection)
+                                    configuredHostsModel.currentIndex = index
+                                    root.close()
+                                })
+                            }
+                        } else {
+                            configuredHostsModel.currentIndex = index
+                            root.close()
+                        }
                     }
 
-                    delegate: NymeaItemDelegate {
-                        id: hostDelegate
-                        width: hostsListView.width
-                        visible: !dndArea.dragging || dndArea.draggedIndex !== index
+                    delegate: RowLayout {
+                        anchors {
+                            left: parent.left
+                            leftMargin: 16
+                            right: parent.right
+                            rightMargin: 16
+                            top: parent.top
+                            bottom: parent.bottom
+                        }
+                        spacing: 8
 
-                        readonly property ConfiguredHost configuredHost: root.configuredHosts.get(index)
+                        ColumnLayout {
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
 
-                        text: model.name.length > 0 ? model.name : qsTr("New connection")
-                        subText: configuredHost.engine.jsonRpcClient.currentConnection ? configuredHost.engine.jsonRpcClient.currentConnection.url : ""
-                        prominentSubText: false
-                        progressive: false
-                        additionalItem: RowLayout {
-                            anchors.verticalCenter: parent.verticalCenter
-                            visible: !dndArea.dragging
+                            Label {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                text: modelProp && modelProp.name ? modelProp.name : qsTr("New connection")
+                                wrapMode: root.wrapTexts ? Text.WordWrap : Text.NoWrap
+                                maximumLineCount: root.wrapTexts ? 2 : 1
+                                elide: Text.ElideRight
+                                verticalAlignment: Text.AlignVCenter
+
+                            }
+                            Label {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                visible: currentConnection
+                                text: currentConnection ? configuredHost.engine.jsonRpcClient.currentConnection.url : ""
+                                font.pixelSize: 10
+                                color: Material.color(Material.Grey)
+                                wrapMode: Text.WordWrap
+                                maximumLineCount: 2
+                                elide: Text.ElideRight
+                                verticalAlignment: Text.AlignVCenter
+                                readonly property ConfiguredHost configuredHost: root.configuredHosts.get(index)
+                                property bool currentConnection: configuredHost && configuredHost.engine.jsonRpcClient.currentConnection
+
+                            }
+                        }
+
+                        Item {
+                            Layout.fillHeight: true
+                            Layout.fillWidth: false
+                            Layout.preferredWidth: closeButton.width
+
+                            ColorIcon {
+                                anchors.centerIn: parent
+                                size: Style.smallIconSize
+                                name: "list-move"
+                                visible: held
+                            }
+
                             Rectangle {
                                 height: Style.smallIconSize
                                 width: height
                                 radius: height / 2
                                 color: Style.accentColor
-                                Layout.alignment: Qt.AlignVCenter
-                                visible: index === configuredHostsModel.currentIndex && !topSectionLayout.configureConnections
+                                anchors.centerIn: parent
+                                visible: !held && index === configuredHostsModel.currentIndex && !topSectionLayout.configureConnections
                             }
 
                             ProgressButton {
                                 id: closeButton
                                 imageSource: "/ui/images/close.svg"
-                                visible: topSectionLayout.configureConnections && (autoConnectHost.length === 0 || index > 0)
+                                visible: !held && topSectionLayout.configureConnections && (autoConnectHost.length === 0 || index > 0)
                                 longpressEnabled: false
+                                anchors.centerIn: parent
 
                                 Settings {
                                     id: tokenSettings
@@ -114,118 +172,8 @@ Drawer {
                                 }
                             }
                         }
-
-                        // ItemDelegates apparently fail to receive mouse events when hidden behind another mouse area with propagateComposedEvents
-                        // As we keep the dnd area above this, use a standard MouseArea which works.
-                        MouseArea {
-                            id: itemArea
-                            anchors.fill: parent
-                            propagateComposedEvents: true
-
-                            onClicked: {
-                                print("clicked", itemArea.mouseX)
-                                var mappedToCloseButton = mapToItem(closeButton, mouseX, mouseY)
-                                print("mapped to close", mouseX, mouseY, mappedToCloseButton.x, mappedToCloseButton.y)
-                                if (mappedToCloseButton.x > 0 && mappedToCloseButton.x < closeButton.width && mappedToCloseButton.y > 0 && mappedToCloseButton.y < closeButton.height) {
-                                    print("on close button!")
-                                }
-
-                                if (topSectionLayout.configureConnections) {
-                                    var nymeaHost = nymeaDiscovery.nymeaHosts.find(hostDelegate.configuredHost.uuid);
-                                    if (nymeaHost) {
-                                        var connectionInfoDialog = Qt.createComponent("/ui/components/ConnectionInfoDialog.qml")
-                                        var popup = connectionInfoDialog.createObject(app,{nymeaEngine: configuredHost.engine, nymeaHost: nymeaHost})
-                                        popup.open()
-                                        popup.connectionSelected.connect(function(connection) {
-                                            print("...")
-                                            configuredHost.engine.jsonRpcClient.disconnectFromHost();
-                                            configuredHost.engine.jsonRpcClient.connectToHost(nymeaHost, connection)
-                                            configuredHostsModel.currentIndex = index
-                                            root.close()
-                                        })
-                                    }
-                                } else {
-                                    configuredHostsModel.currentIndex = index
-                                    root.close()
-                                }
-                            }
-
-                            MouseArea {
-                                anchors { right: parent.right; verticalCenter: parent.verticalCenter; margins: Style.margins }
-                                width: Style.iconSize + Style.margins
-                                height: width
-                                enabled: topSectionLayout.configureConnections
-                                onClicked: {
-                                    tokenSettings.setValue(hostDelegate.configuredHost.uuid, "")
-                                    configuredHostsModel.removeHost(index)
-                                }
-                            }
-                        }
                     }
-
-                    NymeaItemDelegate {
-                        id: fakeDragItem
-                        visible: dndArea.dragging
-                        width: hostsListView.width
-                        prominentSubText: false
-                        progressive: false
-                        background: Rectangle {
-                            color: Style.tileBackgroundColor
-                        }
-                        additionalItem: ColorIcon {
-                            anchors.verticalCenter: parent.verticalCenter
-                            size: Style.iconSize
-                            name: "list-move"
-                        }
-                    }
-
-                    MouseArea {
-                        id: dndArea
-                        anchors.fill: parent
-                        propagateComposedEvents: true
-                        preventStealing: dragging
-                        property int draggedIndex: -1
-                        property bool dragging: false
-                        property int startY: 0
-                        property int originY: 0
-
-                        onPressed: {
-                            startY = mouseY
-                        }
-
-                        onPressAndHold: {
-                            if (hostsListView.count < 2) {
-                                return;
-                            }
-
-                            draggedIndex = hostsListView.indexAt(mouseX, startY)
-                            var draggedItem = hostsListView.itemAt(mouseX, startY)
-                            fakeDragItem.text = draggedItem.text
-                            fakeDragItem.subText = draggedItem.subText
-                            fakeDragItem.y = draggedItem.y
-                            originY = draggedItem.y
-                            dragging = true
-                        }
-
-                        onMouseYChanged: {
-                            if (!dragging) {
-                                return;
-                            }
-                            var diff = startY - mouseY
-                            fakeDragItem.y = Math.max(0, Math.min(hostsListView.height - fakeDragItem.height, originY - diff))
-
-                            var hoveredIdx = hostsListView.indexAt(mouseX, mouseY)
-                            if (hoveredIdx >= 0 && draggedIndex != hoveredIdx) {
-                                print("moved", draggedIndex, "to", hoveredIdx)
-                                root.configuredHosts.move(draggedIndex, hoveredIdx)
-                                draggedIndex = hoveredIdx;
-                            }
-                        }
-
-                        onReleased: {
-                            dragging = false
-                        }
-                    }
+                    model: root.configuredHosts
                 }
 
                 Item {
@@ -282,8 +230,8 @@ Drawer {
                     iconName: "../images/magic.svg"
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
-                                 && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
-                                 && root.currentEngine.jsonRpcClient.connected && Configuration.magicEnabled && settings.showHiddenOptions
+                             && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
+                             && root.currentEngine.jsonRpcClient.connected && Configuration.magicEnabled && settings.showHiddenOptions
                     onClicked: {
                         root.openMagicSettings();
                         root.close();
@@ -360,4 +308,3 @@ Drawer {
     //        }
     //    }
 }
-
