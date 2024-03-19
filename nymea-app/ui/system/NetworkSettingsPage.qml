@@ -291,57 +291,57 @@ SettingsPageBase {
         }
     }
 
-    SettingsPageSectionHeader {
-        text: qsTr("Wireless network")
-        visible: networkManager.available && networkManager.networkingEnabled
-    }
+//    SettingsPageSectionHeader {
+//        text: qsTr("Wireless network")
+//        visible: networkManager.available && networkManager.networkingEnabled
+//    }
 
-    NymeaItemDelegate {
-        Layout.fillWidth: true
-        text: qsTr("Enabled")
-        subText: qsTr("Enable or disable WiFi")
-        progressive: false
-        prominentSubText: false
-        visible: networkManager.available && networkManager.networkingEnabled
-        additionalItem: Switch {
-            anchors.verticalCenter: parent.verticalCenter
-            checked: networkManager.wirelessNetworkingEnabled
-            visible: networkManager.available && networkManager.networkingEnabled
-            onClicked: {
-                if (!checked) {
-                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
-                    var text = qsTr("Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.").arg(Configuration.systemName)
-                            + "\n\n"
-                            + qsTr("Do you want to proceed?")
-                    var popup = dialog.createObject(app,
-                                                    {
-                                                        headerIcon: "../images/dialog-warning-symbolic.svg",
-                                                        title: qsTr("Disable WiFi?"),
-                                                        text: text,
-                                                        standardButtons: Dialog.Ok | Dialog.Cancel
-                                                    });
-                    popup.open();
-                    popup.accepted.connect(function() {
-                        d.pendingCallId = networkManager.enableWirelessNetworking(false);
-                    })
-                    popup.rejected.connect(function() {
-                        checked = true;
-                    })
-                } else {
-                    d.pendingCallId = networkManager.enableWirelessNetworking(true);
-                }
-            }
-        }
-    }
+//    NymeaItemDelegate {
+//        Layout.fillWidth: true
+//        text: qsTr("Enabled")
+//        subText: qsTr("Enable or disable WiFi")
+//        progressive: false
+//        prominentSubText: false
+//        visible: networkManager.available && networkManager.networkingEnabled
+//        additionalItem: Switch {
+//            anchors.verticalCenter: parent.verticalCenter
+//            checked: networkManager.wirelessNetworkingEnabled
+//            visible: networkManager.available && networkManager.networkingEnabled
+//            onClicked: {
+//                if (!checked) {
+//                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
+//                    var text = qsTr("Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.").arg(Configuration.systemName)
+//                            + "\n\n"
+//                            + qsTr("Do you want to proceed?")
+//                    var popup = dialog.createObject(app,
+//                                                    {
+//                                                        headerIcon: "../images/dialog-warning-symbolic.svg",
+//                                                        title: qsTr("Disable WiFi?"),
+//                                                        text: text,
+//                                                        standardButtons: Dialog.Ok | Dialog.Cancel
+//                                                    });
+//                    popup.open();
+//                    popup.accepted.connect(function() {
+//                        d.pendingCallId = networkManager.enableWirelessNetworking(false);
+//                    })
+//                    popup.rejected.connect(function() {
+//                        checked = true;
+//                    })
+//                } else {
+//                    d.pendingCallId = networkManager.enableWirelessNetworking(true);
+//                }
+//            }
+//        }
+//    }
 
-    Label {
-        Layout.fillWidth: true
-        Layout.leftMargin: app.margins
-        Layout.rightMargin: app.margins
-        text: qsTr("No wireless network interfaces available")
-        wrapMode: Text.WordWrap
-        visible: networkManager.available && networkManager.wirelessNetworkDevices.count == 0
-    }
+//    Label {
+//        Layout.fillWidth: true
+//        Layout.leftMargin: app.margins
+//        Layout.rightMargin: app.margins
+//        text: qsTr("No wireless network interfaces available")
+//        wrapMode: Text.WordWrap
+//        visible: networkManager.available && networkManager.wirelessNetworkDevices.count == 0
+//    }
 
     Repeater {
         model: networkManager.wirelessNetworkDevices
