@@ -210,42 +210,42 @@ SettingsPageBase {
         }
     }
 
-    NymeaItemDelegate {
-        Layout.fillWidth: true
-        text: qsTr("Networking enabled")
-        subText: qsTr("Enable or disable networking altogether")
-        prominentSubText: false
-        progressive: false
-        visible: networkManager.available
-        additionalItem: Switch {
-            anchors.verticalCenter: parent.verticalCenter
-            checked: networkManager.networkingEnabled
-            onClicked: {
-                if (!checked) {
-                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
-                    var text = qsTr("Disabling networking will disconnect all connected clients. Be aware that you will not be able to interact remotely with this %1 system any more. Do not proceed unless you know what your are doing.").arg(Configuration.systemName)
-                            + "\n\n"
-                            + qsTr("Do you want to proceed?")
-                    var popup = dialog.createObject(app,
-                                                    {
-                                                        headerIcon: "../images/dialog-warning-symbolic.svg",
-                                                        title: qsTr("Disable networking?"),
-                                                        text: text,
-                                                        standardButtons: Dialog.Ok | Dialog.Cancel
-                                                    });
-                    popup.open();
-                    popup.accepted.connect(function() {
-                        d.pendingCallId = networkManager.enableNetworking(false);
-                    })
-                    popup.rejected.connect(function() {
-                        checked = true;
-                    })
-                } else {
-                    d.pendingCallId = networkManager.enableNetworking(true);
-                }
-            }
-        }
-    }
+//    NymeaItemDelegate {
+//        Layout.fillWidth: true
+//        text: qsTr("Networking enabled")
+//        subText: qsTr("Enable or disable networking altogether")
+//        prominentSubText: false
+//        progressive: false
+//        visible: networkManager.available
+//        additionalItem: Switch {
+//            anchors.verticalCenter: parent.verticalCenter
+//            checked: networkManager.networkingEnabled
+//            onClicked: {
+//                if (!checked) {
+//                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
+//                    var text = qsTr("Disabling networking will disconnect all connected clients. Be aware that you will not be able to interact remotely with this %1 system any more. Do not proceed unless you know what your are doing.").arg(Configuration.systemName)
+//                            + "\n\n"
+//                            + qsTr("Do you want to proceed?")
+//                    var popup = dialog.createObject(app,
+//                                                    {
+//                                                        headerIcon: "../images/dialog-warning-symbolic.svg",
+//                                                        title: qsTr("Disable networking?"),
+//                                                        text: text,
+//                                                        standardButtons: Dialog.Ok | Dialog.Cancel
+//                                                    });
+//                    popup.open();
+//                    popup.accepted.connect(function() {
+//                        d.pendingCallId = networkManager.enableNetworking(false);
+//                    })
+//                    popup.rejected.connect(function() {
+//                        checked = true;
+//                    })
+//                } else {
+//                    d.pendingCallId = networkManager.enableNetworking(true);
+//                }
+//            }
+//        }
+//    }
 
     SettingsPageSectionHeader {
         text: qsTr("Wired network")
@@ -291,48 +291,48 @@ SettingsPageBase {
         }
     }
 
-//    SettingsPageSectionHeader {
-//        text: qsTr("Wireless network")
-//        visible: networkManager.available && networkManager.networkingEnabled
-//    }
+    SettingsPageSectionHeader {
+        text: qsTr("Wireless network")
+        visible: networkManager.available && networkManager.networkingEnabled
+    }
 
-//    NymeaItemDelegate {
-//        Layout.fillWidth: true
-//        text: qsTr("Enabled")
-//        subText: qsTr("Enable or disable WiFi")
-//        progressive: false
-//        prominentSubText: false
-//        visible: networkManager.available && networkManager.networkingEnabled
-//        additionalItem: Switch {
-//            anchors.verticalCenter: parent.verticalCenter
-//            checked: networkManager.wirelessNetworkingEnabled
-//            visible: networkManager.available && networkManager.networkingEnabled
-//            onClicked: {
-//                if (!checked) {
-//                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
-//                    var text = qsTr("Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.").arg(Configuration.systemName)
-//                            + "\n\n"
-//                            + qsTr("Do you want to proceed?")
-//                    var popup = dialog.createObject(app,
-//                                                    {
-//                                                        headerIcon: "../images/dialog-warning-symbolic.svg",
-//                                                        title: qsTr("Disable WiFi?"),
-//                                                        text: text,
-//                                                        standardButtons: Dialog.Ok | Dialog.Cancel
-//                                                    });
-//                    popup.open();
-//                    popup.accepted.connect(function() {
-//                        d.pendingCallId = networkManager.enableWirelessNetworking(false);
-//                    })
-//                    popup.rejected.connect(function() {
-//                        checked = true;
-//                    })
-//                } else {
-//                    d.pendingCallId = networkManager.enableWirelessNetworking(true);
-//                }
-//            }
-//        }
-//    }
+    NymeaItemDelegate {
+        Layout.fillWidth: true
+        text: qsTr("Enabled")
+        subText: qsTr("Enable or disable WiFi")
+        progressive: false
+        prominentSubText: false
+        visible: networkManager.available && networkManager.networkingEnabled
+        additionalItem: Switch {
+            anchors.verticalCenter: parent.verticalCenter
+            checked: networkManager.wirelessNetworkingEnabled
+            visible: networkManager.available && networkManager.networkingEnabled
+            onClicked: {
+                if (!checked) {
+                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
+                    var text = qsTr("Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.").arg(Configuration.systemName)
+                            + "\n\n"
+                            + qsTr("Do you want to proceed?")
+                    var popup = dialog.createObject(app,
+                                                    {
+                                                        headerIcon: "../images/dialog-warning-symbolic.svg",
+                                                        title: qsTr("Disable WiFi?"),
+                                                        text: text,
+                                                        standardButtons: Dialog.Ok | Dialog.Cancel
+                                                    });
+                    popup.open();
+                    popup.accepted.connect(function() {
+                        d.pendingCallId = networkManager.enableWirelessNetworking(false);
+                    })
+                    popup.rejected.connect(function() {
+                        checked = true;
+                    })
+                } else {
+                    d.pendingCallId = networkManager.enableWirelessNetworking(true);
+                }
+            }
+        }
+    }
 
 //    Label {
 //        Layout.fillWidth: true
