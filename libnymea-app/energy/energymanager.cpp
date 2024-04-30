@@ -6,7 +6,9 @@
 
 NYMEA_LOGGING_CATEGORY(dcEnergyExperience, "EnergyExperience")
 
-EnergyManager::EnergyManager(QObject *parent) : QObject(parent)
+EnergyManager::EnergyManager(QObject *parent) : 
+    QObject(parent),
+    m_currentPowerConsumptionAverage(MOVING_AVERAGE_WINDOW_SIZE)
 {
 
 }
@@ -62,7 +64,7 @@ double EnergyManager::currentPowerConsumption() const
     return m_currentPowerConsumption;
 }
 
-double EnergyManager::currentPowerConsumptionAverage() const
+double EnergyManager::currentPowerConsumptionAverage()
 {
     return m_currentPowerConsumptionAverage.getAverage();
 }

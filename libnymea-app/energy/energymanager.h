@@ -6,6 +6,8 @@
 
 #include "types/movingaverage.h"
 
+#define MOVING_AVERAGE_WINDOW_SIZE 10
+
 class Engine;
 
 class EnergyManager : public QObject
@@ -34,7 +36,7 @@ public:
     Q_INVOKABLE int setRootMeterId(const QUuid &rootMeterId);
 
     double currentPowerConsumption() const;
-    double currentPowerConsumptionAverage() const;
+    double currentPowerConsumptionAverage();
     double currentPowerProduction() const;
     double currentPowerAcquisition() const;
     double currentPowerStorage() const;
@@ -58,7 +60,7 @@ private:
     QUuid m_rootMeterId;
 
     double m_currentPowerConsumption = 0;
-    MovingAverage m_currentPowerConsumptionAverage();
+    MovingAverage m_currentPowerConsumptionAverage;
     double m_currentPowerProduction = 0;
     double m_currentPowerAcquisition = 0;
     double m_currentPowerStorage = 0;
