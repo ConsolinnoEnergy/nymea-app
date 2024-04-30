@@ -4,7 +4,6 @@
 #ifndef MOVINGAVERAGE_H
 #define MOVINGAVERAGE_H
 
-#include <iostream>
 #include <queue>
 
 class MovingAverage {
@@ -16,7 +15,7 @@ private:
 public:
     MovingAverage(int size);
 
-    double next(double val);
+    void next(double val);
 
     double getAverage(); 
 };

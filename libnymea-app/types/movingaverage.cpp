@@ -7,7 +7,7 @@ windowSize(size), sum(0)
     window.push(0);
 }
 
-double MovingAverage::next(double val) 
+void MovingAverage::next(double val) 
 {
     if (window.size() == windowSize) {
         sum -= window.front();
@@ -15,7 +15,6 @@ double MovingAverage::next(double val)
     }
     sum += val;
     window.push(val);
-    return sum / window.size();
 }
 
 double MovingAverage::getAverage() 

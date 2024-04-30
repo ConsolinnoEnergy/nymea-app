@@ -17,6 +17,7 @@ class EnergyManager : public QObject
     Q_PROPERTY(QUuid rootMeterId READ rootMeterId NOTIFY rootMeterIdChanged)
 
     Q_PROPERTY(double currentPowerConsumption READ currentPowerConsumption NOTIFY powerBalanceChanged)
+    Q_PROPERTY(double currentPowerConsumptionAverage READ currentPowerConsumptionAverage NOTIFY powerBalanceChanged)
     Q_PROPERTY(double currentPowerProduction READ currentPowerProduction NOTIFY powerBalanceChanged)
     Q_PROPERTY(double currentPowerAcquisition READ currentPowerAcquisition NOTIFY powerBalanceChanged)
     Q_PROPERTY(double currentPowerStorage READ currentPowerStorage NOTIFY powerBalanceChanged)

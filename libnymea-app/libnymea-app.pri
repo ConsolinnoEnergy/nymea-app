@@ -97,6 +97,7 @@ SOURCES += \
     $${PWD}/types/ruleactionparams.cpp \
     $${PWD}/types/ruleactionparam.cpp \
     $${PWD}/types/logentry.cpp \
+    $${PWD}/types/movingaverage.cpp \
     $${PWD}/types/stateevaluators.cpp \
     $${PWD}/types/stateevaluator.cpp \
     $${PWD}/types/statedescriptor.cpp \
@@ -263,6 +264,7 @@ HEADERS += \
     $${PWD}/types/ruleactionparams.h \
     $${PWD}/types/ruleactionparam.h \
     $${PWD}/types/logentry.h \
+    $${PWD}/types/movingaverage.h \
     $${PWD}/types/stateevaluators.h \
     $${PWD}/types/stateevaluator.h \
     $${PWD}/types/statedescriptor.h \
