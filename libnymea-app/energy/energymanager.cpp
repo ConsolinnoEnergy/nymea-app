@@ -62,6 +62,11 @@ double EnergyManager::currentPowerConsumption() const
     return m_currentPowerConsumption;
 }
 
+double EnergyManager::currentPowerConsumptionAverage() const
+{
+    return m_currentPowerConsumptionAverage.getAverage();
+}
+
 double EnergyManager::currentPowerProduction() const
 {
     return m_currentPowerProduction;
@@ -107,6 +112,7 @@ void EnergyManager::notificationReceived(const QVariantMap &data)
 
     } else if (notification == "Energy.PowerBalanceChanged") {
         m_currentPowerConsumption = params.value("currentPowerConsumption").toDouble();
+        m_currentPowerConsumptionAverage.next(m_currentPowerConsumption);
         m_currentPowerProduction = params.value("currentPowerProduction").toDouble();
         m_currentPowerAcquisition = params.value("currentPowerAcquisition").toDouble();
         m_currentPowerStorage = params.value("currentPowerStorage").toDouble();
@@ -139,6 +145,7 @@ void EnergyManager::getPowerBalanceResponse(int commandId, const QVariantMap &pa
     Q_UNUSED(commandId)
     qCDebug(dcEnergyExperience()) << "Power balance response:" << params;
     m_currentPowerConsumption = params.value("currentPowerConsumption").toDouble();
+    m_currentPowerConsumptionAverage.next(m_currentPowerConsumption);
     m_currentPowerProduction = params.value("currentPowerProduction").toDouble();
     m_currentPowerAcquisition = params.value("currentPowerAcquisition").toDouble();
     m_currentPowerStorage = params.value("currentPowerStorage").toDouble();
