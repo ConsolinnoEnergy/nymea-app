@@ -114,6 +114,7 @@
 #include "types/script.h"
 #include "types/scripts.h"
 #include "types/types.h"
+#include "types/movingaverage.h"
 #include "models/scriptsproxymodel.h"
 #include "usermanager.h"
 #include "types/tokeninfos.h"
@@ -392,6 +393,9 @@ void registerQmlTypes() {
     qmlRegisterType<ThingPowerLogsLoader>(uri, 1, 0, "ThingPowerLogsLoader");
 
     qmlRegisterType<SortFilterProxyModel>(uri, 1, 0, "SortFilterProxyModel");
+
+    // Consolinno
+    qmlRegisterType<MovingAverage>(uri, 1, 0, "MovingAverage");
 }
 }
 }

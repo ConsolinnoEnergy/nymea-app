@@ -6,7 +6,7 @@
 
 #include "types/movingaverage.h"
 
-#define MOVING_AVERAGE_WINDOW_SIZE 10
+#define MOVING_AVERAGE_THINGS_WINDOW_SIZE 10
 
 class Engine;
 

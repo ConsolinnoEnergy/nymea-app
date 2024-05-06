@@ -1,23 +1,37 @@
 #include "movingaverage.h"
 
-MovingAverage::MovingAverage(int size): 
-windowSize(size), sum(0) 
+
+MovingAverage::MovingAverage(QObject *parent): QObject(parent)
 {
-    // insert a init value, so we do not get a 'nan' with the first call of getAverage()
-    window.push(0);
+
+}
+
+
+double MovingAverage::value() const
+{
+    return m_value;
+}
+
+int MovingAverage::windowSize() const
+{
+    return m_windowSize;
+}
+
+void MovingAverage::setWindowSize(int size)
+{
+    m_windowSize = size;
 }
 
 void MovingAverage::next(double val) 
 {
-    if (window.size() == windowSize) {
-        sum -= window.front();
-        window.pop();
+    if (m_window.size() == m_windowSize) {
+        m_sum -= m_window.front();
+        m_window.pop();
     }
-    sum += val;
-    window.push(val);
-}
+    m_sum += val;
+    m_window.push(val);
 
-double MovingAverage::getAverage() 
-{
-    return sum / window.size();
+    if(m_window.size() != 0) {
+        m_value = m_sum / m_window.size();
+    }
 }
