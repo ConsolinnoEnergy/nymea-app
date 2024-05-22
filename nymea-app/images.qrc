@@ -217,6 +217,7 @@
         <file>ui/images/energy.svg</file>
         <file>ui/images/connections/cloud.svg</file>
         <file>ui/images/connections/cloud-error.svg</file>
+        <file>ui/images/connections/cloud-error-red.svg</file>
         <file>ui/images/connections/cloud-offline.svg</file>
         <file>ui/images/connections/network-secure.svg</file>
         <file>ui/images/connections/network-vpn.svg</file>
