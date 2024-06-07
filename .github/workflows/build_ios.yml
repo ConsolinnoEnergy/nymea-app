@@ -60,7 +60,7 @@ jobs:
           extra: '--timeout 60'
       - name: "Upterm debug"
         if: contains(github.ref_name, 'debug') 
-        uses: lhotari/action-upterm@v1
+        uses: owenthereal/action-upterm@v1
         with:
           limit-access-to-actor: true
         env:
