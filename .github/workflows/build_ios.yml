@@ -62,7 +62,7 @@ jobs:
           arch: 'ios'
           extra: '--timeout 60'
       - name: "Upterm debug"
-        if: contains(github.ref_name, 'debug-ios') 
+        if: contains(github.ref_name, 'debug-ios-ci') 
         uses: owenthereal/action-upterm@v1
         with:
           limit-access-to-actor: true
