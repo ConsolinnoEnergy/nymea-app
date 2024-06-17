@@ -15,9 +15,9 @@ jobs:
   build-ios:
     runs-on: macos-latest
     steps:
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '14.3.1'
+#      - uses: maxim-lobanov/setup-xcode@v1
+#        with:
+#          xcode-version: '14.3.1'
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -62,7 +62,7 @@ jobs:
           arch: 'ios'
           extra: '--timeout 60'
       - name: "Upterm debug"
-        if: contains(github.ref_name, 'debug<REMOVE-TO-ENABLE-AGAIN>') 
+        if: contains(github.ref_name, 'debug-ios') 
         uses: owenthereal/action-upterm@v1
         with:
           limit-access-to-actor: true
