@@ -5,7 +5,7 @@ on:
       - main
       - feature/add-ios-ci
       - feature/add-ios-publish      
-      - feature/debug-ios-ci
+      - debug-ios-ci
       - feature/test-ios-ci
 
     tags:
