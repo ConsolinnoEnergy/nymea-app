@@ -6,7 +6,7 @@ on:
       - feature/add-ios-ci
       - feature/add-ios-publish      
       - debug-ios-ci
-      - feature/test-ios-ci
+      - test-ios-ci
 
     tags:
       - 'v*'
