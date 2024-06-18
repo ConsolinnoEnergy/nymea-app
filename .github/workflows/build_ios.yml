@@ -53,14 +53,14 @@ jobs:
           EOF
       - uses: actions/checkout@v2
       - run: git submodule update --init --recursive
-      - uses: jurplel/install-qt-action@v4
-        with:
-          version: '5.15.2'
-          modules: 'qtcharts'
-          host: 'mac'
-          target: 'ios'
-          arch: 'ios'
-          extra: '--timeout 60'
+#      - uses: jurplel/install-qt-action@v4
+#        with:
+#          version: '5.15.2'
+#          modules: 'qtcharts'
+#          host: 'mac'
+#          target: 'ios'
+#          arch: 'ios'
+#          extra: '--timeout 60'
       - name: "Upterm debug"
         if: contains(github.ref_name, 'debug-ios-ci') 
         uses: owenthereal/action-upterm@v1
