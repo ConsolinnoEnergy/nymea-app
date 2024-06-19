@@ -15,15 +15,9 @@ jobs:
   build-ios:
     runs-on: macos-latest
     steps:
-<<<<<<< HEAD
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '14.3.1'
-=======
-#      - uses: maxim-lobanov/setup-xcode@v1
-#        with:
-#          xcode-version: '14.3.1'
->>>>>>> test-ios-ci
+          xcode-version: '15.0.1'
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
