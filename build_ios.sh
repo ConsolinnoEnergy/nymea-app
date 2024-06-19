@@ -13,6 +13,7 @@ mkdir -p ./build/ios
 cd ./build/ios
 export BUILD_DIR=$(pwd)
 export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.14
+export PATH=$QT_ROOT/bin:$PATH
 # Preven/Users/runner/work/consolinno-hems-app-builder/QtBuild
 sed -i -e 's/QMAKE_MAC_XCODE_SETTINGS += IOS_DEVELOPMENT_TEAM//g' ../../nymea-app/nymea-app/nymea-app.pro
 # Patch mkspec to NOT default to legacy build system of xcode
