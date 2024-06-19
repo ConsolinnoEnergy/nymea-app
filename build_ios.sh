@@ -1,17 +1,26 @@
 #!/bin/bash
+
 set -e
 export ROOT_DIR=$(pwd)
+cd .. 
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/debug-release/Qt-5.15-14-macos.tar.gz
+mkdir qt-5.15.14
+tar -xzf Qt-5.15-14-macos.tar.gz -C qt-5.15.14
+cd $ROOT_DIR
+
+
 mkdir -p ./build/ios
 cd ./build/ios
 export BUILD_DIR=$(pwd)
-export QT_ROOT=$(which qmake | sed 's|/bin/qmake||g')
-# Prevent nymea-app from overwriting team info
+export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.14
+export PATH=$QT_ROOT/bin:$PATH
+# Preven/Users/runner/work/consolinno-hems-app-builder/QtBuild
 sed -i -e 's/QMAKE_MAC_XCODE_SETTINGS += IOS_DEVELOPMENT_TEAM//g' ../../nymea-app/nymea-app/nymea-app.pro
 # Patch mkspec to NOT default to legacy build system of xcode
 # See https://stackoverflow.com/questions/69049200/qt-5-12-for-ios-build-system
 sed -i -e 's|<key>BuildSystemType</key>||g' ${QT_ROOT}/mkspecs/macx-xcode/WorkspaceSettings.xcsettings
 sed -i -e 's|<string>Original</string>||g' ${QT_ROOT}/mkspecs/macx-xcode/WorkspaceSettings.xcsettings
-qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  \
+$QT_ROOT/bin/qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  \
 CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug CONFIG+=release \
 QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="DEVELOPMENT_TEAM" qteam.value=J757FFDWU9  \
 QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=beb37b6b-b1a8-4a7c-8e5b-112c5c8389c9 \
@@ -20,12 +29,12 @@ OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
 QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
 
 make qmake_all
-set +e 
-make -j $(sysctl -n hw.physicalcpu) 
-# First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here. 
-# Edit: Now it seems to fail. Thus set +e above  
+set +e
+make -j $(sysctl -n hw.physicalcpu)
+# First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here.
+# Edit: Now it seems to fail. Thus set +e above
 rm /Users/runner/work/consolinno-hems-app-builder/consolinno-hems-app-builder/build/ios/nymea-app/consolinno-energy.build/Release-iphoneos/consolinno-energy.build/LaunchScreen.storyboardc
-set -e 
+set -e
 make -j $(sysctl -n hw.physicalcpu)
 
 

@@ -5,8 +5,8 @@ on:
       - main
       - feature/add-ios-ci
       - feature/add-ios-publish      
-      - feature/debug-ios-ci
-      - feature/test-ios-ci
+      - debug-ios-ci
+      - test-ios-ci
 
     tags:
       - 'v*'
@@ -15,9 +15,15 @@ jobs:
   build-ios:
     runs-on: macos-latest
     steps:
+<<<<<<< HEAD
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '14.3.1'
+=======
+#      - uses: maxim-lobanov/setup-xcode@v1
+#        with:
+#          xcode-version: '14.3.1'
+>>>>>>> test-ios-ci
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -53,16 +59,8 @@ jobs:
           EOF
       - uses: actions/checkout@v2
       - run: git submodule update --init --recursive
-      - uses: jurplel/install-qt-action@v4
-        with:
-          version: '5.15.2'
-          modules: 'qtcharts'
-          host: 'mac'
-          target: 'ios'
-          arch: 'ios'
-          extra: '--timeout 60'
       - name: "Upterm debug"
-        if: contains(github.ref_name, 'debug<REMOVE-TO-ENABLE-AGAIN>') 
+        if: contains(github.ref_name, 'debug-ios-ci') 
         uses: owenthereal/action-upterm@v1
         with:
           limit-access-to-actor: true
@@ -74,7 +72,6 @@ jobs:
 #      - name: "Apply Consolinno patches"
 #        run: ./apply_consolinno_patches.sh
       - run: ./build_ios.sh
-      #- uses: lhotari/action-upterm@v1
       - name: Archive .ipa
         uses: actions/upload-artifact@v3
         with:
@@ -103,5 +100,4 @@ jobs:
           IOS_UPLOAD_USER: ${{ secrets.IOS_UPLOAD_USER }}
           IOS_UPLOAD_PASSWORD: ${{ secrets.IOS_UPLOAD_PASSWORD }}
         run: xcrun altool --type ios --upload-app --file consolinno-hems.ipa --username $IOS_UPLOAD_USER --password $IOS_UPLOAD_PASSWORD
-
 
