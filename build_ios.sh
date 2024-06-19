@@ -2,28 +2,17 @@
 
 set -e
 export ROOT_DIR=$(pwd)
-cd ..
-wget https://download.qt.io/official_releases/qt/5.15/5.15.14/single/qt-everywhere-opensource-src-5.15.14.tar.xz
-tar xfv qt-everywhere-opensource-src-5.15.14.tar.xz
-cd qt-everywhere-src-5.15.14
-# Quick and dirty patch. Should be done using a patch file, when things are running.
-# See https://decovar.dev/blog/2018/02/17/build-qt-statically/
-sed -i'' -e 's/unary_function/__unary_function/' qtmultimedia/src/plugins/avfoundation/camera/avfcamerautility.mm
-cd ..
-git clone https://github.com/crystalidea/qt-build-tools.git
-rsync -av qt-build-tools/5.15.14/qtbase/ qt-everywhere-src-5.15.14/qtbase
-cd qt-everywhere-src-5.15.14
-./configure QMAKE_APPLE_DEVICE_ARCHS="arm64" -opensource -confirm-license -nomake examples -nomake tests -xplatform macx-ios-clang -release -no-openssl -securetransport -prefix /Users/runner/work/consolinno-hems-app-builder/QtBuild
-make -j$(sysctl -n hw.ncpu)
-make install
-
+cd .. 
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/debug-release/Qt-5.15-14-macos.tar.gz
+mkdir qt-5.15.14
+tar -xzf Qt-5.15-14-macos.tar.gz -C qt-5.15.14
 cd $ROOT_DIR
 
 
 mkdir -p ./build/ios
 cd ./build/ios
 export BUILD_DIR=$(pwd)
-export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/QtBuild
+export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.14
 # Preven/Users/runner/work/consolinno-hems-app-builder/QtBuild
 sed -i -e 's/QMAKE_MAC_XCODE_SETTINGS += IOS_DEVELOPMENT_TEAM//g' ../../nymea-app/nymea-app/nymea-app.pro
 # Patch mkspec to NOT default to legacy build system of xcode
