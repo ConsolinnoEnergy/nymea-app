@@ -1,0 +1,52 @@
+
+           function drawAnimatedLine(ctx, currentPower, tile, bottom, index, relativeTo, inverted, xTranslate, yTranslate) {
+               ctx.beginPath()
+               // rM : max = x : 5
+               ctx.lineWidth = Math.abs(currentPower) / Math.abs(
+                           relativeTo) * 5 + 1
+               //ctx.setLineDash([5, 2])
+               // set color based on  tile color
+               ctx.strokeStyle = "#a0a0a0"
+            
+               var tilePosition = tile.mapToItem(linesCanvas,
+                                                 tile.width / 2, 0)
+               if (!bottom) {
+                   tilePosition.y = tile.height
+               }
+
+               var startX = tilePosition.x - xTranslate
+               var startY = tilePosition.y - yTranslate
+               var endX = 10 * index
+               var endY = -chartView.plotArea.height / 2
+               if (bottom) {
+                   endY = chartView.plotArea.height / 2
+               }
+
+               var height = startY - endY
+
+               var extensionLength = ctx.lineWidth * 7 // 5 + 2 dash segments from setLineDash
+               var progress = currentPower
+                       === 0 ? 0 : currentPower > 0 ? lineAnimationProgress : 1
+                                                      - lineAnimationProgress
+               if (inverted) {
+                   progress = 1 - progress
+               }
+               var extensionStartY = startY - extensionLength * progress
+               if (bottom) {
+                   extensionStartY = startY + extensionLength * progress
+               }
+
+               ctx.moveTo(startX, extensionStartY)
+               ctx.lineTo(startX, startY)
+               ctx.bezierCurveTo(startX, endY + height / 2, endX,
+                                 startY - height / 2, endX, endY)
+               ctx.stroke()
+               ctx.closePath()
+
+               // Draw a circle at middle of the line
+               ctx.beginPath()
+               ctx.arc(startX, startY + extensionStartY, 10, 0, 2 * Math.PI)
+               ctx.fill()
+               ctx.closePath()
+
+           }
