@@ -69,7 +69,7 @@ Item {
         d.pushSettingsPage("appsettings/AppSettingsPage.qml")
     }
     function openSystemSettings() {
-        d.pushSettingsPage("SettingsPage.qml")
+        d.pushSettingsPage("ConsolinnoSettingsPage.qml")
     }
     function openCustomPage(page) {
         d.pushSettingsPage(page)
