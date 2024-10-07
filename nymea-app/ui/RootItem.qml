@@ -66,7 +66,7 @@ Item {
         d.pushSettingsPage("MagicPage.qml")
     }
     function openAppSettings() {
-        d.pushSettingsPage("appsettings/AppSettingsPage.qml")
+        d.pushSettingsPage("appsettings/ConsolinnoAppSettingsPage.qml")
     }
     function openSystemSettings() {
         d.pushSettingsPage("ConsolinnoSettingsPage.qml")
