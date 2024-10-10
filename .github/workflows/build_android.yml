@@ -8,7 +8,7 @@ on:
     tags:
       - 'v*'
 jobs:
-  build-android:
+  setup-android:
     runs-on: ubuntu-latest
     steps:
       - run: git config --global credential.helper store
@@ -52,6 +52,18 @@ jobs:
 #        run: ./apply_consolinno_patches.sh
       - name: "Generating Snapshot version number"
         run: ./gen_snap_version.sh
+      - name: Install librsvg2-bin
+        run: sudo apt install -y librsvg2-bin
+  
+  build-android:
+    runs-on: ubuntu-latest
+    needs: setup-android
+    strategy:
+      matrix:
+        WHITELABEL_TARGET: ["consolinno-energy", "qcells-homecontrol"]
+    steps:
+      - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
+        run: ./distribute_assets.sh
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
@@ -71,10 +83,10 @@ jobs:
         with:
           name: Archive apk and aab
           path: |
-            build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab 
-            build/android/nymea-app/android-build/build/outputs/apk/release/consolinno-hems-*.apk
-            build/android/nymea-app/android-build/build/outputs/apk/release/consolinno-hems-*-testing.apk
-            
+            build/android/nymea-app/android-build/build/outputs/bundle/release/${{ matrix.WHITELABEL_TARGET }}-android-build-release.aab 
+            build/android/nymea-app/android-build/build/outputs/apk/release/${{ matrix.WHITELABEL_TARGET }}-*.apk
+            build/android/nymea-app/android-build/build/outputs/apk/release/${{ matrix.WHITELABEL_TARGET }}-*-testing.apk
+
   publish-android:
     name: Publish android packages
     runs-on: ubuntu-latest
