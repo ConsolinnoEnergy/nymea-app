@@ -56,6 +56,11 @@ jobs:
         run: echo $(realpath .)
       - name: Install librsvg2-bin
         run: sudo apt install -y librsvg2-bin
+      - name: Upload all files generated
+        uses: actions/upload-artifact@v3
+        with:
+          name: all-files
+          path: ./
   
   build-android:
     runs-on: ubuntu-latest
@@ -64,6 +69,11 @@ jobs:
       matrix:
         WHITELABEL_TARGET: ["consolinno-energy", "qcells-homecontrol"]
     steps:
+      - uses: actions/checkout@v2
+      - name: Download all files from setup
+        uses: actions/download-artifact@v3
+        with:
+          name: all-files
       - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
         run: ./distribute_assets.sh
       - run: ./build_android.sh
