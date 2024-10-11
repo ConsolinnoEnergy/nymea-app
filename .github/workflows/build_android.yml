@@ -52,6 +52,8 @@ jobs:
 #        run: ./apply_consolinno_patches.sh
       - name: "Generating Snapshot version number"
         run: ./gen_snap_version.sh
+      - name: "Check path"
+        run: echo $(realpath .)
       - name: Install librsvg2-bin
         run: sudo apt install -y librsvg2-bin
   
