@@ -60,6 +60,8 @@ jobs:
       - name: Install librsvg2-bin
         run: sudo apt install -y librsvg2-bin
       - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
         run: ./distribute_assets.sh
       - run: ./build_android.sh
         env:
