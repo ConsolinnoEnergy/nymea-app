@@ -63,7 +63,7 @@ jobs:
         WHITELABEL_TARGET: ["consolinno-energy", "qcells-homecontrol"]
     steps:
       - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
-        run: ./distribute_assets.sh
+        run: ./scripts/distribute_assets.sh
       - run: ./build_android.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
