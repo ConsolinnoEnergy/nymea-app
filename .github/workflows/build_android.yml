@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["consolinno-energy", "qcells-homecontrol"]
+        WHITELABEL_TARGET: ["consolinno-energy"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -39,9 +39,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
         with:
-          components: |
-            platforms;android-31
-            build-tools;31.0.0
+          sdk-version: 34
       - name: Install Android NDK
         run: sdkmanager --install "ndk;21.4.7075529" "platforms;android-31"
       - name: Set symlink to Android NDK
