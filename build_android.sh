@@ -46,7 +46,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     $ADEPQT \
     --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
-    --android-platform android-33 \
+    --android-platform android-34 \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
     --gradle --aab \
     --jarsigner \
@@ -58,12 +58,12 @@ if [[ -z "${SELFSIGN}" ]]; then
      $ADEPQT \
     --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
-    --android-platform android-33 \
+    --android-platform android-34 \
     --release \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
     --gradle
     
-    /usr/local/lib/android/sdk//build-tools/33.0.0/apksigner sign \
+    /usr/local/lib/android/sdk//build-tools/34.0.0/apksigner sign \
     --ks-pass  pass:${SIGNING_STORE_PASSWORD} \
     --ks ${KEYSTORE_PATH} \
     --ks-key-alias ${SIGNING_KEY_ALIAS} \
@@ -78,7 +78,7 @@ else
     $ADEPQT \
     --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
-    --android-platform android-33 \
+    --android-platform android-34 \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
     --release \
     --gradle
