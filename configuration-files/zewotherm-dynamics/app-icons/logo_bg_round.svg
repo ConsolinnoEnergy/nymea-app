@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256mm"
+   height="256mm"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="Zeichnung.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.32"
+     inkscape:cx="262.5"
+     inkscape:cy="704.6875"
+     inkscape:window-width="1862"
+     inkscape:window-height="1136"
+     inkscape:window-x="58"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <style
+       id="style824">
+      .cls-1 {
+        fill: url(#Unbenannter_Verlauf_3);
+      }
+
+      .cls-2 {
+        fill: #2b6eb9;
+      }
+
+      .cls-3 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 62px;
+      }
+
+      .cls-4 {
+        fill: #368578;
+      }
+
+      .cls-5 {
+        fill: #0069b4;
+      }
+
+      .cls-6 {
+        fill: #525252;
+      }
+
+      .cls-7 {
+        fill: #fff;
+      }
+
+      .cls-8 {
+        fill: #1f254c;
+      }
+
+      .cls-9 {
+        fill: #f9b000;
+      }
+
+      .cls-10 {
+        fill: #c9e0ee;
+      }
+
+      .cls-11 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-12 {
+        fill: #00a439;
+      }
+
+      .cls-13 {
+        letter-spacing: 0em;
+      }
+
+      .cls-14 {
+        letter-spacing: 0em;
+      }
+    </style>
+    <linearGradient
+       id="Unbenannter_Verlauf_3"
+       data-name="Unbenannter Verlauf 3"
+       x1="1474.37"
+       y1="1214.29"
+       x2="2840.02"
+       y2="1214.29"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#1f254c"
+         id="stop826" />
+      <stop
+         offset="1"
+         stop-color="#0069b4"
+         id="stop828" />
+    </linearGradient>
+    <linearGradient
+       id="Unbenannter_Verlauf_3-6"
+       data-name="Unbenannter Verlauf 3"
+       x1="1474.37"
+       y1="1214.29"
+       x2="2840.02"
+       y2="1214.29"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#1f254c"
+         id="stop826-3" />
+      <stop
+         offset="1"
+         stop-color="#0069b4"
+         id="stop828-9" />
+    </linearGradient>
+    <style
+       id="style10125">
+      .cls-1 {
+        fill: #2b6eb9;
+      }
+
+      .cls-2 {
+        fill: #368578;
+      }
+
+      .cls-3 {
+        fill: #1f254c;
+      }
+
+      .cls-4 {
+        fill: #f9b000;
+      }
+
+      .cls-5 {
+        fill: #00a439;
+      }
+    </style>
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#a0e2b7;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path10629"
+       cx="127.94678"
+       cy="127.90503"
+       r="127.30181" />
+    <g
+       id="g10175"
+       transform="matrix(0.21461876,0,0,0.21461876,23.045674,54.336545)">
+      <g
+         id="g10141">
+        <path
+           class="cls-4"
+           d="m 154.66,638.39 c 16.1,-11.69 38.66,-8.08 50.32,8.03 11.69,16.1 8.08,38.66 -8.03,50.32 -16.1,11.69 -38.66,8.08 -50.32,-8.03 -11.69,-16.1 -8.08,-38.66 8.03,-50.32 z"
+           id="path10129" />
+        <circle
+           class="cls-3"
+           cx="251.08"
+           cy="518.14001"
+           r="40.869999"
+           id="circle10131" />
+        <path
+           class="cls-3"
+           d="m 347.26,355.36 c 20.43,-14.79 48.97,-10.25 63.76,10.18 14.79,20.43 10.25,48.97 -10.18,63.76 -20.43,14.79 -48.97,10.25 -63.76,-10.18 -14.79,-20.43 -10.25,-48.97 10.18,-63.76 z"
+           id="path10133" />
+        <path
+           class="cls-3"
+           d="m 499.93,269.47 c 22.72,-16.46 54.52,-11.4 70.98,11.32 16.46,22.72 11.4,54.52 -11.32,70.98 -22.72,16.46 -54.52,11.4 -70.98,-11.32 -16.46,-22.72 -11.4,-54.52 11.32,-70.98 z"
+           id="path10135" />
+        <path
+           class="cls-1"
+           d="m 670.94,235.17 c 24.65,-19.54 60.46,-15.44 80,9.21 19.54,24.65 15.44,60.46 -9.21,80 -24.65,19.54 -60.46,15.44 -80,-9.21 -19.54,-24.65 -15.44,-60.46 9.21,-80 z"
+           id="path10137" />
+        <path
+           class="cls-3"
+           d="m 840.63,256.21 c 27.74,-20.1 66.51,-13.9 86.61,13.84 20.1,27.74 13.9,66.51 -13.84,86.61 -27.74,20.1 -66.51,13.9 -86.61,-13.84 -20.1,-27.74 -13.9,-66.51 13.84,-86.61 z"
+           id="path10139" />
+      </g>
+      <g
+         id="g10155">
+        <path
+           class="cls-3"
+           d="m 17.78,495.92 c 19.22,-13.95 46.14,-9.64 60.05,9.58 13.95,19.22 9.64,46.14 -9.58,60.05 -19.22,13.95 -46.14,9.64 -60.05,-9.58 -13.95,-19.22 -9.64,-46.14 9.58,-60.05 z"
+           id="path10143" />
+        <circle
+           class="cls-2"
+           cx="132.83"
+           cy="352.42001"
+           r="48.77"
+           id="circle10145" />
+        <path
+           class="cls-3"
+           d="m 247.62,158.16 c 24.39,-17.65 58.44,-12.23 76.09,12.15 17.65,24.39 12.23,58.44 -12.15,76.09 -24.39,17.65 -58.44,12.23 -76.09,-12.15 -17.65,-24.39 -12.23,-58.44 12.15,-76.09 z"
+           id="path10147" />
+        <path
+           class="cls-5"
+           d="m 429.8,55.66 c 27.12,-19.64 65.06,-13.6 84.71,13.51 19.64,27.12 13.6,65.06 -13.51,84.71 -27.12,19.64 -65.06,13.6 -84.71,-13.51 -19.64,-27.12 -13.6,-65.06 13.51,-84.71 z"
+           id="path10149" />
+        <path
+           class="cls-3"
+           d="m 633.88,14.73 c 29.42,-23.32 72.15,-18.43 95.47,10.99 23.32,29.42 18.43,72.15 -10.99,95.47 -29.42,23.32 -72.15,18.43 -95.47,-10.99 -23.32,-29.42 -18.43,-72.15 10.99,-95.47 z"
+           id="path10151" />
+        <path
+           class="cls-3"
+           d="m 866.82,39.84 c 33.1,-23.99 79.37,-16.59 103.36,16.51 23.99,33.1 16.59,79.37 -16.51,103.36 C 920.57,183.7 874.3,176.3 850.31,143.2 826.32,110.1 833.72,63.83 866.82,39.84 Z"
+           id="path10153" />
+      </g>
+    </g>
+  </g>
+</svg>
