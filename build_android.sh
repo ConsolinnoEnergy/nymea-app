@@ -70,7 +70,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     --key-pass pass:${SIGNING_KEY_PASSWORD} \
     --v2-signing-enabled  \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/consolinno-hems-${VERSION}-signed.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${WHITELABEL_TARGET}-${VERSION}-signed.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
     
 else
@@ -92,7 +92,7 @@ else
     --v2-signing-enabled  \
     --key $BUILD_DIR/key.pk8 --cert $BUILD_DIR/certificate_x509.pem \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/consolinno-hems-${VERSION}-selfsigned.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${WHITELABEL_TARGET}-${VERSION}-selfsigned.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
 
 fi

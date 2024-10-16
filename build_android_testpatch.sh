@@ -56,7 +56,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     --key-pass pass:${SIGNING_KEY_PASSWORD} \
     --v2-signing-enabled  \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/consolinno-hems-${VERSION}-signed-testing.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${WHITELABEL_TARGET}-${VERSION}-signed-testing.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair
@@ -77,7 +77,7 @@ else
     --v2-signing-enabled  \
     --key $BUILD_DIR/key.pk8 --cert $BUILD_DIR/certificate_x509.pem \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/consolinno-hems-${VERSION}-selfsigned-testing.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${WHITELABEL_TARGET}-${VERSION}-selfsigned-testing.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
 fi
  
