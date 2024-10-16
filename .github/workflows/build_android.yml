@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["consolinno-energy", "zewotherm-dynamics"]
+        WHITELABEL_TARGET: ["zewotherm-dynamics"]
     steps:
       - run: git config --global credential.helper store
       - run: | 

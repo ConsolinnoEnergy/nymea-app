@@ -6,6 +6,7 @@ if ! command -v rsvg-convert &> /dev/null; then
 fi
 # Check if the correct number of arguments are provided
 filenames=("logo.svg" "logo_margin.svg" "logo_bg.svg" "logo_bg_round.svg" "logo_wide.svg" "logo_wide_margin.svg" "logo_wide_margin_bg.svg" "splash.svg")
+configuration_files=("config.pri" "Configuration.qml" "overlay.qrc")
 root_dir="./nymea-app-consolinno-overlay";
 directory="./configuration-files/$WHITELABEL_TARGET/app-icons"
 
@@ -17,7 +18,13 @@ fi
 # Check for required files
 for filename in "${filenames[@]}"; do
     if [[ ! -f "$directory/$filename" ]]; then
-        missingFiles+=("$filename")
+        missingFiles+=("$directory/$filename")
+    fi
+done
+
+for configuration_file in "${configuration_files[@]}"; do
+    if [[ ! -f "./configuration-files/$WHITELABEL_TARGET/$configuration_file" ]]; then
+        missingFiles+=("./configuration-files/$WHITELABEL_TARGET/$configuration_file")
     fi
 done
 
@@ -159,5 +166,12 @@ rsvg-convert -w 256 -h 256 "$INPUT_SVG" -o "$root_dir/packaging/osx/AppIcon.icon
 rsvg-convert -w 512 -h 512 "$INPUT_SVG" -o "$root_dir/packaging/osx/AppIcon.iconset/icon_256x256@2x.png"
 rsvg-convert -w 512 -h 512 "$INPUT_SVG" -o "$root_dir/packaging/osx/AppIcon.iconset/icon_512x512.png"
 rsvg-convert -w 1024 -h 1024 "$INPUT_SVG" -o "$root_dir/packaging/osx/AppIcon.iconset/icon_512x512@2x.png"
+
+
+# Distribute Config files
+cp ./configuration-files/$WHITELABEL_TARGET/Configuration.qml $root_dir/Configuration.qml
+cp ./configuration-files/$WHITELABEL_TARGET/overlay.qrc $root_dir/overlay.qrc
+cp ./configuration-files/$WHITELABEL_TARGET/config.pri $root_dir/config.pri
+cp -r ./configuration-files/$WHITELABEL_TARGET/style/* $root_dir/styles/light
 
 echo "Conversion completed successfully."
