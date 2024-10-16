@@ -49,7 +49,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
     --gradle
 
-    /usr/local/lib/android/sdk//build-tools/32.0.0/apksigner sign \
+    /usr/local/lib/android/sdk//build-tools/34.0.0/apksigner sign \
     --ks-pass  pass:${SIGNING_STORE_PASSWORD} \
     --ks ${KEYSTORE_PATH} \
     --ks-key-alias ${SIGNING_KEY_ALIAS} \
