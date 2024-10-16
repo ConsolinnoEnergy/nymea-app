@@ -10,6 +10,8 @@ configuration_files=("config.pri" "Configuration.qml" "overlay.qrc")
 root_dir="./nymea-app-consolinno-overlay";
 directory="./configuration-files/$WHITELABEL_TARGET/app-icons"
 
+sed -i 's/android:label="[^"]*"/android:label="'"$WHITELABEL_TARGET"'"/' $root_dir/packaging/android/AndroidManifest.xml
+
 if [[ ! -d "$directory/android/" ]]; then
   echo "Error: The directory $directory/android/ seems to be missing. It should contain the mipmap directories."
   exit 1
@@ -90,17 +92,17 @@ rsvg-convert -w 256 -h 256 "$IMG_BG_ROUND" -o "$root_dir/packaging/android/appic
 rsvg-convert -w 256 -h 256 "$INPUT_SVG" -o "$root_dir/packaging/android/notificationicon.svg"
 rsvg-convert -w 634 -h 150 "$IMG_WIDE" -o "$root_dir/packaging/android/splash-dark.svg"
 rsvg-convert -w 634 -h 150 "$IMG_WIDE" -o "$root_dir/packaging/android/splash-light.svg"
-rsvg-convert -w 1024 -h 500 "$IMG_WIDE_MARGIN_BG" -o "$root_dir/packaging//android/store-feature-graphic.png"
-rsvg-convert -w 1024 -h 500 "$IMG_WIDE_MARGIN" -o "$root_dir/packaging//android/store-feature-graphic.svg"
-rsvg-convert -w 512 -h 512 "$IMG_BG" -o "$root_dir/packaging//android/store-icon.png"
-rsvg-convert -w 256 -h 256 "$IMG_BG" -o "$root_dir/packaging//android/store-icon.svg"
+rsvg-convert -w 1024 -h 500 "$IMG_WIDE_MARGIN_BG" -o "$root_dir/packaging/android/store-feature-graphic.png"
+rsvg-convert -w 1024 -h 500 "$IMG_WIDE_MARGIN" -o "$root_dir/packaging/android/store-feature-graphic.svg"
+rsvg-convert -w 512 -h 512 "$IMG_BG" -o "$root_dir/packaging/android/store-icon.png"
+rsvg-convert -w 256 -h 256 "$IMG_BG" -o "$root_dir/packaging/android/store-icon.svg"
 
 # res/
 # ignore drawable icons for now because of probable replacement by adaptive mipmap icons
 <<drawable_icons
-rsvg-convert -w 72 -h 72 "$INPUT_SVG" -o "$root_dir/packaging//android/res/drawable-hdpi/icon.png"
-rsvg-convert -w 32 -h 32 "$INPUT_SVG" -o "$root_dir/packaging//android/res/drawable-ldpi/icon.png"
-rsvg-convert -w 48 -h 48 "$INPUT_SVG" -o "$root_dir/packaging//android/res/drawable-mdpi/icon.png"
+rsvg-convert -w 72 -h 72 "$INPUT_SVG" -o "$root_dir/packaging/android/res/drawable-hdpi/icon.png"
+rsvg-convert -w 32 -h 32 "$INPUT_SVG" -o "$root_dir/packaging/android/res/drawable-ldpi/icon.png"
+rsvg-convert -w 48 -h 48 "$INPUT_SVG" -o "$root_dir/packaging/android/res/drawable-mdpi/icon.png"
 rsvg-convert -w 96 -h 96 "$INPUT_SVG" -o "$root_dir/packaging/android/res/drawable-xhdpi/icon.png"
 rsvg-convert -w 144 -h 144 "$INPUT_SVG" -o "$root_dir/packaging/android/res/drawable-xxhdpi/icon.png"
 rsvg-convert -w 192 -h 192 "$INPUT_SVG" -o "$root_dir/packaging/android/res/drawable-xxxhdpi/icon.png"
