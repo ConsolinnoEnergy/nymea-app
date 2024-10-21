@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [ "$WHITELABEL_TARGET" == "Q.HOME-CONTROL" ]; then
+  PROVISIONING_ID=$PROVISIONING_PROFILE_ID_QCELLS
+  TEAM_ID="J757FFDWU9"
+else
+  PROVISIONING_ID=$PROVISIONING_PROFILE_ID_CONSOLINNO
+  TEAM_ID="6F8276DF5B"
+fi
+
 set -e
 export ROOT_DIR=$(pwd)
 cd .. 
@@ -22,8 +30,8 @@ sed -i -e 's|<key>BuildSystemType</key>||g' ${QT_ROOT}/mkspecs/macx-xcode/Worksp
 sed -i -e 's|<string>Original</string>||g' ${QT_ROOT}/mkspecs/macx-xcode/WorkspaceSettings.xcsettings
 $QT_ROOT/bin/qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  \
 CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug CONFIG+=release \
-QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="DEVELOPMENT_TEAM" qteam.value=J757FFDWU9  \
-QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=beb37b6b-b1a8-4a7c-8e5b-112c5c8389c9 \
+QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="DEVELOPMENT_TEAM" qteam.value=$TEAM_ID \
+QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=$PROVISIONING_ID \
 QMAKE_XCODE_CODE_SIGN_IDENTITY=\""iPhone Distribution\"" \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
 QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
@@ -40,5 +48,5 @@ make -j $(sysctl -n hw.physicalcpu)
 
 mkdir ./Payload
 cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/consolinno-energy.app" ./Payload
-zip -qyr consolinno-hems.ipa ./Payload
+zip -qyr $WHITELABEL_TARGET.ipa ./Payload
 rm -r ./Payload
