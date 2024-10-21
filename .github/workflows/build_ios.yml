@@ -72,14 +72,6 @@ jobs:
           https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de
           EOF
       - uses: actions/checkout@v2
-      - name: Install rsvg-convert
-        run: |
-          brew update
-          brew install librsvg
-      - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
-        env:
-          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
-        run: ./distribute_assets.sh
       - run: git submodule update --init --recursive
       - name: "Upterm debug"
         if: contains(github.ref_name, 'debug-ios-ci') 
@@ -97,6 +89,14 @@ jobs:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
 #      - name: "Apply Consolinno patches"
 #        run: ./apply_consolinno_patches.sh
+      - name: Install rsvg-convert
+        run: |
+          brew update
+          brew install librsvg
+      - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
+        run: ./distribute_assets.sh
       - run: ./build_ios.sh
       - name: Archive .ipa
         uses: actions/upload-artifact@v3
