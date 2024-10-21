@@ -19,14 +19,6 @@ jobs:
       matrix:
         WHITELABEL_TARGET: ["Q.HOME-CONTROL"]
     steps:
-      - name: Install rsvg-convert
-        run: |
-          brew update
-          brew install librsvg
-      - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
-        env:
-          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
-        run: ./distribute_assets.sh
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '15.0.1'
@@ -80,6 +72,14 @@ jobs:
           https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de
           EOF
       - uses: actions/checkout@v2
+      - name: Install rsvg-convert
+        run: |
+          brew update
+          brew install librsvg
+      - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
+        run: ./distribute_assets.sh
       - run: git submodule update --init --recursive
       - name: "Upterm debug"
         if: contains(github.ref_name, 'debug-ios-ci') 
