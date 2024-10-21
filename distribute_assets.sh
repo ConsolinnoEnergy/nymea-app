@@ -10,7 +10,9 @@ configuration_files=("config.pri" "Configuration.qml" "overlay.qrc")
 root_dir="./nymea-app-consolinno-overlay";
 directory="./configuration-files/$WHITELABEL_TARGET/app-icons"
 
-sed -i 's/android:label="[^"]*"/android:label="'"$WHITELABEL_TARGET"'"/' $root_dir/packaging/android/AndroidManifest.xml
+appname="${WHITELABEL_TARGET//-/ }"
+
+sed -i 's/android:label="[^"]*"/android:label="'"$appname"'"/' $root_dir/packaging/android/AndroidManifest.xml
 
 if [[ ! -d "$directory/android/" ]]; then
   echo "Error: The directory $directory/android/ seems to be missing. It should contain the mipmap directories."
