@@ -4,15 +4,19 @@
 if [ "$WHITELABEL_TARGET" == "Q.HOME-CONTROL" ]; then
   PROVISIONING_ID=$PROVISIONING_PROFILE_ID_QCELLS
   TEAM_ID="J757FFDWU9"
+  TEAM_NAME="Hanwha Q CELLS GmbH"
   CERTIFICATE_NAME="Apple Development"
   CURRENT_BUNDLE_PREFIX="com"
   CURRENT_QMAKE_BUNDLE="qhomemanager"
+  PROVISIONING_SPECIFIER="Consolinno"
 else
   PROVISIONING_ID=$PROVISIONING_PROFILE_ID_CONSOLINNO
   TEAM_ID="6F8276DF5B"
+  TEAM_NAME="Consolinno Energy GmbH"
   CERTIFICATE_NAME="iPhone Distribution"
   CURRENT_BUNDLE_PREFIX="hems.consolinno"
   CURRENT_QMAKE_BUNDLE="energy"
+  PROVISIONING_SPECIFIER="Consolinno"
 fi
 
 set -e
@@ -37,8 +41,8 @@ sed -i -e 's|<key>BuildSystemType</key>||g' ${QT_ROOT}/mkspecs/macx-xcode/Worksp
 sed -i -e 's|<string>Original</string>||g' ${QT_ROOT}/mkspecs/macx-xcode/WorkspaceSettings.xcsettings
 $QT_ROOT/bin/qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  \
 CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug CONFIG+=release \
-QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="DEVELOPMENT_TEAM" qteam.value=$TEAM_ID \
-QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=$PROVISIONING_ID \
+QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="$TEAM_NAME" qteam.value=$TEAM_ID \
+QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=$PROVISIONING_SPECIFIER qprofile.value=$PROVISIONING_ID \
 QMAKE_XCODE_CODE_SIGN_IDENTITY=\""$CERTIFICATE_NAME\"" \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
 QMAKE_TARGET_BUNDLE_PREFIX+=$CURRENT_BUNDLE_PREFIX QMAKE_BUNDLE+=$CURRENT_QMAKE_BUNDLE

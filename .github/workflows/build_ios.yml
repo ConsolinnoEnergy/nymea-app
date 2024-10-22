@@ -101,6 +101,7 @@ jobs:
         env:
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
           PROVISIONING_PROFILE_ID_QCELLS: ${{ secrets.PROVISIONING_PROFILE_ID_QCELLS }}
+          PROVISIONING_PROFILE_ID_CONSOLINNO: ${{ secrets.PROVISIONING_PROFILE_ID_CONSOLINNO }}
       - name: Archive .ipa
         uses: actions/upload-artifact@v3
         with:
