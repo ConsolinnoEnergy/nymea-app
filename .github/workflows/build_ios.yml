@@ -98,6 +98,8 @@ jobs:
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
         run: ./distribute_assets.sh
       - run: ./build_ios.sh
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
       - name: Archive .ipa
         uses: actions/upload-artifact@v3
         with:
