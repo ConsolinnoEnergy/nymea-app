@@ -12,14 +12,14 @@ ConfigurationBase {
 
     //////////////////////////////////////////////////////////////////////////////////////
     //Main View
-    readonly property string mainMenuThingName: "black"
+    readonly property string mainMenuThingName: "white"
 
     //change "Ubuntu" string to set a different font or set "Ubuntu" to have standard font
     property string fontFamily: "MyriadPro"
 
     //Wizard Complete
     property bool isIntroIcon: false
-    
+
     //////////////////////////////////////////////////////////////////////////////////////
     // Defines the minimal compatible HEMS version
     property string minSysVersion: "1.3.0"
@@ -36,8 +36,8 @@ ConfigurationBase {
     property string deviceName: "Zewotherm"
 
     //Branding contact-email
-    property string contactEmail: "info@zewotherm.de"
-    property string serviceEmail: "info@zewotherm.de"
+    property string contactEmail: "dynamics@zewotherm.de"
+    property string serviceEmail: "dynamics@zewotherm.de"
 
     // Will be shown in About page
     property string githubLink: "https://github.com/ConsolinnoEnergy/nymea-app"
@@ -51,6 +51,16 @@ ConfigurationBase {
     property string companyTel: "02642-90560"
 
     //Styles
+    //MainMenuCirlce
+    readonly property color mainTimeCircle: "#1F264D"
+    readonly property color mainTimeCircleDivider: "#ffffff"
+    readonly property color mainCircleTimeColor: "white"
+
+    readonly property color mainTimeNow: "#1F264D"
+
+    readonly property color mainInnerCicleFirst: "#1F264D"
+    readonly property color mainInnerCicleSecond: "#1F264D"
+
     // Button
     readonly property color iconColor: "#001C77"
     readonly property color buttonColor: "#001C77"
@@ -58,39 +68,49 @@ ConfigurationBase {
 
     //static things colors
     //producers
-    readonly property color rootMeterAcquisitionColor: "#F37B8E"
-    readonly property color rootMeterReturnColor: "#45B4E4"
-    readonly property color inverterColor: "#FCE487"
+    readonly property color rootMeterAcquisitionColor: "#EE7326"
+    readonly property color rootMeterReturnColor: "#0069B4"
+    readonly property color inverterColor: "#FAB000"
 
     //other things
-    readonly property color epexColor: "#E056F5"
-    readonly property color epexMainLineColor: "#6CCB56"
-    readonly property color epexAverageColor: "#C65B5A"
+    readonly property color epexColor: "#462e87"
+    readonly property color epexMainLineColor: "#0069b4"
+    readonly property color epexAverageColor: "#FAB000"
 
     //other consumers
-    readonly property color heatpumpColor: "#F7B772"
-    readonly property color wallboxColor: "#ACE3E2"
-    readonly property color heatingRodColor: "#639F86"
-    readonly property color consumedColor: "#ADB9E3"
+    readonly property color heatpumpColor: "#368578"
+    readonly property color wallboxColor: "#76C3DF"
+    readonly property color heatingRodColor: "#EA5045"
+    readonly property color consumedColor: "#A84D97"
 
     //batteries
-    readonly property color batteriesColor: "#BDD786"
+    readonly property color batteriesColor: "#00A338"
     readonly property color batteryChargeColor: batteriesColor
-    readonly property color batteryDischargeColor: "#F7B772"
+    readonly property color batteryDischargeColor: "#E53851"
 
     //static array of thing colors
-    property var consumerColors: ["#FF8954", "#D9F6C5", "#437BC4", "#AA5DC2", "#C6C73F"]
+    property var consumerColors: ["#00B1B2", "#A84D97", "#49B170", "#E8E349", "#623D91", "#86BC25", "#F28C5C", "#A5ADD8"]
     readonly property var totalColors: [consumedColor, inverterColor, rootMeterAcquisitionColor, rootMeterReturnColor, batteryChargeColor, batteryDischargeColor]
 
+    //custom Color for legend of graphs
+    readonly property bool customColor: true
+
+    readonly property color customInverterColor: configID.inverterColor
+    readonly property color customGridDownColor: configID.rootMeterAcquisitionColor
+    readonly property color customGridUpColor: configID.rootMeterReturnColor
+    readonly property color customBatteryPlusColor: configID.batteryChargeColor
+    readonly property color customBatteryMinusColor: configID.batteryDischargeColor
+    readonly property color customPowerSockerColor: configID.consumedColor
+
     //custom Icons
-    readonly property string gridIcon: ""
-    readonly property string heatpumpIcon: ""
-    readonly property string heatingRodIcon: ""
-    readonly property string energyIcon: ""
-    readonly property string inverterIcon: ""
+    readonly property string gridIcon: "Zewotherm/gridZ.svg"
+    readonly property string heatpumpIcon: "Zewotherm/heatpumpZ.svg"
+    readonly property string heatingRodIcon: "Zewotherm/heatingZ.svg"
+    readonly property string energyIcon: "Zewotherm/electricityZ.svg"
+    readonly property string inverterIcon: "Zewotherm/inverterZ.svg"
     readonly property string settingsIcon: ""
-    readonly property string evchargerIcon: ""
-    readonly property string batteryIcon: ""
+    readonly property string evchargerIcon: "Zewotherm/wallboxZ.svg"
+    readonly property string batteryIcon: "Zewotherm/batteryZ.svg"
     readonly property string infoIcon: ""
     readonly property string menuIcon: ""
 
@@ -156,12 +176,12 @@ ConfigurationBase {
     modbusSettingsEnabled: true
     pluginSettingsEnabled: true
 
-    mainMenuLinks: [ 
+    mainMenuLinks: [
         {
             text: qsTr("Help"),
             iconName: "../images/help.svg",
             page: "info/Help/HelpPage.qml"
         },
-    ] 
+    ]
 
     }

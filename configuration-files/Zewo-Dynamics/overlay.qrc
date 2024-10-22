@@ -117,5 +117,12 @@
         <file>system/ConsolinnoNetworkSettingsPage.qml</file>
         <file>appsettings/ConsolinnoLookAndFeelSettingsPage.qml</file>
         <file>appsettings/ConsolinnoAppSettingsPage.qml</file>
+        <file>images/Zewotherm/batteryZ.svg</file>
+        <file>images/Zewotherm/electricityZ.svg</file>
+        <file>images/Zewotherm/gridZ.svg</file>
+        <file>images/Zewotherm/heatingZ.svg</file>
+        <file>images/Zewotherm/heatpumpZ.svg</file>
+        <file>images/Zewotherm/inverterZ.svg</file>
+        <file>images/Zewotherm/wallboxZ.svg</file>
     </qresource>
 </RCC>

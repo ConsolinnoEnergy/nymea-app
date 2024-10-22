@@ -16,8 +16,8 @@ sed -i 's/android:label="[^"]*"/android:label="'"$appname"'"/' $root_dir/packagi
 
 # Get appId from Configuration.qml and put it into the AndroidManifest and build.gradle
 appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
-sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/AndroidManifest.xml
-sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/build.gradle
+# sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/AndroidManifest.xml
+# sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/build.gradle
 
 if [[ ! -d "$directory/android/" ]]; then
   echo "Error: The directory $directory/android/ seems to be missing. It should contain the mipmap directories."
@@ -49,6 +49,7 @@ echo "All files are present... Starting with the icon generation"
 
 # copy adaptive icons to correct location
 cp -r $directory/android/* $root_dir/packaging/android/res/
+cp -r ./configuration-files/$WHITELABEL_TARGET/images/* $root_dir/images/
 
 INPUT_SVG="$directory/logo.svg"
 BASE_NAME=$(basename "$INPUT_SVG" .svg)
