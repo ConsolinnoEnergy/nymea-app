@@ -22,6 +22,10 @@ sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/bui
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
 sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
 
+# copy info.plist for apple in the correct folder
+cp -r ./configuration-files/$WHITELABEL_TARGET/apple/ios/* $root_dir/packaging/ios/
+cp -r ./configuration-files/$WHITELABEL_TARGET/apple/osx/* $root_dir/packaging/osx/
+
 if [[ ! -d "$directory/android/" ]]; then
   echo "Error: The directory $directory/android/ seems to be missing. It should contain the mipmap directories."
   exit 1
