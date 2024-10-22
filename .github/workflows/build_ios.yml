@@ -7,7 +7,6 @@ on:
       - feature/add-ios-publish      
       - debug-ios-ci
       - test-ios-ci
-      - experimental-build-dynamic-whitelable
 
     tags:
       - 'v*'
