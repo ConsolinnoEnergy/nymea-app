@@ -100,6 +100,7 @@ jobs:
       - run: ./build_ios.sh
         env:
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
+          PROVISIONING_PROFILE_ID_QCELLS: ${{ secrets.PROVISIONING_PROFILE_ID_QCELLS }}
       - name: Archive .ipa
         uses: actions/upload-artifact@v3
         with:
