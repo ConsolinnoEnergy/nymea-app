@@ -44,7 +44,7 @@ make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/android-build install
 if [[ -z "${SELFSIGN}" ]]; then
     # Sign and build .aab file
     $ADEPQT \
-    --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
+    --input $BUILD_DIR/nymea-app/android-$WHITELABEL_TARGET-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-34 \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
@@ -56,7 +56,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     
     # Building unsigned apk and signing it manuallly to use --v2-signing scheme
      $ADEPQT \
-    --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
+    --input $BUILD_DIR/nymea-app/android-$WHITELABEL_TARGET-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-34 \
     --release \
@@ -76,7 +76,7 @@ if [[ -z "${SELFSIGN}" ]]; then
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair
     $ADEPQT \
-    --input $BUILD_DIR/nymea-app/android-consolinno-energy-deployment-settings.json \
+    --input $BUILD_DIR/nymea-app/android-$WHITELABEL_TARGET-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-34 \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \

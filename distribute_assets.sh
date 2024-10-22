@@ -14,6 +14,10 @@ appname="${WHITELABEL_TARGET//-/ }"
 
 sed -i 's/android:label="[^"]*"/android:label="'"$appname"'"/' $root_dir/packaging/android/AndroidManifest.xml
 
+# Get appId from Configuration.qml and put it into the AndroidManifest
+appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
+sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/AndroidManifest.xml
+
 if [[ ! -d "$directory/android/" ]]; then
   echo "Error: The directory $directory/android/ seems to be missing. It should contain the mipmap directories."
   exit 1
