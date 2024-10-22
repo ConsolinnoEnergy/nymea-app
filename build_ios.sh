@@ -1,11 +1,18 @@
 #!/bin/bash
 
+# TODO: Maybe move variables into github secrets/variables
 if [ "$WHITELABEL_TARGET" == "Q.HOME-CONTROL" ]; then
   PROVISIONING_ID=$PROVISIONING_PROFILE_ID_QCELLS
   TEAM_ID="J757FFDWU9"
+  CERTIFICATE_NAME="Apple Development"
+  CURRENT_BUNDLE_PREFIX="de.qcells"
+  CURRENT_QMAKE_BUNDLE="qhomecontrol"
 else
   PROVISIONING_ID=$PROVISIONING_PROFILE_ID_CONSOLINNO
   TEAM_ID="6F8276DF5B"
+  CERTIFICATE_NAME="iPhone Distribution"
+  CURRENT_BUNDLE_PREFIX="hems.consolinno"
+  CURRENT_QMAKE_BUNDLE="energy"
 fi
 
 set -e
@@ -32,21 +39,21 @@ $QT_ROOT/bin/qmake ${ROOT_DIR}/nymea-app/ -spec macx-ios-clang  \
 CONFIG+=iphoneos CONFIG+=device  CONFIG+=qml_debug CONFIG+=release \
 QMAKE_MAC_XCODE_SETTINGS=qteam qteam.name="DEVELOPMENT_TEAM" qteam.value=$TEAM_ID \
 QMAKE_MAC_XCODE_SETTINGS+=qprofile qprofile.name=PROVISIONING_PROFILE_SPECIFIER qprofile.value=$PROVISIONING_ID \
-QMAKE_XCODE_CODE_SIGN_IDENTITY=\""iPhone Distribution\"" \
+QMAKE_XCODE_CODE_SIGN_IDENTITY=\""$CERTIFICATE_NAME\"" \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay \
-QMAKE_TARGET_BUNDLE_PREFIX+=hems.consolinno QMAKE_BUNDLE+=energy
+QMAKE_TARGET_BUNDLE_PREFIX+=$CURRENT_BUNDLE_PREFIX QMAKE_BUNDLE+=$CURRENT_QMAKE_BUNDLE
 
 make qmake_all
 set +e
 make -j $(sysctl -n hw.physicalcpu)
 # First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here.
 # Edit: Now it seems to fail. Thus set +e above
-rm /Users/runner/work/consolinno-hems-app-builder/consolinno-hems-app-builder/build/ios/nymea-app/consolinno-energy.build/Release-iphoneos/consolinno-energy.build/LaunchScreen.storyboardc
+rm /Users/runner/work/consolinno-hems-app-builder/consolinno-hems-app-builder/build/ios/nymea-app/$WHITELABEL_TARGET.build/Release-iphoneos/$WHITELABEL_TARGET.build/LaunchScreen.storyboardc
 set -e
 make -j $(sysctl -n hw.physicalcpu)
 
 
 mkdir ./Payload
-cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/consolinno-energy.app" ./Payload
+cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/$WHITELABEL_TARGET.app" ./Payload
 zip -qyr $WHITELABEL_TARGET.ipa ./Payload
 rm -r ./Payload
