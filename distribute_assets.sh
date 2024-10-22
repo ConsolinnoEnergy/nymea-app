@@ -20,7 +20,7 @@ sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/And
 sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/build.gradle
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
-sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' packaging/android/google-services.json
+sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
 
 if [[ ! -d "$directory/android/" ]]; then
   echo "Error: The directory $directory/android/ seems to be missing. It should contain the mipmap directories."
