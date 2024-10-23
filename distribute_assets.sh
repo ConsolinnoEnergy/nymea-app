@@ -11,11 +11,12 @@ root_dir="./nymea-app-consolinno-overlay";
 directory="./configuration-files/$WHITELABEL_TARGET/app-icons"
 
 appname="${WHITELABEL_TARGET//-/ }"
+appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
 
 sed -i 's/android:label="[^"]*"/android:label="'"$appname"'"/' $root_dir/packaging/android/AndroidManifest.xml
+sed -i 's/android:authorities="[^"]*"/android:authorities="'"$appId.fileprovider"'"/' $root_dir/packaging/android/AndroidManifest.xml
 
 # Get appId from Configuration.qml and put it into the AndroidManifest and build.gradle
-appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
 sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/AndroidManifest.xml
 sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/build.gradle
 
