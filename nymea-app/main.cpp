@@ -99,10 +99,11 @@ int main(int argc, char *argv[])
 
         // URL parsen
         QUrl qurl(url);
+        QUrlQuery qurlQ(url);
         if (qurl.scheme() == "consolinno-energy") {
-            QString action = qurl.host();
-            QString token = qurl.queryItemValue("token"); 
-            QString uuid = qurl.queryItemValue("uuid");
+            QString action = qurl.scheme();
+            QString token = qurlQ.queryItemValue("token");
+            QString uuid = qurlQ.queryItemValue("uuid");
 
             qDebug() << "Action:" << action;
             qDebug() << "Token:" << token;
