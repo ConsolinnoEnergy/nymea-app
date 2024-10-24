@@ -29,6 +29,6 @@ make lrelease
 make -j$(nproc)
 make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/linux-build install
 export VERSION=$(cat ${ROOT_DIR}/nymea-app-consolinno-overlay/version.txt | head -n1 | sed 's/\./-/g')
-cp ${ROOT_DIR}/nymea-app-consolinno-overlay/packaging/appimage/consolinno-energy.desktop ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/consolinno-energy.desktop
-$LDEPLOYQT ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/consolinno-energy.desktop  -appimage -qmldir=${ROOT_DIR}/nymea-app -qmldir=${ROOT_DIR}/nymea-app-consolinno-overlay
+cp ${ROOT_DIR}/nymea-app-consolinno-overlay/packaging/appimage/$WHITELABEL_TARGET.desktop ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$WHITELABEL_TARGET.desktop
+$LDEPLOYQT ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$WHITELABEL_TARGET.desktop  -appimage -qmldir=${ROOT_DIR}/nymea-app -qmldir=${ROOT_DIR}/nymea-app-consolinno-overlay
 rename "s/x86/$COMMIT_HASH-x86/g" build/appimage/*.AppImage

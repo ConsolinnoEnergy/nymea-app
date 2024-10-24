@@ -111,7 +111,7 @@ jobs:
     name: Publish iOS
     runs-on: macos-latest
     needs: build-ios
-    if: github.ref_type == 'tag' && false #&& contains(github.ref_name, 'bla')
+    if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2

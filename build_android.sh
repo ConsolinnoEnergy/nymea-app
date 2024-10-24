@@ -40,11 +40,17 @@ make lrelease
 make -j$(nproc)
 make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/android-build install
 
+SETTINGS_JSON=$WHITELABEL_TARGET
+
+if [ "$WHITELABEL_TARGET" == "Consolinno-HEMS" ]; then
+  # for consolinno a different application name is used.
+  SETTINGS_JSON="consolinno-energy"
+fi
 
 if [[ -z "${SELFSIGN}" ]]; then
     # Sign and build .aab file
     $ADEPQT \
-    --input $BUILD_DIR/nymea-app/android-$WHITELABEL_TARGET-deployment-settings.json \
+    --input $BUILD_DIR/nymea-app/android-$SETTINGS_JSON-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-34 \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
@@ -56,7 +62,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     
     # Building unsigned apk and signing it manuallly to use --v2-signing scheme
      $ADEPQT \
-    --input $BUILD_DIR/nymea-app/android-$WHITELABEL_TARGET-deployment-settings.json \
+    --input $BUILD_DIR/nymea-app/android-$SETTINGS_JSON-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-34 \
     --release \
@@ -70,13 +76,13 @@ if [[ -z "${SELFSIGN}" ]]; then
     --key-pass pass:${SIGNING_KEY_PASSWORD} \
     --v2-signing-enabled  \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${WHITELABEL_TARGET}-${VERSION}-signed.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-signed.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
     
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair
     $ADEPQT \
-    --input $BUILD_DIR/nymea-app/android-$WHITELABEL_TARGET-deployment-settings.json \
+    --input $BUILD_DIR/nymea-app/android-$SETTINGS_JSON-deployment-settings.json \
     --output $BUILD_DIR/nymea-app/android-build \
     --android-platform android-34 \
     --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
@@ -92,7 +98,7 @@ else
     --v2-signing-enabled  \
     --key $BUILD_DIR/key.pk8 --cert $BUILD_DIR/certificate_x509.pem \
     -v \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${WHITELABEL_TARGET}-${VERSION}-selfsigned.apk \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-selfsigned.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
 
 fi

@@ -10,6 +10,9 @@ on:
 jobs:
   build-appimage:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        WHITELABEL_TARGET: ["Consolinno-HEMS"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -31,11 +34,13 @@ jobs:
 #      - name: "Apply Consolinno patches"
 #        run: ./apply_consolinno_patches.sh
       - run: ./build_appimage.sh
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3     
       #  run: ./gen_snap_version.sh
       #- uses: lhotari/action-upterm@v1
-      - name: Archive AppImage
+      - name: Archive AppImage for ${{ matrix.WHITELABEL_TARGET }}
         uses: actions/upload-artifact@v3
         with:
           name: Archive AppImage
