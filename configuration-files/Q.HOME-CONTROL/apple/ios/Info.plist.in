@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Created by Qt/QMake</string>
         <key>CFBundleIdentifier</key>
-        <string>com.qhomemanager</string>
+        <string>de.qcells.qhomecontrol</string>
 	<key>CFBundleName</key>
         <string>Q.HOME-CONTROL</string>
 	<key>CFBundlePackageType</key>

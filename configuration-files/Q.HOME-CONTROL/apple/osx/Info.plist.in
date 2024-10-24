@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
         <string>AppIcon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.qhomemanager</string>
+	<string>de.qcells.qhomecontrol</string>
         <key>CFBundleVersion</key>
         <string>$$APP_REVISION</string>
         <key>CFBundleShortVersionString</key>

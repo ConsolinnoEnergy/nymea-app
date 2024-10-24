@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS"]
+        WHITELABEL_TARGET: ["Q.HOME-CONTROL"]
     steps:
       - run: git config --global credential.helper store
       - run: | 

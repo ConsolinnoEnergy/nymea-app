@@ -6,7 +6,7 @@ ConfigurationBase {
     id: configID
     systemName: "Q.HOME CONTROL"
     appName: "Q.HOME CONTROL"
-    appId: "com.qhomemanager"
+    appId: "de.qcells.qhomecontrol"
 
     connectionWizard: "/ui/wizards/ConnectionWizard.qml"
 
