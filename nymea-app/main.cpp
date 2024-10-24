@@ -93,6 +93,23 @@ int main(int argc, char *argv[])
     parser.addOption(splashOption);
     parser.process(application);
 
+    if (argc > 1) {
+        QString url = argv[1];
+        qDebug() << "Received URL:" << url;
+
+        // URL parsen
+        QUrl qurl(url);
+        if (qurl.scheme() == "consolinno-energy") {
+            QString action = qurl.host();
+            QString token = qurl.queryItemValue("token"); 
+            QString uuid = qurl.queryItemValue("uuid");
+
+            qDebug() << "Action:" << action;
+            qDebug() << "Token:" << token;
+            qDebug() << "Uuid:" << uuid;
+        }
+    }
+
     // Initialize app log controller as early as possible, but after setting app name and printing initial startup info
     AppLogController::instance();
 
