@@ -96,6 +96,16 @@ ConfigurationBase {
     property var consumerColors: ["#FF8954", "#D9F6C5", "#437BC4", "#AA5DC2", "#C6C73F"]
     readonly property var totalColors: [consumedColor, inverterColor, rootMeterAcquisitionColor, rootMeterReturnColor, batteryChargeColor, batteryDischargeColor]
 
+    //custom Color for Graph
+    readonly property bool customColor: false
+
+    readonly property color customInverterColor: configID.inverterColor
+    readonly property color customGridDownColor: configID.rootMeterAcquisitionColor
+    readonly property color customGridUpColor: configID.rootMeterReturnColor
+    readonly property color customBatteryPlusColor: configID.batteryChargeColor
+    readonly property color customBatteryMinusColor: configID.batteryDischargeColor
+    readonly property color customPowerSockerColor: configID.consumedColor
+
     //custom Icons
     readonly property string gridIcon: ""
     readonly property string heatpumpIcon: ""
