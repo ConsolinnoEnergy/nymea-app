@@ -83,7 +83,7 @@ jobs:
           name: Archive apk and aab for ${{ matrix.WHITELABEL_TARGET }}
           path: |
             build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab 
-            build/android/nymea-app/android-build/build/outputs/apk/release/${{ matrix.WHITELABEL_TARGET }}-*.apk
+            build/android/nymea-app/android-build/build/outputs/apk/release/*.apk
             build/android/nymea-app/android-build/build/outputs/apk/release/${{ matrix.WHITELABEL_TARGET }}-*-testing.apk
 
   publish-android:
