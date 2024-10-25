@@ -101,7 +101,7 @@ ConfigurationBase {
     readonly property string gridIcon: "QCells/gridQ.svg"
     readonly property string heatpumpIcon: "QCells/heatpumpQ.svg"
     readonly property string heatingRodIcon: ""
-    readonly property string energyIcon: ""
+    readonly property string energyIcon: "QCells/dynamic-tariffQ.svg"
     readonly property string inverterIcon: "QCells/inverterQ.svg"
     readonly property string settingsIcon: "QCells/settingsQ.svg"
     readonly property string evchargerIcon: "QCells/wallboxQ.svg"
