@@ -10,7 +10,7 @@ on:
       - 'v*'
 
 jobs:
-  ubuntu-job:
+  generate-wl-assets:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -42,6 +42,7 @@ jobs:
 
   build-windows:
     runs-on: windows-latest
+    needs: generate-wl-assets
     strategy:
       matrix:
         WHITELABEL_TARGET: ["Q.HOME-CONTROL"]
