@@ -20,6 +20,13 @@ sed -i 's/android:authorities="[^"]*"/android:authorities="'"$appId.fileprovider
 sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/AndroidManifest.xml
 sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/build.gradle
 
+# Update config for windows
+sed -i 's#<Name>[^<]*</Name>#<Name>'$appname'</Name>#' $root_dir/packaging/windows/config/config.xml
+sed -i 's#<Title>[^<]*</Title>#<Title>'$appname'</Title>#' $root_dir/packaging/windows/config/config.xml
+sed -i 's#<DisplayName>[^<]*</DisplayName>#<DisplayName>'$appname'</DisplayName>#' $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/package.xml
+sed -i 's#<Description>[^<]*</Description>#<Description>Install'$appname'</Description>#' $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/package.xml
+cp -r ./configuration-files/$WHITELABEL_TARGET/app-icons/windows/* $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/
+
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
 sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
 
