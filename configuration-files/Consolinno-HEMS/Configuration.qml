@@ -61,14 +61,16 @@ ConfigurationBase {
 
     readonly property color mainTimeNow: "gray"
 
-
     readonly property color mainInnerCicleFirst: "#b6b6b6"
     readonly property color mainInnerCicleSecond: "#b6b6b6"
 
     // Button
     readonly property color iconColor: "#87BD26"
     readonly property color buttonColor: "#87BD26"
-    readonly property color buttonTextColor: "#ffffff"
+    readonly property color secondButtonColor: "#189521"
+
+    readonly property color buttonTextColor: "#000000"
+    readonly property color highlightForeground: "#ffffff"
 
     //static things colors
     //producers
