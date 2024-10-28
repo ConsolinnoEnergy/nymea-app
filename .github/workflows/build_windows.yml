@@ -5,17 +5,59 @@ on:
       - main
       - feature/add-windows-build
       - feature/add-release-upload
+      - experimental-build-dynamic-whitelable
     tags:
       - 'v*'
 
 jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        WHITELABEL_TARGET: ["Q.HOME-CONTROL"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - run: git submodule update --init --recursive --progress
+      - name: Install librsvg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+
+      - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
+        run: ./distribute_assets.sh
+
+      - name: Upload generated directories for ${{ matrix.WHITELABEL_TARGET }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-assets-${{ matrix.WHITELABEL_TARGET }}
+          path: |
+            ./nymea-app-consolinno-overlay/config.pri
+            ./nymea-app-consolinno-overlay/overlay.qrc
+            ./nymea-app-consolinno-overlay/Configuration.qml
+            ./nymea-app-consolinno-overlay/images/
+            ./nymea-app-consolinno-overlay/styles/
+
   build-windows:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        WHITELABEL_TARGET: ["Q.HOME-CONTROL"]
     steps:
       - run: git config --global credential.helper store
       - uses: actions/checkout@v2
       - run: git clone "https://${{secrets.GITLAB_DEPLOY_TOKEN_USER}}:${{secrets.GITLAB_DEPLOY_TOKEN}}@gitlab.consolinno-it.de/leafletfirmware/nymea/nymea-app-consolinno-overlay.git" tmp
       - run: git submodule update --init --recursive --progress
+      - name: Download generated assets for ${{ matrix.WHITELABEL_TARGET }}
+        uses: actions/download-artifact@v3
+        with:
+          name: generated-assets-${{ matrix.WHITELABEL_TARGET }}
+          path: ./downloaded-assets/${{ matrix.WHITELABEL_TARGET }}
+      - name: Include assets of ${{ matrix.WHITELABEL_TARGET }}
+        run: Copy-Item -Path "./downloaded-assets/*" -Destination "./" -Recurse -Force
+
       - uses: ilammy/msvc-dev-cmd@v1
       - uses: jurplel/install-qt-action@v3
         with:
