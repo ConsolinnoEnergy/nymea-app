@@ -59,6 +59,10 @@ jobs:
       #- name: Include assets of ${{ matrix.WHITELABEL_TARGET }}
       #  run: Copy-Item -Path "./downloaded-assets/*" -Destination "./nymea-app-consolinno-overlay/" -Recurse -Force
 
+      - name: "Upterm debug"
+        uses: owenthereal/action-upterm@v1
+        with:
+          limit-access-to-actor: true
       - uses: ilammy/msvc-dev-cmd@v1
       - uses: jurplel/install-qt-action@v3
         with:
