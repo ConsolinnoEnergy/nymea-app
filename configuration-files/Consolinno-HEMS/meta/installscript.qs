@@ -24,6 +24,6 @@ Component.prototype.createOperations = function()
 
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\consolinno-energy", "/ve", "/d", "URL:consolinno-energy", "/f");
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\consolinno-energy", "/v", "URL Protocol", "/f");
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\consolinno-energy\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@\\consolinno-energy.exe\" \"%1\"", "/f");
+        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\consolinno-energy\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@//consolinno-energy.exe\" \"%1\"", "/f");
     }
 }

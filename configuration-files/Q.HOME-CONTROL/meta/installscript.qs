@@ -24,6 +24,6 @@ Component.prototype.createOperations = function()
 
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Q.HOME-CONTROL", "/ve", "/d", "URL:Q.HOME-CONTROL", "/f");
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Q.HOME-CONTROL", "/v", "URL Protocol", "/f");
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Q.HOME-CONTROL\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@\\Q.HOME-CONTROL.exe\" \"%1\"", "/f");
+        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Q.HOME-CONTROL\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@//Q.HOME-CONTROL.exe\" \"%1\"", "/f");
     }
 }

@@ -24,6 +24,6 @@ Component.prototype.createOperations = function()
 
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/ve", "/d", "URL:Zewo-Dynamics", "/f");
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/v", "URL Protocol", "/f");
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@\\Zewo-Dynamics.exe\" \"%1\"", "/f");
+        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@//Zewo-Dynamics.exe\" \"%1\"", "/f");
     }
 }
