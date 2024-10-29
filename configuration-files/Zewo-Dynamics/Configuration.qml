@@ -65,8 +65,8 @@ ConfigurationBase {
     readonly property color iconColor: "#001C77"
     readonly property color buttonColor: "#001C77"
     readonly property color buttonTextColor: "white"
+    
     readonly property color secondButtonColor: "#001C77"
-
     readonly property color highlightForeground: "white"
     //static things colors
     //producers
