@@ -39,6 +39,7 @@ jobs:
             ./nymea-app-consolinno-overlay/Configuration.qml
             ./nymea-app-consolinno-overlay/images/
             ./nymea-app-consolinno-overlay/styles/
+            ./nymea-app-consolinno-overlay/packaging/windows/
 
   build-windows:
     runs-on: windows-latest
