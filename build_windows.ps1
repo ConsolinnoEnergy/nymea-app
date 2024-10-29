@@ -1,5 +1,5 @@
 $ROOT_DIR=$PWD
-cp -r ./downloaded-assets/* $ROOT_DIR\nymea-app-consolinno-overlay/
+cp -rf ./downloaded-assets/* $ROOT_DIR\nymea-app-consolinno-overlay/
 
 mkdir -p build\windows
 cd build\windows
