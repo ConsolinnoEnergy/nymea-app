@@ -56,8 +56,8 @@ jobs:
         with:
           name: generated-assets-${{ matrix.WHITELABEL_TARGET }}
           path: ./downloaded-assets/${{ matrix.WHITELABEL_TARGET }}
-      - name: Include assets of ${{ matrix.WHITELABEL_TARGET }}
-        run: Copy-Item -Path "./downloaded-assets/*" -Destination "./nymea-app-consolinno-overlay/" -Recurse -Force
+      #- name: Include assets of ${{ matrix.WHITELABEL_TARGET }}
+      #  run: Copy-Item -Path "./downloaded-assets/*" -Destination "./nymea-app-consolinno-overlay/" -Recurse -Force
 
       - uses: ilammy/msvc-dev-cmd@v1
       - uses: jurplel/install-qt-action@v3
