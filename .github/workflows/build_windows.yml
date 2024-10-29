@@ -89,7 +89,7 @@ jobs:
         with:
           name: Consolinno HEMS windows installer
           path: |
-            build/windows/consolinno-energy-win-installer-*.exe
+            build/windows/*-win-installer-*.exe
             
   publish-windows:
     name: Publish binaries
