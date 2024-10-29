@@ -70,8 +70,8 @@ ConfigurationBase {
     readonly property color buttonColor: "#001C77"
     readonly property color secondButtonColor: "#001C77"
     
-    readonly property color buttonTextColor: "white"
-    readonly property color highlightForeground: "white"
+    readonly property color buttonTextColor: "#ffffff"
+    readonly property color highlightForeground: "#ffffff"
     //static things colors
     //producers
     readonly property color rootMeterAcquisitionColor: "#1C3EAA"
@@ -102,7 +102,7 @@ ConfigurationBase {
     //custom Icons
     readonly property string gridIcon: "QCells/gridQ.svg"
     readonly property string heatpumpIcon: "QCells/heatpumpQ.svg"
-    readonly property string heatingRodIcon: ""
+    readonly property string heatingRodIcon: "QCells/heatingRodQ.svg"
     readonly property string energyIcon: "QCells/dynamic-tariffQ.svg"
     readonly property string inverterIcon: "QCells/inverterQ.svg"
     readonly property string settingsIcon: "QCells/settingsQ.svg"

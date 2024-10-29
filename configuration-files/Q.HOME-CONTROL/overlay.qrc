@@ -138,6 +138,7 @@
         <file>images/QCells/settingsQ.svg</file>
         <file>images/QCells/wallboxQ.svg</file>
         <file>images/QCells/dynamic-tariffQ.svg</file>
+        <file>images/QCells/heatingRodQ.svg</file>
         <file>system/ConsolinnoNetworkSettingsPage.qml</file>
         <file>appsettings/ConsolinnoLookAndFeelSettingsPage.qml</file>
         <file>appsettings/ConsolinnoAppSettingsPage.qml</file>
