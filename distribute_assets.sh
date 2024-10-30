@@ -25,7 +25,7 @@ sed -i "s#<Name>[^<]*</Name>#<Name>${appname}</Name>#" $root_dir/packaging/windo
 sed -i "s#<Title>[^<]*</Title>#<Title>${appname}</Title>#" $root_dir/packaging/windows/config/config.xml
 sed -i "s#<Publisher>[^<]*</Publisher>#<Publisher>${appname}</Publisher>#" $root_dir/packaging/windows/config/config.xml
 sed -i "s#<StartMenuDir>[^<]*</StartMenuDir>#<StartMenuDir>${appname}</StartMenuDir>#" $root_dir/packaging/windows/config/config.xml
-sed -i "s#<TargetDir>[^<]*</TargetDir>#<TargetDir>@ApplicationsDirX64@\\${appname}</TargetDir>#" $root_dir/packaging/windows/config/config.xml
+sed -i "s#<TargetDir>[^<]*</TargetDir>#<TargetDir>@ApplicationsDirX64@/${appname}</TargetDir>#" $root_dir/packaging/windows/config/config.xml
 sed -i "s#<DisplayName>[^<]*</DisplayName>#<DisplayName>${appname}</DisplayName>#" $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/package.xml
 sed -i "s#<Description>[^<]*</Description>#<Description>Install ${appname}</Description>#" $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/package.xml
 cp -r ./configuration-files/$WHITELABEL_TARGET/app-icons/windows/* $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/

@@ -21,9 +21,11 @@ Component.prototype.createOperations = function()
         component.addOperation("CreateShortcut", "@TargetDir@/Zewo-Dynamics.exe", "@StartMenuDir@/Zewo-Dynamics.lnk",
             "workingDirectory=@TargetDir@", "iconPath=@TargetDir@/logo.ico",
             "description=Zewo-Dynamics - frontend");
+        
+        var targetDir = installer.value("TargetDir").replace(/\//g, "\\");
 
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/ve", "/d", "URL:Zewo-Dynamics", "/f");
         component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/v", "URL Protocol", "/f");
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@\\Zewo-Dynamics.exe\" \"%1\"", "/f");        
+        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics\\shell\\open\\command", "/ve", "/d", "\"" + targetDir + "\\Zewo-Dynamics.exe\" \"%1\"", "/f");     
     }
 }
