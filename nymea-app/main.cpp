@@ -93,6 +93,11 @@ int main(int argc, char *argv[])
     parser.addOption(splashOption);
     parser.process(application);
 
+
+    QString scheme = "";
+    QString token = "";
+    QString uuid = "";
+
     if (argc > 1) {
         QString url = argv[1];
         qDebug() << "Received URL:" << url;
@@ -100,12 +105,12 @@ int main(int argc, char *argv[])
         // URL parsen
         QUrl qurl(url);
         QUrlQuery qurlQ(url);
-        if (qurl.scheme() == "consolinno-energy") {
-            QString action = qurl.scheme();
-            QString token = qurlQ.queryItemValue("token");
-            QString uuid = qurlQ.queryItemValue("uuid");
+        if (qurl.scheme() == "Zewo-Dynamics" || qurl.scheme() == "Q.HOME-CONTROL" || qurl.scheme() == "consolinno-energy") {
+            scheme = qurl.scheme();
+            token = qurlQ.queryItemValue("token");
+            uuid = qurlQ.queryItemValue("uuid");
 
-            qDebug() << "Action:" << action;
+            qDebug() << "Action:" << scheme;
             qDebug() << "Token:" << token;
             qDebug() << "Uuid:" << uuid;
         }
@@ -226,6 +231,11 @@ int main(int argc, char *argv[])
     engine->rootContext()->setContextProperty("systemProductType", QSysInfo::productType());
 
     engine->rootContext()->setContextProperty("useVirtualKeyboard", qgetenv("QT_IM_MODULE") == "qtvirtualkeyboard");
+
+    engine->rootContext()->setContextProperty("action", scheme);
+    engine->rootContext()->setContextProperty("uuid", uuid);
+    engine->rootContext()->setContextProperty("token", token);
+
 
     application.setWindowIcon(QIcon(QString(":/styles/%1/logo.svg").arg(styleController.currentStyle())));
 
