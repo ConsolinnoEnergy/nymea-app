@@ -17,13 +17,15 @@ Component.prototype.createOperations = function()
     // return value 5100 means there's a newer version of the runtime already installed
 
     component.addOperation("Execute", "{0,3010,1638,5100}", "@TargetDir@/vc_redist.x64.exe", "/quiet", "/norestart");
+    
+    component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/ve", "/d", "URL:Zewo-Dynamics", "/f");
+    component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/v", "URL Protocol", "/f");
+    var targetDir = installer.value("TargetDir").replace(/\//g, "\\");
+    component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics\\shell\\open\\command", "/ve", "/d", "\"+ targetDir +\\Zewo-Dynamics.exe\" \"%1\"", "/f");
+
     if (systemInfo.productType === "windows") {
         component.addOperation("CreateShortcut", "@TargetDir@/Zewo-Dynamics.exe", "@StartMenuDir@/Zewo-Dynamics.lnk",
             "workingDirectory=@TargetDir@", "iconPath=@TargetDir@/logo.ico",
             "description=Zewo-Dynamics - frontend");
-
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/ve", "/d", "URL:Zewo-Dynamics", "/f");
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics", "/v", "URL Protocol", "/f");
-        component.addOperation("Execute", "reg", "add", "HKEY_CLASSES_ROOT\\Zewo-Dynamics\\shell\\open\\command", "/ve", "/d", "\"@TargetDir@//Zewo-Dynamics.exe\" \"%1\"", "/f");
     }
 }
