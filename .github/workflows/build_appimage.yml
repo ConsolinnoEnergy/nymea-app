@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS"]
+        WHITELABEL_TARGET: ["Zewo-Dynamics"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -44,7 +44,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Archive AppImage
-          path: build/appimage/*.AppImage
+          path: |
+            build/appimage/*.AppImage
+            build/appimage/firstRun.sh
           
   publish-appimage:
     name: Publish AppImage

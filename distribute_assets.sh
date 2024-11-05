@@ -10,6 +10,8 @@ configuration_files=("config.pri" "Configuration.qml" "overlay.qrc")
 root_dir="./nymea-app-consolinno-overlay";
 directory="./configuration-files/$WHITELABEL_TARGET/app-icons"
 
+export VERSION=$(cat ${root_dir}/version.txt | head -n1 | sed 's/\./-/g')
+
 appname="${WHITELABEL_TARGET//-/ }"
 appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
 
@@ -20,6 +22,13 @@ sed -i 's/android:authorities="[^"]*"/android:authorities="'"$appId.fileprovider
 sed -i 's/package="[^"]*"/package="'"$appId"'"/' $root_dir/packaging/android/AndroidManifest.xml
 sed -i "s/namespace '[^']*'/namespace '$appId'/" $root_dir/packaging/android/build.gradle
 
+SETTINGS_JSON=$WHITELABEL_TARGET
+
+if [ "$WHITELABEL_TARGET" == "Consolinno-HEMS" ]; then
+  # for consolinno a different application name is used.
+  SETTINGS_JSON="consolinno-energy"
+fi
+
 # Update config for windows
 sed -i "s#<Name>[^<]*</Name>#<Name>${appname}</Name>#" $root_dir/packaging/windows/config/config.xml
 sed -i "s#<Title>[^<]*</Title>#<Title>${appname}</Title>#" $root_dir/packaging/windows/config/config.xml
@@ -29,7 +38,8 @@ sed -i "s#<TargetDir>[^<]*</TargetDir>#<TargetDir>@ApplicationsDirX64@/${appname
 sed -i "s#<DisplayName>[^<]*</DisplayName>#<DisplayName>${appname}</DisplayName>#" $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/package.xml
 sed -i "s#<Description>[^<]*</Description>#<Description>Install ${appname}</Description>#" $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/package.xml
 cp -r ./configuration-files/$WHITELABEL_TARGET/app-icons/windows/* $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/
-cp -r ./configuration-files/$WHITELABEL_TARGET/meta/* $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/
+sed -i 's/consolinno-energy/'"$SETTINGS_JSON"'/g' $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/installscript.qs
+sed -i 's/Consolinno energy - The Leaflet/'"$SETTINGS_JSON"'/g' $root_dir/packaging/windows/packages/hems.consolinno.energy/meta/installscript.qs
 mv $root_dir/packaging/windows/packages/hems.consolinno.energy $root_dir/packaging/windows/packages/$appId
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used

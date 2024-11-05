@@ -4,6 +4,9 @@ sudo apt install -y libavahi-common-dev  libavahi-client-dev rename
 
 export ROOT_DIR=$(pwd)
 mkdir -p ./build/appimage
+
+cp ./scripts/firstRun.sh ./build/appimage
+
 cd ./build/appimage
 export BUILD_DIR=$(pwd)
 if [[ -z "${QT_ROOT}" ]]; then

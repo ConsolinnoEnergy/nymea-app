@@ -5,7 +5,6 @@ on:
       - main
       - feature/add-windows-build
       - feature/add-release-upload
-      - experimental-build-dynamic-whitelable
     tags:
       - 'v*'
 
