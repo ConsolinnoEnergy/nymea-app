@@ -46,6 +46,7 @@ mv $root_dir/packaging/windows/packages/hems.consolinno.energy $root_dir/packagi
 sed -i 's/Consolinno HEMS/'"$appname"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
 sed -i 's/consolinno-energy/'"$SETTINGS_JSON"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
 mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/appimage/$SETTINGS_JSON.desktop
+sed -i 's/consolinno-energy.desktop/'"$SETTINGS_JSON".desktop'/g' ./build/linux/Makefile
 
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used

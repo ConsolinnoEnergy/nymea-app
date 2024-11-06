@@ -69,7 +69,10 @@ jobs:
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
-      - run: ls -all build/android/nymea-app/android-build/build/outputs/apk/release
+      - name: Cache apk in different dir
+        run: |
+          mkdir build/android/nymea-app/android-build/build/outputs/apk/signed
+          cp build/android/nymea-app/android-build/build/outputs/apk/release/*-signed.apk build/android/nymea-app/android-build/build/outputs/apk/signed/
       - run: ./build_android_testpatch.sh
         env:
           KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
@@ -78,7 +81,8 @@ jobs:
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
-      - run: ls -all build/android/nymea-app/android-build/build/outputs/apk/release
+      - name: Move signed apk in combined dir
+        run: cp build/android/nymea-app/android-build/build/outputs/apk/signed/*-signed.apk build/android/nymea-app/android-build/build/outputs/apk/release/
       - name: Archive android apk and aab
         uses: actions/upload-artifact@v3
         with:
