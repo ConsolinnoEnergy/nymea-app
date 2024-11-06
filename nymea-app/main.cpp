@@ -95,8 +95,10 @@ int main(int argc, char *argv[])
 
 
     QString scheme = "";
-    QString token = "";
+    QString hostAddress = "";
+    QString port = "";
     QString uuid = "";
+    QString token = "";
 
     if (argc > 1) {
         QString url = argv[1];
@@ -107,10 +109,16 @@ int main(int argc, char *argv[])
         QUrlQuery qurlQ(url);
         if (qurl.scheme() == "Zewo-Dynamics" || qurl.scheme() == "Q.HOME-CONTROL" || qurl.scheme() == "consolinno-energy") {
             scheme = qurl.scheme();
-            token = qurlQ.queryItemValue("token");
-            uuid = qurlQ.queryItemValue("uuid");
 
-            qDebug() << "Action:" << scheme;
+            hostAddress = qurlQ.queryItemValue("hostAddress");
+            port = qurlQ.queryItemValue("port");
+            uuid = qurlQ.queryItemValue("uuid");
+            token = qurlQ.queryItemValue("token");
+
+            
+            qDebug() << "Scheme:" << scheme;
+            qDebug() << "HostAddress:" << hostAddress;
+            qDebug() << "Port:" << port;
             qDebug() << "Token:" << token;
             qDebug() << "Uuid:" << uuid;
         }
@@ -232,9 +240,11 @@ int main(int argc, char *argv[])
 
     engine->rootContext()->setContextProperty("useVirtualKeyboard", qgetenv("QT_IM_MODULE") == "qtvirtualkeyboard");
 
-    engine->rootContext()->setContextProperty("action", scheme);
-    engine->rootContext()->setContextProperty("uuid", uuid);
-    engine->rootContext()->setContextProperty("token", token);
+    engine->rootContext()->setContextProperty("Action", scheme);
+    engine->rootContext()->setContextProperty("Uuid", uuid);
+    engine->rootContext()->setContextProperty("Token", token);
+    engine->rootContext()->setContextProperty("HostAddress", hostAddress);
+    engine->rootContext()->setContextProperty("Port", port);
 
 
     application.setWindowIcon(QIcon(QString(":/styles/%1/logo.svg").arg(styleController.currentStyle())));
