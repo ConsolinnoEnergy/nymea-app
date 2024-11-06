@@ -29,7 +29,6 @@ OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay
 
 SETTINGS_JSON=$WHITELABEL_TARGET
 
-SETTINGS_JSON="consolinno-energy"
 if [ "$WHITELABEL_TARGET" == "Consolinno-HEMS" ]; then
   # for consolinno a different application name is used.
   SETTINGS_JSON="consolinno-energy"
@@ -40,6 +39,6 @@ make lrelease
 make -j$(nproc)
 make -j$(nproc) INSTALL_ROOT=${BUILD_DIR}/nymea-app/linux-build install
 export VERSION=$(cat ${ROOT_DIR}/nymea-app-consolinno-overlay/version.txt | head -n1 | sed 's/\./-/g')
-cp ${ROOT_DIR}/nymea-app-consolinno-overlay/packaging/appimage/$SETTINGS_JSON.desktop ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$SETTINGS_JSON.desktop
+# cp ${ROOT_DIR}/nymea-app-consolinno-overlay/packaging/appimage/$SETTINGS_JSON.desktop ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$SETTINGS_JSON.desktop
 $LDEPLOYQT ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$SETTINGS_JSON.desktop  -appimage -qmldir=${ROOT_DIR}/nymea-app -qmldir=${ROOT_DIR}/nymea-app-consolinno-overlay
 rename "s/x86/$COMMIT_HASH-x86/g" build/appimage/*.AppImage

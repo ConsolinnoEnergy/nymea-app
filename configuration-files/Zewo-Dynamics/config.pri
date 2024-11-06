@@ -1,4 +1,4 @@
-APPLICATION_NAME=consolinno-energy
+APPLICATION_NAME=Zewo-Dynamics
 ORGANISATION_NAME=consolinno
 
 PACKAGE_URN=hems.consolinno.energy
