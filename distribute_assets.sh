@@ -44,7 +44,7 @@ mv $root_dir/packaging/windows/packages/hems.consolinno.energy $root_dir/packagi
 
 # Update appimage .desktop
 sed -i 's/Consolinno HEMS/'"$appname"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
-# sed -i 's/consolinno-energy/'"$SETTINGS_JSON"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
+sed -i 's/Exec=consolinno-energy/'Exec="$SETTINGS_JSON"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
 mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/appimage/$SETTINGS_JSON.desktop
 
 
