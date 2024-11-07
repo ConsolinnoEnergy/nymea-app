@@ -15,7 +15,7 @@ export VERSION=$(cat ${root_dir}/version.txt | head -n1 | sed 's/\./-/g')
 
 appname="${WHITELABEL_TARGET//-/ }"
 appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
-appImageName="${appname//-/_}"
+appImageName="${WHITELABEL_TARGET//-/_}"
 
 sed -i 's/android:label="[^"]*"/android:label="'"$appname"'"/' $root_dir/packaging/android/AndroidManifest.xml
 sed -i 's/android:authorities="[^"]*"/android:authorities="'"$appId.fileprovider"'"/' $root_dir/packaging/android/AndroidManifest.xml
@@ -52,10 +52,10 @@ mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/ap
 # Update .desktop in script
 sed -i 's/Consolinno HEMS/'"$appname"'/g' ./scripts/firstRun.sh
 sed -i 's|Exec=/usr/bin/consolinno-energy %u|Exec=/usr/bin/'"$SETTINGS_JSON"' %u|g' ./scripts/firstRun.sh
-sed -i 's/Consolinno_HEMS-1-6-0-x86_64.AppImage/'"$appImageName"-"$VERSION"-x86_64.AppImage'/g' ./scripts/firstRun.sh
+sed -i 's/Consolinno_HEMS-'$VERSION'-x86_64.AppImage/'"$appImageName"-"$VERSION"-x86_64.AppImage'/g' ./scripts/firstRun.sh
 sed -i 's|MimeType=x-scheme-handler/consolinno-energy;|MimeType=x-scheme-handler/'"$SETTINGS_JSON"';|g' ./scripts/firstRun.sh
 sed -i 's/Name=Consolinno Hems/Name='"$appname"'/g' ./scripts/firstRun.sh
-sed -i 's|usr/bin/consolinno-energy|usr/bin/consolinno-energy/'"$SETTINGS_JSON"'|g' ./scripts/firstRun.sh
+sed -i 's|usr/bin/consolinno-energy|usr/bin/'$SETTINGS_JSON'|g' ./scripts/firstRun.sh
 sed -i 's/consolinno-energy/'"$SETTINGS_JSON"'/g' ./scripts/firstRun.sh
 sed -i 's/consolinno-energy.desktop/'"$SETTINGS_JSON"'.desktop/g' ./scripts/firstRun.sh
 sed -i 's|x-scheme-handler/consolinno-energy|x-scheme-handler/'"$SETTINGS_JSON"'.desktop|g' ./scripts/firstRun.sh
