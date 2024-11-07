@@ -185,6 +185,10 @@ rsvg-convert -w 320 -h 480 "$IMG_SPLASH" -o "$root_dir/packaging/ios/Assets.xcas
 rsvg-convert -w 640 -h 960 "$IMG_SPLASH" -o "$root_dir/packaging/ios/Assets.xcassets/LaunchImage.imageset/LaunchScreen@2x.png"
 rsvg-convert -w 1280 -h 1920 "$IMG_SPLASH" -o "$root_dir/packaging/ios/Assets.xcassets/LaunchImage.imageset/LaunchScreen@3x.png"
 
+rsvg-convert -w 1280 -h 1920 "$IMG_SPLASH" -o "$root_dir/packaging/ios/Assets.xcassets/LaunchImage.imageset/LaunchScreenL@1x.png"
+rsvg-convert -w 1280 -h 1920 "$IMG_SPLASH" -o "$root_dir/packaging/ios/Assets.xcassets/LaunchImage.imageset/LaunchScreenL@2x.png"
+rsvg-convert -w 1280 -h 1920 "$IMG_SPLASH" -o "$root_dir/packaging/ios/Assets.xcassets/LaunchImage.imageset/LaunchScreenL@3x.png"
+
 # Linux common
 rsvg-convert -w 256 -h 256 "$INPUT_SVG" -o "$root_dir/packaging/linux-common/leaf.svg"
 
