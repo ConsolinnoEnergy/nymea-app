@@ -106,7 +106,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Archive .ipa for ${{ matrix.WHITELABEL_TARGET }}
-          path: build/ios/${{ matrix.WHITELABEL_TARGET }}.ipa 
+          path: |
+            build/ios/${{ matrix.WHITELABEL_TARGET }}.ipa
+            build/ios/Payload/${{ matrix.WHITELABEL_TARGET }}.app
           
   publish-ios:
     name: Publish iOS

@@ -54,4 +54,4 @@ make -j $(sysctl -n hw.physicalcpu)
 mkdir ./Payload
 cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/$WHITELABEL_TARGET.app" ./Payload
 zip -qyr $WHITELABEL_TARGET.ipa ./Payload
-rm -r ./Payload
+# rm -r ./Payload
