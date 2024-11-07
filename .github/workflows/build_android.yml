@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Zewo-Dynamics"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -106,7 +106,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file_glob: true
-          file: apk/release/consolinno-hems-*.apk
+          file: apk/release/${{ matrix.WHITELABEL_TARGET }}-*.apk
           tag: ${{ github.ref }}
           overwrite: true
       - name: Upload .aab to release

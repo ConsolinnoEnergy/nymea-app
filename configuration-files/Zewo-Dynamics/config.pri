@@ -1,5 +1,5 @@
 APPLICATION_NAME=Zewo-Dynamics
-ORGANISATION_NAME=consolinno
+ORGANISATION_NAME=zewodynamics
 
 PACKAGE_URN=hems.consolinno.energy
 PACKAGE_NAME=consolinno-energy
