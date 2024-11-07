@@ -49,9 +49,7 @@ if [[ "$2" == "run" ]]; then
     # Should be fixed when output binary is called $WHITELABEL_TARGET
     if [ $WHITELABEL_TARGET == "Consolinno-HEMS" ]; then
         LANGUAGE=$3 ${BUILD_DIR}/nymea-app/linux-build/usr/bin/consolinno-energy
-    elif [ $WHITELABEL_TARGET == "Q.HOME-CONTROL" ]; then
-        LANGUAGE=$3 ${BUILD_DIR}/nymea-app/linux-build/usr/bin/Q.HOME-CONTROL
-    elif [ $WHITELABEL_TARGET == "Zewo-Dynamics" ]; then
-        LANGUAGE=$3 ${BUILD_DIR}/nymea-app/linux-build/usr/bin/consolinno-energy
+    else
+        LANGUAGE=$3 ${BUILD_DIR}/nymea-app/linux-build/usr/bin/$WHITELABEL_TARGET
     fi
 fi
