@@ -47,6 +47,10 @@ sed -i 's/Consolinno HEMS/'"$appname"'/g' $root_dir/packaging/appimage/consolinn
 sed -i 's/Exec=consolinno-energy/'Exec="$SETTINGS_JSON"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
 mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/appimage/$SETTINGS_JSON.desktop
 
+# Update .desktop in script
+sed -i 's/Consolinno HEMS/'"$appname"'/g' ./scripts/firstRun.sh
+sed -i 's/Exec=consolinno-energy/'Exec="$SETTINGS_JSON"'/g' ./scripts/firstRun.sh
+sed -i 's/Consolinno_HEMS-1-6-0-x86_64.AppImage/'"${appname//-/_}"-"$VERSION"-x86_64.AppImage'/g' ./scripts/firstRun.sh
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
 sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
