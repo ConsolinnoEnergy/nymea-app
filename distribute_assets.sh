@@ -51,14 +51,14 @@ mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/ap
 
 # Update .desktop in script
 sed -i 's/Consolinno HEMS/'"$appname"'/g' ./scripts/firstRun.sh
-sed -i 's/Exec=/usr/bin/consolinno-energy %u/'Exec=/usr/bin/"$SETTINGS_JSON" %u'/g' ./scripts/firstRun.sh
+sed -i 's|Exec=/usr/bin/consolinno-energy %u|Exec=/usr/bin/'"$SETTINGS_JSON"' %u|g' ./scripts/firstRun.sh
 sed -i 's/Consolinno_HEMS-1-6-0-x86_64.AppImage/'"$appImageName"-"$VERSION"-x86_64.AppImage'/g' ./scripts/firstRun.sh
-sed -i 's/MimeType=x-scheme-handler/consolinno-energy;/'"MimeType=x-scheme-handler/$SETTINGS_JSON;"'/g' ./scripts/firstRun.sh
-sed -i 's/Name=Consolinno Hems/'Name="$appname"'/g' ./scripts/firstRun.sh
-sed -i 's/usr/bin/consolinno-energy/'usr/bin/consolinno-energy/"$SETTINGS_JSON"'/g' ./scripts/firstRun.sh
+sed -i 's|MimeType=x-scheme-handler/consolinno-energy;|MimeType=x-scheme-handler/'"$SETTINGS_JSON"';|g' ./scripts/firstRun.sh
+sed -i 's/Name=Consolinno Hems/Name='"$appname"'/g' ./scripts/firstRun.sh
+sed -i 's|usr/bin/consolinno-energy|usr/bin/consolinno-energy/'"$SETTINGS_JSON"'|g' ./scripts/firstRun.sh
 sed -i 's/consolinno-energy/'"$SETTINGS_JSON"'/g' ./scripts/firstRun.sh
-sed -i 's/consolinno-energy.desktop/'"$SETTINGS_JSON".desktop'/g' ./scripts/firstRun.sh
-sed -i 's/x-scheme-handler/consolinno-energy/'"x-scheme-handler/$SETTINGS_JSON".desktop'/g' ./scripts/firstRun.sh
+sed -i 's/consolinno-energy.desktop/'"$SETTINGS_JSON"'.desktop/g' ./scripts/firstRun.sh
+sed -i 's|x-scheme-handler/consolinno-energy|x-scheme-handler/'"$SETTINGS_JSON"'.desktop|g' ./scripts/firstRun.sh
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
 sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
