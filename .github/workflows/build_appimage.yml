@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS","Zewo-Dynamics"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
