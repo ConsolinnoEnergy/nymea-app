@@ -42,4 +42,4 @@ export VERSION=$(cat ${ROOT_DIR}/nymea-app-consolinno-overlay/version.txt | head
 mkdir -p ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/
 cp ${ROOT_DIR}/nymea-app-consolinno-overlay/packaging/appimage/$SETTINGS_JSON.desktop ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$SETTINGS_JSON.desktop
 $LDEPLOYQT ${ROOT_DIR}/build/appimage/nymea-app/linux-build/usr/share/applications/$SETTINGS_JSON.desktop  -appimage -qmldir=${ROOT_DIR}/nymea-app -qmldir=${ROOT_DIR}/nymea-app-consolinno-overlay
-rename "s/x86/$COMMIT_HASH-x86/g" build/appimage/*.AppImage
+rename "s/x86/$COMMIT_HASH-x86/g" build/appimage/${SETTINGS_JSON}-${VERSION}-X86_64.AppImage

@@ -33,6 +33,8 @@ jobs:
           chmod +x linuxdeployqt-*-x86_64.AppImage
 #      - name: "Apply Consolinno patches"
 #        run: ./apply_consolinno_patches.sh
+      - name: "Generating Snapshot version number"
+        run: ./gen_snap_version.sh
       - name: Install librsvg2-bin
         run: sudo apt install -y librsvg2-bin
       - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
@@ -44,12 +46,11 @@ jobs:
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v3     
-      #  run: ./gen_snap_version.sh
       #- uses: lhotari/action-upterm@v1
       - name: Archive AppImage for ${{ matrix.WHITELABEL_TARGET }}
         uses: actions/upload-artifact@v3
         with:
-          name: Archive AppImage
+          name: Archive ${{ matrix.WHITELABEL_TARGET }} AppImage
           path: |
             build/appimage/*.AppImage
             build/appimage/firstRun.sh
