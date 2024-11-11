@@ -127,6 +127,7 @@
         <file>optimization/GridSupportiveControlConfig.qml</file>
         <file>info/PausingInfo.qml</file>
         <file>info/PriceLimitInfo.qml</file>
+        <file>info/PvSurplusInfo.qml</file>
         <file>thingconfiguration/AddNewThings.qml</file>
         <file>images/leaflet-ethernet-connect.png</file>
         <file>images/QCells/batteryQ.svg</file>

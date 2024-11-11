@@ -25,7 +25,7 @@ ConfigurationBase {
     property string minSysVersion: "1.3.0"
 
     // Identifier used for branding (e.g. to register for push notifications)
-    property string branding: "Zewotherm Dynamics EnergieManager"
+    property string branding: "ZEWO Dynamics EnergieManager"
 
     // Identifier used for legal text (e.g. privacy policy)
     property string companyName: "ZEWOTHERM Heating GmbH"
