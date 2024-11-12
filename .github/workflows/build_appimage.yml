@@ -1,14 +1,14 @@
 name: build-appimage 
-on: 
-  push:
-    tags:
-      - 'v*'
+on:
   workflow_dispatch:
     inputs:
       whitelabel:
         description: 'Zu startende Elemente in der Matrix'
         required: true
-        default: '["Consolinno-HEMS"]'
+        default: '["Consolinno-HEMS"]' 
+  push:
+    tags:
+      - 'v*'
   #push:
   #  branches:
   #    - main
