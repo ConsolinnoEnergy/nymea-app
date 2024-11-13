@@ -58,7 +58,7 @@ sed -i "s|Name=Consolinno Hems|Name=$appname|g" ./scripts/firstRun.sh
 sed -i "s|usr/bin/consolinno-energy|usr/bin/${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
 sed -i "s|consolinno-energy|${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
 sed -i "s|consolinno-energy.desktop|${SETTINGS_JSON,,}.desktop|g" ./scripts/firstRun.sh
-sed -i "s|x-scheme-handler/consolinno-energy|x-scheme-handler/${SETTINGS_JSON,,}.desktop|g" ./scripts/firstRun.sh
+sed -i "s|x-scheme-handler/consolinno-energy|x-scheme-handler/${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
 sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
