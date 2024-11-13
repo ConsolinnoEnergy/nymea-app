@@ -1,11 +1,11 @@
 APPLICATION_NAME=Zewo-Dynamics
 ORGANISATION_NAME=zewodynamics
 
-PACKAGE_URN=hems.consolinno.energy
-PACKAGE_NAME=consolinno-energy
+PACKAGE_URN=ems.zewo.dynamics
+PACKAGE_NAME=zewo-dynamics
 
-IOS_BUNDLE_PREFIX=consolinno.hems
-IOS_BUNDLE_NAME=energy
+IOS_BUNDLE_PREFIX=ems.zewo
+IOS_BUNDLE_NAME=dynamics
 IOS_DEVELOPMENT_TEAM.name=Consolinno Energy GmbH
 IOS_DEVELOPMENT_TEAM.value=J757FFDWU9
 

@@ -6,7 +6,7 @@ ConfigurationBase {
     id: configID
     systemName: "Zewo Dynamics EnergieManager"
     appName: "Zewo Dynamics EnergieManager"
-    appId: "hems.zewo.dynamics"
+    appId: "ems.zewo.dynamics"
 
     connectionWizard: "/ui/wizards/ConnectionWizard.qml"
 
