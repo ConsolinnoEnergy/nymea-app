@@ -1,15 +1,16 @@
 name: build-android 
 on:
-  workflow_dispatch:
-    inputs:
-      whitelabel:
-        description: 'Zu startende Elemente in der Matrix'
-        required: true
-        default: '["Consolinno-HEMS"]'
+  #workflow_dispatch:
+  #  inputs:
+  #    whitelabel:
+  #      description: 'Zu startende Elemente in der Matrix'
+  #      required: true
+  #      default: '["Consolinno-HEMS"]'
   push:
     branches:
       - main
       - experimental-android*
+      - experimental-build*
     tags:
       - 'v*'
 jobs:
@@ -17,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
-        #WHITELABEL_TARGET: ["Zewo-Dynamics"]
+        #WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
+        WHITELABEL_TARGET: ["Zewo-Dynamics"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
