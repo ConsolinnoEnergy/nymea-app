@@ -6,6 +6,12 @@ on:
         description: 'Zu startende Elemente in der Matrix'
         required: true
         default: '["Consolinno-HEMS"]'
+  push:
+    branches:
+      - main
+      - feature/appimage
+    tags:
+      - 'v*'
   #push:
   #  branches:
   #    - main
