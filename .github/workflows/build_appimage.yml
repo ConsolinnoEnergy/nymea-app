@@ -57,7 +57,7 @@ jobs:
       - name: Archive AppImage for ${{ matrix.WHITELABEL_TARGET }}
         uses: actions/upload-artifact@v4
         with:
-          name: Archive ${{ matrix.WHITELABEL_TARGET }} AppImage
+          name: Archived AppImage of ${{ matrix.WHITELABEL_TARGET }}
           path: |
             build/appimage/*.AppImage
             build/appimage/firstRun.sh
@@ -74,7 +74,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v4
         with:
-          name: Archive AppImage for ${{ matrix.WHITELABEL_TARGET }}
+          name: Archived AppImage of ${{ matrix.WHITELABEL_TARGET }}
       - name: Upload AppImage to release for ${{ matrix.WHITELABEL_TARGET }}
         uses: svenstaro/upload-release-action@v2
         with:
