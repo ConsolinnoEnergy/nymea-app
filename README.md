@@ -146,3 +146,8 @@ So in our example we use `WL-Example` because our configuration directory is `./
 After you updated the matrix variable you can start your build.
 
 > &#x26a0;&#xfe0f;: **On Windows**: In the `./.github/workflows/build_windows.yml` there are two jobs. It is required to set the **matrix variable** for both of them.
+
+## Other secrets
+
+`GH_TOKEN` must contain a valid personal access token for a user which has Release rights on consolinno-hems-app-builder and consolinno-hems-app. Select "Repo" scope for this.
+See https://github.com/settings/tokens
