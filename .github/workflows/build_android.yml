@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         #WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
-        WHITELABEL_TARGET: ["Consolinno-HEMS"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -91,7 +91,7 @@ jobs:
       - name: Move signed apk in combined dir
         run: cp build/android/nymea-app/android-build/build/outputs/apk/signed/*-signed.apk build/android/nymea-app/android-build/build/outputs/apk/release/
       - name: Archive android apk and aab
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Archive apk and aab for ${{ matrix.WHITELABEL_TARGET }}
           path: |
@@ -104,11 +104,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-android
     if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
+    strategy:
+      matrix:
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v4
         with:
-          name: Archive apk and aab
+          name: Archive apk and aab for ${{ matrix.WHITELABEL_TARGET }}
       - name: Upload .apk to release
         uses: svenstaro/upload-release-action@v2
         with:
@@ -116,7 +119,7 @@ jobs:
           file: apk/release/${{ matrix.WHITELABEL_TARGET }}-*.apk
           tag: ${{ github.ref }}
           overwrite: true
-      - name: Upload .aab to release
+      - name: Upload .aab to release for ${{ matrix.WHITELABEL_TARGET }}
         uses: svenstaro/upload-release-action@v2
         with:
           file: bundle/release/android-build-release.aab

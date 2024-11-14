@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Q.HOME-CONTROL"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
     steps:
       - uses: maxim-lobanov/setup-xcode@v1
         with:
@@ -103,7 +103,7 @@ jobs:
           PROVISIONING_PROFILE_ID_QCELLS: ${{ secrets.PROVISIONING_PROFILE_ID_QCELLS }}
           PROVISIONING_PROFILE_ID_CONSOLINNO: ${{ secrets.PROVISIONING_PROFILE_ID_CONSOLINNO }}
       - name: Archive .ipa
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Archive .ipa for ${{ matrix.WHITELABEL_TARGET }}
           path: |
@@ -115,11 +115,14 @@ jobs:
     runs-on: macos-latest
     needs: build-ios
     if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
+    strategy:
+      matrix:
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v4
         with:
-          name: Archive .ipa
+          name: Archive .ipa for ${{ matrix.WHITELABEL_TARGET }}
       - name: Upload ipa package to release
         uses: svenstaro/upload-release-action@v2
         with:
@@ -128,6 +131,7 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
       - name: Upload .ipa to AppStore
+        if: matrix.WHITELABEL_TARGET == 'Consolinno-HEMS'
         env:
           IOS_UPLOAD_USER: ${{ secrets.IOS_UPLOAD_USER }}
           IOS_UPLOAD_PASSWORD: ${{ secrets.IOS_UPLOAD_PASSWORD }}
