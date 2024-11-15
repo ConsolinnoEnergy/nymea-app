@@ -107,8 +107,8 @@ jobs:
         with:
           name: Archive .ipa for ${{ matrix.WHITELABEL_TARGET }}
           path: |
-            build/ios/${{ matrix.WHITELABEL_TARGET }}.ipa
-            build/ios/Payload/${{ matrix.WHITELABEL_TARGET }}.app
+            build/ios/*.ipa
+            build/ios/Payload/*.app
           
   publish-ios:
     name: Publish iOS
