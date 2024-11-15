@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # TODO: Maybe move variables into github secrets/variables
+CURRENT_APP_NAME=$WHITELABEL_TARGET
 if [ "$WHITELABEL_TARGET" == "Q.HOME-CONTROL" ]; then
   PROVISIONING_ID=$PROVISIONING_PROFILE_ID_QCELLS
   TEAM_ID="6F8276DF5B"
@@ -11,6 +12,7 @@ else
   TEAM_ID="J757FFDWU9"
   CURRENT_BUNDLE_PREFIX="hems.consolinno"
   CURRENT_QMAKE_BUNDLE="energy"
+  CURRENT_APP_NAME="consolinno-energy"
 fi
 
 set -e
@@ -46,12 +48,12 @@ set +e
 make -j $(sysctl -n hw.physicalcpu)
 # First build fails with "BUILD SUCCEEDED" but misses a file. Second make call should really succeed. Not sure what's the problem here.
 # Edit: Now it seems to fail. Thus set +e above
-rm /Users/runner/work/consolinno-hems-app-builder/consolinno-hems-app-builder/build/ios/nymea-app/$WHITELABEL_TARGET.build/Release-iphoneos/$WHITELABEL_TARGET.build/LaunchScreen.storyboardc
+rm /Users/runner/work/consolinno-hems-app-builder/consolinno-hems-app-builder/build/ios/nymea-app/$CURRENT_APP_NAME.build/Release-iphoneos/$CURRENT_APP_NAME.build/LaunchScreen.storyboardc
 set -e
 make -j $(sysctl -n hw.physicalcpu)
 
 
 mkdir ./Payload
-cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/$WHITELABEL_TARGET.app" ./Payload
-zip -qyr $WHITELABEL_TARGET.ipa ./Payload
+cp -R "${BUILD_DIR}/nymea-app/Release-iphoneos/$CURRENT_APP_NAME.app" ./Payload
+zip -qyr $CURRENT_APP_NAME.ipa ./Payload
 # rm -r ./Payload
