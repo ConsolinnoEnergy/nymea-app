@@ -135,5 +135,5 @@ jobs:
         env:
           IOS_UPLOAD_USER: ${{ secrets.IOS_UPLOAD_USER }}
           IOS_UPLOAD_PASSWORD: ${{ secrets.IOS_UPLOAD_PASSWORD }}
-        run: xcrun altool --type ios --upload-app --file consolinno-hems.ipa --username $IOS_UPLOAD_USER --password $IOS_UPLOAD_PASSWORD
+        run: xcrun altool --type ios --upload-app --file consolinno-energy.ipa --username $IOS_UPLOAD_USER --password $IOS_UPLOAD_PASSWORD
 

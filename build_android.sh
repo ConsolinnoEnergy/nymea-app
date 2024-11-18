@@ -58,7 +58,8 @@ if [[ -z "${SELFSIGN}" ]]; then
     --jarsigner \
     --sign ${KEYSTORE_PATH} ${SIGNING_KEY_ALIAS} \
     --storepass ${SIGNING_STORE_PASSWORD} \
-    --keypass ${SIGNING_KEY_PASSWORD}
+    --keypass ${SIGNING_KEY_PASSWORD} \
+    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-release.aab
     
     # Building unsigned apk and signing it manuallly to use --v2-signing scheme
      $ADEPQT \
@@ -77,7 +78,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     --v2-signing-enabled  \
     -v \
     --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-signed.apk \
-    $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
+    $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
     
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair

@@ -95,7 +95,7 @@ jobs:
         with:
           name: Archive apk and aab for ${{ matrix.WHITELABEL_TARGET }}
           path: |
-            build/android/nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab
+            build/android/nymea-app/android-build/build/outputs/bundle/release/*.aab
             build/android/nymea-app/android-build/build/outputs/apk/release/*.apk
             build/android/nymea-app/android-build/build/outputs/apk/release/${{ matrix.WHITELABEL_TARGET }}-*-testing.apk
 
@@ -122,7 +122,7 @@ jobs:
       - name: Upload .aab to release for ${{ matrix.WHITELABEL_TARGET }}
         uses: svenstaro/upload-release-action@v2
         with:
-          file: bundle/release/android-build-release.aab
+          file: bundle/release/*.aab
           tag: ${{ github.ref }}
           overwrite: true
 
