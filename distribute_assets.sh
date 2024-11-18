@@ -16,6 +16,7 @@ export VERSION=$(cat ${root_dir}/version.txt | head -n1 | sed 's/\./-/g')
 appname="${WHITELABEL_TARGET//-/ }"
 appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
 appImageName="${WHITELABEL_TARGET//-/_}"
+dotDesktopName=$appname
 
 sed -i 's/android:label="[^"]*"/android:label="'"$appname"'"/' $root_dir/packaging/android/AndroidManifest.xml
 sed -i 's/android:authorities="[^"]*"/android:authorities="'"$appId.fileprovider"'"/' $root_dir/packaging/android/AndroidManifest.xml
@@ -29,6 +30,8 @@ SETTINGS_JSON=$WHITELABEL_TARGET
 if [ "$WHITELABEL_TARGET" == "Consolinno-HEMS" ]; then
   # for consolinno a different application name is used.
   SETTINGS_JSON="consolinno-energy"
+  appImageName="consolinno_energy"
+  dotDesktopName="consolinno energy"
 fi
 
 # Update config for windows
@@ -45,16 +48,16 @@ sed -i 's/Consolinno energy - The Leaflet/'"$SETTINGS_JSON"'/g' $root_dir/packag
 mv $root_dir/packaging/windows/packages/hems.consolinno.energy $root_dir/packaging/windows/packages/$appId
 
 # Update appimage .desktop
-sed -i 's/Consolinno HEMS/'"$appname"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
+sed -i 's/Consolinno HEMS/'"$dotDesktopName"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
 sed -i 's/Exec=consolinno-energy/'Exec="$SETTINGS_JSON"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
 mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/appimage/$SETTINGS_JSON.desktop
 
 # Update .desktop in script
-sed -i "s|Consolinno HEMS|$appname|g" ./scripts/firstRun.sh
+sed -i "s|Consolinno HEMS|$dotDesktopName|g" ./scripts/firstRun.sh
 sed -i "s|Exec=/usr/bin/consolinno-energy %u|Exec=/usr/bin/${SETTINGS_JSON,,} %u|g" ./scripts/firstRun.sh
 sed -i "s|Consolinno_HEMS-1-6-0-x86_64.AppImage|$appImageName-$VERSION-x86_64.AppImage|g" ./scripts/firstRun.sh
 sed -i "s|MimeType=x-scheme-handler/consolinno-energy;|MimeType=x-scheme-handler/${SETTINGS_JSON,,};|g" ./scripts/firstRun.sh
-sed -i "s|Name=Consolinno Hems|Name=$appname|g" ./scripts/firstRun.sh
+sed -i "s|Name=Consolinno Hems|Name=$dotDesktopName|g" ./scripts/firstRun.sh
 sed -i "s|usr/bin/consolinno-energy|usr/bin/${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
 sed -i "s|consolinno-energy|${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
 sed -i "s|consolinno-energy.desktop|${SETTINGS_JSON,,}.desktop|g" ./scripts/firstRun.sh
