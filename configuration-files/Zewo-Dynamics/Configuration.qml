@@ -33,7 +33,7 @@ ConfigurationBase {
     // Branding names visible to the user
     property string appBranding: "Zewotherm"
     property string coreBranding: "Zewotherm"
-    property string deviceName: "ZEWO PowerBox EMS"
+    property string deviceName: "Zewo Dynamics EMS"
 
     //Branding contact-email
     property string contactEmail: "dynamics@zewotherm.de"
