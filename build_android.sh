@@ -58,8 +58,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     --jarsigner \
     --sign ${KEYSTORE_PATH} ${SIGNING_KEY_ALIAS} \
     --storepass ${SIGNING_STORE_PASSWORD} \
-    --keypass ${SIGNING_KEY_PASSWORD} \
-    --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-release.aab
+    --keypass ${SIGNING_KEY_PASSWORD}
     
     # Building unsigned apk and signing it manuallly to use --v2-signing scheme
      $ADEPQT \
@@ -79,9 +78,7 @@ if [[ -z "${SELFSIGN}" ]]; then
     -v \
     --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-signed.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
-
-    mv $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
-    
+ 
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair
     $ADEPQT \
@@ -105,4 +102,7 @@ else
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
 
 fi
+
+mv $BUILD_DIR/nymea-app/android-build//build/outputs/bundle/release/android-build-release.aab $BUILD_DIR/nymea-app/android-build//build/outputs/bundle/release/${SETTINGS_JSON}-${VERSION}-release.aab
+mv $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
 
