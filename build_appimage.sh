@@ -27,7 +27,7 @@ $QMAKE \
 ${ROOT_DIR}/nymea-app/nymea-app.pro \
 OVERLAY_PATH=${ROOT_DIR}/nymea-app-consolinno-overlay
 
-SETTINGS_JSON=${WHITELABEL_TARGET}-test
+SETTINGS_JSON=${WHITELABEL_TARGET}
 
 if [ "$WHITELABEL_TARGET" == "Consolinno-HEMS" ]; then
   # for consolinno a different application name is used.
