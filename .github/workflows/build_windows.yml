@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -45,7 +45,7 @@ jobs:
     needs: generate-wl-assets
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
     steps:
       - run: git config --global credential.helper store
       - uses: actions/checkout@v2
@@ -97,7 +97,7 @@ jobs:
     if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
     steps:
     - uses: actions/checkout@v2
     - uses: actions/download-artifact@v4
