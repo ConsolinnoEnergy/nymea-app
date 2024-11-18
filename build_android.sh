@@ -78,7 +78,9 @@ if [[ -z "${SELFSIGN}" ]]; then
     --v2-signing-enabled  \
     -v \
     --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-signed.apk \
-    $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
+    $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
+
+    mv $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
     
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair
