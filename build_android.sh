@@ -78,7 +78,9 @@ if [[ -z "${SELFSIGN}" ]]; then
     -v \
     --out $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-${VERSION}-signed.apk \
     $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk
- 
+
+    cp $BUILD_DIR/nymea-app/android-build//build/outputs/bundle/release/android-build-release.aab $BUILD_DIR/nymea-app/android-build//build/outputs/bundle/release/${SETTINGS_JSON}-${VERSION}-release.aab
+
 else
     # SELFSIGN env is defined -> build .apk and sign with new keypair
     $ADEPQT \
@@ -103,6 +105,5 @@ else
 
 fi
 
-mv $BUILD_DIR/nymea-app/android-build//build/outputs/bundle/release/android-build-release.aab $BUILD_DIR/nymea-app/android-build//build/outputs/bundle/release/${SETTINGS_JSON}-${VERSION}-release.aab
 mv $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
 
