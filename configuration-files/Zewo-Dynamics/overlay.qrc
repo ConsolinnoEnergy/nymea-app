@@ -125,5 +125,7 @@
         <file>images/Zewotherm/heatpumpZ.svg</file>
         <file>images/Zewotherm/inverterZ.svg</file>
         <file>images/Zewotherm/wallboxZ.svg</file>
+        <file>privacy_agreement_de_DE.html</file>
+        <file>terms_of_use_de_DE.html</file>
     </qresource>
 </RCC>

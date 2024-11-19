@@ -143,5 +143,7 @@
         <file>system/ConsolinnoNetworkSettingsPage.qml</file>
         <file>appsettings/ConsolinnoLookAndFeelSettingsPage.qml</file>
         <file>appsettings/ConsolinnoAppSettingsPage.qml</file>
+        <file>privacy_agreement_de_DE.html</file>
+        <file>terms_of_use_de_DE.html</file>
     </qresource>
 </RCC>
