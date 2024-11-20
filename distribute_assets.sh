@@ -238,5 +238,7 @@ cp ./configuration-files/$WHITELABEL_TARGET/Configuration.qml $root_dir/Configur
 cp ./configuration-files/$WHITELABEL_TARGET/overlay.qrc $root_dir/overlay.qrc
 cp ./configuration-files/$WHITELABEL_TARGET/config.pri $root_dir/config.pri
 cp -r ./configuration-files/$WHITELABEL_TARGET/style/* $root_dir/styles/light
+cp -r ./configuration-files/$WHITELABEL_TARGET/legal/privacy_agreement_de_DE.html $root_dir/privacy_agreement_de_DE.html
+cp -r ./configuration-files/$WHITELABEL_TARGET/legal/terms_of_use_de_DE.html $root_dir/terms_of_use_de_DE.html
 
 echo "Conversion completed successfully."
