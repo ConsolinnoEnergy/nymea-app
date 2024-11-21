@@ -1,511 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="generator" content=
-  "HTML Tidy for HTML5 for Linux version 5.6.0">
-  <meta content="text/html; charset=utf-8" http-equiv=
-  "content-type">
-  <style type="text/css">
-  ol.lst-kix_list_3-1{list-style-type:none}ol.lst-kix_list_3-2{list-style-type:none}.lst-kix_list_3-1>li{counter-increment:lst-ctn-kix_list_3-1}ol.lst-kix_list_3-3{list-style-type:none}ol.lst-kix_list_3-4.start{counter-reset:lst-ctn-kix_list_3-4 0}ol.lst-kix_list_3-4{list-style-type:none}ol.lst-kix_list_3-0{list-style-type:none}.lst-kix_list_1-1>li{counter-increment:lst-ctn-kix_list_1-1}ol.lst-kix_list_2-6.start{counter-reset:lst-ctn-kix_list_2-6 0}.lst-kix_list_3-0>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) ". "}ol.lst-kix_list_3-1.start{counter-reset:lst-ctn-kix_list_3-1 0}ul.lst-kix_list_5-7{list-style-type:none}ul.lst-kix_list_5-8{list-style-type:none}.lst-kix_list_3-1>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) " "}.lst-kix_list_3-2>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) " "}ul.lst-kix_list_5-5{list-style-type:none}ul.lst-kix_list_5-6{list-style-type:none}ol.lst-kix_list_1-8.start{counter-reset:lst-ctn-kix_list_1-8 0}ol.lst-kix_list_2-3.start{counter-reset:lst-ctn-kix_list_2-3 0}.lst-kix_list_3-5>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) "." counter(lst-ctn-kix_list_3-3,decimal) "." counter(lst-ctn-kix_list_3-4,decimal) "." counter(lst-ctn-kix_list_3-5,decimal) " "}ul.lst-kix_list_5-0{list-style-type:none}.lst-kix_list_3-4>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) "." counter(lst-ctn-kix_list_3-3,decimal) "." counter(lst-ctn-kix_list_3-4,decimal) " "}ul.lst-kix_list_5-3{list-style-type:none}ol.lst-kix_list_1-5.start{counter-reset:lst-ctn-kix_list_1-5 0}.lst-kix_list_3-3>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) "." counter(lst-ctn-kix_list_3-3,decimal) " "}ol.lst-kix_list_3-5{list-style-type:none}ul.lst-kix_list_5-4{list-style-type:none}ol.lst-kix_list_3-6{list-style-type:none}ul.lst-kix_list_5-1{list-style-type:none}ol.lst-kix_list_3-7{list-style-type:none}ul.lst-kix_list_5-2{list-style-type:none}ol.lst-kix_list_3-8{list-style-type:none}.lst-kix_list_3-8>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) "." counter(lst-ctn-kix_list_3-3,decimal) "." counter(lst-ctn-kix_list_3-4,decimal) "." counter(lst-ctn-kix_list_3-5,decimal) "." counter(lst-ctn-kix_list_3-6,decimal) "." counter(lst-ctn-kix_list_3-7,decimal) "." counter(lst-ctn-kix_list_3-8,decimal) " "}.lst-kix_list_2-0>li{counter-increment:lst-ctn-kix_list_2-0}.lst-kix_list_2-3>li{counter-increment:lst-ctn-kix_list_2-3}.lst-kix_list_3-6>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) "." counter(lst-ctn-kix_list_3-3,decimal) "." counter(lst-ctn-kix_list_3-4,decimal) "." counter(lst-ctn-kix_list_3-5,decimal) "." counter(lst-ctn-kix_list_3-6,decimal) " "}.lst-kix_list_3-7>li:before{content:"" counter(lst-ctn-kix_list_3-0,decimal) "." counter(lst-ctn-kix_list_3-1,decimal) "." counter(lst-ctn-kix_list_3-2,decimal) "." counter(lst-ctn-kix_list_3-3,decimal) "." counter(lst-ctn-kix_list_3-4,decimal) "." counter(lst-ctn-kix_list_3-5,decimal) "." counter(lst-ctn-kix_list_3-6,decimal) "." counter(lst-ctn-kix_list_3-7,decimal) " "}.lst-kix_list_1-2>li{counter-increment:lst-ctn-kix_list_1-2}ol.lst-kix_list_3-7.start{counter-reset:lst-ctn-kix_list_3-7 0}.lst-kix_list_3-2>li{counter-increment:lst-ctn-kix_list_3-2}ol.lst-kix_list_2-2{list-style-type:none}ol.lst-kix_list_2-3{list-style-type:none}.lst-kix_list_5-0>li:before{content:"-  "}ol.lst-kix_list_2-4{list-style-type:none}ol.lst-kix_list_2-5{list-style-type:none}.lst-kix_list_1-4>li{counter-increment:lst-ctn-kix_list_1-4}ol.lst-kix_list_2-0{list-style-type:none}ol.lst-kix_list_1-6.start{counter-reset:lst-ctn-kix_list_1-6 0}.lst-kix_list_4-8>li:before{content:"\0025aa   "}.lst-kix_list_5-3>li:before{content:"\0025cf   "}.lst-kix_list_4-7>li:before{content:"o  "}.lst-kix_list_5-2>li:before{content:"\0025aa   "}.lst-kix_list_5-1>li:before{content:"o  "}ul.lst-kix_list_4-8{list-style-type:none}.lst-kix_list_5-7>li:before{content:"o  "}ul.lst-kix_list_4-6{list-style-type:none}.lst-kix_list_5-6>li:before{content:"\0025cf   "}.lst-kix_list_5-8>li:before{content:"\0025aa   "}ul.lst-kix_list_4-7{list-style-type:none}ul.lst-kix_list_4-0{list-style-type:none}ul.lst-kix_list_4-1{list-style-type:none}ol.lst-kix_list_3-3.start{counter-reset:lst-ctn-kix_list_3-3 0}.lst-kix_list_5-4>li:before{content:"o  "}ul.lst-kix_list_4-4{list-style-type:none}.lst-kix_list_5-5>li:before{content:"\0025aa   "}ol.lst-kix_list_2-6{list-style-type:none}ul.lst-kix_list_4-5{list-style-type:none}ol.lst-kix_list_2-7{list-style-type:none}ul.lst-kix_list_4-2{list-style-type:none}ol.lst-kix_list_2-8{list-style-type:none}ul.lst-kix_list_4-3{list-style-type:none}ol.lst-kix_list_1-0.start{counter-reset:lst-ctn-kix_list_1-0 0}.lst-kix_list_3-0>li{counter-increment:lst-ctn-kix_list_3-0}.lst-kix_list_3-3>li{counter-increment:lst-ctn-kix_list_3-3}.lst-kix_list_3-6>li{counter-increment:lst-ctn-kix_list_3-6}li.li-bullet-2:before{margin-left:-19.8pt;white-space:nowrap;display:inline-block;min-width:19.8pt}.lst-kix_list_2-5>li{counter-increment:lst-ctn-kix_list_2-5}.lst-kix_list_2-8>li{counter-increment:lst-ctn-kix_list_2-8}ol.lst-kix_list_3-2.start{counter-reset:lst-ctn-kix_list_3-2 0}.lst-kix_list_2-2>li{counter-increment:lst-ctn-kix_list_2-2}ol.lst-kix_list_2-4.start{counter-reset:lst-ctn-kix_list_2-4 0}ol.lst-kix_list_1-3{list-style-type:none}ol.lst-kix_list_1-4{list-style-type:none}.lst-kix_list_2-6>li:before{content:"" counter(lst-ctn-kix_list_2-6,decimal) ". "}.lst-kix_list_2-7>li:before{content:"" counter(lst-ctn-kix_list_2-7,lower-latin) ". "}.lst-kix_list_2-7>li{counter-increment:lst-ctn-kix_list_2-7}.lst-kix_list_3-7>li{counter-increment:lst-ctn-kix_list_3-7}ol.lst-kix_list_1-5{list-style-type:none}ol.lst-kix_list_1-6{list-style-type:none}ol.lst-kix_list_1-0{list-style-type:none}.lst-kix_list_2-4>li:before{content:"" counter(lst-ctn-kix_list_2-4,lower-latin) ". "}.lst-kix_list_2-5>li:before{content:"" counter(lst-ctn-kix_list_2-5,lower-roman) ". "}.lst-kix_list_2-8>li:before{content:"" counter(lst-ctn-kix_list_2-8,lower-roman) ". "}ol.lst-kix_list_1-1{list-style-type:none}ol.lst-kix_list_1-2{list-style-type:none}ol.lst-kix_list_3-0.start{counter-reset:lst-ctn-kix_list_3-0 0}ol.lst-kix_list_1-7{list-style-type:none}.lst-kix_list_1-7>li{counter-increment:lst-ctn-kix_list_1-7}ol.lst-kix_list_1-8{list-style-type:none}ol.lst-kix_list_3-8.start{counter-reset:lst-ctn-kix_list_3-8 0}ol.lst-kix_list_2-5.start{counter-reset:lst-ctn-kix_list_2-5 0}li.li-bullet-1:before{margin-left:-19.8pt;white-space:nowrap;display:inline-block;min-width:19.8pt}.lst-kix_list_4-0>li:before{content:"-  "}.lst-kix_list_2-6>li{counter-increment:lst-ctn-kix_list_2-6}.lst-kix_list_3-8>li{counter-increment:lst-ctn-kix_list_3-8}.lst-kix_list_4-1>li:before{content:"o  "}ol.lst-kix_list_1-7.start{counter-reset:lst-ctn-kix_list_1-7 0}.lst-kix_list_4-4>li:before{content:"o  "}ol.lst-kix_list_2-2.start{counter-reset:lst-ctn-kix_list_2-2 0}.lst-kix_list_1-5>li{counter-increment:lst-ctn-kix_list_1-5}.lst-kix_list_4-3>li:before{content:"\0025cf   "}.lst-kix_list_4-5>li:before{content:"\0025aa   "}.lst-kix_list_4-2>li:before{content:"\0025aa   "}.lst-kix_list_4-6>li:before{content:"\0025cf   "}.lst-kix_list_1-8>li{counter-increment:lst-ctn-kix_list_1-8}ol.lst-kix_list_1-4.start{counter-reset:lst-ctn-kix_list_1-4 0}.lst-kix_list_3-5>li{counter-increment:lst-ctn-kix_list_3-5}ol.lst-kix_list_1-1.start{counter-reset:lst-ctn-kix_list_1-1 0}.lst-kix_list_3-4>li{counter-increment:lst-ctn-kix_list_3-4}.lst-kix_list_2-4>li{counter-increment:lst-ctn-kix_list_2-4}ol.lst-kix_list_3-6.start{counter-reset:lst-ctn-kix_list_3-6 0}ol.lst-kix_list_1-3.start{counter-reset:lst-ctn-kix_list_1-3 0}ol.lst-kix_list_2-8.start{counter-reset:lst-ctn-kix_list_2-8 0}ol.lst-kix_list_1-2.start{counter-reset:lst-ctn-kix_list_1-2 0}.lst-kix_list_1-0>li:before{content:"" counter(lst-ctn-kix_list_1-0,decimal) ". "}ul.lst-kix_list_2-1{list-style-type:none}.lst-kix_list_1-1>li:before{content:"" counter(lst-ctn-kix_list_1-0,decimal) "." counter(lst-ctn-kix_list_1-1,decimal) " "}.lst-kix_list_1-2>li:before{content:" "}ol.lst-kix_list_2-0.start{counter-reset:lst-ctn-kix_list_2-0 0}.lst-kix_list_1-3>li:before{content:" "}.lst-kix_list_1-4>li:before{content:" "}ol.lst-kix_list_3-5.start{counter-reset:lst-ctn-kix_list_3-5 0}.lst-kix_list_1-0>li{counter-increment:lst-ctn-kix_list_1-0}.lst-kix_list_1-6>li{counter-increment:lst-ctn-kix_list_1-6}.lst-kix_list_1-7>li:before{content:" "}ol.lst-kix_list_2-7.start{counter-reset:lst-ctn-kix_list_2-7 0}.lst-kix_list_1-3>li{counter-increment:lst-ctn-kix_list_1-3}.lst-kix_list_1-5>li:before{content:" "}.lst-kix_list_1-6>li:before{content:" "}li.li-bullet-0:before{margin-left:-18pt;white-space:nowrap;display:inline-block;min-width:18pt}.lst-kix_list_2-0>li:before{content:"" counter(lst-ctn-kix_list_2-0,decimal) ". "}.lst-kix_list_2-1>li:before{content:"-  "}.lst-kix_list_1-8>li:before{content:" "}.lst-kix_list_2-2>li:before{content:"" counter(lst-ctn-kix_list_2-2,lower-roman) ". "}.lst-kix_list_2-3>li:before{content:"" counter(lst-ctn-kix_list_2-3,decimal) ". "}ol{margin:0;padding:0}table td,table th{padding:0}.c10{-webkit-text-decoration-skip:none;color:#000000;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:11pt;font-family:"Arial";font-style:normal}.c4{margin-left:36pt;padding-top:0pt;padding-left:1.8pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c9{margin-left:72pt;padding-top:0pt;padding-left:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c1{margin-left:35.4pt;padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify;height:11pt}.c0{margin-left:18pt;padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c17{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:8pt;font-family:"Arial";font-style:normal}.c7{margin-left:37.8pt;padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c2{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c11{margin-left:73.8pt;padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c13{margin-left:35.4pt;padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c3{color:#000000;font-weight:700;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c12{margin-left:18pt;padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:center}.c34{padding-top:0pt;padding-bottom:0pt;line-height:1.0;orphans:2;widows:2;text-align:left}.c15{padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}.c32{padding-top:0pt;padding-bottom:0pt;line-height:1.1500000000000001;orphans:2;widows:2;text-align:right}.c22{text-decoration-skip-ink:none;-webkit-text-decoration-skip:none;color:#0000ff;text-decoration:underline}.c18{background-color:#ffffff;max-width:453.6pt;padding:70.8pt 70.8pt 56.7pt 70.8pt}.c25{text-decoration-skip-ink:none;-webkit-text-decoration-skip:none;text-decoration:underline}.c27{background-color:#ffffff;font-style:italic;color:#1f497d}.c28{background-color:#ffffff;color:#000000}.c30{color:inherit;text-decoration:inherit}.c26{width:33%;height:1px}.c8{padding:0;margin:0}.c19{padding-left:0pt}.c33{vertical-align:super}.c5{font-weight:700}.c20{font-weight:400}.c16{height:18pt}.c29{margin-left:17.4pt}.c6{height:11pt}.c14{color:#333333}.c23{color:#141414}.c31{background-color:#ffff00}.c21{text-decoration:none}.c24{margin-left:36pt}.title{padding-top:24pt;color:#000000;font-weight:700;font-size:36pt;padding-bottom:6pt;font-family:"Arial";line-height:1.1500000000000001;page-break-after:avoid;orphans:2;widows:2;text-align:justify}.subtitle{padding-top:18pt;color:#666666;font-size:24pt;padding-bottom:4pt;font-family:"Georgia";line-height:1.1500000000000001;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:justify}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:0pt;color:#000000;font-weight:700;font-size:11pt;padding-bottom:0pt;font-family:"Arial";line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}h2{padding-top:0pt;color:#000000;font-size:11pt;padding-bottom:0pt;font-family:"Arial";line-height:1.1500000000000001;orphans:2;widows:2;text-align:justify}h3{padding-top:14pt;color:#000000;font-weight:700;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.1500000000000001;page-break-after:avoid;orphans:2;widows:2;text-align:justify}h4{padding-top:12pt;color:#000000;font-weight:700;font-size:12pt;padding-bottom:2pt;font-family:"Arial";line-height:1.1500000000000001;page-break-after:avoid;orphans:2;widows:2;text-align:justify}h5{padding-top:11pt;color:#000000;font-weight:700;font-size:11pt;padding-bottom:2pt;font-family:"Arial";line-height:1.1500000000000001;page-break-after:avoid;orphans:2;widows:2;text-align:justify}h6{padding-top:10pt;color:#000000;font-weight:700;font-size:10pt;padding-bottom:2pt;font-family:"Arial";line-height:1.1500000000000001;page-break-after:avoid;orphans:2;widows:2;text-align:justify}
-  </style>
-  <title></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-  <p class="c0"><span class="c27">Zewotherm und Consolinno sind
-  Partner bei der Bereitstellung des ZEWO Dynamics EnergieManager
-  (Home Energy Management System - HEMS). Consolinno ist Entwickler
-  und Betreiber der App (und des HEMS) für den ZEWO Dynamics
-  EnergieManager. Consolinno ist dementsprechend auch Verarbeiter
-  aller Daten innerhalb dieser App. Die folgende
-  Datenschutzerklärung von Consolinno findet daher
-  Anwendung.</span></p>
-  <p class="c12 c6"></p>
-  <p class="c6 c12"></p>
-  <p class="c12"><span class="c10 c5">Datenschutzerklärung
-  HEMS</span></p>
-  <p class="c12"><span class="c3">(Stand 11/2024)</span></p>
-  <p class="c15 c6"></p>
-  <p class="c15"><span>Wir verarbeiten Ihre personenbezogenen Daten
-  nach den aktuellen Regelungen der Bundesrepublik Deutschland und
-  der Europäischen Union (EU). Dabei hat der Schutz Ihrer
-  persönlichen Informationen höchste Priorität. Im Folgenden
-  erfahren Sie, welche Daten wir in welcher Form aufgrund welcher
-  Rechtsgrundlage zu welchem Zweck wie lange verarbeiten, inwieweit
-  Ihnen ein Widerspruchsrecht zusteht und wie sie dieses ausüben
-  können. Sollte Ihre Einwilligung notwendig sein, so wird Ihnen
-  dies an entsprechender Stelle angezeigt und Sie haben die
-  Möglichkeit, diese zu erteilen oder von einer Erteilung
-  abzusehen. Selbstverständlich haben Sie auch nach Erteilung Ihrer
-  Einwilligung jederzeit das Recht, diese zu
-  widerrufen.</span><span class="c14">&nbsp;</span></p>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-0 start" start="1">
-    <li class="c15 c19 c24 li-bullet-0">
-      <h1 style="display:inline">
-      <span>Verantwortlicher</span><sup class="c20 c33"><a href=
-      "#ftnt1" id="ftnt_ref1">[1]</a></sup><span class="c3"><br>
-      Verantwortlich im Sinne der datenschutzrechtlichen
-      Bestimmungen ist:</span></h1>
-    </li>
-  </ol>
-  <p class="c15 c6"></p>
-  <p class="c13"><span class="c3">Consolinno Energy GmbH</span></p>
-  <p class="c13"><span class="c2">vertreten durch den
-  Geschäftsführer</span></p>
-  <p class="c13"><span class="c2">Franz-Mayer-Straße 1</span></p>
-  <p class="c13"><span class="c2">93053 Regensburg</span></p>
-  <p class="c1"></p>
-  <p class="c13"><span class="c2">Der zuständige betriebliche
-  Datenschutzbeauftragte (bDSB) ist:</span></p>
-  <p class="c6 c34"></p>
-  <p class="c13"><span class="c2">secjur GmbH</span></p>
-  <p class="c13"><span class="c2">Herr Niklas Hanitsch</span></p>
-  <p class="c13"><span class="c2">Steinhöft 9</span></p>
-  <p class="c13"><span class="c2">20459 Hamburg</span></p>
-  <p class="c13"><span class="c2">Deutschland</span></p>
-  <p class="c13"><span class="c2">Telefonnummer: +49 40 228 599
-  520</span></p>
-  <p class="c13"><span class="c2">E-Mail: dsb@secjur.com</span></p>
-  <p class="c1"></p>
-  <p class="c13" id="h.gjdgxs"><span>Wir möchten Sie an dieser
-  Stelle auf das</span> <span class="c25">Recht zur Beschwerde bei
-  der Aufsichtsbehörde</span><span class="c2">&nbsp;gemäß Art. 77
-  DSGVO hinweisen. Demnach hat jede betroffene Person unbeschadet
-  eines anderweitigen Rechtsbehelfs das Recht auf Beschwerde bei
-  der Aufsichtsbehörde, wenn sie der Ansicht ist, dass die
-  Verarbeitung der sie betreffenden personenbezogenen Daten gegen
-  die Datenschutz-Grundverordnung verstößt.</span></p>
-  <p class="c1"></p>
-  <p class="c13"><span class="c2">Die Kontaktdaten der für den
-  Verantwortlichen zuständigen Aufsichtsbehörde lauten:</span></p>
-  <p class="c1"></p>
-  <p class="c13"><span class="c28">Bayerisches Landesamt für
-  Datenschutzaufsicht</span></p>
-  <p class="c13"><span class="c2">Promenade 18</span></p>
-  <p class="c13"><span class="c2">91522 Ansbach</span></p>
-  <p class="c1"></p>
-  <ol class="c8 lst-kix_list_3-0" start="2">
-    <li class="c15 c19 c24 li-bullet-0">
-      <h1 style="display:inline"><span class="c3">Information über
-      Ihre Rechte als betroffene Person</span></h1>
-    </li>
-  </ol>
-  <ol class="c8 lst-kix_list_3-1 start" start="1">
-    <li class="c4 li-bullet-1">
-      <h2 id="h.30j0zll" style="display:inline"><span>Bei</span>
-      <span class="c25">Vorliegen der gesetzlichen
-      Voraussetzungen</span><span>&nbsp;haben Sie - sofern nicht
-      ein gesetzlicher Ausnahmefall gegeben ist -</span>
-      <span class="c23">folgende Rechte hinsichtlich der Sie
-      betreffenden personenbezogenen Daten:</span></h2>
-    </li>
-  </ol>
-  <p class="c7 c6"></p>
-  <ul class="c8 lst-kix_list_4-0 start">
-    <li class="c11 c19 li-bullet-0"><span class="c2">Recht
-    auf</span> <span class="c10 c5">Auskunft</span><span class=
-    "c2">&nbsp;(Art. 15 DSGVO): Sie haben das Recht, von dem
-    Verantwortlichen eine Auskunft darüber zu verlangen, ob Sie
-    betreffende personenbezogene Daten verarbeitet werden. Ist dies
-    der Fall, so haben Sie das Recht auf Auskunft über diese
-    personenbezogenen Daten und damit im Zusammenhang stehende
-    weitergehende Informationen.</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Recht
-    auf</span> <span class="c10 c5">Berichtigung</span><span class=
-    "c2">&nbsp;(Art. 16 DSGVO): Sie haben das Recht, von dem
-    Verantwortlichen unverzüglich die Berichtigung Sie betreffender
-    unrichtiger personenbezogener Daten zu verlangen. Unter
-    Berücksichtigung der Zwecke der Verarbeitung haben Sie das
-    Recht, die Vervollständigung unvollständiger personenbezogener
-    Daten – auch mittels einer ergänzenden Erklärung – zu
-    verlangen.</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Recht
-    auf</span> <span class="c10 c5">Löschung</span><span class=
-    "c2">&nbsp;(Art. 17 DSGVO): Sie haben das Recht, von dem
-    Verantwortlichen zu verlangen, dass Sie betreffende
-    personenbezogene Daten unverzüglich gelöscht werden, und der
-    Verantwortliche ist verpﬂichtet, personenbezogene Daten
-    unverzüglich zu löschen, sofern einer der Gründe des Art. 17
-    Abs. 1 DSGVO zutrifft und kein Ausnahmetatbestand
-    eingreift.</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Recht
-    auf</span> <span class="c10 c5">Einschränkung der
-    Verarbeitung</span><span class="c2">&nbsp;(Art. 18 DSGVO): Sie
-    haben das Recht, von dem Verantwortlichen die Einschränkung der
-    Verarbeitung (ehemals: Sperre) Ihrer personenbezogenen Daten zu
-    verlangen, wenn eine der Voraussetzungen des Art. 18 Abs. 1
-    DSGVO gegeben ist und kein Ausnahmetatbestand
-    eingreift.</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Recht
-    auf</span> <span class=
-    "c10 c5">Datenübertragbarkeit</span><span class=
-    "c2">&nbsp;(Art. 20 DSGVO): Sie haben das Recht, die Sie
-    betreffenden personenbezogenen Daten, die sie einem
-    Verantwortlichen bereitgestellt haben, in einem strukturierten,
-    gängigen und maschinenlesbaren Format zu erhalten, und sie
-    haben das Recht, diese Daten einem anderen Verantwortlichen
-    ohne Behinderung durch den Verantwortlichen, dem die
-    personenbezogenen Daten bereitgestellt wurden, zu übermitteln,
-    sofern die weiteren Voraussetzungen des Art. 20 Abs. 1 DSGVO
-    gegeben sind und kein Ausnahmetatbestand eingreift.</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Recht
-    auf</span> <span class="c10 c5">Widerspruch gegen die
-    Verarbeitung</span><span class="c2">&nbsp;(Art. 21 DSGVO): Sie
-    haben das Recht, aus Gründen, die sich aus ihrer besonderen
-    Situation ergeben, jederzeit gegen die Verarbeitung sie
-    betreffender personenbezogener Daten, die aufgrund von Art. 6
-    Abs. 1 Satz 1 lit. e) (öffentliches Interesse oder Ausübung
-    öffentlicher Gewalt) oder f) (Wahrung berechtigter Interessen)
-    DSGVO erfolgt, Widerspruch einzulegen.</span></li>
-  </ul>
-  <p class="c6 c11"></p>
-  <ol class="c8 lst-kix_list_3-1" start="2">
-    <li class="c4 li-bullet-2">
-      <h2 style="display:inline"><span>Wenn Sie darüber hinaus
-      Auskunft über Ihre personenbezogenen Daten wünschen oder
-      weitergehende Fragen über die Verarbeitung Ihrer uns
-      überlassenen personenbezogenen Daten haben, sowie eine
-      Korrektur oder Löschung Ihrer Daten veranlassen möchten, so
-      wenden Sie sich bitte an die unter Ziffer 3.</span>
-      <span class="c21">"Ausübung des</span> <span>Widerspruchs-
-      und Widerrufsrechts</span><span class=
-      "c21">"</span><span class="c2">&nbsp;angegebene
-      Kontaktadresse.</span></h2>
-    </li>
-  </ol>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-0" start="3">
-    <li class="c15 c19 c24 li-bullet-0">
-      <h1 id="h.1fob9te" style="display:inline"><span class=
-      "c3">Ausübung des Widerspruchs- und
-      Widerrufsrechts</span></h1>
-    </li>
-  </ol>
-  <p class="c13"><span class="c20">Sie haben ggf. das Recht, der
-  Verarbeitung Ihrer Daten</span> <span class="c2">zu widersprechen
-  (siehe Ziffer 2.1 letztes Aufzählungszeichen). Zudem haben Sie
-  das Recht, eine an uns erteilte Einwilligung mit Wirkung für die
-  Zukunft zu widerrufen. In diesem Fall werden wir die Verarbeitung
-  Ihrer Daten zu diesem Zweck unverzüglich unterlassen. Einen
-  Widerspruch oder Widerruf können Sie jederzeit formlos per Post,
-  Telefax oder Email an uns übermitteln.</span></p>
-  <p class="c15 c6 c29"></p>
-  <p class="c13"><span class="c2">Per Post:</span></p>
-  <p class="c13"><span class="c2">Consolinno Energy GmbH</span></p>
-  <p class="c13"><span class="c2">Franz-Mayer-Straße 1</span></p>
-  <p class="c13"><span class="c2">93053 Regensburg</span></p>
-  <p class="c1"></p>
-  <p class="c13"><span class="c2">Per Email:</span></p>
-  <p class="c13"><span class="c2">info@consolinno.de</span></p>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-0" start="4">
-    <li class="c15 c19 c24 li-bullet-0">
-      <h1 style="display:inline"><span class="c3">Nutzung der
-      Hardware und der mobilen Applikation (App)</span></h1>
-    </li>
-  </ol>
-  <ol class="c8 lst-kix_list_3-1 start" start="1">
-    <li class="c4 li-bullet-1">
-      <h2 style="display:inline"><span class="c5">Art und Umfang
-      der Datenverarbeitung:</span><span class="c2">&nbsp;Bei der
-      Benutzung unserer Hardware und dem Aufruf unserer App ist es
-      technisch notwendig verschiedene Daten zu verarbeiten,
-      insbesondere damit die Nutzung und eine fehlerfreie
-      Kommunikation zwischen Ihrem Endgerät und unserer Cloud
-      möglich ist. Dabei werden automatisiert folgende Daten
-      erhoben und in einer sogenannten Log-Datei
-      protokolliert:</span></h2>
-    </li>
-  </ol>
-  <p class="c7 c6"></p>
-  <ul class="c8 lst-kix_list_2-1 start">
-    <li class="c9 li-bullet-0"><span class="c2">Datum und Uhrzeit
-    des Zugriffs</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Hardwaretyp und
-    -version (inkl. Seriennummer)</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Betriebssystemtyp
-    und -version</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">IP-Adressen der
-    Geräte</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Die IP-Adresse
-    Ihres Anschlusses</span></li>
-    <li class="c9 li-bullet-0"><span class=
-    "c2">Zugangsprovider</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Daten verbundener
-    Mobilgeräte (Hersteller, Typ)</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Daten der im Smart
-    Home System eingebundenen Geräte (Betriebszustände,
-    Betriebsstunden, Energieverbrauch, Systemstatus,
-    Anlageneinstellungen, Standort der Anlage, Fehlercodes,
-    Messwerte wie z.B. Temperaturen)</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">HEMS Daten (Online
-    Status, Fehlermeldungen)</span></li>
-  </ul>
-  <p class="c15 c6"></p>
-  <p class="c13"><span class="c2">Wir erheben diese Daten
-  grundsätzlich in nicht in personenbezogener Form. In
-  Ausnahmefällen lässt sich die Beziehbarkeit zu einer natürlichen
-  Person nicht vermeiden. Wir haben jedoch grundsätzlich nicht die
-  Möglichkeit den konkreten Bezug zu einer natürlichen Person
-  herzustellen und verfolgen einen derartigen Bezug auch nicht
-  weiter, sofern Sie uns hierzu keine Einwilligung erteilt
-  haben.</span></p>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-1" start="2">
-    <li class="c4 li-bullet-1">
-      <h2 style="display:inline"><span class="c5">Zweck:</span>
-      <span class="c2">Dies geschieht, um die Nutzung der Hard- und
-      Software überhaupt zu ermöglichen, insbesondere zum Zwecke
-      der systeminternen technischen Verarbeitung
-      (Verbindungsaufbau), der Systemsicherheit, der technischen
-      Administration der System- und Netzinfrastruktur sowie zur
-      Optimierung unseres Angebotes. Wir behalten es uns vor, die
-      Log-Datei nachträglich zu überprüfen, wenn aufgrund konkreter
-      Anhaltspunkte der berechtigte Verdacht einer rechtswidrigen
-      oder Nutzung besteht.</span></h2>
-    </li>
-    <li class="c4 li-bullet-2">
-      <h2 style="display:inline"><span class=
-      "c5">Rechtsgrundlage:</span><span class="c2">&nbsp;Die
-      vorübergehende Verarbeitung der Daten und der Log-Datei
-      erfolgt aus berechtigtem Interesse zu oben genanntem Zweck
-      gem. Art. 6 Abs. 1 Satz 1 lit. f) DSGVO sowie zur Erfüllung
-      des Vertrags mit Ihnen, gem. Art. 6 Abs. 1 Satz 1 lit. b)
-      DSGVO</span></h2>
-    </li>
-    <li class="c4 li-bullet-2">
-      <h2 style="display:inline"><span class="c5">Empfänger der
-      Daten:</span><span class="c2">&nbsp;Die Daten werden
-      notwendigerweise an unseren Hostinganbieter weitergeleitet,
-      bei dem unser Webserver physisch und technisch verwaltet
-      wird:</span></h2>
-    </li>
-  </ol>
-  <h2 class="c7"><span class="c2">Hostinganbieter: Hetzner Online
-  GmbH, Industriestr. 25, 91710 Gunzenhausen</span></h2>
-  <ol class="c8 lst-kix_list_3-1" start="5">
-    <li class="c4 li-bullet-2">
-      <h2 style="display:inline"><span class="c5">Speicherdauer und
-      Löschung:</span><span class="c2">&nbsp;Die Daten werden
-      innerhalb der gesetzlichen Fristen gespeichert und dann
-      gelöscht soweit nicht weitergehende gesetzliche
-      Aufbewahrungsfristen bestehen.</span></h2>
-    </li>
-    <li class="c4 li-bullet-1">
-      <h2 style="display:inline"><span class="c5">Widerspruch oder
-      Widerruf:</span> <span class="c2">Diese Datenverarbeitung ist
-      für den Betrieb unserer Hard- und Software zwingend
-      erforderlich. Daher unterliegt ein etwaiger Widerspruch einer
-      entsprechenden Interessensabwägung.</span></h2>
-    </li>
-  </ol>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-0" start="5">
-    <li class="c15 c19 c24 li-bullet-0">
-      <h1 id="h.3znysh7" style="display:inline"><span class=
-      "c3">Registrierung</span></h1>
-    </li>
-  </ol>
-  <ol class="c8 lst-kix_list_3-1 start" start="1">
-    <li class="c4 li-bullet-2">
-      <h2 style="display:inline"><span class="c5">Art und Umfang
-      der Datenverarbeitung:</span><span class="c2">&nbsp;Sie haben
-      die Möglichkeit, sich in unserer App zu registrieren. Hierzu
-      ist Ihre Einwilligung erforderlich. Um diesen
-      Registrierungsvorgang erfolgreich durchführen zu können,
-      benötigen wir folgende Daten von Ihnen:</span></h2>
-    </li>
-  </ol>
-  <p class="c7 c6"></p>
-  <ul class="c8 lst-kix_list_2-1">
-    <li class="c9 li-bullet-0"><span class="c2">Vorname, Name,
-    Straße, Hausnummer, PLZ, Ort</span></li>
-    <li class="c9 li-bullet-0"><span class=
-    "c2">Seriennummer</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Emailadresse
-    (optional)</span></li>
-    <li class="c9 li-bullet-0"><span class="c2">Telefonnummer
-    (optional)</span></li>
-    <li class="c9 li-bullet-0"><span class=
-    "c2">Passwort</span></li>
-  </ul>
-  <p class="c7 c6"></p>
-  <h2 class="c7"><span class="c2">Bei der Registrierung wird zudem
-  Ihre IP-Adresse nebst Datum und Uhrzeit gespeichert. Eine
-  personenbezogene Auswertung findet grundsätzlich nicht statt. Wir
-  behalten uns jedoch vor, die gespeicherten Daten nachträglich zu
-  überprüfen, wenn aufgrund konkreter Anhaltspunkte der berechtigte
-  Verdacht einer missbräuchlichen Registrierung
-  besteht.</span></h2>
-  <ol class="c8 lst-kix_list_3-1" start="2">
-    <li class="c4 li-bullet-1">
-      <h2 style="display:inline"><span class="c5">Zweck:</span>
-      <span class="c2">Eine Registrierung bietet Ihnen die
-      Möglichkeit, bestimmte Leistungen in Anspruch zu nehmen oder
-      Handlungen auszuführen, die ohne Registrierung nicht möglich
-      sind. Dies geschieht zu folgenden Zwecken:</span></h2>
-    </li>
-  </ol>
-  <p class="c6 c7"></p>
-  <ul class="c8 lst-kix_list_5-0 start">
-    <li class="c11 c19 li-bullet-0"><span class="c2">Betrieb der
-    Hard- und Software</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Benutzung der
-    App</span></li>
-    <li class="c11 c19 li-bullet-0"><span class="c2">Nutzung der
-    Cloud</span></li>
-  </ul>
-  <p class="c7 c6"></p>
-  <h2 class="c7"><span class="c2">Ihre Daten werden in unserem
-  System hinterlegt, um Ihnen die Möglichkeit zu bieten, unsere
-  Leistungen in Anspruch zu nehmen, ohne jedes Mal Ihre Daten
-  erneut eingeben zu müssen. Ihre Emailadresse wird von uns dazu
-  verwendet, um Ihnen Bestätigungsmails für von Ihnen veranlasste
-  Änderungen Ihrer Profildaten oder zur Wiederherstellung Ihres
-  Passworts zukommen lassen zu können sowie um Sie über notwendige
-  Aktualisierungen der Software zu informieren. Andere Emails
-  senden wir Ihnen nur zu, wenn Sie dies wünschen und uns zu diesem
-  Zwecke Ihre Einwilligung erteilt haben. Die Speicherung Ihrer
-  IP-Adresse nebst Datum und Uhrzeit erfolgt zur
-  Missbrauchsprävention.</span></h2>
-  <ol class="c8 lst-kix_list_3-1" start="3">
-    <li class="c4 li-bullet-1">
-      <h2 style="display:inline"><span class=
-      "c5">Rechtsgrundlage:</span><span class="c2">&nbsp;Die
-      Verarbeitung der Daten erfolgt aufgrund Ihrer Einwilligung
-      gem. Art. 6 Abs. 1 Satz 1 lit. a) DSGVO.</span></h2>
-    </li>
-    <li class="c4 li-bullet-2">
-      <h2 style="display:inline"><span class="c5">Speicherdauer und
-      Löschung:</span> <span class="c2">Die Daten werden
-      grundsätzlich solange gespeichert, bis Sie Ihre Registrierung
-      kündigen und keine gesetzlichen Aufbewahrungsfristen mehr
-      bestehen.</span></h2>
-    </li>
-    <li class="c4 li-bullet-1">
-      <h2 style="display:inline"><span class="c5">Widerspruch oder
-      Widerruf:</span> <span class="c2">Sie haben das Recht, Ihre
-      Registrierung jederzeit zu kündigen und Ihre gespeicherten
-      Daten zu ändern sowie Ihre erteilte Einwilligung mit Wirkung
-      für die Zukunft zu widerrufen. Sie können die Änderung Ihres
-      Passworts jederzeit selbst veranlassen. Bei Kündigung
-      und/oder Widerruf ist der Zugriff auf die Hard- und Software
-      dann nicht mehr möglich.</span></h2>
-    </li>
-  </ol>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-0" start="6">
-    <li class="c15 c19 c24 li-bullet-0"><span class="c3">Erteilte
-    Einwilligungen</span></li>
-  </ol>
-  <p class="c0"><span>Soweit erforderlich haben Sie uns ggf.
-  Einwilligungen zur Verarbeitung Ihrer personenbezogenen Daten
-  erteilt. In diesem Fall haben wir Ihre Einwilligung jeweils
-  protokolliert. Wir sind gesetzlich verpflichtet, den Text der
-  jeweiligen Einwilligung jederzeit für Sie abrufbar zu halten.
-  Selbstverständlich können Sie uns erteilte Einwilligungen
-  jederzeit mit Wirkung für die Zukunft widerrufen. Wie Sie Ihr
-  Widerrufsrecht ausüben können, erfahren Sie unter Ziffer
-  3.</span> <span class="c21">"Ausübung des</span>
-  <span>Widerspruchs- und Widerrufsrechts</span><span class=
-  "c21">"</span><span class="c2">.</span></p>
-  <p class="c6 c15"></p>
-  <p class="c0"><span class="c3">Einwilligung für die Registrierung
-  eines Benutzerkontos:</span></p>
-  <p class="c0 c6"></p>
-  <p class="c0"><span>Ja, ich möchte ein Benutzerkonto eröffnen, um
-  mich in der App anmelden zu können. Zu diesem Zweck willige ich
-  ein, dass meine Daten (Emailadresse und Passwort) in der
-  Datenbank gespeichert werden. Diese Einwilligung kann ich
-  jederzeit mit Wirkung für die Zukunft widerrufen, indem ich mich
-  an die Adresse unter</span> <span class="c22"><a class="c30"
-  href="https://www.google.com/url?q=https://hems.consolinno.de/datenschutz/&amp;sa=D&amp;source=editors&amp;ust=1732123382853806&amp;usg=AOvVaw3BmlasD4Zc6sh1SzsbEor9">
-  https://hems.consolinno.de/datenschutz/</a></span><span class=
-  "c2">&nbsp; wende und um Löschung meines Benutzerkontos bitte. Um
-  diesen Vorgang zu protokollieren, wird meine IP-Adresse, sowie
-  Datum und Uhrzeit der Registrierung in einer Datenbank
-  gespeichert und erst wieder gelöscht, wenn ich die Einwilligung
-  widerrufe, sofern eine weitergehende Speicherung nicht rechtlich
-  erforderlich ist.</span></p>
-  <p class="c0 c6"></p>
-  <h2 class="c7 c16"></h2>
-  <ol class="c8 lst-kix_list_3-0" start="7">
-    <li class="c15 c19 c24 li-bullet-0"><span class=
-    "c3">Elektronische Post (Email) / Kontaktaufnahme</span></li>
-  </ol>
-  <ol class="c8 lst-kix_list_3-1 start" start="1">
-    <li class="c4 li-bullet-1"><span class="c2">Informationen, die
-    Sie unverschlüsselt per Elektronischer Post (Email) an uns
-    senden, können möglicherweise auf dem Übertragungsweg von
-    Dritten gelesen werden. Wir können in der Regel auch Ihre
-    Identität nicht überprüfen und wissen nicht, wer wirklicher
-    Inhaber einer Emailadresse ist. Eine rechtssichere
-    Kommunikation durch einfache Email ist daher nicht
-    gewährleistet. Wie viele Anbieter setzen wir Filter gegen
-    unerwünschte Werbung („SPAM-Filter“) ein, die in einigen Fällen
-    auch normale Emails fälschlicherweise automatisch als
-    unerwünschte Werbung einordnen und löschen. Emails, die
-    schädigende Programme („Viren“) enthalten, werden von uns in
-    jedem Fall automatisch gelöscht. Wenn Sie schutzwürdige
-    Nachrichten an uns senden wollen, empfehlen wir, die Nachricht
-    auf konventionellem Postwege an uns zu senden.</span></li>
-    <li class="c4 li-bullet-1"><span class="c3">Art und Umfang der
-    Datenverarbeitung:</span> <span class="c2">Im Falle der
-    Kontaktaufnahme mit uns werden Ihre Daten, Ihre IP-Adresse
-    sowie Datum und Uhrzeit gespeichert.</span></li>
-    <li class="c4 li-bullet-1"><span class="c3">Zweck:</span>
-    <span class="c2">Dies geschieht insbesondere zu
-    Kommunikationszwecken und zum Schutz unserer Systeme gegen
-    Missbrauch.</span></li>
-    <li class="c4 li-bullet-2"><span class=
-    "c3">Rechtsgrundlage:</span> <span class="c2">Die Verarbeitung
-    der Daten erfolgt aus berechtigtem Interesse zu oben genanntem
-    Zweck gem. Art. 6 Abs. 1 Satz 1 lit. f) DSGVO.</span></li>
-    <li class="c4 li-bullet-1"><span class="c3">Speicherdauer und
-    Löschung:</span> <span class="c2">Die Daten werden erst dann
-    gelöscht, falls keine vertraglichen oder gesetzlichen
-    Verpflichtungen einer Löschung entgegenstehen.</span></li>
-    <li class="c4 li-bullet-2"><span class="c3">Widerspruch oder
-    Widerruf:</span><span class="c2">&nbsp;Sie können der
-    Kontaktaufnahme per Email jederzeit widersprechen. In diesem
-    Fall kann keine weitere Korrespondenz via Email
-    stattfinden.</span></li>
-  </ol>
-  <p class="c15 c6"></p>
-  <ol class="c8 lst-kix_list_3-0" start="8">
-    <li class="c15 c19 c24 li-bullet-0"><span class=
-    "c3">Schlussbestimmungen</span></li>
-  </ol>
-  <p class="c0 c6"></p>
-  <ol class="c8 lst-kix_list_3-1" start="7">
-    <li class="c4 li-bullet-1"><span class="c2">Wir sind stets
-    bemüht, unsere Hard- und Software weiterzuentwickeln und neue
-    Technologien einzusetzen. Daher kann es notwendig werden, diese
-    Datenschutzerklärung zu ändern, bzw. anzupassen. Wir behalten
-    uns daher das Recht vor, diese Erklärung jederzeit mit Wirkung
-    für die Zukunft zu ändern. Bitte besuchen Sie daher diese Seite
-    regelmäßig und lesen Sie die jeweils aktuelle
-    Datenschutzerklärung von Zeit zu Zeit erneut durch.</span></li>
-    <li class="c4 li-bullet-2"><span class="c2">Die Vertragssprache
-    ist Deutsch. Sollte diese Datenschutzerklärung übersetzt werden
-    oder worden sein, so ist ausschließlich die Version in
-    deutscher Sprache maßgebend.</span></li>
-  </ol>
-  <p class="c0 c6"></p>
-  <p class="c0 c6"></p>
-  <div>
-    <p class="c32"><span class="c17">Seite</span> <span class=
-    "c17">&nbsp;von</span></p>
-    <p class="c15 c6"></p>
-  </div>
-  <hr class="c26">
-  <div>
-    <p class="c15"><a href="#ftnt_ref1" id=
-    "ftnt1">[1]</a><span class="c17">&nbsp;Aus Gründen der besseren
-    Lesbarkeit wird auf die gleichzeitige Verwendung der
-    Sprachformen männlich, weiblich und divers (m/w/d) verzichtet.
-    Sämtliche Personenbezeichnungen gelten gleichermaßen für alle
-    Geschlechter.</span></p>
-  </div>
-</body>
-</html>
+<div style="page-break-before:always; page-break-after:always"><div><p><i>Zewotherm&#9;und&#9;Consolinno&#9;sind&#9;Partner&#9;bei&#9;der&#9;Bereitstellung&#9;des&#9;ZEWO&#9;Dynamics&#9;EnergieManager&#9; (Home&#9;Energy&#9;Management&#9;System&#9;-<br/>HEMS).&#9; Consolinno&#9; ist&#9; Entwickler&#9; und&#9; Betreiber&#9; der&#9; App&#9; (und&#9; des&#9; HEMS)&#9; f&#252;r&#9; den&#9; ZEWO&#9; Dynamics&#9; EnergieManager.&#9; Consolinno&#9; ist<br/>dementsprechend&#9; auch&#9; Verarbeiter&#9; aller&#9; Daten&#9; innerhalb&#9; dieser&#9; App.&#9; Die&#9; folgende&#9; Datenschutzerkl&#228;rung&#9; von&#9; Consolinno&#9; findet&#9; daher<br/>Anwendung.<br/></i></p>
+
+<p>Wir&#9; verarbeiten&#9; Ihre&#9; personenbezogenen&#9;Daten&#9; nach&#9; den&#9; aktuellen&#9;Regelungen&#9; der&#9; Bundesrepublik&#9;Deutschland&#9; und&#9; der&#9; Europ&#228;ischen&#9;Union<br/>(EU).&#9; Dabei&#9; hat&#9; der&#9; Schutz&#9; Ihrer&#9; pers&#246;nlichen&#9; Informationen&#9; h&#246;chste&#9; Priorit&#228;t.&#9; Im&#9; Folgenden&#9; erfahren&#9; Sie,&#9; welche&#9; Daten&#9; wir&#9; in&#9; welcher&#9; Form<br/>aufgrund&#9;welcher&#9;Rechtsgrundlage&#9;zu&#9;welchem&#9;Zweck&#9;wie&#9; lange&#9;verarbeiten,&#9; inwieweit&#9; Ihnen&#9;ein&#9;Widerspruchsrecht&#9;zusteht&#9;und&#9;wie&#9;sie&#9;dieses<br/>aus&#252;ben&#9;k&#246;nnen.&#9;Sollte&#9; Ihre&#9;Einwilligung&#9;notwendig&#9;sein,&#9;so&#9;wird&#9; Ihnen&#9;dies&#9;an&#9;entsprechender&#9;Stelle&#9;angezeigt&#9;und&#9;Sie&#9;haben&#9;die&#9;M&#246;glichkeit,<br/>diese&#9; zu&#9;erteilen&#9; oder&#9; von&#9;einer&#9;Erteilung&#9;abzusehen.&#9;Selbstverst&#228;ndlich&#9; haben&#9;Sie&#9; auch&#9;nach&#9;Erteilung&#9; Ihrer&#9;Einwilligung&#9; jederzeit&#9; das&#9;Recht,<br/>diese&#9;zu&#9;widerrufen.&#9;<br/></p>
+<p>1. &#9;<b>Verantwortlicher</b>[1]<br/><b>Verantwortlich&#9;im&#9;Sinne&#9;der&#9;datenschutzrechtlichen&#9;Bestimmungen&#9;ist:<br/>Consolinno&#9;Energy&#9;GmbH<br/></b>vertreten&#9;durch&#9;den&#9;Gesch&#228;ftsf&#252;hrer<br/>Franz-Mayer-Stra&#223;e&#9;1<br/>93053&#9;Regensburg<br/>Der&#9;zust&#228;ndige&#9;betriebliche&#9;Datenschutzbeauftragte&#9;(bDSB)&#9;ist:<br/>secjur&#9;GmbH<br/>Herr&#9;Niklas&#9;Hanitsch<br/>Steinh&#246;ft&#9;9<br/>20459&#9;Hamburg<br/>Deutschland<br/>Telefonnummer:&#9;+49&#9;40&#9;228&#9;599&#9;520<br/>E-Mail:&#9;dsb@secjur.com<br/>Wir&#9;m&#246;chten&#9;Sie&#9;an&#9;dieser&#9;Stelle&#9;auf&#9;das&#9;Recht&#9;zur&#9;Beschwerde&#9;bei&#9;der&#9;Aufsichtsbeh&#246;rde&#9;gem&#228;&#223;&#9;Art.&#9;77&#9;DSGVO&#9;hinweisen.&#9;Demnach&#9;hat<br/>jede&#9;betroffene&#9;Person&#9;unbeschadet&#9;eines&#9;anderweitigen&#9;Rechtsbehelfs&#9;das&#9;Recht&#9;auf&#9;Beschwerde&#9;bei&#9;der&#9;Aufsichtsbeh&#246;rde,&#9;wenn&#9;sie&#9;der<br/>Ansicht&#9;ist,&#9;dass&#9;die&#9;Verarbeitung&#9;der&#9;sie&#9;betreffenden&#9;personenbezogenen&#9;Daten&#9;gegen&#9;die&#9;Datenschutz-Grundverordnung&#9;verst&#246;&#223;t.<br/>Die&#9;Kontaktdaten&#9;der&#9;f&#252;r&#9;den&#9;Verantwortlichen&#9;zust&#228;ndigen&#9;Aufsichtsbeh&#246;rde&#9;lauten:<br/>Bayerisches&#9;Landesamt&#9;f&#252;r&#9;Datenschutzaufsicht<br/>Promenade&#9;18<br/>91522&#9;Ansbach<br/></p>
+<p>2. &#9;<b>Information&#9;&#252;ber&#9;Ihre&#9;Rechte&#9;als&#9;betroffene&#9;Person<br/></b>2.1 &#9;<b>Bei&#9;Vorliegen&#9;der&#9;gesetzlichen&#9;Voraussetzungen&#9;haben&#9;Sie&#9;-&#9;sofern&#9;nicht&#9;ein&#9;gesetzlicher&#9;Ausnahmefall&#9;gegeben&#9;ist&#9;-&#9;folgende<br/></b></p>
+<p><b>Rechte&#9;hinsichtlich&#9;der&#9;Sie&#9;betreffenden&#9;personenbezogenen&#9;Daten:<br/></b>- Recht&#9;auf&#9;<b>Auskunft</b>&#9;(Art.&#9;15&#9;DSGVO):&#9;Sie&#9;haben&#9;das&#9;Recht,&#9;von&#9;dem&#9;Verantwortlichen&#9;eine&#9;Auskunft&#9;dar&#252;ber&#9;zu&#9;verlangen,&#9;ob&#9;Sie<br/></p>
+<p>betreffende&#9; personenbezogene&#9; Daten&#9; verarbeitet&#9; werden.&#9; Ist&#9; dies&#9; der&#9; Fall,&#9; so&#9; haben&#9; Sie&#9; das&#9; Recht&#9; auf&#9; Auskunft&#9; &#252;ber&#9; diese<br/>personenbezogenen&#9;Daten&#9;und&#9;damit&#9;im&#9;Zusammenhang&#9;stehende&#9;weitergehende&#9;Informationen.<br/></p>
+<p>- Recht&#9; auf&#9;<b>Berichtigung</b>&#9; (Art.&#9; 16&#9; DSGVO):&#9; Sie&#9; haben&#9; das&#9; Recht,&#9; von&#9; dem&#9; Verantwortlichen&#9; unverz&#252;glich&#9; die&#9; Berichtigung&#9; Sie<br/>betreffender&#9;unrichtiger&#9;personenbezogener&#9;Daten&#9;zu&#9;verlangen.&#9;Unter&#9;Ber&#252;cksichtigung&#9;der&#9;Zwecke&#9;der&#9;Verarbeitung&#9;haben&#9;Sie<br/>das&#9; Recht,&#9; die&#9; Vervollst&#228;ndigung&#9; unvollst&#228;ndiger&#9; personenbezogener&#9; Daten&#9; &#8211;&#9; auch&#9; mittels&#9; einer&#9; erg&#228;nzenden&#9; Erkl&#228;rung&#9; &#8211;&#9; zu<br/>verlangen.<br/></p>
+<p>- Recht&#9; auf&#9; <b>L&#246;schung</b>&#9; (Art.&#9; 17&#9; DSGVO):&#9; Sie&#9; haben&#9; das&#9; Recht,&#9; von&#9; dem&#9; Verantwortlichen&#9; zu&#9; verlangen,&#9; dass&#9; Sie&#9; betreffende<br/>personenbezogene&#9; Daten&#9; unverz&#252;glich&#9; gel&#246;scht&#9; werden,&#9; und&#9; der&#9; Verantwortliche&#9; ist&#9; verp&#61442;ichtet,&#9; personenbezogene&#9; Daten<br/>unverz&#252;glich&#9;zu&#9;l&#246;schen,&#9;sofern&#9;einer&#9;der&#9;Gr&#252;nde&#9;des&#9;Art.&#9;17&#9;Abs.&#9;1&#9;DSGVO&#9;zutrifft&#9;und&#9;kein&#9;Ausnahmetatbestand&#9;eingreift.<br/></p>
+<p>- Recht&#9;auf&#9;<b>Einschr&#228;nkung&#9;der&#9;Verarbeitung</b>&#9;(Art.&#9;18&#9;DSGVO):&#9;Sie&#9;haben&#9;das&#9;Recht,&#9;von&#9;dem&#9;Verantwortlichen&#9;die&#9;Einschr&#228;nkung<br/>der&#9;Verarbeitung&#9;(ehemals:&#9;Sperre)&#9;Ihrer&#9;personenbezogenen&#9;Daten&#9;zu&#9;verlangen,&#9;wenn&#9;eine&#9;der&#9;Voraussetzungen&#9;des&#9;Art.&#9;18&#9;Abs.<br/>1&#9;DSGVO&#9;gegeben&#9;ist&#9;und&#9;kein&#9;Ausnahmetatbestand&#9;eingreift.<br/></p>
+<p>- Recht&#9;auf&#9;<b>Daten&#252;bertragbarkeit</b>&#9;(Art.&#9;20&#9;DSGVO):&#9;Sie&#9;haben&#9;das&#9;Recht,&#9;die&#9;Sie&#9;betreffenden&#9;personenbezogenen&#9;Daten,&#9;die&#9;sie<br/>einem&#9;Verantwortlichen&#9;bereitgestellt&#9;haben,&#9;in&#9;einem&#9;strukturierten,&#9;g&#228;ngigen&#9;und&#9;maschinenlesbaren&#9;Format&#9;zu&#9;erhalten,&#9;und&#9;sie<br/>haben&#9; das&#9; Recht,&#9; diese&#9; Daten&#9; einem&#9; anderen&#9; Verantwortlichen&#9; ohne&#9; Behinderung&#9; durch&#9; den&#9; Verantwortlichen,&#9; dem&#9; die<br/>personenbezogenen&#9;Daten&#9;bereitgestellt&#9;wurden,&#9;zu&#9;&#252;bermitteln,&#9;sofern&#9;die&#9;weiteren&#9;Voraussetzungen&#9;des&#9;Art.&#9;20&#9;Abs.&#9;1&#9;DSGVO<br/>gegeben&#9;sind&#9;und&#9;kein&#9;Ausnahmetatbestand&#9;eingreift.<br/></p>
+<p>- Recht&#9; auf&#9; <b>Widerspruch&#9; gegen&#9; die&#9; Verarbeitung</b>&#9; (Art.&#9; 21&#9; DSGVO):&#9; Sie&#9; haben&#9; das&#9; Recht,&#9; aus&#9; Gr&#252;nden,&#9; die&#9; sich&#9; aus&#9; ihrer<br/>besonderen&#9;Situation&#9;ergeben,&#9;jederzeit&#9;gegen&#9;die&#9;Verarbeitung&#9;sie&#9;betreffender&#9;personenbezogener&#9;Daten,&#9;die&#9;aufgrund&#9;von&#9;Art.&#9;6<br/>Abs.&#9;1&#9;Satz&#9;1&#9; lit.&#9;e)&#9; (&#246;ffentliches&#9; Interesse&#9;oder&#9;Aus&#252;bung&#9;&#246;ffentlicher&#9;Gewalt)&#9;oder&#9; f)&#9; (Wahrung&#9;berechtigter&#9; Interessen)&#9;DSGVO<br/>erfolgt,&#9;Widerspruch&#9;einzulegen.<br/></p>
+<p>2.2 &#9; <b>Wenn&#9; Sie&#9; dar&#252;ber&#9; hinaus&#9; Auskunft&#9; &#252;ber&#9; Ihre&#9; personenbezogenen&#9; Daten&#9; w&#252;nschen&#9; oder&#9; weitergehende&#9; Fragen&#9; &#252;ber&#9; die<br/>Verarbeitung&#9; Ihrer&#9; uns&#9; &#252;berlassenen&#9; personenbezogenen&#9; Daten&#9; haben,&#9; sowie&#9; eine&#9; Korrektur&#9; oder&#9; L&#246;schung&#9; Ihrer&#9; Daten<br/>veranlassen&#9; m&#246;chten,&#9; so&#9; wenden&#9; Sie&#9; sich&#9; bitte&#9; an&#9; die&#9; unter&#9; Ziffer&#9; 3.&#9; &quot;Aus&#252;bung&#9; des&#9; Widerspruchs-&#9; und<br/>Widerrufsrechts&quot;</b>&#9;angegebene&#9;Kontaktadresse.<br/></p>
+<p>3. &#9;<b>Aus&#252;bung&#9;des&#9;Widerspruchs-&#9;und&#9;Widerrufsrechts<br/></b>Sie&#9;haben&#9;ggf.&#9;das&#9;Recht,&#9;der&#9;Verarbeitung&#9;Ihrer&#9;Daten&#9;zu&#9;widersprechen&#9;(siehe&#9;Ziffer&#9;2.1&#9;letztes&#9;Aufz&#228;hlungszeichen).&#9;Zudem&#9;haben&#9;Sie<br/>das&#9;Recht,&#9; eine&#9;an&#9;uns&#9;erteilte&#9;Einwilligung&#9;mit&#9;Wirkung&#9; f&#252;r&#9; die&#9;Zukunft&#9; zu&#9;widerrufen.&#9; In&#9; diesem&#9;Fall&#9;werden&#9;wir&#9; die&#9;Verarbeitung&#9; Ihrer<br/>Daten&#9;zu&#9;diesem&#9;Zweck&#9;unverz&#252;glich&#9;unterlassen.&#9;Einen&#9;Widerspruch&#9;oder&#9;Widerruf&#9;k&#246;nnen&#9;Sie&#9; jederzeit&#9; formlos&#9;per&#9;Post,&#9;Telefax&#9;oder<br/>Email&#9;an&#9;uns&#9;&#252;bermitteln.<br/>Per&#9;Post:<br/>Consolinno&#9;Energy&#9;GmbH<br/>Franz-Mayer-Stra&#223;e&#9;1</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>93053&#9;Regensburg<br/>Per&#9;Email:<br/>info@consolinno.de<br/></p>
+<p>4. &#9;<b>Nutzung&#9;der&#9;Hardware&#9;und&#9;der&#9;mobilen&#9;Applikation&#9;(App)<br/></b>4.1 &#9;<b>Art&#9;und&#9;Umfang&#9;der&#9;Datenverarbeitung:</b>&#9;Bei&#9;der&#9;Benutzung&#9;unserer&#9;Hardware&#9;und&#9;dem&#9;Aufruf&#9;unserer&#9;App&#9;ist&#9;es&#9;technisch&#9;notwendig<br/></p>
+<p>verschiedene&#9;Daten&#9; zu&#9; verarbeiten,&#9; insbesondere&#9; damit&#9; die&#9;Nutzung&#9; und&#9; eine&#9; fehlerfreie&#9;Kommunikation&#9; zwischen&#9; Ihrem&#9;Endger&#228;t&#9; und<br/>unserer&#9;Cloud&#9;m&#246;glich&#9;ist.&#9;Dabei&#9;werden&#9;automatisiert&#9;folgende&#9;Daten&#9;erhoben&#9;und&#9;in&#9;einer&#9;sogenannten&#9;Log-Datei&#9;protokolliert:<br/></p>
+<p>- Datum&#9;und&#9;Uhrzeit&#9;des&#9;Zugriffs<br/>- Hardwaretyp&#9;und&#9;-version&#9;(inkl.&#9;Seriennummer)<br/>- Betriebssystemtyp&#9;und&#9;-version<br/>- IP-Adressen&#9;der&#9;Ger&#228;te<br/>- Die&#9;IP-Adresse&#9;Ihres&#9;Anschlusses<br/>- Zugangsprovider<br/>- Daten&#9;verbundener&#9;Mobilger&#228;te&#9;(Hersteller,&#9;Typ)<br/>- Daten&#9; der&#9; im&#9; Smart&#9; Home&#9; System&#9; eingebundenen&#9;Ger&#228;te&#9; (Betriebszust&#228;nde,&#9; Betriebsstunden,&#9; Energieverbrauch,&#9; Systemstatus,<br/></p>
+<p>Anlageneinstellungen,&#9;Standort&#9;der&#9;Anlage,&#9;Fehlercodes,&#9;Messwerte&#9;wie&#9;z.B.&#9;Temperaturen)<br/>- HEMS&#9;Daten&#9;(Online&#9;Status,&#9;Fehlermeldungen)<br/></p>
+<p>Wir&#9; erheben&#9; diese&#9; Daten&#9; grunds&#228;tzlich&#9; in&#9; nicht&#9; in&#9; personenbezogener&#9; Form.&#9; In&#9; Ausnahmef&#228;llen&#9; l&#228;sst&#9; sich&#9; die&#9; Beziehbarkeit&#9; zu&#9; einer<br/>nat&#252;rlichen&#9;Person&#9;nicht&#9;vermeiden.&#9;Wir&#9;haben&#9;jedoch&#9;grunds&#228;tzlich&#9;nicht&#9;die&#9;M&#246;glichkeit&#9;den&#9;konkreten&#9;Bezug&#9;zu&#9;einer&#9;nat&#252;rlichen&#9;Person<br/>herzustellen&#9;und&#9;verfolgen&#9;einen&#9;derartigen&#9;Bezug&#9;auch&#9;nicht&#9;weiter,&#9;sofern&#9;Sie&#9;uns&#9;hierzu&#9;keine&#9;Einwilligung&#9;erteilt&#9;haben.<br/></p>
+<p>4.2 &#9;<b>Zweck:&#9;</b>Dies&#9;geschieht,&#9;um&#9;die&#9;Nutzung&#9;der&#9;Hard-&#9;und&#9;Software&#9;&#252;berhaupt&#9;zu&#9;erm&#246;glichen,&#9;insbesondere&#9;zum&#9;Zwecke&#9;der&#9;systeminternen<br/>technischen&#9; Verarbeitung&#9; (Verbindungsaufbau),&#9; der&#9; Systemsicherheit,&#9; der&#9; technischen&#9; Administration&#9; der&#9; System-&#9; und&#9;Netzinfrastruktur<br/>sowie&#9;zur&#9;Optimierung&#9;unseres&#9;Angebotes.&#9;Wir&#9;behalten&#9;es&#9;uns&#9;vor,&#9;die&#9;Log-Datei&#9;nachtr&#228;glich&#9;zu&#9;&#252;berpr&#252;fen,&#9;wenn&#9;aufgrund&#9;konkreter<br/>Anhaltspunkte&#9;der&#9;berechtigte&#9;Verdacht&#9;einer&#9;rechtswidrigen&#9;oder&#9;Nutzung&#9;besteht.<br/></p>
+<p>4.3 &#9;<b>Rechtsgrundlage:</b>&#9;Die&#9;vor&#252;bergehende&#9;Verarbeitung&#9;der&#9;Daten&#9;und&#9;der&#9;Log-Datei&#9;erfolgt&#9;aus&#9;berechtigtem&#9;Interesse&#9;zu&#9;oben&#9;genanntem<br/>Zweck&#9;gem.&#9;Art.&#9;6&#9;Abs.&#9;1&#9;Satz&#9;1&#9;lit.&#9;f)&#9;DSGVO&#9;sowie&#9;zur&#9;Erf&#252;llung&#9;des&#9;Vertrags&#9;mit&#9;Ihnen,&#9;gem.&#9;Art.&#9;6&#9;Abs.&#9;1&#9;Satz&#9;1&#9;lit.&#9;b)&#9;DSGVO<br/></p>
+<p>4.4 &#9; <b>Empf&#228;nger&#9; der&#9; Daten:</b>&#9; Die&#9; Daten&#9; werden&#9; notwendigerweise&#9; an&#9; unseren&#9; Hostinganbieter&#9; weitergeleitet,&#9; bei&#9; dem&#9; unser&#9; Webserver<br/>physisch&#9;und&#9;technisch&#9;verwaltet&#9;wird:<br/>Hostinganbieter:&#9;Hetzner&#9;Online&#9;GmbH,&#9;Industriestr.&#9;25,&#9;91710&#9;Gunzenhausen<br/></p>
+<p>4.5 &#9; <b>Speicherdauer&#9; und&#9; L&#246;schung:</b>&#9; Die&#9; Daten&#9; werden&#9; innerhalb&#9; der&#9; gesetzlichen&#9; Fristen&#9; gespeichert&#9; und&#9; dann&#9; gel&#246;scht&#9; soweit&#9; nicht<br/>weitergehende&#9;gesetzliche&#9;Aufbewahrungsfristen&#9;bestehen.<br/></p>
+<p>4.6 &#9;<b>Widerspruch&#9; oder&#9; Widerruf:&#9;</b>Diese&#9; Datenverarbeitung&#9; ist&#9; f&#252;r&#9; den&#9; Betrieb&#9; unserer&#9; Hard-&#9; und&#9; Software&#9; zwingend&#9; erforderlich.&#9; Daher<br/>unterliegt&#9;ein&#9;etwaiger&#9;Widerspruch&#9;einer&#9;entsprechenden&#9;Interessensabw&#228;gung.<br/></p>
+<p>5. &#9;<b>Registrierung<br/></b>5.1 &#9;<b>Art&#9; und&#9; Umfang&#9; der&#9; Datenverarbeitung:</b>&#9; Sie&#9; haben&#9; die&#9;M&#246;glichkeit,&#9; sich&#9; in&#9; unserer&#9; App&#9; zu&#9; registrieren.&#9; Hierzu&#9; ist&#9; Ihre&#9; Einwilligung<br/></p>
+<p>erforderlich.&#9;Um&#9;diesen&#9;Registrierungsvorgang&#9;erfolgreich&#9;durchf&#252;hren&#9;zu&#9;k&#246;nnen,&#9;ben&#246;tigen&#9;wir&#9;folgende&#9;Daten&#9;von&#9;Ihnen:<br/>- Vorname,&#9;Name,&#9;Stra&#223;e,&#9;Hausnummer,&#9;PLZ,&#9;Ort<br/>- Seriennummer<br/>- Emailadresse&#9;(optional)<br/>- Telefonnummer&#9;(optional)<br/>- Passwort<br/></p>
+<p>Bei&#9; der&#9; Registrierung&#9; wird&#9; zudem&#9; Ihre&#9; IP-Adresse&#9; nebst&#9; Datum&#9; und&#9; Uhrzeit&#9; gespeichert.&#9; Eine&#9; personenbezogene&#9; Auswertung&#9; findet<br/>grunds&#228;tzlich&#9; nicht&#9; statt.&#9; Wir&#9; behalten&#9; uns&#9; jedoch&#9; vor,&#9; die&#9; gespeicherten&#9; Daten&#9; nachtr&#228;glich&#9; zu&#9; &#252;berpr&#252;fen,&#9; wenn&#9; aufgrund&#9; konkreter<br/>Anhaltspunkte&#9;der&#9;berechtigte&#9;Verdacht&#9;einer&#9;missbr&#228;uchlichen&#9;Registrierung&#9;besteht.<br/></p>
+<p>5.2 &#9;<b>Zweck:&#9;</b>Eine&#9;Registrierung&#9;bietet&#9;Ihnen&#9;die&#9;M&#246;glichkeit,&#9;bestimmte&#9;Leistungen&#9;in&#9;Anspruch&#9;zu&#9;nehmen&#9;oder&#9;Handlungen&#9;auszuf&#252;hren,&#9;die<br/>ohne&#9;Registrierung&#9;nicht&#9;m&#246;glich&#9;sind.&#9;Dies&#9;geschieht&#9;zu&#9;folgenden&#9;Zwecken:<br/></p>
+<p>- Betrieb&#9;der&#9;Hard-&#9;und&#9;Software<br/>- Benutzung&#9;der&#9;App<br/>- Nutzung&#9;der&#9;Cloud<br/></p>
+<p>Ihre&#9;Daten&#9;werden&#9; in&#9;unserem&#9;System&#9;hinterlegt,&#9;um&#9; Ihnen&#9;die&#9;M&#246;glichkeit&#9; zu&#9;bieten,&#9;unsere&#9;Leistungen&#9; in&#9;Anspruch&#9;zu&#9;nehmen,&#9;ohne<br/>jedes&#9;Mal&#9; Ihre&#9;Daten&#9;erneut&#9;eingeben&#9;zu&#9;m&#252;ssen.&#9; Ihre&#9;Emailadresse&#9;wird&#9;von&#9;uns&#9;dazu&#9;verwendet,&#9;um&#9;Ihnen&#9;Best&#228;tigungsmails&#9; f&#252;r&#9;von<br/>Ihnen&#9;veranlasste&#9;&#196;nderungen&#9; Ihrer&#9;Profildaten&#9;oder&#9;zur&#9;Wiederherstellung&#9; Ihres&#9;Passworts&#9;zukommen&#9; lassen&#9;zu&#9;k&#246;nnen&#9;sowie&#9;um&#9;Sie<br/>&#252;ber&#9;notwendige&#9;Aktualisierungen&#9;der&#9;Software&#9;zu&#9;informieren.&#9;Andere&#9;Emails&#9;senden&#9;wir&#9;Ihnen&#9;nur&#9;zu,&#9;wenn&#9;Sie&#9;dies&#9;w&#252;nschen&#9;und&#9;uns<br/>zu&#9; diesem&#9; Zwecke&#9; Ihre&#9; Einwilligung&#9; erteilt&#9; haben.&#9; Die&#9; Speicherung&#9; Ihrer&#9; IP-Adresse&#9; nebst&#9; Datum&#9; und&#9; Uhrzeit&#9; erfolgt&#9; zur<br/>Missbrauchspr&#228;vention.<br/></p>
+<p>5.3 &#9;<b>Rechtsgrundlage:</b>&#9;Die&#9;Verarbeitung&#9;der&#9;Daten&#9;erfolgt&#9;aufgrund&#9;Ihrer&#9;Einwilligung&#9;gem.&#9;Art.&#9;6&#9;Abs.&#9;1&#9;Satz&#9;1&#9;lit.&#9;a)&#9;DSGVO.<br/>5.4 &#9;<b>Speicherdauer&#9; und&#9; L&#246;schung:&#9;</b>Die&#9; Daten&#9; werden&#9; grunds&#228;tzlich&#9; solange&#9; gespeichert,&#9; bis&#9; Sie&#9; Ihre&#9; Registrierung&#9; k&#252;ndigen&#9; und&#9; keine<br/></p>
+<p>gesetzlichen&#9;Aufbewahrungsfristen&#9;mehr&#9;bestehen.<br/>5.5 &#9;<b>Widerspruch&#9; oder&#9; Widerruf:&#9;</b>Sie&#9; haben&#9;das&#9;Recht,&#9; Ihre&#9;Registrierung&#9; jederzeit&#9; zu&#9; k&#252;ndigen&#9;und&#9; Ihre&#9; gespeicherten&#9;Daten&#9; zu&#9; &#228;ndern<br/></p>
+<p>sowie&#9; Ihre&#9; erteilte&#9; Einwilligung&#9; mit&#9; Wirkung&#9; f&#252;r&#9; die&#9; Zukunft&#9; zu&#9; widerrufen.&#9; Sie&#9; k&#246;nnen&#9; die&#9; &#196;nderung&#9; Ihres&#9; Passworts&#9; jederzeit&#9; selbst<br/>veranlassen.&#9;Bei&#9;K&#252;ndigung&#9;und/oder&#9;Widerruf&#9;ist&#9;der&#9;Zugriff&#9;auf&#9;die&#9;Hard-&#9;und&#9;Software&#9;dann&#9;nicht&#9;mehr&#9;m&#246;glich.<br/></p>
+<p>6. <b>Erteilte&#9;Einwilligungen<br/></b>Soweit&#9;erforderlich&#9;haben&#9;Sie&#9;uns&#9;ggf.&#9;Einwilligungen&#9;zur&#9;Verarbeitung&#9; Ihrer&#9;personenbezogenen&#9;Daten&#9;erteilt.&#9; In&#9;diesem&#9;Fall&#9;haben&#9;wir&#9; Ihre<br/>Einwilligung&#9; jeweils&#9; protokolliert.&#9; Wir&#9; sind&#9; gesetzlich&#9; verpflichtet,&#9; den&#9; Text&#9; der&#9; jeweiligen&#9; Einwilligung&#9; jederzeit&#9; f&#252;r&#9; Sie&#9; abrufbar&#9; zu&#9; halten.<br/>Selbstverst&#228;ndlich&#9;k&#246;nnen&#9;Sie&#9;uns&#9;erteilte&#9;Einwilligungen&#9;jederzeit&#9;mit&#9;Wirkung&#9;f&#252;r&#9;die&#9;Zukunft&#9;widerrufen.&#9;Wie&#9;Sie&#9;Ihr&#9;Widerrufsrecht&#9;aus&#252;ben<br/>k&#246;nnen,&#9;erfahren&#9;Sie&#9;unter&#9;Ziffer&#9;3.&#9;&quot;Aus&#252;bung&#9;des&#9;Widerspruchs-&#9;und&#9;Widerrufsrechts&quot;.<br/><b>Einwilligung&#9;f&#252;r&#9;die&#9;Registrierung&#9;eines&#9;Benutzerkontos:</b></p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>Ja,&#9; ich&#9;m&#246;chte&#9; ein&#9;Benutzerkonto&#9; er&#246;ffnen,&#9; um&#9;mich&#9; in&#9; der&#9;App&#9; anmelden&#9; zu&#9; k&#246;nnen.&#9; Zu&#9; diesem&#9;Zweck&#9;willige&#9; ich&#9; ein,&#9; dass&#9;meine&#9;Daten<br/>(Emailadresse&#9; und&#9; Passwort)&#9; in&#9; der&#9; Datenbank&#9; gespeichert&#9; werden.&#9; Diese&#9; Einwilligung&#9; kann&#9; ich&#9; jederzeit&#9; mit&#9; Wirkung&#9; f&#252;r&#9; die&#9; Zukunft<br/>widerrufen,&#9; indem&#9; ich&#9;mich&#9;an&#9;die&#9;Adresse&#9;unter&#9;https://hems.consolinno.de/datenschutz/&#9; &#9;wende&#9;und&#9;um&#9;L&#246;schung&#9;meines&#9;Benutzerkontos<br/>bitte.&#9;Um&#9;diesen&#9;Vorgang&#9;zu&#9;protokollieren,&#9;wird&#9;meine&#9;IP-Adresse,&#9;sowie&#9;Datum&#9;und&#9;Uhrzeit&#9;der&#9;Registrierung&#9;in&#9;einer&#9;Datenbank&#9;gespeichert<br/>und&#9;erst&#9;wieder&#9;gel&#246;scht,&#9;wenn&#9;ich&#9;die&#9;Einwilligung&#9;widerrufe,&#9;sofern&#9;eine&#9;weitergehende&#9;Speicherung&#9;nicht&#9;rechtlich&#9;erforderlich&#9;ist.<br/></p>
+<p>7. <b>Elektronische&#9;Post&#9;(Email)&#9;/&#9;Kontaktaufnahme<br/></b>7.1 Informationen,&#9;die&#9;Sie&#9;unverschl&#252;sselt&#9;per&#9;Elektronischer&#9;Post&#9;(Email)&#9;an&#9;uns&#9;senden,&#9;k&#246;nnen&#9;m&#246;glicherweise&#9;auf&#9;dem&#9;&#220;bertragungsweg<br/></p>
+<p>von&#9;Dritten&#9;gelesen&#9;werden.&#9;Wir&#9;k&#246;nnen&#9; in&#9;der&#9;Regel&#9;auch&#9; Ihre&#9; Identit&#228;t&#9;nicht&#9;&#252;berpr&#252;fen&#9;und&#9;wissen&#9;nicht,&#9;wer&#9;wirklicher&#9; Inhaber&#9;einer<br/>Emailadresse&#9;ist.&#9;Eine&#9;rechtssichere&#9;Kommunikation&#9;durch&#9;einfache&#9;Email&#9;ist&#9;daher&#9;nicht&#9;gew&#228;hrleistet.&#9;Wie&#9;viele&#9;Anbieter&#9;setzen&#9;wir&#9;Filter<br/>gegen&#9; unerw&#252;nschte&#9; Werbung&#9; (&#8222;SPAM-Filter&#8220;)&#9; ein,&#9; die&#9; in&#9; einigen&#9; F&#228;llen&#9; auch&#9; normale&#9; Emails&#9; f&#228;lschlicherweise&#9; automatisch&#9; als<br/>unerw&#252;nschte&#9;Werbung&#9; einordnen&#9; und&#9; l&#246;schen.&#9;Emails,&#9; die&#9; sch&#228;digende&#9;Programme&#9; (&#8222;Viren&#8220;)&#9; enthalten,&#9;werden&#9; von&#9; uns&#9; in&#9; jedem&#9;Fall<br/>automatisch&#9; gel&#246;scht.&#9; Wenn&#9; Sie&#9; schutzw&#252;rdige&#9; Nachrichten&#9; an&#9; uns&#9; senden&#9; wollen,&#9; empfehlen&#9; wir,&#9; die&#9; Nachricht&#9; auf&#9; konventionellem<br/>Postwege&#9;an&#9;uns&#9;zu&#9;senden.<br/></p>
+<p>7.2 <b>Art&#9;und&#9;Umfang&#9;der&#9;Datenverarbeitung:</b>&#9; Im&#9;Falle&#9;der&#9;Kontaktaufnahme&#9;mit&#9;uns&#9;werden&#9; Ihre&#9;Daten,&#9; Ihre&#9; IP-Adresse&#9;sowie&#9;Datum&#9;und<br/>Uhrzeit&#9;gespeichert.<br/></p>
+<p>7.3 <b>Zweck:</b>&#9;Dies&#9;geschieht&#9;insbesondere&#9;zu&#9;Kommunikationszwecken&#9;und&#9;zum&#9;Schutz&#9;unserer&#9;Systeme&#9;gegen&#9;Missbrauch.<br/>7.4 <b>Rechtsgrundlage:</b>&#9;Die&#9;Verarbeitung&#9;der&#9;Daten&#9;erfolgt&#9;aus&#9;berechtigtem&#9;Interesse&#9;zu&#9;oben&#9;genanntem&#9;Zweck&#9;gem.&#9;Art.&#9;6&#9;Abs.&#9;1&#9;Satz&#9;1&#9;lit.<br/></p>
+<p>f)&#9;DSGVO.<br/>7.5 <b>Speicherdauer&#9;und&#9;L&#246;schung:</b>&#9;Die&#9;Daten&#9;werden&#9;erst&#9; dann&#9;gel&#246;scht,&#9; falls&#9; keine&#9; vertraglichen&#9;oder&#9; gesetzlichen&#9;Verpflichtungen&#9;einer<br/></p>
+<p>L&#246;schung&#9;entgegenstehen.<br/>7.6 <b>Widerspruch&#9; oder&#9; Widerruf:</b>&#9; Sie&#9; k&#246;nnen&#9; der&#9; Kontaktaufnahme&#9; per&#9; Email&#9; jederzeit&#9; widersprechen.&#9; In&#9; diesem&#9; Fall&#9; kann&#9; keine&#9; weitere<br/></p>
+<p>Korrespondenz&#9;via&#9;Email&#9;stattfinden.<br/>8. <b>Schlussbestimmungen<br/></b>8.7 Wir&#9; sind&#9; stets&#9; bem&#252;ht,&#9; unsere&#9; Hard-&#9; und&#9; Software&#9; weiterzuentwickeln&#9; und&#9; neue&#9; Technologien&#9; einzusetzen.&#9; Daher&#9; kann&#9; es&#9; notwendig<br/></p>
+<p>werden,&#9; diese&#9;Datenschutzerkl&#228;rung&#9; zu&#9;&#228;ndern,&#9; bzw.&#9; anzupassen.&#9;Wir&#9; behalten&#9;uns&#9;daher&#9; das&#9;Recht&#9; vor,&#9; diese&#9;Erkl&#228;rung&#9; jederzeit&#9;mit<br/>Wirkung&#9; f&#252;r&#9; die&#9; Zukunft&#9; zu&#9; &#228;ndern.&#9; Bitte&#9; besuchen&#9; Sie&#9; daher&#9; diese&#9; Seite&#9; regelm&#228;&#223;ig&#9; und&#9; lesen&#9; Sie&#9; die&#9; jeweils&#9; aktuelle<br/>Datenschutzerkl&#228;rung&#9;von&#9;Zeit&#9;zu&#9;Zeit&#9;erneut&#9;durch.<br/></p>
+<p>8.8 Die&#9;Vertragssprache&#9;ist&#9;Deutsch.&#9;Sollte&#9;diese&#9;Datenschutzerkl&#228;rung&#9;&#252;bersetzt&#9;werden&#9;oder&#9;worden&#9;sein,&#9;so&#9;ist&#9;ausschlie&#223;lich&#9;die&#9;Version&#9;in<br/>deutscher&#9;Sprache&#9;ma&#223;gebend.<br/></p>
+
+<p>[1]&#9; Aus&#9; Gr&#252;nden&#9; der&#9; besseren&#9; Lesbarkeit&#9; wird&#9; auf&#9; die&#9; gleichzeitige&#9; Verwendung&#9; der&#9; Sprachformen&#9; m&#228;nnlich,&#9; weiblich&#9; und&#9; divers&#9; (m/w/d)&#9; verzichtet.&#9; S&#228;mtliche&#9; Personenbezeichnungen&#9; gelten<br/>gleicherma&#223;en&#9;f&#252;r&#9;alle&#9;Geschlechter.</p>
+
+</div></div>
+</body></html>
