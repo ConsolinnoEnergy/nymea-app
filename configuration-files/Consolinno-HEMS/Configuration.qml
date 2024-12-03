@@ -21,7 +21,7 @@ ConfigurationBase {
     property bool isIntroIcon: true
     //////////////////////////////////////////////////////////////////////////////////////
     // Defines the minimal compatible HEMS version
-    property string minSysVersion: "1.3.0"
+    property string minSysVersion: "1.4.0"
 
     // Identifier used for branding (e.g. to register for push notifications)
     property string branding: "consolinno"
