@@ -42,7 +42,7 @@ ConfigurationBase {
     property string companyAddress: "Sonnenallee 17 - 21"
     property string companyZip: "06766"
     property string companyLocation: "Bitterfeld-Wolfen"
-    property string companyTel: "+49 (0)3494 6699-0"
+    property string companyTel: ""
 
     //////////////////////////////////////////////////////////////////////////////////////
     // Will be shown in About page

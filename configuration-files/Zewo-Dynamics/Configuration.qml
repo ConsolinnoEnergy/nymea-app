@@ -48,7 +48,7 @@ ConfigurationBase {
     property string companyAddress: "Gebrüder-Pauken-Str. 16 / 16 A"
     property string companyZip: "56218"
     property string companyLocation: "Mülheim Kärlich"
-    property string companyTel: "02642-90560"
+    property string companyTel: ""
 
     //Styles
     //MainMenuCirlce
