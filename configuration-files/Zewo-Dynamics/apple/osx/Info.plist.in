@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Zewo Dynamics</string>
 	<key>CFBundleExecutable</key>
-	<string>zewo-dynamics</string>
+	<string>Zewo-Dynamics</string>
 	<key>CFBundleIconFile</key>
         <string>AppIcon.icns</string>
 	<key>CFBundleIdentifier</key>

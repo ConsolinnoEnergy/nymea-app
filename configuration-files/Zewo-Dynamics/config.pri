@@ -2,7 +2,7 @@ APPLICATION_NAME=Zewo-Dynamics
 ORGANISATION_NAME=zewodynamics
 
 PACKAGE_URN=ems.zewo.dynamics
-PACKAGE_NAME=zewo-dynamics
+PACKAGE_NAME=Zewo-Dynamics
 
 IOS_BUNDLE_PREFIX=ems.zewo
 IOS_BUNDLE_NAME=dynamics
