@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
         // URL parsen
         QUrl qurl(url);
         QUrlQuery qurlQ(url);
-        if (qurl.scheme() == "Zewo-Dynamics" || qurl.scheme() == "Q.HOME-CONTROL" || qurl.scheme() == "consolinno-energy") {
+        if (qurl.scheme() == "consolinno-energy") {
             scheme = qurl.scheme();
 
             hostAddress = qurlQ.queryItemValue("hostAddress");
