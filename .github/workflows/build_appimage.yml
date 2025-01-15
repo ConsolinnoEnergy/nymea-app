@@ -25,6 +25,7 @@ jobs:
       - run: git submodule update --init --recursive
       - uses: jurplel/install-qt-action@v3
         with:
+          version: '5.15.16'
           archives: '5.15.16'
           modules: 'qtcharts'
           target: 'desktop'
