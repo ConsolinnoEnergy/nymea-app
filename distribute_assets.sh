@@ -64,7 +64,7 @@ sed -i "s|consolinno-energy.desktop|${SETTINGS_JSON,,}.desktop|g" ./scripts/firs
 sed -i "s|x-scheme-handler/consolinno-energy|x-scheme-handler/${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
 
 # Update main.cpp
-sed -i "s/qurl\.scheme() == "consolinno-energy"/qurl.scheme() == '${SETTINGS_JSON,,}/g' ./nymea-app/nymea-app/main.cpp
+sed -i "s/qurl\.scheme() == "consolinno-energy"/qurl.scheme() == '${SETTINGS_JSON,,}/g'" ./nymea-app/nymea-app/main.cpp
 
 # TODO: currently changing the google-services appId. This is a nono workaround and should be fixed as soon as google-services is used
 sed -i 's/"package_name": "[^"]*"/"package_name": "'$appId'"/' $root_dir/packaging/android/google-services.json
