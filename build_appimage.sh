@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo apt install -y libavahi-common-dev libavahi-client-dev rename 
+sudo apt install -y libavahi-common-dev libavahi-client-dev libfuse2 rename 
 
 export ROOT_DIR=$(pwd)
 
