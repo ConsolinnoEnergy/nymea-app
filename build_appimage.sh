@@ -22,7 +22,7 @@ export BUILD_DIR=$(pwd)
 if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
 else
-    QMAKE=${QT_ROOT}/gcc_64/bin/qmake
+    QMAKE=${QT_ROOT}/bin/qmake
 fi
 
 MAKE_BIN=make
