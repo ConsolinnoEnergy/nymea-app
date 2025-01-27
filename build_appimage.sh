@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
-sudo apt install -y libavahi-common-dev libavahi-client-dev gcc g++ rename 
+sudo apt install -y libavahi-common-dev libavahi-client-dev rename 
 
 export ROOT_DIR=$(pwd)
-export LD_LIBRARY_PATH=/path/to/newer/libstdc++:$LD_LIBRARY_PATH
 
 cd .. 
 wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-build1/Qt-5.15-16-linux.tar.gz
