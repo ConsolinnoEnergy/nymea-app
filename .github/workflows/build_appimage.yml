@@ -32,7 +32,7 @@ jobs:
       - name: Install libs
         run: | 
           sudo apt-get update
-          sudo apt-get install -y gcc g++ build-essential '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
+          sudo apt-get install -y gcc g++ build-essential '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev libc6
       - run: |
           apt-get update && apt-get -y install fuse libfuse2
           wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
