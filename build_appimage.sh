@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo apt install -y libavahi-common-dev  libavahi-client-dev unzip rename 
+sudo apt install -y libavahi-common-dev  libavahi-client-dev rename 
 
 export ROOT_DIR=$(pwd)
 
@@ -12,7 +12,7 @@ cd $ROOT_DIR
 
 mkdir -p ./build/appimage
 
-export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.16
+export QT_ROOT=$(pwd)/../qt-5.15.16 #QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.16/bin
 export PATH=$QT_ROOT/bin:$PATH
 
 cp ./scripts/firstRun.sh ./build/appimage
@@ -32,6 +32,7 @@ echo "Build tools:"
 echo "qmake: $QMAKE"
 echo "make: $MAKE_BIN"
 echo "linuxdeployqt: $LDEPLOYQT"
+echo "$QMAKE $ROOT_DIR/nymea-app/nymea-app.pro"
 
 $QMAKE \
 ${ROOT_DIR}/nymea-app/nymea-app.pro \
