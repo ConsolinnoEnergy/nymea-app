@@ -5,14 +5,14 @@ sudo apt install -y libavahi-common-dev  libavahi-client-dev unzip rename
 export ROOT_DIR=$(pwd)
 
 cd .. 
-wget https://github.com/ConsolinnoEnergy/qt5-builder/actions/runs/12948140930/artifacts/2480423915
-mkdir qt-5.15.14
-unzip "Archive Build.zip" -d "$ROOT_DIR/qt-5.15.14"
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-build1/Qt-5.15-16-linux.tar.gz
+mkdir qt-5.15.16
+tar -xzf Qt-5.15-16-linux.tar.gz -C qt-5.15.16
 cd $ROOT_DIR
 
 mkdir -p ./build/appimage
 
-export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.14
+export QT_ROOT=/Users/runner/work/consolinno-hems-app-builder/qt-5.15.16
 export PATH=$QT_ROOT/bin:$PATH
 
 cp ./scripts/firstRun.sh ./build/appimage
