@@ -10,7 +10,7 @@ on:
       - 'v*'
 jobs:
   build-appimage:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         #WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
