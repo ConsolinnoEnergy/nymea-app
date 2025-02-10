@@ -5,7 +5,7 @@ export ROOT_DIR=$(pwd)
 cd .. 
 wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-android-build1/Qt-5.15-16-android.tar.gz
 mkdir qt-5.15.16
-tar -xzf Qt-5.15-16-linux.tar.gz -C qt-5.15.16
+tar -xzf Qt-5.15-16-android.tar.gz -C qt-5.15.16
 cd $ROOT_DIR
 
 mkdir -p ./build/android
