@@ -11,8 +11,8 @@ if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
     ADEPQT=androiddeployqt
 else
-    QMAKE=${QT_ROOT}/android/bin/qmake
-    ADEPQT=${QT_ROOT}/android/bin/androiddeployqt
+    QMAKE=${QT_ROOT}/bin/qmake
+    ADEPQT=${QT_ROOT}/bin/androiddeployqt
 fi
 
 if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
