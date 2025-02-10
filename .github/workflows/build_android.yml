@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - experimental-android*
-      - experimental-build*
+      #- experimental-build*
     tags:
       - 'v*'
 jobs:
