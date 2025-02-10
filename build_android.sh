@@ -3,7 +3,7 @@ set -e
 export ROOT_DIR=$(pwd)
 
 cd .. 
-wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-android-build2/Qt-5.15-16-android.tar.gz
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-android-build3/Qt-5.15-16-android.tar.gz
 mkdir qt-5.15.16
 tar -xzf Qt-5.15-16-android.tar.gz -C qt-5.15.16
 cd $ROOT_DIR
