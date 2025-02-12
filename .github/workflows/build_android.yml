@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - experimental-android*
-      #- experimental-build*
+      - experimental-build*
     tags:
       - 'v*'
 jobs:
@@ -28,12 +28,12 @@ jobs:
         with:
           fileName: 'consolinno.keystore'
           encodedString: ${{ secrets.KEYSTORE }}
-      #- uses: jurplel/install-qt-action@v3
-      #  with:
-      #    version: '5.15.2'
-      #    target: 'android'
-      #    modules: qtcharts
-      #    extra: '--timeout 20'
+      - uses: jurplel/install-qt-action@v3
+        with:
+          version: '5.15.2'
+          target: 'android'
+          modules: qtcharts
+          extra: '--timeout 20'
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
