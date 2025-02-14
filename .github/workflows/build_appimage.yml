@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - feature/appimage
-      - experimental-build*
+    # - experimental-build*
     tags:
       - 'v*'
 jobs:
