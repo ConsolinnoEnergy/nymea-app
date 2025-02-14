@@ -3,7 +3,18 @@
 #!/bin/bash
 set -e
 export ROOT_DIR=$(pwd)
+
+cd .. 
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-android-build4/Qt-5.15-16-android.tar.gz
+mkdir qt-5.15.16
+tar -xzf Qt-5.15-16-android.tar.gz -C qt-5.15.16
+cd $ROOT_DIR
+
 mkdir -p ./build/android
+
+export QT_ROOT=$(pwd)/../qt-5.15.16
+export PATH=$QT_ROOT/bin:$PATH
+
 cd ./build/android
 export BUILD_DIR=$(pwd)
 export ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk-bundle
