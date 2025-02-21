@@ -6,7 +6,7 @@ on:
       - main
       - feature/add-windows-build
       - feature/add-release-upload
-      #- experimental-build*
+      - experimental-build*
     tags:
       - 'v*'
 
