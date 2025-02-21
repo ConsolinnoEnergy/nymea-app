@@ -51,19 +51,19 @@ mv $root_dir/packaging/windows/packages/hems.consolinno.energy $root_dir/packagi
 
 # Update appimage .desktop
 sed -i 's/Consolinno HEMS/'"$dotDesktopName"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
-sed -i 's/Exec=consolinno-energy/'Exec="$SETTINGS_JSON"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
-mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/appimage/$SETTINGS_JSON.desktop
+sed -i 's/Exec=consolinno-energy/'Exec="$qurlName"'/g' $root_dir/packaging/appimage/consolinno-energy.desktop
+mv $root_dir/packaging/appimage/consolinno-energy.desktop $root_dir/packaging/appimage/$qurlName.desktop
 
 # Update .desktop in script
 sed -i "s|Consolinno HEMS|$dotDesktopName|g" ./scripts/firstRun.sh
-sed -i "s|Exec=/usr/bin/consolinno-energy %u|Exec=/usr/bin/${SETTINGS_JSON,,} %u|g" ./scripts/firstRun.sh
+sed -i "s|Exec=/usr/bin/consolinno-energy %u|Exec=/usr/bin/${qurlName,,} %u|g" ./scripts/firstRun.sh
 sed -i "s|Consolinno_HEMS-1-6-0-x86_64.AppImage|$appImageName-$VERSION-x86_64.AppImage|g" ./scripts/firstRun.sh
-sed -i "s|MimeType=x-scheme-handler/consolinno-energy;|MimeType=x-scheme-handler/${SETTINGS_JSON,,};|g" ./scripts/firstRun.sh
+sed -i "s|MimeType=x-scheme-handler/consolinno-energy;|MimeType=x-scheme-handler/${qurlName,,};|g" ./scripts/firstRun.sh
 sed -i "s|Name=Consolinno Hems|Name=$dotDesktopName|g" ./scripts/firstRun.sh
-sed -i "s|usr/bin/consolinno-energy|usr/bin/${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
-sed -i "s|consolinno-energy|${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
-sed -i "s|consolinno-energy.desktop|${SETTINGS_JSON,,}.desktop|g" ./scripts/firstRun.sh
-sed -i "s|x-scheme-handler/consolinno-energy|x-scheme-handler/${SETTINGS_JSON,,}|g" ./scripts/firstRun.sh
+sed -i "s|usr/bin/consolinno-energy|usr/bin/${qurlName,,}|g" ./scripts/firstRun.sh
+sed -i "s|consolinno-energy|${qurlName,,}|g" ./scripts/firstRun.sh
+sed -i "s|consolinno-energy.desktop|${qurlName,,}.desktop|g" ./scripts/firstRun.sh
+sed -i "s|x-scheme-handler/consolinno-energy|x-scheme-handler/${qurlName,,}|g" ./scripts/firstRun.sh
 
 # Update main.cpp
 sed -i "s/qurl\.scheme() == "consolinno-energy"/qurl.scheme() == '${qurlName,,}/g'" ./nymea-app/nymea-app/main.cpp
