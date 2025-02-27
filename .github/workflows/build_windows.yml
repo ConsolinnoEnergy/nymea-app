@@ -6,6 +6,7 @@ on:
       - main
       - feature/add-windows-build
       - feature/add-release-upload
+    #  - experimental-build*
     tags:
       - 'v*'
 
@@ -14,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS"] #, "Q.HOME-CONTROL", "Zewo-Dynamics"
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -46,7 +47,7 @@ jobs:
     needs: generate-wl-assets
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS"] #, "Q.HOME-CONTROL", "Zewo-Dynamics"
     steps:
       - run: git config --global credential.helper store
       - uses: actions/checkout@v2
@@ -85,12 +86,30 @@ jobs:
       #    New-Item -Path build/windows/ -ItemType Directory
       #    $hello = "Hello World"
       #    $hello | Out-File build/windows/consolinno-energy-win-installer-xyz.exe
+
+      - name: Azure Trusted Signing
+        uses: azure/trusted-signing-action@v0.3.16
+        with:
+            azure-tenant-id: ${{ secrets.WIN_SIGNING_AZURE_TENANT_ID }}
+            azure-client-id: ${{ secrets.WIN_SIGNING_AZURE_CLIENT_ID }}
+            azure-client-secret: ${{ secrets.WIN_SIGNING_AZURE_CLIENT_SECRET }}
+            endpoint: ${{ secrets.WIN_SIGNING_ENDPOINT }}
+            certificate-profile-name: ${{ secrets.WIN_SIGNING_CERT_PROFILE_NAME }}
+            code-signing-account-name: ${{ secrets.WIN_SIGNING_ACCOUNT_NAME }}
+            
+            # Sign all exes inside the folder
+            files-folder: ${{ github.workspace }}/build/windows/
+            files-folder-filter: exe
+            file-digest: SHA256
+            timestamp-rfc3161: http://timestamp.acs.microsoft.com
+            timestamp-digest: SHA256 
+
       - uses: actions/upload-artifact@v4
         with:
           name: Windows installer for ${{ matrix.WHITELABEL_TARGET }}
           path: |
             build/windows/*-win-installer-*.exe
-            
+
   publish-windows:
     name: Publish binaries
     runs-on: ubuntu-latest

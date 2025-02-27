@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - experimental-android*
-      - experimental-build*
+    #  - experimental-build*
     tags:
       - 'v*'
 jobs:
@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         #WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
-        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS"] #, "Q.HOME-CONTROL", "Zewo-Dynamics"
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -28,12 +28,12 @@ jobs:
         with:
           fileName: 'consolinno.keystore'
           encodedString: ${{ secrets.KEYSTORE }}
-      - uses: jurplel/install-qt-action@v3
-        with:
-          version: '5.15.2'
-          target: 'android'
-          modules: qtcharts
-          extra: '--timeout 20'
+      #- uses: jurplel/install-qt-action@v3
+        #with:
+        #  version: '5.15.2'
+        #  target: 'android'
+        #  modules: qtcharts
+        #  extra: '--timeout 20'
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
@@ -75,14 +75,14 @@ jobs:
         run: |
           mkdir build/android/nymea-app/android-build/build/outputs/apk/signed
           cp build/android/nymea-app/android-build/build/outputs/apk/release/*-signed.apk build/android/nymea-app/android-build/build/outputs/apk/signed/
-      - run: ./build_android_testpatch.sh
-        env:
-          KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-          ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
-          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
+      #- run: ./build_android_testpatch.sh
+      #  env:
+      #    KEYSTORE_PATH: ${{ steps.write_keystore.outputs.filePath }}
+      #    SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+      #    SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      #    SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+      #    ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk-bundle
+      #    WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
       - name: Move signed apk in combined dir
         run: cp build/android/nymea-app/android-build/build/outputs/apk/signed/*-signed.apk build/android/nymea-app/android-build/build/outputs/apk/release/
       - name: Archive android apk and aab

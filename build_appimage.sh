@@ -1,18 +1,28 @@
 #!/bin/bash
 set -e
-sudo apt install -y libavahi-common-dev  libavahi-client-dev rename
+sudo apt install -y libavahi-common-dev libavahi-client-dev libfuse2 rename 
 
 export ROOT_DIR=$(pwd)
+
+cd .. 
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-build3/Qt-5.15-16-linux.tar.gz
+mkdir qt-5.15.16
+tar -xzf Qt-5.15-16-linux.tar.gz -C qt-5.15.16
+cd $ROOT_DIR
+
 mkdir -p ./build/appimage
 
-cp ./scripts/firstRun.sh ./build/appimage
+export QT_ROOT=$(pwd)/../qt-5.15.16
+export PATH=$QT_ROOT/bin:$PATH
 
+cp ./scripts/firstRun.sh ./build/appimage
+ 
 cd ./build/appimage
 export BUILD_DIR=$(pwd)
 if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
 else
-    QMAKE=${QT_ROOT}/gcc_64/bin/qmake
+    QMAKE=${QT_ROOT}/bin/qmake
 fi
 
 MAKE_BIN=make
@@ -22,6 +32,7 @@ echo "Build tools:"
 echo "qmake: $QMAKE"
 echo "make: $MAKE_BIN"
 echo "linuxdeployqt: $LDEPLOYQT"
+echo "$QMAKE $ROOT_DIR/nymea-app/nymea-app.pro"
 
 $QMAKE \
 ${ROOT_DIR}/nymea-app/nymea-app.pro \

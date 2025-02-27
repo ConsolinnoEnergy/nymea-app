@@ -1,7 +1,18 @@
 #!/bin/bash
 set -e
 export ROOT_DIR=$(pwd)
+
+cd .. 
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-android-build4/Qt-5.15-16-android.tar.gz
+mkdir qt-5.15.16
+tar -xzf Qt-5.15-16-android.tar.gz -C qt-5.15.16
+cd $ROOT_DIR
+
 mkdir -p ./build/android
+
+export QT_ROOT=$(pwd)/../qt-5.15.16
+export PATH=$QT_ROOT/bin:$PATH
+
 cd ./build/android
 export BUILD_DIR=$(pwd)
 if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
@@ -11,8 +22,8 @@ if [[ -z "${QT_ROOT}" ]]; then
     QMAKE=qmake
     ADEPQT=androiddeployqt
 else
-    QMAKE=${QT_ROOT}/android/bin/qmake
-    ADEPQT=${QT_ROOT}/android/bin/androiddeployqt
+    QMAKE=${QT_ROOT}/bin/qmake
+    ADEPQT=${QT_ROOT}/bin/androiddeployqt
 fi
 
 if [[ -z "${ANDROID_NDK_ROOT}" ]]; then
@@ -106,4 +117,3 @@ else
 fi
 
 mv $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/android-build-release-unsigned.apk $BUILD_DIR/nymea-app/android-build//build/outputs/apk/release/${SETTINGS_JSON}-release-unsigned.apk
-
