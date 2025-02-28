@@ -42,6 +42,7 @@ jobs:
           owner: ConsolinnoEnergy
           omitBody: true
           removeArtifacts: true
+          prerelease: true
           token: ${{secrets.GH_TOKEN}}
           #artifacts: "Archive snap package/*.snap,Consolinno HEMS windows installer/*.exe"
           artifacts: "Archived AppImage of Consolinno-HEMS/*.AppImage, Windows installer for Consolinno-HEMS/*.exe, Archive apk and aab for Consolinno-HEMS/apk/release/*.apk"
