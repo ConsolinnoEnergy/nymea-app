@@ -15,8 +15,6 @@ export newHemsVersion=$(grep "minSysHems=" ${root_dir}/version.txt | cut -d'=' -
 
 sed -i "s/property string minSysVersion: \".*\"/property string minSysVersion: \"$newHemsVersion\"/" ./configuration-files/$WHITELABEL_TARGET/Configuration.qml
 
-echo "New HEMS VERSION $newHemsVersion"
-
 appname="${WHITELABEL_TARGET//-/ }"
 appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
 appImageName="${WHITELABEL_TARGET//-/_}"
