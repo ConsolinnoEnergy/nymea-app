@@ -92,7 +92,8 @@ ConfigurationBase {
     //batteries
     readonly property color batteriesColor: "#BDD786"
     readonly property color batteryChargeColor: batteriesColor
-    readonly property color batteryDischargeColor: "#F7B772"
+    readonly property color batteryDischargeColor: "#F37B8E"
+    readonly property color batteryIdleColor: "#B5B5B5"
 
     //static array of thing colors
     property var consumerColors: ["#FF8954", "#D9F6C5", "#437BC4", "#AA5DC2", "#C6C73F"]
