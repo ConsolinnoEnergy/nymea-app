@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         #WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
-        WHITELABEL_TARGET: ["Consolinno-HEMS"] #, "Q.HOME-CONTROL", "Zewo-Dynamics"
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
@@ -100,7 +100,7 @@ jobs:
     if: github.ref_type == 'tag' #&& contains(github.ref_name, 'bla')
     strategy:
       matrix:
-        WHITELABEL_TARGET: ["Consolinno-HEMS"]
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v4
