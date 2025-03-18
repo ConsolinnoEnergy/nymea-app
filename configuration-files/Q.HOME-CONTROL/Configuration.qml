@@ -21,7 +21,7 @@ ConfigurationBase {
     property bool isIntroIcon: false
     //////////////////////////////////////////////////////////////////////////////////////
     // Defines the minimal compatible HEMS version
-    property string minSysVersion: "1.4.0"
+    property string minSysVersion: "1.6.0"
 
     // Identifier used for branding (e.g. to register for push notifications)
     property string branding: "Q.HOME CONTROL"
@@ -93,6 +93,7 @@ ConfigurationBase {
     readonly property color batteriesColor: "#93DE8E"
     readonly property color batteryChargeColor: batteriesColor
     readonly property color batteryDischargeColor: "#F4BF65"
+    readonly property color batteryIdleColor: "#B5B5B5"
 
     //etc. colors
     readonly property var totalColors: [consumedColor, inverterColor, rootMeterAcquisitionColor, rootMeterReturnColor, batteryChargeColor, batteryDischargeColor]

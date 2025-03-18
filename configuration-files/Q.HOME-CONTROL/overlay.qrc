@@ -146,5 +146,7 @@
         <file>privacy_agreement_de_DE.html</file>
         <file>terms_of_use_de_DE.html</file>
         <file>optimization/BatteryConfigView.qml</file>
+        <file>info/TariffGuidedChargingInfo.qml</file>
+        <file>info/ActivateInstantChargingInfo.qml</file>
     </qresource>
 </RCC>

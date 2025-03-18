@@ -21,7 +21,7 @@ ConfigurationBase {
     property bool isIntroIcon: true
     //////////////////////////////////////////////////////////////////////////////////////
     // Defines the minimal compatible HEMS version
-    property string minSysVersion: "1.4.0"
+    property string minSysVersion: "1.6.0"
 
     // Identifier used for branding (e.g. to register for push notifications)
     property string branding: "consolinno"
@@ -93,6 +93,7 @@ ConfigurationBase {
     readonly property color batteriesColor: "#BDD786"
     readonly property color batteryChargeColor: batteriesColor
     readonly property color batteryDischargeColor: "#F7B772"
+    readonly property color batteryIdleColor: "#B5B5B5"
 
     //static array of thing colors
     property var consumerColors: ["#FF8954", "#D9F6C5", "#437BC4", "#AA5DC2", "#C6C73F"]
