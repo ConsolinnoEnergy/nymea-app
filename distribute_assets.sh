@@ -11,9 +11,6 @@ root_dir="./nymea-app-consolinno-overlay";
 directory="./configuration-files/$WHITELABEL_TARGET/app-icons"
 
 export VERSION=$(cat ${root_dir}/version.txt | head -n1 | sed 's/\./-/g')
-export newHemsVersion=$(grep "minSysHems=" ${root_dir}/version.txt | cut -d'=' -f2)
-
-sed -i "s/property string minSysVersion: \".*\"/property string minSysVersion: \"$newHemsVersion\"/" ./configuration-files/$WHITELABEL_TARGET/Configuration.qml
 
 appname="${WHITELABEL_TARGET//-/ }"
 appId=$(grep 'appId:' ./configuration-files/$WHITELABEL_TARGET/Configuration.qml | sed -n 's/.*appId: "\(.*\)".*/\1/p')
