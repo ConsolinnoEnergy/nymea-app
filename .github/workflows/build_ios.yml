@@ -2,13 +2,13 @@ name: build-ios
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      - feature/add-ios-ci
-      - feature/add-ios-publish      
-      - debug-ios-ci
-      - test-ios-ci
-      # - experimental-build-dynamic-whitelable
+    #branches:
+    #  - main
+    #  - feature/add-ios-ci
+    #  - feature/add-ios-publish      
+    #  - debug-ios-ci
+    #  - test-ios-ci
+    #  - experimental-build-dynamic-whitelable
 
     tags:
       - 'v*'

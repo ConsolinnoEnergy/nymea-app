@@ -2,8 +2,8 @@ name: build-appimage
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    # branches:
+    #  - main
     #  - experimental-build*
     tags:
       - 'v*'

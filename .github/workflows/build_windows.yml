@@ -2,10 +2,10 @@ name: build-windows
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      - feature/add-windows-build
-      - feature/add-release-upload
+    # branches:
+    #  - main
+    #  - feature/add-windows-build
+    #  - feature/add-release-upload
     #  - experimental-build*
     tags:
       - 'v*'
