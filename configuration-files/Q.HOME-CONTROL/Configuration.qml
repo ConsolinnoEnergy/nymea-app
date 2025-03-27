@@ -37,6 +37,7 @@ ConfigurationBase {
     //Branding contact-email
     property string contactEmail: "meinesolaranlage@q-cells.com"
     property string serviceEmail: "support.components@q-cells.com"
+    property string serviceTel: ""
 
     //Branding company
     property string companyAddress: "Sonnenallee 17 - 21"

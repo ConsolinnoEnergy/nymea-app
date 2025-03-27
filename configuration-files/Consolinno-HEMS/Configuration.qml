@@ -37,6 +37,7 @@ ConfigurationBase {
     //Branding contact-email
     property string contactEmail: "office@consolinno.de"
     property string serviceEmail: "service@consolinno.de"
+    property string serviceTel: "+49 (0) 0941 20300 333"
 
     //Branding company
     property string companyAddress: "Franz-Mayer-Straße 1"
