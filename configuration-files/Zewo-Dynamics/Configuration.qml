@@ -38,6 +38,7 @@ ConfigurationBase {
     //Branding contact-email
     property string contactEmail: "dynamics@zewotherm.de"
     property string serviceEmail: "dynamics@zewotherm.de"
+    property string serviceTel: ""
 
     // Will be shown in About page
     property string githubLink: "https://github.com/ConsolinnoEnergy/nymea-app"
