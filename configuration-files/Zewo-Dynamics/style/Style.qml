@@ -40,10 +40,6 @@ StyleBase {
         family: Configuration.fontFamily,
         pixelSize: 10
     })
-    readonly property font smallFont: Qt.font({
-        family: Configuration.fontFamily,
-        pixelSize: 13
-    })
     readonly property font font: Qt.font({
         family: Configuration.fontFamily,
         pixelSize: 16
