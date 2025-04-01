@@ -1,23 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>styles/light/fonts/NotoSans-Black.ttf</file>
-        <file>styles/light/fonts/NotoSans-BlackItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-Bold.ttf</file>
-        <file>styles/light/fonts/NotoSans-BoldItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-ExtraBold.ttf</file>
-        <file>styles/light/fonts/NotoSans-ExtraBoldItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-ExtraLight.ttf</file>
-        <file>styles/light/fonts/NotoSans-ExtraLightItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-Italic.ttf</file>
-        <file>styles/light/fonts/NotoSans-Light.ttf</file>
-        <file>styles/light/fonts/NotoSans-LightItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-Medium.ttf</file>
-        <file>styles/light/fonts/NotoSans-MediumItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-Regular.ttf</file>
-        <file>styles/light/fonts/NotoSans-SemiBold.ttf</file>
-        <file>styles/light/fonts/NotoSans-SemiBoldItalic.ttf</file>
-        <file>styles/light/fonts/NotoSans-Thin.ttf</file>
-        <file>styles/light/fonts/NotoSans-ThinItalic.ttf</file>
         <file>styles/light/Style.qml</file>
         <file>styles/light/Button.qml</file>
         <file>styles/light/logo.svg</file>
