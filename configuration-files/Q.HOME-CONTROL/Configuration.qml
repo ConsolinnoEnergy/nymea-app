@@ -83,7 +83,7 @@ ConfigurationBase {
     readonly property color epexColor: "#1ACCC8"
     readonly property color epexMainLineColor: "#001C77"
     readonly property color epexAverageColor: "#00C6C1"
-    readonly property color epexCurrentTime: "#2C723C"
+    readonly property color epexCurrentTime: "#50B24D"
     
     //other consumers
     readonly property color heatpumpColor: "#4ED6B2"
