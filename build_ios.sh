@@ -23,9 +23,9 @@ fi
 set -e
 export ROOT_DIR=$(pwd)
 cd .. 
-wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.14-build1/Qt-5.15-14-macos-xcode-15.0.1.tar.gz
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.14-build2/Qt-5.15-14-macos-xcode-16.2.0.tar.gz
 mkdir qt-5.15.14
-tar -xzf Qt-5.15-14-macos-xcode-15.0.1.tar.gz -C qt-5.15.14
+tar -xzf Qt-5.15-14-macos-xcode-16.2.0.tar.gz -C qt-5.15.14
 cd $ROOT_DIR
 
 
