@@ -5,7 +5,7 @@ sudo apt install -y libavahi-common-dev libavahi-client-dev libfuse2 rename
 export ROOT_DIR=$(pwd)
 
 cd .. 
-wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-linux-build-5/Qt-5.15-16-linux.tar.gz
+wget https://github.com/ConsolinnoEnergy/qt5-builder/releases/download/v5.15.16-linux-build-6/Qt-5.15-16-linux.tar.gz
 mkdir qt-5.15.16
 tar -xzf Qt-5.15-16-linux.tar.gz -C qt-5.15.16
 cd $ROOT_DIR
