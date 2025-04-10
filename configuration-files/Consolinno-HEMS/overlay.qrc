@@ -133,5 +133,6 @@
         <file>components/ConsolinnoSwipeDelegate.qml</file>
         <file>components/CustomBarSeries.qml</file>
         <file>optimization/BatteryOptimization.qml</file>
+        <file>optimization/BatteryConfigurationView.qml</file>
     </qresource>
 </RCC>
