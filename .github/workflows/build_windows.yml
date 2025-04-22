@@ -24,7 +24,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y librsvg2-bin
-
+      - name: Updating overlay.qrc for ${{ matrix.WHITELABEL_TARGET }}
+        env:
+          WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
+        run: ./scripts/update_overlay.sh
       - name: Generating App Icons for ${{ matrix.WHITELABEL_TARGET }}
         env:
           WHITELABEL_TARGET: ${{ matrix.WHITELABEL_TARGET }}
