@@ -3,4 +3,4 @@ build
 *.keystore
 *.qm
 build-nymea-app*
-
+/.vscode/settings.json
