@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         #WHITELABEL_TARGET: ${{ fromJSON(github.event.inputs.whitelabel) }}
-        WHITELABEL_TARGET: ["Consolinno-HEMS"] #, "Q.HOME-CONTROL", "Zewo-Dynamics"
+        WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
     steps:
       - run: git config --global credential.helper store
       - run: | 
