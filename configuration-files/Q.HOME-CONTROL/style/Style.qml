@@ -20,6 +20,15 @@ StyleBase {
     property real buttonTopPading: 16
     property real buttonLeftPadding: 32
 
+    // Avoid Zero Compensation Info + Dialog
+    property color marketPriceColor: "#E056F5"
+    property color pvProductionColor: "#FCE487"
+    property color socWithoutControllerColor: "#B6B6B6"
+    property color socWithControllerColor: "#BDD786"
+    property color xAxisColor: "#194D25"
+    property color yAxisColor: "#194D25"
+    property color arrowColor: "#194D25"
+
     backgroundColor: "white"
     foregroundColor: consolinnoExtraDark
 
