@@ -22,13 +22,14 @@
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-import QtQuick 2.8
-import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.1
-import QtGraphicalEffects 1.15
-import Nymea 1.0
-import NymeaApp.Utils 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import QtQuick.Controls.Material
+import QtGraphicalEffects
+import Nymea
+import NymeaApp.Utils
+
 import "../components"
 
 ItemDelegate {
@@ -306,7 +307,7 @@ ItemDelegate {
                 text: Types.toUiValue(modelData, root.paramType.unit) + ( root.paramType.unit != Types.UnitNone ? " " + Types.toUiUnit(root.paramType.unit) : "")
                 highlighted: control.highlightedIndex === index
             }
-            onActivated: {
+            onActivated: (index) => {
                 root.param.value = root.paramType.allowedValues[index]
             }
             Component.onCompleted: {

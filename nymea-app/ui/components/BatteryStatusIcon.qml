@@ -22,9 +22,9 @@
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-import QtQuick 2.9
-import Nymea 1.0
-import NymeaApp.Utils 1.0
+import QtQuick
+import Nymea
+import NymeaApp.Utils
 
 ColorIcon {
     id: root
@@ -42,9 +42,9 @@ ColorIcon {
     name: {
         if (!hasBatteryLevel) {
             if (isCritical) {
-                return "qrc:/icons/battery/battery-020.svg"
+                return "battery/battery-020"
             }
-            return "qrc:/icons/battery/battery-100.svg"
+            return "battery/battery-100"
         }
 
         var rounded = Math.round(batteryLevel / 10) * 10
