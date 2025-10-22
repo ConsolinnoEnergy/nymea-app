@@ -352,6 +352,7 @@ SettingsPageBase {
             signal done
 
             property UserInfo userInfo: null
+            property bool restrictedThingAccess: userDetailsPage.userInfo.scopes & UserInfo.PermissionScopeAccessAllThings === 0
 
             Component {
                 id: confirmUserDeletionComponent
@@ -411,29 +412,65 @@ SettingsPageBase {
             Repeater {
                 model: NymeaUtils.scopesModel
 
-                delegate: CheckDelegate {
-                    Layout.fillWidth: true
-                    text: model.text
-                    checked: (userDetailsPage.userInfo.scopes & model.scope) === model.scope
+                delegate: NymeaSwipeDelegate {
 
-                    enabled: model.scope === UserInfo.PermissionScopeAdmin && userDetailsPage.userInfo.username == userManager.userInfo.username ?
-                                 false : model.scope === UserInfo.PermissionScopeAdmin ||
-                                 ((userDetailsPage.userInfo.scopes & UserInfo.PermissionScopeAdmin) !== UserInfo.PermissionScopeAdmin)
-                    onClicked: {
-                        print("scopes:", userDetailsPage.userInfo.scopes)
-                        var scopes = userDetailsPage.userInfo.scopes
-                        if (checked) {
-                            scopes |= model.scope
-                        } else {
-                            scopes &= ~model.scope
-                            scopes |= model.resetOnUnset
+                    Layout.fillWidth: true
+
+                    text: model.text
+                    subText: model.description
+                    progressive: false
+
+                    CheckBox {
+                        anchors.right: parent.right
+                        anchors.rightMargin: app.margins
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        checked: (userDetailsPage.userInfo.scopes & model.scope) === model.scope
+                        enabled: {
+                            // Prevent an admin to lock himself out as admin
+                            if (model.scope === UserInfo.PermissionScopeAdmin && userDetailsPage.userInfo.username == userManager.userInfo.username) {
+                                return false
+                            } else {
+                                return model.scope === UserInfo.PermissionScopeAdmin || ((userDetailsPage.userInfo.scopes & UserInfo.PermissionScopeAdmin) !== UserInfo.PermissionScopeAdmin)
+                            }
                         }
-                        print("username:", userDetailsPage.userInfo.username)
-                        print("new scopes:", scopes, UserInfo.PermissionScopeAdmin)
-                        userManager.setUserScopes(userDetailsPage.userInfo.username, scopes)
+
+                        onClicked: {
+                            var scopes = userDetailsPage.userInfo.scopes
+                            if (checked) {
+                                scopes |= model.scope
+                            } else {
+                                scopes &= ~model.scope
+                            }
+
+                            // make sure the new permissions are consistant before sending them to the core
+                            scopes = NymeaUtils.getPermissionScopeAdjustments(model.scope, checked, scopes)
+                            userManager.setUserScopes(userDetailsPage.userInfo.username, scopes)
+                        }
                     }
                 }
             }
+
+
+            SettingsPageSectionHeader {
+                text: qsTr("Acessable things")
+                visible: userDetailsPage.restrictedThingAccess
+                Layout.fillWidth: true
+            }
+
+
+            NymeaSwipeDelegate {
+                id: allowedThingsEntry
+                Layout.fillWidth: true
+                text: qsTr("Allowed things for this user")
+                visible: userDetailsPage.restrictedThingAccess
+                progressive: true
+                onClicked: {
+
+                }
+
+            }
+
 
             SettingsPageSectionHeader {
                 text: qsTr("Remove")
@@ -527,6 +564,7 @@ SettingsPageBase {
                 text: qsTr("Permissions")
             }
 
+
             Repeater {
                 id: scopesRepeater
                 model: NymeaUtils.scopesModel
@@ -541,8 +579,10 @@ SettingsPageBase {
                             scopes |= model.scope
                         } else {
                             scopes &= ~model.scope
-                            scopes |= model.resetOnUnset
                         }
+
+                        // make sure the new permissions are consistant before sending them to the core
+                        scopes = NymeaUtils.getPermissionScopeAdjustments(model.scope, checked, scopes)
                         createUserPage.permissionScopes = scopes
                     }
                 }
