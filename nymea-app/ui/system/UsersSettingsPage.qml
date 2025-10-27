@@ -31,6 +31,7 @@ import Nymea
 import NymeaApp.Utils
 
 import "../components"
+import "../delegates"
 
 SettingsPageBase {
     id: root
@@ -138,6 +139,7 @@ SettingsPageBase {
         }
     }
 
+
     Component {
         id: editUserInfoComponent
         SettingsPageBase {
@@ -184,6 +186,59 @@ SettingsPageBase {
                         popup.open()
                     } else {
                         pageStack.pop()
+                    }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: configureAllowedThingsComponent
+
+        Page {
+            id: configureAllowedThingsPage
+
+            property UserInfo userInfo: null
+
+            header: NymeaHeader {
+                text: root.title
+                backButtonVisible: true
+                onBackPressed: pageStack.pop()
+            }
+
+            title: qsTr("Allowed things for") + " \"" + userInfo.username + "\""
+            ColumnLayout {
+                anchors.fill: parent
+
+                ListFilterInput {
+                    id: filterInput
+                    Layout.fillWidth: true
+                }
+
+                GroupedListView {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    clip: true
+
+                    model: ThingsProxy {
+                        id: thingsProxy
+                        engine: _engine
+                        groupByInterface: true
+                        nameFilter: filterInput.shown ? filterInput.text : ""
+                    }
+
+                    delegate: ThingDelegate {
+                        id: thingDelegate
+                        thing: thingsProxy.getThing(model.id)
+                        canDelete: false
+                        progressive: false
+                        additionalItem: CheckBox {
+                            checked: configureAllowedThingsPage.userInfo.thingAllowed(thingDelegate.thing.id)
+                            onCheckedChanged: {
+                                configureAllowedThingsPage.userInfo.allowThingId(thingDelegate.thing.id, checked)
+                                userManager.setUserScopes(configureAllowedThingsPage.userInfo.username, configureAllowedThingsPage.userInfo.scopes, configureAllowedThingsPage.userInfo.allowedThingIds)
+                            }
+                        }
                     }
                 }
             }
@@ -346,13 +401,13 @@ SettingsPageBase {
 
     Component {
         id: userDetailsComponent
+
         SettingsPageBase {
             id: userDetailsPage
             title: userInfo.username ? qsTr("Manage %1").arg(userInfo.username) : qsTr("Authenticated user")
             signal done
 
             property UserInfo userInfo: null
-            property bool restrictedThingAccess: userDetailsPage.userInfo.scopes & UserInfo.PermissionScopeAccessAllThings === 0
 
             Component {
                 id: confirmUserDeletionComponent
@@ -410,8 +465,9 @@ SettingsPageBase {
             }
 
             Repeater {
-                model: NymeaUtils.scopesModel
+                id: permissionRepeater
 
+                model: NymeaUtils.scopesModel
                 delegate: NymeaSwipeDelegate {
 
                     Layout.fillWidth: true
@@ -445,7 +501,7 @@ SettingsPageBase {
 
                             // make sure the new permissions are consistant before sending them to the core
                             scopes = NymeaUtils.getPermissionScopeAdjustments(model.scope, checked, scopes)
-                            userManager.setUserScopes(userDetailsPage.userInfo.username, scopes)
+                            userManager.setUserScopes(userDetailsPage.userInfo.username, scopes, userDetailsPage.userInfo.allowedThingIds)
                         }
                     }
                 }
@@ -454,7 +510,7 @@ SettingsPageBase {
 
             SettingsPageSectionHeader {
                 text: qsTr("Acessable things")
-                visible: userDetailsPage.restrictedThingAccess
+                visible: (userDetailsPage.userInfo.scopes & UserInfo.PermissionScopeAccessAllThings) !== UserInfo.PermissionScopeAccessAllThings
                 Layout.fillWidth: true
             }
 
@@ -463,14 +519,13 @@ SettingsPageBase {
                 id: allowedThingsEntry
                 Layout.fillWidth: true
                 text: qsTr("Allowed things for this user")
-                visible: userDetailsPage.restrictedThingAccess
+                subText: userDetailsPage.userInfo.allowedThingIds.length + " " + qsTr("things accessable")
+                visible: (userDetailsPage.userInfo.scopes & UserInfo.PermissionScopeAccessAllThings) !== UserInfo.PermissionScopeAccessAllThings
                 progressive: true
                 onClicked: {
-
+                    pageStack.push(configureAllowedThingsComponent, {userInfo: userDetailsPage.userInfo})
                 }
-
             }
-
 
             SettingsPageSectionHeader {
                 text: qsTr("Remove")
