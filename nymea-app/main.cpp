@@ -48,6 +48,7 @@
 
 #include "libnymea-app-core.h"
 #include "libnymea-app-airconditioning.h"
+#include "libnymea-app-evdash.h"
 
 #include "stylecontroller.h"
 #include "pushnotifications.h"
@@ -176,6 +177,7 @@ int main(int argc, char *argv[])
 
     Nymea::Core::registerQmlTypes();
     Nymea::AirConditioning::registerQmlTypes();
+    Nymea::EvDash::registerQmlTypes();
 
     QQmlApplicationEngine *engine = new QQmlApplicationEngine();
 
