@@ -15,7 +15,7 @@ on:
 
 jobs:
   build-ios:
-    runs-on: macos-latest
+    runs-on: macos-14
     strategy:
       matrix:
         WHITELABEL_TARGET: ["Consolinno-HEMS", "Q.HOME-CONTROL", "Zewo-Dynamics"]
