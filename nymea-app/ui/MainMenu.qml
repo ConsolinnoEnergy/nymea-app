@@ -74,6 +74,7 @@ Drawer {
 
     ColumnLayout {
         anchors.fill: parent
+        anchors.topMargin: PlatformHelper.topPadding
         spacing: 0
 
         Rectangle {
