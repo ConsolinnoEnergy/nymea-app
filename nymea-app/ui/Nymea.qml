@@ -55,7 +55,20 @@ ApplicationWindow {
     font.capitalization: Font.MixedCase
     font.family: Style.fontFamily
 
+    Binding {
+        target: PlatformHelper
+        property: "topPanelColor"
+        value: app.color
+    }
+
+    Binding {
+        target: PlatformHelper
+        property: "bottomPanelColor"
+        value: app.color
+    }
+
     property int margins: Style.margins
+    property int bigMargins: 20 // #TODO used anywhere?
 
     // #TODO can we replace these font sizes with whole fonts defined in Style(Base).qml?
     property int extraSmallFont: Style.extraSmallFont.pixelSize
@@ -85,8 +98,6 @@ ApplicationWindow {
 
     Component.onCompleted: {
         styleController.setSystemFont(app.font)
-        PlatformHelper.topPanelColor = Style.backgroundColor
-        PlatformHelper.bottomPanelColor = Style.backgroundColor
     }
 
     Binding {
