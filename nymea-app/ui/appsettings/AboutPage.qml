@@ -45,21 +45,15 @@ SettingsPageBase {
             ListElement { license: "OFL"; component: "Oswald font"; infoText: qsTr("Oswald font by The Oswald Project"); platforms: "*" }
         }
 
-        //githubLink: "https://github.com/nymea/nymea-app"
+        githubLink: "https://github.com/nymea/nymea-app"
 
         NymeaSwipeDelegate {
             Layout.fillWidth: true
-            text: qsTr("App version:")
-            subText: appVersion
-            progressive: false
-            prominentSubText: false
-        }
-        NymeaSwipeDelegate {
-            Layout.fillWidth: true
-            text: qsTr("Qt version:")
-            subText: qtVersion + (qtBuildVersion !== qtVersion ? " (" + qsTr("Built with %1").arg(qtBuildVersion) + ")" : "")
+            text: qsTr("App version:") + " " + appVersion
+            subText: qsTr("Revision:") + " " + appRevision
             progressive: false
             prominentSubText: false
         }
     }
 }
+

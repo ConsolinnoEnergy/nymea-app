@@ -55,7 +55,6 @@ SettingsPageBase {
         id: imprint
         Layout.fillWidth: true
         title: Configuration.systemName
-        //githubLink: "https://github.com/nymea/nymea"
 
         NymeaSwipeDelegate {
             Layout.fillWidth: true
@@ -64,6 +63,7 @@ SettingsPageBase {
             progressive: false
             prominentSubText: false
         }
+
         NymeaSwipeDelegate {
             Layout.fillWidth: true
             text: qsTr("Server UUID:")
@@ -75,6 +75,7 @@ SettingsPageBase {
                 ToolTip.show(qsTr("ID copied to clipboard"), 500);
             }
         }
+
         NymeaSwipeDelegate {
             Layout.fillWidth: true
             text: qsTr("Server version:")
@@ -82,6 +83,7 @@ SettingsPageBase {
             progressive: false
             prominentSubText: false
         }
+
         NymeaSwipeDelegate {
             Layout.fillWidth: true
             text: qsTr("JSON-RPC version:")
@@ -89,6 +91,7 @@ SettingsPageBase {
             progressive: false
             prominentSubText: false
         }
+
         NymeaSwipeDelegate {
             Layout.fillWidth: true
             text: qsTr("Qt version:")
@@ -97,6 +100,7 @@ SettingsPageBase {
             progressive: false
             prominentSubText: false
         }
+
         NymeaSwipeDelegate {
             Layout.fillWidth: true
             text: qsTr("Device serial number")
@@ -125,3 +129,4 @@ SettingsPageBase {
         }
     }
 }
+
