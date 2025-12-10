@@ -33,6 +33,7 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.1
 import Nymea 1.0
+import NymeaApp.Utils 1.0
 import "../components"
 
 ItemDelegate {
@@ -134,16 +135,30 @@ ItemDelegate {
 
     Component {
         id: stringComponent
-        Label {
-            text: {
-                switch (root.paramType.type.toLowerCase()) {
-                case "int":
-                    return Math.round(root.param.value);
+        RowLayout {
+            spacing: Style.smallMargins
+
+            Label {
+                Layout.fillWidth: true
+                text: {
+                    switch (root.paramType.type.toLowerCase()) {
+                    case "int":
+                        return Math.round(root.param.value);
+                    case "double":
+                        return NymeaUtils.floatToLocaleString(root.param.value);
+                    }
+                    return root.param.value;
                 }
-                return root.param.value;
+                horizontalAlignment: Text.AlignRight
+                elide: Text.ElideRight
+                font: Style.font
             }
-            horizontalAlignment: Text.AlignRight
-            elide: Text.ElideRight
+
+            Label {
+                text: Types.toUiUnit(root.paramType.unit)
+                visible: text.length > 0
+                font: Style.font
+            }
         }
     }
     Component {
