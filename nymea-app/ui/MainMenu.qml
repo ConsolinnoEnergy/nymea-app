@@ -354,7 +354,7 @@ Drawer {
                 NymeaItemDelegate {
                     Layout.fillWidth: true
                     text: qsTr("Settings")
-                    iconName: "qrc:/icons/settings.svg"
+                    iconName: "qrc:/icons/settings.svg"  // #TODO icon from new design
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected
                     onClicked: {
