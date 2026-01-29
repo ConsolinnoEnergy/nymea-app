@@ -353,16 +353,6 @@ Drawer {
                 }
                 NymeaItemDelegate {
                     Layout.fillWidth: true
-                    text: qsTr("App settings")
-                    iconName: "qrc:/icons/stock_application.svg"
-                    progressive: false
-                    onClicked: {
-                        root.openAppSettings();
-                        root.close();
-                    }
-                }
-                NymeaItemDelegate {
-                    Layout.fillWidth: true
                     text: qsTr("System settings")
                     iconName: "qrc:/icons/settings.svg"
                     progressive: false
@@ -397,13 +387,6 @@ Drawer {
                             root.close()
                         }
                     }
-                }
-
-
-                Item {
-                    id: spaceItem
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: app.margins
                 }
 
                 Repeater {
