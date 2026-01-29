@@ -353,7 +353,7 @@ Drawer {
                 }
                 NymeaItemDelegate {
                     Layout.fillWidth: true
-                    text: qsTr("System settings")
+                    text: qsTr("Settings")
                     iconName: "qrc:/icons/settings.svg"
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected
