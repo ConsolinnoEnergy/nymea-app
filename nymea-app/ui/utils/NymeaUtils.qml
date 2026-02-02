@@ -229,13 +229,14 @@ Item {
         return lastDigit;
     }
 
-    function floatToLocaleString(v) {
+    function floatToLocaleString(v, precision) {
         if (typeof v === "number") {
+            precision = typeof precision !== "undefined" ? precision : numDecimals(v);
             var loc = Qt.locale()
             // Have to omit thousands separator here to avoid confusion
             // when parsing input e.g. in NymeaSpinBox
             loc.numberOptions = Locale.OmitGroupSeparator
-            return v.toLocaleString(loc, 'f', numDecimals(v))
+            return v.toLocaleString(loc, 'f', precision)
         } else {
             return v
         }
