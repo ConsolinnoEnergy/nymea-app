@@ -81,7 +81,12 @@ Page {
         HeaderButton {
             id: menuButton
             imageSource: "qrc:/icons/navigation-menu.svg"
-            anchors { left: parent.left; top: parent.top }
+            anchors {
+                left: parent.left
+                top: parent.top
+                topMargin: 8 // #TODO use value from new style?
+            }
+
             onClicked: {
                 if (d.configOverlay != null) {
                     d.configOverlay.destroy();
@@ -248,7 +253,7 @@ Page {
         anchors.fill: parent
         clip: true
 
-        property int headerSize: 48
+        property int headerSize: 64 // #TODO use value from new style
         property int footerSize: app.landscape ? 48 : 64
 
         readonly property int scrollOffset: swipeView.currentItem ? swipeView.currentItem.item.contentY : 0
@@ -294,7 +299,9 @@ Page {
                         anchors {
                             top: parent.top;
                             topMargin: -contentContainer.scrollOffset + (contentContainer.headerSize - height) / 2
-                            horizontalCenter: parent.horizontalCenter;
+                            right: parent.right
+                            rightMargin: 16 // #TODO use value from new style
+//                            horizontalCenter: parent.horizontalCenter;
                         }
                         fillMode: Image.PreserveAspectFit
                         height: 28
