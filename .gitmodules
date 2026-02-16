@@ -2,5 +2,5 @@
 	path = nymea-app
 	url = https://github.com/ConsolinnoEnergy/nymea-app.git
 [submodule "nymea-app-consolinno-overlay"]
-	path = nymea-app-consolinno-overlay
-	url = https://github.com/ConsolinnoEnergy/nymea-app-consolinno-overlay.git 
+path = nymea-app-consolinno-overlay
+url = git@github.com:ljonka/nymea-app-consolinno-overlay.git
