@@ -45,6 +45,38 @@ SettingsPageBase {
         property int pendingCommand: -1
     }
 
+    function compareSemanticVersions(version1, version2) {
+        // Returns 0 if version1 == version2
+        // Returns 1 if version1 > version2
+        // Returns -1 if version1 < version2
+
+        var v1 = version1.split('.').map(function(part) { return parseInt(part); });
+        var v2 = version2.split('.').map(function(part) { return parseInt(part); });
+
+        for (var i = 0; i < Math.max(v1.length, v2.length); i++) {
+            var num1 = i < v1.length ? v1[i] : 0;
+            var num2 = i < v2.length ? v2[i] : 0;
+
+            if (num1 < num2) {
+                return -1; // version1 is lower
+            } else if (num1 > num2) {
+                return 1; // version1 is higher
+            }
+        }
+
+        return 0; // versions are equal
+    }
+    
+    function checkHEMSVersion(){
+        var minSysVersion = Configuration.minSysVersion
+        // Checks if System version is less or equal to minSysVersion
+        if ([-1].includes(compareSemanticVersions(engine.jsonRpcClient.experiences.Hems, minSysVersion)))
+        {
+            return false
+        }
+        return true
+    }
+    
     HemsManager {
         id: hemsManager
         engine: _engine
@@ -312,7 +344,7 @@ SettingsPageBase {
         Layout.leftMargin: app.margins
         Layout.rightMargin: app.margins
         text: qsTr("Reset to factory settings")
-        visible: engine.systemController.powerManagementAvailable && !Configuration.hideFactoryResetButton && hemsManager.available
+        visible: checkHEMSVersion() && !Configuration.hideFactoryResetButton && hemsManager.available;
         onClicked: {
             var popup = factoryResetDialogComponent.createObject(app);
             popup.open();
