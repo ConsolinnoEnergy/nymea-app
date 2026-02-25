@@ -347,8 +347,8 @@ Page {
             right: parent.right;
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-        radius: 40
-        transparentBorder: true
+        radius: 32
+        transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
         visible: d.blurEnabled
     }
@@ -361,12 +361,7 @@ Page {
             right: parent.right
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-
-        gradient: Gradient {
-            GradientStop { position: 0.1; color: Style.backgroundColor }
-            GradientStop { position: 0.6; color: Qt.rgba(Style.backgroundColor.r, Style.backgroundColor.g, Style.backgroundColor.b, 0.3) }
-            GradientStop { position: 1; color: "transparent" }
-        }
+        color: Style.colors.menu_Header_Footer_Background
     }
 
     ShaderEffectSource {
@@ -386,7 +381,7 @@ Page {
             right: parent.right;
         }
         height: contentContainer.footerSize
-        radius: 40
+        radius: 32
         transparentBorder: false
         source: d.blurEnabled ? footerBlurSource : null
         visible: d.blurEnabled && footer.shown
@@ -403,14 +398,7 @@ Page {
         }
         height:  contentContainer.footerSize
         Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
-
-//        color: "transparent"
-
-        gradient: Gradient {
-            GradientStop { position: 0; color: "transparent" }
-            GradientStop { position: 0.4; color: Qt.rgba(Style.backgroundColor.r, Style.backgroundColor.g, Style.backgroundColor.b, 0.7) }
-            GradientStop { position: 1; color: Style.backgroundColor }
-        }
+        color: Style.colors.menu_Header_Footer_Background
 
         RowLayout {
             id: tabsLayout
