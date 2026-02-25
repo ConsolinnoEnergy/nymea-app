@@ -7,6 +7,10 @@ CONFIG += link_pkgconfig
 
 QT += network qml quick quickcontrols2 svg websockets bluetooth charts gui-private nfc
 
+greaterThan(QT_MAJOR_VERSION, 5) {
+    QT += core5compat
+}
+
 qtHaveModule(webview) {
     QT += webview
     DEFINES += HAVE_WEBVIEW
