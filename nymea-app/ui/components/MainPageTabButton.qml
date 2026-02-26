@@ -34,35 +34,28 @@ import QtQuick.Controls.Material 2.2
 import QtQuick.Layouts 1.3
 import Nymea 1.0
 
-TabButton {
+Rectangle {
     id: root
     property string iconSource
-    property var alignment: Qt.Vertical
+    property bool checked: false
+    property string text: ""
 
-    contentItem: Item {
-        height: root.height
-        Grid {
-            anchors.centerIn: parent
-            columns: root.alignment == Qt.Vertical ? 1 : 2
-            spacing: root.alignment == Qt.Horizontal ? app.margins : app.margins / 2
-            horizontalItemAlignment: Grid.AlignHCenter
-            verticalItemAlignment: Grid.AlignVCenter
-            opacity: root.checked ? 1 : .4
-            Behavior on opacity { NumberAnimation { duration: Style.animationDuration; easing.type: Easing.InOutQuad } }
+    signal clicked()
+    signal pressAndHold()
 
-            ColorIcon {
-                width: Style.iconSize
-                height: Style.iconSize
-                name: root.iconSource
-                color: Style.navBarForegroundColor
-            }
-            Label {
-                id: textLabel
-                text: root.text
-                font.pixelSize: app.smallFont
-                color: Style.navBarForegroundColor
-            }
+    color: "transparent"
+
+    RowLayout {
+        anchors.centerIn: parent
+
+        CoIconButton {
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+            icon: root.iconSource
+            isChecked: root.checked
+            onClicked: root.clicked()
+            onPressAndHold: root.pressAndHold()
         }
     }
 }
+
 

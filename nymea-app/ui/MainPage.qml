@@ -253,8 +253,8 @@ Page {
         anchors.fill: parent
         clip: true
 
-        property int headerSize: 64 // #TODO use value from new style
-        property int footerSize: app.landscape ? 48 : 64
+        property int headerSize: 64
+        property int footerSize: 58
 
         readonly property int scrollOffset: swipeView.currentItem ? swipeView.currentItem.item.contentY : 0
         readonly property int headerBlurSize: Math.min(headerSize, scrollOffset * 2)
@@ -411,16 +411,11 @@ Page {
             Repeater {
                 id: tabsRepeater
                 model: d.configOverlay != null ? null : filteredContentModel
-//                model: filteredContentModel
                 delegate: MainPageTabButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    alignment: app.landscape ? Qt.Horizontal : Qt.Vertical
                     checked: index === swipeView.currentIndex
-//                    anchors.verticalCenter: parent.verticalCenter
-                    text: model.displayName
                     iconSource: "qrc:/icons/" + model.icon + ".svg"
-
                     onClicked: swipeView.currentIndex = index
                     onPressAndHold: {
                         root.configureViews();
@@ -432,16 +427,11 @@ Page {
 
         MainPageTabButton {
             anchors.fill: parent
-            alignment: app.landscape ? Qt.Horizontal : Qt.Vertical
-            text: d.configOverlay ? qsTr("Done") : qsTr("Configure")
             iconSource: "qrc:/icons/configure.svg"
-
             opacity: d.configOverlay ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
             visible: opacity > 0
-
             checked: true
-
             onClicked: {
                 if (d.configOverlay) {
                     d.configOverlay.destroy()
