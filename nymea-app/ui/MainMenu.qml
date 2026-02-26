@@ -86,7 +86,7 @@ Drawer {
                         source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
                     }
                     ProgressButton {
-                        imageSource: "qrc:/icons/configure.svg"
+                        imageSource: "qrc:/icons/edit.svg"
                         longpressEnabled: false
                         Layout.alignment: Qt.AlignBottom
                         color: topSectionLayout.configureConnections ? Style.accentColor : Style.iconColor
@@ -354,7 +354,7 @@ Drawer {
                 NymeaItemDelegate {
                     Layout.fillWidth: true
                     text: qsTr("Settings")
-                    iconName: "qrc:/icons/settings.svg"  // #TODO icon from new design
+                    iconName: "qrc:/icons/tune.svg"
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected
                     onClicked: {
