@@ -166,6 +166,27 @@ Page {
                                          defaultMainViewFilter.split(',')
                                        : [Configuration.defaultMainView]
         property int currentIndex: 0
+
+        onFilterListChanged: {
+            if (filterList.indexOf("consolinno") >= 0) {
+                filterList = ["consolinnoDashboard", "consolinnoStats"];
+            }
+        }
+
+        onSortOrderChanged: {
+            if (sortOrder.indexOf("consolinno") >= 0) {
+                const newSortOrder = [];
+                newSortOrder.push("consolinnoDashboard");
+                newSortOrder.push("consolinnoStats");
+                for (let i = 0; i < sortOrder.length; ++i) {
+                    const entry = sortOrder[i];
+                    if (entry !== "consolinno") {
+                        newSortOrder.push(entry);
+                    }
+                }
+                sortOrder = newSortOrder;
+            }
+        }
     }
 
     ListModel {
