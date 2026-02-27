@@ -164,16 +164,18 @@ Page {
                                      Configuration.mainViewsFilter
                                    : defaultMainViewFilter.length > 0 ?
                                          defaultMainViewFilter.split(',')
-                                       : [Configuration.defaultMainView]
+                                       : Configuration.defaultMainViews
         property int currentIndex: 0
 
         onFilterListChanged: {
+            console.warn("=== filter:", filterList);
             if (filterList.indexOf("consolinno") >= 0) {
                 filterList = ["consolinnoDashboard", "consolinnoStats"];
             }
         }
 
         onSortOrderChanged: {
+            console.warn("=== sortOrder:", sortOrder);
             if (sortOrder.indexOf("consolinno") >= 0) {
                 const newSortOrder = [];
                 newSortOrder.push("consolinnoDashboard");
@@ -509,7 +511,7 @@ Page {
                                 }
                             }
                             if (newList.length === 0) {
-                                newList.push(Configuration.defaultMainView)
+                                newList = Configuration.defaultMainView
                             }
 
                             mainViewSettings.filterList = newList
@@ -574,7 +576,7 @@ Page {
                                 }
                             }
                             if (newList.length === 0) {
-                                newList.push(Configuration.defaultMainView)
+                                newList = Configuration.defaultMainView
                             }
 
                             mainViewSettings.filterList = newList
@@ -704,7 +706,7 @@ Page {
 //                                }
 //                            }
 //                            if (newList.length === 0) {
-//                                newList.push(Configuration.defaultMainView)
+//                                newList = Configuration.defaultMainView
 //                            }
 
 //                            mainViewSettings.filterList = newList
