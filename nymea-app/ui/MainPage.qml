@@ -168,14 +168,12 @@ Page {
         property int currentIndex: 0
 
         onFilterListChanged: {
-            console.warn("=== filter:", filterList);
             if (filterList.indexOf("consolinno") >= 0) {
                 filterList = ["consolinnoDashboard", "consolinnoStats"];
             }
         }
 
         onSortOrderChanged: {
-            console.warn("=== sortOrder:", sortOrder);
             if (sortOrder.indexOf("consolinno") >= 0) {
                 const newSortOrder = [];
                 newSortOrder.push("consolinnoDashboard");
