@@ -32,5 +32,12 @@ import "../../components"
 
 Label {
     property var value
+    property var possibleValues
+    property var possibleValuesDisplayNames
+    property real from: 0
+    property real to: 100
+    property bool writable: false
+    property var stateType
+    property var unit: Types.UnitNone
     text: value.join(", ")
 }

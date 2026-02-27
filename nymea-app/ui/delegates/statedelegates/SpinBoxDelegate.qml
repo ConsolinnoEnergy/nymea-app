@@ -35,6 +35,10 @@ SpinBox {
     signal changed(var value)
     stepSize: Math.min(10, (to - from) / 10)
     property var unit: Types.UnitNone
+    property var possibleValues
+    property var possibleValuesDisplayNames
+    property bool writable: false
+    property var stateType
     editable: true
     onValueModified: {
         changed(value)

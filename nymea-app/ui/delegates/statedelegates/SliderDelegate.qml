@@ -41,6 +41,9 @@ RowLayout {
     property alias to: slider.to
 
     property StateType stateType
+    property var possibleValues
+    property var possibleValuesDisplayNames
+    property bool writable: false
 
     readonly property int decimals: root.stateType.type.toLowerCase() === "int" ? 0 : 1
 

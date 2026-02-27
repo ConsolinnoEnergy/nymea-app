@@ -33,6 +33,12 @@ import "../../components"
 Label {
     property var value
     property var unit: Types.UnitNone
+    property var possibleValues
+    property var possibleValuesDisplayNames
+    property real from: 0
+    property real to: 100
+    property bool writable: false
+    property var stateType
     text: Math.round(Types.toUiValue(value, unit) * 100) / 100
     horizontalAlignment: Text.AlignRight
 }
