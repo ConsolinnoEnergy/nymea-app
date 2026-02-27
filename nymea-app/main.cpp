@@ -80,6 +80,10 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_OSX
     qputenv("QT_WEBVIEW_PLUGIN", "native");
 #endif
+    // Qt6: XMLHttpRequest on local files is disabled by default. Re-enable it as the app
+    // uses XHR to load local SVG and HTML files from the QRC resource file system.
+    qputenv("QML_XHR_ALLOW_FILE_READ", "1");
+
     QApplication application(argc, argv);
     application.setApplicationName(APPLICATION_NAME);
     application.setOrganizationName(ORGANISATION_NAME);
