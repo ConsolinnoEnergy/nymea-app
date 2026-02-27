@@ -119,7 +119,7 @@ Item {
         "heating": "qrc:/icons/thermostat/heating.svg",
         "cooling": "qrc:/icons/thermostat/cooling.svg",
         "meter": "qrc:/icons/dial.svg",
-        "ev-charger": "qrc:/icons/ev-station.svg",
+        "ev-charger": "qrc:/icons/ev_station.svg",
         "battery": "qrc:/icons/battery/battery-100.svg",
         "message": "qrc:/icons/notification.svg",
         "irrigation": "qrc:/icons/irrigation.svg",
