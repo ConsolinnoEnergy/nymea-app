@@ -45,12 +45,48 @@ SettingsPageBase {
         property int pendingCommand: -1
     }
 
+    function compareSemanticVersions(version1, version2) {
+        // Returns 0 if version1 == version2
+        // Returns 1 if version1 > version2
+        // Returns -1 if version1 < version2
+
+        var v1 = version1.split('.').map(function(part) { return parseInt(part); });
+        var v2 = version2.split('.').map(function(part) { return parseInt(part); });
+
+        for (var i = 0; i < Math.max(v1.length, v2.length); i++) {
+            var num1 = i < v1.length ? v1[i] : 0;
+            var num2 = i < v2.length ? v2[i] : 0;
+
+            if (num1 < num2) {
+                return -1; // version1 is lower
+            } else if (num1 > num2) {
+                return 1; // version1 is higher
+            }
+        }
+
+        return 0; // versions are equal
+    }
+    
+    function checkHEMSVersion(){
+        var minSysVersion = Configuration.minSysVersion
+        // Checks if System version is less or equal to minSysVersion
+        if ([-1].includes(compareSemanticVersions(engine.jsonRpcClient.experiences.Hems, minSysVersion)))
+        {
+            return false
+        }
+        return true
+    }
+    
+    HemsManager {
+        id: hemsManager
+        engine: _engine
+    }
+
     Connections {
         target: engine.systemController
         onRestartReply: handleReply(id, success)
         onRebootReply: handleReply(id, success)
         onShutdownReply: handleReply(id, success)
-
         function handleReply(id, success) {
             if (id === d.pendingCommand) {
                 d.pendingCommand = -1
@@ -58,6 +94,23 @@ SettingsPageBase {
                     var component = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"))
                     var popup = component.createObject(root);
                     popup.open()
+                }
+            }
+        }
+    }
+
+    Connections {
+        target: hemsManager
+        onFactoryResetReply: {
+            if (commandId == d.pendingCommand) {
+                d.pendingCommand = -1
+
+                var props = {};
+                if (error !== "HemsErrorNoError") {
+                    props.errorCode = error;
+                    var comp = Qt.createComponent("../components/ErrorDialog.qml")
+                    var popup = comp.createObject(app, props)
+                    popup.open();
                 }
             }
         }
@@ -286,7 +339,62 @@ SettingsPageBase {
             })
         }
     }
+    Button {
+        Layout.fillWidth: true
+        Layout.leftMargin: app.margins
+        Layout.rightMargin: app.margins
+        text: qsTr("Reset to factory settings")
+        visible: checkHEMSVersion() && !Configuration.hideFactoryResetButton && hemsManager.available;
+        onClicked: {
+            var popup = factoryResetDialogComponent.createObject(app);
+            popup.open();
+            popup.accepted.connect(function() {
+                d.pendingCommand = hemsManager.factoryReset()
+            })
+        }
+    }
 
+    Component {
+        id: factoryResetDialogComponent
+        NymeaDialog {
+            id: factoryResetDialog
+            // width: Math.min(parent.width * 0.9, 400)
+            // x: (parent.width - width) / 2
+            // y: (parent.height - height) / 2
+            title: qsTr("Reset to factory settings")
+            standardButtons: Dialog.Ok | Dialog.Cancel
+
+            ColumnLayout {
+                width: parent.width
+                spacing: app.margins
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: app.margins
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: qsTr("The factory reset restores all software settings to their factory defaults, thereby deleting all device settings, commissioning settings and data.")
+                        wrapMode: Text.WordWrap
+                    }
+                }
+
+                CheckBox {
+                    id: confirmCheckBox
+                    Layout.fillWidth: true
+                    text: qsTr("I have read the message.")
+                }
+            }
+
+            onAccepted: {
+                // Will be handled by connection in parent
+            }
+
+            Component.onCompleted: {
+                standardButton(Dialog.Ok).enabled = Qt.binding(function() { return confirmCheckBox.checked })
+            }
+        }
+    }
 
     Component {
         id: timePickerComponent
