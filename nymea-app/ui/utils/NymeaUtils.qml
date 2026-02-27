@@ -119,7 +119,7 @@ Item {
         "heating": "qrc:/icons/thermostat/heating.svg",
         "cooling": "qrc:/icons/thermostat/cooling.svg",
         "meter": "qrc:/icons/dial.svg",
-        "ev-charger": "qrc:/icons/ev-charger.svg",
+        "ev-charger": "qrc:/icons/ev_station.svg",
         "battery": "qrc:/icons/battery/battery-100.svg",
         "message": "qrc:/icons/notification.svg",
         "irrigation": "qrc:/icons/irrigation.svg",
@@ -229,13 +229,14 @@ Item {
         return lastDigit;
     }
 
-    function floatToLocaleString(v) {
+    function floatToLocaleString(v, precision) {
         if (typeof v === "number") {
+            precision = typeof precision !== "undefined" ? precision : numDecimals(v);
             var loc = Qt.locale()
             // Have to omit thousands separator here to avoid confusion
             // when parsing input e.g. in NymeaSpinBox
             loc.numberOptions = Locale.OmitGroupSeparator
-            return v.toLocaleString(loc, 'f', numDecimals(v))
+            return v.toLocaleString(loc, 'f', precision)
         } else {
             return v
         }

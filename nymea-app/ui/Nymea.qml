@@ -295,15 +295,15 @@ ApplicationWindow {
 //        print("finding icon for interface:", name)
         switch (name) {
         case "energystorage":
-            return Qt.resolvedUrl("/icons/battery/battery-060.svg")
+            return Qt.resolvedUrl("/icons/battery/battery-060.svg") // #TODO use battery icons from new design
         case "smartheatingrod":
-            return Qt.resolvedUrl("/icons/heating_rod.svg")
+            return Qt.resolvedUrl("/icons/water_heater.svg")
         case "pvsurplusheatpump":
-            return Qt.resolvedUrl("/icons/heatpump.svg")
+            return Qt.resolvedUrl("/icons/heat_pump.svg")
         case "heatpump":
-            return Qt.resolvedUrl("/icons/heatpump.svg")
+            return Qt.resolvedUrl("/icons/heat_pump.svg")
         case "smartgridheatpump":
-            return Qt.resolvedUrl("/icons/heatpump.svg")
+            return Qt.resolvedUrl("/icons/heat_pump.svg")
         case "gridsupport":
             return Qt.resolvedUrl("/icons/select-none.svg")
         case "light":
@@ -380,7 +380,7 @@ ApplicationWindow {
         case "weather":
             return Qt.resolvedUrl("qrc:/icons/weather-app-symbolic.svg")
         case "gateway":
-            return Qt.resolvedUrl("qrc:/icons/connections/network-wired.svg")
+            return Qt.resolvedUrl("qrc:/icons/cable.svg")
         case "notifications":
             return Qt.resolvedUrl("qrc:/icons/messaging-app-symbolic.svg")
         case "inputtrigger":
@@ -403,7 +403,7 @@ ApplicationWindow {
         case "extendedawning":
             return Qt.resolvedUrl("qrc:/icons/awning/awning-100.svg")
         case "battery":
-            return Qt.resolvedUrl("qrc:/icons/battery/battery-050.svg")
+            return Qt.resolvedUrl("qrc:/icons/battery/battery-050.svg")  // #TODO use battery icons from new design
         case "uncategorized":
             return Qt.resolvedUrl("qrc:/icons/select-none.svg")
         case "simpleclosable":
@@ -413,13 +413,15 @@ ApplicationWindow {
         case "accesscontrol":
             return Qt.resolvedUrl("qrc:/icons/lock-closed.svg");
         case "solarinverter":
-            return Qt.resolvedUrl("qrc:/icons/weathericons/weather-clear-day.svg")
-        case "smartmeter":
+            return Qt.resolvedUrl("qrc:/icons/solar_power.svg")
         case "smartmeterconsumer":
+            return Qt.resolvedUrl("qrc:/icons/interests.svg");
+        case "smartmeter":
         case "smartmeterproducer":
         case "energymeter":
-            return Qt.resolvedUrl("qrc:/icons/smartmeter.svg")
-//            return Qt.resolvedUrl("qrc:/icons/energy.svg")
+            return Qt.resolvedUrl("qrc:/icons/electric_meter.svg")
+        case "dynamicelectricitypricing":
+            return Qt.resolvedUrl("qrc:/icons/electric_bolt.svg")
         case "heating":
             return Qt.resolvedUrl("qrc:/icons/thermostat/heating.svg")
         case "cooling":
@@ -427,7 +429,7 @@ ApplicationWindow {
         case "thermostat":
             return Qt.resolvedUrl("qrc:/icons/dial.svg")
         case "evcharger":
-            return Qt.resolvedUrl("qrc:/icons/ev-charger.svg")
+            return Qt.resolvedUrl("qrc:/icons/ev_station.svg")
         case "doorbell":
             return Qt.resolvedUrl("qrc:/icons/notification.svg")
         case "irrigation":
@@ -458,7 +460,7 @@ ApplicationWindow {
         case "connectable":
             return Qt.resolvedUrl("qrc:/icons/stock_link.svg")
         case "electricvehicle":
-            return Qt.resolvedUrl("qrc:/icons/car.svg")
+            return Qt.resolvedUrl("qrc:/icons/electric_car.svg")
         case "update":
             return Qt.resolvedUrl("qrc:/icons/system-update.svg")
         default:

@@ -55,21 +55,18 @@
         <file>icons/account.svg</file>
         <file>icons/action-interface.svg</file>
         <file>icons/action.svg</file>
-        <file>icons/add.svg</file>
         <file>icons/alarm-clock.svg</file>
         <file>icons/attention.svg</file>
         <file>icons/audio-speakers-muted-symbolic.svg</file>
         <file>icons/audio-speakers-symbolic.svg</file>
         <file>icons/back.svg</file>
         <file>icons/clock-app-symbolic.svg</file>
-        <file>icons/close.svg</file>
         <file>icons/configure.svg</file>
         <file>icons/contact-new.svg</file>
         <file>icons/delete.svg</file>
         <file>icons/dialog-error-symbolic.svg</file>
         <file>icons/dialog-warning-symbolic.svg</file>
         <file>icons/down.svg</file>
-        <file>icons/edit.svg</file>
         <file>icons/erase.svg</file>
         <file>icons/event-interface.svg</file>
         <file>icons/event.svg</file>
@@ -77,7 +74,6 @@
         <file>icons/filters.svg</file>
         <file>icons/find.svg</file>
         <file>icons/fingerprint.svg</file>
-        <file>icons/info.svg</file>
         <file>icons/light-off.svg</file>
         <file>icons/light-on.svg</file>
         <file>icons/lock-broken.svg</file>
@@ -103,7 +99,6 @@
         <file>icons/select-none.svg</file>
         <file>icons/send.svg</file>
         <file>icons/sensors.svg</file>
-        <file>icons/settings.svg</file>
         <file>icons/things.svg</file>
         <file>icons/slideshow.svg</file>
         <file>icons/closable-move.svg</file>
@@ -179,7 +174,6 @@
         <file>icons/browser/BrowserIconApplication.svg</file>
         <file>icons/browser/BrowserIconDocument.svg</file>
         <file>icons/browser/BrowserIconPackage.svg</file>
-        <file>icons/home.svg</file>
         <file>icons/browser/MediaBrowserIconNapster.svg</file>
         <file>icons/browser/MediaBrowserIconSoundCloud.svg</file>
         <file>icons/browser/MediaBrowserIconDeezer.svg</file>
@@ -235,11 +229,9 @@
         <file>icons/state-in.svg</file>
         <file>icons/state-out.svg</file>
         <file>icons/like.svg</file>
-        <file>icons/zigbee.svg</file>
         <file>icons/stock_usb.svg</file>
         <file>icons/discourse.svg</file>
         <file>icons/telegram.svg</file>
-        <file>icons/help.svg</file>
         <file>icons/discord.svg</file>
         <file>icons/media/equalizer.svg</file>
         <file>icons/media/ambeo.svg</file>
@@ -261,7 +253,6 @@
         <file>icons/zigbee/TI.svg</file>
         <file>icons/car.svg</file>
         <file>icons/sensors/fire.svg</file>
-        <file>icons/z-wave.svg</file>
         <file>icons/zwave/z-wave-plus-wide.svg</file>
         <file>icons/zwave/z-wave-wide.svg</file>
         <file>icons/transfer-error.svg</file>
