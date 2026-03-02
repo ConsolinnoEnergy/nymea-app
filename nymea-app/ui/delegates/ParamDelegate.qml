@@ -255,7 +255,9 @@ ItemDelegate {
                     : 2000000000
                 editable: true
                 width: 150
-                onValueModified: root.param.value = value
+                onValueModified: function(value) {
+                    root.param.value = value
+                }
 
                 floatingPoint: root.paramType.type.toLowerCase() == "double"
 
