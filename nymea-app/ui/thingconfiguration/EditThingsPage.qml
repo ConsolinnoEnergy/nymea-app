@@ -126,7 +126,7 @@ Page {
             property Thing thing: null
 
             onAccepted: {
-                d.pendingCommand = engine.thingManager.removeThing(thing.id)
+                d.pendingCommandId = engine.thingManager.removeThing(thing.id)
             }
         }
     }
