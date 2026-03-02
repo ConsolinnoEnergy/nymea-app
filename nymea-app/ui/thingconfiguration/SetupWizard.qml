@@ -190,7 +190,7 @@ Page {
             busyOverlay.shown = false
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: thingId, message: displayMessage})
         }
-        onAddThingReply: {
+        onAddThingReply: function(thingError){
             busyOverlay.shown = false;
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: thingId, message: displayMessage})
         }
