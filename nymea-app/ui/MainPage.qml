@@ -76,7 +76,12 @@ Page {
         HeaderButton {
             id: menuButton
             imageSource: "qrc:/icons/navigation-menu.svg"
-            anchors { left: parent.left; top: parent.top }
+            anchors {
+                left: parent.left
+                top: parent.top
+                topMargin: 8 // #TODO use value from new style?
+            }
+
             onClicked: {
                 if (d.configOverlay != null) {
                     d.configOverlay.destroy();
@@ -154,8 +159,29 @@ Page {
                                      Configuration.mainViewsFilter
                                    : defaultMainViewFilter.length > 0 ?
                                          defaultMainViewFilter.split(',')
-                                       : [Configuration.defaultMainView]
+                                       : Configuration.defaultMainViews
         property int currentIndex: 0
+
+        onFilterListChanged: {
+            if (filterList.indexOf("consolinno") >= 0) {
+                filterList = ["consolinnoDashboard", "consolinnoStats"];
+            }
+        }
+
+        onSortOrderChanged: {
+            if (sortOrder.indexOf("consolinno") >= 0) {
+                const newSortOrder = [];
+                newSortOrder.push("consolinnoDashboard");
+                newSortOrder.push("consolinnoStats");
+                for (let i = 0; i < sortOrder.length; ++i) {
+                    const entry = sortOrder[i];
+                    if (entry !== "consolinno") {
+                        newSortOrder.push(entry);
+                    }
+                }
+                sortOrder = newSortOrder;
+            }
+        }
     }
 
     ListModel {
@@ -243,8 +269,8 @@ Page {
         anchors.fill: parent
         clip: true
 
-        property int headerSize: 48
-        property int footerSize: app.landscape ? 48 : 64
+        property int headerSize: 64
+        property int footerSize: 58
 
         readonly property int scrollOffset: swipeView.currentItem ? swipeView.currentItem.item.contentY : 0
         readonly property int headerBlurSize: Math.min(headerSize, scrollOffset * 2)
@@ -289,7 +315,9 @@ Page {
                         anchors {
                             top: parent.top;
                             topMargin: -contentContainer.scrollOffset + (contentContainer.headerSize - height) / 2
-                            horizontalCenter: parent.horizontalCenter;
+                            right: parent.right
+                            rightMargin: 16 // #TODO use value from new style
+//                            horizontalCenter: parent.horizontalCenter;
                         }
                         fillMode: Image.PreserveAspectFit
                         height: 28
@@ -335,8 +363,8 @@ Page {
             right: parent.right;
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-        radius: 40
-        transparentBorder: true
+        radius: 32
+        transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
         visible: d.blurEnabled
     }
@@ -349,12 +377,7 @@ Page {
             right: parent.right
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-
-        gradient: Gradient {
-            GradientStop { position: 0.1; color: Style.backgroundColor }
-            GradientStop { position: 0.6; color: Qt.rgba(Style.backgroundColor.r, Style.backgroundColor.g, Style.backgroundColor.b, 0.3) }
-            GradientStop { position: 1; color: "transparent" }
-        }
+        color: Style.colors.menu_Header_Footer_Background
     }
 
     ShaderEffectSource {
@@ -374,7 +397,7 @@ Page {
             right: parent.right;
         }
         height: contentContainer.footerSize
-        radius: 40
+        radius: 32
         transparentBorder: false
         source: d.blurEnabled ? footerBlurSource : null
         visible: d.blurEnabled && footer.shown
@@ -391,14 +414,7 @@ Page {
         }
         height:  contentContainer.footerSize
         Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
-
-//        color: "transparent"
-
-        gradient: Gradient {
-            GradientStop { position: 0; color: "transparent" }
-            GradientStop { position: 0.4; color: Qt.rgba(Style.backgroundColor.r, Style.backgroundColor.g, Style.backgroundColor.b, 0.7) }
-            GradientStop { position: 1; color: Style.backgroundColor }
-        }
+        color: Style.colors.menu_Header_Footer_Background
 
         RowLayout {
             id: tabsLayout
@@ -411,16 +427,11 @@ Page {
             Repeater {
                 id: tabsRepeater
                 model: d.configOverlay != null ? null : filteredContentModel
-//                model: filteredContentModel
                 delegate: MainPageTabButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    alignment: app.landscape ? Qt.Horizontal : Qt.Vertical
                     checked: index === swipeView.currentIndex
-//                    anchors.verticalCenter: parent.verticalCenter
-                    text: model.displayName
                     iconSource: "qrc:/icons/" + model.icon + ".svg"
-
                     onClicked: swipeView.currentIndex = index
                     onPressAndHold: {
                         root.configureViews();
@@ -432,16 +443,11 @@ Page {
 
         MainPageTabButton {
             anchors.fill: parent
-            alignment: app.landscape ? Qt.Horizontal : Qt.Vertical
-            text: d.configOverlay ? qsTr("Done") : qsTr("Configure")
             iconSource: "qrc:/icons/configure.svg"
-
             opacity: d.configOverlay ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
             visible: opacity > 0
-
             checked: true
-
             onClicked: {
                 if (d.configOverlay) {
                     d.configOverlay.destroy()
@@ -498,7 +504,7 @@ Page {
                                 }
                             }
                             if (newList.length === 0) {
-                                newList.push(Configuration.defaultMainView)
+                                newList = Configuration.defaultMainView
                             }
 
                             mainViewSettings.filterList = newList
@@ -563,7 +569,7 @@ Page {
                                 }
                             }
                             if (newList.length === 0) {
-                                newList.push(Configuration.defaultMainView)
+                                newList = Configuration.defaultMainView
                             }
 
                             mainViewSettings.filterList = newList
@@ -693,7 +699,7 @@ Page {
 //                                }
 //                            }
 //                            if (newList.length === 0) {
-//                                newList.push(Configuration.defaultMainView)
+//                                newList = Configuration.defaultMainView
 //                            }
 
 //                            mainViewSettings.filterList = newList

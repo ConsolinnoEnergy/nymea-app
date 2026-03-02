@@ -49,7 +49,7 @@ Item {
     property bool modbusSettingsEnabled: false
     property bool pluginSettingsEnabled: false
 
-    property string defaultMainView: "things"
+    property var defaultMainViews: ["things"]
 
     property string alternativeMainPage: ""
 

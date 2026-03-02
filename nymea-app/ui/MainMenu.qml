@@ -113,7 +113,7 @@ Drawer {
                         source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
                     }
                     ProgressButton {
-                        imageSource: "qrc:/icons/configure.svg"
+                        imageSource: "qrc:/icons/edit.svg"
                         longpressEnabled: false
                         Layout.alignment: Qt.AlignBottom
                         color: topSectionLayout.configureConnections ? Style.accentColor : Style.iconColor
@@ -380,18 +380,8 @@ Drawer {
                 }
                 NymeaItemDelegate {
                     Layout.fillWidth: true
-                    text: qsTr("App settings")
-                    iconName: "qrc:/icons/stock_application.svg"
-                    progressive: false
-                    onClicked: {
-                        root.openAppSettings();
-                        root.close();
-                    }
-                }
-                NymeaItemDelegate {
-                    Layout.fillWidth: true
-                    text: qsTr("System settings")
-                    iconName: "qrc:/icons/settings.svg"
+                    text: qsTr("Settings")
+                    iconName: "qrc:/icons/tune.svg"
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected
                     onClicked: {
@@ -424,13 +414,6 @@ Drawer {
                             root.close()
                         }
                     }
-                }
-
-
-                Item {
-                    id: spaceItem
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: app.margins
                 }
 
                 Repeater {
