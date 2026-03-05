@@ -50,7 +50,7 @@ Page {
 
     // ParamType UUIDs whose delegate should be hidden in the setup wizard
     readonly property var hiddenParamTypeIds: [
-        "418b9024-bf2c-467d-b1fe-82382bd39dc1"
+        "418b9024-bf2c-467d-b1fe-82382bd39dc1"  // Zähler bei SGReady & Zähler (https://consolinno.atlassian.net/browse/ESUI-820)
     ]
 
     QtObject {
