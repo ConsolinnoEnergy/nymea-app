@@ -108,7 +108,6 @@ Page {
             height: 28
             sourceSize.height: height
             antialiasing: true
-//            z: 2
         }
 
         Row {
