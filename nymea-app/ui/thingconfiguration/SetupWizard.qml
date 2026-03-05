@@ -33,10 +33,10 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Material 2.1
 import Nymea 1.0
+import NymeaApp.Utils 1.0
 
 import "../components"
 import "../delegates"
-import "./utils/ThingClassConfig.qml"
 
 Page {
     id: root
@@ -358,21 +358,24 @@ Page {
             id: paramsView
             title: root.thing ? qsTr("Reconfigure %1").arg(root.thing.name) : qsTr("Set up %1").arg(root.thingClass.displayName)
 
-            SettingsPageSectionHeader {
-                text: qsTr("Name the thing:")
-                visible: root.thing ? false : true
-            }
-
-            TextField {
-                id: nameTextField
-                visible: root.thing 
-                    && !ThingClassConfig.isInNameFieldBlacklist(root.thingClass.id)
-
-                text: (d.thingName ? d.thingName : root.thingClass.displayName)
-                      + (root.thingClass.id.toString().match(/\{?f0dd4c03-0aca-42cc-8f34-9902457b05de\}?/) ? " (" + PlatformHelper.machineHostname + ")" : "")
+            ColumnLayout {
+                visible: (root.thing === null) && !ThingClassConfig.isInNameFieldBlacklist(root.thingClass.id)
                 Layout.fillWidth: true
-                Layout.leftMargin: app.margins
-                Layout.rightMargin: app.margins
+                spacing: 0
+
+                SettingsPageSectionHeader {
+                    text: qsTr("Name the thing:")
+                }
+
+                TextField {
+                    id: nameTextField
+
+                    text: (d.thingName ? d.thingName : root.thingClass.displayName)
+                        + (root.thingClass.id.toString().match(/\{?f0dd4c03-0aca-42cc-8f34-9902457b05de\}?/) ? " (" + PlatformHelper.machineHostname + ")" : "")
+                    Layout.fillWidth: true
+                    Layout.leftMargin: app.margins
+                    Layout.rightMargin: app.margins
+                }
             }
 
             SettingsPageSectionHeader {

@@ -210,6 +210,7 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonType<PushNotifications>("Nymea", 1, 0, "PushNotifications", PushNotifications::pushNotificationsProvider);
     qmlRegisterSingletonType(QUrl("qrc:///ui/utils/NymeaUtils.qml"), "NymeaApp.Utils", 1, 0, "NymeaUtils" );
     qmlRegisterSingletonType(QUrl("qrc:///ui/utils/AirQualityIndex.qml"), "NymeaApp.Utils", 1, 0, "AirQualityIndex" );
+    qmlRegisterSingletonType(QUrl("qrc:///ui/utils/ThingClassConfig.qml"), "NymeaApp.Utils", 1, 0, "ThingClassConfig" );
 
     qmlRegisterType<DashboardModel>("Nymea", 1, 0, "DashboardModel");
     qmlRegisterUncreatableType<DashboardItem>("Nymea", 1, 0, "DashboardItem", "");
