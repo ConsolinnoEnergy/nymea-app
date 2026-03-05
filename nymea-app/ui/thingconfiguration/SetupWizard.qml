@@ -36,6 +36,7 @@ import Nymea 1.0
 
 import "../components"
 import "../delegates"
+import "./utils/ThingClassConfig.qml"
 
 Page {
     id: root
@@ -364,7 +365,9 @@ Page {
 
             TextField {
                 id: nameTextField
-                visible: root.thing ? false : true
+                visible: root.thing 
+                    && !ThingClassConfig.isInNameFieldBlacklist(root.thingClass.id)
+
                 text: (d.thingName ? d.thingName : root.thingClass.displayName)
                       + (root.thingClass.id.toString().match(/\{?f0dd4c03-0aca-42cc-8f34-9902457b05de\}?/) ? " (" + PlatformHelper.machineHostname + ")" : "")
                 Layout.fillWidth: true
