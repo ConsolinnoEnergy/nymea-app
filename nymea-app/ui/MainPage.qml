@@ -95,6 +95,22 @@ Page {
             }
         }
 
+        Image {
+            id: mainHeaderLogo
+            source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
+            anchors {
+                top: parent.top;
+                topMargin: (contentContainer.headerSize - height) / 2
+                right: parent.right
+                rightMargin: 16 // #TODO use value from new style
+            }
+            fillMode: Image.PreserveAspectFit
+            height: 28
+            sourceSize.height: height
+            antialiasing: true
+//            z: 2
+        }
+
         Row {
             id: additionalIcons
             anchors { right: parent.right; top: parent.top }
@@ -313,22 +329,6 @@ Page {
                         target: mainViewLoader.item
                         property: "bottomMargin"
                         value: footer.visible ? contentContainer.footerSize : 0
-                    }
-
-                    Image {
-                        source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
-                        anchors {
-                            top: parent.top;
-                            topMargin: -contentContainer.scrollOffset + (contentContainer.headerSize - height) / 2
-                            right: parent.right
-                            rightMargin: 16 // #TODO use value from new style
-//                            horizontalCenter: parent.horizontalCenter;
-                        }
-                        fillMode: Image.PreserveAspectFit
-                        height: 28
-                        sourceSize.height: height
-                        antialiasing: true
-                        z: 2
                     }
                 }
             }
