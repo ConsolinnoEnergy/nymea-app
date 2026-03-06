@@ -80,7 +80,7 @@ Page {
         height: 0
         HeaderButton {
             id: menuButton
-            imageSource: "qrc:/icons/navigation-menu.svg"
+            imageSource: "qrc:/icons/menu.svg"
             anchors {
                 left: parent.left
                 top: parent.top

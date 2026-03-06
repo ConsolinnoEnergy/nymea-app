@@ -76,7 +76,7 @@ Item {
                 height: Style.iconSize
                 width: Style.iconSize
                 visible: root.thing.thingClass.interfaces.indexOf("extendednavigationpad") >= 0
-                imageSource: "qrc:/icons/navigation-menu.svg"
+                imageSource: "qrc:/icons/menu.svg"
                 Item { id: menuButtonArea; anchors.centerIn: parent; width: pane.width / 4; height: width; rotation: 45 }
             }
             KeypadButton {
