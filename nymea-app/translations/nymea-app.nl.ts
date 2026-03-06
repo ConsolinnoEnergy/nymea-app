@@ -2407,6 +2407,18 @@ Probeer het nog een keer.</translation>
         <source>Are you sure you want to shut down your %1 sytem now?</source>
         <translation>Weet je zeker dat je %1 systeem nu wilt afsluiten?</translation>
     </message>
+    <message>
+        <source>Reset to factory settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The factory reset restores all software settings to their factory defaults, thereby deleting all device settings, commissioning settings and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I have read the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GenericThingPage</name>
@@ -4024,11 +4036,11 @@ Probeer het nog een keer.</translation>
     </message>
     <message>
         <source>App settings</source>
-        <translation>App instellingen</translation>
+        <translation type="vanished">App instellingen</translation>
     </message>
     <message>
         <source>System settings</source>
-        <translation>Systeem instellingen</translation>
+        <translation type="vanished">Systeem instellingen</translation>
     </message>
     <message>
         <source>New connection</source>
@@ -4045,6 +4057,10 @@ Probeer het nog een keer.</translation>
     <message>
         <source>Do you want to log out from %1 and remove it from your connections?</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Instellingen</translation>
     </message>
 </context>
 <context>
@@ -4095,11 +4111,11 @@ Probeer het nog een keer.</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation>Gereed</translation>
+        <translation type="vanished">Gereed</translation>
     </message>
     <message>
         <source>Configure</source>
-        <translation>Instellen</translation>
+        <translation type="vanished">Instellen</translation>
     </message>
     <message>
         <source>Dashboard</source>

@@ -2397,6 +2397,18 @@ Please try again.</source>
         <source>Are you sure you want to shut down your %1 sytem now?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reset to factory settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The factory reset restores all software settings to their factory defaults, thereby deleting all device settings, commissioning settings and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I have read the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GenericThingPage</name>
@@ -3995,11 +4007,11 @@ Please try again.</source>
     </message>
     <message>
         <source>App settings</source>
-        <translation>앱 설정</translation>
+        <translation type="vanished">앱 설정</translation>
     </message>
     <message>
         <source>System settings</source>
-        <translation>시스템 설정</translation>
+        <translation type="vanished">시스템 설정</translation>
     </message>
     <message>
         <source>New connection</source>
@@ -4016,6 +4028,10 @@ Please try again.</source>
     <message>
         <source>Do you want to log out from %1 and remove it from your connections?</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">설정</translation>
     </message>
 </context>
 <context>
@@ -4063,14 +4079,6 @@ Please try again.</source>
     <message>
         <source>Media</source>
         <translation>미디어</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configure</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dashboard</source>
