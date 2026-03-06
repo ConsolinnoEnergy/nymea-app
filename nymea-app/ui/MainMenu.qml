@@ -26,16 +26,6 @@ Drawer {
     background: Item {
         Rectangle {
             anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: root.leftPadding
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: Qt.tint(Style.backgroundColor, Qt.rgba(Style.foregroundColor.r, Style.foregroundColor.g, Style.foregroundColor.b, 0.05)) }
-                GradientStop { position: 0.3; color: Qt.tint(Style.backgroundColor, Qt.rgba(Style.foregroundColor.r, Style.foregroundColor.g, Style.foregroundColor.b, 0.03)) }
-            }
-        }
-        Rectangle {
-            anchors.left: parent.left
             anchors.leftMargin: root.leftPadding
             anchors.top: parent.top
             anchors.bottom: parent.bottom
@@ -65,7 +55,7 @@ Drawer {
             id: upperPart
             Layout.fillWidth: true
             Layout.preferredHeight: topSectionLayout.implicitHeight
-            color: Qt.tint(Style.backgroundColor, Qt.rgba(Style.foregroundColor.r, Style.foregroundColor.g, Style.foregroundColor.b, 0.05))
+            color: Style.colors.menu_Header_Footer_Background
 
             ColumnLayout {
                 id: topSectionLayout
@@ -131,7 +121,9 @@ Drawer {
                                 height: Style.smallIconSize
                                 width: height
                                 radius: height / 2
-                                color: Style.accentColor
+                                color: Style.colors.system_Success_Status_light
+                                border.width: 1
+                                border.color: Style.colors.system_Success_Status_light_border
                                 Layout.alignment: Qt.AlignVCenter
                                 visible: index === configuredHostsModel.currentIndex && !topSectionLayout.configureConnections
                             }
