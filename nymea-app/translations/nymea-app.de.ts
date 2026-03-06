@@ -4065,11 +4065,11 @@ Bitte versuche es erneut.</translation>
     </message>
     <message>
         <source>App settings</source>
-        <translation>App Einstellungen</translation>
+        <translation type="vanished">App Einstellungen</translation>
     </message>
     <message>
         <source>System settings</source>
-        <translation>Systemeinstellungen</translation>
+        <translation type="vanished">Systemeinstellungen</translation>
     </message>
     <message>
         <source>New connection</source>
@@ -4086,6 +4086,10 @@ Bitte versuche es erneut.</translation>
     <message>
         <source>Do you want to log out from %1 and remove it from your connections?</source>
         <translation>Möchtest Du dich von %1 abmelden und die Verbindung entfernen?</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
     </message>
 </context>
 <context>
@@ -4136,11 +4140,11 @@ Bitte versuche es erneut.</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation>Erledigt</translation>
+        <translation type="vanished">Erledigt</translation>
     </message>
     <message>
         <source>Configure</source>
-        <translation>Einrichten</translation>
+        <translation type="vanished">Einrichten</translation>
     </message>
     <message>
         <source>Dashboard</source>
@@ -5514,7 +5518,7 @@ Möchtest Du fortfahren?</translation>
     <name>ParamDelegate</name>
     <message>
         <source>Type to search</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Suchen eingeben</translation>
     </message>
 </context>
 <context>
@@ -7562,11 +7566,11 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     </message>
     <message>
         <source>User login via authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzeranmeldung über Authentifizierung</translation>
     </message>
     <message>
         <source>Authenticated user</source>
-        <translation type="unfinished"></translation>
+        <translation>Authentifizierter Benutzer</translation>
     </message>
 </context>
 <context>
