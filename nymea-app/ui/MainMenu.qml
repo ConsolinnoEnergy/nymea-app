@@ -309,6 +309,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Configure things")
                     iconName: "qrc:/icons/things.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
                              && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureThings)
                              && root.currentEngine.jsonRpcClient.connected && settings.showHiddenOptions
@@ -322,6 +323,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Magic")
                     iconName: "qrc:/icons/magic.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
                                  && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
@@ -335,6 +337,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Configure main view")
                     iconName: "qrc:/icons/configure.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected &&
                              !Configuration.hasOwnProperty("mainViewsFilter") && settings.showHiddenOptions
@@ -347,6 +350,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Settings")
                     iconName: "qrc:/icons/tune.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected
                     onClicked: {
@@ -365,6 +369,7 @@ Drawer {
                         Layout.fillWidth: true
                         text: entry.text
                         iconName: entry.iconName
+                        iconColor: Style.colors.brand_Basic_Icon_accent
                         visible: entry.requiresEngine === true ? root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected : true
                         progressive: false
                         onClicked: {
@@ -390,6 +395,7 @@ Drawer {
                         Layout.fillWidth: true
                         text: entry.text
                         iconName: entry.iconName
+                        iconColor: Style.colors.brand_Basic_Icon_accent
                         visible: entry.requiresEngine === true ? root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected : true
                         progressive: false
                         onClicked: {
