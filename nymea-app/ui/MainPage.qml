@@ -271,7 +271,15 @@ Page {
                 }
             }
 
-            swipeView.currentIndex = mainViewSettings.currentIndex
+            let startViewIndex = 0;
+            for (let i = 0; i < mainMenuModel.count; i++) {
+                let item = mainMenuModel.get(i);
+                if (mainViewSettings.filterList.indexOf(item.name) === -1) { continue; }
+                if (item.name === "consolinnoDashboard") { break; }
+                ++startViewIndex;
+            }
+
+            swipeView.currentIndex = startViewIndex;
             mainViewSettings.currentIndex = Qt.binding(function() { return swipeView.currentIndex; })
         }
     }
