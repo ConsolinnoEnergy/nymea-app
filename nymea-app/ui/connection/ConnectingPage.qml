@@ -43,7 +43,7 @@ Page {
 
     ProgressButton {
         anchors { top: parent.top; left: parent.left; margins: Style.margins }
-        imageSource: "qrc:/icons/navigation-menu.svg"
+        imageSource: "qrc:/icons/menu.svg"
         longpressEnabled: false
         onClicked: mainMenu.open()
     }
