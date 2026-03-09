@@ -383,6 +383,24 @@ SettingsPageBase {
                     id: confirmCheckBox
                     Layout.fillWidth: true
                     text: qsTr("I have read the message.")
+
+                    contentItem: Item {
+                        implicitWidth: confirmCheckBoxLabel.implicitWidth + confirmCheckBox.indicator.width + confirmCheckBox.spacing
+                        implicitHeight: confirmCheckBoxLabel.implicitHeight
+
+                        Label {
+                            id: confirmCheckBoxLabel
+                            anchors {
+                                left: parent.left
+                                leftMargin: confirmCheckBox.indicator.width + confirmCheckBox.spacing
+                                right: parent.right
+                                verticalCenter: parent.verticalCenter
+                            }
+                            text: confirmCheckBox.text
+                            font: confirmCheckBox.font
+                            wrapMode: Text.WordWrap
+                        }
+                    }
                 }
             }
 
