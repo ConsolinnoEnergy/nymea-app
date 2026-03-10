@@ -189,11 +189,17 @@ int main(int argc, char *argv[])
     styleSelector->setExtraSelectors({styleController.currentStyle()});
 
     foreach (const QFileInfo &fi, QDir(":/ui/fonts/").entryInfoList()) {
-        QFontDatabase::addApplicationFont(fi.absoluteFilePath());
+        const auto ret = QFontDatabase::addApplicationFont(fi.absoluteFilePath());
+        if (ret == -1) {
+            qCWarning(dcApplication()) << "Unable to load font:" << fi.absoluteFilePath();
+        }
     }
     foreach (const QFileInfo &fi, QDir(":/styles/" + styleController.currentStyle() + "/fonts/").entryInfoList()) {
         qCDebug(dcApplication()) << "Adding style font:" << fi.absoluteFilePath();
-        QFontDatabase::addApplicationFont(fi.absoluteFilePath());
+        const auto ret = QFontDatabase::addApplicationFont(fi.absoluteFilePath());
+        if (ret == -1) {
+            qCWarning(dcApplication()) << "Unable to load font:" << fi.absoluteFilePath();
+        }
     }
 
     qmlRegisterSingletonType(QUrl("qrc:///styles/" + styleController.currentStyle() + "/Style.qml"), "Nymea", 1, 0, "Style" );
