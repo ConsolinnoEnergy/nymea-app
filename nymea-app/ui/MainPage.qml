@@ -375,7 +375,7 @@ Page {
             right: parent.right;
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-        radius: 32
+        radius: 40
         transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
         visible: d.blurEnabled
@@ -409,7 +409,7 @@ Page {
             right: parent.right;
         }
         height: contentContainer.footerSize
-        radius: 32
+        radius: 40
         transparentBorder: false
         source: d.blurEnabled ? footerBlurSource : null
         visible: d.blurEnabled && footer.shown
