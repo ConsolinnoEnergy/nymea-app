@@ -146,6 +146,17 @@ Page {
                 }
             }
         }
+
+        Rectangle {
+            anchors {
+                right: parent.right
+                left: parent.left
+                top: parent.top
+                topMargin: contentContainer.headerSize - 1
+            }
+            height: 1
+            color: Style.colors.menu_Header_Footer_Border
+        }
     }
 
     Connections {
@@ -375,7 +386,7 @@ Page {
             right: parent.right;
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-        radius: 32
+        radius: 40
         transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
         visible: d.blurEnabled
@@ -409,7 +420,7 @@ Page {
             right: parent.right;
         }
         height: contentContainer.footerSize
-        radius: 32
+        radius: 40
         transparentBorder: false
         source: d.blurEnabled ? footerBlurSource : null
         visible: d.blurEnabled && footer.shown
@@ -427,6 +438,16 @@ Page {
         height:  contentContainer.footerSize
         Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
         color: Style.colors.menu_Header_Footer_Background
+
+        Rectangle {
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+            }
+            height: 1
+            color: Style.colors.menu_Header_Footer_Border
+        }
 
         RowLayout {
             id: tabsLayout
