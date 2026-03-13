@@ -43,7 +43,7 @@ Item {
 
     property bool isCurrentItem: false
 
-    property int topMargin: 64 // #TODO use value from new style
+    property int topMargin: 64
     property int bottomMargin: 64
     property int contentY: 0 // Relative to topMargin
 

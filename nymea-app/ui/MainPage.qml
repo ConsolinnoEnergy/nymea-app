@@ -84,7 +84,7 @@ Page {
             anchors {
                 left: parent.left
                 top: parent.top
-                topMargin: 8 // #TODO use value from new style?
+                topMargin: Style.smallMargins
             }
 
             onClicked: {
@@ -102,7 +102,7 @@ Page {
                 top: parent.top;
                 topMargin: (contentContainer.headerSize - height) / 2
                 right: parent.right
-                rightMargin: 16 // #TODO use value from new style
+                rightMargin: Style.margins
             }
             fillMode: Image.PreserveAspectFit
             height: 28
