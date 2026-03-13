@@ -60,14 +60,13 @@ ApplicationWindow {
     font.capitalization: Font.MixedCase
     font.family: Style.fontFamily
 
-    property int margins: 16
-    property int bigMargins: 20
+    property int margins: Style.margins
 
-    property int extraSmallFont: 10
-    property int smallFont: 13
-    property int mediumFont: 16
-    property int largeFont: 20
-    property int hugeFont: 40
+    // #TODO can we replace these font sizes with whole fonts defined in Style(Base).qml?
+    property int extraSmallFont: Style.extraSmallFont.pixelSize
+    property int smallFont: Style.smallFont.pixelSize
+    property int mediumFont: Style.font.pixelSize
+    property int largeFont: Style.bigFont.pixelSize
 
     property int delegateHeight: 60
 

@@ -19,12 +19,17 @@ Item {
 
     property color tooltipBackgroundColor: tileOverlayColor
 
-    property int cornerRadius: 10
-    property int smallCornerRadius: 6
+    readonly property int smallCornerRadius: 4
+    readonly property int cornerRadius: 8
+    readonly property int largeCornerRadius: 24
+    readonly property int extraLargeCornerRadius: 48
 
-    readonly property int extraSmallMargins: 4
+    readonly property int extraExtraSmallMargins: 2
+    readonly property int extraSmallMargins: 6
     readonly property int smallMargins: 8
+    readonly property int mediumMargins: 12
     readonly property int margins: 16
+    readonly property int largeMargins: 20
     readonly property int bigMargins: 32
     readonly property int hugeMargins: 64
 
