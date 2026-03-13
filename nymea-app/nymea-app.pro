@@ -230,7 +230,7 @@ win32 {
     equals(OVERLAY_PATH, "") {
         win32:RCC_ICONS += ../packaging/windows/packages/io.nymea.nymeaapp/meta/logo.ico
     } else {
-        win32:RCC_ICONS += $${OVERLAY_PATH}/packaging/windows/packages/io.guh.$${BR}/meta/logo.ico
+        win32:RCC_ICONS += $${OVERLAY_PATH}/packaging/windows/packages/$${PACKAGE_URN}/meta/logo.ico
     }
 }
 
