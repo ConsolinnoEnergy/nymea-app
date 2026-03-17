@@ -131,13 +131,6 @@ Item {
                     readonly property Engine engine: configuredHost.engine
                     readonly property Engine _engine: configuredHost.engine // In case a child cannot use "engine"
 
-                    HemsManager {
-                        id: hemsManagerInternal
-                        engine: _engine
-                    }
-
-                    readonly property HemsManager hemsManager: hemsManagerInternal
-
                     Binding {
                         target: nymeaDiscovery
                         property: "discovering"
