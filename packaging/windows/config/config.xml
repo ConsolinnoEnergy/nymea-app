@@ -6,5 +6,4 @@
     <Publisher>nymea GmbH</Publisher>
     <StartMenuDir>nymea</StartMenuDir>
     <TargetDir>@HomeDir@/AppData/Local/nymea-app</TargetDir>
-    <AllowNonAdminTargetDirectory>true</AllowNonAdminTargetDirectory>
 </Installer>
