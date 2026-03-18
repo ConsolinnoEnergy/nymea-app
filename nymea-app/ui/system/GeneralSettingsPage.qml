@@ -38,8 +38,6 @@ import "../components"
 SettingsPageBase {
     id: root
 
-    property HemsManager hemsManager
-
     title: qsTr("General settings")
     busy: d.pendingCommand !== -1
 
