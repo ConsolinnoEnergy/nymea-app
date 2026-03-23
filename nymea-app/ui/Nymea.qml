@@ -55,26 +55,13 @@ ApplicationWindow {
     font.capitalization: Font.MixedCase
     font.family: Style.fontFamily
 
-    Binding {
-        target: PlatformHelper
-        property: "topPanelColor"
-        value: app.color
-    }
+    property int margins: Style.margins
 
-    Binding {
-        target: PlatformHelper
-        property: "bottomPanelColor"
-        value: app.color
-    }
-
-    property int margins: 16
-    property int bigMargins: 20
-
-    property int extraSmallFont: 10
-    property int smallFont: 13
-    property int mediumFont: 16
-    property int largeFont: 20
-    property int hugeFont: 40
+    // #TODO can we replace these font sizes with whole fonts defined in Style(Base).qml?
+    property int extraSmallFont: Style.extraSmallFont.pixelSize
+    property int smallFont: Style.smallFont.pixelSize
+    property int mediumFont: Style.font.pixelSize
+    property int largeFont: Style.bigFont.pixelSize
 
     property int delegateHeight: 60
 
@@ -286,14 +273,14 @@ ApplicationWindow {
 //        print("finding icon for interface:", name)
         switch (name) {
         case "energystorage":
-            return Qt.resolvedUrl("/icons/battery/battery-060.svg") // #TODO use battery icons from new design
+            return Qt.resolvedUrl("/icons/battery/battery-060.svg")
+        case "heatingrod":
         case "smartheatingrod":
             return Qt.resolvedUrl("/icons/water_heater.svg")
         case "pvsurplusheatpump":
-            return Qt.resolvedUrl("/icons/heat_pump.svg")
         case "heatpump":
-            return Qt.resolvedUrl("/icons/heat_pump.svg")
         case "smartgridheatpump":
+        case "simpleheatpump":
             return Qt.resolvedUrl("/icons/heat_pump.svg")
         case "gridsupport":
             return Qt.resolvedUrl("/icons/select-none.svg")
@@ -394,7 +381,7 @@ ApplicationWindow {
         case "extendedawning":
             return Qt.resolvedUrl("qrc:/icons/awning/awning-100.svg")
         case "battery":
-            return Qt.resolvedUrl("qrc:/icons/battery/battery-050.svg")  // #TODO use battery icons from new design
+            return Qt.resolvedUrl("qrc:/icons/battery/battery-060.svg")
         case "uncategorized":
             return Qt.resolvedUrl("qrc:/icons/select-none.svg")
         case "simpleclosable":

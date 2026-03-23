@@ -2366,6 +2366,18 @@ Please try again.</source>
         <source>Are you sure you want to shut down your %1 sytem now?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reset to factory settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The factory reset restores all software settings to their factory defaults, thereby deleting all device settings, commissioning settings and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I have read the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GenericThingPage</name>
@@ -4073,11 +4085,11 @@ Please try again.</source>
     </message>
     <message>
         <source>App settings</source>
-        <translation>Impostazioni app</translation>
+        <translation type="vanished">Impostazioni app</translation>
     </message>
     <message>
         <source>System settings</source>
-        <translation>Impostazioni di sistema</translation>
+        <translation type="vanished">Impostazioni di sistema</translation>
     </message>
     <message>
         <source>New connection</source>
@@ -4093,6 +4105,10 @@ Please try again.</source>
     </message>
     <message>
         <source>Do you want to log out from %1 and remove it from your connections?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4140,14 +4156,6 @@ Please try again.</source>
     </message>
     <message>
         <source>Media</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

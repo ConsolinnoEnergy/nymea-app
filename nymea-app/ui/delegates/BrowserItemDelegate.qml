@@ -40,7 +40,7 @@ NymeaSwipeDelegate {
     iconName: "qrc:/icons/browser/" + (model.mediaIcon && model.mediaIcon !== "MediaBrowserIconNone" ? model.mediaIcon : model.icon) + ".svg"
     thumbnail: model.thumbnail
     enabled: !model.disabled
-    secondaryIconName: model.actionTypeIds.length > 0 ? "qrc:/icons/navigation-menu.svg" : ""
+    secondaryIconName: model.actionTypeIds.length > 0 ? "qrc:/icons/menu.svg" : ""
     secondaryIconClickable: true
 
     property Thing thing: null

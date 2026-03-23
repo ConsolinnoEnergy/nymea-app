@@ -202,8 +202,18 @@ QString AppLogController::exportLogs()
 
 void AppLogController::logMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &message)
 {
-    s_oldLogMessageHandler(type, context, message);
-    QMetaObject::invokeMethod(instance(), "append", Q_ARG(QString, context.category), Q_ARG(QString, message), Q_ARG(AppLogController::LogLevel, qtMsgTypeToLogLevel(type)));
+    LogLevel level = qtMsgTypeToLogLevel(type);
+    QString category = context.category;
+
+    // Only forward to stderr if the category's configured level allows it.
+    // This ensures the terminal output respects the same level settings as the in-app log.
+    AppLogController *ctrl = instance();
+    LogLevel configuredLevel = ctrl->m_logLevels.value(category, LogLevelWarning);
+    if (configuredLevel >= level) {
+        s_oldLogMessageHandler(type, context, message);
+    }
+
+    QMetaObject::invokeMethod(ctrl, "append", Q_ARG(QString, category), Q_ARG(QString, message), Q_ARG(AppLogController::LogLevel, level));
 }
 
 void AppLogController::append(const QString &category, const QString &message, LogLevel level)

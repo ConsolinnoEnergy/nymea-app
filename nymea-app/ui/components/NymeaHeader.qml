@@ -60,7 +60,7 @@ Item {
         HeaderButton {
             id: menuButton
             objectName: "headerMenuButton"
-            imageSource: "qrc:/icons/navigation-menu.svg"
+            imageSource: "qrc:/icons/menu.svg"
             visible: false
             onClicked: root.menuPressed();
         }

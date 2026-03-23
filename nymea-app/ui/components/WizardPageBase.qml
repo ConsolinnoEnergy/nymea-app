@@ -57,7 +57,7 @@ Page {
         RowLayout {
             Layout.margins: Style.margins
             ProgressButton {
-                imageSource: "qrc:/icons/navigation-menu.svg"
+                imageSource: "qrc:/icons/menu.svg"
                 longpressEnabled: false
                 onClicked: mainMenu.open()
             }

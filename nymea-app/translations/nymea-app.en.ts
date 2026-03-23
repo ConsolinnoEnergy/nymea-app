@@ -2375,7 +2375,7 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>I have read the message</source>
+        <source>I have read the message.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4084,14 +4084,6 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>App settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>System settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4105,6 +4097,10 @@ Please try again.</source>
     </message>
     <message>
         <source>Do you want to log out from %1 and remove it from your connections?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4152,14 +4148,6 @@ Please try again.</source>
     </message>
     <message>
         <source>Media</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

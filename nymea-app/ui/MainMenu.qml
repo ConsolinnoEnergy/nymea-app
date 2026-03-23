@@ -51,16 +51,6 @@ Drawer {
     background: Item {
         Rectangle {
             anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: root.leftPadding
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: Qt.tint(Style.backgroundColor, Qt.rgba(Style.foregroundColor.r, Style.foregroundColor.g, Style.foregroundColor.b, 0.05)) }
-                GradientStop { position: 0.3; color: Qt.tint(Style.backgroundColor, Qt.rgba(Style.foregroundColor.r, Style.foregroundColor.g, Style.foregroundColor.b, 0.03)) }
-            }
-        }
-        Rectangle {
-            anchors.left: parent.left
             anchors.leftMargin: root.leftPadding
             anchors.top: parent.top
             anchors.bottom: parent.bottom
@@ -92,7 +82,7 @@ Drawer {
             id: upperPart
             Layout.fillWidth: true
             Layout.preferredHeight: topSectionLayout.implicitHeight
-            color: Qt.tint(Style.backgroundColor, Qt.rgba(Style.foregroundColor.r, Style.foregroundColor.g, Style.foregroundColor.b, 0.05))
+            color: Style.colors.menu_Header_Footer_Background
 
             ColumnLayout {
                 id: topSectionLayout
@@ -158,7 +148,9 @@ Drawer {
                                 height: Style.smallIconSize
                                 width: height
                                 radius: height / 2
-                                color: Style.accentColor
+                                color: Style.colors.system_Success_Status_light
+                                border.width: 1
+                                border.color: Style.colors.system_Success_Status_light_border
                                 Layout.alignment: Qt.AlignVCenter
                                 visible: index === configuredHostsModel.currentIndex && !topSectionLayout.configureConnections
                             }
@@ -344,6 +336,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Configure things")
                     iconName: "qrc:/icons/things.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
                              && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureThings)
                              && root.currentEngine.jsonRpcClient.connected && settings.showHiddenOptions
@@ -357,6 +350,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Magic")
                     iconName: "qrc:/icons/magic.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost
                                  && NymeaUtils.hasPermissionScope(root.currentEngine.jsonRpcClient.permissions, UserInfo.PermissionScopeConfigureRules)
@@ -370,6 +364,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Configure main view")
                     iconName: "qrc:/icons/configure.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected &&
                              !Configuration.hasOwnProperty("mainViewsFilter") && settings.showHiddenOptions
@@ -382,6 +377,7 @@ Drawer {
                     Layout.fillWidth: true
                     text: qsTr("Settings")
                     iconName: "qrc:/icons/tune.svg"
+                    iconColor: Style.colors.brand_Basic_Icon_accent
                     progressive: false
                     visible: root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected
                     onClicked: {
@@ -400,6 +396,7 @@ Drawer {
                         Layout.fillWidth: true
                         text: entry.text
                         iconName: entry.iconName
+                        iconColor: Style.colors.brand_Basic_Icon_accent
                         visible: entry.requiresEngine === true ? root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected : true
                         progressive: false
                         onClicked: {
@@ -425,6 +422,7 @@ Drawer {
                         Layout.fillWidth: true
                         text: entry.text
                         iconName: entry.iconName
+                        iconColor: Style.colors.brand_Basic_Icon_accent
                         visible: entry.requiresEngine === true ? root.currentEngine && root.currentEngine.jsonRpcClient.currentHost && root.currentEngine.jsonRpcClient.connected : true
                         progressive: false
                         onClicked: {

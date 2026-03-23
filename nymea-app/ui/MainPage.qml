@@ -75,11 +75,11 @@ Page {
         height: 0
         HeaderButton {
             id: menuButton
-            imageSource: "qrc:/icons/navigation-menu.svg"
+            imageSource: "qrc:/icons/menu.svg"
             anchors {
                 left: parent.left
                 top: parent.top
-                topMargin: 8 // #TODO use value from new style?
+                topMargin: Style.smallMargins
             }
 
             onClicked: {
@@ -88,6 +88,21 @@ Page {
                 }
                 app.mainMenu.open()
             }
+        }
+
+        Image {
+            id: mainHeaderLogo
+            source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
+            anchors {
+                top: parent.top;
+                topMargin: (contentContainer.headerSize - height) / 2
+                right: parent.right
+                rightMargin: Style.margins
+            }
+            fillMode: Image.PreserveAspectFit
+            height: 28
+            sourceSize.height: height
+            antialiasing: true
         }
 
         Row {
@@ -125,6 +140,17 @@ Page {
                     color: swipeView.currentItem.item.headerButtons[index].color
                 }
             }
+        }
+
+        Rectangle {
+            anchors {
+                right: parent.right
+                left: parent.left
+                top: parent.top
+                topMargin: contentContainer.headerSize - 1
+            }
+            height: 1
+            color: Style.colors.menu_Header_Footer_Border
         }
     }
 
@@ -251,7 +277,15 @@ Page {
                 }
             }
 
-            swipeView.currentIndex = mainViewSettings.currentIndex
+            let startViewIndex = 0;
+            for (let i = 0; i < mainMenuModel.count; i++) {
+                let item = mainMenuModel.get(i);
+                if (mainViewSettings.filterList.indexOf(item.name) === -1) { continue; }
+                if (item.name === "consolinnoDashboard") { break; }
+                ++startViewIndex;
+            }
+
+            swipeView.currentIndex = startViewIndex;
             mainViewSettings.currentIndex = Qt.binding(function() { return swipeView.currentIndex; })
         }
     }
@@ -309,22 +343,6 @@ Page {
                         property: "bottomMargin"
                         value: footer.visible ? contentContainer.footerSize : 0
                     }
-
-                    Image {
-                        source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
-                        anchors {
-                            top: parent.top;
-                            topMargin: -contentContainer.scrollOffset + (contentContainer.headerSize - height) / 2
-                            right: parent.right
-                            rightMargin: 16 // #TODO use value from new style
-//                            horizontalCenter: parent.horizontalCenter;
-                        }
-                        fillMode: Image.PreserveAspectFit
-                        height: 28
-                        sourceSize.height: height
-                        antialiasing: true
-                        z: 2
-                    }
                 }
             }
         }
@@ -363,7 +381,7 @@ Page {
             right: parent.right;
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
-        radius: 32
+        radius: 40
         transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
         visible: d.blurEnabled
@@ -397,7 +415,7 @@ Page {
             right: parent.right;
         }
         height: contentContainer.footerSize
-        radius: 32
+        radius: 40
         transparentBorder: false
         source: d.blurEnabled ? footerBlurSource : null
         visible: d.blurEnabled && footer.shown
@@ -415,6 +433,16 @@ Page {
         height:  contentContainer.footerSize
         Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
         color: Style.colors.menu_Header_Footer_Background
+
+        Rectangle {
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+            }
+            height: 1
+            color: Style.colors.menu_Header_Footer_Border
+        }
 
         RowLayout {
             id: tabsLayout

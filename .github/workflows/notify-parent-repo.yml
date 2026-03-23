@@ -1,0 +1,17 @@
+name: Notify Parent Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify-parent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch update to consolinno-hems-app-builder
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.SUBMODULE_SYNC_TOKEN }}
+          repository: ConsolinnoEnergy/consolinno-hems-app-builder
+          event-type: submodule-update

@@ -2374,6 +2374,18 @@ Prosím zkuste to znovu.</translation>
         <source>Are you sure you want to shut down your %1 sytem now?</source>
         <translation>Opravdu chcete nyní vypnout systém %1?</translation>
     </message>
+    <message>
+        <source>Reset to factory settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The factory reset restores all software settings to their factory defaults, thereby deleting all device settings, commissioning settings and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I have read the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GenericThingPage</name>
@@ -4098,11 +4110,11 @@ Prosím zkuste to znovu.</translation>
     </message>
     <message>
         <source>App settings</source>
-        <translation>Nastavení aplikací</translation>
+        <translation type="vanished">Nastavení aplikací</translation>
     </message>
     <message>
         <source>System settings</source>
-        <translation>Nastavení systému</translation>
+        <translation type="vanished">Nastavení systému</translation>
     </message>
     <message>
         <source>New connection</source>
@@ -4119,6 +4131,10 @@ Prosím zkuste to znovu.</translation>
     <message>
         <source>Do you want to log out from %1 and remove it from your connections?</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Nastavení</translation>
     </message>
 </context>
 <context>
@@ -4169,11 +4185,11 @@ Prosím zkuste to znovu.</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation>Hotovo</translation>
+        <translation type="vanished">Hotovo</translation>
     </message>
     <message>
         <source>Configure</source>
-        <translation>Nastavit</translation>
+        <translation type="vanished">Nastavit</translation>
     </message>
     <message>
         <source>Dashboard</source>

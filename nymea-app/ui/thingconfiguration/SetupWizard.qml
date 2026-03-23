@@ -42,6 +42,11 @@ Page {
     signal aborted();
     signal done();
 
+    // ParamType UUIDs whose delegate should be hidden in the setup wizard
+    readonly property var hiddenParamTypeIds: [
+        "418b9024-bf2c-467d-b1fe-82382bd39dc1"  // Zähler bei SGReady & Zähler (https://consolinno.atlassian.net/browse/ESUI-820)
+    ]
+
     QtObject {
         id: d
         property var vendorId: null
@@ -388,6 +393,7 @@ Page {
                     //                            Layout.preferredHeight: 60
                     Layout.fillWidth: true
                     enabled: !model.readOnly
+                    visible: root.hiddenParamTypeIds.indexOf(paramType.id.toString().replace(/[{}]/g, "")) === -1
                     paramType: root.thingClass.paramTypes.get(index)
                     value: {
                         // Discovery, use params from discovered descriptor

@@ -38,7 +38,7 @@ Page {
             anchors.fill: parent
 
             HeaderButton {
-                imageSource: "/icons/navigation-menu.svg"
+                imageSource: "/icons/menu.svg"
                 onClicked: app.mainMenu.open()
             }
 

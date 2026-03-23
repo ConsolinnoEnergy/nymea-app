@@ -59,7 +59,7 @@ Page {
         }
 
         HeaderButton {
-            imageSource: "qrc:/icons/navigation-menu.svg"
+            imageSource: "qrc:/icons/menu.svg"
             onClicked: thingMenu.open();
         }
     }
