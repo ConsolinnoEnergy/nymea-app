@@ -92,7 +92,7 @@ SettingsPageBase {
 
     Connections {
         target: hemsManager
-        onFactoryResetReply: {
+        onFactoryResetReply: function(commandId, error) {
             if (commandId == d.pendingCommand) {
                 d.pendingCommand = -1
 

@@ -75,7 +75,7 @@ SettingsPageBase {
 
     Connections {
         target: root.zigbeeManager
-        onRemoveNodeReply: {
+        onRemoveNodeReply: function(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 var props = {};

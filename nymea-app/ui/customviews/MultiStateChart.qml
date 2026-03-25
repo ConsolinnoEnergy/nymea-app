@@ -205,7 +205,7 @@ Item {
 
             Connections {
                 target: selectionTabs
-                onTabSelected: {
+                onTabSelected: function(index) {
                     logsModel.clear()
                     logsModel.fetchLogs()
                 }
@@ -360,7 +360,7 @@ Item {
                     range: 43200 // 30 Days: 30 * 24 * 60
                 }
             }
-            onTabSelected: {
+            onTabSelected: function(index) {
                 d.now = new Date()
             }
         }

@@ -128,7 +128,7 @@ Page {
                     range: 43200 // 30 Days: 30 * 24 * 60
                 }
             }
-            onTabSelected: {
+            onTabSelected: function(index) {
                 print("*** tab selected")
                 d.now = new Date()
                 d.refreshAll();

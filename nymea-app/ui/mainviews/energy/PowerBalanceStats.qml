@@ -177,7 +177,7 @@ StatsBase {
                 ListElement { modelData: qsTr("Years"); config: "years" }
 //                ListElement { modelData: qsTr("Minutes"); config: "minutes" }
             }
-            onTabSelected: {
+            onTabSelected: function(index) {
                 d.startOffset = 0
                 powerBalanceLogs.fetchLogs()
             }
@@ -206,7 +206,7 @@ StatsBase {
                 }
             }
 
-            onEntriesAdded: {
+            onEntriesAdded: function(index, entries) {
                 if (fetchingData) {
                     return
                 }
