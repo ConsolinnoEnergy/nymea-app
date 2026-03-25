@@ -161,7 +161,7 @@ Page {
 
     Connections {
         target: engine.thingManager
-        onPairThingReply: {
+        onPairThingReply: function(commandId, thingError, pairingTransactionId, setupMethod, displayMessage, oAuthUrl) {
             busyOverlay.shown = false
             if (thingError !== Thing.ThingErrorNoError) {
                 busyOverlay.shown = false;
@@ -186,15 +186,15 @@ Page {
                 print("Setup method reply not handled:", setupMethod);
             }
         }
-        onConfirmPairingReply: {
+        onConfirmPairingReply: function(commandId, thingError, thingId, displayMessage){
             busyOverlay.shown = false
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: thingId, message: displayMessage})
         }
-        onAddThingReply: function(thingError){
+        onAddThingReply: function(commandId, thingError, thingId, displayMessage) {
             busyOverlay.shown = false;
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: thingId, message: displayMessage})
         }
-        onReconfigureThingReply: {
+        onReconfigureThingReply: function(commandId, thingError, displayMessage){
             busyOverlay.shown = false;
             internalPageStack.push(resultsPage, {thingError: thingError, thingId: root.thing.id, message: displayMessage})
         }
