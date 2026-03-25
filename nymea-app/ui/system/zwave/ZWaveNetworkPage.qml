@@ -76,19 +76,19 @@ SettingsPageBase {
 
     Connections {
         target: root.zwaveManager
-        onAddNodeReply: {
+        onAddNodeReply: function(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 processStatusCode(error)
             }
         }
-        onRemoveNodeReply: {
+        onRemoveNodeReply: function(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 processStatusCode(error)
             }
         }
-        onRemoveFailedNodeReply: {
+        onRemoveFailedNodeReply: function(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 processStatusCode(error)

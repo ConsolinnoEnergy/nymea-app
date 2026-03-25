@@ -514,7 +514,7 @@ ThingPageBase {
             }
             Connections {
                 target: root.thing
-                onEventTriggered: {
+                onEventTriggered: function(eventTypeId, params) {
                     if (eventTypeId === eventComponentItem.eventType.id) {
                         flashlightAnimation.start();
                     }

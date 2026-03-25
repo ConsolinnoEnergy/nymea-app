@@ -143,14 +143,14 @@ Page {
 
     Connections {
         target: engine.scriptManager
-        onAddScriptReply: {
+        onAddScriptReply: function(id, status, scriptId, errors) {
             print("Add reply", status)
             deployReply(id, status, errors)
             if (status == ScriptManager.ScriptErrorNoError) {
                 d.scriptId = scriptId;
             }
         }
-        onEditScriptReply: {
+        onEditScriptReply: function(id, status, errors) {
             print("Edit reply", status)
             deployReply(id, status, errors)
         }
@@ -183,13 +183,13 @@ Page {
                 autoSaver.active = true;
             }
         }
-        onRenameScriptReply: {
+        onRenameScriptReply: function(id, status) {
             if (id == d.callId) {
                 d.callId = -1;
             }
         }
 
-        onScriptMessage: {
+        onScriptMessage: function(scriptId, type, message) {
             print("scriptMessage:", scriptId, d.scriptId)
             if (scriptId !== d.scriptId) {
                 return;
@@ -520,7 +520,7 @@ Page {
         model: completion.model
         textArea: scriptEdit
         font: scriptEdit.font
-        onComplete: {
+        onComplete: function(index) {
             completion.complete(index)
         }
     }
