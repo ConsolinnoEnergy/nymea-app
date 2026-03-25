@@ -3,7 +3,7 @@ include(../shared.pri)
 
 TARGET=$${APPLICATION_NAME}
 
-CONFIG += link_pkgconfig
+CONFIG += link_pkgconfig qtquickcompiler
 
 QT += network qml quick quickcontrols2 svg websockets bluetooth charts gui-private nfc
 
