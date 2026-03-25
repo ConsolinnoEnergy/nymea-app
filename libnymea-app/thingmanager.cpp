@@ -1024,7 +1024,7 @@ QVariantMap ThingManager::packParam(Param *param)
 Thing::ThingError ThingManager::errorFromString(const QByteArray &thingErrorString)
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<Thing::ThingError>();
-    return static_cast<Thing::ThingError>(metaEnum.keyToValue(thingErrorString));
+    return static_cast<Thing::ThingError>(metaEnum.keyToValue(thingErrorString.constData()));
 }
 
 ThingClass::SetupMethod ThingManager::stringToSetupMethod(const QString &setupMethodString)
