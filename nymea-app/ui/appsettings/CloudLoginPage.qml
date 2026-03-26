@@ -152,6 +152,7 @@ SettingsPageBase {
             Layout.leftMargin: app.margins; Layout.rightMargin: app.margins; Layout.topMargin: app.margins
             wrapMode: Text.WordWrap
             font.pixelSize: app.smallFont
+            text: qsTr("See our <a href=\"%1\">privacy policy</a> to find out what information is processed.").arg(app.privacyPolicyUrl)
             onLinkActivated: function(link) {
                 Qt.openUrlExternally(link)
             }
