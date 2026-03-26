@@ -246,7 +246,7 @@ Item {
 
             lowerSeries: LineSeries {
                 id: connectedLineSeries
-                onPointAdded: {
+                onPointAdded: function(index) {
                     var newPoint = connectedLineSeries.at(index)
                     //                        print("pointadded", newPoint.x, newPoint.y)
                 }
@@ -271,7 +271,7 @@ Item {
 
             upperSeries: LineSeries {
                 id: lineSeries1
-                onPointAdded: {
+                onPointAdded: function(index) {
                     var newPoint = lineSeries1.at(index)
                     //                        print("pointadded", newPoint.x, newPoint.y)
 

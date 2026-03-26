@@ -58,7 +58,7 @@ SettingsPageBase {
     Connections {
         target: acManager
 
-        onAddZoneReply: {
+        onAddZoneReply: function(commandId, error, zoneId) {
             if (commandId == pendingAddCall) {
                 print("zone added", zoneId)
                 var zone = acManager.zoneInfos.getZoneInfo(zoneId)

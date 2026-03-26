@@ -92,7 +92,7 @@ Item {
     Connections {
         target: powerBalanceLogs
 
-        onEntriesAdded: {
+        onEntriesAdded: function(index, entries) {
 //            print("entries added", index, entries.length)
             for (var i = 0; i < entries.length; i++) {
                 var entry = entries[i]
@@ -158,7 +158,7 @@ Item {
                     range: 43200 // 30 Days: 30 * 24 * 60
                 }
             }
-            onTabSelected: {
+            onTabSelected: function(index) {
                 d.now = new Date()
                 powerBalanceLogs.fetchLogs()
             }

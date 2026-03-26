@@ -106,7 +106,7 @@ SettingsPageBase {
 
     Connections {
         target: engine.thingManager
-        onRemoveThingReply: {
+        onRemoveThingReply: function(commandId, thingError, ruleIds) {
             if (d.pendingCommand != commandId) {
                 return;
             }

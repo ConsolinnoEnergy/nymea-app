@@ -62,7 +62,7 @@ Item {
 
     Connections {
         target: engine.thingManager
-        onExecuteBrowserItemReply: {
+        onExecuteBrowserItemReply: function(commandId, thingError, displayMessage) {
             if (commandId == d.pendingItemExecutionId) {
                 if (thingError === Thing.ThingErrorNoError) {
                     root.itemLaunched();
@@ -115,7 +115,7 @@ Item {
                         }
                     }
 
-                    onContextMenuActionTriggered: {
+                    onContextMenuActionTriggered: function(actionTypeId, params) {
                         engine.thingManager.executeBrowserItemAction(root.thing.id, model.id, actionTypeId, params)
                     }
                 }

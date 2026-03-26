@@ -40,13 +40,13 @@ SettingsPageBase {
 
     Connections {
         target: AWSClient
-        onLoginResult: {
+        onLoginResult: function(error) {
             root.busy = false;
             if (error === AWSClient.LoginErrorNoError) {
                 AWSClient.fetchDevices();
             }
         }
-        onDeleteAccountResult: {
+        onDeleteAccountResult: function(error) {
             root.busy = false;
             if (error !== AWSClient.LoginErrorNoError) {
                 var errorDialog = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"));
@@ -153,7 +153,7 @@ SettingsPageBase {
             wrapMode: Text.WordWrap
             font.pixelSize: app.smallFont
             text: qsTr("See our <a href=\"%1\">privacy policy</a> to find out what information is processed.").arg(app.privacyPolicyUrl)
-            onLinkActivated: {
+            onLinkActivated: function(link) {
                 Qt.openUrlExternally(link)
             }
         }
@@ -199,7 +199,7 @@ SettingsPageBase {
 
         Connections {
             target: AWSClient
-            onLoginResult: {
+            onLoginResult: function(error) {
                 switch (error) {
                 case AWSClient.LoginErrorInvalidUserOrPass:
                     errorLabel.text = qsTr("Failed to log in. Please try again. Do you perhaps have <a href=\"#\">forgotten your password?</a>")
@@ -223,7 +223,7 @@ SettingsPageBase {
             font.pixelSize: app.smallFont
             color: "red"
             visible: false
-            onLinkActivated: {
+            onLinkActivated: function(link) {
                 pageStack.push(resetPasswordComponent, {email: usernameTextField.text})
             }
         }
@@ -256,7 +256,7 @@ SettingsPageBase {
 
             Connections {
                 target: AWSClient
-                onSignupResult: {
+                onSignupResult: function(error) {
                     signupPage.busy = false;
                     var text;
                     switch (error) {
@@ -286,7 +286,7 @@ SettingsPageBase {
                 Layout.rightMargin: app.margins
                 wrapMode: Text.WordWrap
                 text: qsTr("Please enter your email address and pick a password in order to create a new account.");
-                onLinkActivated: {
+                onLinkActivated: function(link) {
                     print("clicked", link)
                     Qt.openUrlExternally(link)
                 }
@@ -297,7 +297,7 @@ SettingsPageBase {
                 wrapMode: Text.WordWrap
                 font.pixelSize: app.smallFont
                 text: qsTr("See our <a href=\"%1\">privacy policy</a> to find out what information is processed. By signing up to %2:cloud you accept those terms and conditions.").arg(app.privacyPolicyUrl).arg(Configuration.systemName)
-                onLinkActivated: {
+                onLinkActivated: function(link) {
                     Qt.openUrlExternally(link)
                 }
             }
@@ -385,7 +385,7 @@ SettingsPageBase {
 
                 Connections {
                     target: AWSClient
-                    onConfirmationResult: {
+                    onConfirmationResult: function(error) {
                         root.busy = false;
                         var text
                         switch (error) {
@@ -423,7 +423,7 @@ SettingsPageBase {
 
             Connections {
                 target: AWSClient
-                onForgotPasswordResult: {
+                onForgotPasswordResult: function(error) {
                     resetPasswordPage.busy = false
                     if (error !== AWSClient.LoginErrorNoError) {
                         var errorDialog = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"));
@@ -476,7 +476,7 @@ SettingsPageBase {
 
             Connections {
                 target: AWSClient
-                onConfirmForgotPasswordResult: {
+                onConfirmForgotPasswordResult: function(error) {
                     confirmResetPasswordPage.busy = false
                     if (error !== AWSClient.LoginErrorNoError) {
                         var errorDialog = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"));

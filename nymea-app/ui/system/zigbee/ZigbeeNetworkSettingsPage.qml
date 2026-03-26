@@ -39,7 +39,7 @@ SettingsPageBase {
 
     Connections {
         target: zigbeeManager
-        onFactoryResetNetworkReply: {
+        onFactoryResetNetworkReply: function(commandId, error) {
             busy = false;
 //            if (error != ZigbeeManager.ZigbeeErrorNoError) {
 //            }

@@ -274,7 +274,7 @@ SettingsPageBase {
 
             Connections {
                 target: root.modbusRtuManager
-                onRemoveModbusRtuMasterReply: {
+                onRemoveModbusRtuMasterReply: function(commandId, error) {
                     if (commandId === d.pendingCommandId) {
                         d.pendingCommandId = -1
                         if (modbusRtuManager.handleModbusError(error)) {

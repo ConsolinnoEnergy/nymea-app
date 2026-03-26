@@ -146,7 +146,7 @@ SettingsPageBase {
 
             Connections {
                 target: root.zigbeeManager
-                onAddNetworkReply: {
+                onAddNetworkReply: function(commandId, error, networkUuid) {
                     if (commandId == d.pendingCommandId) {
                         d.pendingCommandId = -1
                         var props = {};

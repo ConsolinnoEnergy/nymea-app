@@ -103,7 +103,7 @@ ThingPageBase {
 
     Connections {
         target: engine.ruleManager
-        onAddRuleReply: {
+        onAddRuleReply: function(commandId, ruleError, ruleId) {
             if (commandId == d.pendingRuleCreationId) {
                 d.pendingRuleCreationId = -1
                 if (ruleError != RuleManager.RuleErrorNoError) {

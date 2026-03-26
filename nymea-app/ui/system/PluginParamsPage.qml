@@ -50,7 +50,7 @@ SettingsPageBase {
 
     Connections {
         target: engine.thingManager
-        onSavePluginConfigReply: {
+        onSavePluginConfigReply: function(commandId, thingError) {
             if (thingError === Thing.ThingErrorNoError) {
                 pageStack.pop();
             } else {
