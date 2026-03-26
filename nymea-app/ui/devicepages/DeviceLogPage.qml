@@ -108,7 +108,9 @@ Page {
             right: parent.right
         }
 
-        readonly property StateType stateType: root.thing.thingClass.stateTypes.getStateType(root.filterTypeIds[0])
+        readonly property StateType stateType: (root.filterTypeIds && root.filterTypeIds.length > 0)
+                                                ? root.thing.thingClass.stateTypes.getStateType(root.filterTypeIds[0])
+                                                : null
 
         readonly property bool canShowGraph: {
             if (stateType === null) {
