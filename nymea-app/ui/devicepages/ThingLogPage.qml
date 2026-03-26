@@ -97,7 +97,7 @@ Page {
 //                   : []
 //        live: true
 
-        onEntriesAdded: {
+        onEntriesAdded: function(index, entries) {
             console.log("entries added", JSON.stringify(entries))
         }
 

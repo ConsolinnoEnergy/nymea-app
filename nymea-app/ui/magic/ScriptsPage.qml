@@ -49,7 +49,7 @@ Page {
 
     Connections {
         target: engine.scriptManager
-        onRemoveScriptReply: {
+        onRemoveScriptReply: function(id, status) {
             if (id == d.pendingAction) {
                 d.pendingAction = -1;
             }

@@ -100,7 +100,7 @@ Page {
                 }
             }
 
-            onContextMenuActionTriggered: {
+            onContextMenuActionTriggered: function(actionTypeId, params) {
                 root.executeBrowserItemAction(model.id, actionTypeId, params)
             }
         }

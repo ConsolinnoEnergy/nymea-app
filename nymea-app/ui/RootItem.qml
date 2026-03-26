@@ -302,7 +302,7 @@ Item {
                         onCurrentHostChanged: {
                             init();
                         }
-                        onVerifyConnectionCertificate: {
+                        onVerifyConnectionCertificate: function(serverUuid, issuerInfo, pem) {
                             print("Asking user to verify certificate:", serverUuid, issuerInfo, pem)
                             var certDialogComponent = Qt.createComponent(Qt.resolvedUrl("connection/CertificateErrorDialog.qml"));
                             var popup = certDialogComponent.createObject(root);
@@ -337,19 +337,19 @@ Item {
                             init();
                         }
 
-                        onInvalidMinimumVersion: {
+                        onInvalidMinimumVersion: function(actualVersion, minVersion) {
                             var popup = invalidVersionComponent.createObject(app.contentItem);
                             popup.actualVersion = actualVersion;
                             popup.minVersion = minVersion;
                             popup.open()
                         }
-                        onInvalidMaximumVersion: {
+                        onInvalidMaximumVersion: function(actualVersion, maxVersion) {
                             var popup = invalidVersionComponent.createObject(app.contentItem);
                             popup.actualVersion = actualVersion;
                             popup.maxVersion = maxVersion;
                             popup.open()
                         }
-                        onInvalidServerUuid: {
+                        onInvalidServerUuid: function(uuid) {
                             var connection = engine.jsonRpcClient.currentConnection;
                             engine.jsonRpcClient.disconnectFromHost();
                             engine.jsonRpcClient.currentHost.connections.removeConnection(connection);
