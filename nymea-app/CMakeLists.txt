@@ -57,13 +57,17 @@ if(IOS)
         platformintegration/ios/platformhelperios.cpp
         platformintegration/ios/platformpermissionsios.cpp
         platformintegration/ios/platformhelperios.mm
-        platformintegration/ios/pushnotifications.mm
         platformintegration/ios/platformpermissionsios.mm
     )
     list(APPEND NYMEA_APP_HEADERS
         platformintegration/ios/platformhelperios.h
         platformintegration/ios/platformpermissionsios.h
     )
+    if(NYMEA_ENABLE_FIREBASE)
+        list(APPEND NYMEA_APP_SOURCES
+            platformintegration/ios/pushnotifications.mm
+        )
+    endif()
 endif()
 
 set(NYMEA_APP_RESOURCES
