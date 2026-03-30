@@ -46,6 +46,7 @@ find_package(Qt6 REQUIRED COMPONENTS
     Bluetooth
     Charts
     Nfc
+    LinguistTools
 )
 
 find_package(OpenSSL QUIET)

@@ -70,8 +70,39 @@ set(NYMEA_APP_RESOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/ruletemplates.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/images.qrc
-    ${CMAKE_CURRENT_SOURCE_DIR}/translations.qrc
 )
+
+# Compile translations (.ts -> .qm) into the source translations/ directory
+# so that translations.qrc (which references that directory) picks them up.
+file(GLOB NYMEA_TS_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/translations/*.ts")
+set(ALL_TS_FILES ${NYMEA_TS_FILES})
+
+if(NYMEA_OVERLAY_PATH AND EXISTS "${NYMEA_OVERLAY_PATH}/translations")
+    file(GLOB OVERLAY_TS_FILES CONFIGURE_DEPENDS "${NYMEA_OVERLAY_PATH}/translations/*.ts")
+    list(APPEND ALL_TS_FILES ${OVERLAY_TS_FILES})
+endif()
+
+# Run lrelease for each .ts file, output .qm into the nymea-app translations/ directory
+# so that translations.qrc (which references that directory) picks them all up.
+set(NYMEA_TRANSLATIONS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/translations")
+set(ALL_QM_FILES "")
+foreach(_ts_file ${ALL_TS_FILES})
+    get_filename_component(_ts_filename "${_ts_file}" NAME)
+    string(REGEX REPLACE "\\.ts$" ".qm" _qm_filename "${_ts_filename}")
+    set(_qm_file "${NYMEA_TRANSLATIONS_DIR}/${_qm_filename}")
+    add_custom_command(
+        OUTPUT "${_qm_file}"
+        COMMAND Qt6::lrelease "${_ts_file}" -qm "${_qm_file}"
+        DEPENDS "${_ts_file}"
+        COMMENT "Compiling ${_ts_filename}"
+        VERBATIM
+    )
+    list(APPEND ALL_QM_FILES "${_qm_file}")
+endforeach()
+
+add_custom_target(nymea-app-translations ALL DEPENDS ${ALL_QM_FILES})
+
+list(APPEND NYMEA_APP_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/translations.qrc)
 
 if(NYMEA_OVERLAY_PATH)
     # Load overlay configuration (APPLICATION_NAME, ORGANISATION_NAME, etc.)
