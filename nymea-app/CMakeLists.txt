@@ -233,6 +233,7 @@ if(IOS)
         "-framework CoreLocation"
         "-framework CoreBluetooth"
         "-framework CoreNFC"
+        "-framework UserNotifications"
     )
 
     set(_nymea_ios_plist "${CMAKE_CURRENT_BINARY_DIR}/ios/Info.plist")
