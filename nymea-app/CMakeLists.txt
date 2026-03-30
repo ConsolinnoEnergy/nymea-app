@@ -254,6 +254,7 @@ if(IOS)
     endif()
     if(NYMEA_IOS_PROVISIONING_PROFILE)
         set_target_properties(nymea-app PROPERTIES
+            XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Manual"
             XCODE_ATTRIBUTE_PROVISIONING_PROFILE_SPECIFIER "${NYMEA_IOS_PROVISIONING_PROFILE}"
         )
     endif()
