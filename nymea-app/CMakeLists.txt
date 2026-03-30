@@ -241,11 +241,22 @@ if(IOS)
 
     set_target_properties(nymea-app PROPERTIES
         MACOSX_BUNDLE_INFO_PLIST "${_nymea_ios_plist}"
-        MACOSX_BUNDLE_GUI_IDENTIFIER "io.guh.nymeaApp"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "${NYMEA_IOS_BUNDLE_IDENTIFIER}"
         MACOSX_BUNDLE_BUNDLE_VERSION "${APP_REVISION}"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}"
         XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${CMAKE_SOURCE_DIR}/packaging/ios/app.entitlements"
     )
+
+    if(NYMEA_IOS_TEAM_ID)
+        set_target_properties(nymea-app PROPERTIES
+            XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "${NYMEA_IOS_TEAM_ID}"
+        )
+    endif()
+    if(NYMEA_IOS_PROVISIONING_PROFILE)
+        set_target_properties(nymea-app PROPERTIES
+            XCODE_ATTRIBUTE_PROVISIONING_PROFILE_SPECIFIER "${NYMEA_IOS_PROVISIONING_PROFILE}"
+        )
+    endif()
 
     target_link_options(nymea-app PRIVATE "-ObjC")
 

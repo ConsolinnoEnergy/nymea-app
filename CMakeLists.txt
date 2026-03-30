@@ -33,6 +33,9 @@ option(NYMEA_ENABLE_ZEROCONF "Enable ZeroConf support" OFF)
 option(NYMEA_USE_MATERIAL_ICONS "Use the Material icon set instead of Suru" OFF)
 option(NYMEA_ENABLE_FIREBASE "Enable Firebase Cloud Messaging integration" ON)
 set(NYMEA_OVERLAY_PATH "" CACHE PATH "Optional overlay directory for branding")
+set(NYMEA_IOS_BUNDLE_IDENTIFIER "io.guh.nymeaApp" CACHE STRING "iOS bundle identifier")
+set(NYMEA_IOS_TEAM_ID "" CACHE STRING "Apple Development Team ID")
+set(NYMEA_IOS_PROVISIONING_PROFILE "" CACHE STRING "iOS provisioning profile specifier")
 
 find_package(Qt6 REQUIRED COMPONENTS
     Core
