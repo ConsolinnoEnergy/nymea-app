@@ -69,6 +69,14 @@ set(NYMEA_APP_CORE_INCLUDE_DIRS
     ${CMAKE_BINARY_DIR}
 )
 
+# Add all subdirectories as include paths (sources use flat includes like "actionhandler.h")
+file(GLOB_RECURSE _all_headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
+foreach(_header ${_all_headers})
+    get_filename_component(_dir ${_header} DIRECTORY)
+    list(APPEND NYMEA_APP_CORE_INCLUDE_DIRS ${_dir})
+endforeach()
+list(REMOVE_DUPLICATES NYMEA_APP_CORE_INCLUDE_DIRS)
+
 list(APPEND NYMEA_APP_CORE_INCLUDE_DIRS ${REMOTE_PROXYCLIENT_INCLUDE_DIRS})
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/QtZeroConf)

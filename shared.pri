@@ -48,7 +48,7 @@ equals(OVERLAY_PATH, "") {
     PACKAGE_BASE_DIR = $$shell_path($${OVERLAY_PATH}/packaging)
 }
 
-QMAKE_SUBSTITUTES += $${top_srcdir}/config.h.in
+QMAKE_SUBSTITUTES += $${top_srcdir}/config.h.in.qmake
 INCLUDEPATH += $${top_builddir}
 
 # We want -Wall to keep the code clean and tidy, however:
