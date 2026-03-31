@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 
+# CMP0156 (CMake 3.29+): De-duplicate link libraries on the final link line.
+# Critical for iOS static Qt builds where duplicate framework references
+# cause duplicate symbol errors.
+if(POLICY CMP0156)
+    cmake_policy(SET CMP0156 NEW)
+endif()
+
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/version.txt" NYMEA_VERSION_LINES)
 list(LENGTH NYMEA_VERSION_LINES NYMEA_VERSION_COUNT)
 if(NOT NYMEA_VERSION_COUNT GREATER_EQUAL 1)

@@ -19,6 +19,6 @@ target_include_directories(nymea-app-evdash
 )
 
 target_link_libraries(nymea-app-evdash
-    PUBLIC
+    PRIVATE
         nymea-app-core
 )

@@ -19,6 +19,6 @@ target_include_directories(nymea-app-airconditioning
 )
 
 target_link_libraries(nymea-app-airconditioning
-    PUBLIC
+    PRIVATE
         nymea-app-core
 )
