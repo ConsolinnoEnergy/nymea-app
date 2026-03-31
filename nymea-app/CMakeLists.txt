@@ -32,7 +32,7 @@ set(NYMEA_APP_HEADERS
     utils/qhashqml.h
 )
 
-if(UNIX AND NOT APPLE AND NOT ANDROID)
+if(NOT APPLE AND NOT ANDROID)
     list(APPEND NYMEA_APP_SOURCES
         platformintegration/generic/platformhelpergeneric.cpp
     )
