@@ -6,6 +6,12 @@ cmake_minimum_required(VERSION 3.16)
 if(POLICY CMP0156)
     cmake_policy(SET CMP0156 NEW)
 endif()
+if(IOS AND CMAKE_VERSION VERSION_LESS "3.29")
+    message(FATAL_ERROR
+        "iOS builds require CMake 3.29+ for link-library deduplication (CMP0156). "
+        "Found CMake ${CMAKE_VERSION}."
+    )
+endif()
 
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/version.txt" NYMEA_VERSION_LINES)
 list(LENGTH NYMEA_VERSION_LINES NYMEA_VERSION_COUNT)
