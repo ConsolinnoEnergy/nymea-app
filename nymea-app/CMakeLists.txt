@@ -168,7 +168,6 @@ target_link_libraries(nymea-app
         nymea-app-core
         nymea-app-airconditioning
         nymea-app-evdash
-        Qt6::Gui
         Qt6::QuickControls2
         Qt6::Svg
         Qt6::Nfc

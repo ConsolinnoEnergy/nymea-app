@@ -21,11 +21,4 @@ target_include_directories(nymea-app-evdash
 target_link_libraries(nymea-app-evdash
     PUBLIC
         nymea-app-core
-        Qt6::Core
-        Qt6::Network
-        Qt6::WebSockets
-        Qt6::Bluetooth
-        Qt6::Charts
-        Qt6::Quick
-        Qt6::Qml
 )
