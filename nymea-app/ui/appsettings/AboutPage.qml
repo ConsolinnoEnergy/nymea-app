@@ -46,7 +46,7 @@ SettingsPageBase {
             ListElement { license: "OFL"; component: "Oswald font"; infoText: qsTr("Oswald font by The Oswald Project"); platforms: "*" }
         }
 
-        //githubLink: "https://github.com/nymea/nymea-app"
+        githubLink: "https://github.com/nymea/nymea-app"
 
         NymeaSwipeDelegate {
             Layout.fillWidth: true

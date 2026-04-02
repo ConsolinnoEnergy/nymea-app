@@ -55,7 +55,20 @@ ApplicationWindow {
     font.capitalization: Font.MixedCase
     font.family: Style.fontFamily
 
+    Binding {
+        target: PlatformHelper
+        property: "topPanelColor"
+        value: app.color
+    }
+
+    Binding {
+        target: PlatformHelper
+        property: "bottomPanelColor"
+        value: app.color
+    }
+
     property int margins: Style.margins
+    property int bigMargins: 20 // #TODO used anywhere?
 
     // #TODO can we replace these font sizes with whole fonts defined in Style(Base).qml?
     property int extraSmallFont: Style.extraSmallFont.pixelSize
@@ -106,8 +119,10 @@ ApplicationWindow {
     property alias mainMenu: m
     MainMenu {
         id: m
+        property bool isMobile: app.width < 768
         height: app.height
-        width: Math.min(300, app.width)
+        leftPadding: isMobile ? 0 : (app.width - 768) / 2
+        width: isMobile ? Math.min(300, app.width) : ((app.width - 768) / 2) + 300
         configuredHosts: configuredHostsModel
         onOpenThingSettings: rootItem.openThingSettings();
         onOpenMagicSettings: rootItem.openMagicSettings();

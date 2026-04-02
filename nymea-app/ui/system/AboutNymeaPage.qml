@@ -56,8 +56,6 @@ SettingsPageBase {
         id: imprint
         Layout.fillWidth: true
         title: Configuration.systemName
-        showOpensourceLicenses: false
-        //githubLink: "https://github.com/nymea/nymea"
 
         NymeaSwipeDelegate {
             Layout.fillWidth: true

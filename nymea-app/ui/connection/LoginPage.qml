@@ -121,6 +121,7 @@ SettingsPageBase {
                 Layout.fillWidth: true
                 text: qsTr("Password")
             }
+
             ConsolinnoPasswordTextField {
                 id: passwordTextField
                 Layout.fillWidth: true

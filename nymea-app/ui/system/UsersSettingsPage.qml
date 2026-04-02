@@ -567,6 +567,13 @@ SettingsPageBase {
             signal done
             // Consolinno change: New users are admin by default.
              property var permissionScopes: UserInfo.PermissionScopeAdmin
+            UserInfo {
+                id: newUserInfo
+                username: usernameTextField.text
+                email: emailTextField.text
+                displayName: displayNameTextField.text
+
+            }
 
             SettingsPageSectionHeader {
                 text: qsTr("User information")

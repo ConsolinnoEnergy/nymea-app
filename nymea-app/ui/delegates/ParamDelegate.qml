@@ -28,8 +28,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 import Qt5Compat.GraphicalEffects
 import Nymea
-
-import NymeaApp.Utils 1.0
+import NymeaApp.Utils
 import "../components"
 
 ItemDelegate {
