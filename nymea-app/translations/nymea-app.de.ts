@@ -2688,10 +2688,6 @@ Bitte versuche es erneut.</translation>
         <source>Google fonts and material icons</source>
         <translation>Google Fonts und Material Icons</translation>
     </message>
-    <message>
-        <source>Chargebyte</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>InterfaceTile</name>

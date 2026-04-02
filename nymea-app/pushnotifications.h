@@ -91,7 +91,7 @@ private:
     void registerForPush();
 
 
-#ifdef Q_OS_IOS
+#if defined(Q_OS_IOS) && defined(WITH_FIREBASE)
     void registerObjC();
 #endif
 

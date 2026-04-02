@@ -1,1 +1,2 @@
 add_subdirectory(airconditioning)
+add_subdirectory(evdash)

@@ -117,6 +117,10 @@ SettingsPageBase {
                 Layout.fillWidth: true
                 error: loginForm.showErrors && !acceptableInput
             }
+            Label {
+                Layout.fillWidth: true
+                text: qsTr("Password")
+            }
 
             ConsolinnoPasswordTextField {
                 id: passwordTextField

@@ -6,6 +6,13 @@ file(GLOB_RECURSE LIBNYMEA_APP_HEADERS CONFIGURE_DEPENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/*.h
 )
 
+if(IOS)
+    file(GLOB_RECURSE LIBNYMEA_APP_MM_SOURCES CONFIGURE_DEPENDS
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.mm
+    )
+    list(APPEND LIBNYMEA_APP_SOURCES ${LIBNYMEA_APP_MM_SOURCES})
+endif()
+
 set(NYMEA_REMOTEPROXYCLIENT_MODULE
     ${CMAKE_SOURCE_DIR}/nymea-remoteproxy/cmake/nymea-remoteproxyclient-sources.cmake
 )
@@ -68,6 +75,14 @@ set(NYMEA_APP_CORE_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_BINARY_DIR}
 )
+
+# Add all subdirectories as include paths (sources use flat includes like "actionhandler.h")
+file(GLOB_RECURSE _all_headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
+foreach(_header ${_all_headers})
+    get_filename_component(_dir ${_header} DIRECTORY)
+    list(APPEND NYMEA_APP_CORE_INCLUDE_DIRS ${_dir})
+endforeach()
+list(REMOVE_DUPLICATES NYMEA_APP_CORE_INCLUDE_DIRS)
 
 list(APPEND NYMEA_APP_CORE_INCLUDE_DIRS ${REMOTE_PROXYCLIENT_INCLUDE_DIRS})
 

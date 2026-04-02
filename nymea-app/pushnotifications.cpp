@@ -127,7 +127,7 @@ void PushNotifications::registerForPush()
     });
 #endif
 
-#ifdef Q_OS_IOS
+#if defined(Q_OS_IOS) && defined(WITH_FIREBASE)
     registerObjC();
 #endif
 }

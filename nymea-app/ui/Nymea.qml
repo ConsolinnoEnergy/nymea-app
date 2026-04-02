@@ -117,32 +117,22 @@ ApplicationWindow {
     }
 
     property alias mainMenu: m
-    
-
-    Rectangle {
-        id: container
-        anchors.centerIn: parent
-        width: Math.min(app.width, 768)
+    MainMenu {
+        id: m
+        property bool isMobile: app.width < 768
         height: app.height
-        color: "transparent"
-        clip: true
-
-        MainMenu {
-            property bool isMobile: app.width < 768
-            id: m
-            height: container.height
-            leftPadding: isMobile ? 0 : (app.width - 768) / 2
-            width: isMobile ? Math.min(300, app.width) : ((app.width - 768) / 2) + 300
-            configuredHosts: configuredHostsModel
-            onOpenThingSettings: rootItem.openThingSettings();
-            onOpenMagicSettings: rootItem.openMagicSettings();
-            onOpenAppSettings: rootItem.openAppSettings();
-            onOpenSystemSettings: rootItem.openSystemSettings();
-            onOpenCustomPage: rootItem.openCustomPage(page);
-            onConfigureMainView: rootItem.configureMainView();
-            onStartManualConnection: rootItem.startManualConnection();
-            onStartWirelessSetup: rootItem.startWirelessSetup();
-        }
+        leftPadding: isMobile ? 0 : (app.width - 768) / 2
+        width: isMobile ? Math.min(300, app.width) : ((app.width - 768) / 2) + 300
+        configuredHosts: configuredHostsModel
+        onOpenThingSettings: rootItem.openThingSettings();
+        onOpenMagicSettings: rootItem.openMagicSettings();
+        onOpenAppSettings: rootItem.openAppSettings();
+        onOpenSystemSettings: rootItem.openSystemSettings();
+        onOpenCustomPage: (page) => rootItem.openCustomPage(page);
+        onConfigureMainView: rootItem.configureMainView();
+        onStartManualConnection: rootItem.startManualConnection();
+        onStartWirelessSetup: rootItem.startWirelessSetup();
+    }
 
     RootItem {
         id: rootItem

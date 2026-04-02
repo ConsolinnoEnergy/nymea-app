@@ -1,5 +1,20 @@
 cmake_minimum_required(VERSION 3.16)
 
+# CMP0156 (CMake 3.29+): De-duplicate link libraries on the final link line.
+# Critical for iOS static Qt builds where duplicate framework references
+# cause duplicate symbol errors (Qt bug QTBUG-135978, present since Qt 6.7.3).
+if(POLICY CMP0156)
+    cmake_policy(SET CMP0156 NEW)
+    set(QT_FORCE_CMP0156_TO_NEW ON CACHE BOOL
+        "Force CMake policy CMP0156 to NEW behavior for Qt6")
+endif()
+if(IOS AND CMAKE_VERSION VERSION_LESS "3.29")
+    message(FATAL_ERROR
+        "iOS builds require CMake 3.29+ for link-library deduplication (CMP0156). "
+        "Found CMake ${CMAKE_VERSION}."
+    )
+endif()
+
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/version.txt" NYMEA_VERSION_LINES)
 list(LENGTH NYMEA_VERSION_LINES NYMEA_VERSION_COUNT)
 if(NOT NYMEA_VERSION_COUNT GREATER_EQUAL 1)
@@ -33,6 +48,9 @@ option(NYMEA_ENABLE_ZEROCONF "Enable ZeroConf support" OFF)
 option(NYMEA_USE_MATERIAL_ICONS "Use the Material icon set instead of Suru" OFF)
 option(NYMEA_ENABLE_FIREBASE "Enable Firebase Cloud Messaging integration" ON)
 set(NYMEA_OVERLAY_PATH "" CACHE PATH "Optional overlay directory for branding")
+set(NYMEA_IOS_BUNDLE_IDENTIFIER "io.guh.nymeaApp" CACHE STRING "iOS bundle identifier")
+set(NYMEA_IOS_TEAM_ID "" CACHE STRING "Apple Development Team ID")
+set(NYMEA_IOS_PROVISIONING_PROFILE "" CACHE STRING "iOS provisioning profile specifier")
 
 find_package(Qt6 REQUIRED COMPONENTS
     Core
@@ -46,6 +64,7 @@ find_package(Qt6 REQUIRED COMPONENTS
     Bluetooth
     Charts
     Nfc
+    LinguistTools
 )
 
 find_package(OpenSSL QUIET)
