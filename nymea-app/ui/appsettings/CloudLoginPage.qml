@@ -1,30 +1,24 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
-* Copyright 2013 - 2020, nymea GmbH
-* Contact: contact@nymea.io
+* Copyright (C) 2013 - 2024, nymea GmbH
+* Copyright (C) 2024 - 2025, chargebyte austria GmbH
 *
-* This file is part of nymea.
-* This project including source code and documentation is protected by
-* copyright law, and remains the property of nymea GmbH. All rights, including
-* reproduction, publication, editing and translation, are reserved. The use of
-* this project is subject to the terms of a license agreement to be concluded
-* with nymea GmbH in accordance with the terms of use of nymea GmbH, available
-* under https://nymea.io/license
+* This file is part of nymea-app.
 *
-* GNU General Public License Usage
-* Alternatively, this project may be redistributed and/or modified under the
-* terms of the GNU General Public License as published by the Free Software
-* Foundation, GNU version 3. This project is distributed in the hope that it
-* will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
-* of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-* Public License for more details.
+* nymea-app is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
 *
-* You should have received a copy of the GNU General Public License along with
-* this project. If not, see <https://www.gnu.org/licenses/>.
+* nymea-app is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* General Public License for more details.
 *
-* For any further details and any questions please contact us under
-* contact@nymea.io or see our FAQ/Licensing Information on
-* https://nymea.io/license/faq
+* You should have received a copy of the GNU General Public License
+* along with nymea-app. If not, see <https://www.gnu.org/licenses/>.
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -46,13 +40,13 @@ SettingsPageBase {
 
     Connections {
         target: AWSClient
-        onLoginResult: {
+        onLoginResult: function(error) {
             root.busy = false;
             if (error === AWSClient.LoginErrorNoError) {
                 AWSClient.fetchDevices();
             }
         }
-        onDeleteAccountResult: {
+        onDeleteAccountResult: function(error) {
             root.busy = false;
             if (error !== AWSClient.LoginErrorNoError) {
                 var errorDialog = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"));
@@ -159,7 +153,7 @@ SettingsPageBase {
             wrapMode: Text.WordWrap
             font.pixelSize: app.smallFont
             text: qsTr("See our <a href=\"%1\">privacy policy</a> to find out what information is processed.").arg(app.privacyPolicyUrl)
-            onLinkActivated: {
+            onLinkActivated: function(link) {
                 Qt.openUrlExternally(link)
             }
         }
@@ -205,7 +199,7 @@ SettingsPageBase {
 
         Connections {
             target: AWSClient
-            onLoginResult: {
+            onLoginResult: function(error) {
                 switch (error) {
                 case AWSClient.LoginErrorInvalidUserOrPass:
                     errorLabel.text = qsTr("Failed to log in. Please try again. Do you perhaps have <a href=\"#\">forgotten your password?</a>")
@@ -229,7 +223,7 @@ SettingsPageBase {
             font.pixelSize: app.smallFont
             color: "red"
             visible: false
-            onLinkActivated: {
+            onLinkActivated: function(link) {
                 pageStack.push(resetPasswordComponent, {email: usernameTextField.text})
             }
         }
@@ -262,7 +256,7 @@ SettingsPageBase {
 
             Connections {
                 target: AWSClient
-                onSignupResult: {
+                onSignupResult: function(error) {
                     signupPage.busy = false;
                     var text;
                     switch (error) {
@@ -292,7 +286,7 @@ SettingsPageBase {
                 Layout.rightMargin: app.margins
                 wrapMode: Text.WordWrap
                 text: qsTr("Please enter your email address and pick a password in order to create a new account.");
-                onLinkActivated: {
+                onLinkActivated: function(link) {
                     print("clicked", link)
                     Qt.openUrlExternally(link)
                 }
@@ -303,7 +297,7 @@ SettingsPageBase {
                 wrapMode: Text.WordWrap
                 font.pixelSize: app.smallFont
                 text: qsTr("See our <a href=\"%1\">privacy policy</a> to find out what information is processed. By signing up to %2:cloud you accept those terms and conditions.").arg(app.privacyPolicyUrl).arg(Configuration.systemName)
-                onLinkActivated: {
+                onLinkActivated: function(link) {
                     Qt.openUrlExternally(link)
                 }
             }
@@ -391,7 +385,7 @@ SettingsPageBase {
 
                 Connections {
                     target: AWSClient
-                    onConfirmationResult: {
+                    onConfirmationResult: function(error) {
                         root.busy = false;
                         var text
                         switch (error) {
@@ -429,7 +423,7 @@ SettingsPageBase {
 
             Connections {
                 target: AWSClient
-                onForgotPasswordResult: {
+                onForgotPasswordResult: function(error) {
                     resetPasswordPage.busy = false
                     if (error !== AWSClient.LoginErrorNoError) {
                         var errorDialog = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"));
@@ -482,7 +476,7 @@ SettingsPageBase {
 
             Connections {
                 target: AWSClient
-                onConfirmForgotPasswordResult: {
+                onConfirmForgotPasswordResult: function(error) {
                     confirmResetPasswordPage.busy = false
                     if (error !== AWSClient.LoginErrorNoError) {
                         var errorDialog = Qt.createComponent(Qt.resolvedUrl("../components/ErrorDialog.qml"));
