@@ -1,0 +1,4 @@
+module light
+Button 1.0 Button.qml
+Dialog 1.0 Dialog.qml
+Page 1.0 Page.qml
