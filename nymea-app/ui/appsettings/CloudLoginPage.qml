@@ -169,7 +169,7 @@ SettingsPageBase {
             Layout.leftMargin: app.margins; Layout.rightMargin: app.margins
             placeholderText: "john.smith@cooldomain.com"
             inputMethodHints: Qt.ImhEmailCharactersOnly
-            validator: RegExpValidator { regExp:/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/ }
+            validator: RegularExpressionValidator { regularExpression:/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/ }
         }
         Label {
             Layout.fillWidth: true
@@ -313,7 +313,7 @@ SettingsPageBase {
                 Layout.leftMargin: app.margins; Layout.rightMargin: app.margins
                 placeholderText: "john.smith@cooldomain.com"
                 inputMethodHints: Qt.ImhEmailCharactersOnly
-                validator: RegExpValidator { regExp:/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/ }
+                validator: RegularExpressionValidator { regularExpression:/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/ }
             }
             Label {
                 Layout.fillWidth: true
