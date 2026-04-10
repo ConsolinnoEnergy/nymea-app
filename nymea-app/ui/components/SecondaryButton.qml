@@ -28,8 +28,6 @@ Button {
         anchors.fill: parent
         color: fontColor
         font.pixelSize: 13
-        font.letterSpacing: 2
-        font.capitalization: Font.AllUppercase
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
