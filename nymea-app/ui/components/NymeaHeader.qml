@@ -68,7 +68,7 @@ Item {
         HeaderButton {
             id: backButton
             objectName: "backButton"
-            imageSource: "qrc:/icons/back.svg"
+            imageSource: "qrc:/icons/arrow_back_ios_new.svg"
             onClicked: root.backPressed();
         }
         Label {
