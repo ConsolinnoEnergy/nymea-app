@@ -182,6 +182,8 @@ private:
     QDateTime m_connectionBenchmark;
 };
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 Q_DECLARE_METATYPE(QList<QUuid>)
+#endif
 
 #endif // THINGMANAGER_H

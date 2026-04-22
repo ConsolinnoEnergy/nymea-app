@@ -66,6 +66,12 @@ Item {
     readonly property int largeIconSize: 40
     readonly property int hugeIconSize: 64
 
+    readonly property QtObject numbers : QtObject {
+        readonly property double components_Disabled_opacity: 0.3
+        readonly property int components_Forms_Buttons_Horizontal_padding: 32
+        readonly property int components_Forms_Buttons_Vertical_padding: 10
+    }
+
     // Note: Font files need to be provided in a "fonts" folder in the style
     property string fontFamily: "Ubuntu"
     property real fontScaleFactor: 1

@@ -352,7 +352,7 @@ ThingPageBase {
 
             Connections {
                 target: stateDelegateLoader.item && stateDelegateLoader.item.hasOwnProperty("changed") ? stateDelegateLoader.item : null
-                onChanged: {
+                onChanged: function(value) {
                     print("Value changed:", value)
                     stateDelegate.enqueueSetValue(value)
                 }
