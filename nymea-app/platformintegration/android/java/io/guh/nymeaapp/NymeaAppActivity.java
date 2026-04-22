@@ -31,7 +31,7 @@ public class NymeaAppActivity extends QtActivity
 {
     private static final String TAG = "nymea-app: NymeaAppActivity";
     private static Context context = null;
-    private boolean mDecorFitsSystemWindows = true;
+    private boolean mDecorFitsSystemWindows = false;
 
     private static native void darkModeEnabledChangedJNI();
     private static native void notificationActionReceivedJNI(String data);
@@ -58,13 +58,14 @@ public class NymeaAppActivity extends QtActivity
             setTheme(android.R.style.Theme_DeviceDefault_DayNight);
         }
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= 35) {
-            // Let the system handle insets to avoid double padding in Qt content.
+        if (Build.VERSION.SDK_INT == 35) {
+            // On API 35, opt out of edge-to-edge enforcement (still supported on this version).
+            // PlatformHelper.topPadding() will return 0 since the system handles insets.
             WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
             mDecorFitsSystemWindows = true;
         }
-        // Move th app to the background (Edge to edge is forced since SDK 35)
-        //WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+        // On API 36+, setDecorFitsSystemWindows(true) is ignored - edge-to-edge is mandatory.
+        // mDecorFitsSystemWindows stays false so topPadding() reads the actual insets.
         this.context = getApplicationContext();
     }
 

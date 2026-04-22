@@ -120,8 +120,7 @@ ApplicationWindow {
     MainMenu {
         id: m
         property bool isMobile: app.width < 768
-        height: app.height - app.safeAreaMargins.top - app.safeAreaMargins.bottom
-        y: app.safeAreaMargins.top
+        height: app.height
         leftPadding: isMobile ? 0 : (app.width - 768) / 2
         width: isMobile ? Math.min(300, app.width) : ((app.width - 768) / 2) + 300
         configuredHosts: configuredHostsModel
@@ -138,8 +137,7 @@ ApplicationWindow {
     RootItem {
         id: rootItem
         anchors.fill: parent
-        anchors.topMargin: app.safeAreaMargins.top
-        anchors.bottomMargin: keyboardRect.height + app.safeAreaMargins.bottom
+        anchors.bottomMargin: keyboardRect.height
     }
 
     property NymeaDiscovery nymeaDiscovery: NymeaDiscovery {
