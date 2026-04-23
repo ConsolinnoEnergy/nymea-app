@@ -138,7 +138,7 @@ ItemDelegate {
             Switch {
                 id: theSwitch
                 anchors { top: parent.top; right: parent.right; bottom: parent.bottom }
-                width: Math.min(parent.width, implicitiWidth)
+                width: Math.min(parent.width, implicitWidth)
                 checked: root.param.value === true
                 Component.onCompleted: {
                     if (root.param.value === undefined) {
