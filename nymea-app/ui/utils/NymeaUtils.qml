@@ -386,4 +386,10 @@ Item {
             return v
         }
     }
+
+    function floatFromLocaleString(text) {
+        var loc = Qt.locale()
+        loc.numberOptions = Locale.OmitGroupSeparator
+        return Number.fromLocaleString(loc, text)
+    }
 }
