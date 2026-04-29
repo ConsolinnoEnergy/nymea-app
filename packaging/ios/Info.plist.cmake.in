@@ -3,15 +3,15 @@
 <plist version="1.0">
     <dict>
         <key>CFBundleDisplayName</key>
-        <string>nymea:app</string>
+        <string>@APPLICATION_NAME@</string>
         <key>CFBundleExecutable</key>
-        <string>nymea-app</string>
+        <string>@NYMEA_APP_BINARY_NAME@</string>
         <key>CFBundleGetInfoString</key>
         <string>Created by Qt/CMake</string>
         <key>CFBundleIdentifier</key>
         <string>@NYMEA_IOS_BUNDLE_IDENTIFIER@</string>
         <key>CFBundleName</key>
-        <string>nymea-app</string>
+        <string>@NYMEA_APP_BINARY_NAME@</string>
         <key>CFBundlePackageType</key>
         <string>APPL</string>
         <key>CFBundleShortVersionString</key>
