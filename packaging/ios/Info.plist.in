@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Created by Qt/QMake</string>
         <key>CFBundleIdentifier</key>
-        <string>@NYMEA_IOS_BUNDLE_IDENTIFIER@</string>
+        <string>io.guh.nymeaApp</string>
 	<key>CFBundleName</key>
         <string>nymea-app</string>
 	<key>CFBundlePackageType</key>
