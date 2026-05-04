@@ -271,13 +271,32 @@ if(IOS)
     else()
         set(_ios_xcassets "${CMAKE_SOURCE_DIR}/packaging/ios/Assets.xcassets")
     endif()
-    # Add xcassets directly as a target source without MACOSX_PACKAGE_LOCATION so
-    # that CMake's Xcode generator routes it through actool (asset catalog compiler)
-    # and produces Assets.car in the bundle. Using QT_IOS_ASSET_CATALOGS caused Qt
-    # to set MACOSX_PACKAGE_LOCATION=Resources which copies the xcassets raw instead.
-    set_source_files_properties("${_ios_xcassets}" PROPERTIES
-        XCODE_LAST_KNOWN_FILE_TYPE "folder.assetcatalog")
-    target_sources(nymea-app PRIVATE "${_ios_xcassets}")
+
+    # CMake's Xcode generator does not reliably route .xcassets through actool.
+    # Run actool explicitly as a PRE_BUILD step so Assets.car is produced before
+    # Xcode's "Copy Bundle Resources" phase and ends up in the app bundle root.
+    set(_actool_output_dir "${CMAKE_CURRENT_BINARY_DIR}/actool")
+    file(MAKE_DIRECTORY "${_actool_output_dir}")
+    set(_assets_car "${_actool_output_dir}/Assets.car")
+
+    add_custom_command(TARGET nymea-app PRE_BUILD
+        COMMAND xcrun actool
+            --output-partial-info-plist "${_actool_output_dir}/partial.plist"
+            --app-icon AppIcon
+            --enable-on-demand-resources NO
+            --platform iphoneos
+            --minimum-deployment-target "${CMAKE_OSX_DEPLOYMENT_TARGET}"
+            --target-device iphone
+            --target-device ipad
+            --compile "${_actool_output_dir}"
+            "${_ios_xcassets}"
+        BYPRODUCTS "${_assets_car}"
+        COMMENT "Compiling iOS asset catalog with actool"
+    )
+    set_source_files_properties("${_assets_car}" PROPERTIES
+        MACOSX_PACKAGE_LOCATION Resources
+        GENERATED TRUE)
+    target_sources(nymea-app PRIVATE "${_assets_car}")
 
     set(_nymea_ios_resources
         ${CMAKE_SOURCE_DIR}/packaging/ios/NymeaLaunchScreen.storyboard
