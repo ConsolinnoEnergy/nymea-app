@@ -285,6 +285,7 @@ if(IOS)
             --app-icon AppIcon
             --enable-on-demand-resources NO
             --platform iphoneos
+            --sdk iphoneos
             --minimum-deployment-target "${CMAKE_OSX_DEPLOYMENT_TARGET}"
             --target-device iphone
             --target-device ipad
