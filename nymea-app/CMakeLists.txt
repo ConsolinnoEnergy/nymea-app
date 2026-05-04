@@ -266,8 +266,13 @@ if(IOS)
 
     target_link_options(nymea-app PRIVATE "-ObjC")
 
-    set_property(TARGET nymea-app APPEND PROPERTY
-        QT_IOS_ASSET_CATALOGS "${CMAKE_SOURCE_DIR}/packaging/ios/Assets.xcassets")
+    if(NYMEA_OVERLAY_PATH AND EXISTS "${NYMEA_OVERLAY_PATH}/packaging/ios/Assets.xcassets")
+        set_property(TARGET nymea-app APPEND PROPERTY
+            QT_IOS_ASSET_CATALOGS "${NYMEA_OVERLAY_PATH}/packaging/ios/Assets.xcassets")
+    else()
+        set_property(TARGET nymea-app APPEND PROPERTY
+            QT_IOS_ASSET_CATALOGS "${CMAKE_SOURCE_DIR}/packaging/ios/Assets.xcassets")
+    endif()
 
     set(_nymea_ios_resources
         ${CMAKE_SOURCE_DIR}/packaging/ios/NymeaLaunchScreen.storyboard
