@@ -267,12 +267,17 @@ if(IOS)
     target_link_options(nymea-app PRIVATE "-ObjC")
 
     if(NYMEA_OVERLAY_PATH AND EXISTS "${NYMEA_OVERLAY_PATH}/packaging/ios/Assets.xcassets")
-        set_property(TARGET nymea-app APPEND PROPERTY
-            QT_IOS_ASSET_CATALOGS "${NYMEA_OVERLAY_PATH}/packaging/ios/Assets.xcassets")
+        set(_ios_xcassets "${NYMEA_OVERLAY_PATH}/packaging/ios/Assets.xcassets")
     else()
-        set_property(TARGET nymea-app APPEND PROPERTY
-            QT_IOS_ASSET_CATALOGS "${CMAKE_SOURCE_DIR}/packaging/ios/Assets.xcassets")
+        set(_ios_xcassets "${CMAKE_SOURCE_DIR}/packaging/ios/Assets.xcassets")
     endif()
+    # Add xcassets directly as a target source without MACOSX_PACKAGE_LOCATION so
+    # that CMake's Xcode generator routes it through actool (asset catalog compiler)
+    # and produces Assets.car in the bundle. Using QT_IOS_ASSET_CATALOGS caused Qt
+    # to set MACOSX_PACKAGE_LOCATION=Resources which copies the xcassets raw instead.
+    set_source_files_properties("${_ios_xcassets}" PROPERTIES
+        XCODE_LAST_KNOWN_FILE_TYPE "folder.assetcatalog")
+    target_sources(nymea-app PRIVATE "${_ios_xcassets}")
 
     set(_nymea_ios_resources
         ${CMAKE_SOURCE_DIR}/packaging/ios/NymeaLaunchScreen.storyboard
