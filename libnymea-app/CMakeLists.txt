@@ -118,6 +118,10 @@ else()
     message(WARNING "OpenSSL development libraries not found; continuing without explicit OpenSSL linkage.")
 endif()
 
+if(IOS)
+    target_link_libraries(nymea-app-core PUBLIC "-framework SystemConfiguration")
+endif()
+
 if(NYMEA_ENABLE_ZEROCONF)
     target_compile_definitions(nymea-app-core PUBLIC WITH_ZEROCONF QZEROCONF_STATIC)
     find_library(QTZEROCONF_LIBRARY NAMES QtZeroConf HINTS ${CMAKE_SOURCE_DIR}/QtZeroConf)
