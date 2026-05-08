@@ -33,6 +33,7 @@ import NymeaApp.Utils
 
 import "components"
 import "connection"
+import "thingconfiguration"
 
 Item {
     id: root
@@ -132,6 +133,13 @@ Item {
                     }
 
                     readonly property HemsManager hemsManager: hemsManagerInternal
+
+                    EebusLimitGuard {
+                        id: eebusLimitGuardInternal
+                        engine: _engine
+                    }
+
+                    readonly property EebusLimitGuard eebusLimitGuard: eebusLimitGuardInternal
 
                     Binding {
                         target: nymeaDiscovery
