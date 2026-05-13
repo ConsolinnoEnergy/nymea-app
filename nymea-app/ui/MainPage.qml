@@ -24,7 +24,6 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtQuick.Window
 import QtCore
@@ -73,11 +72,29 @@ Page {
     header: Item {
         id: mainHeader
         height: 0
-        HeaderButton {
+        // HeaderButton {
+        //     id: menuButton
+        //     imageSource: "qrc:/icons/menu.svg"
+        //     anchors {
+        //         left: parent.left
+        //         top: parent.top
+        //         topMargin: Style.smallMargins
+        //     }
+
+        //     onClicked: {
+        //         if (d.configOverlay != null) {
+        //             d.configOverlay.destroy();
+        //         }
+        //         app.mainMenu.open()
+        //     }
+        // }
+        RoundButton {
             id: menuButton
-            imageSource: "qrc:/icons/menu.svg"
+            icon.source: "qrc:/icons/menu.svg"
+            secondary: true
             anchors {
                 left: parent.left
+                leftMargin: Style.smallMargins
                 top: parent.top
                 topMargin: Style.smallMargins
             }
@@ -610,21 +627,6 @@ Page {
                         }
                         mainViewSettings.sortOrder = newSortOrder;
                     }
-//                    Timer {
-//                        id: scroller
-//                        interval: 2
-//                        repeat: true
-//                        running: direction != 0
-//                        property int direction: {
-//                            if (!configListView.dragging) {
-//                                return 0;
-//                            }
-//                            return dndArea.mouseY < 50 ? -2 : dndArea.mouseY > dndArea.height - 50 ? 2 : 0
-//                        }
-//                        onTriggered: {
-//                            configListView.contentY = Math.min(Math.max(0, configListView.contentY + direction), configListView.contentHeight - configListView.height)
-//                        }
-//                    }
                 }
 
                 NymeaItemDelegate {
@@ -638,322 +640,6 @@ Page {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                }
-            }
-
-//            NumberAnimation {
-//                target: configOverlay
-//                property: "scale"
-//                duration: 200
-//                easing.type: Easing.InOutQuad
-//                from: 2
-//                to: 1
-//                running: true
-//            }
-//            NumberAnimation {
-//                target: configOverlay
-//                property: "opacity"
-//                duration: 200
-//                easing.type: Easing.InOutQuad
-//                from: 0
-//                to: 1
-//                running: true
-//            }
-
-//            ListView {
-//                id: configListView
-//                model: mainMenuModel
-//                width: parent.width
-//                height: parent.height / 3
-//                anchors.centerIn: parent
-//                orientation: ListView.Horizontal
-//                moveDisplaced: Transition {
-//                    NumberAnimation { properties: "x,y"; duration: 200 }
-//                }
-
-//                property int delegateWidth: width / 3
-
-//                property bool dragging: draggingIndex >= 0
-//                property int draggingIndex : -1
-
-//                MouseArea {
-//                    id: dndArea
-//                    anchors.fill: parent
-//                    preventStealing: configListView.dragging
-//                    property int dragOffset: 0
-
-//                    onPressAndHold: {
-//                        mouse.accepted = true
-//                        var mouseXInListView = configListView.contentItem.mapFromItem(dndArea, mouseX, mouseY).x;
-//                        configListView.draggingIndex = configListView.indexAt(mouseXInListView, mouseY)
-//                        var item = mainMenuModel.get(configListView.draggingIndex)
-//                        dndItem.displayName = item.displayName
-//                        dndItem.icon = item.icon
-//                        var visualItem = configListView.itemAt(mouseXInListView, mouseY)
-//                        dndItem.isEnabled = visualItem.isEnabled
-//                        dndArea.dragOffset = configListView.mapToItem(visualItem, mouseX, mouseY).x
-//                        PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackImpact)
-//                    }
-//                    onMouseYChanged: {
-//                        if (configListView.dragging) {
-//                            var mouseXInListView = configListView.contentItem.mapFromItem(dndArea, mouseX, mouseY).x;
-//                            var indexUnderMouse = configListView.indexAt(mouseXInListView - dndArea.dragOffset / 2, mouseY)
-//                            indexUnderMouse = Math.min(Math.max(0, indexUnderMouse), configListView.count - 1)
-//                            if (configListView.draggingIndex !== indexUnderMouse) {
-//                                PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection)
-//                                mainMenuModel.move(configListView.draggingIndex, indexUnderMouse, 1)
-//                                configListView.draggingIndex = indexUnderMouse;
-//                            }
-//                        }
-//                    }
-//                    onReleased: {
-//                        print("released!")
-//                        var mouseXInListView = configListView.contentItem.mapFromItem(dndArea, mouseX, mouseY).x;
-//                        var clickedIndex = configListView.indexAt(mouseXInListView, mouseY)
-//                        var item = mainMenuModel.get(clickedIndex)
-//                        var isEnabled = mainViewSettings.filterList.indexOf(item.name) >= 0;
-//                        if (!configListView.dragging) {
-//                            var newList = []
-//                            for (var i = 0; i < mainMenuModel.count; i++) {
-//                                var entry = mainMenuModel.get(i).name;
-//                                if (entry === item.name) {
-//                                    if (!isEnabled) {
-//                                        newList.push(item.name)
-//                                    }
-//                                } else {
-//                                    if (mainViewSettings.filterList.indexOf(entry) >= 0) {
-//                                        newList.push(entry)
-//                                    }
-//                                }
-//                            }
-//                            if (newList.length === 0) {
-//                                newList = Configuration.defaultMainView
-//                            }
-
-//                            mainViewSettings.filterList = newList
-//                        }
-//                        configListView.draggingIndex = -1;
-
-//                        var newSortOrder = []
-//                        for (var i = 0; i < mainMenuModel.count; i++) {
-//                            newSortOrder.push(mainMenuModel.get(i).name)
-//                        }
-//                        mainViewSettings.sortOrder = newSortOrder;
-//                    }
-//                    Timer {
-//                        id: scroller
-//                        interval: 2
-//                        repeat: true
-//                        running: direction != 0
-//                        property int direction: {
-//                            if (!configListView.dragging) {
-//                                return 0;
-//                            }
-//                            return dndArea.mouseX < 50 ? -2 : dndArea.mouseX > dndArea.width - 50 ? 2 : 0
-//                        }
-//                        onTriggered: {
-//                            configListView.contentX = Math.min(Math.max(0, configListView.contentX + direction), configListView.contentWidth - configListView.width)
-//                        }
-//                    }
-//                }
-
-//                delegate: BigTile {
-//                    id: configDelegate
-//                    width: configListView.delegateWidth
-//                    height: configListView.height
-//                    property bool isEnabled: mainViewSettings.filterList.indexOf(model.name) >= 0
-//                    visible: configListView.draggingIndex !== index
-
-//                    leftPadding: 0
-//                    rightPadding: 0
-//                    topPadding: 0
-//                    bottomPadding: 0
-
-//                    header: RowLayout {
-//                        id: headerRow
-//                        width: parent.width
-//                        Label {
-//                            text: model.displayName
-//                            Layout.fillWidth: true
-//                            elide: Text.ElideRight
-//                        }
-//                    }
-
-//                    contentItem: Item {
-//                        Layout.fillWidth: true
-//                        implicitHeight: configListView.height - headerRow.height - Style.margins * 2
-
-//                        ColorIcon {
-//                            anchors.centerIn: parent
-//                            width: Math.min(parent.width, parent.height) * .6
-//                            height: width
-//                            name: Qt.resolvedUrl("qrc:/icons/" + model.icon + ".svg")
-//                            color: configDelegate.isEnabled ? Style.accentColor : Style.iconColor
-//                        }
-//                    }
-//                }
-//                Item {
-//                    id: dndItem
-//                    width: configListView.delegateWidth
-//                    height: configListView.height
-//                    property bool isEnabled: false
-//                    property string displayName: ""
-//                    property string icon: "things"
-//                    visible: configListView.dragging
-//                    x: dndArea.mouseX - dndArea.dragOffset
-//                    onVisibleChanged: {
-//                        if (visible) {
-//                            dragStartAnimation.start();
-//                        }
-//                    }
-
-//                    NumberAnimation {
-//                        id: dragStartAnimation
-//                        target: dndItem
-//                        property: "scale"
-//                        from: 1
-//                        to: 0.95
-//                        duration: 200
-//                    }
-
-//                    BigTile {
-//                        id: dndTile
-//                        anchors.fill: parent
-//                        //                        anchors.margins: app.margins / 2
-//                        Material.elevation: 2
-
-//                        leftPadding: 0
-//                        rightPadding: 0
-//                        topPadding: 0
-//                        bottomPadding: 0
-
-//                        header: RowLayout {
-//                            Label {
-//                                text: dndItem.displayName
-//                            }
-//                        }
-
-//                        contentItem: Item {
-//                            Layout.fillWidth: true
-//                            implicitHeight: configListView.height - header.height
-
-//                            ColorIcon {
-//                                anchors.centerIn: parent
-//                                width: Math.min(parent.width, parent.height) * .6
-//                                height: width
-//                                name: Qt.resolvedUrl("qrc:/icons/" + dndItem.icon + ".svg")
-//                                color: dndItem.isEnabled ? Style.accentColor : Style.iconColor
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-        }
-    }
-
-    Component {
-        id: connectionDialogComponent
-        NymeaDialog {
-            id: connectionDialog
-            title: engine.jsonRpcClient.currentHost.name
-            standardButtons: Dialog.NoButton
-            headerIcon: {
-                switch (engine.jsonRpcClient.currentConnection.bearerType) {
-                case Connection.BearerTypeLan:
-                case Connection.BearerTypeWan:
-                    if (engine.jsonRpcClient.availableBearerTypes & NymeaConnection.BearerTypeEthernet != NymeaConnection.BearerTypeNone) {
-                        return "qrc:/icons/connections/network-wired.svg"
-                    }
-                    return "qrc:/icons/connections/network-wifi.svg";
-                case Connection.BearerTypeBluetooth:
-                    return "qrc:/icons/connections/bluetooth.svg";
-                case Connection.BearerTypeCloud:
-                    return "qrc:/icons/connections/cloud.svg"
-                case Connection.BearerTypeLoopback:
-                    return "qrc:/icons/connections/network-wired.svg"
-                }
-                return ""
-            }
-
-            Label {
-                Layout.fillWidth: true
-                text: qsTr("Connected to")
-                font.pixelSize: app.smallFont
-                elide: Text.ElideRight
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                horizontalAlignment: Text.AlignHCenter
-            }
-            Label {
-                Layout.fillWidth: true
-                text: engine.jsonRpcClient.currentHost.name
-                elide: Text.ElideRight
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-            Item {
-                Layout.fillWidth: true
-                Layout.preferredHeight: app.margins
-            }
-
-            RowLayout {
-                ColumnLayout {
-                    Label {
-                        Layout.fillWidth: true
-                        text: engine.jsonRpcClient.currentHost.uuid
-                        font.pixelSize: app.smallFont
-                        elide: Text.ElideRight
-                        color: Material.color(Material.Grey)
-                        //                        horizontalAlignment: Text.AlignHCenter
-                    }
-                    Label {
-                        Layout.fillWidth: true
-                        text: engine.jsonRpcClient.currentConnection.url
-                        font.pixelSize: app.smallFont
-                        elide: Text.ElideRight
-                        color: Material.color(Material.Grey)
-                        //                        horizontalAlignment: Text.AlignHCenter
-                    }
-                }
-                ColorIcon {
-                    Layout.preferredHeight: Style.iconSize
-                    Layout.preferredWidth: Style.iconSize
-                    name: engine.jsonRpcClient.currentConnection.secure ? "qrc:/icons/lock-closed.svg" : "qrc:/icons/lock-open.svg"
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            var component = Qt.createComponent(Qt.resolvedUrl("connection/CertificateDialog.qml"));
-                            var popup = component.createObject(app,  {serverUuid: engine.jsonRpcClient.serverUuid, issuerInfo: engine.jsonRpcClient.certificateIssuerInfo});
-                            popup.open();
-                        }
-                    }
-                }
-            }
-
-            Item {
-                Layout.fillWidth: true
-                Layout.preferredHeight: app.margins
-            }
-
-            RowLayout {
-                Layout.fillWidth: true
-
-                Button {
-                    id: disconnectButton
-                    text: qsTr("Disconnect")
-                    Layout.preferredWidth: Math.max(cancelButton.implicitWidth, disconnectButton.implicitWidth)
-                    onClicked: {
-                        engine.jsonRpcClient.disconnectFromHost();
-                    }
-                }
-                Item {
-                    Layout.fillWidth: true
-                }
-                Button {
-                    id: cancelButton
-                    text: qsTr("OK")
-                    Layout.preferredWidth: Math.max(cancelButton.implicitWidth, disconnectButton.implicitWidth)
-                    onClicked: connectionDialog.close()
                 }
             }
         }
