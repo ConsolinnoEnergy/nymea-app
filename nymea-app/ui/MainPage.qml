@@ -53,7 +53,7 @@ Page {
         d.configOverlay = configComponent.createObject(contentContainer)
     }
 
-    function goToView(viewName, data) {
+    function goToView(viewName, data, immediate) {
         // We allow separating the target by : and pass more stuff to
         console.log("Going to main view", viewName, filteredContentModel.count, data)
         for (var i = 0; i < filteredContentModel.count; i++) {
@@ -62,11 +62,22 @@ Page {
                 console.log("activating", i)
 //                mainViewSettings.currentIndex = i;
 //                tabBar.currentIndex = i;
-                swipeView.setCurrentIndex(i)
+                if (immediate) {
+                    setSwipeViewIndexWithoutAnimation(i);
+                } else {
+                    swipeView.setCurrentIndex(i)
+                }
                 swipeView.currentItem.item.handleEvent(data)
                 break;
             }
         }
+    }
+
+    function setSwipeViewIndexWithoutAnimation(index) {
+        const oldHighlightMoveDuration = swipeView.contentItem.highlightMoveDuration;
+        swipeView.contentItem.highlightMoveDuration = 0;
+        swipeView.currentIndex = index;
+        swipeView.contentItem.highlightMoveDuration = oldHighlightMoveDuration;
     }
 
     header: Item {
@@ -498,7 +509,13 @@ Page {
                     checked: index === swipeView.currentIndex
                     iconSource: "qrc:/icons/" + model.icon + ".svg"
                     visible: !d.isHiddenView(model.name)
-                    onClicked: swipeView.currentIndex = index
+                    onClicked: {
+                        if (d.isHiddenView(filteredContentModel.modelData(swipeView.currentIndex, "name"))) {
+                            setSwipeViewIndexWithoutAnimation(index);
+                        } else {
+                            swipeView.currentIndex = index;
+                        }
+                    }
                     onPressAndHold: {
                         root.configureViews();
                     }
