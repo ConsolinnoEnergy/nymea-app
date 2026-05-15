@@ -28,6 +28,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtCore
 import QtQuick.Window
+import Qt5Compat.GraphicalEffects
 import Nymea
 import NymeaApp.Utils
 
@@ -162,11 +163,29 @@ Item {
                     StackView {
                         id: _pageStack
                         objectName: "pageStack"
-                        anchors {
-                            fill: parent
-                            bottomMargin: navigationFooter.shown ? navigationFooter.height : 0
-                        }
+                        anchors.fill: parent
                         initialItem: Page {}
+                    }
+
+                    readonly property bool blurEnabled: PlatformHelper.deviceManufacturer !== "raspbian"
+
+                    ShaderEffectSource {
+                        id: footerBlurSource
+                        width: _pageStack.width
+                        height: navigationFooter.height
+                        sourceItem: blurEnabled ? _pageStack : null
+                        sourceRect: Qt.rect(0, _pageStack.height - height, _pageStack.width, height)
+                        visible: false
+                        enabled: blurEnabled && navigationFooter.shown
+                    }
+
+                    FastBlur {
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: navigationFooter.height
+                        radius: 40
+                        transparentBorder: false
+                        source: blurEnabled ? footerBlurSource : null
+                        visible: blurEnabled && navigationFooter.shown
                     }
 
                     Rectangle {
