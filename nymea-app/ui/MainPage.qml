@@ -42,6 +42,7 @@ Page {
     // a deepter layer as we need to include it in the blurring of the header and footer.
     // We don't want to paint the background on the entire screen twice (overdraw is costly)
     background: null
+    bottomPadding: 0  // footer lives at RootItem level; main views handle spacing themselves
 
     // Footer lives at RootItem level; MainPage receives its height here so views can adjust bottomMargin.
     property int navigationFooterHeight: 0
