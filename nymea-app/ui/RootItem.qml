@@ -146,11 +146,79 @@ Item {
                     }
 
                     readonly property alias pageStack: _pageStack
+                    readonly property var mainPage: (function() {
+                        if (!engine.jsonRpcClient.connected || _pageStack.depth === 0) return null
+                        var p = _pageStack.get(0)
+                        return (p && p.hasOwnProperty("tabsModel")) ? p : null
+                    })()
+
+                    Binding {
+                        target: mainPage
+                        property: "navigationFooterHeight"
+                        value: navigationFooter.shown ? navigationFooter.height : 0
+                        when: mainPage !== null
+                    }
+
                     StackView {
                         id: _pageStack
                         objectName: "pageStack"
-                        anchors.fill: parent
+                        anchors {
+                            fill: parent
+                            bottomMargin: navigationFooter.shown ? navigationFooter.height : 0
+                        }
                         initialItem: Page {}
+                    }
+
+                    Rectangle {
+                        id: navigationFooter
+                        readonly property bool shown: mainPage !== null
+                                                      && mainPage.tabsModel !== undefined
+                                                      && (mainPage.tabsModel.count > 1 || mainPage.hasConfigOverlay)
+                        visible: shown
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: 58
+                        color: Style.colors.menu_Header_Footer_Background
+
+                        Rectangle {
+                            anchors { left: parent.left; right: parent.right; top: parent.top }
+                            height: 1
+                            color: Style.colors.menu_Header_Footer_Border
+                        }
+
+                        RowLayout {
+                            anchors.fill: parent
+                            spacing: 0
+                            opacity: mainPage && mainPage.hasConfigOverlay ? 0 : 1
+                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+
+                            Repeater {
+                                model: mainPage && !mainPage.hasConfigOverlay ? mainPage.tabsModel : null
+                                delegate: MainPageTabButton {
+                                    Layout.fillWidth: true
+                                    Layout.fillHeight: true
+                                    checked: index === (mainPage ? mainPage.currentMainViewIndex : -1)
+                                    iconSource: "qrc:/icons/" + model.icon + ".svg"
+                                    visible: mainPage ? !mainPage.isViewHidden(model.name) : true
+                                    onClicked: {
+                                        if (mainPage) {
+                                            const poppedItem = _pageStack.pop(mainPage);
+                                            mainPage.activateTab(index, poppedItem !== null);
+                                        }
+                                    }
+                                    onPressAndHold: if (mainPage) mainPage.configureViews()
+                                }
+                            }
+                        }
+
+                        MainPageTabButton {
+                            anchors.fill: parent
+                            iconSource: "qrc:/icons/configure.svg"
+                            opacity: mainPage && mainPage.hasConfigOverlay ? 1 : 0
+                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+                            visible: opacity > 0
+                            checked: true
+                            onClicked: if (mainPage) mainPage.toggleConfigOverlay()
+                        }
                     }
 
                     Component.onCompleted: {

@@ -43,6 +43,35 @@ Page {
     // We don't want to paint the background on the entire screen twice (overdraw is costly)
     background: null
 
+    // Footer lives at RootItem level; MainPage receives its height here so views can adjust bottomMargin.
+    property int navigationFooterHeight: 0
+
+    // Properties exposed for the RootItem-level navigation footer
+    property alias tabsModel: filteredContentModel
+    property alias currentMainViewIndex: swipeView.currentIndex
+    readonly property bool hasConfigOverlay: d.configOverlay !== null
+
+    function isViewHidden(name) { return d.isHiddenView(name); }
+
+    function toggleConfigOverlay() {
+        if (d.configOverlay) {
+            d.configOverlay.destroy()
+            d.configOverlay = null
+        } else {
+            configureViews()
+        }
+    }
+
+    // Switch to a tab by index, suppressing animation when coming from a hidden view.
+    function activateTab(index, immediate) {
+        if (d.isHiddenView(filteredContentModel.modelData(swipeView.currentIndex, "name")) ||
+                immediate) {
+            setSwipeViewIndexWithoutAnimation(index);
+        } else {
+            swipeView.currentIndex = index;
+        }
+    }
+
     function configureViews() {
         if (Configuration.hasOwnProperty("mainViewsFilter")) {
             console.warn("Main views configuration is disabled by app configuration")
@@ -389,7 +418,7 @@ Page {
                     Binding {
                         target: mainViewLoader.item
                         property: "bottomMargin"
-                        value: footer.visible ? contentContainer.footerSize : 0
+                        value: root.navigationFooterHeight
                     }
                 }
             }
@@ -444,102 +473,6 @@ Page {
         }
         height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
         color: Style.colors.menu_Header_Footer_Background
-    }
-
-    ShaderEffectSource {
-        id: footerBlurSource
-        width: contentContainer.width
-        height: contentContainer.footerSize
-        sourceItem: d.blurEnabled ? contentContainer : null
-        sourceRect: Qt.rect(0, contentContainer.height - height, contentContainer.width, contentContainer.footerSize)
-        visible: false
-        enabled: d.blurEnabled && footer.shown
-    }
-
-    FastBlur {
-        anchors {
-            left: parent.left;
-            bottom: parent.bottom;
-            right: parent.right;
-        }
-        height: contentContainer.footerSize
-        radius: 40
-        transparentBorder: false
-        source: d.blurEnabled ? footerBlurSource : null
-        visible: d.blurEnabled && footer.shown
-    }
-
-    Rectangle {
-        id: footer
-        readonly property bool shown: tabsRepeater.count > 1 || d.configOverlay
-        visible: shown
-        anchors {
-            left: parent.left
-            bottom: parent.bottom
-            right: parent.right
-        }
-        height:  contentContainer.footerSize
-        Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
-        color: Style.colors.menu_Header_Footer_Background
-
-        Rectangle {
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-            }
-            height: 1
-            color: Style.colors.menu_Header_Footer_Border
-        }
-
-        RowLayout {
-            id: tabsLayout
-            anchors.fill: parent
-            spacing: 0
-
-            opacity: d.configOverlay ? 0 : 1
-            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-
-            Repeater {
-                id: tabsRepeater
-                model: d.configOverlay != null ? null : filteredContentModel
-                delegate: MainPageTabButton {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    checked: index === swipeView.currentIndex
-                    iconSource: "qrc:/icons/" + model.icon + ".svg"
-                    visible: !d.isHiddenView(model.name)
-                    onClicked: {
-                        if (d.isHiddenView(filteredContentModel.modelData(swipeView.currentIndex, "name"))) {
-                            setSwipeViewIndexWithoutAnimation(index);
-                        } else {
-                            swipeView.currentIndex = index;
-                        }
-                    }
-                    onPressAndHold: {
-                        root.configureViews();
-                    }
-                }
-            }
-        }
-
-
-        MainPageTabButton {
-            anchors.fill: parent
-            iconSource: "qrc:/icons/configure.svg"
-            opacity: d.configOverlay ? 1 : 0
-            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-            visible: opacity > 0
-            checked: true
-            onClicked: {
-                if (d.configOverlay) {
-                    d.configOverlay.destroy()
-                } else {
-                    PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection)
-                    d.configOverlay = configComponent.createObject(contentContainer)
-                }
-            }
-        }
     }
 
     Component {
