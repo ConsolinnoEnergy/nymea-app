@@ -186,6 +186,11 @@ Page {
         property bool blurEnabled: PlatformHelper.deviceManufacturer !== "raspbian"
         property var editRulePage: null
         property var configOverlay: null
+
+        function isHiddenView(name) {
+            if (!Configuration.hasOwnProperty("hiddenMainViews")) { return false; }
+            return Configuration.hiddenMainViews.indexOf(name) >= 0;
+        }
     }
 
     Settings {
@@ -248,11 +253,16 @@ Page {
             var configList = {}
             var newList = {}
             var newItems = 0
+            var hiddenList = []
 
             // Add extra views first to make them appear first in the list unless the config says otherwise
             if (Configuration.hasOwnProperty("additionalMainViews")) {
                 for (var i = 0; i < Configuration.additionalMainViews.count; i++) {
                     var item = Configuration.additionalMainViews.get(i);
+                    if (d.isHiddenView(item.name)) {
+                        hiddenList.push(item);
+                        continue;
+                    }
                     var idx = mainViewSettings.sortOrder.indexOf(item.name);
                     if (idx === -1) {
                         newList[newItems++] = item;
@@ -293,6 +303,10 @@ Page {
                     mainMenuModel.append(item)
                 }
             }
+            // Hidden views always go last and are never subject to branding filter or sort order
+            for (var i = 0; i < hiddenList.length; i++) {
+                mainMenuModel.append(hiddenList[i]);
+            }
 
             let startViewIndex = 0;
             for (let i = 0; i < mainMenuModel.count; i++) {
@@ -310,7 +324,13 @@ Page {
     SortFilterProxyModel {
         id: filteredContentModel
         sourceModel: mainMenuModel
-        filterList: mainViewSettings.filterList
+        filterList: {
+            var list = mainViewSettings.filterList.slice();
+            if (Configuration.hasOwnProperty("hiddenMainViews")) {
+                list = list.concat(Configuration.hiddenMainViews);
+            }
+            return list;
+        }
         filterRoleName: "name"
     }
 
@@ -477,6 +497,7 @@ Page {
                     Layout.fillHeight: true
                     checked: index === swipeView.currentIndex
                     iconSource: "qrc:/icons/" + model.icon + ".svg"
+                    visible: !d.isHiddenView(model.name)
                     onClicked: swipeView.currentIndex = index
                     onPressAndHold: {
                         root.configureViews();
@@ -530,7 +551,7 @@ Page {
                     iconName: Qt.resolvedUrl("qrc:/icons/" + model.icon + ".svg")
                     progressive: false
                     checked: mainViewSettings.filterList.indexOf(model.name) >= 0
-                    visible: index !== configListView.draggingIndex
+                    visible: !d.isHiddenView(model.name) && index !== configListView.draggingIndex
                     additionalItem: CheckBox {
                         checked: viewConfigDelegate.checked
                         anchors.verticalCenter: parent.verticalCenter

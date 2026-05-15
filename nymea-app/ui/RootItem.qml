@@ -65,7 +65,7 @@ Item {
         d.pushSettingsPage("appsettings/ConsolinnoAppSettingsPage.qml")
     }
     function openSystemSettings() {
-        d.pushSettingsPage("ConsolinnoSettingsPage.qml")
+        swipeView.currentItem.pageStack.currentItem.goToView("consolinnoSettings")
     }
     function openCustomPage(page) {
         d.pushSettingsPage(page)
