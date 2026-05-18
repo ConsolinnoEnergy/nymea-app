@@ -39,7 +39,7 @@ SettingsPageBase {
         RoundButton {
             icon.source: "qrc:/icons/add.svg"
             text: qsTr("Add ZigBee network")
-            secondary: true
+            flat: true
             onClicked: {
                 addNetwork()
             }

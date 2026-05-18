@@ -40,7 +40,7 @@ SettingsPageBase {
             visible: false
             icon.source: "qrc:/icons/configure.svg"
             icon.color: pluginsProxy.showOnlyConfigurable ? Style.accentColor : Style.iconColor
-            secondary: true
+            flat: true
             onClicked: {
                 pluginsProxy.showOnlyConfigurable = !pluginsProxy.showOnlyConfigurable
             }

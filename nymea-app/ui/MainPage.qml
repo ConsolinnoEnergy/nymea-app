@@ -91,7 +91,7 @@ Page {
         RoundButton {
             id: menuButton
             icon.source: "qrc:/icons/menu.svg"
-            secondary: true
+            flat: true
             anchors {
                 left: parent.left
                 leftMargin: Style.smallMargins

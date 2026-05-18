@@ -38,7 +38,7 @@ Page {
         RoundButton {
             icon.source: "qrc:/icons/down.svg"
             icon.color: root.autoScroll ? Style.accentColor : Style.iconColor
-            secondary: true
+            flat: true
             onClicked: {
                 listView.positionViewAtEnd();
                 root.autoScroll = !root.autoScroll
