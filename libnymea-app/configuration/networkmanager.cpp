@@ -203,7 +203,6 @@ Q_INVOKABLE int NetworkManager::enableEth1StaticIp(const QString &ip, quint8 pre
 {
     qCDebug(dcNetworkManagement()) << "Enabling static IP for eth1" << ip << prefix;
     QVariantMap params{
-        {"interface", "eth1"},
         {"ip", ip},
         {"prefix", prefix}};
     return m_engine->jsonRpcClient()->sendCommand("NetworkManager.EnableEth1StaticIp", params, this, "enableEth1StaticIpResponse");
@@ -212,8 +211,7 @@ Q_INVOKABLE int NetworkManager::enableEth1StaticIp(const QString &ip, quint8 pre
 Q_INVOKABLE int NetworkManager::disableEth1StaticIp()
 {
     qCDebug(dcNetworkManagement()) << "Disabling static IP for eth1";
-    QVariantMap params{
-        {"interface", "eth1"}};
+    QVariantMap params{};
     return m_engine->jsonRpcClient()->sendCommand("NetworkManager.DisableEth1StaticIp", params, this, "disableEth1StaticIpResponse");
 }
 
