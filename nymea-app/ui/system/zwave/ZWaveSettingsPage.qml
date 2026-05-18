@@ -24,7 +24,6 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Material
 import QtQuick.Layouts
 import Nymea
 
@@ -32,14 +31,15 @@ import "qrc:/ui/components"
 
 SettingsPageBase {
     id: root
-    header: NymeaHeader {
+    header: CoHeader {
         text: qsTr("Z-Wave")
         backButtonVisible: true
         onBackPressed: pageStack.pop()
 
-        HeaderButton {
-            imageSource: "qrc:/icons/add.svg"
+        RoundButton {
+            icon.source: "qrc:/icons/add.svg"
             text: qsTr("Add Z-Wave network")
+            secondary: true
             onClicked: {
                 addNetwork()
             }

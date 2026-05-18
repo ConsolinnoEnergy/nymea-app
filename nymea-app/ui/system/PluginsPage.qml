@@ -24,7 +24,6 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Material
 import QtQuick.Layouts
 import Nymea
 
@@ -32,15 +31,16 @@ import "../components"
 
 SettingsPageBase {
     id: root
-    header: NymeaHeader {
+    header: CoHeader {
         text: qsTr("Plugins")
         backButtonVisible: true
         onBackPressed: pageStack.pop()
 
-        HeaderButton {
+        RoundButton {
             visible: false
-            imageSource: "qrc:/icons/configure.svg"
-            color: pluginsProxy.showOnlyConfigurable ? Style.accentColor : Style.iconColor
+            icon.source: "qrc:/icons/configure.svg"
+            icon.color: pluginsProxy.showOnlyConfigurable ? Style.accentColor : Style.iconColor
+            secondary: true
             onClicked: {
                 pluginsProxy.showOnlyConfigurable = !pluginsProxy.showOnlyConfigurable
             }
