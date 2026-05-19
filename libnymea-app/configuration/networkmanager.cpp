@@ -222,6 +222,13 @@ int NetworkManager::disconnectInterface(const QString &interface)
     return m_engine->jsonRpcClient()->sendCommand("NetworkManager.DisconnectInterface", params, this, "disconnectResponse");
 }
 
+int NetworkManager::getConnectionSettings(const QString &interface)
+{
+    QVariantMap params;
+    params.insert("interface", interface);
+    return m_engine->jsonRpcClient()->sendCommand("NetworkManager.GetConnectionSettings", params, this, "getConnectionSettingsResponse");
+}
+
 void NetworkManager::getStatusResponse(int /*commandId*/, const QVariantMap &params)
 {
     m_loading = false;
@@ -409,6 +416,14 @@ void NetworkManager::disableEth1StaticIpResponse(int commandId, const QVariantMa
 {
     QString status = params.value("networkManagerError").toString();
     emit disableEth1StaticIpReply(commandId, status);
+}
+
+void NetworkManager::getConnectionSettingsResponse(int commandId, const QVariantMap &params)
+{
+    QString status = params.value("networkManagerError").toString();
+    QVariantMap settings = params.value("connectionSettings").toMap();
+    qCDebug(dcNetworkManagement) << "Get connection settings reply" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson(QJsonDocument::Indented));
+    emit getConnectionSettingsReply(commandId, status, settings);
 }
 
 void NetworkManager::notificationReceived(const QVariantMap &params)

@@ -92,6 +92,7 @@ public:
     Q_INVOKABLE int disconnectInterface(const QString &interface);
     Q_INVOKABLE int enableEth1StaticIp(const QString &ip, quint8 prefix);
     Q_INVOKABLE int disableEth1StaticIp();
+    Q_INVOKABLE int getConnectionSettings(const QString &interface);
 
 signals:
     void engineChanged();
@@ -111,6 +112,7 @@ signals:
     void createWiredSharedConnectionReply(int id, const QString &status);
     void enableEth1StaticIpReply(int id, const QString &status);
     void disableEth1StaticIpReply(int id, const QString &status);
+    void getConnectionSettingsReply(int id, const QString &status, const QVariantMap &settings);
 
 private slots:
     void init();
@@ -128,6 +130,7 @@ private slots:
     void createWiredSharedConnectionResponse(int commandId, const QVariantMap &params);
     void enableEth1StaticIpResponse(int commandId, const QVariantMap &params);
     void disableEth1StaticIpResponse(int commandId, const QVariantMap &params);
+    void getConnectionSettingsResponse(int commandId, const QVariantMap &params);
 
     void notificationReceived(const QVariantMap &params);
 
