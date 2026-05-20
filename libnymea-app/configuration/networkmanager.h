@@ -1,36 +1,35 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*
-* Copyright (C) 2013 - 2024, nymea GmbH
-* Copyright (C) 2024 - 2025, chargebyte austria GmbH
-*
-* This file is part of libnymea-app.
-*
-* libnymea-app is free software: you can redistribute it and/or
-* modify it under the terms of the GNU Lesser General Public License
-* as published by the Free Software Foundation, either version 3
-* of the License, or (at your option) any later version.
-*
-* libnymea-app is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with libnymea-app. If not, see <https://www.gnu.org/licenses/>.
-*
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *
+ * Copyright (C) 2013 - 2024, nymea GmbH
+ * Copyright (C) 2024 - 2025, chargebyte austria GmbH
+ *
+ * This file is part of libnymea-app.
+ *
+ * libnymea-app is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * libnymea-app is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libnymea-app. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef NETWORKMANAGER_H
 #define NETWORKMANAGER_H
 
-#include <QObject>
 #include <QHash>
+#include <QObject>
 
 #include "engine.h"
 #include "types/networkdevices.h"
-
 
 class WiredNetworkDevices;
 class WirelessNetworkDevices;
@@ -51,7 +50,8 @@ class NetworkManager : public QObject
     Q_PROPERTY(WirelessNetworkDevices *wirelessNetworkDevices READ wirelessNetworkDevices CONSTANT)
 
 public:
-    enum NetworkManagerState {
+    enum NetworkManagerState
+    {
         NetworkManagerStateUnknown = 0,
         NetworkManagerStateAsleep = 10,
         NetworkManagerStateDisconnected = 20,
@@ -90,6 +90,9 @@ public:
     Q_INVOKABLE int createWiredManualConnection(const QString &interface, const QString &ip, quint8 prefix, const QString &gateway, const QString &dns);
     Q_INVOKABLE int createWiredSharedConnection(const QString &interface, const QString &ip = QString(), quint8 prefix = 24);
     Q_INVOKABLE int disconnectInterface(const QString &interface);
+    Q_INVOKABLE int enableEth1StaticIp(const QString &ip, quint8 prefix);
+    Q_INVOKABLE int disableEth1StaticIp();
+    Q_INVOKABLE int getConnectionSettings(const QString &interface);
 
 signals:
     void engineChanged();
@@ -107,6 +110,9 @@ signals:
     void createWiredAutoConnectionReply(int id, const QString &status);
     void createWiredManualConnectionReply(int id, const QString &status);
     void createWiredSharedConnectionReply(int id, const QString &status);
+    void enableEth1StaticIpReply(int id, const QString &status);
+    void disableEth1StaticIpReply(int id, const QString &status);
+    void getConnectionSettingsReply(int id, const QString &status, const QVariantMap &settings);
 
 private slots:
     void init();
@@ -122,6 +128,9 @@ private slots:
     void createWiredAutoConnectionResponse(int commandId, const QVariantMap &params);
     void createWiredManualConnectionResponse(int commandId, const QVariantMap &params);
     void createWiredSharedConnectionResponse(int commandId, const QVariantMap &params);
+    void enableEth1StaticIpResponse(int commandId, const QVariantMap &params);
+    void disableEth1StaticIpResponse(int commandId, const QVariantMap &params);
+    void getConnectionSettingsResponse(int commandId, const QVariantMap &params);
 
     void notificationReceived(const QVariantMap &params);
 
