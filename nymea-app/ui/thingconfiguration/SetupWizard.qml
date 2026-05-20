@@ -432,8 +432,7 @@ Page {
                 Layout.leftMargin: app.margins
                 Layout.rightMargin: app.margins
                 Layout.topMargin: Style.bigMargins
-
-                secondary: true
+                flat: true
                 text: qsTr("Reset values to default")
                 onClicked: {
                     // Need to force reload of model here since otherwise the code below

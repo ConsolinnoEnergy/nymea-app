@@ -36,6 +36,7 @@ Item {
     property alias menuButtonVisible: menuButton.visible
     default property alias children: layout.data
     property alias elide: label.elide
+    property alias wrapMode: label.wrapMode
 
     signal backPressed();
     signal menuPressed();

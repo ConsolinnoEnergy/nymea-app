@@ -34,6 +34,7 @@ import "components"
 Drawer {
     id: root
     dragMargin: 4
+    topPadding: 0
 
     property ConfiguredHostsModel configuredHosts: null
     readonly property Engine currentEngine: configuredHosts.count > 0 ? configuredHosts.get(configuredHosts.currentIndex).engine : null

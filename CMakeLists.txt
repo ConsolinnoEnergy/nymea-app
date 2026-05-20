@@ -98,6 +98,14 @@ if(ANDROID)
     add_link_options("-Wl,-z,max-page-size=16384")
 endif()
 
+set(APP_VERSION ${NYMEA_APP_VERSION})
+set(APP_REVISION ${NYMEA_APP_REVISION})
+
+# Allow the overlay to override APP_VERSION/APP_REVISION before config.h is generated
+if(NYMEA_OVERLAY_PATH AND EXISTS "${NYMEA_OVERLAY_PATH}/overlay-config.cmake")
+    include("${NYMEA_OVERLAY_PATH}/overlay-config.cmake")
+endif()
+
 # Make config.h available to all targets
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_BINARY_DIR}/config.h @ONLY)
 
@@ -108,9 +116,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
         add_compile_options(-Wno-deprecated-declarations -Wno-deprecated-copy)
     endif()
 endif()
-
-set(APP_VERSION ${NYMEA_APP_VERSION})
-set(APP_REVISION ${NYMEA_APP_REVISION})
 
 add_subdirectory(libnymea-app)
 add_subdirectory(experiences)
