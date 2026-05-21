@@ -27,9 +27,13 @@
 #include "types/param.h"
 #include "types/params.h"
 
+#ifndef Q_OS_WASM
 #include "connection/tcpsockettransport.h"
+#endif
 #include "connection/websockettransport.h"
+#ifndef Q_OS_WASM
 #include "connection/bluetoothtransport.h"
+#endif
 #include "connection/tunnelproxytransport.h"
 
 #include <QJsonDocument>
@@ -52,9 +56,13 @@ JsonRpcClient::JsonRpcClient(QObject *parent) :
     m_id(0)
 {
     m_connection = new NymeaConnection(this);
+#ifndef Q_OS_WASM
     m_connection->registerTransport(new TcpSocketTransportFactory());
+#endif
     m_connection->registerTransport(new WebsocketTransportFactory());
+#ifndef Q_OS_WASM
     m_connection->registerTransport(new BluetoothTransportFactoy());
+#endif
     m_connection->registerTransport(new TunnelProxyTransportFactory());
 
     connect(m_connection, &NymeaConnection::availableBearerTypesChanged, this, &JsonRpcClient::availableBearerTypesChanged);

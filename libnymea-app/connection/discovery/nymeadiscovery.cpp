@@ -23,13 +23,17 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "nymeadiscovery.h"
-#include "upnpdiscovery.h"
 #include "zeroconfdiscovery.h"
+#ifndef Q_OS_WASM
+#include "upnpdiscovery.h"
 #include "bluetoothservicediscovery.h"
+#endif
 #include "../nymeahost.h"
 
 #include <QUuid>
+#ifndef Q_OS_WASM
 #include <QBluetoothUuid>
+#endif
 #include <QUrlQuery>
 #include <QSettings>
 //#include <QNetworkConfigurationManager>
@@ -69,28 +73,36 @@ void NymeaDiscovery::setDiscovering(bool discovering)
 
         // Start UPnP discovery
         if (m_upnpDiscoveryEnabled) {
+#ifndef Q_OS_WASM
             if (!m_upnp) {
                 m_upnp = new UpnpDiscovery(m_nymeaHosts, this);
             }
             m_upnp->discover();
+#endif
         }
 
         // Start Bluetooth discovery if HW is available
         if (m_bluetoothDiscoveryEnabled) {
+#ifndef Q_OS_WASM
             if (!m_bluetooth) {
                 m_bluetooth = new BluetoothServiceDiscovery(m_nymeaHosts, this);
             }
             m_bluetooth->discover();
+#endif
         }
 
     } else {
 
         if (m_upnp) {
+#ifndef Q_OS_WASM
             m_upnp->stopDiscovery();
+#endif
         }
 
         if (m_bluetooth) {
+#ifndef Q_OS_WASM
             m_bluetooth->stopDiscovery();
+#endif
         }
     }
 
