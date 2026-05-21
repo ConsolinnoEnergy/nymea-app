@@ -70,9 +70,11 @@
 #include "configuration/serverconfigurations.h"
 #include "configuration/mqttpolicy.h"
 #include "configuration/mqttpolicies.h"
+#ifndef Q_OS_WASM
 #include "wifisetup/bluetoothdeviceinfos.h"
 #include "wifisetup/bluetoothdiscovery.h"
 #include "wifisetup/btwifisetup.h"
+#endif
 #include "types/wirelessaccesspoint.h"
 #include "types/wirelessaccesspoints.h"
 #include "models/wirelessaccesspointsproxy.h"
