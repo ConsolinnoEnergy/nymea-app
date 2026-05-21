@@ -124,7 +124,7 @@ ColumnLayout {
         }
         CheckBox {
             id: secureCheckBox
-            checked: true
+            checked: Qt.platform.os !== "wasm"
         }
     }
 }
