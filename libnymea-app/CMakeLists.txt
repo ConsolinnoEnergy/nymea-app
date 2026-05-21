@@ -103,6 +103,11 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/QtZeroConf)
     list(APPEND NYMEA_APP_CORE_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/QtZeroConf)
 endif()
 
+if(EMSCRIPTEN)
+    list(FILTER REMOTE_PROXYCLIENT_SOURCES EXCLUDE REGEX "tcpsocketconnection\\.cpp$")
+    list(FILTER REMOTE_PROXYCLIENT_HEADERS EXCLUDE REGEX "tcpsocketconnection\\.h$")
+endif()
+
 add_library(nymea-app-core STATIC
     ${LIBNYMEA_APP_SOURCES}
     ${LIBNYMEA_APP_HEADERS}
