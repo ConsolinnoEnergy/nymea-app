@@ -41,7 +41,6 @@ ApplicationWindow {
     topPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.top
     bottomPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.bottom
     leftPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.left
-    rightPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.right
     maximumWidth: 768
     minimumWidth: 360
     minimumHeight: 580
