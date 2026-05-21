@@ -54,7 +54,9 @@
 #include "pushnotifications.h"
 #include "ruletemplates/messages.h"
 #include "nfchelper.h"
+#ifndef Q_OS_WASM
 #include "nfcthingactionwriter.h"
+#endif
 #include "platformhelper.h"
 #include "platformintegration/platformpermissions.h"
 #include "dashboard/dashboardmodel.h"
@@ -259,7 +261,9 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonType<PlatformHelper>("Nymea", 1, 0, "PlatformHelper", PlatformHelper::platformHelperProvider);
     qmlRegisterSingletonType<PlatformPermissions>("Nymea", 1, 0, "PlatformPermissions", PlatformPermissions::qmlProvider);
     qmlRegisterSingletonType<NfcHelper>("Nymea", 1, 0, "NfcHelper", NfcHelper::nfcHelperProvider);
+#ifndef Q_OS_WASM
     qmlRegisterType<NfcThingActionWriter>("Nymea", 1, 0, "NfcThingActionWriter");
+#endif
 
     qmlRegisterSingletonType<PushNotifications>("Nymea", 1, 0, "PushNotifications", PushNotifications::pushNotificationsProvider);
     qmlRegisterSingletonType(QUrl("qrc:///ui/utils/NymeaUtils.qml"), "NymeaApp.Utils", 1, 0, "NymeaUtils" );
