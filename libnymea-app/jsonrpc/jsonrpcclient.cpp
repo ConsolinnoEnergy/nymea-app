@@ -256,6 +256,9 @@ Connection *JsonRpcClient::currentConnection() const
 
 QVariantMap JsonRpcClient::certificateIssuerInfo() const
 {
+#ifdef Q_OS_WASM
+    return QVariantMap();
+#else
     QVariantMap issuerInfo;
     foreach (const QByteArray &attr, m_connection->sslCertificate().issuerInfoAttributes()) {
         issuerInfo.insert(attr, m_connection->sslCertificate().issuerInfo(attr));
@@ -273,6 +276,7 @@ QVariantMap JsonRpcClient::certificateIssuerInfo() const
     issuerInfo.insert("fingerprint", certificateFingerprint);
 
     return issuerInfo;
+#endif
 }
 
 bool JsonRpcClient::initialSetupRequired() const
@@ -713,6 +717,7 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
 
 
     // Verify SSL certificate
+#ifndef Q_OS_WASM
     if (m_connection->isEncrypted()) {
         QByteArray oldPem;
         QSslCertificate certificate = m_connection->sslCertificate();
@@ -741,6 +746,7 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
             qCInfo(dcJsonRpc()) << "This connections certificate is trusted.";
         }
     }
+#endif
 
     m_cacheHashes.clear();
     qCDebug(dcJsonRpc()) << "Hello reply:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());

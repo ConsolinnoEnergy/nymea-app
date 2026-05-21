@@ -92,7 +92,9 @@ public:
     Q_INVOKABLE void disconnectFromHost();
 
     bool isEncrypted() const;
+#ifndef Q_OS_WASM
     QSslCertificate sslCertificate() const;
+#endif
 
     NymeaConnection::BearerTypes availableBearerTypes() const;
 

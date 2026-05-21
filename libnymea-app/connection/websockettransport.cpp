@@ -40,8 +40,10 @@ WebsocketTransport::WebsocketTransport(QObject *parent) :
     QObject::connect(m_socket, static_cast<errorSignal>(&QWebSocket::error), this, &WebsocketTransport::error);
     QObject::connect(m_socket, &QWebSocket::textMessageReceived, this, &WebsocketTransport::onTextMessageReceived);
 
+#ifndef Q_OS_WASM
     typedef void (QWebSocket:: *sslErrorsSignal)(const QList<QSslError> &);
     QObject::connect(m_socket, static_cast<sslErrorsSignal>(&QWebSocket::sslErrors),this, &WebsocketTransport::sslErrors);
+#endif
 }
 
 bool WebsocketTransport::connect(const QUrl &url)
@@ -81,6 +83,7 @@ void WebsocketTransport::sendData(const QByteArray &data)
     m_socket->sendTextMessage(QString::fromUtf8(data));
 }
 
+#ifndef Q_OS_WASM
 void WebsocketTransport::ignoreSslErrors(const QList<QSslError> &errors)
 {
     // FIXME: We really should provide the exact errors here, like we do on other transports,
@@ -92,16 +95,19 @@ void WebsocketTransport::ignoreSslErrors(const QList<QSslError> &errors)
     Q_UNUSED(errors)
     m_socket->ignoreSslErrors();
 }
+#endif
 
 bool WebsocketTransport::isEncrypted() const
 {
     return m_url.scheme() == "wss";
 }
 
+#ifndef Q_OS_WASM
 QSslCertificate WebsocketTransport::serverCertificate() const
 {
     return m_socket->sslConfiguration().peerCertificate();
 }
+#endif
 
 void WebsocketTransport::onTextMessageReceived(const QString &data)
 {

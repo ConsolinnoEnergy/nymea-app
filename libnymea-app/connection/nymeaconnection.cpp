@@ -27,7 +27,9 @@
 
 #include <QUrl>
 #include <QDebug>
+#ifndef Q_OS_WASM
 #include <QSslKey>
+#endif
 #include <QUrlQuery>
 #include <QSettings>
 #include <QMetaEnum>
@@ -561,6 +563,7 @@ bool NymeaConnection::isEncrypted() const
     return m_currentTransport && m_currentTransport->isEncrypted();
 }
 
+#ifndef Q_OS_WASM
 QSslCertificate NymeaConnection::sslCertificate() const
 {
     if (!m_currentTransport) {
@@ -568,3 +571,4 @@ QSslCertificate NymeaConnection::sslCertificate() const
     }
     return m_currentTransport->serverCertificate();
 }
+#endif
