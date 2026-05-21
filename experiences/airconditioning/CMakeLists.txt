@@ -24,8 +24,11 @@ target_link_libraries(nymea-app-airconditioning
         Qt6::Core
         Qt6::Network
         Qt6::WebSockets
-        Qt6::Bluetooth
         Qt6::Charts
         Qt6::Quick
         Qt6::Qml
 )
+
+if(NOT EMSCRIPTEN)
+    target_link_libraries(nymea-app-airconditioning PUBLIC Qt6::Bluetooth)
+endif()
