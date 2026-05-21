@@ -106,11 +106,14 @@ target_link_libraries(nymea-app-core
         Qt6::Core
         Qt6::Network
         Qt6::WebSockets
-        Qt6::Bluetooth
         Qt6::Charts
         Qt6::Quick
         Qt6::Qml
 )
+
+if(NOT EMSCRIPTEN)
+    target_link_libraries(nymea-app-core PUBLIC Qt6::Bluetooth)
+endif()
 
 if(TARGET OpenSSL::SSL AND TARGET OpenSSL::Crypto)
     target_link_libraries(nymea-app-core PUBLIC OpenSSL::SSL OpenSSL::Crypto)
