@@ -50,10 +50,14 @@ public:
     ConnectionState connectionState() const override;
     void disconnect() override;
     void sendData(const QByteArray &data) override;
+#ifndef Q_OS_WASM
     void ignoreSslErrors(const QList<QSslError> &errors) override;
+#endif
 
     bool isEncrypted() const override;
+#ifndef Q_OS_WASM
     QSslCertificate serverCertificate() const override;
+#endif
 
 private slots:
     void onRemoteConnectionStateChanged(remoteproxyclient::TunnelProxyRemoteConnection::State state);
