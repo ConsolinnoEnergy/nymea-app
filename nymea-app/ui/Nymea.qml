@@ -38,9 +38,6 @@ ApplicationWindow {
     visible: true
     width: Qt.platform.os === "ios" ? Screen.width : 360
     height: Qt.platform.os === "ios" ? Screen.height : 580
-    topPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.top
-    bottomPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.bottom
-    leftPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.left
     maximumWidth: 768
     minimumWidth: 360
     minimumHeight: 580
