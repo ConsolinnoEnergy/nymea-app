@@ -187,9 +187,11 @@ void NymeaDiscovery::setBluetoothDiscoveryEnabled(bool bluetoothDiscoveryEnabled
     if (m_bluetoothDiscoveryEnabled != bluetoothDiscoveryEnabled) {
         m_bluetoothDiscoveryEnabled = bluetoothDiscoveryEnabled;
         emit bluetoothDiscoveryEnabledChanged(m_bluetoothDiscoveryEnabled);
+#ifndef Q_OS_WASM
         if (!m_bluetoothDiscoveryEnabled && m_bluetooth && m_bluetooth->discovering()) {
             m_bluetooth->stopDiscovery();
         }
+#endif
     }
 }
 
@@ -198,9 +200,11 @@ void NymeaDiscovery::setUpnpDiscoveryEnabled(bool upnpDiscoveryEnabled)
     if (m_upnpDiscoveryEnabled != upnpDiscoveryEnabled) {
         m_upnpDiscoveryEnabled = upnpDiscoveryEnabled;
         emit upnpDiscoveryEnabledChanged(m_upnpDiscoveryEnabled);
+#ifndef Q_OS_WASM
         if (!m_upnpDiscoveryEnabled && m_upnp && m_upnp->discovering()) {
             m_upnp->stopDiscovery();
         }
+#endif
     }
 }
 
