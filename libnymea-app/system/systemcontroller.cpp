@@ -154,16 +154,20 @@ int SystemController::setServerTime(const QDateTime &serverTime)
     QVariantMap params;
     params.insert("automaticTime", false);
     params.insert("time", serverTime.toSecsSinceEpoch());
+#ifndef Q_OS_WASM
     params.insert("timeZone", serverTime.timeZone().id());
+#endif
     return m_jsonRpcClient->sendCommand("System.SetTime", params, this, "setTimeResponse");
 }
 
 QStringList SystemController::timeZones() const
 {
     QStringList ret;
+#ifndef Q_OS_WASM
     foreach (const QByteArray &tzId, QTimeZone::availableTimeZoneIds()) {
         ret << tzId;
     }
+#endif
     return ret;
 }
 
