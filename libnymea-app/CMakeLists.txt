@@ -13,6 +13,15 @@ if(IOS)
     list(APPEND LIBNYMEA_APP_SOURCES ${LIBNYMEA_APP_MM_SOURCES})
 endif()
 
+if(EMSCRIPTEN)
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/connection/bluetooth[^/]*$")
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/connection/discovery/bluetoothservicediscovery[^/]*$")
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/wifisetup/.*")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/connection/bluetooth[^/]*$")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/connection/discovery/bluetoothservicediscovery[^/]*$")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/wifisetup/.*")
+endif()
+
 set(NYMEA_REMOTEPROXYCLIENT_MODULE
     ${CMAKE_SOURCE_DIR}/nymea-remoteproxy/cmake/nymea-remoteproxyclient-sources.cmake
 )
