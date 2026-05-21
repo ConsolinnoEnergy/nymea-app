@@ -38,6 +38,7 @@
 #include "connection/tunnelproxytransport.h"
 #endif
 
+#include <QCryptographicHash>
 #include <QJsonDocument>
 #include <QVariantMap>
 #include <QDebug>
