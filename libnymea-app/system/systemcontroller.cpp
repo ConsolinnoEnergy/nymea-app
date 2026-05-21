@@ -294,8 +294,10 @@ void SystemController::getServerTimeResponse(int commandId, const QVariantMap &p
     // the time in the servers time zone. So we'll be setting the time zone to the client one. This is effectively a
     // wrong/broken DateTime object and should not be used to calculate anything.
     m_serverTime = QDateTime::fromSecsSinceEpoch(params.value("time").toUInt());
+#ifndef Q_OS_WASM
     m_serverTime = m_serverTime.toTimeZone(QTimeZone(m_serverTimeZone.toUtf8()));
     m_serverTime.setTimeZone(QDateTime::currentDateTime().timeZone());
+#endif
     emit serverTimeChanged();
 
     m_automaticTimeAvailable = params.value("automaticTimeAvailable").toBool();
@@ -418,8 +420,10 @@ void SystemController::notificationReceived(const QVariantMap &data)
         // the time in the servers time zone. So we'll be setting the time zone to the client one. This is effectively a
         // wrong/broken DateTime object and should not be used to calculate anything.
         m_serverTime = QDateTime::fromSecsSinceEpoch(data.value("params").toMap().value("time").toUInt());
+#ifndef Q_OS_WASM
         m_serverTime = m_serverTime.toTimeZone(QTimeZone(m_serverTimeZone.toUtf8()));
         m_serverTime.setTimeZone(QDateTime::currentDateTime().timeZone());
+#endif
         emit serverTimeChanged();
 
         m_automaticTimeAvailable = data.value("params").toMap().value("automaticTimeAvailable").toBool();
