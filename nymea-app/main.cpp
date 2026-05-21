@@ -156,7 +156,9 @@ int main(int argc, char *argv[])
     qCInfo(dcApplication()) << "  Platform: Device manufacturer:" << PlatformHelper::instance()->deviceManufacturer();
 
     qCInfo(dcApplication()) << "Locale:" << QLocale() << QLocale().name() << QLocale().language();
+#ifndef Q_OS_WASM
     qCInfo(dcApplication()) << "SSL version:" << QSslSocket::sslLibraryVersionString();
+#endif
 
     QScreen *screen = application.primaryScreen();
     qCInfo(dcApplication()).noquote() << QString("Screen name: %1").arg(screen->name());
@@ -296,7 +298,11 @@ int main(int argc, char *argv[])
     engine->rootContext()->setContextProperty("appRevision", APP_REVISION);
     engine->rootContext()->setContextProperty("qtBuildVersion", QT_VERSION_STR);
     engine->rootContext()->setContextProperty("qtVersion", qVersion());
+#ifndef Q_OS_WASM
     engine->rootContext()->setContextProperty("sslLibraryVersion", QSslSocket::sslLibraryVersionString());
+#else
+    engine->rootContext()->setContextProperty("sslLibraryVersion", QString("N/A"));
+#endif
 
     engine->rootContext()->setContextProperty("defaultMainViewFilter", parser.value(defaultViewsOption));
     engine->rootContext()->setContextProperty("kioskMode", parser.isSet(kioskOption));
