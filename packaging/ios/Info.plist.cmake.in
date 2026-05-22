@@ -70,5 +70,12 @@
         </array>
         <key>ITSAppUsesNonExemptEncryption</key>
         <false/>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>en</string>
+        <key>CFBundleLocalizations</key>
+        <array>
+            <string>de</string>
+            <string>en</string>
+        </array>
     </dict>
 </plist>
