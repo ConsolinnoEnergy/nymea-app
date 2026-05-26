@@ -205,7 +205,9 @@ int main(int argc, char *argv[])
 
     engine->addImportPath(application.applicationDirPath() + "/../experiences/");
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef Q_OS_WASM
     engine->addImportPath(QStringLiteral("qrc:/"));
+#endif
     engine->addImportPath(QStringLiteral("qrc:/styles"));
 #endif
 

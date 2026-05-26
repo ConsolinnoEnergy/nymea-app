@@ -583,7 +583,7 @@ Page {
                         BusyIndicator {
                             id: busyIndicator
                             anchors.centerIn: parent
-                            running: false
+                            running: Qt.platform.os !== "wasm" && oAuthWebView.loading
                         }
 
                         WebView {
