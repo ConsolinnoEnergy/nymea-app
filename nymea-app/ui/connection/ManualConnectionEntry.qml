@@ -114,7 +114,7 @@ ColumnLayout {
                              ? "2222"
                              : connectionTypeComboBox.currentIndex == 1
                                ? "4444"
-                               : Qt.platform.os === "wasm" ? "443" : Configuration.tunnelProxyPort
+                               : Qt.platform.os === "wasm" ? "2212" : Configuration.tunnelProxyPort
             validator: IntValidator{bottom: 1; top: 65535;}
         }
 
