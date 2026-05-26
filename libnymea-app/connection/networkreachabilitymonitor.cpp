@@ -42,6 +42,12 @@ NetworkReachabilityMonitor::NetworkReachabilityMonitor(QObject *parent)
 
     m_networkInformation = QNetworkInformation::instance();
 
+    if (!m_networkInformation) {
+        qCDebug(dcNymeaConnection()) << "QNetworkInformation is not available. Assuming network is reachable.";
+        m_availableBearerTypes = NymeaConnection::BearerTypeAll;
+        return;
+    }
+
     qCDebug(dcNymeaConnection()) << "Network infromation supported features:" << m_networkInformation->supportedFeatures();
     qCDebug(dcNymeaConnection()) << "Network reachability:" << m_networkInformation->reachability();
     qCDebug(dcNymeaConnection()) << "Network trasport medium changed:" << m_networkInformation->transportMedium();
@@ -103,6 +109,9 @@ void NetworkReachabilityMonitor::updateActiveBearers()
 // Note: some features are availabe since Qt 6.3.0, but the minimal Qt6 version is 6.6.0,
 //       so we don't want so have an unhanlded gap and let the compiler warn about incompatibility
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    if (!m_networkInformation) {
+        availableBearerTypes = NymeaConnection::BearerTypeAll;
+    } else
     if (m_networkInformation->reachability() == QNetworkInformation::Reachability::Disconnected) {
         qCDebug(dcNymeaConnection()) << "No reachable network transport medium available.";
     } else {

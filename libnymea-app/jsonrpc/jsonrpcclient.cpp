@@ -34,9 +34,7 @@
 #ifndef Q_OS_WASM
 #include "connection/bluetoothtransport.h"
 #endif
-#ifndef Q_OS_WASM
 #include "connection/tunnelproxytransport.h"
-#endif
 
 #include <QCryptographicHash>
 #include <QJsonDocument>
@@ -65,8 +63,8 @@ JsonRpcClient::JsonRpcClient(QObject *parent) :
     m_connection->registerTransport(new WebsocketTransportFactory());
 #ifndef Q_OS_WASM
     m_connection->registerTransport(new BluetoothTransportFactoy());
-    m_connection->registerTransport(new TunnelProxyTransportFactory());
 #endif
+    m_connection->registerTransport(new TunnelProxyTransportFactory());
 
     connect(m_connection, &NymeaConnection::availableBearerTypesChanged, this, &JsonRpcClient::availableBearerTypesChanged);
     connect(m_connection, &NymeaConnection::connectionStatusChanged, this, &JsonRpcClient::connectionStatusChanged);

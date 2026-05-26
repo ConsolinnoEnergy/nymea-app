@@ -32,14 +32,35 @@
 #include <QLoggingCategory>
 Q_DECLARE_LOGGING_CATEGORY(dcApplication)
 
+#ifdef Q_OS_WASM
+namespace {
+constexpr int maxStoredConfiguredHosts = 20;
+constexpr int maxStoredHostNameLength = 256;
+}
+#endif
+
 ConfiguredHostsModel::ConfiguredHostsModel(QObject *parent) : QAbstractListModel(parent)
 {
     QSettings settings;
     settings.beginGroup("ConfiguredHosts");
+#ifdef Q_OS_WASM
+    if (settings.childGroups().count() > maxStoredConfiguredHosts) {
+        qCWarning(dcApplication()) << "Configured host cache is too large for browser storage. Clearing cached hosts.";
+        settings.remove("");
+    }
+#endif
     foreach (const QString &childGroup, settings.childGroups()) {
+#ifdef Q_OS_WASM
+        if (m_list.count() >= maxStoredConfiguredHosts) {
+            continue;
+        }
+#endif
         settings.beginGroup(childGroup);
         QUuid uuid = settings.value("uuid").toUuid();
         QString cachedName = settings.value("cachedName").toString();
+#ifdef Q_OS_WASM
+        cachedName.truncate(maxStoredHostNameLength);
+#endif
         ConfiguredHost *host = new ConfiguredHost(uuid, this);
         host->setName(cachedName);
         addHost(host);
@@ -241,9 +262,18 @@ void ConfiguredHostsModel::saveToDisk()
     settings.remove("");
     settings.setValue("currentIndex", m_currentIndex);
     for (int i = 0; i < m_list.count(); i++) {
+#ifdef Q_OS_WASM
+        if (i >= maxStoredConfiguredHosts) {
+            break;
+        }
+#endif
         settings.beginGroup(QString::number(i));
         settings.setValue("uuid", m_list.at(i)->uuid());
-        settings.setValue("cachedName", m_list.at(i)->name());
+        QString cachedName = m_list.at(i)->name();
+#ifdef Q_OS_WASM
+        cachedName.truncate(maxStoredHostNameLength);
+#endif
+        settings.setValue("cachedName", cachedName);
         settings.endGroup();
     }
     settings.endGroup();

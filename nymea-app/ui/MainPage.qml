@@ -518,7 +518,7 @@ Page {
                 topMargin: contentContainer.headerSize
                 bottomMargin: contentContainer.footerSize
 
-                property bool dragging: draggingIndex >= 0
+                property bool itemDragging: draggingIndex >= 0
                 property int draggingIndex : -1
 
                 moveDisplaced: Transition { NumberAnimation { properties: "y" } }
@@ -560,7 +560,7 @@ Page {
                 MouseArea {
                     id: dndArea
                     anchors.fill: parent
-                    preventStealing: configListView.dragging
+                    preventStealing: configListView.itemDragging
                     property int dragOffset: 0
 
                     onPressAndHold: {
@@ -577,7 +577,7 @@ Page {
                         PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackImpact)
                     }
                     onMouseYChanged: {
-                        if (configListView.dragging) {
+                        if (configListView.itemDragging) {
                             var mouseYInListView = configListView.contentItem.mapFromItem(dndArea, mouseX, mouseY).y;
                             var indexUnderMouse = configListView.indexAt(mouseX, mouseYInListView - dndArea.dragOffset / 2)
                             if (indexUnderMouse < 0) {
@@ -599,7 +599,7 @@ Page {
                         var clickedIndex = configListView.indexAt(mouseX, mouseYInListView)
                         var item = mainMenuModel.get(clickedIndex)
                         var isEnabled = mainViewSettings.filterList.indexOf(item.name) >= 0;
-                        if (!configListView.dragging) {
+                        if (!configListView.itemDragging) {
                             var newList = []
                             for (var i = 0; i < mainMenuModel.count; i++) {
                                 var entry = mainMenuModel.get(i).name;
@@ -631,7 +631,7 @@ Page {
 
                 NymeaItemDelegate {
                     id: dndItem
-                    visible: configListView.dragging
+                    visible: configListView.itemDragging
                     y: dndArea.mouseY - dndArea.dragOffset
                     width: configListView.width
                     progressive: false

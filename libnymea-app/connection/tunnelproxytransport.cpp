@@ -38,16 +38,22 @@ NYMEA_LOGGING_CATEGORY(dcTunnelProxyRemoteConnectionDummy, "TunnelProxyRemoteCon
 TunnelProxyTransport::TunnelProxyTransport(QObject *parent) :
     NymeaTransportInterface(parent)
 {
+#ifdef Q_OS_WASM
+    m_remoteConnection = new TunnelProxyRemoteConnection(QUuid::createUuid(), qApp->applicationName(), TunnelProxyRemoteConnection::ConnectionTypeWebSocket, this);
+#else
     m_remoteConnection = new TunnelProxyRemoteConnection(QUuid::createUuid(), qApp->applicationName(), this);
+#endif
     QObject::connect(m_remoteConnection, &TunnelProxyRemoteConnection::stateChanged, this, &TunnelProxyTransport::onRemoteConnectionStateChanged);
     QObject::connect(m_remoteConnection, &TunnelProxyRemoteConnection::dataReady, this, &TunnelProxyTransport::dataReady);
     QObject::connect(m_remoteConnection, &TunnelProxyRemoteConnection::errorOccurred, this, &TunnelProxyTransport::onRemoteConnectionErrorOccurred);
+#ifndef Q_OS_WASM
     QObject::connect(m_remoteConnection, &TunnelProxyRemoteConnection::sslErrors, this, [=](const QList<QSslError> &errors){
         qCWarning(dcTunnelProxyRemoteConnectionDummy) << "Remote tunnel proxy server SSL errors occurred:";
         foreach (const QSslError &sslError, errors) {
             qCWarning(dcTunnelProxyRemoteConnectionDummy) << "  --> " << sslError.errorString();
         }
     });
+#endif
 
 }
 
@@ -56,10 +62,19 @@ bool TunnelProxyTransport::connect(const QUrl &url)
     m_url = url;
 
     QUrl serverUrl;
+#ifdef Q_OS_WASM
+    serverUrl.setScheme(url.scheme() == "tunnels" ? "wss" : "ws");
+#else
     serverUrl.setScheme(url.scheme() == "tunnels" ? "ssl" : "tcp");
+#endif
     serverUrl.setHost(url.host());
     serverUrl.setPort(url.port());
     QUuid serverUuid(QUrlQuery(url).queryItemValue("uuid"));
+
+    if (!serverUrl.isValid() || serverUrl.host().isEmpty()) {
+        qCWarning(dcTunnelProxyRemoteConnectionDummy) << "Invalid tunnel proxy URL" << url;
+        return false;
+    }
 
     return m_remoteConnection->connectServer(serverUrl, serverUuid);
 }
@@ -101,22 +116,26 @@ void TunnelProxyTransport::sendData(const QByteArray &data)
     m_remoteConnection->sendData(data);
 }
 
+#ifndef Q_OS_WASM
 void TunnelProxyTransport::ignoreSslErrors(const QList<QSslError> &errors)
 {
     // FIXME: once the tunnel connection implements SSL connection trought the tunnel proxy, we need to implement this
     Q_UNUSED(errors)
 }
+#endif
 
 bool TunnelProxyTransport::isEncrypted() const
 {
     return false;
 }
 
+#ifndef Q_OS_WASM
 QSslCertificate TunnelProxyTransport::serverCertificate() const
 {
     // FIXME: once the tunnel connection implements SSL connection trought the tunnel proxy, we need to implement this
     return QSslCertificate();
 }
+#endif
 
 void TunnelProxyTransport::onRemoteConnectionStateChanged(remoteproxyclient::TunnelProxyRemoteConnection::State state)
 {

@@ -49,15 +49,7 @@ WebsocketTransport::WebsocketTransport(QObject *parent) :
 bool WebsocketTransport::connect(const QUrl &url)
 {
     m_url = url;
-    QUrl webSocketUrl(url);
-#ifdef Q_OS_WASM
-    if (webSocketUrl.scheme() == "wss") {
-        qWarning() << "WASM cannot ignore browser TLS errors for wss URLs. Falling back to ws:" << webSocketUrl;
-        webSocketUrl.setScheme("ws");
-        m_url = webSocketUrl;
-    }
-#endif
-    m_socket->open(webSocketUrl);
+    m_socket->open(url);
     return true;
 }
 
