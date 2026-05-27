@@ -66,7 +66,7 @@ Page {
         }
         Label {
             Layout.fillWidth: true
-            text: engine.jsonRpcClient.currentHost.name.length > 0 ? engine.jsonRpcClient.currentHost.name : engine.jsonRpcClient.currentHost.uuid
+            text: engine && engine.jsonRpcClient ? (engine.jsonRpcClient.currentHost.name.length > 0 ? engine.jsonRpcClient.currentHost.name : engine.jsonRpcClient.currentHost.uuid) : ""
             font: Style.smallFont
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
@@ -75,6 +75,7 @@ Page {
             Layout.fillWidth: true
             Layout.preferredHeight: 150
             text: {
+                if (!engine || !engine.jsonRpcClient) return "";
                 var errorMessage;
                 switch (engine.jsonRpcClient.connectionStatus) {
                 case NymeaConnection.ConnectionStatusUnconnected:
@@ -109,7 +110,7 @@ Page {
                     break;
                 case NymeaConnection.ConnectionStatusUnknownError:
                 default:
-                    errorMessage = qsTr("An unknown error happened. We're very sorry for that. (Error code: %1)").arg(engine.jsonRpcClient.connectionStatus);
+                    errorMessage = qsTr("An unknown error happened. We're very sorry for that. (Error code: %1)").arg(engine && engine.jsonRpcClient ? engine.jsonRpcClient.connectionStatus : "");
                 }
                 return errorMessage;
             }
