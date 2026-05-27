@@ -24,6 +24,8 @@
 
 #include "configuredhostsmodel.h"
 
+#include <algorithm>
+
 #include <QDir>
 #include <QSettings>
 #include <QStandardPaths>
@@ -60,6 +62,17 @@ ConfiguredHostsModel::ConfiguredHostsModel(QObject *parent) : QAbstractListModel
         QString cachedName = settings.value("cachedName").toString();
 #ifdef Q_OS_WASM
         cachedName.truncate(maxStoredHostNameLength);
+        // Skip duplicate non-null UUIDs — can accumulate in localStorage if remove("") is imperfect
+        if (!uuid.isNull()) {
+            bool duplicate = std::any_of(m_list.begin(), m_list.end(), [&uuid](const ConfiguredHost *h) {
+                return h->uuid() == uuid;
+            });
+            if (duplicate) {
+                qCWarning(dcApplication()) << "Skipping duplicate configured host UUID on load:" << uuid;
+                settings.endGroup();
+                continue;
+            }
+        }
 #endif
         ConfiguredHost *host = new ConfiguredHost(uuid, this);
         host->setName(cachedName);
@@ -153,39 +166,51 @@ void ConfiguredHostsModel::removeHost(int index)
     ConfiguredHost *host = m_list.takeAt(index);
     qCDebug(dcApplication()) << "Remove configured host" << host->name() << host->uuid().toString();
 
+    // Only delete UUID-scoped settings/cache/cert if no other configured host shares the same UUID.
+    // This prevents destroying shared data when removing a duplicate entry.
+    const QUuid removedUuid = host->uuid();
+    bool uuidStillInUse = !removedUuid.isNull() && std::any_of(m_list.begin(), m_list.end(), [&removedUuid](const ConfiguredHost *h) {
+        return h->uuid() == removedUuid;
+    });
+
     QSettings settings;
 
-    QString hostUuidString = host->uuid().toString();
+    QString hostUuidString = removedUuid.toString();
 
-    qCDebug(dcApplication()) << "-> Remove stored token";
-    settings.beginGroup("jsonTokens");
-    if (settings.contains(hostUuidString)) {
-        settings.remove(hostUuidString);
-    }
-    settings.endGroup();
+    if (!uuidStillInUse) {
+        qCDebug(dcApplication()) << "-> Remove stored token";
+        settings.beginGroup("jsonTokens");
+        if (settings.contains(hostUuidString)) {
+            settings.remove(hostUuidString);
+        }
+        settings.endGroup();
 
-    qCDebug(dcApplication()) << "-> Remove cached hosts";
-    settings.beginGroup("HostCache");
-    settings.beginGroup(hostUuidString);
-    settings.remove("");
-    settings.endGroup();
-    settings.endGroup();
+        qCDebug(dcApplication()) << "-> Remove cached hosts";
+        settings.beginGroup("HostCache");
+        settings.beginGroup(hostUuidString);
+        settings.remove("");
+        settings.endGroup();
+        settings.endGroup();
 
-    qCDebug(dcApplication()) << "-> Remove host settings";
-    settings.beginGroup(hostUuidString);
-    settings.remove("");
-    settings.endGroup();
+        qCDebug(dcApplication()) << "-> Remove host settings";
+        settings.beginGroup(hostUuidString);
+        settings.remove("");
+        settings.endGroup();
 
-    QDir dir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/sslcerts/");
-    QFile certFile(dir.absoluteFilePath(hostUuidString.remove(QRegularExpression("[{}]")) + ".pem"));
-    if (certFile.exists()) {
-        if (!certFile.remove()) {
-            qCWarning(dcApplication()) << "Failed to remove certificate file" << certFile.fileName() << certFile.errorString();
+        QDir dir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/sslcerts/");
+        QString uuidForFile = hostUuidString;
+        QFile certFile(dir.absoluteFilePath(uuidForFile.remove(QRegularExpression("[{}]")) + ".pem"));
+        if (certFile.exists()) {
+            if (!certFile.remove()) {
+                qCWarning(dcApplication()) << "Failed to remove certificate file" << certFile.fileName() << certFile.errorString();
+            } else {
+                qCDebug(dcApplication()) << "-> Removed successfully host certificate" << certFile.fileName();
+            }
         } else {
-            qCDebug(dcApplication()) << "-> Removed successfully host certificate" << certFile.fileName();
+            qCDebug(dcApplication()) << "-> No certificated stored for this host";
         }
     } else {
-        qCDebug(dcApplication()) << "-> No certificated stored for this host";
+        qCDebug(dcApplication()) << "-> UUID still in use by another configured host; skipping UUID-scoped data removal";
     }
 
     host->deleteLater();

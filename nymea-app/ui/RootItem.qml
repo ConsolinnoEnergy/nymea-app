@@ -327,10 +327,15 @@ Item {
                                 nymeaDiscovery.cacheHost(engine.jsonRpcClient.currentHost)
                                 configuredHost.uuid = engine.jsonRpcClient.serverUuid
 
-                                for (var i = 0; i < configuredHostsModel.count; i++) {
+                                // Remove all other configured hosts with the same UUID (loop backward to
+                                // handle index shifts after each removal)
+                                for (var i = configuredHostsModel.count - 1; i >= 0; i--) {
                                     if (i != index && configuredHostsModel.get(i).uuid == engine.jsonRpcClient.serverUuid) {
                                         configuredHostsModel.removeHost(i);
-                                        break;
+                                        // index shifts down by 1 for every entry removed below it
+                                        if (i < index) {
+                                            index--;
+                                        }
                                     }
                                 }
                             }
