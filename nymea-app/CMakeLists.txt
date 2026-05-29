@@ -297,3 +297,19 @@ if(IOS)
 endif()
 
 qt_finalize_executable(nymea-app)
+
+if(NYMEA_GENERATE_SBOM)
+    if(COMMAND qt_generate_sbom)
+        file(MAKE_DIRECTORY "${NYMEA_SBOM_OUTPUT_DIR}")
+        qt_generate_sbom(nymea-app
+            TYPE APPLICATION
+            SUPPLIER "Consolinno Energy GmbH"
+            SUPPLIER_URL "https://consolinno.de"
+            VERSION "${APP_VERSION}"
+            OUTPUT_DIRECTORY "${NYMEA_SBOM_OUTPUT_DIR}"
+        )
+        message(STATUS "Qt SBOM generation enabled → ${NYMEA_SBOM_OUTPUT_DIR}")
+    else()
+        message(WARNING "NYMEA_GENERATE_SBOM=ON but qt_generate_sbom() is not available in this Qt build (requires Qt 6.8+). Skipping Qt SBOM.")
+    endif()
+endif()
