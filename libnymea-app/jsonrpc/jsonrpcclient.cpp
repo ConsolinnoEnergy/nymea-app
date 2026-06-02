@@ -27,11 +27,16 @@
 #include "types/param.h"
 #include "types/params.h"
 
+#ifndef Q_OS_WASM
 #include "connection/tcpsockettransport.h"
+#endif
 #include "connection/websockettransport.h"
+#ifndef Q_OS_WASM
 #include "connection/bluetoothtransport.h"
+#endif
 #include "connection/tunnelproxytransport.h"
 
+#include <QCryptographicHash>
 #include <QJsonDocument>
 #include <QVariantMap>
 #include <QDebug>
@@ -52,9 +57,13 @@ JsonRpcClient::JsonRpcClient(QObject *parent) :
     m_id(0)
 {
     m_connection = new NymeaConnection(this);
+#ifndef Q_OS_WASM
     m_connection->registerTransport(new TcpSocketTransportFactory());
+#endif
     m_connection->registerTransport(new WebsocketTransportFactory());
+#ifndef Q_OS_WASM
     m_connection->registerTransport(new BluetoothTransportFactoy());
+#endif
     m_connection->registerTransport(new TunnelProxyTransportFactory());
 
     connect(m_connection, &NymeaConnection::availableBearerTypesChanged, this, &JsonRpcClient::availableBearerTypesChanged);
@@ -248,6 +257,9 @@ Connection *JsonRpcClient::currentConnection() const
 
 QVariantMap JsonRpcClient::certificateIssuerInfo() const
 {
+#ifdef Q_OS_WASM
+    return QVariantMap();
+#else
     QVariantMap issuerInfo;
     foreach (const QByteArray &attr, m_connection->sslCertificate().issuerInfoAttributes()) {
         issuerInfo.insert(attr, m_connection->sslCertificate().issuerInfo(attr));
@@ -265,6 +277,7 @@ QVariantMap JsonRpcClient::certificateIssuerInfo() const
     issuerInfo.insert("fingerprint", certificateFingerprint);
 
     return issuerInfo;
+#endif
 }
 
 bool JsonRpcClient::initialSetupRequired() const
@@ -707,6 +720,7 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
 
 
     // Verify SSL certificate
+#ifndef Q_OS_WASM
     if (m_connection->isEncrypted()) {
         QByteArray oldPem;
         QSslCertificate certificate = m_connection->sslCertificate();
@@ -735,6 +749,7 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
             qCInfo(dcJsonRpc()) << "This connections certificate is trusted.";
         }
     }
+#endif
 
     m_cacheHashes.clear();
     qCDebug(dcJsonRpc()) << "Hello reply:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());

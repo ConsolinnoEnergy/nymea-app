@@ -27,7 +27,9 @@
 
 #include <QObject>
 #include <QHash>
+#ifndef Q_OS_WASM
 #include <QSslError>
+#endif
 #include <QAbstractSocket>
 #include <QUrl>
 #include <QTimer>
@@ -90,7 +92,9 @@ public:
     Q_INVOKABLE void disconnectFromHost();
 
     bool isEncrypted() const;
+#ifndef Q_OS_WASM
     QSslCertificate sslCertificate() const;
+#endif
 
     NymeaConnection::BearerTypes availableBearerTypes() const;
 
@@ -114,7 +118,9 @@ signals:
     void dataAvailable(const QByteArray &data);
 
 private slots:
+#ifndef Q_OS_WASM
     void onSslErrors(const QList<QSslError> &errors);
+#endif
     void onError(QAbstractSocket::SocketError error);
     void onConnected();
     void onDisconnected();

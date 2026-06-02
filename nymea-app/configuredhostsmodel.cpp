@@ -24,6 +24,8 @@
 
 #include "configuredhostsmodel.h"
 
+#include <algorithm>
+
 #include <QDir>
 #include <QSettings>
 #include <QStandardPaths>
@@ -32,14 +34,46 @@
 #include <QLoggingCategory>
 Q_DECLARE_LOGGING_CATEGORY(dcApplication)
 
+#ifdef Q_OS_WASM
+namespace {
+constexpr int maxStoredConfiguredHosts = 20;
+constexpr int maxStoredHostNameLength = 256;
+}
+#endif
+
 ConfiguredHostsModel::ConfiguredHostsModel(QObject *parent) : QAbstractListModel(parent)
 {
     QSettings settings;
     settings.beginGroup("ConfiguredHosts");
+#ifdef Q_OS_WASM
+    if (settings.childGroups().count() > maxStoredConfiguredHosts) {
+        qCWarning(dcApplication()) << "Configured host cache is too large for browser storage. Clearing cached hosts.";
+        settings.remove("");
+    }
+#endif
     foreach (const QString &childGroup, settings.childGroups()) {
+#ifdef Q_OS_WASM
+        if (m_list.count() >= maxStoredConfiguredHosts) {
+            continue;
+        }
+#endif
         settings.beginGroup(childGroup);
         QUuid uuid = settings.value("uuid").toUuid();
         QString cachedName = settings.value("cachedName").toString();
+#ifdef Q_OS_WASM
+        cachedName.truncate(maxStoredHostNameLength);
+        // Skip duplicate non-null UUIDs — can accumulate in localStorage if remove("") is imperfect
+        if (!uuid.isNull()) {
+            bool duplicate = std::any_of(m_list.begin(), m_list.end(), [&uuid](const ConfiguredHost *h) {
+                return h->uuid() == uuid;
+            });
+            if (duplicate) {
+                qCWarning(dcApplication()) << "Skipping duplicate configured host UUID on load:" << uuid;
+                settings.endGroup();
+                continue;
+            }
+        }
+#endif
         ConfiguredHost *host = new ConfiguredHost(uuid, this);
         host->setName(cachedName);
         addHost(host);
@@ -132,39 +166,51 @@ void ConfiguredHostsModel::removeHost(int index)
     ConfiguredHost *host = m_list.takeAt(index);
     qCDebug(dcApplication()) << "Remove configured host" << host->name() << host->uuid().toString();
 
+    // Only delete UUID-scoped settings/cache/cert if no other configured host shares the same UUID.
+    // This prevents destroying shared data when removing a duplicate entry.
+    const QUuid removedUuid = host->uuid();
+    bool uuidStillInUse = !removedUuid.isNull() && std::any_of(m_list.begin(), m_list.end(), [&removedUuid](const ConfiguredHost *h) {
+        return h->uuid() == removedUuid;
+    });
+
     QSettings settings;
 
-    QString hostUuidString = host->uuid().toString();
+    QString hostUuidString = removedUuid.toString();
 
-    qCDebug(dcApplication()) << "-> Remove stored token";
-    settings.beginGroup("jsonTokens");
-    if (settings.contains(hostUuidString)) {
-        settings.remove(hostUuidString);
-    }
-    settings.endGroup();
+    if (!uuidStillInUse) {
+        qCDebug(dcApplication()) << "-> Remove stored token";
+        settings.beginGroup("jsonTokens");
+        if (settings.contains(hostUuidString)) {
+            settings.remove(hostUuidString);
+        }
+        settings.endGroup();
 
-    qCDebug(dcApplication()) << "-> Remove cached hosts";
-    settings.beginGroup("HostCache");
-    settings.beginGroup(hostUuidString);
-    settings.remove("");
-    settings.endGroup();
-    settings.endGroup();
+        qCDebug(dcApplication()) << "-> Remove cached hosts";
+        settings.beginGroup("HostCache");
+        settings.beginGroup(hostUuidString);
+        settings.remove("");
+        settings.endGroup();
+        settings.endGroup();
 
-    qCDebug(dcApplication()) << "-> Remove host settings";
-    settings.beginGroup(hostUuidString);
-    settings.remove("");
-    settings.endGroup();
+        qCDebug(dcApplication()) << "-> Remove host settings";
+        settings.beginGroup(hostUuidString);
+        settings.remove("");
+        settings.endGroup();
 
-    QDir dir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/sslcerts/");
-    QFile certFile(dir.absoluteFilePath(hostUuidString.remove(QRegularExpression("[{}]")) + ".pem"));
-    if (certFile.exists()) {
-        if (!certFile.remove()) {
-            qCWarning(dcApplication()) << "Failed to remove certificate file" << certFile.fileName() << certFile.errorString();
+        QDir dir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/sslcerts/");
+        QString uuidForFile = hostUuidString;
+        QFile certFile(dir.absoluteFilePath(uuidForFile.remove(QRegularExpression("[{}]")) + ".pem"));
+        if (certFile.exists()) {
+            if (!certFile.remove()) {
+                qCWarning(dcApplication()) << "Failed to remove certificate file" << certFile.fileName() << certFile.errorString();
+            } else {
+                qCDebug(dcApplication()) << "-> Removed successfully host certificate" << certFile.fileName();
+            }
         } else {
-            qCDebug(dcApplication()) << "-> Removed successfully host certificate" << certFile.fileName();
+            qCDebug(dcApplication()) << "-> No certificated stored for this host";
         }
     } else {
-        qCDebug(dcApplication()) << "-> No certificated stored for this host";
+        qCDebug(dcApplication()) << "-> UUID still in use by another configured host; skipping UUID-scoped data removal";
     }
 
     host->deleteLater();
@@ -241,9 +287,18 @@ void ConfiguredHostsModel::saveToDisk()
     settings.remove("");
     settings.setValue("currentIndex", m_currentIndex);
     for (int i = 0; i < m_list.count(); i++) {
+#ifdef Q_OS_WASM
+        if (i >= maxStoredConfiguredHosts) {
+            break;
+        }
+#endif
         settings.beginGroup(QString::number(i));
         settings.setValue("uuid", m_list.at(i)->uuid());
-        settings.setValue("cachedName", m_list.at(i)->name());
+        QString cachedName = m_list.at(i)->name();
+#ifdef Q_OS_WASM
+        cachedName.truncate(maxStoredHostNameLength);
+#endif
+        settings.setValue("cachedName", cachedName);
         settings.endGroup();
     }
     settings.endGroup();

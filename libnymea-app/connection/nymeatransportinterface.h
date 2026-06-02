@@ -26,9 +26,11 @@
 #define NYMEATRANSPORTINTERFACE_H
 
 #include <QObject>
+#ifndef Q_OS_WASM
 #include <QSslCertificate>
-#include <QHostAddress>
 #include <QSslError>
+#endif
+#include <QHostAddress>
 
 class NymeaTransportInterface;
 
@@ -60,15 +62,19 @@ public:
     virtual void disconnect() = 0;
     virtual ConnectionState connectionState() const = 0;
     virtual void sendData(const QByteArray &data) = 0;
-    virtual void ignoreSslErrors(const QList<QSslError> &errors) { Q_UNUSED(errors) }
     virtual bool isEncrypted() const { return false; }
+#ifndef Q_OS_WASM
+    virtual void ignoreSslErrors(const QList<QSslError> &errors) { Q_UNUSED(errors) }
     virtual QSslCertificate serverCertificate() const { return QSslCertificate(); }
+#endif
 
 signals:
     void connected();
     void disconnected();
     void error(QAbstractSocket::SocketError error);
+#ifndef Q_OS_WASM
     void sslErrors(const QList<QSslError> &errors);
+#endif
     void dataReady(const QByteArray &data);
 };
 

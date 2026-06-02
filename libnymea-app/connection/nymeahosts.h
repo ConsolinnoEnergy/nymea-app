@@ -27,7 +27,9 @@
 
 #include <QAbstractListModel>
 #include <QList>
+#ifndef Q_OS_WASM
 #include <QBluetoothAddress>
+#endif
 #include <QSortFilterProxyModel>
 
 #include "nymeahost.h"

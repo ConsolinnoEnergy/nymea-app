@@ -123,8 +123,8 @@ Item {
                         property int currentMainViewIndex: -1
                     }
 
-                    readonly property Engine engine: configuredHost.engine
-                    readonly property Engine _engine: configuredHost.engine // In case a child cannot use "engine"
+                    readonly property Engine engine: configuredHost ? configuredHost.engine : null
+                    readonly property Engine _engine: configuredHost ? configuredHost.engine : null // In case a child cannot use "engine"
 
                     HemsManager {
                         id: hemsManagerInternal
@@ -136,7 +136,7 @@ Item {
                     Binding {
                         target: nymeaDiscovery
                         property: "discovering"
-                        value: engine.jsonRpcClient.currentHost === null
+                        value: engine !== null && engine.jsonRpcClient.currentHost === null
                                && (PlatformPermissions.localNetworkPermission === PlatformPermissions.PermissionStatusGranted
                                    // This OR wouldn't be needed but we introduced the permission handling later and the localNetworkPerm can't be read on iOS.
                                    // If there are configured hosts, it means that we actally already have the permission even though PlatformPermissions thinks we wouldn't...
@@ -154,6 +154,11 @@ Item {
                     }
 
                     Component.onCompleted: {
+                        if (configuredHost === null || engine === null) {
+                            PlatformHelper.hideSplashScreen();
+                            return;
+                        }
+
                         if (configuredHost.uuid.toString() !== "{00000000-0000-0000-0000-000000000000}") {
                             print("Configured host id is", configuredHost.uuid)
 
@@ -182,6 +187,10 @@ Item {
                     Timer { running: true; repeat: false; interval: 3000; onTriggered: PlatformHelper.hideSplashScreen(); }
 
                     function init() {
+                        if (engine === null) {
+                            return;
+                        }
+
                         print("calling init. Auth required:", engine.jsonRpcClient.authenticationRequired, "initial setup required:", engine.jsonRpcClient.initialSetupRequired, "jsonrpc connected:", engine.jsonRpcClient.connected, "Current host:", engine.jsonRpcClient.currentHost)
                         pageStack.clear()
 //                        var page = pageStack.push(Qt.resolvedUrl("connection/ConnectingPage.qml"));
@@ -298,7 +307,7 @@ Item {
                     }
 
                     Connections {
-                        target: engine.jsonRpcClient
+                        target: engine ? engine.jsonRpcClient : null
                         onCurrentHostChanged: {
                             init();
                         }
@@ -318,10 +327,15 @@ Item {
                                 nymeaDiscovery.cacheHost(engine.jsonRpcClient.currentHost)
                                 configuredHost.uuid = engine.jsonRpcClient.serverUuid
 
-                                for (var i = 0; i < configuredHostsModel.count; i++) {
+                                // Remove all other configured hosts with the same UUID (loop backward to
+                                // handle index shifts after each removal)
+                                for (var i = configuredHostsModel.count - 1; i >= 0; i--) {
                                     if (i != index && configuredHostsModel.get(i).uuid == engine.jsonRpcClient.serverUuid) {
                                         configuredHostsModel.removeHost(i);
-                                        break;
+                                        // index shifts down by 1 for every entry removed below it
+                                        if (i < index) {
+                                            index--;
+                                        }
                                     }
                                 }
                             }
@@ -358,7 +372,7 @@ Item {
                     }
 
                     Connections {
-                        target: engine.nymeaConfiguration
+                        target: engine ? engine.nymeaConfiguration : null
                         onFetchingDataChanged: {
                             print("fetching NymeaConfigration:", engine.nymeaConfiguration.fetchingData)
                             if (!engine.nymeaConfiguration.fetchingData) {
@@ -367,7 +381,7 @@ Item {
                         }
                     }
                     Connections {
-                        target: engine.nymeaConfiguration.tunnelProxyServerConfigurations
+                        target: engine ? engine.nymeaConfiguration.tunnelProxyServerConfigurations : null
                         onCountChanged: {
                             print("tunnel proxy count changed:", engine.nymeaConfiguration.tunnelProxyServerConfigurations.count)
                             if (!engine.nymeaConfiguration.fetchingData) {
@@ -407,7 +421,7 @@ Item {
 
                     Connections {
                         target: Qt.application
-                        enabled: engine.jsonRpcClient.connected && settings.returnToHome
+                        enabled: engine !== null && engine.jsonRpcClient.connected && settings.returnToHome
                         onStateChanged: {
                             print("App active state changed:", state)
                             if (state !== Qt.ApplicationActive) {
@@ -417,7 +431,7 @@ Item {
                     }
 
                     Connections {
-                        target: engine.thingManager
+                        target: engine ? engine.thingManager : null
                         onFetchingDataChanged: {
                             if (!engine.thingManager.fetchingData) {
                                 processPendingPushNotificationActions();

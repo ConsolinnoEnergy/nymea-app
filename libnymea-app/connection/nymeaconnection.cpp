@@ -27,7 +27,9 @@
 
 #include <QUrl>
 #include <QDebug>
+#ifndef Q_OS_WASM
 #include <QSslKey>
+#endif
 #include <QUrlQuery>
 #include <QSettings>
 #include <QMetaEnum>
@@ -193,6 +195,7 @@ void NymeaConnection::sendData(const QByteArray &data)
     }
 }
 
+#ifndef Q_OS_WASM
 void NymeaConnection::onSslErrors(const QList<QSslError> &errors)
 {
     NymeaTransportInterface *transport = qobject_cast<NymeaTransportInterface*>(sender());
@@ -218,6 +221,7 @@ void NymeaConnection::onSslErrors(const QList<QSslError> &errors)
         transport->ignoreSslErrors(ignoredErrors);
     }
 }
+#endif
 
 void NymeaConnection::onError(QAbstractSocket::SocketError error)
 {
@@ -513,7 +517,9 @@ bool NymeaConnection::connectInternal(Connection *connection)
 
     // Create a new transport
     NymeaTransportInterface* newTransport = m_transportFactories.value(connection->url().scheme())->createTransport(this);
+#ifndef Q_OS_WASM
     QObject::connect(newTransport, &NymeaTransportInterface::sslErrors, this, &NymeaConnection::onSslErrors);
+#endif
     QObject::connect(newTransport, &NymeaTransportInterface::error, this, &NymeaConnection::onError);
     QObject::connect(newTransport, &NymeaTransportInterface::connected, this, &NymeaConnection::onConnected);
     QObject::connect(newTransport, &NymeaTransportInterface::disconnected, this, &NymeaConnection::onDisconnected);
@@ -557,6 +563,7 @@ bool NymeaConnection::isEncrypted() const
     return m_currentTransport && m_currentTransport->isEncrypted();
 }
 
+#ifndef Q_OS_WASM
 QSslCertificate NymeaConnection::sslCertificate() const
 {
     if (!m_currentTransport) {
@@ -564,3 +571,4 @@ QSslCertificate NymeaConnection::sslCertificate() const
     }
     return m_currentTransport->serverCertificate();
 }
+#endif

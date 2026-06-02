@@ -61,11 +61,13 @@ find_package(Qt6 REQUIRED COMPONENTS
     QuickControls2
     Svg
     WebSockets
-    Bluetooth
     Charts
-    Nfc
     LinguistTools
 )
+
+if(NOT EMSCRIPTEN)
+    find_package(Qt6 REQUIRED COMPONENTS Bluetooth Nfc)
+endif()
 
 find_package(OpenSSL QUIET)
 

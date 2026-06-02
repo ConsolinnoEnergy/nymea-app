@@ -42,7 +42,7 @@
 #include <QOperatingSystemVersion>
 #include <QWindow>
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) && !defined(Q_OS_WASM)
 #include <QNetworkInformation>
 #endif
 
@@ -53,8 +53,12 @@
 #include "stylecontroller.h"
 #include "pushnotifications.h"
 #include "ruletemplates/messages.h"
+#ifndef Q_OS_WASM
 #include "nfchelper.h"
+#endif
+#ifndef Q_OS_WASM
 #include "nfcthingactionwriter.h"
+#endif
 #include "platformhelper.h"
 #include "platformintegration/platformpermissions.h"
 #include "dashboard/dashboardmodel.h"
@@ -154,7 +158,9 @@ int main(int argc, char *argv[])
     qCInfo(dcApplication()) << "  Platform: Device manufacturer:" << PlatformHelper::instance()->deviceManufacturer();
 
     qCInfo(dcApplication()) << "Locale:" << QLocale() << QLocale().name() << QLocale().language();
+#ifndef Q_OS_WASM
     qCInfo(dcApplication()) << "SSL version:" << QSslSocket::sslLibraryVersionString();
+#endif
 
     QScreen *screen = application.primaryScreen();
     qCInfo(dcApplication()).noquote() << QString("Screen name: %1").arg(screen->name());
@@ -199,6 +205,9 @@ int main(int argc, char *argv[])
 
     engine->addImportPath(application.applicationDirPath() + "/../experiences/");
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef Q_OS_WASM
+    engine->addImportPath(QStringLiteral("qrc:/"));
+#endif
     engine->addImportPath(QStringLiteral("qrc:/styles"));
 #endif
 
@@ -258,8 +267,12 @@ int main(int argc, char *argv[])
 
     qmlRegisterSingletonType<PlatformHelper>("Nymea", 1, 0, "PlatformHelper", PlatformHelper::platformHelperProvider);
     qmlRegisterSingletonType<PlatformPermissions>("Nymea", 1, 0, "PlatformPermissions", PlatformPermissions::qmlProvider);
+#ifndef Q_OS_WASM
     qmlRegisterSingletonType<NfcHelper>("Nymea", 1, 0, "NfcHelper", NfcHelper::nfcHelperProvider);
+#endif
+#ifndef Q_OS_WASM
     qmlRegisterType<NfcThingActionWriter>("Nymea", 1, 0, "NfcThingActionWriter");
+#endif
 
     qmlRegisterSingletonType<PushNotifications>("Nymea", 1, 0, "PushNotifications", PushNotifications::pushNotificationsProvider);
     qmlRegisterSingletonType(QUrl("qrc:///ui/utils/NymeaUtils.qml"), "NymeaApp.Utils", 1, 0, "NymeaUtils" );
@@ -292,7 +305,11 @@ int main(int argc, char *argv[])
     engine->rootContext()->setContextProperty("appRevision", APP_REVISION);
     engine->rootContext()->setContextProperty("qtBuildVersion", QT_VERSION_STR);
     engine->rootContext()->setContextProperty("qtVersion", qVersion());
+#ifndef Q_OS_WASM
     engine->rootContext()->setContextProperty("sslLibraryVersion", QSslSocket::sslLibraryVersionString());
+#else
+    engine->rootContext()->setContextProperty("sslLibraryVersion", QString("N/A"));
+#endif
 
     engine->rootContext()->setContextProperty("defaultMainViewFilter", parser.value(defaultViewsOption));
     engine->rootContext()->setContextProperty("kioskMode", parser.isSet(kioskOption));

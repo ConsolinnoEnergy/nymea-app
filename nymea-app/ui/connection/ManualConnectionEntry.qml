@@ -114,7 +114,7 @@ ColumnLayout {
                              ? "2222"
                              : connectionTypeComboBox.currentIndex == 1
                                ? "4444"
-                               : Configuration.tunnelProxyPort
+                               : Qt.platform.os === "wasm" ? "2212" : Configuration.tunnelProxyPort
             validator: IntValidator{bottom: 1; top: 65535;}
         }
 
@@ -124,7 +124,7 @@ ColumnLayout {
         }
         CheckBox {
             id: secureCheckBox
-            checked: true
+            checked: Qt.platform.os !== "wasm" || connectionTypeComboBox.currentIndex === 2
         }
     }
 }

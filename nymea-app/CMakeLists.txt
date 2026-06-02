@@ -4,8 +4,6 @@ set(NYMEA_APP_SOURCES
     dashboard/dashboarditem.cpp
     dashboard/dashboardmodel.cpp
     mouseobserver.cpp
-    nfchelper.cpp
-    nfcthingactionwriter.cpp
     platformintegration/platformpermissions.cpp
     stylecontroller.cpp
     pushnotifications.cpp
@@ -20,8 +18,6 @@ set(NYMEA_APP_HEADERS
     dashboard/dashboarditem.h
     dashboard/dashboardmodel.h
     mouseobserver.h
-    nfchelper.h
-    nfcthingactionwriter.h
     platformintegration/generic/screenhelper.h
     platformintegration/platformpermissions.h
     stylecontroller.h
@@ -31,6 +27,17 @@ set(NYMEA_APP_HEADERS
     utils/privacypolicyhelper.h
     utils/qhashqml.h
 )
+
+if(NOT EMSCRIPTEN)
+    list(APPEND NYMEA_APP_SOURCES
+        nfchelper.cpp
+        nfcthingactionwriter.cpp
+    )
+    list(APPEND NYMEA_APP_HEADERS
+        nfchelper.h
+        nfcthingactionwriter.h
+    )
+endif()
 
 if(NOT APPLE AND NOT ANDROID)
     list(APPEND NYMEA_APP_SOURCES
@@ -175,10 +182,12 @@ target_link_libraries(nymea-app
         Qt6::Qml
         Qt6::Quick
         Qt6::WebSockets
-        Qt6::Bluetooth
         Qt6::Charts
-        Qt6::Nfc
 )
+
+if(NOT EMSCRIPTEN)
+    target_link_libraries(nymea-app PRIVATE Qt6::Bluetooth Qt6::Nfc)
+endif()
 
 if(TARGET Qt6::WebView)
     target_link_libraries(nymea-app PRIVATE Qt6::WebView)

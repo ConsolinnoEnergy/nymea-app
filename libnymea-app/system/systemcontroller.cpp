@@ -154,16 +154,20 @@ int SystemController::setServerTime(const QDateTime &serverTime)
     QVariantMap params;
     params.insert("automaticTime", false);
     params.insert("time", serverTime.toSecsSinceEpoch());
+#ifndef Q_OS_WASM
     params.insert("timeZone", serverTime.timeZone().id());
+#endif
     return m_jsonRpcClient->sendCommand("System.SetTime", params, this, "setTimeResponse");
 }
 
 QStringList SystemController::timeZones() const
 {
     QStringList ret;
+#ifndef Q_OS_WASM
     foreach (const QByteArray &tzId, QTimeZone::availableTimeZoneIds()) {
         ret << tzId;
     }
+#endif
     return ret;
 }
 
@@ -294,8 +298,10 @@ void SystemController::getServerTimeResponse(int commandId, const QVariantMap &p
     // the time in the servers time zone. So we'll be setting the time zone to the client one. This is effectively a
     // wrong/broken DateTime object and should not be used to calculate anything.
     m_serverTime = QDateTime::fromSecsSinceEpoch(params.value("time").toUInt());
+#ifndef Q_OS_WASM
     m_serverTime = m_serverTime.toTimeZone(QTimeZone(m_serverTimeZone.toUtf8()));
     m_serverTime.setTimeZone(QDateTime::currentDateTime().timeZone());
+#endif
     emit serverTimeChanged();
 
     m_automaticTimeAvailable = params.value("automaticTimeAvailable").toBool();
@@ -418,8 +424,10 @@ void SystemController::notificationReceived(const QVariantMap &data)
         // the time in the servers time zone. So we'll be setting the time zone to the client one. This is effectively a
         // wrong/broken DateTime object and should not be used to calculate anything.
         m_serverTime = QDateTime::fromSecsSinceEpoch(data.value("params").toMap().value("time").toUInt());
+#ifndef Q_OS_WASM
         m_serverTime = m_serverTime.toTimeZone(QTimeZone(m_serverTimeZone.toUtf8()));
         m_serverTime.setTimeZone(QDateTime::currentDateTime().timeZone());
+#endif
         emit serverTimeChanged();
 
         m_automaticTimeAvailable = data.value("params").toMap().value("automaticTimeAvailable").toBool();

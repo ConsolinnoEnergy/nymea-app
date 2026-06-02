@@ -13,6 +13,19 @@ if(IOS)
     list(APPEND LIBNYMEA_APP_SOURCES ${LIBNYMEA_APP_MM_SOURCES})
 endif()
 
+if(EMSCRIPTEN)
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/connection/bluetooth[^/]*$")
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/connection/tcpsockettransport[^/]*$")
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/connection/discovery/bluetoothservicediscovery[^/]*$")
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/connection/discovery/upnpdiscovery[^/]*$")
+    list(FILTER LIBNYMEA_APP_SOURCES EXCLUDE REGEX ".*/wifisetup/.*")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/connection/bluetooth[^/]*$")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/connection/tcpsockettransport[^/]*$")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/connection/discovery/bluetoothservicediscovery[^/]*$")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/connection/discovery/upnpdiscovery[^/]*$")
+    list(FILTER LIBNYMEA_APP_HEADERS EXCLUDE REGEX ".*/wifisetup/.*")
+endif()
+
 set(NYMEA_REMOTEPROXYCLIENT_MODULE
     ${CMAKE_SOURCE_DIR}/nymea-remoteproxy/cmake/nymea-remoteproxyclient-sources.cmake
 )
@@ -90,6 +103,11 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/QtZeroConf)
     list(APPEND NYMEA_APP_CORE_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/QtZeroConf)
 endif()
 
+if(EMSCRIPTEN)
+    list(FILTER REMOTE_PROXYCLIENT_SOURCES EXCLUDE REGEX "tcpsocketconnection\\.cpp$")
+    list(FILTER REMOTE_PROXYCLIENT_HEADERS EXCLUDE REGEX "tcpsocketconnection\\.h$")
+endif()
+
 add_library(nymea-app-core STATIC
     ${LIBNYMEA_APP_SOURCES}
     ${LIBNYMEA_APP_HEADERS}
@@ -106,11 +124,14 @@ target_link_libraries(nymea-app-core
         Qt6::Core
         Qt6::Network
         Qt6::WebSockets
-        Qt6::Bluetooth
         Qt6::Charts
         Qt6::Quick
         Qt6::Qml
 )
+
+if(NOT EMSCRIPTEN)
+    target_link_libraries(nymea-app-core PUBLIC Qt6::Bluetooth)
+endif()
 
 if(TARGET OpenSSL::SSL AND TARGET OpenSSL::Crypto)
     target_link_libraries(nymea-app-core PUBLIC OpenSSL::SSL OpenSSL::Crypto)
