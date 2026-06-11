@@ -30,9 +30,8 @@ import Nymea
 import "../components"
 
 SettingsPageBase {
-    header: NymeaHeader {
+    header: CoHeader {
         text: qsTr("Logging categories")
-        backButtonVisible: true
         onBackPressed: pageStack.pop()
     }
 
