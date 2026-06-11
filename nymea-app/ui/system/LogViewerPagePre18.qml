@@ -25,20 +25,20 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-import QtQuick.Controls.Material
 import Nymea
 
 import "../components"
 
 Page {
     id: root
-    header: NymeaHeader {
+    header: CoHeader {
         text: qsTr("Log viewer")
         onBackPressed: pageStack.pop()
 
-        HeaderButton {
-            imageSource: "qrc:/icons/down.svg"
-            color: root.autoScroll ? Style.accentColor : Style.iconColor
+        RoundButton {
+            icon.source: "qrc:/icons/down.svg"
+            icon.color: root.autoScroll ? Style.accentColor : Style.iconColor
+            flat: true
             onClicked: {
                 listView.positionViewAtEnd();
                 root.autoScroll = !root.autoScroll

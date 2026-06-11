@@ -317,7 +317,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_IOS
     if (!engine->rootObjects().isEmpty()) {
         if (QWindow *window = qobject_cast<QWindow*>(engine->rootObjects().constFirst())) {
-            const QRect screenRect = window->screen()->availableGeometry();
+            const QRect screenRect = window->screen()->geometry();
             window->setPosition(screenRect.topLeft());
             window->resize(screenRect.size());
             window->showFullScreen();

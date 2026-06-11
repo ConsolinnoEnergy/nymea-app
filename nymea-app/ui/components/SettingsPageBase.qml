@@ -29,7 +29,7 @@ import Nymea
 
 Page {
     id: root
-    header: NymeaHeader {
+    header: CoHeader {
         text: root.title
         backButtonVisible: true
         onBackPressed: pageStack.pop()

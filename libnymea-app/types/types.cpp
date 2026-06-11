@@ -101,7 +101,7 @@ QString Types::toUiUnit(Types::Unit unit) const
     case Types::UnitSeconds:
         return "s";
     case Types::UnitMinutes:
-        return "m";
+        return "min";
     case Types::UnitHours:
         return "h";
     case Types::UnitUnixTime:
