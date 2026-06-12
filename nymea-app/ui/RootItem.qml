@@ -165,6 +165,17 @@ Item {
                         when: mainPage !== null
                     }
 
+                    readonly property var currentStackPage: _pageStack.currentItem
+
+                    Binding {
+                        target: currentStackPage
+                        property: "navigationFooterHeight"
+                        value: navigationFooter.shown ? navigationFooter.height : 0
+                        when: currentStackPage !== null
+                              && currentStackPage !== mainPage
+                              && currentStackPage.hasOwnProperty("navigationFooterHeight")
+                    }
+
                     StackView {
                         id: _pageStack
                         objectName: "pageStack"
