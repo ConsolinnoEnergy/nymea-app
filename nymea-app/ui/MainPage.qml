@@ -147,6 +147,7 @@ Page {
             onClicked: {
                 if (d.configOverlay != null) {
                     d.configOverlay.destroy();
+                    d.configOverlay = null
                 }
                 app.mainMenu.open()
             }
