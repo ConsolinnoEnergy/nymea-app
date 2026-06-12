@@ -31,6 +31,8 @@ import "../components"
 
 Page {
     id: root
+    bottomPadding: 0
+    property int navigationFooterHeight: 0
     header: CoHeader {
         text: qsTr("Log viewer")
         onBackPressed: pageStack.pop()
@@ -66,6 +68,7 @@ Page {
     }
 
     ListView {
+        bottomMargin: root.navigationFooterHeight
         id: listView
         model: newLogsModel
         anchors.fill: parent

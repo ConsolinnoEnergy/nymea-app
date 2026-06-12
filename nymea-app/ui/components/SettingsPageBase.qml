@@ -39,12 +39,23 @@ Page {
     property alias busy: busyOverlay.shown
     property alias busyText: busyOverlay.text
 
+    // Page lives behind the navigation footer in RootItem so the footer's
+    // blur effect has real content to sample. RootItem propagates its
+    // footer height into this property; we use it for scroll clearance only.
+    property int navigationFooterHeight: 0
+
+    // Opt out of the style-level bottomPadding (58 px). We render the
+    // Flickable across the full page area instead, and add the footer
+    // height to contentHeight so the last item can be scrolled above
+    // the footer. This makes the footer's blur work on sub-pages.
+    bottomPadding: 0
+
     BackgroundFocusHandler { anchors.fill: parent }
 
     Flickable {
         id: flickable
         anchors.fill: parent
-        contentHeight: contentColumn.height + Style.margins
+        contentHeight: contentColumn.height + Style.margins + root.navigationFooterHeight
         interactive: contentHeight > height
         clip: true
 
