@@ -208,7 +208,7 @@ Item {
                         source: blurEnabled ? footerBlurSource : null
                         blurEnabled: true
                         blur: 1.0
-                        blurMax: 32
+                        blurMax: 40
                         blurMultiplier: 0
                         autoPaddingEnabled: false
                         visible: blurEnabled && navigationFooterContainer.shown
