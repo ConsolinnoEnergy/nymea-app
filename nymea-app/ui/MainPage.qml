@@ -104,10 +104,14 @@ Page {
     }
 
     function setSwipeViewIndexWithoutAnimation(index) {
-        const oldHighlightMoveDuration = swipeView.contentItem.highlightMoveDuration;
-        swipeView.contentItem.highlightMoveDuration = 0;
-        swipeView.currentIndex = index;
-        swipeView.contentItem.highlightMoveDuration = oldHighlightMoveDuration;
+        if (swipeView.contentItem && swipeView.contentItem.hasOwnProperty("highlightMoveDuration")) {
+            const old = swipeView.contentItem.highlightMoveDuration;
+            swipeView.contentItem.highlightMoveDuration = 0;
+            swipeView.currentIndex = index;
+            swipeView.contentItem.highlightMoveDuration = old;
+        } else {
+            swipeView.currentIndex = index;
+        }
     }
 
     header: Item {
