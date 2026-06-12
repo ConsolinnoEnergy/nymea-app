@@ -176,7 +176,7 @@ Item {
                         value: navigationFooter.shown ? navigationFooter.height : 0
                         when: currentStackPage !== null
                               && currentStackPage !== mainPage
-                              && currentStackPage.hasOwnProperty("navigationFooterHeight")
+                              && "navigationFooterHeight" in currentStackPage
                     }
 
                     StackView {
