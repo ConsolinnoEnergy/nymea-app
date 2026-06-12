@@ -218,7 +218,7 @@ Item {
                         id: navigationFooterContainer
                         readonly property bool shown: navigationFooter.shown || navbarControlsLoader.active
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-                        height: (navbarControlsLoader.active ? navbarControlsLoader.height : 0)
+                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.margins : 0)
                                 + (navigationFooter.shown ? navigationFooter.height : 0)
                         visible: shown
 
@@ -235,11 +235,16 @@ Item {
 
                         Loader {
                             id: navbarControlsLoader
-                            anchors { left: parent.left; right: parent.right; top: parent.top }
+                            anchors {
+                                left: parent.left; leftMargin: Style.margins
+                                right: parent.right; rightMargin: Style.margins
+                                top: parent.top; topMargin: Style.margins
+                            }
                             // Pages may opt in by declaring:
                             //   property Component navbarControls: Component { /* RowLayout etc. */ }
                             // The component is rendered above the tab footer and its height
-                            // is included in the page's navigationFooterHeight.
+                            // (plus Style.margins padding around it) is included in the page's
+                            // navigationFooterHeight.
                             active: currentStackPage !== null
                                     && "navbarControls" in currentStackPage
                                     && currentStackPage.navbarControls !== null
