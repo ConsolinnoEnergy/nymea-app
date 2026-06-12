@@ -30,12 +30,12 @@ import Nymea
 import "../components"
 
 Page {
-    header: NymeaHeader {
+    header: CoHeader {
         text: qsTr("Application logs")
-        backButtonVisible: true
         onBackPressed: pageStack.pop()
-        HeaderButton {
-            imageSource: "qrc:/icons/state-out.svg"
+        RoundButton {
+            icon.source: "qrc:/icons/state-out.svg"
+            flat: true
             onClicked: {
                 var exportedFile = AppLogController.exportLogs()
                 PlatformHelper.shareFile(exportedFile)
