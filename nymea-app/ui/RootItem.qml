@@ -28,6 +28,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtCore
 import QtQuick.Window
+import Qt5Compat.GraphicalEffects
 import Nymea
 import NymeaApp.Utils
 
@@ -65,7 +66,12 @@ Item {
         d.pushSettingsPage("appsettings/ConsolinnoAppSettingsPage.qml")
     }
     function openSystemSettings() {
-        d.pushSettingsPage("ConsolinnoSettingsPage.qml")
+        var current = swipeView.currentItem
+        if (!current) return
+        var page = current.mainPage
+        if (!page) return
+        current.pageStack.pop(page)
+        page.goToView("consolinnoSettings", undefined, true)
     }
     function openCustomPage(page) {
         d.pushSettingsPage(page)
@@ -146,11 +152,116 @@ Item {
                     }
 
                     readonly property alias pageStack: _pageStack
+                    readonly property var mainPage: (function() {
+                        if (!engine.jsonRpcClient.connected || _pageStack.depth === 0) return null
+                        for (var i = 0; i < _pageStack.depth; i++) {
+                            var p = _pageStack.get(i)
+                            if (p && p.hasOwnProperty("tabsModel")) return p
+                        }
+                        return null
+                    })()
+
+                    Binding {
+                        target: mainPage
+                        property: "navigationFooterHeight"
+                        value: navigationFooter.shown ? navigationFooter.height : 0
+                        when: mainPage !== null
+                    }
+
+                    readonly property var currentStackPage: _pageStack.currentItem
+
+                    Binding {
+                        target: currentStackPage
+                        property: "navigationFooterHeight"
+                        value: navigationFooter.shown ? navigationFooter.height : 0
+                        when: currentStackPage !== null
+                              && currentStackPage !== mainPage
+                              && "navigationFooterHeight" in currentStackPage
+                    }
+
                     StackView {
                         id: _pageStack
                         objectName: "pageStack"
                         anchors.fill: parent
                         initialItem: Page {}
+                    }
+
+                    readonly property bool blurEnabled: PlatformHelper.deviceManufacturer !== "raspbian"
+
+                    ShaderEffectSource {
+                        id: footerBlurSource
+                        width: _pageStack.width
+                        height: navigationFooter.height
+                        sourceItem: blurEnabled ? _pageStack : null
+                        sourceRect: Qt.rect(0, _pageStack.height - height, _pageStack.width, height)
+                        visible: false
+                        enabled: blurEnabled && navigationFooter.shown
+                    }
+
+                    FastBlur {
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: navigationFooter.height
+                        radius: 40
+                        transparentBorder: false
+                        source: blurEnabled ? footerBlurSource : null
+                        visible: blurEnabled && navigationFooter.shown
+                    }
+
+                    Rectangle {
+                        id: navigationFooter
+                        readonly property bool shown: mainPage !== null
+                                                      && mainPage.tabsModel !== undefined
+                                                      && (mainPage.tabsModel.count > 1 || mainPage.hasConfigOverlay)
+                        visible: shown
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: 58
+                        color: Style.colors.menu_Header_Footer_Background
+
+                        Rectangle {
+                            anchors { left: parent.left; right: parent.right; top: parent.top }
+                            height: 1
+                            color: Style.colors.menu_Header_Footer_Border
+                        }
+
+                        RowLayout {
+                            anchors.fill: parent
+                            spacing: 0
+                            opacity: mainPage && mainPage.hasConfigOverlay ? 0 : 1
+                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+
+                            Repeater {
+                                model: mainPage && !mainPage.hasConfigOverlay ? mainPage.tabsModel : null
+                                delegate: MainPageTabButton {
+                                    required property int index
+                                    required property string icon
+                                    required property string name
+                                    Layout.fillWidth: true
+                                    Layout.fillHeight: true
+                                    checked: mainPage !== null
+                                             && currentStackPage === mainPage
+                                             && index === mainPage.currentMainViewIndex
+                                    iconSource: "qrc:/icons/" + icon + ".svg"
+                                    visible: mainPage ? !mainPage.isViewHidden(name) : true
+                                    onClicked: {
+                                        if (mainPage) {
+                                            const poppedItem = _pageStack.pop(mainPage);
+                                            mainPage.activateTab(index, poppedItem !== null);
+                                        }
+                                    }
+                                    onPressAndHold: if (mainPage) mainPage.configureViews()
+                                }
+                            }
+                        }
+
+                        MainPageTabButton {
+                            anchors.fill: parent
+                            iconSource: "qrc:/icons/configure.svg"
+                            opacity: mainPage && mainPage.hasConfigOverlay ? 1 : 0
+                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+                            visible: opacity > 0
+                            checked: true
+                            onClicked: if (mainPage) mainPage.toggleConfigOverlay()
+                        }
                     }
 
                     Component.onCompleted: {
