@@ -229,11 +229,14 @@ Item {
                             Repeater {
                                 model: mainPage && !mainPage.hasConfigOverlay ? mainPage.tabsModel : null
                                 delegate: MainPageTabButton {
+                                    required property int index
+                                    required property string icon
+                                    required property string name
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
                                     checked: index === (mainPage ? mainPage.currentMainViewIndex : -1)
-                                    iconSource: "qrc:/icons/" + model.icon + ".svg"
-                                    visible: mainPage ? !mainPage.isViewHidden(model.name) : true
+                                    iconSource: "qrc:/icons/" + icon + ".svg"
+                                    visible: mainPage ? !mainPage.isViewHidden(name) : true
                                     onClicked: {
                                         if (mainPage) {
                                             const poppedItem = _pageStack.pop(mainPage);
