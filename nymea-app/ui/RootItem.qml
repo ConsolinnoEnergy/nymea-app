@@ -237,7 +237,9 @@ Item {
                                     required property string name
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
-                                    checked: index === (mainPage ? mainPage.currentMainViewIndex : -1)
+                                    checked: mainPage !== null
+                                             && currentStackPage === mainPage
+                                             && index === mainPage.currentMainViewIndex
                                     iconSource: "qrc:/icons/" + icon + ".svg"
                                     visible: mainPage ? !mainPage.isViewHidden(name) : true
                                     onClicked: {
