@@ -215,6 +215,12 @@ Item {
                                 + (navigationFooter.shown ? navigationFooter.height : 0)
                         visible: shown
 
+                        Rectangle {
+                            anchors { left: parent.left; right: parent.right; top: parent.top }
+                            height: 1
+                            color: Style.colors.menu_Header_Footer_Border
+                        }
+
                         Loader {
                             id: navbarControlsLoader
                             anchors { left: parent.left; right: parent.right; top: parent.top }
@@ -237,12 +243,6 @@ Item {
                             anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
                             height: shown ? 58 : 0
                             color: Style.colors.menu_Header_Footer_Background
-
-                            Rectangle {
-                                anchors { left: parent.left; right: parent.right; top: parent.top }
-                                height: 1
-                                color: Style.colors.menu_Header_Footer_Border
-                            }
 
                             RowLayout {
                                 anchors.fill: parent
