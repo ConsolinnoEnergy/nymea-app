@@ -43,8 +43,12 @@
 #include <QWindow>
 
 #ifdef Q_OS_WIN
+#define WIN32_LEAN_AND_MEAN
 #include <cstdio>
 #include <windows.h>
+// <combaseapi.h> defines `interface` as `struct`, which collides with
+// parameter names in nymea-app headers (e.g. thingmanager.h, networkdevices.h).
+#undef interface
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
