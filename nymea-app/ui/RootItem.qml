@@ -154,8 +154,11 @@ Item {
                     readonly property alias pageStack: _pageStack
                     readonly property var mainPage: (function() {
                         if (!engine.jsonRpcClient.connected || _pageStack.depth === 0) return null
-                        var p = _pageStack.get(0)
-                        return (p && p.hasOwnProperty("tabsModel")) ? p : null
+                        for (var i = 0; i < _pageStack.depth; i++) {
+                            var p = _pageStack.get(i)
+                            if (p && p.hasOwnProperty("tabsModel")) return p
+                        }
+                        return null
                     })()
 
                     Binding {
