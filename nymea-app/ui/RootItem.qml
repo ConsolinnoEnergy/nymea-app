@@ -29,6 +29,7 @@ import QtQuick.Layouts
 import QtCore
 import QtQuick.Window
 import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import Nymea
 import NymeaApp.Utils
 
@@ -194,16 +195,22 @@ Item {
                         height: navigationFooterContainer.height
                         sourceItem: blurEnabled ? _pageStack : null
                         sourceRect: Qt.rect(0, _pageStack.height - height, _pageStack.width, height)
+                        recursive: true
+                        live: true
+                        mipmap: true
                         visible: false
                         enabled: blurEnabled && navigationFooterContainer.shown
                     }
 
-                    FastBlur {
+                    MultiEffect {
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
                         height: navigationFooterContainer.height
-                        radius: 40
-                        transparentBorder: false
                         source: blurEnabled ? footerBlurSource : null
+                        blurEnabled: true
+                        blur: 1.0
+                        blurMax: 32
+                        blurMultiplier: 0
+                        autoPaddingEnabled: false
                         visible: blurEnabled && navigationFooterContainer.shown
                     }
 
@@ -214,6 +221,11 @@ Item {
                         height: (navbarControlsLoader.active ? navbarControlsLoader.height : 0)
                                 + (navigationFooter.shown ? navigationFooter.height : 0)
                         visible: shown
+
+                        Rectangle {
+                            anchors.fill: parent
+                            color: Style.colors.menu_Header_Footer_Background
+                        }
 
                         Rectangle {
                             anchors { left: parent.left; right: parent.right; top: parent.top }
@@ -234,7 +246,7 @@ Item {
                             sourceComponent: active ? currentStackPage.navbarControls : null
                         }
 
-                        Rectangle {
+                        Item {
                             id: navigationFooter
                             readonly property bool shown: mainPage !== null
                                                           && mainPage.tabsModel !== undefined
@@ -242,7 +254,6 @@ Item {
                             visible: shown
                             anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
                             height: shown ? 58 : 0
-                            color: Style.colors.menu_Header_Footer_Background
 
                             RowLayout {
                                 anchors.fill: parent
