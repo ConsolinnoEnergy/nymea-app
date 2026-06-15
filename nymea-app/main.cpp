@@ -42,6 +42,15 @@
 #include <QOperatingSystemVersion>
 #include <QWindow>
 
+#ifdef Q_OS_WIN
+#define WIN32_LEAN_AND_MEAN
+#include <cstdio>
+#include <windows.h>
+// <combaseapi.h> defines `interface` as `struct`, which collides with
+// parameter names in nymea-app headers (e.g. thingmanager.h, networkdevices.h).
+#undef interface
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 #include <QNetworkInformation>
 #endif
@@ -76,6 +85,18 @@ NYMEA_LOGGING_CATEGORY(qml, "qml")
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_WIN
+    if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+        const bool stdoutRedirected = freopen("CONOUT$", "w", stdout) != nullptr;
+        const bool stderrRedirected = freopen("CONOUT$", "w", stderr) != nullptr;
+        if (!stdoutRedirected) {
+            OutputDebugStringA("Failed to redirect stdout to parent console.\n");
+        }
+        if (!stderrRedirected) {
+            OutputDebugStringA("Failed to redirect stderr to parent console.\n");
+        }
+    }
+#endif
 
 #ifdef Q_OS_OSX
     qputenv("QT_WEBVIEW_PLUGIN", "native");
