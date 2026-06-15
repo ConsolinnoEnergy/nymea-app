@@ -69,6 +69,15 @@ find_package(Qt6 REQUIRED COMPONENTS
 
 find_package(OpenSSL QUIET)
 
+set(APP_VERSION ${NYMEA_APP_VERSION})
+set(APP_REVISION ${NYMEA_APP_REVISION})
+
+# Allow the overlay to override APP_VERSION/APP_REVISION before any platform
+# packaging step consumes them.
+if(NYMEA_OVERLAY_PATH AND EXISTS "${NYMEA_OVERLAY_PATH}/overlay-config.cmake")
+    include("${NYMEA_OVERLAY_PATH}/overlay-config.cmake")
+endif()
+
 if(ANDROID)
     include(FetchContent)
     FetchContent_Declare(
@@ -88,22 +97,18 @@ if(ANDROID)
         set(_nymea_firebase_property "useFirebase=false")
     endif()
 
-    file(WRITE "${NYMEA_ANDROID_PACKAGE_SOURCE_DIR}/nymeaapp.properties" "${_nymea_app_root_property}\n${_nymea_firebase_property}\n")
-    configure_file(
-        "${CMAKE_SOURCE_DIR}/version.txt"
-        "${NYMEA_ANDROID_PACKAGE_SOURCE_DIR}/version.txt"
-        COPYONLY
-    )
+    # Forward the (potentially overlay-overridden) version to the gradle build
+    # so AndroidManifest's versionName/versionCode reflect the overlay's
+    # version.txt rather than nymea-app's upstream version.txt.
+    set(_nymea_app_version_property "nymeaAppVersion=${APP_VERSION}")
+    set(_nymea_app_version_code_property "nymeaAppVersionCode=${APP_REVISION}")
+
+    file(WRITE "${NYMEA_ANDROID_PACKAGE_SOURCE_DIR}/nymeaapp.properties"
+        "${_nymea_app_root_property}\n${_nymea_firebase_property}\n${_nymea_app_version_property}\n${_nymea_app_version_code_property}\n")
+    file(WRITE "${NYMEA_ANDROID_PACKAGE_SOURCE_DIR}/version.txt"
+        "${APP_VERSION}\n${APP_REVISION}\n")
 
     add_link_options("-Wl,-z,max-page-size=16384")
-endif()
-
-set(APP_VERSION ${NYMEA_APP_VERSION})
-set(APP_REVISION ${NYMEA_APP_REVISION})
-
-# Allow the overlay to override APP_VERSION/APP_REVISION before config.h is generated
-if(NYMEA_OVERLAY_PATH AND EXISTS "${NYMEA_OVERLAY_PATH}/overlay-config.cmake")
-    include("${NYMEA_OVERLAY_PATH}/overlay-config.cmake")
 endif()
 
 # Make config.h available to all targets
