@@ -224,6 +224,9 @@ ubports: {
 }
 
 win32 {
+    CONFIG -= console
+    CONFIG += windows
+
     HEADERS += platformintegration/generic/platformhelpergeneric.h
     SOURCES += platformintegration/generic/platformhelpergeneric.cpp
 
