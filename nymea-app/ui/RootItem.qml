@@ -249,6 +249,11 @@ Item {
                                     && "navbarControls" in currentStackPage
                                     && currentStackPage.navbarControls !== null
                             sourceComponent: active ? currentStackPage.navbarControls : null
+                            // When the current page reports busy, disable the navbar controls so
+                            // they cannot be activated while the page-level BusyOverlay is shown.
+                            enabled: !(currentStackPage !== null
+                                       && "busy" in currentStackPage
+                                       && currentStackPage.busy === true)
                         }
 
                         Item {
