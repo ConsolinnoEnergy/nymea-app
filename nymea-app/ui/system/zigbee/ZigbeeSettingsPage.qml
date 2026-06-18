@@ -31,18 +31,13 @@ import "qrc:/ui/components"
 
 SettingsPageBase {
     id: root
-    header: CoHeader {
-        text: qsTr("ZigBee")
-        backButtonVisible: true
-        onBackPressed: pageStack.pop()
-
-        RoundButton {
-            icon.source: "qrc:/icons/add.svg"
-            text: qsTr("Add ZigBee network")
-            flat: true
-            onClicked: {
-                addNetwork()
-            }
+    headerText: qsTr("ZigBee")
+    headerExtras: RoundButton {
+        icon.source: "qrc:/icons/add.svg"
+        text: qsTr("Add ZigBee network")
+        flat: true
+        onClicked: {
+            addNetwork()
         }
     }
 
