@@ -29,10 +29,9 @@
         <key>UISupportedInterfaceOrientations</key>
         <array>
             <string>UIInterfaceOrientationPortrait</string>
-            <string>UIInterfaceOrientationPortraitUpsideDown</string>
-            <string>UIInterfaceOrientationLandscapeLeft</string>
-            <string>UIInterfaceOrientationLandscapeRight</string>
         </array>
+        <key>UIRequiresFullScreen</key>
+        <true/>
         <key>NSBluetoothPeripheralUsageDescription</key>
         <string>nymea boxes can be connected to WiFi using a Bluetooth setup. Also, this app can connect to nymea boxes using Bluetooth only, without requiring WiFi at all.</string>
         <key>NSBluetoothAlwaysUsageDescription</key>
