@@ -85,7 +85,6 @@ Page {
         anchors.fill: parent
         topMargin: coHeader.height
         contentHeight: contentColumn.height + Style.margins + root.navigationFooterHeight
-        interactive: contentHeight > height
         clip: true
 
         ScrollBar.vertical: ScrollBar {}
