@@ -29,6 +29,7 @@ import QtQuick.Layouts
 import QtCore
 import QtQuick.Window
 import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import Nymea
 import NymeaApp.Utils
 
@@ -164,7 +165,7 @@ Item {
                     Binding {
                         target: mainPage
                         property: "navigationFooterHeight"
-                        value: navigationFooter.shown ? navigationFooter.height : 0
+                        value: navigationFooterContainer.shown ? navigationFooterContainer.height : 0
                         when: mainPage !== null
                     }
 
@@ -173,7 +174,7 @@ Item {
                     Binding {
                         target: currentStackPage
                         property: "navigationFooterHeight"
-                        value: navigationFooter.shown ? navigationFooter.height : 0
+                        value: navigationFooterContainer.shown ? navigationFooterContainer.height : 0
                         when: currentStackPage !== null
                               && currentStackPage !== mainPage
                               && "navigationFooterHeight" in currentStackPage
@@ -191,31 +192,40 @@ Item {
                     ShaderEffectSource {
                         id: footerBlurSource
                         width: _pageStack.width
-                        height: navigationFooter.height
+                        height: navigationFooterContainer.height
                         sourceItem: blurEnabled ? _pageStack : null
                         sourceRect: Qt.rect(0, _pageStack.height - height, _pageStack.width, height)
+                        recursive: true
+                        live: true
+                        mipmap: true
                         visible: false
-                        enabled: blurEnabled && navigationFooter.shown
+                        enabled: blurEnabled && navigationFooterContainer.shown
                     }
 
-                    FastBlur {
+                    MultiEffect {
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-                        height: navigationFooter.height
-                        radius: 40
-                        transparentBorder: false
+                        height: navigationFooterContainer.height
                         source: blurEnabled ? footerBlurSource : null
-                        visible: blurEnabled && navigationFooter.shown
+                        blurEnabled: true
+                        blur: 1.0
+                        blurMax: 40
+                        blurMultiplier: 0
+                        autoPaddingEnabled: false
+                        visible: blurEnabled && navigationFooterContainer.shown
                     }
 
-                    Rectangle {
-                        id: navigationFooter
-                        readonly property bool shown: mainPage !== null
-                                                      && mainPage.tabsModel !== undefined
-                                                      && (mainPage.tabsModel.count > 1 || mainPage.hasConfigOverlay)
-                        visible: shown
+                    Item {
+                        id: navigationFooterContainer
+                        readonly property bool shown: navigationFooter.shown || navbarControlsLoader.active
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-                        height: 58
-                        color: Style.colors.menu_Header_Footer_Background
+                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.margins : 0)
+                                + (navigationFooter.shown ? navigationFooter.height : 0)
+                        visible: shown
+
+                        Rectangle {
+                            anchors.fill: parent
+                            color: Style.colors.menu_Header_Footer_Background
+                        }
 
                         Rectangle {
                             anchors { left: parent.left; right: parent.right; top: parent.top }
@@ -223,44 +233,77 @@ Item {
                             color: Style.colors.menu_Header_Footer_Border
                         }
 
-                        RowLayout {
-                            anchors.fill: parent
-                            spacing: 0
-                            opacity: mainPage && mainPage.hasConfigOverlay ? 0 : 1
-                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-
-                            Repeater {
-                                model: mainPage && !mainPage.hasConfigOverlay ? mainPage.tabsModel : null
-                                delegate: MainPageTabButton {
-                                    required property int index
-                                    required property string icon
-                                    required property string name
-                                    Layout.fillWidth: true
-                                    Layout.fillHeight: true
-                                    checked: mainPage !== null
-                                             && currentStackPage === mainPage
-                                             && index === mainPage.currentMainViewIndex
-                                    iconSource: "qrc:/icons/" + icon + ".svg"
-                                    visible: mainPage ? !mainPage.isViewHidden(name) : true
-                                    onClicked: {
-                                        if (mainPage) {
-                                            const poppedItem = _pageStack.pop(mainPage);
-                                            mainPage.activateTab(index, poppedItem !== null);
-                                        }
-                                    }
-                                    onPressAndHold: if (mainPage) mainPage.configureViews()
-                                }
+                        Loader {
+                            id: navbarControlsLoader
+                            anchors {
+                                left: parent.left; leftMargin: Style.margins
+                                right: parent.right; rightMargin: Style.margins
+                                top: parent.top; topMargin: Style.margins
                             }
+                            // Pages may opt in by declaring:
+                            //   property Component navbarControls: Component { /* RowLayout etc. */ }
+                            // The component is rendered above the tab footer and its height
+                            // (plus Style.margins padding around it) is included in the page's
+                            // navigationFooterHeight.
+                            active: currentStackPage !== null
+                                    && "navbarControls" in currentStackPage
+                                    && currentStackPage.navbarControls !== null
+                            sourceComponent: active ? currentStackPage.navbarControls : null
+                            // When the current page reports busy, disable the navbar controls so
+                            // they cannot be activated while the page-level BusyOverlay is shown.
+                            enabled: !(currentStackPage !== null
+                                       && "busy" in currentStackPage
+                                       && currentStackPage.busy === true)
                         }
 
-                        MainPageTabButton {
-                            anchors.fill: parent
-                            iconSource: "qrc:/icons/configure.svg"
-                            opacity: mainPage && mainPage.hasConfigOverlay ? 1 : 0
-                            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-                            visible: opacity > 0
-                            checked: true
-                            onClicked: if (mainPage) mainPage.toggleConfigOverlay()
+                        Item {
+                            id: navigationFooter
+                            readonly property bool shown: mainPage !== null
+                                                          && mainPage.tabsModel !== undefined
+                                                          && (mainPage.tabsModel.count > 1 || mainPage.hasConfigOverlay)
+                            visible: shown
+                            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                            height: shown ? 58 : 0
+
+                            RowLayout {
+                                anchors.fill: parent
+                                spacing: 0
+                                opacity: mainPage && mainPage.hasConfigOverlay ? 0 : 1
+                                Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+
+                                Repeater {
+                                    model: mainPage && !mainPage.hasConfigOverlay ? mainPage.tabsModel : null
+                                    delegate: MainPageTabButton {
+                                        required property int index
+                                        required property string icon
+                                        required property string name
+                                        Layout.fillWidth: true
+                                        Layout.fillHeight: true
+                                        checked: mainPage !== null
+                                                 && currentStackPage === mainPage
+                                                 && index === mainPage.currentMainViewIndex
+                                        iconSource: "qrc:/icons/" + icon + ".svg"
+                                        visible: mainPage ? !mainPage.isViewHidden(name) : true
+                                        onClicked: {
+                                            if (mainPage) {
+                                                const poppedItem = _pageStack.pop(mainPage);
+                                                mainPage.activateTab(index, poppedItem !== null);
+                                            }
+                                        }
+                                        onPressAndHold: if (mainPage) mainPage.configureViews()
+                                    }
+                                }
+                            }
+
+                            MainPageTabButton {
+                                anchors.fill: parent
+                                iconSource: "qrc:/icons/configure.svg"
+                                opacity: mainPage && mainPage.hasConfigOverlay ? 1 : 0
+                                Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+                                visible: opacity > 0
+                                checked: true
+                                onClicked: if (mainPage) mainPage.toggleConfigOverlay()
+                            }
                         }
                     }
 

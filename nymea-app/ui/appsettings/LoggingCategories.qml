@@ -30,10 +30,7 @@ import Nymea
 import "../components"
 
 SettingsPageBase {
-    header: CoHeader {
-        text: qsTr("Logging categories")
-        onBackPressed: pageStack.pop()
-    }
+    headerText: qsTr("Logging categories")
 
     RowLayout {
         Layout.margins: Style.margins

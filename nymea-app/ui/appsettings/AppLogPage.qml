@@ -30,7 +30,15 @@ import Nymea
 import "../components"
 
 Page {
-    header: CoHeader {
+    id: root
+
+    header: null
+
+    CoHeader {
+        id: header
+        anchors { left: parent.left; right: parent.right; top: parent.top }
+        z: 1
+        blurSource: listView
         text: qsTr("Application logs")
         onBackPressed: pageStack.pop()
         RoundButton {
@@ -46,7 +54,10 @@ Page {
     ListView {
         id: listView
         anchors.fill: parent
+        topMargin: header.height
         clip: true
+
+        Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
 
         ScrollBar.vertical: ScrollBar {}
 
