@@ -30,7 +30,11 @@ import Nymea
 
 Item {
     id: root
-    implicitHeight: layout.implicitHeight + infoPane.height
+    // System status-bar / display-cutout inset. The interactive row is
+    // shifted down by this amount; the page background extends behind the
+    // status bar.
+    property int safeAreaTop: SafeArea.margins.top
+    implicitHeight: safeAreaTop + layout.implicitHeight + infoPane.height
     property string text
     property alias backButtonVisible: backButton.visible
     property alias menuButtonVisible: menuButton.visible
@@ -56,7 +60,7 @@ Item {
 
     RowLayout {
         id: layout
-        anchors { left: parent.left; top: parent.top; right: parent.right }
+        anchors { left: parent.left; top: parent.top; topMargin: root.safeAreaTop; right: parent.right }
 
         HeaderButton {
             id: menuButton

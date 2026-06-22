@@ -34,6 +34,7 @@ Page {
     id: root
 
     header: ToolBar {
+        topPadding: SafeArea.margins.top
         RowLayout {
             anchors.fill: parent
 

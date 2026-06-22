@@ -141,7 +141,7 @@ Page {
                 left: parent.left
                 leftMargin: Style.smallMargins
                 top: parent.top
-                topMargin: Style.smallMargins
+                topMargin: Style.smallMargins + contentContainer.safeAreaTop
             }
 
             onClicked: {
@@ -158,7 +158,7 @@ Page {
             source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
             anchors {
                 top: parent.top;
-                topMargin: (contentContainer.headerSize - height) / 2
+                topMargin: contentContainer.safeAreaTop + (contentContainer.headerSize - height) / 2
                 right: parent.right
                 rightMargin: Style.margins
             }
@@ -170,7 +170,7 @@ Page {
 
         Row {
             id: additionalIcons
-            anchors { right: parent.right; top: parent.top }
+            anchors { right: parent.right; top: parent.top; topMargin: contentContainer.safeAreaTop }
             visible: !d.configOverlay
             width: visible ? implicitWidth : 0
 
@@ -210,7 +210,7 @@ Page {
                 right: parent.right
                 left: parent.left
                 top: parent.top
-                topMargin: contentContainer.headerSize - 1
+                topMargin: contentContainer.safeAreaTop + contentContainer.headerSize - 1
             }
             height: 1
             color: Style.colors.menu_Header_Footer_Border
@@ -388,9 +388,20 @@ Page {
 
         property int headerSize: 64
         property int footerSize: 58
+        // Top inset reserved for the system status bar / display cutout.
+        // On Android <= 15 and on iOS without notch this is 0; on Android 16+
+        // or iOS with notch it is the actual inset returned by Qt.
+        // The interactive header band keeps its `headerSize` (64) and is
+        // shifted down by this amount; the blur backdrop extends upward by
+        // this amount so it reaches the physical top edge of the screen.
+        property int safeAreaTop: SafeArea.margins.top
 
         readonly property int scrollOffset: swipeView.currentItem ? swipeView.currentItem.item.contentY : 0
         readonly property int headerBlurSize: Math.min(headerSize, scrollOffset * 2)
+        // Total visual extent of the header overlay (status-bar inset plus
+        // the part of the interactive band currently covered by blur).
+        readonly property int visualHeaderHeight: safeAreaTop
+                                                  + (d.configOverlay ? headerSize : headerBlurSize)
 
         Background {
             anchors.fill: parent
@@ -423,6 +434,12 @@ Page {
 
                     Binding {
                         target: mainViewLoader.item
+                        property: "topMargin"
+                        value: contentContainer.safeAreaTop + contentContainer.headerSize
+                    }
+
+                    Binding {
+                        target: mainViewLoader.item
                         property: "bottomMargin"
                         value: root.navigationFooterHeight
                     }
@@ -451,9 +468,9 @@ Page {
     ShaderEffectSource {
         id: headerBlurSource
         width: contentContainer.width
-        height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
+        height: contentContainer.visualHeaderHeight
         sourceItem: d.blurEnabled ? contentContainer : null
-        sourceRect: Qt.rect(0, 0, contentContainer.width, d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize)
+        sourceRect: Qt.rect(0, 0, contentContainer.width, contentContainer.visualHeaderHeight)
         visible: false
     }
 
@@ -463,7 +480,7 @@ Page {
             top: parent.top;
             right: parent.right;
         }
-        height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
+        height: contentContainer.visualHeaderHeight
         radius: 40
         transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
@@ -477,7 +494,7 @@ Page {
             top: parent.top
             right: parent.right
         }
-        height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
+        height: contentContainer.visualHeaderHeight
         color: Style.colors.menu_Header_Footer_Background
     }
 
@@ -492,7 +509,7 @@ Page {
                 id: configListView
                 anchors.fill: parent
                 model: mainMenuModel
-                topMargin: contentContainer.headerSize
+                topMargin: contentContainer.safeAreaTop + contentContainer.headerSize
                 bottomMargin: contentContainer.footerSize
 
                 property bool dragging: draggingIndex >= 0

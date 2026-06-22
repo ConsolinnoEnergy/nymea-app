@@ -86,10 +86,15 @@ Item {
     ColumnLayout {
         anchors.fill: parent
 
-        anchors.topMargin: PlatformHelper.topPadding
-        anchors.bottomMargin: PlatformHelper.bottomPadding
-        anchors.leftMargin: PlatformHelper.leftPadding
-        anchors.rightMargin: PlatformHelper.rightPadding
+        // The window is edge-to-edge. Left/right system insets (display
+        // cutout, gesture areas on the sides) are still consumed at the
+        // root so page content does not slide under them. Top/bottom
+        // insets are intentionally NOT applied here; they are handled by
+        // each page's header (CoHeader / MainPage header) and by the
+        // navigation footer below so the blur backdrops can extend to the
+        // physical screen edges.
+        anchors.leftMargin: SafeArea.margins.left
+        anchors.rightMargin: SafeArea.margins.right
 
         spacing: 0
 
@@ -217,9 +222,15 @@ Item {
                     Item {
                         id: navigationFooterContainer
                         readonly property bool shown: navigationFooter.shown || navbarControlsLoader.active
+                        // The footer reaches the physical bottom of the screen so
+                        // its blur backdrop covers the area behind the system
+                        // gesture/navigation bar. Interactive children are
+                        // pushed above the inset via safeAreaBottom.
+                        readonly property int safeAreaBottom: SafeArea.margins.bottom
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
                         height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.margins : 0)
                                 + (navigationFooter.shown ? navigationFooter.height : 0)
+                                + safeAreaBottom
                         visible: shown
 
                         Rectangle {
@@ -262,7 +273,10 @@ Item {
                                                           && mainPage.tabsModel !== undefined
                                                           && (mainPage.tabsModel.count > 1 || mainPage.hasConfigOverlay)
                             visible: shown
-                            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                            anchors {
+                                left: parent.left; right: parent.right
+                                bottom: parent.bottom; bottomMargin: navigationFooterContainer.safeAreaBottom
+                            }
                             height: shown ? 58 : 0
 
                             RowLayout {
