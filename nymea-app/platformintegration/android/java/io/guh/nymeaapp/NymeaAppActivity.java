@@ -18,6 +18,9 @@ import android.content.BroadcastReceiver;
 import android.location.LocationManager;
 import androidx.core.content.FileProvider;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowInsets;
 import android.graphics.Insets;
 
@@ -233,6 +236,52 @@ public class NymeaAppActivity extends QtActivity
         }
 
         return windowInsets.getStableInsetRight();
+    }
+
+    /**
+     * Tells Android whether the status bar icons (clock, signal, battery)
+     * should be drawn dark (true) or light (false). Pass `true` when the
+     * area behind the status bar is light, `false` when it is dark.
+     *
+     * No-op below API 23 (M); WindowInsetsControllerCompat falls back to
+     * legacy SystemUiVisibility flags up to that point.
+     */
+    public void setLightStatusBar(final boolean darkIcons) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Window window = getWindow();
+                View decorView = window.getDecorView();
+                WindowInsetsControllerCompat controller =
+                        WindowCompat.getInsetsController(window, decorView);
+                if (controller != null) {
+                    controller.setAppearanceLightStatusBars(darkIcons);
+                }
+            }
+        });
+    }
+
+    /**
+     * Tells Android whether the navigation/gesture bar icons should be
+     * drawn dark (true) or light (false). Pass `true` when the area
+     * behind the navigation bar is light, `false` when it is dark.
+     *
+     * No-op below API 26 (O); WindowInsetsControllerCompat handles
+     * the version check internally.
+     */
+    public void setLightNavigationBar(final boolean darkIcons) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Window window = getWindow();
+                View decorView = window.getDecorView();
+                WindowInsetsControllerCompat controller =
+                        WindowCompat.getInsetsController(window, decorView);
+                if (controller != null) {
+                    controller.setAppearanceLightNavigationBars(darkIcons);
+                }
+            }
+        });
     }
 
     private void logStaticInitClassesMetadata() {

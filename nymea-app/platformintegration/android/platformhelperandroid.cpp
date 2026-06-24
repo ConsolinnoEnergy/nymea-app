@@ -229,41 +229,34 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
 {
     PlatformHelper::setTopPanelColor(color);
 
-    // if (QtAndroid::androidSdkVersion() < 21)
-    //     return;
+    // Tell Android whether the status-bar icons should be dark or light
+    // based on the luminance of the colour that paints behind the bar.
+    // The bar itself is transparent (see styles.xml) so the area behind it
+    // is `app.color` (bound to `topPanelColor` in Nymea.qml).
+    const bool darkIcons = qGray(color.rgb()) > 128;
 
-    // QtAndroid::runOnAndroidThread([=]() {
-    //     QJniObject window = getAndroidWindow();
-    //     window.callMethod<void>("addFlags", "(I)V", FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    //     window.callMethod<void>("clearFlags", "(I)V", FLAG_TRANSLUCENT_STATUS);
-    //     window.callMethod<void>("setStatusBarColor", "(I)V", color.rgba());
-    // });
-
-    // if (((color.red() * 299 + color.green() * 587 + color.blue() * 114) / 1000) > 123) {
-    //     setTopPanelTheme(Light);
-    // } else {
-    //     setTopPanelTheme(Dark);
-    // }
+    QJniObject activity = QJniObject::callStaticObjectMethod(
+            "org/qtproject/qt/android/QtNative",
+            "activity",
+            "()Landroid/app/Activity;");
+    if (activity.isValid()) {
+        activity.callMethod<void>("setLightStatusBar", "(Z)V", darkIcons);
+    }
 }
 
 void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
 {
     PlatformHelper::setBottomPanelColor(color);
 
-    // if (QtAndroid::androidSdkVersion() < 21)
-    //     return;
+    const bool darkIcons = qGray(color.rgb()) > 128;
 
-    // QtAndroid::runOnAndroidThread([=]() {
-    //     QJniObject window = getAndroidWindow();
-    //     window.callMethod<void>("clearFlags", "(I)V", FLAG_TRANSLUCENT_NAVIGATION);
-    //     window.callMethod<void>("setNavigationBarColor", "(I)V", color.rgba());
-
-    //     if (((color.red() * 299 + color.green() * 587 + color.blue() * 114) / 1000) > 123) {
-    //         setBottomPanelTheme(Light);
-    //     } else {
-    //         setBottomPanelTheme(Dark);
-    //     }
-    // });
+    QJniObject activity = QJniObject::callStaticObjectMethod(
+            "org/qtproject/qt/android/QtNative",
+            "activity",
+            "()Landroid/app/Activity;");
+    if (activity.isValid()) {
+        activity.callMethod<void>("setLightNavigationBar", "(Z)V", darkIcons);
+    }
 }
 
 void PlatformHelperAndroid::setTopPanelTheme(PlatformHelperAndroid::Theme theme)
