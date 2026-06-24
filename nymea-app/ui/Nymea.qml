@@ -46,7 +46,7 @@ ApplicationWindow {
     minimumWidth: 360
     minimumHeight: 580
     visibility: kioskMode ? ApplicationWindow.FullScreen : settings.viewMode
-    color: Material.background
+    color: "magenta" // ESUI-1369 diagnostic: revert before merging
     title: Configuration.appName
 
     Material.theme: NymeaUtils.isDark(Style.backgroundColor) ? Material.Dark : Material.Light
