@@ -31,8 +31,8 @@ import Nymea
 Item {
     id: root
     // System status-bar / display-cutout inset. The interactive row is
-    // shifted down by this amount; the page background extends behind the
-    // status bar.
+    // shifted down by this amount while the page chrome itself still reaches
+    // the screen edge.
     property int safeAreaTop: SafeArea.margins.top
     implicitHeight: safeAreaTop + layout.implicitHeight + infoPane.height
     property string text

@@ -40,8 +40,8 @@ ApplicationWindow {
     height: Qt.platform.os === "ios" ? Screen.height : 580
     // The ApplicationWindow draws edge-to-edge. System-bar insets are consumed
     // inside the page headers and the navigation footer (see RootItem and the
-    // CoHeader component) so the background and blur effects can extend below
-    // the status bar and above the gesture/navigation bar.
+    // CoHeader component) so the app chrome can reach the screen edges while
+    // the system bars remain system-drawn.
     maximumWidth: 768
     minimumWidth: 360
     minimumHeight: 580

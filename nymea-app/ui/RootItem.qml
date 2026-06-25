@@ -91,8 +91,8 @@ Item {
         // root so page content does not slide under them. Top/bottom
         // insets are intentionally NOT applied here; they are handled by
         // each page's header (CoHeader / MainPage header) and by the
-        // navigation footer below so the blur backdrops can extend to the
-        // physical screen edges.
+        // navigation footer below so the app chrome can reach the screen
+        // edges while the system bars stay system-drawn.
         anchors.leftMargin: SafeArea.margins.left
         anchors.rightMargin: SafeArea.margins.right
 
@@ -223,9 +223,9 @@ Item {
                         id: navigationFooterContainer
                         readonly property bool shown: navigationFooter.shown || navbarControlsLoader.active
                         // The footer reaches the physical bottom of the screen so
-                        // its blur backdrop covers the area behind the system
-                        // gesture/navigation bar. Interactive children are
-                        // pushed above the inset via safeAreaBottom.
+                        // the footer chrome stays flush with the edge. Interactive
+                        // children are pushed above the gesture/navigation inset
+                        // via safeAreaBottom.
                         readonly property int safeAreaBottom: SafeArea.margins.bottom
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
                         height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.margins : 0)

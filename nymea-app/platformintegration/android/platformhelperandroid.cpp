@@ -229,10 +229,16 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
 {
     PlatformHelper::setTopPanelColor(color);
 
-    // Tell Android whether the status-bar icons should be dark or light
-    // based on the luminance of the colour that paints behind the bar.
-    // The bar itself is transparent (see styles.xml) so the area behind it
-    // is `app.color` (bound to `topPanelColor` in Nymea.qml).
+    // Only Android 16+ is expected to run fully edge-to-edge here. On older
+    // releases the system/theme still owns the system-bar appearance, and our
+    // color-based override can fight with that.
+    const jint sdkInt = QJniObject::getStaticField<jint>("android/os/Build$VERSION", "SDK_INT");
+    if (sdkInt < 36) {
+        return;
+    }
+
+    // Tell Android whether the status-bar icons should be dark or light based
+    // on the luminance of the colour that paints behind the bar.
     const bool darkIcons = qGray(color.rgb()) > 128;
 
     QJniObject activity = QJniObject::callStaticObjectMethod(
@@ -247,6 +253,11 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
 void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
 {
     PlatformHelper::setBottomPanelColor(color);
+
+    const jint sdkInt = QJniObject::getStaticField<jint>("android/os/Build$VERSION", "SDK_INT");
+    if (sdkInt < 36) {
+        return;
+    }
 
     const bool darkIcons = qGray(color.rgb()) > 128;
 
