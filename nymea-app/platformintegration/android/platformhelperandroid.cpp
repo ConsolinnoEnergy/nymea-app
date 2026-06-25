@@ -44,6 +44,7 @@
 #define SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR 0x00000010
 
 static PlatformHelperAndroid *m_instance = nullptr;
+static constexpr const char *ESUI_1369_BUILD_MARKER = "[ESUI-1369] android-system-bar-cache-marker-v3";
 
 static JNINativeMethod methods[] = {
     { "darkModeEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::darkModeEnabledChangedJNI },
@@ -84,6 +85,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/)
 PlatformHelperAndroid::PlatformHelperAndroid(QObject *parent) : PlatformHelper(parent)
 {
     m_instance = this;
+    qWarning("%s PlatformHelperAndroid constructed", ESUI_1369_BUILD_MARKER);
 
     // QString notificationData = QNativeInterface::QAndroidApplication::context().callMethod<jstring>("notificationData", "()Ljava/lang/String;").toString();
     // if (!notificationData.isNull()) {
@@ -102,7 +104,7 @@ PlatformHelperAndroid::PlatformHelperAndroid(QObject *parent) : PlatformHelper(p
     // the app colour), so we need to reapply even if topPanelColor hasn't
     // changed (e.g. the app has a fixed light/dark theme).
     connect(this, &PlatformHelper::darkModeEnabledChanged, this, [this]() {
-        qDebug("[ESUI-1369] darkModeEnabledChanged: re-applying system bar icon colours");
+        qWarning("%s darkModeEnabledChanged: re-applying system bar icon colours", ESUI_1369_BUILD_MARKER);
         setTopPanelColor(topPanelColor());
         setBottomPanelColor(bottomPanelColor());
     });
@@ -245,8 +247,9 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
         // API 36+: window is fully edge-to-edge; the app background IS visible
         // behind the status bar, so base icon colour on the app's background luminance.
         darkIcons = qGray(color.rgb()) > 128;
-        qDebug("[ESUI-1369] status bar icons: api=%d trigger=topPanelColor "
-               "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+        qWarning("%s status bar icons: api=%d trigger=topPanelColor "
+                 "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+               ESUI_1369_BUILD_MARKER,
                (int)sdkInt, color.rgb() & 0xFFFFFF, qGray(color.rgb()),
                darkIcons ? "true" : "false");
     } else if (sdkInt >= 31) {
@@ -257,12 +260,13 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
         // Override with the system-theme-correct value.
         const bool systemDark = darkModeEnabled();
         darkIcons = !systemDark;
-        qDebug("[ESUI-1369] status bar icons: api=%d trigger=topPanelColor "
-               "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+        qWarning("%s status bar icons: api=%d trigger=topPanelColor "
+                 "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+               ESUI_1369_BUILD_MARKER,
                (int)sdkInt, color.rgb() & 0xFFFFFF,
                systemDark ? "true" : "false", darkIcons ? "true" : "false");
     } else {
-        qDebug("[ESUI-1369] status bar icons: api=%d skipped (< 31)", (int)sdkInt);
+        qWarning("%s status bar icons: api=%d skipped (< 31)", ESUI_1369_BUILD_MARKER, (int)sdkInt);
         return;
     }
 
@@ -273,7 +277,7 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
     if (activity.isValid()) {
         activity.callMethod<void>("setLightStatusBar", "(Z)V", darkIcons);
     } else {
-        qWarning("[ESUI-1369] status bar icons: could not get activity");
+        qWarning("%s status bar icons: could not get activity", ESUI_1369_BUILD_MARKER);
     }
 }
 
@@ -286,19 +290,21 @@ void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
     bool darkIcons;
     if (sdkInt >= 36) {
         darkIcons = qGray(color.rgb()) > 128;
-        qDebug("[ESUI-1369] navigation bar icons: api=%d trigger=bottomPanelColor "
-               "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+        qWarning("%s navigation bar icons: api=%d trigger=bottomPanelColor "
+                 "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+               ESUI_1369_BUILD_MARKER,
                (int)sdkInt, color.rgb() & 0xFFFFFF, qGray(color.rgb()),
                darkIcons ? "true" : "false");
     } else if (sdkInt >= 31) {
         const bool systemDark = darkModeEnabled();
         darkIcons = !systemDark;
-        qDebug("[ESUI-1369] navigation bar icons: api=%d trigger=bottomPanelColor "
-               "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+        qWarning("%s navigation bar icons: api=%d trigger=bottomPanelColor "
+                 "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+               ESUI_1369_BUILD_MARKER,
                (int)sdkInt, color.rgb() & 0xFFFFFF,
                systemDark ? "true" : "false", darkIcons ? "true" : "false");
     } else {
-        qDebug("[ESUI-1369] navigation bar icons: api=%d skipped (< 31)", (int)sdkInt);
+        qWarning("%s navigation bar icons: api=%d skipped (< 31)", ESUI_1369_BUILD_MARKER, (int)sdkInt);
         return;
     }
 
@@ -309,7 +315,7 @@ void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
     if (activity.isValid()) {
         activity.callMethod<void>("setLightNavigationBar", "(Z)V", darkIcons);
     } else {
-        qWarning("[ESUI-1369] navigation bar icons: could not get activity");
+        qWarning("%s navigation bar icons: could not get activity", ESUI_1369_BUILD_MARKER);
     }
 }
 

@@ -33,6 +33,7 @@ import org.qtproject.qt.android.bindings.QtActivity;
 public class NymeaAppActivity extends QtActivity
 {
     private static final String TAG = "nymea-app: NymeaAppActivity";
+    private static final String ESUI_1369_BUILD_MARKER = "[ESUI-1369] android-system-bar-cache-marker-v3";
     private static Context context = null;
     private boolean mDecorFitsSystemWindows = false;
 
@@ -52,11 +53,11 @@ public class NymeaAppActivity extends QtActivity
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate: SDK_INT=" + Build.VERSION.SDK_INT);
+        Log.w(TAG, ESUI_1369_BUILD_MARKER + " onCreate: SDK_INT=" + Build.VERSION.SDK_INT);
         int themeId = resolveStyleResource("NormalTheme");
         if (themeId != 0) {
             setTheme(themeId);
-            Log.d(TAG, "onCreate: applied NormalTheme (id=" + themeId + ")");
+            Log.w(TAG, ESUI_1369_BUILD_MARKER + " onCreate: applied NormalTheme (id=" + themeId + ")");
         } else {
             Log.w(TAG, "NormalTheme style missing, falling back to system theme");
             setTheme(android.R.style.Theme_DeviceDefault_DayNight);
@@ -67,11 +68,11 @@ public class NymeaAppActivity extends QtActivity
             // PlatformHelper.topPadding() will return 0 since the system handles insets.
             WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
             mDecorFitsSystemWindows = true;
-            Log.d(TAG, "onCreate: API 35 - opted out of edge-to-edge");
+            Log.w(TAG, ESUI_1369_BUILD_MARKER + " onCreate: API 35 - opted out of edge-to-edge");
         }
         // On API 36+, setDecorFitsSystemWindows(true) is ignored - edge-to-edge is mandatory.
         // mDecorFitsSystemWindows stays false so topPadding() reads the actual insets.
-        Log.d(TAG, "onCreate: mDecorFitsSystemWindows=" + mDecorFitsSystemWindows
+        Log.w(TAG, ESUI_1369_BUILD_MARKER + " onCreate: mDecorFitsSystemWindows=" + mDecorFitsSystemWindows
                 + " darkModeEnabled=" + darkModeEnabled());
         this.context = getApplicationContext();
     }
@@ -251,7 +252,7 @@ public class NymeaAppActivity extends QtActivity
      * legacy SystemUiVisibility flags up to that point.
      */
     public void setLightStatusBar(final boolean darkIcons) {
-        Log.d(TAG, "setLightStatusBar: darkIcons=" + darkIcons
+        Log.w(TAG, ESUI_1369_BUILD_MARKER + " setLightStatusBar: darkIcons=" + darkIcons
                 + " SDK_INT=" + Build.VERSION.SDK_INT
                 + " darkModeEnabled=" + darkModeEnabled());
         runOnUiThread(new Runnable() {
@@ -263,9 +264,9 @@ public class NymeaAppActivity extends QtActivity
                         WindowCompat.getInsetsController(window, decorView);
                 if (controller != null) {
                     controller.setAppearanceLightStatusBars(darkIcons);
-                    Log.d(TAG, "setLightStatusBar: applied darkIcons=" + darkIcons);
+                    Log.w(TAG, ESUI_1369_BUILD_MARKER + " setLightStatusBar: applied darkIcons=" + darkIcons);
                 } else {
-                    Log.w(TAG, "setLightStatusBar: WindowInsetsControllerCompat is null");
+                    Log.w(TAG, ESUI_1369_BUILD_MARKER + " setLightStatusBar: WindowInsetsControllerCompat is null");
                 }
             }
         });
@@ -280,7 +281,7 @@ public class NymeaAppActivity extends QtActivity
      * the version check internally.
      */
     public void setLightNavigationBar(final boolean darkIcons) {
-        Log.d(TAG, "setLightNavigationBar: darkIcons=" + darkIcons
+        Log.w(TAG, ESUI_1369_BUILD_MARKER + " setLightNavigationBar: darkIcons=" + darkIcons
                 + " SDK_INT=" + Build.VERSION.SDK_INT
                 + " darkModeEnabled=" + darkModeEnabled());
         runOnUiThread(new Runnable() {
@@ -292,9 +293,9 @@ public class NymeaAppActivity extends QtActivity
                         WindowCompat.getInsetsController(window, decorView);
                 if (controller != null) {
                     controller.setAppearanceLightNavigationBars(darkIcons);
-                    Log.d(TAG, "setLightNavigationBar: applied darkIcons=" + darkIcons);
+                    Log.w(TAG, ESUI_1369_BUILD_MARKER + " setLightNavigationBar: applied darkIcons=" + darkIcons);
                 } else {
-                    Log.w(TAG, "setLightNavigationBar: WindowInsetsControllerCompat is null");
+                    Log.w(TAG, ESUI_1369_BUILD_MARKER + " setLightNavigationBar: WindowInsetsControllerCompat is null");
                 }
             }
         });
