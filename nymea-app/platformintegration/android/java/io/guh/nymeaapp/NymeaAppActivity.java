@@ -52,10 +52,11 @@ public class NymeaAppActivity extends QtActivity
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.w(TAG, "Create activity");
+        Log.d(TAG, "onCreate: SDK_INT=" + Build.VERSION.SDK_INT);
         int themeId = resolveStyleResource("NormalTheme");
         if (themeId != 0) {
             setTheme(themeId);
+            Log.d(TAG, "onCreate: applied NormalTheme (id=" + themeId + ")");
         } else {
             Log.w(TAG, "NormalTheme style missing, falling back to system theme");
             setTheme(android.R.style.Theme_DeviceDefault_DayNight);
@@ -66,9 +67,12 @@ public class NymeaAppActivity extends QtActivity
             // PlatformHelper.topPadding() will return 0 since the system handles insets.
             WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
             mDecorFitsSystemWindows = true;
+            Log.d(TAG, "onCreate: API 35 - opted out of edge-to-edge");
         }
         // On API 36+, setDecorFitsSystemWindows(true) is ignored - edge-to-edge is mandatory.
         // mDecorFitsSystemWindows stays false so topPadding() reads the actual insets.
+        Log.d(TAG, "onCreate: mDecorFitsSystemWindows=" + mDecorFitsSystemWindows
+                + " darkModeEnabled=" + darkModeEnabled());
         this.context = getApplicationContext();
     }
 
@@ -247,6 +251,9 @@ public class NymeaAppActivity extends QtActivity
      * legacy SystemUiVisibility flags up to that point.
      */
     public void setLightStatusBar(final boolean darkIcons) {
+        Log.d(TAG, "setLightStatusBar: darkIcons=" + darkIcons
+                + " SDK_INT=" + Build.VERSION.SDK_INT
+                + " darkModeEnabled=" + darkModeEnabled());
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -256,6 +263,9 @@ public class NymeaAppActivity extends QtActivity
                         WindowCompat.getInsetsController(window, decorView);
                 if (controller != null) {
                     controller.setAppearanceLightStatusBars(darkIcons);
+                    Log.d(TAG, "setLightStatusBar: applied darkIcons=" + darkIcons);
+                } else {
+                    Log.w(TAG, "setLightStatusBar: WindowInsetsControllerCompat is null");
                 }
             }
         });
@@ -270,6 +280,9 @@ public class NymeaAppActivity extends QtActivity
      * the version check internally.
      */
     public void setLightNavigationBar(final boolean darkIcons) {
+        Log.d(TAG, "setLightNavigationBar: darkIcons=" + darkIcons
+                + " SDK_INT=" + Build.VERSION.SDK_INT
+                + " darkModeEnabled=" + darkModeEnabled());
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -279,6 +292,9 @@ public class NymeaAppActivity extends QtActivity
                         WindowCompat.getInsetsController(window, decorView);
                 if (controller != null) {
                     controller.setAppearanceLightNavigationBars(darkIcons);
+                    Log.d(TAG, "setLightNavigationBar: applied darkIcons=" + darkIcons);
+                } else {
+                    Log.w(TAG, "setLightNavigationBar: WindowInsetsControllerCompat is null");
                 }
             }
         });

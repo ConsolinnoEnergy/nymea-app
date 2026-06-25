@@ -91,11 +91,20 @@ PlatformHelperAndroid::PlatformHelperAndroid(QObject *parent) : PlatformHelper(p
     // }
 
     connect(qApp, &QApplication::applicationStateChanged, this, [this](Qt::ApplicationState state){
-        qCritical() << "----> Application state changed" << state;
         if (state == Qt::ApplicationActive) {
             emit locationServicesEnabledChanged();
             updateSafeAreaPadding();
         }
+    });
+
+    // Re-apply system bar icon colours whenever the system dark mode changes.
+    // On API 31-35 the correct icon colour depends on the system theme (not
+    // the app colour), so we need to reapply even if topPanelColor hasn't
+    // changed (e.g. the app has a fixed light/dark theme).
+    connect(this, &PlatformHelper::darkModeEnabledChanged, this, [this]() {
+        qDebug("[ESUI-1369] darkModeEnabledChanged: re-applying system bar icon colours");
+        setTopPanelColor(topPanelColor());
+        setBottomPanelColor(bottomPanelColor());
     });
 
     if (QScreen *screen = qApp->primaryScreen()) {
@@ -229,17 +238,33 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
 {
     PlatformHelper::setTopPanelColor(color);
 
-    // Only Android 16+ is expected to run fully edge-to-edge here. On older
-    // releases the system/theme still owns the system-bar appearance, and our
-    // color-based override can fight with that.
     const jint sdkInt = QJniObject::getStaticField<jint>("android/os/Build$VERSION", "SDK_INT");
-    if (sdkInt < 36) {
+
+    bool darkIcons;
+    if (sdkInt >= 36) {
+        // API 36+: window is fully edge-to-edge; the app background IS visible
+        // behind the status bar, so base icon colour on the app's background luminance.
+        darkIcons = qGray(color.rgb()) > 128;
+        qDebug("[ESUI-1369] status bar icons: api=%d trigger=topPanelColor "
+               "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF, qGray(color.rgb()),
+               darkIcons ? "true" : "false");
+    } else if (sdkInt >= 31) {
+        // API 31-35: the status bar has its own background drawn by
+        // Theme.DeviceDefault.DayNight (follows system theme). Qt's Material
+        // plugin independently sets icon colour based on Material.theme (app
+        // theme). When app theme != system theme that produces wrong contrast.
+        // Override with the system-theme-correct value.
+        const bool systemDark = darkModeEnabled();
+        darkIcons = !systemDark;
+        qDebug("[ESUI-1369] status bar icons: api=%d trigger=topPanelColor "
+               "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF,
+               systemDark ? "true" : "false", darkIcons ? "true" : "false");
+    } else {
+        qDebug("[ESUI-1369] status bar icons: api=%d skipped (< 31)", (int)sdkInt);
         return;
     }
-
-    // Tell Android whether the status-bar icons should be dark or light based
-    // on the luminance of the colour that paints behind the bar.
-    const bool darkIcons = qGray(color.rgb()) > 128;
 
     QJniObject activity = QJniObject::callStaticObjectMethod(
             "org/qtproject/qt/android/QtNative",
@@ -247,6 +272,8 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
             "()Landroid/app/Activity;");
     if (activity.isValid()) {
         activity.callMethod<void>("setLightStatusBar", "(Z)V", darkIcons);
+    } else {
+        qWarning("[ESUI-1369] status bar icons: could not get activity");
     }
 }
 
@@ -255,11 +282,25 @@ void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
     PlatformHelper::setBottomPanelColor(color);
 
     const jint sdkInt = QJniObject::getStaticField<jint>("android/os/Build$VERSION", "SDK_INT");
-    if (sdkInt < 36) {
+
+    bool darkIcons;
+    if (sdkInt >= 36) {
+        darkIcons = qGray(color.rgb()) > 128;
+        qDebug("[ESUI-1369] navigation bar icons: api=%d trigger=bottomPanelColor "
+               "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF, qGray(color.rgb()),
+               darkIcons ? "true" : "false");
+    } else if (sdkInt >= 31) {
+        const bool systemDark = darkModeEnabled();
+        darkIcons = !systemDark;
+        qDebug("[ESUI-1369] navigation bar icons: api=%d trigger=bottomPanelColor "
+               "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF,
+               systemDark ? "true" : "false", darkIcons ? "true" : "false");
+    } else {
+        qDebug("[ESUI-1369] navigation bar icons: api=%d skipped (< 31)", (int)sdkInt);
         return;
     }
-
-    const bool darkIcons = qGray(color.rgb()) > 128;
 
     QJniObject activity = QJniObject::callStaticObjectMethod(
             "org/qtproject/qt/android/QtNative",
@@ -267,6 +308,8 @@ void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
             "()Landroid/app/Activity;");
     if (activity.isValid()) {
         activity.callMethod<void>("setLightNavigationBar", "(Z)V", darkIcons);
+    } else {
+        qWarning("[ESUI-1369] navigation bar icons: could not get activity");
     }
 }
 
