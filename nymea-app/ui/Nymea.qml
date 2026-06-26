@@ -38,10 +38,10 @@ ApplicationWindow {
     visible: true
     width: Qt.platform.os === "ios" ? Screen.width : 360
     height: Qt.platform.os === "ios" ? Screen.height : 580
-    topPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.top
-    bottomPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.bottom
-    leftPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.left
-    rightPadding: Qt.platform.os === "ios" ? 0 : SafeArea.margins.right
+    // The ApplicationWindow draws edge-to-edge. System-bar insets are consumed
+    // inside the page headers and the navigation footer (see RootItem and the
+    // CoHeader component) so the app chrome can reach the screen edges while
+    // the system bars remain system-drawn.
     maximumWidth: 768
     minimumWidth: 360
     minimumHeight: 580

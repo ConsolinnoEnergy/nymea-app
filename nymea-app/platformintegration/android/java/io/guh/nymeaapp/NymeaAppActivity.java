@@ -18,6 +18,9 @@ import android.content.BroadcastReceiver;
 import android.location.LocationManager;
 import androidx.core.content.FileProvider;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowInsets;
 import android.graphics.Insets;
 
@@ -49,7 +52,6 @@ public class NymeaAppActivity extends QtActivity
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.w(TAG, "Create activity");
         int themeId = resolveStyleResource("NormalTheme");
         if (themeId != 0) {
             setTheme(themeId);
@@ -233,6 +235,64 @@ public class NymeaAppActivity extends QtActivity
         }
 
         return windowInsets.getStableInsetRight();
+    }
+
+    /**
+     * Tells Android whether the status bar icons (clock, signal, battery)
+     * should be drawn dark (true) or light (false). Pass `true` when the
+     * area behind the status bar is light, `false` when it is dark.
+     *
+     * No-op below API 23 (M); WindowInsetsControllerCompat falls back to
+     * legacy SystemUiVisibility flags up to that point.
+     */
+    public void setLightStatusBar(final boolean darkIcons) {
+        Log.d(TAG, "setLightStatusBar: darkIcons=" + darkIcons
+                + " SDK_INT=" + Build.VERSION.SDK_INT
+                + " darkModeEnabled=" + darkModeEnabled());
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Window window = getWindow();
+                View decorView = window.getDecorView();
+                WindowInsetsControllerCompat controller =
+                        WindowCompat.getInsetsController(window, decorView);
+                if (controller != null) {
+                    controller.setAppearanceLightStatusBars(darkIcons);
+                    Log.d(TAG, "setLightStatusBar: applied darkIcons=" + darkIcons);
+                } else {
+                    Log.d(TAG, "setLightStatusBar: WindowInsetsControllerCompat is null");
+                }
+            }
+        });
+    }
+
+    /**
+     * Tells Android whether the navigation/gesture bar icons should be
+     * drawn dark (true) or light (false). Pass `true` when the area
+     * behind the navigation bar is light, `false` when it is dark.
+     *
+     * No-op below API 26 (O); WindowInsetsControllerCompat handles
+     * the version check internally.
+     */
+    public void setLightNavigationBar(final boolean darkIcons) {
+        Log.d(TAG, "setLightNavigationBar: darkIcons=" + darkIcons
+                + " SDK_INT=" + Build.VERSION.SDK_INT
+                + " darkModeEnabled=" + darkModeEnabled());
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Window window = getWindow();
+                View decorView = window.getDecorView();
+                WindowInsetsControllerCompat controller =
+                        WindowCompat.getInsetsController(window, decorView);
+                if (controller != null) {
+                    controller.setAppearanceLightNavigationBars(darkIcons);
+                    Log.d(TAG, "setLightNavigationBar: applied darkIcons=" + darkIcons);
+                } else {
+                    Log.d(TAG, "setLightNavigationBar: WindowInsetsControllerCompat is null");
+                }
+            }
+        });
     }
 
     private void logStaticInitClassesMetadata() {
