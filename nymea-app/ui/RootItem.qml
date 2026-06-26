@@ -218,7 +218,7 @@ Item {
                         id: navigationFooterContainer
                         readonly property bool shown: navigationFooter.shown || navbarControlsLoader.active
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.margins : 0)
+                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.smallMargins : 0)
                                 + (navigationFooter.shown ? navigationFooter.height : 0)
                         visible: shown
 
@@ -236,9 +236,9 @@ Item {
                         Loader {
                             id: navbarControlsLoader
                             anchors {
-                                left: parent.left; leftMargin: Style.margins
-                                right: parent.right; rightMargin: Style.margins
-                                top: parent.top; topMargin: Style.margins
+                                left: parent.left; leftMargin: Style.mediumMargins
+                                right: parent.right; rightMargin: Style.mediumMargins
+                                top: parent.top; topMargin: Style.mediumMargins
                             }
                             // Pages may opt in by declaring:
                             //   property Component navbarControls: Component { /* RowLayout etc. */ }
