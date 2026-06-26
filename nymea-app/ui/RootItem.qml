@@ -228,7 +228,7 @@ Item {
                         // via safeAreaBottom.
                         readonly property int safeAreaBottom: SafeArea.margins.bottom
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.margins : 0)
+                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.smallMargins : 0)
                                 + (navigationFooter.shown ? navigationFooter.height : 0)
                                 + safeAreaBottom
                         visible: shown
@@ -247,9 +247,9 @@ Item {
                         Loader {
                             id: navbarControlsLoader
                             anchors {
-                                left: parent.left; leftMargin: Style.margins
-                                right: parent.right; rightMargin: Style.margins
-                                top: parent.top; topMargin: Style.margins
+                                left: parent.left; leftMargin: Style.mediumMargins
+                                right: parent.right; rightMargin: Style.mediumMargins
+                                top: parent.top; topMargin: Style.mediumMargins
                             }
                             // Pages may opt in by declaring:
                             //   property Component navbarControls: Component { /* RowLayout etc. */ }
