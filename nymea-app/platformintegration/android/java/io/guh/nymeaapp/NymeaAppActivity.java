@@ -33,7 +33,7 @@ import org.qtproject.qt.android.bindings.QtActivity;
 public class NymeaAppActivity extends QtActivity
 {
     private static final String TAG = "nymea-app: NymeaAppActivity";
-    private static final String ESUI_1369_BUILD_MARKER = "[ESUI-1369] android-system-bar-cache-marker-v3";
+    private static final String ESUI_1369_BUILD_MARKER = "[ESUI-1369] android-system-bar-cache-marker-v4";
     private static Context context = null;
     private boolean mDecorFitsSystemWindows = false;
 

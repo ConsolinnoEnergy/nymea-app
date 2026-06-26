@@ -44,7 +44,7 @@
 #define SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR 0x00000010
 
 static PlatformHelperAndroid *m_instance = nullptr;
-static constexpr const char *ESUI_1369_BUILD_MARKER = "[ESUI-1369] android-system-bar-cache-marker-v3";
+static constexpr const char *ESUI_1369_BUILD_MARKER = "[ESUI-1369] android-system-bar-cache-marker-v4";
 
 static JNINativeMethod methods[] = {
     { "darkModeEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::darkModeEnabledChangedJNI },
