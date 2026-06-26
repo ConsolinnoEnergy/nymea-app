@@ -118,6 +118,19 @@ ApplicationWindow {
 
     ConfiguredHostsModel {
         id: configuredHostsModel
+
+        // Captures the active slot index just before a new empty setup slot is appended.
+        // createHost() triggers countChanged before setCurrentIndex() is called, so
+        // currentIndex still holds the previously active slot at that moment.
+        property int setupWizardReturnIndex: 0
+
+        onCountChanged: {
+            const lastSlot = configuredHostsModel.get(configuredHostsModel.count - 1);
+            const nullUuid = "{00000000-0000-0000-0000-000000000000}";
+            if (lastSlot && lastSlot.uuid.toString() === nullUuid) {
+                setupWizardReturnIndex = configuredHostsModel.currentIndex;
+            }
+        }
     }
 
     property alias mainMenu: m
