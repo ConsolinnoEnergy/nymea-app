@@ -49,23 +49,31 @@ ColumnLayout {
             port = portTextInput.text
         }
 
+        var hostPart = hostAddress;
+        var pathPart = "";
+        var slashIndex = hostAddress.indexOf('/');
+        if (slashIndex !== -1) {
+            hostPart = hostAddress.substring(0, slashIndex);
+            pathPart = hostAddress.substring(slashIndex);
+        }
+
         if (connectionTypeComboBox.currentIndex == 0) {
             if (secureCheckBox.checked) {
-                rpcUrl = "nymeas://" + hostAddress + ":" + port
+                rpcUrl = "nymeas://" + hostPart + ":" + port + pathPart
             } else {
-                rpcUrl = "nymea://" + hostAddress + ":" + port
+                rpcUrl = "nymea://" + hostPart + ":" + port + pathPart
             }
         } else if (connectionTypeComboBox.currentIndex == 1) {
             if (secureCheckBox.checked) {
-                rpcUrl = "wss://" + hostAddress + ":" + port
+                rpcUrl = "wss://" + hostPart + ":" + port + pathPart
             } else {
-                rpcUrl = "ws://" + hostAddress + ":" + port
+                rpcUrl = "ws://" + hostPart + ":" + port + pathPart
             }
         } else if (connectionTypeComboBox.currentIndex == 2) {
             if (secureCheckBox.checked) {
-                rpcUrl = "tunnels://" + hostAddress + ":" + port + "?uuid=" + serverUuidTextInput.text
+                rpcUrl = "tunnels://" + hostPart + ":" + port + pathPart + "?uuid=" + serverUuidTextInput.text
             } else {
-                rpcUrl = "tunnel://" + hostAddress + ":" + port + "?uuid=" + serverUuidTextInput.text
+                rpcUrl = "tunnel://" + hostPart + ":" + port + pathPart + "?uuid=" + serverUuidTextInput.text
             }
         }
 
