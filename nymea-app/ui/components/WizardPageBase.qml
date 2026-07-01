@@ -37,6 +37,7 @@ Page {
 
     property alias showNextButton: nextButton.visible
     property alias nextButtonText: nextLabel.text
+    property alias nextButtonEnabled: nextButton.enabled
     property alias showBackButton: backButton.visible
     property alias backButtonText: backLabel.text
     property alias showExtraButton: extraButton.visible
@@ -128,6 +129,7 @@ Page {
                 Layout.preferredHeight: Style.delegateHeight
                 Layout.preferredWidth: childrenRect.width
                 Layout.alignment: Qt.AlignLeft
+                opacity: enabled ? 1 : 0.4
                 RowLayout {
                     anchors.centerIn: parent
                     ColorIcon {
@@ -150,6 +152,7 @@ Page {
                 Label {
                     id: extraButtonLabel
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter }
+                    opacity: extraButton.enabled ? 1 : 0.4
                 }
                 MouseArea {
                     id: extraButton
@@ -166,6 +169,7 @@ Page {
                 Layout.preferredHeight: Style.delegateHeight
                 Layout.preferredWidth: childrenRect.width
                 Layout.alignment: Qt.AlignRight
+                opacity: enabled ? 1 : 0.4
                 RowLayout {
                     anchors.centerIn: parent
                     Label {

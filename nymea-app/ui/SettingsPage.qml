@@ -156,6 +156,16 @@ Page {
 
             SettingsTile {
                 Layout.fillWidth: true
+                iconSource: "qrc:/icons/key.svg"
+                text: qsTr("RFID charging")
+                subText: qsTr("Manage RFID tags for charger authorization")
+                visible: NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) &&
+                         engine.jsonRpcClient.experiences.hasOwnProperty("Rfid")
+                onClicked: pageStack.push(Qt.resolvedUrl("system/RfidSettingsPage.qml"))
+            }
+
+            SettingsTile {
+                Layout.fillWidth: true
                 iconSource: "qrc:/icons/sdk.svg"
                 text: qsTr("Developer tools")
                 subText: qsTr("Access tools for debugging and error reporting")

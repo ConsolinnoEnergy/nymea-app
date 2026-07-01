@@ -425,6 +425,8 @@ void Users::removeUser(const QString &username)
             beginRemoveRows(QModelIndex(), i, i);
             m_users.takeAt(i)->deleteLater();
             endRemoveRows();
+            emit countChanged();
+            return;
         }
     }
 }
@@ -445,4 +447,9 @@ UserInfo *Users::getUserInfo(const QString &username) const
         }
     }
     return nullptr;
+}
+
+bool Users::contains(const QString &username) const
+{
+    return getUserInfo(username) != nullptr;
 }

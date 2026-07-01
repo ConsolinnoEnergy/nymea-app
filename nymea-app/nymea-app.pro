@@ -12,24 +12,29 @@ qtHaveModule(webview) {
 
 INCLUDEPATH += $$top_srcdir/libnymea-app \
                $$top_srcdir/experiences/airconditioning \
-               $$top_srcdir/experiences/evdash
+               $$top_srcdir/experiences/evdash \
+               $$top_srcdir/experiences/rfid
 
 linux:!android:LIBS += -L$$top_builddir/libnymea-app/ -lnymea-app \
                        -L$$top_builddir/experiences/airconditioning -lnymea-app-airconditioning \
-                       -L$$top_builddir/experiences/evdash -lnymea-app-evdash
+                       -L$$top_builddir/experiences/evdash -lnymea-app-evdash \
+                       -L$$top_builddir/experiences/rfid -lnymea-app-rfid
 
 macx:LIBS += -L$$top_builddir/libnymea-app/ -lnymea-app \
              -L$$top_builddir/experiences/airconditioning -lnymea-app-airconditioning \
-             -L$$top_builddir/experiences/evdash -lnymea-app-evdash
+             -L$$top_builddir/experiences/evdash -lnymea-app-evdash \
+             -L$$top_builddir/experiences/rfid -lnymea-app-rfid
 
 
 win32:Debug:LIBS += -L$$top_builddir/libnymea-app/debug -lnymea-app \
                     -L$$top_builddir/experiences/airconditioning/debug -lnymea-app-airconditioning \
-                    -L$$top_builddir/experiences/evdash/debug -lnymea-app-evdash
+                    -L$$top_builddir/experiences/evdash/debug -lnymea-app-evdash \
+                    -L$$top_builddir/experiences/rfid/debug -lnymea-app-rfid
 
 win32:Release:LIBS += -L$$top_builddir/libnymea-app/release -lnymea-app \
                       -L$$top_builddir/experiences/airconditioning/release -lnymea-app-airconditioning \
-                      -L$$top_builddir/experiences/evdash/release -lnymea-app-evdash
+                      -L$$top_builddir/experiences/evdash/release -lnymea-app-evdash \
+                      -L$$top_builddir/experiences/rfid/release -lnymea-app-rfid
 
 win32:CXX_FLAGS += /w
 
@@ -37,11 +42,13 @@ linux:!android:!nozeroconf:LIBS += -lavahi-client -lavahi-common
 
 linux:!android:PRE_TARGETDEPS += $$top_builddir/libnymea-app/libnymea-app.a \
                                  $$top_builddir/experiences/airconditioning/libnymea-app-airconditioning.a \
-                                 $$top_builddir/experiences/evdash/libnymea-app-evdash.a
+                                 $$top_builddir/experiences/evdash/libnymea-app-evdash.a \
+                                 $$top_builddir/experiences/rfid/libnymea-app-rfid.a
 
 macx:PRE_TARGETDEPS += $$top_builddir/libnymea-app/libnymea-app.a \
                        $$top_builddir/experiences/airconditioning/libnymea-app-airconditioning.a \
-                       $$top_builddir/experiences/evdash/libnymea-app-evdash.a
+                       $$top_builddir/experiences/evdash/libnymea-app-evdash.a \
+                       $$top_builddir/experiences/rfid/libnymea-app-rfid.a
 
 HEADERS += \
     configuredhostsmodel.h \
@@ -115,10 +122,12 @@ android {
     CORE_LIBS += -L$${top_builddir}/libnymea-app/$${ANDROID_TARGET_ARCH}
     AIRCONDITIONING_LIBS += -L$${top_builddir}/experiences/airconditioning/$${ANDROID_TARGET_ARCH}
     EVDASH_LIBS += -L$${top_builddir}/experiences/evdash/$${ANDROID_TARGET_ARCH}
+    RFID_LIBS += -L$${top_builddir}/experiences/rfid/$${ANDROID_TARGET_ARCH}
 
     LIBS += $${CORE_LIBS} -lnymea-app_$${ANDROID_TARGET_ARCH} \
             $${AIRCONDITIONING_LIBS} -lnymea-app-airconditioning_$${ANDROID_TARGET_ARCH} \
-            $${EVDASH_LIBS} -lnymea-app-evdash_$${ANDROID_TARGET_ARCH}
+            $${EVDASH_LIBS} -lnymea-app-evdash_$${ANDROID_TARGET_ARCH} \
+            $${RFID_LIBS} -lnymea-app-rfid_$${ANDROID_TARGET_ARCH}
 
     versioninfo.files = ../version.txt
     versioninfo.path = /
@@ -205,11 +214,13 @@ ios: {
 
     LIBS += -L$$top_builddir/libnymea-app -lnymea-app \
             -L$$top_builddir/experiences/airconditioning -lnymea-app-airconditioning \
-            -L$$top_builddir/experiences/evdash -lnymea-app-evdash
+            -L$$top_builddir/experiences/evdash -lnymea-app-evdash \
+            -L$$top_builddir/experiences/rfid -lnymea-app-rfid
 
     PRE_TARGETDEPS += $$top_builddir/libnymea-app/libnymea-app.a \
         $$top_builddir/experiences/airconditioning/libnymea-app-airconditioning.a \
-        $$top_builddir/experiences/evdash/libnymea-app-evdash.a
+        $$top_builddir/experiences/evdash/libnymea-app-evdash.a \
+        $$top_builddir/experiences/rfid/libnymea-app-rfid.a
 
     # Configure generated xcode project to have our bundle id
     QMAKE_TARGET_BUNDLE_PREFIX=$${IOS_BUNDLE_PREFIX}

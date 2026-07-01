@@ -96,6 +96,8 @@ target_include_directories(nymea-app
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/libnymea-app
         ${CMAKE_SOURCE_DIR}/experiences/airconditioning
+        ${CMAKE_SOURCE_DIR}/experiences/evdash
+        ${CMAKE_SOURCE_DIR}/experiences/rfid
         ${CMAKE_BINARY_DIR}
 )
 
@@ -103,6 +105,8 @@ target_link_libraries(nymea-app
     PRIVATE
         nymea-app-core
         nymea-app-airconditioning
+        nymea-app-evdash
+        nymea-app-rfid
         Qt6::Gui
         Qt6::Network
         Qt6::Qml

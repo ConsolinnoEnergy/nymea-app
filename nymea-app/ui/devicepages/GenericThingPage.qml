@@ -66,7 +66,7 @@ ThingPageBase {
         }
         delegate: SwipeDelegate {
             id: delegate
-            width: parent.width
+            width: flickable.width
 
             readonly property StateType stateType: model.type === ThingModel.TypeStateType ? root.thing.thingClass.stateTypes.getStateType(model.id) : null
             readonly property ActionType actionType: model.writable ? root.thing.thingClass.actionTypes.getActionType(model.id) : null
