@@ -35,6 +35,10 @@
 #include <QtAndroid>
 #endif
 
+#ifdef HAVE_WEBVIEW
+#include <QtWebView>
+#endif
+
 // WindowManager.LayoutParams
 #define FLAG_TRANSLUCENT_STATUS 0x04000000
 #define FLAG_TRANSLUCENT_NAVIGATION 0x08000000
@@ -84,6 +88,9 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/)
 PlatformHelperAndroid::PlatformHelperAndroid(QObject *parent) : PlatformHelper(parent)
 {
     m_instance = this;
+#ifdef HAVE_WEBVIEW
+    QtWebView::initialize();
+#endif
 
     // QString notificationData = QNativeInterface::QAndroidApplication::context().callMethod<jstring>("notificationData", "()Ljava/lang/String;").toString();
     // if (!notificationData.isNull()) {
