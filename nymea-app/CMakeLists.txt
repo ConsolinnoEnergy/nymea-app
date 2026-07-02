@@ -189,6 +189,11 @@ target_link_libraries(nymea-app
 if(TARGET Qt6::WebView)
     target_link_libraries(nymea-app PRIVATE Qt6::WebView)
     target_compile_definitions(nymea-app PRIVATE HAVE_WEBVIEW)
+    # The QML files are embedded via QRC (no qt_add_qml_module), so the QML
+    # import scanner used by androiddeployqt and linuxdeploy-plugin-qt cannot
+    # detect the QtWebView import. Force-include the platform WebView plugin
+    # so it is always deployed regardless of scanner results.
+    qt_import_plugins(nymea-app INCLUDE_BY_TYPE webview)
 endif()
 
 find_package(Qt6 COMPONENTS GuiPrivate QUIET)
