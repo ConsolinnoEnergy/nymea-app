@@ -161,8 +161,8 @@ SettingsPageBase {
         onBackPressed: pageStack.pop()
 
         HeaderButton {
-            imageSource: Qt.resolvedUrl("qrc:/icons/add.svg")
-            onClicked: pageStack.push(addTagWizardComponent)
+            imageSource: Qt.resolvedUrl("qrc:/icons/settings.svg")
+            onClicked: pageStack.push(Qt.resolvedUrl("RfidManagerSettingsPage.qml"))
         }
     }
 
@@ -245,6 +245,14 @@ SettingsPageBase {
         Layout.rightMargin: Style.margins
         model: userFilterModel
         textRole: "text"
+    }
+
+    Button {
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        text: qsTr("Add RFID tag")
+        onClicked: pageStack.push(addTagWizardComponent)
     }
 
     SettingsPageSectionHeader {

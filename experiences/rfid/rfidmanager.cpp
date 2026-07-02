@@ -47,11 +47,22 @@ void RfidManager::setEngine(Engine *engine)
 
     m_engine->jsonRpcClient()->registerNotificationHandler(this, "Rfid", "notificationReceived");
     refreshTags();
+    refreshConfig();
 }
 
 RfidTags *RfidManager::tags() const
 {
     return m_tags;
+}
+
+int RfidManager::plugInTimeout() const
+{
+    return m_plugInTimeout;
+}
+
+int RfidManager::authorizationTimeout() const
+{
+    return m_authorizationTimeout;
 }
 
 int RfidManager::refreshTags(const QString &username)
@@ -95,6 +106,19 @@ int RfidManager::removeTag(const QUuid &inventoryItemId)
     return m_engine->jsonRpcClient()->sendCommand("Rfid.RemoveTag", {{"inventoryItemId", inventoryItemId}}, this, "removeTagResponse");
 }
 
+int RfidManager::refreshConfig()
+{
+    return m_engine->jsonRpcClient()->sendCommand("Rfid.GetConfig", {}, this, "getConfigResponse");
+}
+
+int RfidManager::setConfig(int plugInTimeout, int authorizationTimeout)
+{
+    QVariantMap params;
+    params.insert("plugInTimeout", plugInTimeout);
+    params.insert("authorizationTimeout", authorizationTimeout);
+    return m_engine->jsonRpcClient()->sendCommand("Rfid.SetConfig", params, this, "setConfigResponse");
+}
+
 void RfidManager::notificationReceived(const QVariantMap &data)
 {
     const QString notification = data.value("notification").toString();
@@ -108,6 +132,8 @@ void RfidManager::notificationReceived(const QVariantMap &data)
         const QUuid inventoryItemId = params.value("inventoryItemId").toUuid();
         if (!inventoryItemId.isNull())
             m_tags->removeTag(inventoryItemId);
+    } else if (notification == "Rfid.ConfigChanged") {
+        applyConfig(params);
     } else if (notification == "Rfid.Authorized" || notification == "Rfid.Denied") {
         qCDebug(dcRfidExperience()) << "RFID authorization notification:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson(QJsonDocument::Compact));
     } else {
@@ -142,6 +168,24 @@ void RfidManager::removeTagResponse(int commandId, const QVariantMap &params)
     emit removeTagReply(commandId, parseError(params));
 }
 
+void RfidManager::getConfigResponse(int commandId, const QVariantMap &params)
+{
+    qCDebug(dcRfidExperience()) << "GetConfig response:" << commandId << params;
+    const RfidError error = parseError(params);
+    if (error == RfidErrorNoError)
+        applyConfig(params);
+    emit getConfigReply(commandId, error);
+}
+
+void RfidManager::setConfigResponse(int commandId, const QVariantMap &params)
+{
+    qCDebug(dcRfidExperience()) << "SetConfig response:" << commandId << params;
+    const RfidError error = parseError(params);
+    if (error == RfidErrorNoError)
+        applyConfig(params);
+    emit setConfigReply(commandId, error);
+}
+
 QVariantMap RfidManager::extractTagMap(const QVariantMap &params) const
 {
     if (params.value("tag").canConvert<QVariantMap>())
@@ -154,6 +198,30 @@ QVariantMap RfidManager::extractTagMap(const QVariantMap &params) const
         return params;
 
     return QVariantMap();
+}
+
+void RfidManager::applyConfig(const QVariantMap &params)
+{
+    bool changed = false;
+
+    if (params.contains("plugInTimeout")) {
+        const int value = params.value("plugInTimeout").toInt();
+        if (value != m_plugInTimeout) {
+            m_plugInTimeout = value;
+            changed = true;
+        }
+    }
+
+    if (params.contains("authorizationTimeout")) {
+        const int value = params.value("authorizationTimeout").toInt();
+        if (value != m_authorizationTimeout) {
+            m_authorizationTimeout = value;
+            changed = true;
+        }
+    }
+
+    if (changed)
+        emit configChanged();
 }
 
 RfidManager::RfidError RfidManager::parseError(const QVariantMap &params) const
