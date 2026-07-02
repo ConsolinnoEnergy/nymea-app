@@ -59,7 +59,8 @@ Page {
         }
         Label {
             text: qsTr("Connecting...")
-            font: Style.bigFont
+            font: Style.newH1Font
+            color: Style.colors.typography_Headlines_H1
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
@@ -67,7 +68,8 @@ Page {
         Label {
             Layout.fillWidth: true
             text: engine.jsonRpcClient.currentHost.name.length > 0 ? engine.jsonRpcClient.currentHost.name : engine.jsonRpcClient.currentHost.uuid
-            font: Style.smallFont
+            font: Style.newH2Font
+            color: Style.colors.typography_Headlines_H2
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
         }
@@ -113,7 +115,8 @@ Page {
                 }
                 return errorMessage;
             }
-            font: Style.smallFont
+            font: Style.newParagraphFont
+            color: Style.colors.typography_Basic_Default
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             horizontalAlignment: Text.AlignHCenter
         }
