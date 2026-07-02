@@ -62,6 +62,20 @@ Item {
         return swipeView.currentItem.handleAndroidBackButton()
     }
 
+    function triggerCurrentPageBack(pageStack) {
+        var page = pageStack.currentItem
+        var pageHeader = page ? page.header : null
+        if (pageHeader && pageHeader.visible
+                && (!pageHeader.hasOwnProperty("backButtonVisible") || pageHeader.backButtonVisible)
+                && typeof pageHeader.backPressed === "function") {
+            pageHeader.backPressed()
+            return true
+        }
+
+        pageStack.pop()
+        return true
+    }
+
     QtObject {
         id: d
         // We want only one of them pushed at a time
@@ -255,8 +269,7 @@ Item {
                         if ((engine.jsonRpcClient.connected && pageStack.depth > 1)
                                 // if we're not connected, only allow using the back button in wizards
                                 || (!engine.jsonRpcClient.connected && pageStack.depth > 3)) {
-                            pageStack.pop();
-                            return true;
+                            return root.triggerCurrentPageBack(pageStack);
                         }
                         return false;
                     }

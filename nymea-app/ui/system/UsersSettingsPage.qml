@@ -535,12 +535,58 @@ SettingsPageBase {
             id: createUserPage
             title: qsTr("Add a user")
 
+            function handleBack() {
+                if (usernameTextField.displayText.trim().length === 0 || createUserPage.busy) {
+                    pageStack.pop()
+                    return
+                }
+
+                var popup = discardUserDialogComponent.createObject(app)
+                popup.open()
+            }
+
+            header: NymeaHeader {
+                text: createUserPage.title
+                backButtonVisible: true
+                onBackPressed: createUserPage.handleBack()
+            }
+
             UserInfo {
                 id: newUserInfo
                 username: usernameTextField.text
                 email: emailTextField.text
                 displayName: displayNameTextField.text
 
+            }
+
+            Component {
+                id: discardUserDialogComponent
+
+                NymeaDialog {
+                    id: discardUserDialog
+                    title: qsTr("User not added")
+                    text: qsTr("The user has not been added yet. Do you want to discard the changes or return to editing?")
+                    standardButtons: Dialog.NoButton
+
+                    RowLayout {
+                        Layout.fillWidth: true
+
+                        Button {
+                            text: qsTr("Discard")
+                            Layout.fillWidth: true
+                            onClicked: {
+                                discardUserDialog.close()
+                                pageStack.pop()
+                            }
+                        }
+
+                        Button {
+                            text: qsTr("Return")
+                            Layout.fillWidth: true
+                            onClicked: discardUserDialog.close()
+                        }
+                    }
+                }
             }
 
             SettingsPageSectionHeader {
