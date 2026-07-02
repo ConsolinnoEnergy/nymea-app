@@ -189,18 +189,6 @@ target_link_libraries(nymea-app
 if(TARGET Qt6::WebView)
     target_link_libraries(nymea-app PRIVATE Qt6::WebView)
     target_compile_definitions(nymea-app PRIVATE HAVE_WEBVIEW)
-    if(ANDROID)
-        # QML files are embedded via raw QRC (no qt_add_qml_module), so the QML
-        # import scanner used by androiddeployqt cannot detect 'import QtWebView'
-        # and omits libqtwebview_android.so from the APK. Explicitly add the
-        # plugin directory so androiddeployqt always packages it.
-        # Qt6WebView_DIR is e.g. <qt-prefix>/lib/cmake/Qt6WebView, so ../../..
-        # resolves to the Qt prefix and ../../../plugins/webview to the plugin dir.
-        get_filename_component(_qt_webview_plugin_dir
-            "${Qt6WebView_DIR}/../../../plugins/webview" ABSOLUTE)
-        set_property(TARGET nymea-app APPEND PROPERTY
-            QT_ANDROID_EXTRA_PLUGINS "${_qt_webview_plugin_dir}")
-    endif()
 endif()
 
 find_package(Qt6 COMPONENTS GuiPrivate QUIET)
