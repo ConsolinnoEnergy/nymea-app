@@ -80,6 +80,10 @@
 #include OVERLAY_QMLTYPES
 #endif
 
+#ifdef HAVE_WEBVIEW
+#include <QtWebView>
+#endif
+
 NYMEA_LOGGING_CATEGORY(dcApplication, "Application")
 NYMEA_LOGGING_CATEGORY(qml, "qml")
 
@@ -104,6 +108,12 @@ int main(int argc, char *argv[])
     // Qt6: XMLHttpRequest on local files is disabled by default. Re-enable it as the app
     // uses XHR to load local SVG and HTML files from the QRC resource file system.
     qputenv("QML_XHR_ALLOW_FILE_READ", "1");
+
+#ifdef HAVE_WEBVIEW
+    // Must be called before QApplication on Android; is a no-op on platforms
+    // where the platform helper constructor handles initialization instead.
+    QtWebView::initialize();
+#endif
 
     QApplication application(argc, argv);
     application.setApplicationName(APPLICATION_NAME);

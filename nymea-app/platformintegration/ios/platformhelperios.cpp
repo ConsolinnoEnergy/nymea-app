@@ -31,9 +31,6 @@
 #include <QSysInfo>
 #include <QTimer>
 #include <QWindow>
-#ifdef HAVE_WEBVIEW
-#include <QtWebView>
-#endif
 #include <QtGlobal>
 #include <sys/utsname.h>
 
@@ -197,10 +194,6 @@ static QString deviceModelForMachineIdentifier(const QString &identifier)
 
 PlatformHelperIOS::PlatformHelperIOS(QObject *parent) : PlatformHelper(parent)
 {
-#ifdef HAVE_WEBVIEW
-    QtWebView::initialize();
-#endif
-
     QScreen *screen = qApp->primaryScreen();
     //screen->setOrientationUpdateMask(Qt::PortraitOrientation | Qt::LandscapeOrientation | Qt::InvertedPortraitOrientation | Qt::InvertedLandscapeOrientation);
     QObject::connect(screen, &QScreen::orientationChanged, qApp, [this](Qt::ScreenOrientation) {
