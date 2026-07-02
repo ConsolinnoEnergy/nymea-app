@@ -189,6 +189,26 @@ target_link_libraries(nymea-app
 if(TARGET Qt6::WebView)
     target_link_libraries(nymea-app PRIVATE Qt6::WebView)
     target_compile_definitions(nymea-app PRIVATE HAVE_WEBVIEW)
+
+    if(ANDROID)
+        # The native Android WebView backend plugin (qandroidwebview) is loaded
+        # at runtime via QFactoryLoader and therefore NOT auto-discovered by
+        # androiddeployqt through ELF dependency scanning. We must declare it
+        # explicitly via QT_ANDROID_EXTRA_PLUGINS so androiddeployqt includes it
+        # in the APK. The path must point to the plugins/ root (parent of the
+        # plugin-type subdirectories, e.g. plugins/webview/). Each ABI sub-build
+        # has its own Qt6WebView_DIR pointing to the correct ABI sysroot, so this
+        # works correctly for all ABIs in a multi-ABI build.
+        get_filename_component(_qt_webview_plugins_dir
+            "${Qt6WebView_DIR}/../../../plugins" ABSOLUTE)
+        if(EXISTS "${_qt_webview_plugins_dir}/webview")
+            message(STATUS "nymea-app: bundling WebView backend plugin from ${_qt_webview_plugins_dir}/webview")
+            set_property(TARGET nymea-app APPEND PROPERTY
+                QT_ANDROID_EXTRA_PLUGINS "${_qt_webview_plugins_dir}")
+        else()
+            message(WARNING "nymea-app: WebView backend plugin not found at ${_qt_webview_plugins_dir}/webview")
+        endif()
+    endif()
 endif()
 
 find_package(Qt6 COMPONENTS GuiPrivate QUIET)
