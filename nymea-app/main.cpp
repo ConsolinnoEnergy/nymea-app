@@ -157,7 +157,7 @@ int main(int argc, char *argv[])
             uuid = qurlQ.queryItemValue("uuid");
             token = qurlQ.queryItemValue("token");
 
-            
+
             qDebug() << "Scheme:" << scheme;
             qDebug() << "HostAddress:" << hostAddress;
             qDebug() << "Port:" << port;
@@ -210,14 +210,14 @@ int main(int argc, char *argv[])
         if (loadedTranslations.contains(qmFile.baseName())) {
             continue;
         }
-        QTranslator *translator = new QTranslator();
+        QTranslator *translator = new QTranslator(&application);
         bool loadResult = translator->load(qmFile.baseName() + "." + QLocale().name(), ":/translations");
         if (loadResult) {
             application.installTranslator(translator);
             loadedTranslations.append(qmFile.baseName());
             qCInfo(dcApplication()) << "Loaded translation" << qmFile.baseName();
         } else {
-            delete translator;
+            translator->deleteLater();
             qCInfo(dcApplication()) << "Failed to load translation" << qmFile.baseName();
         }
     }
