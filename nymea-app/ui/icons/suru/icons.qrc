@@ -300,5 +300,11 @@
         <file>icons/download.svg</file>
         <file>icons/upload.svg</file>
         <file>icons/valve.svg</file>
+        <file>icons/contactless.svg</file>
+        <file>icons/rfid.svg</file>
+        <file>icons/rfid-reader-00.svg</file>
+        <file>icons/rfid-reader-01.svg</file>
+        <file>icons/rfid-reader-02.svg</file>
+        <file>icons/rfid-reader-03.svg</file>
     </qresource>
 </RCC>

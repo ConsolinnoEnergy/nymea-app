@@ -15,20 +15,63 @@ SettingsPageBase {
     title: qsTr("RFID settings")
 
     property int pendingCommandId: -1
+    property bool configLoaded: false
+    property int originalPlugInTimeout: 0
+    property int originalAuthorizationTimeout: 0
+    readonly property int plugInTimeout: plugInTimeoutCheckDelegate.checked ? plugInTimeoutSpinBox.value : 0
+    readonly property int authorizationTimeout: authorizationTimeoutCheckDelegate.checked ? authorizationTimeoutSpinBox.value : 0
+    readonly property bool hasChanges: configLoaded
+                                       && (plugInTimeout !== originalPlugInTimeout
+                                           || authorizationTimeout !== originalAuthorizationTimeout)
 
     function showErrorDialog(text) {
         var popup = errorDialogComponent.createObject(app, {text: text})
         popup.open()
     }
 
+    function normalizeTimeout(value) {
+        var timeout = parseInt(value)
+        if (isNaN(timeout))
+            return 0
+
+        return Math.max(0, Math.min(timeout, 86400))
+    }
+
     function syncFromManager() {
-        plugInTimeoutField.text = rfidManager.plugInTimeout
-        authorizationTimeoutField.text = rfidManager.authorizationTimeout
+        originalPlugInTimeout = normalizeTimeout(rfidManager.plugInTimeout)
+        originalAuthorizationTimeout = normalizeTimeout(rfidManager.authorizationTimeout)
+
+        plugInTimeoutCheckDelegate.checked = originalPlugInTimeout > 0
+        plugInTimeoutSpinBox.value = originalPlugInTimeout > 0 ? originalPlugInTimeout : 300
+
+        authorizationTimeoutCheckDelegate.checked = originalAuthorizationTimeout > 0
+        authorizationTimeoutSpinBox.value = originalAuthorizationTimeout > 0 ? originalAuthorizationTimeout : 60
+
+        configLoaded = true
+    }
+
+    function saveConfig() {
+        root.busy = true
+        root.pendingCommandId = rfidManager.setConfig(root.plugInTimeout,
+                                                      root.authorizationTimeout)
+    }
+
+    function handleBack() {
+        if (root.pendingCommandId !== -1)
+            return
+
+        if (!root.hasChanges) {
+            pageStack.pop()
+            return
+        }
+
+        var popup = discardChangesDialogComponent.createObject(app)
+        popup.open()
     }
 
     header: NymeaHeader {
         text: root.title
-        onBackPressed: pageStack.pop()
+        onBackPressed: root.handleBack()
     }
 
     RfidManager {
@@ -39,6 +82,47 @@ SettingsPageBase {
     Component {
         id: errorDialogComponent
         ErrorDialog {}
+    }
+
+    Component {
+        id: discardChangesDialogComponent
+
+        NymeaDialog {
+            id: discardChangesDialog
+
+            title: qsTr("Unsaved RFID settings")
+            text: qsTr("Do you want to save the changes before leaving this page?")
+            standardButtons: Dialog.NoButton
+
+            RowLayout {
+                Layout.fillWidth: true
+
+                Button {
+                    Layout.fillWidth: true
+                    text: qsTr("Discard")
+                    onClicked: {
+                        discardChangesDialog.close()
+                        pageStack.pop()
+                    }
+                }
+
+                Button {
+                    Layout.fillWidth: true
+                    text: qsTr("Return")
+                    onClicked: discardChangesDialog.close()
+                }
+
+                Button {
+                    Layout.fillWidth: true
+                    text: qsTr("Save")
+                    enabled: root.pendingCommandId === -1
+                    onClicked: {
+                        discardChangesDialog.close()
+                        root.saveConfig()
+                    }
+                }
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -71,7 +155,7 @@ SettingsPageBase {
     }
 
     SettingsPageSectionHeader {
-        text: qsTr("Authorization timeouts")
+        text: qsTr("RFID authorization")
     }
 
     Label {
@@ -80,55 +164,45 @@ SettingsPageBase {
         Layout.rightMargin: Style.margins
         wrapMode: Text.WordWrap
         font: Style.smallFont
-        text: qsTr("Charging only starts once a valid RFID tag has authorized the charger. Set a value to 0 to disable that timeout.")
+        text: qsTr("Charging starts after a valid RFID tag authorizes the charger. Time limits can revoke unused authorizations automatically.")
     }
 
-    RowLayout {
+    CheckDelegate {
+        id: plugInTimeoutCheckDelegate
         Layout.fillWidth: true
         Layout.leftMargin: Style.margins
         Layout.rightMargin: Style.margins
-
-        Label {
-            Layout.fillWidth: true
-            wrapMode: Text.WordWrap
-            text: qsTr("Plug-in timeout (s)")
-        }
-
-        TextField {
-            id: plugInTimeoutField
-            Layout.preferredWidth: 96
-            horizontalAlignment: Text.AlignRight
-            inputMethodHints: Qt.ImhDigitsOnly
-            validator: IntValidator { bottom: 0; top: 86400 }
-        }
+        enabled: root.configLoaded && root.pendingCommandId === -1
+        text: qsTr("Limit time to plug in")
     }
 
-    Label {
+    ItemDelegate {
         Layout.fillWidth: true
         Layout.leftMargin: Style.margins
         Layout.rightMargin: Style.margins
-        wrapMode: Text.WordWrap
-        font: Style.smallFont
-        text: qsTr("Time to plug in the car after a tag has authorized. On timeout the authorization is revoked.")
-    }
+        Layout.preferredHeight: implicitHeight
+        topPadding: 0
+        bottomPadding: 0
+        visible: plugInTimeoutCheckDelegate.checked
 
-    RowLayout {
-        Layout.fillWidth: true
-        Layout.leftMargin: Style.margins
-        Layout.rightMargin: Style.margins
+        contentItem: RowLayout {
+            Label {
+                Layout.fillWidth: true
+                wrapMode: Text.WordWrap
+                text: qsTr("Plug-in timeout")
+            }
 
-        Label {
-            Layout.fillWidth: true
-            wrapMode: Text.WordWrap
-            text: qsTr("Authorization timeout (s)")
-        }
+            SpinBox {
+                id: plugInTimeoutSpinBox
+                from: 1
+                to: 86400
+                editable: true
+                enabled: root.configLoaded && root.pendingCommandId === -1
+            }
 
-        TextField {
-            id: authorizationTimeoutField
-            Layout.preferredWidth: 96
-            horizontalAlignment: Text.AlignRight
-            inputMethodHints: Qt.ImhDigitsOnly
-            validator: IntValidator { bottom: 0; top: 86400 }
+            Label {
+                text: qsTr("seconds")
+            }
         }
     }
 
@@ -138,7 +212,57 @@ SettingsPageBase {
         Layout.rightMargin: Style.margins
         wrapMode: Text.WordWrap
         font: Style.smallFont
-        text: qsTr("Time to present a tag after the car has been plugged in. Disabled (0) by default.")
+        visible: plugInTimeoutCheckDelegate.checked
+        text: qsTr("After a tag was accepted, the authorization expires if the vehicle is not plugged in within this time.")
+    }
+
+    CheckDelegate {
+        id: authorizationTimeoutCheckDelegate
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        enabled: root.configLoaded && root.pendingCommandId === -1
+        text: qsTr("Limit time to present a tag")
+    }
+
+    ItemDelegate {
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        Layout.preferredHeight: implicitHeight
+        topPadding: 0
+        bottomPadding: 0
+        visible: authorizationTimeoutCheckDelegate.checked
+
+        contentItem: RowLayout {
+            Label {
+                Layout.fillWidth: true
+                wrapMode: Text.WordWrap
+                text: qsTr("Tag timeout")
+            }
+
+            SpinBox {
+                id: authorizationTimeoutSpinBox
+                from: 1
+                to: 86400
+                editable: true
+                enabled: root.configLoaded && root.pendingCommandId === -1
+            }
+
+            Label {
+                text: qsTr("seconds")
+            }
+        }
+    }
+
+    Label {
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        wrapMode: Text.WordWrap
+        font: Style.smallFont
+        visible: authorizationTimeoutCheckDelegate.checked
+        text: qsTr("After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.")
     }
 
     Button {
@@ -147,14 +271,8 @@ SettingsPageBase {
         Layout.rightMargin: Style.margins
         Layout.topMargin: Style.margins
         text: qsTr("Save")
-        enabled: root.pendingCommandId === -1
-                 && plugInTimeoutField.acceptableInput
-                 && authorizationTimeoutField.acceptableInput
-        onClicked: {
-            root.busy = true
-            root.pendingCommandId = rfidManager.setConfig(parseInt(plugInTimeoutField.text),
-                                                          parseInt(authorizationTimeoutField.text))
-        }
+        enabled: root.pendingCommandId === -1 && root.hasChanges
+        onClicked: root.saveConfig()
     }
 
     BusyIndicator {

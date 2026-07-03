@@ -25,26 +25,40 @@ SettingsPageBase {
     }
 
     function profileMode(profile) {
-        return profile && profile.mode ? profile.mode : "Eco"
+        if (!profile || !profile.mode || profile.mode === "Eco")
+            return "Eco"
+
+        return "Quick"
     }
 
     function profileSummary(profile) {
-        if (!profile || !profile.mode || profile.mode === "Eco")
-            return qsTr("Eco")
+        return profileMode(profile) === "Eco" ? qsTr("Eco") : qsTr("Quick")
+    }
 
-        var parts = [qsTr("Manual")]
+    function profileActions(profile) {
+        if (profileMode(profile) === "Eco")
+            return [qsTr("Eco charging")]
+
+        var actions = [qsTr("Quick charging")]
         if (profile.maxChargingCurrent !== undefined)
-            parts.push(qsTr("%1 A").arg(profile.maxChargingCurrent))
+            actions.push(qsTr("Max charging current: %1 A").arg(profile.maxChargingCurrent))
         if (profile.desiredPhaseCount !== undefined)
-            parts.push(qsTr("%1 phases").arg(profile.desiredPhaseCount))
-        return parts.join(" | ")
+            actions.push(qsTr("Phase count: %1").arg(profile.desiredPhaseCount))
+        return actions
+    }
+
+    function backendProfileMode(mode) {
+        if (mode === "Eco")
+            return "Eco"
+
+        return "Manual"
     }
 
     function buildProfile(mode, maxChargingCurrentText, desiredPhaseCount) {
         if (mode === "Eco")
             return {"mode": "Eco"}
 
-        var profile = {"mode": "Manual"}
+        var profile = {"mode": backendProfileMode(mode)}
         if (maxChargingCurrentText !== "")
             profile.maxChargingCurrent = parseInt(maxChargingCurrentText)
         if (desiredPhaseCount > 0)
@@ -134,6 +148,48 @@ SettingsPageBase {
         return chargerThing ? chargerThing.name : ""
     }
 
+    function userCanUseCharger(username, chargerThing) {
+        if (!chargerThing)
+            return false
+
+        var userInfo = userManager.users.getUserInfo(username)
+        if (!userInfo)
+            return false
+
+        if ((userInfo.scopes & UserInfo.PermissionScopeControlThings) !== UserInfo.PermissionScopeControlThings)
+            return false
+
+        if ((userInfo.scopes & UserInfo.PermissionScopeAccessAllThings) === UserInfo.PermissionScopeAccessAllThings)
+            return true
+
+        return userInfo.thingAllowed(chargerThing.id)
+    }
+
+    function usableChargerCount(username) {
+        var count = 0
+        for (var i = 0; i < rfidChargerThingsProxy.count; ++i) {
+            if (userCanUseCharger(username, rfidChargerThingsProxy.get(i)))
+                ++count
+        }
+        return count
+    }
+
+    function usableChargerCountForProxy(username, thingsProxy) {
+        if (!thingsProxy)
+            return 0
+
+        var count = 0
+        for (var i = 0; i < thingsProxy.count; ++i) {
+            if (userCanUseCharger(username, thingsProxy.get(i)))
+                ++count
+        }
+        return count
+    }
+
+    function chargerAccessSubtitle(username) {
+        return qsTr("Available to %1").arg(selectedUserLabel(username))
+    }
+
     function extractDetectedCode(eventType, params) {
         if (!eventType || !params || params.length === 0)
             return ""
@@ -174,6 +230,12 @@ SettingsPageBase {
     RfidManager {
         id: rfidManager
         engine: _engine
+    }
+
+    ThingsProxy {
+        id: rfidChargerThingsProxy
+        engine: _engine
+        shownInterfaces: ["chargers"]
     }
 
     ListModel {
@@ -271,8 +333,10 @@ SettingsPageBase {
     Repeater {
         model: rfidManager.tags
 
-        delegate: NymeaSwipeDelegate {
+        delegate: BigTile {
             readonly property bool shown: root.tagVisible(model.username)
+            readonly property string tagTitle: model.displayName !== "" ? model.displayName : model.tagHash
+            readonly property var tagProfile: model.profile
 
             Layout.fillWidth: true
             Layout.leftMargin: Style.margins
@@ -281,14 +345,96 @@ SettingsPageBase {
             Layout.maximumHeight: shown ? implicitHeight : 0
             Layout.minimumHeight: 0
             visible: shown
-            text: model.displayName !== "" ? model.displayName : model.tagHash
-            subText: model.username + " | " + root.profileSummary(model.profile) + (model.enabled ? "" : " | " + qsTr("Disabled"))
-            iconName: "qrc:/icons/key.svg"
-            canDelete: true
             onClicked: pageStack.push(tagEditorComponent, {tagInfo: rfidManager.tags.get(index), createMode: false})
-            onDeleteClicked: {
-                var popup = confirmDeleteDialogComponent.createObject(root, {tagInfo: rfidManager.tags.get(index)})
-                popup.open()
+
+            contentItem: ColumnLayout {
+                spacing: Style.margins
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: Style.margins
+
+                    ColorIcon {
+                        Layout.preferredWidth: Style.iconSize
+                        Layout.preferredHeight: Style.iconSize
+                        name: "qrc:/icons/rfid.svg"
+                        color: Style.accentColor
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: tagTitle
+                        font: Style.bigFont
+                        maximumLineCount: 2
+                        elide: Text.ElideRight
+                        wrapMode: Text.WordWrap
+                        verticalAlignment: Text.AlignVCenter
+                        color: Style.tileForegroundColor
+                    }
+
+                    Led {
+                        Layout.preferredWidth: Style.smallIconSize
+                        Layout.preferredHeight: Style.smallIconSize
+                        state: model.enabled ? "green" : "off"
+                    }
+                }
+
+                ThinDivider {
+                    Layout.fillWidth: true
+                    opacity: 0.1
+                    color: Style.tileForegroundColor
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    Label {
+                        Layout.preferredWidth: Math.max(80, implicitWidth)
+                        text: qsTr("User")
+                        font: Style.smallFont
+                        color: Style.tileForegroundColor
+                        opacity: 0.7
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: model.username
+                        wrapMode: Text.WordWrap
+                        maximumLineCount: 2
+                        elide: Text.ElideRight
+                        color: Style.tileForegroundColor
+                    }
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    Label {
+                        Layout.preferredWidth: Math.max(80, implicitWidth)
+                        text: qsTr("Action")
+                        font: Style.smallFont
+                        color: Style.tileForegroundColor
+                        opacity: 0.7
+                    }
+
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 0
+
+                        Repeater {
+                            model: root.profileActions(tagProfile)
+
+                            delegate: Label {
+                                Layout.fillWidth: true
+                                text: modelData
+                                wrapMode: Text.WordWrap
+                                maximumLineCount: 2
+                                elide: Text.ElideRight
+                                color: Style.tileForegroundColor
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -300,7 +446,7 @@ SettingsPageBase {
             id: wizardRootPage
             title: qsTr("Add RFID tag")
             text: qsTr("Select the user this RFID tag belongs to.")
-            nextButtonEnabled: selectedOwnerUsername !== ""
+            showNextButton: false
 
             property string selectedOwnerUsername: ""
             property string selectedAddMethod: ""
@@ -337,13 +483,16 @@ SettingsPageBase {
 
                     delegate: NymeaItemDelegate {
                         Layout.fillWidth: true
-                        progressive: false
+                        progressive: true
                         iconName: "qrc:/icons/account.svg"
                         text: root.userLabel(userManager.users.get(index))
                         subText: model.username
                         iconColor: wizardRootPage.selectedOwnerUsername === model.username ? Style.accentColor : Style.iconColor
                         tertiaryIconName: wizardRootPage.selectedOwnerUsername === model.username ? "qrc:/icons/tick.svg" : ""
-                        onClicked: wizardRootPage.selectedOwnerUsername = model.username
+                        onClicked: {
+                            wizardRootPage.selectedOwnerUsername = model.username
+                            pageStack.push(addTagMethodComponent)
+                        }
                     }
                 }
             }
@@ -408,6 +557,8 @@ SettingsPageBase {
                     showNextButton: false
                     onBack: pageStack.pop()
 
+                    property bool showAllChargers: false
+
                     content: ColumnLayout {
                         Layout.fillWidth: true
                         Layout.maximumWidth: 500
@@ -417,15 +568,40 @@ SettingsPageBase {
                         TextField {
                             id: chargerFilterTextField
                             Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
                             placeholderText: qsTr("Find charger")
                         }
 
                         Label {
                             Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
                             wrapMode: Text.WordWrap
                             text: qsTr("No charger with RFID scan support is currently available.")
-                            visible: chargerThingsProxy.count === 0 && !_engine.thingManager.fetchingData
+                            visible: scanChargerThingsProxy.count === 0 && !_engine.thingManager.fetchingData
                             horizontalAlignment: Text.AlignHCenter
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap
+                            text: qsTr("No charger with RFID scan support is available for %1.").arg(root.selectedUserLabel(wizardRootPage.selectedOwnerUsername))
+                            visible: scanChargerThingsProxy.count > 0
+                                     && root.usableChargerCountForProxy(wizardRootPage.selectedOwnerUsername, scanChargerThingsProxy) === 0
+                                     && !chargerSelectionPage.showAllChargers
+                                     && !_engine.thingManager.fetchingData
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+
+                        Button {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: scanChargerThingsProxy.count > 0
+                                     && !_engine.thingManager.fetchingData
+                            text: chargerSelectionPage.showAllChargers ? qsTr("Show user chargers") : qsTr("Show all chargers")
+                            onClicked: chargerSelectionPage.showAllChargers = !chargerSelectionPage.showAllChargers
                         }
 
                         BusyIndicator {
@@ -438,7 +614,7 @@ SettingsPageBase {
                             Layout.preferredHeight: Math.min(contentHeight, chargerSelectionPage.visibleContentHeight)
                             clip: true
                             model: ThingsProxy {
-                                id: chargerThingsProxy
+                                id: scanChargerThingsProxy
                                 engine: _engine
                                 shownInterfaces: ["chargers"]
                                 requiredEventName: wizardRootPage.chargerDetectionEventName
@@ -449,10 +625,18 @@ SettingsPageBase {
 
                             delegate: NymeaItemDelegate {
                                 width: parent.width
+                                readonly property Thing chargerThing: scanChargerThingsProxy.get(index)
+                                readonly property bool shown: chargerSelectionPage.showAllChargers
+                                                              || root.userCanUseCharger(wizardRootPage.selectedOwnerUsername, chargerThing)
+
+                                height: shown ? implicitHeight : 0
+                                visible: shown
                                 progressive: false
-                                property Thing chargerThing: chargerThingsProxy.get(index)
                                 text: chargerThing ? chargerThing.name : model.name
-                                subText: qsTr("Wait for %1").arg(wizardRootPage.chargerDetectionEventName)
+                                subText: chargerSelectionPage.showAllChargers
+                                         && !root.userCanUseCharger(wizardRootPage.selectedOwnerUsername, chargerThing)
+                                         ? qsTr("Not available to %1").arg(root.selectedUserLabel(wizardRootPage.selectedOwnerUsername))
+                                         : qsTr("Wait for %1").arg(wizardRootPage.chargerDetectionEventName)
                                 iconName: chargerThing ? app.interfacesToIcon(chargerThing.thingClass.interfaces) : "qrc:/icons/things.svg"
                                 onClicked: {
                                     if (!chargerThing)
@@ -482,10 +666,26 @@ SettingsPageBase {
 
                     readonly property Thing selectedChargerThing: _engine.thingManager.things.getThing(wizardRootPage.selectedChargerThingId)
                     readonly property EventType tagDetectedEventType: selectedChargerThing ? selectedChargerThing.thingClass.eventTypes.findByName(wizardRootPage.chargerDetectionEventName) : null
+                    readonly property var scanSpriteSources: [
+                        "qrc:/icons/rfid-reader-00.svg",
+                        "qrc:/icons/rfid-reader-01.svg",
+                        "qrc:/icons/rfid-reader-02.svg",
+                        "qrc:/icons/rfid-reader-03.svg"
+                    ]
                     property bool completed: false
+                    property int scanSpriteFrame: 0
 
                     onBack: pageStack.pop()
                     onExtraButtonPressed: pageStack.pop()
+
+                    Timer {
+                        interval: Style.slowAnimationDuration
+                        repeat: true
+                        running: waitForTagPage.visible
+                                 && waitForTagPage.selectedChargerThing !== null
+                                 && !waitForTagPage.completed
+                        onTriggered: waitForTagPage.scanSpriteFrame = (waitForTagPage.scanSpriteFrame + 1) % waitForTagPage.scanSpriteSources.length
+                    }
 
                     content: ColumnLayout {
                         Layout.fillWidth: true
@@ -495,9 +695,15 @@ SettingsPageBase {
 
                         Item { Layout.fillHeight: true }
 
-                        BusyIndicator {
+                        Image {
                             Layout.alignment: Qt.AlignHCenter
+                            Layout.preferredWidth: Math.min(Style.hugeIconSize * 3, Math.max(Style.hugeIconSize, waitForTagPage.width - Style.bigMargins))
+                            Layout.preferredHeight: Layout.preferredWidth
                             visible: waitForTagPage.selectedChargerThing !== null && !waitForTagPage.completed
+                            source: waitForTagPage.scanSpriteSources[waitForTagPage.scanSpriteFrame]
+                            sourceSize.width: width
+                            sourceSize.height: height
+                            fillMode: Image.PreserveAspectFit
                         }
 
                         Label {
@@ -563,7 +769,8 @@ SettingsPageBase {
 
                     content: ColumnLayout {
                         Layout.fillWidth: true
-                        Layout.maximumWidth: 500
+                        Layout.leftMargin: Style.margins
+                        Layout.rightMargin: Style.margins
                         Layout.alignment: Qt.AlignHCenter
 
                         TextField {
@@ -599,7 +806,7 @@ SettingsPageBase {
                     nextButtonEnabled: addTagFinalizePage.pendingCommandId === -1
                                        && wizardRootPage.scannedOrEnteredCode !== ""
                                        && userManager.users.contains(wizardRootPage.selectedOwnerUsername)
-                                       && (modeComboBox.selectedMode !== "Manual"
+                                       && (modeComboBox.selectedMode !== "Quick"
                                            || maxChargingCurrentField.text === ""
                                            || maxChargingCurrentField.acceptableInput)
 
@@ -692,12 +899,12 @@ SettingsPageBase {
                             Layout.rightMargin: Style.margins
                             model: [
                                 {"text": qsTr("Eco"), "value": "Eco"},
-                                {"text": qsTr("Manual"), "value": "Manual"}
+                                {"text": qsTr("Quick"), "value": "Quick"}
                             ]
                             textRole: "text"
                             property string selectedMode: currentIndex >= 0 ? model[currentIndex].value : "Eco"
                             Component.onCompleted: {
-                                currentIndex = root.profileMode(wizardRootPage.newProfile) === "Manual" ? 1 : 0
+                                currentIndex = root.profileMode(wizardRootPage.newProfile) === "Quick" ? 1 : 0
                             }
                             onCurrentIndexChanged: addTagFinalizePage.updateDraftProfile()
                         }
@@ -707,7 +914,7 @@ SettingsPageBase {
                             Layout.fillWidth: true
                             Layout.leftMargin: Style.margins
                             Layout.rightMargin: Style.margins
-                            visible: modeComboBox.selectedMode === "Manual"
+                            visible: modeComboBox.selectedMode === "Quick"
                             placeholderText: qsTr("Max charging current (A)")
                             text: wizardRootPage.newProfile && wizardRootPage.newProfile.maxChargingCurrent !== undefined ? wizardRootPage.newProfile.maxChargingCurrent : ""
                             inputMethodHints: Qt.ImhDigitsOnly
@@ -720,7 +927,7 @@ SettingsPageBase {
                             Layout.fillWidth: true
                             Layout.leftMargin: Style.margins
                             Layout.rightMargin: Style.margins
-                            visible: modeComboBox.selectedMode === "Manual"
+                            visible: modeComboBox.selectedMode === "Quick"
                             model: phaseCountModel
                             textRole: "text"
 
@@ -737,6 +944,46 @@ SettingsPageBase {
                             }
 
                             onCurrentIndexChanged: addTagFinalizePage.updateDraftProfile()
+                        }
+
+                        SettingsPageSectionHeader {
+                            text: qsTr("EV chargers")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            wrapMode: Text.WordWrap
+                            visible: root.usableChargerCount(wizardRootPage.selectedOwnerUsername) === 0
+                                     && !_engine.thingManager.fetchingData
+                            text: qsTr("This RFID tag is not available on any EV charger for the selected user.")
+                        }
+
+                        BusyIndicator {
+                            Layout.alignment: Qt.AlignHCenter
+                            visible: _engine.thingManager.fetchingData
+                        }
+
+                        Repeater {
+                            model: rfidChargerThingsProxy
+
+                            delegate: NymeaSwipeDelegate {
+                                readonly property Thing chargerThing: rfidChargerThingsProxy.get(index)
+                                readonly property bool shown: root.userCanUseCharger(wizardRootPage.selectedOwnerUsername, chargerThing)
+
+                                Layout.fillWidth: true
+                                Layout.leftMargin: Style.margins
+                                Layout.rightMargin: Style.margins
+                                Layout.preferredHeight: shown ? implicitHeight : 0
+                                Layout.maximumHeight: shown ? implicitHeight : 0
+                                Layout.minimumHeight: 0
+                                visible: shown
+                                progressive: false
+                                text: chargerThing ? chargerThing.name : model.name
+                                subText: root.chargerAccessSubtitle(wizardRootPage.selectedOwnerUsername)
+                                iconName: chargerThing ? app.interfacesToIcon(chargerThing.thingClass.interfaces) : "qrc:/icons/things.svg"
+                            }
                         }
 
                         BusyIndicator {
@@ -785,6 +1032,91 @@ SettingsPageBase {
                 return phaseCountComboBox.currentIndex >= 0 ? phaseCountModel.get(phaseCountComboBox.currentIndex).value : 0
             }
 
+            function originalPhaseValue() {
+                return tagInfo && tagInfo.profile.desiredPhaseCount !== undefined ? tagInfo.profile.desiredPhaseCount : 0
+            }
+
+            function originalMaxChargingCurrentText() {
+                return tagInfo && tagInfo.profile.maxChargingCurrent !== undefined ? String(tagInfo.profile.maxChargingCurrent) : ""
+            }
+
+            function canSubmit() {
+                if (pendingCommandId !== -1 || pendingRemoveCommandId !== -1)
+                    return false
+
+                if (createMode) {
+                    if (selectedOwnerUsername === "")
+                        return false
+                    if (codeTextField.text.trim() === "")
+                        return false
+                }
+
+                if (modeComboBox.selectedMode === "Quick" && maxChargingCurrentField.text !== "" && !maxChargingCurrentField.acceptableInput)
+                    return false
+
+                return true
+            }
+
+            function hasUnsavedChanges() {
+                if (pendingCommandId !== -1 || pendingRemoveCommandId !== -1)
+                    return false
+
+                if (createMode) {
+                    return selectedOwnerUsername !== ""
+                            || codeTextField.text.trim() !== ""
+                            || displayNameTextField.text !== ""
+                            || enabledSwitch.checked !== true
+                            || modeComboBox.selectedMode !== "Eco"
+                            || maxChargingCurrentField.text.trim() !== ""
+                            || currentPhaseValue() !== 0
+                }
+
+                if (!tagInfo)
+                    return false
+
+                if (displayNameTextField.text !== tagInfo.displayName)
+                    return true
+                if (enabledSwitch.checked !== tagInfo.enabled)
+                    return true
+                if (modeComboBox.selectedMode !== root.profileMode(tagInfo.profile))
+                    return true
+                if (modeComboBox.selectedMode === "Quick") {
+                    if (maxChargingCurrentField.text.trim() !== originalMaxChargingCurrentText())
+                        return true
+                    if (currentPhaseValue() !== originalPhaseValue())
+                        return true
+                }
+
+                return false
+            }
+
+            function handleBack() {
+                if (pendingCommandId !== -1 || pendingRemoveCommandId !== -1)
+                    return
+
+                if (!hasUnsavedChanges()) {
+                    pageStack.pop()
+                    return
+                }
+
+                var popup = discardTagChangesDialogComponent.createObject(editorPage)
+                popup.open()
+            }
+
+            function saveIfValid() {
+                if (createMode) {
+                    if (!userManager.users.contains(selectedOwnerUsername)) {
+                        root.showErrorDialog(qsTr("The selected user no longer exists."))
+                        return
+                    }
+                }
+
+                if (!canSubmit())
+                    return
+
+                submit()
+            }
+
             function submit() {
                 var profile = root.buildProfile(modeComboBox.selectedMode, maxChargingCurrentField.text.trim(), currentPhaseValue())
                 busy = true
@@ -809,7 +1141,17 @@ SettingsPageBase {
 
             header: NymeaHeader {
                 text: editorPage.title
-                onBackPressed: pageStack.pop()
+                onBackPressed: editorPage.handleBack()
+
+                HeaderButton {
+                    imageSource: "qrc:/icons/delete.svg"
+                    text: qsTr("Remove RFID tag")
+                    visible: !editorPage.createMode && editorPage.tagInfo
+                    onClicked: {
+                        var popup = localConfirmDeleteDialogComponent.createObject(editorPage, {tagInfo: editorPage.tagInfo})
+                        popup.open()
+                    }
+                }
             }
 
             ListModel {
@@ -890,12 +1232,12 @@ SettingsPageBase {
                 Layout.rightMargin: Style.margins
                 model: [
                     {"text": qsTr("Eco"), "value": "Eco"},
-                    {"text": qsTr("Manual"), "value": "Manual"}
+                    {"text": qsTr("Quick"), "value": "Quick"}
                 ]
                 textRole: "text"
                 property string selectedMode: currentIndex >= 0 ? model[currentIndex].value : "Eco"
                 Component.onCompleted: {
-                    currentIndex = root.profileMode(editorPage.tagInfo ? editorPage.tagInfo.profile : {"mode": "Eco"}) === "Manual" ? 1 : 0
+                    currentIndex = root.profileMode(editorPage.tagInfo ? editorPage.tagInfo.profile : {"mode": "Eco"}) === "Quick" ? 1 : 0
                 }
             }
 
@@ -904,7 +1246,7 @@ SettingsPageBase {
                 Layout.fillWidth: true
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
-                visible: modeComboBox.selectedMode === "Manual"
+                visible: modeComboBox.selectedMode === "Quick"
                 placeholderText: qsTr("Max charging current (A)")
                 text: editorPage.tagInfo && editorPage.tagInfo.profile.maxChargingCurrent !== undefined ? editorPage.tagInfo.profile.maxChargingCurrent : ""
                 inputMethodHints: Qt.ImhDigitsOnly
@@ -916,7 +1258,7 @@ SettingsPageBase {
                 Layout.fillWidth: true
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
-                visible: modeComboBox.selectedMode === "Manual"
+                visible: modeComboBox.selectedMode === "Quick"
                 model: phaseCountModel
                 textRole: "text"
 
@@ -938,29 +1280,8 @@ SettingsPageBase {
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
                 text: editorPage.createMode ? qsTr("Create RFID tag") : qsTr("Save")
-                enabled: {
-                    if (editorPage.createMode) {
-                        if (editorPage.selectedOwnerUsername === "")
-                            return false
-                        if (codeTextField.text.trim() === "")
-                            return false
-                    }
-
-                    if (modeComboBox.selectedMode === "Manual" && maxChargingCurrentField.text !== "" && !maxChargingCurrentField.acceptableInput)
-                        return false
-
-                    return true
-                }
-                onClicked: {
-                    if (editorPage.createMode) {
-                        if (!userManager.users.contains(editorPage.selectedOwnerUsername)) {
-                            root.showErrorDialog(qsTr("The selected user no longer exists."))
-                            return
-                        }
-                    }
-
-                    editorPage.submit()
-                }
+                enabled: editorPage.canSubmit()
+                onClicked: editorPage.saveIfValid()
             }
 
             SettingsPageSectionHeader {
@@ -979,19 +1300,43 @@ SettingsPageBase {
             }
 
             SettingsPageSectionHeader {
-                text: qsTr("Remove")
-                visible: !editorPage.createMode
+                text: qsTr("EV chargers")
             }
 
-            Button {
+            Label {
                 Layout.fillWidth: true
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
-                visible: !editorPage.createMode
-                text: qsTr("Remove this RFID tag")
-                onClicked: {
-                    var popup = localConfirmDeleteDialogComponent.createObject(editorPage, {tagInfo: editorPage.tagInfo})
-                    popup.open()
+                wrapMode: Text.WordWrap
+                visible: root.usableChargerCount(editorPage.tagInfo ? editorPage.tagInfo.username : editorPage.selectedOwnerUsername) === 0
+                         && !_engine.thingManager.fetchingData
+                text: qsTr("This RFID tag is not available on any EV charger for the selected user.")
+            }
+
+            BusyIndicator {
+                Layout.alignment: Qt.AlignHCenter
+                visible: _engine.thingManager.fetchingData
+            }
+
+            Repeater {
+                model: rfidChargerThingsProxy
+
+                delegate: NymeaSwipeDelegate {
+                    readonly property string ownerUsername: editorPage.tagInfo ? editorPage.tagInfo.username : editorPage.selectedOwnerUsername
+                    readonly property Thing chargerThing: rfidChargerThingsProxy.get(index)
+                    readonly property bool shown: root.userCanUseCharger(ownerUsername, chargerThing)
+
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Style.margins
+                    Layout.rightMargin: Style.margins
+                    Layout.preferredHeight: shown ? implicitHeight : 0
+                    Layout.maximumHeight: shown ? implicitHeight : 0
+                    Layout.minimumHeight: 0
+                    visible: shown
+                    progressive: false
+                    text: chargerThing ? chargerThing.name : model.name
+                    subText: root.chargerAccessSubtitle(ownerUsername)
+                    iconName: chargerThing ? app.interfacesToIcon(chargerThing.thingClass.interfaces) : "qrc:/icons/things.svg"
                 }
             }
 
@@ -1014,6 +1359,47 @@ SettingsPageBase {
 
                         editorPage.busy = true
                         editorPage.pendingRemoveCommandId = rfidManager.removeTag(tagInfo.inventoryItemId)
+                    }
+                }
+            }
+
+            Component {
+                id: discardTagChangesDialogComponent
+
+                NymeaDialog {
+                    id: discardTagChangesDialog
+
+                    title: qsTr("Unsaved RFID tag")
+                    text: qsTr("Do you want to save the changes before leaving this page?")
+                    standardButtons: Dialog.NoButton
+
+                    RowLayout {
+                        Layout.fillWidth: true
+
+                        Button {
+                            Layout.fillWidth: true
+                            text: qsTr("Discard")
+                            onClicked: {
+                                discardTagChangesDialog.close()
+                                pageStack.pop()
+                            }
+                        }
+
+                        Button {
+                            Layout.fillWidth: true
+                            text: qsTr("Return")
+                            onClicked: discardTagChangesDialog.close()
+                        }
+
+                        Button {
+                            Layout.fillWidth: true
+                            text: qsTr("Save")
+                            enabled: editorPage.canSubmit()
+                            onClicked: {
+                                discardTagChangesDialog.close()
+                                editorPage.saveIfValid()
+                            }
+                        }
                     }
                 }
             }
