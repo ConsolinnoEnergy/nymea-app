@@ -98,6 +98,8 @@ QString Types::toUiUnit(Types::Unit unit) const
     switch (uiUnit) {
     case Types::UnitNone:
         return "";
+    case Types::UnitMilliSeconds:
+        return "ms";
     case Types::UnitSeconds:
         return "s";
     case Types::UnitMinutes:
@@ -198,6 +200,8 @@ QString Types::toUiUnit(Types::Unit unit) const
         return "VAR";
     case Types::UnitAmpereHour:
         return "Ah";
+    case Types::UnitOhm:
+        return "Ω";
     case Types::UnitMicroSiemensPerCentimeter:
         return "µS/cm";
     case Types::UnitDuration:
