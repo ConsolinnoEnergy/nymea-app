@@ -220,7 +220,7 @@ endif()
 
 if(UNIX AND NOT APPLE AND NYMEA_ENABLE_ZEROCONF)
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(AVAHI REQUIRED IMPORTED_TARGET avahi-client avahi-common)
+    pkg_check_modules(AVAHI REQUIRED IMPORTED_TARGET avahi-client)
     target_link_libraries(nymea-app PRIVATE PkgConfig::AVAHI)
 endif()
 
