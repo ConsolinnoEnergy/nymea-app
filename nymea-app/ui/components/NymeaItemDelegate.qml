@@ -129,18 +129,20 @@ ItemDelegate {
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: root.textAlignment
+                font: Style.newParagraphFont
+                color: Style.colors.typography_Basic_Default
             }
             Label {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 text: root.subText
-                font.pixelSize: root.prominentSubText ? Style.smallFont.pixelSize : Style.extraSmallFont.pixelSize
-                color: root.prominentSubText ? Material.foreground : Style.subTextColor
                 wrapMode: root.wrapTexts ? Text.WordWrap : Text.NoWrap
                 maximumLineCount: root.wrapTexts ? 2 : 1
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
                 visible: root.subText.length > 0
+                font: Style.newExtraSmallFont
+                color: Style.colors.typography_Basic_Secondary
             }
         }
 
