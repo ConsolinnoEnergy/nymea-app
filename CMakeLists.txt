@@ -122,6 +122,10 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     endif()
 endif()
 
+if(NYMEA_ENABLE_ZEROCONF AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/QtZeroConf/CMakeLists.txt")
+    add_subdirectory(QtZeroConf)
+endif()
+
 add_subdirectory(libnymea-app)
 add_subdirectory(experiences)
 add_subdirectory(nymea-app)
