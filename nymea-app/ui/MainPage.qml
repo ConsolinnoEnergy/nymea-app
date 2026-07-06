@@ -415,6 +415,7 @@ Page {
             anchors.fill: parent
             opacity: d.configOverlay === null ? 1 : 0
             visible: !engine.thingManager.fetchingData
+            interactive: false
             Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
 
             Repeater {
