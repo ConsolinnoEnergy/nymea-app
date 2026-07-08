@@ -64,11 +64,6 @@ void StyleController::setCurrentStyle(const QString &currentStyle)
     QSettings settings;
     if (settings.value("style").toString() != currentStyle) {
         settings.setValue("style", currentStyle);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-        QQuickStyle::setStyle(currentStyle);
-#else
-        QQuickStyle::setStyle(QString(":/styles/%1").arg(currentStyle));
-#endif
         emit currentStyleChanged();
     }
 }
