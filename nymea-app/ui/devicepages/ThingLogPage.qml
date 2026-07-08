@@ -36,6 +36,61 @@ Page {
 
     property Thing thing: null
 
+    function logValue(values, key) {
+        if (!values || values[key] === undefined || values[key] === null)
+            return ""
+
+        return String(values[key])
+    }
+
+    function actionActorLabel(values) {
+        var triggeredBy = logValue(values, "triggeredBy")
+        var displayName = logValue(values, "actorDisplayName")
+        var username = logValue(values, "actorUsername")
+        var actorName = logValue(values, "actorName")
+        var sourceName = logValue(values, "sourceName")
+
+        if (triggeredBy === "TriggeredByUser") {
+            var label = displayName !== "" ? displayName : actorName
+            if (label === "")
+                label = username
+            if (label !== "" && username !== "" && label !== username)
+                return qsTr("User: %1 (%2)").arg(label).arg(username)
+            if (label !== "")
+                return qsTr("User: %1").arg(label)
+            return qsTr("User action")
+        }
+
+        if (sourceName !== "")
+            return qsTr("Automation: %1").arg(sourceName)
+
+        return qsTr("Automation")
+    }
+
+    function actionParamsLabel(values, actionType) {
+        if (!values || !actionType || !values.params)
+            return ""
+
+        var params = {}
+        try {
+            params = JSON.parse(values.params)
+        } catch (e) {
+            return ""
+        }
+        var ret = []
+        for (var i = 0; i < actionType.paramTypes.count; i++) {
+            var paramType = actionType.paramTypes.get(i)
+            ret.push(paramType.displayName + ": " + Types.toUiValue(params[paramType.name], paramType.unit) + " " + Types.toUiUnit(paramType.unit))
+        }
+        return ret.join(", ")
+    }
+
+    function actionLogLabel(values, actionType) {
+        var actor = actionActorLabel(values)
+        var params = actionParamsLabel(values, actionType)
+        return params === "" ? actor : actor + " - " + params
+    }
+
     header: NymeaHeader {
         text: qsTr("History for %1").arg(root.thing.name)
         onBackPressed: pageStack.pop()
@@ -297,19 +352,7 @@ Page {
                                 when: entryDelegate.actionType != null
                                 target: valueLoader.item;
                                 property: "value";
-                                value: {
-                                    if (entryDelegate.actionType == null) {
-                                        return ""
-                                    }
-
-                                    var ret = []
-                                    var values = JSON.parse(model.values.params)
-                                    for (var i = 0; i < entryDelegate.actionType.paramTypes.count; i++) {
-                                        var paramType = entryDelegate.actionType.paramTypes.get(i)
-                                        ret.push(paramType.displayName + ": " + Types.toUiValue(values[paramType.name], paramType.unit) + " " + Types.toUiUnit(paramType.unit))
-                                    }
-                                    return ret.join(", ")
-                                }
+                                value: root.actionLogLabel(entry.values, entryDelegate.actionType)
                             }
                             Binding {
                                 when: entryDelegate.eventType != null
