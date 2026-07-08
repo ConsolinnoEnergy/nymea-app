@@ -89,6 +89,12 @@ SettingsPageBase {
         case RfidManager.RfidErrorInvalidParameter:
             text = qsTr("The RFID tag data is not valid.")
             break
+        case RfidManager.RfidErrorEnrollmentActive:
+            text = qsTr("This charger is already waiting for an RFID tag.")
+            break
+        case RfidManager.RfidErrorEnrollmentNotFound:
+            text = qsTr("The RFID tag scan is no longer active.")
+            break
         default:
             text = qsTr("The RFID tag request could not be completed. (Error code: %1)").arg(error)
             break
@@ -188,28 +194,6 @@ SettingsPageBase {
 
     function chargerAccessSubtitle(username) {
         return qsTr("Available to %1").arg(selectedUserLabel(username))
-    }
-
-    function extractDetectedCode(eventType, params) {
-        if (!eventType || !params || params.length === 0)
-            return ""
-
-        var preferredNames = ["code", "tagcode", "tag", "rfid", "content"]
-        for (var i = 0; i < eventType.paramTypes.count; ++i) {
-            var paramType = eventType.paramTypes.get(i)
-            if (!paramType)
-                continue
-
-            if (preferredNames.indexOf(paramType.name.toLowerCase()) >= 0 && i < params.length && params[i] !== undefined && params[i] !== null)
-                return String(params[i]).trim()
-        }
-
-        for (var j = 0; j < params.length; ++j) {
-            if (params[j] !== undefined && params[j] !== null && String(params[j]).trim() !== "")
-                return String(params[j]).trim()
-        }
-
-        return ""
     }
 
     header: NymeaHeader {
@@ -455,6 +439,8 @@ SettingsPageBase {
             property string newDisplayName: ""
             property bool newEnabled: true
             property var newProfile: ({"mode": "Eco"})
+            property string pendingEnrollmentId: ""
+            property string pendingEnrollmentExpiresAt: ""
 
             readonly property string addMethodChargerScan: "chargerScan"
             readonly property string addMethodManual: "manual"
@@ -466,10 +452,22 @@ SettingsPageBase {
                 selectedChargerThingId = null
             }
 
+            function clearPendingEnrollment() {
+                pendingEnrollmentId = ""
+                pendingEnrollmentExpiresAt = ""
+            }
+
+            function cancelPendingEnrollment() {
+                if (pendingEnrollmentId !== "")
+                    rfidManager.cancelEnrollment(pendingEnrollmentId)
+                clearPendingEnrollment()
+            }
+
             onNext: pageStack.push(addTagMethodComponent)
             onBack: pageStack.pop()
 
             Component.onDestruction: {
+                wizardRootPage.cancelPendingEnrollment()
                 wizardRootPage.scannedOrEnteredCode = ""
             }
 
@@ -515,7 +513,7 @@ SettingsPageBase {
                             Layout.fillWidth: true
                             iconName: "qrc:/icons/things.svg"
                             text: qsTr("Scan on charger")
-                            subText: qsTr("Select a charger and wait for its tagDetected event.")
+                            subText: qsTr("Select a charger and prepare it for the next RFID tag.")
                             onClicked: {
                                 wizardRootPage.selectedAddMethod = wizardRootPage.addMethodChargerScan
                                 wizardRootPage.resetScannedCodeState()
@@ -636,14 +634,14 @@ SettingsPageBase {
                                 subText: chargerSelectionPage.showAllChargers
                                          && !root.userCanUseCharger(wizardRootPage.selectedOwnerUsername, chargerThing)
                                          ? qsTr("Not available to %1").arg(root.selectedUserLabel(wizardRootPage.selectedOwnerUsername))
-                                         : qsTr("Wait for %1").arg(wizardRootPage.chargerDetectionEventName)
+                                         : qsTr("Use this charger to scan the next tag")
                                 iconName: chargerThing ? app.interfacesToIcon(chargerThing.thingClass.interfaces) : "qrc:/icons/things.svg"
                                 onClicked: {
                                     if (!chargerThing)
                                         return
 
                                     wizardRootPage.selectedChargerThingId = chargerThing.id
-                                    pageStack.push(waitForTagComponent)
+                                    pageStack.push(addTagFinalizeComponent)
                                 }
                             }
                         }
@@ -662,10 +660,9 @@ SettingsPageBase {
                           : qsTr("The selected charger is no longer available.")
                     showNextButton: false
                     showExtraButton: waitForTagPage.selectedChargerThing !== null
-                    extraButtonText: qsTr("Select another charger")
+                    extraButtonText: qsTr("Cancel scan")
 
                     readonly property Thing selectedChargerThing: _engine.thingManager.things.getThing(wizardRootPage.selectedChargerThingId)
-                    readonly property EventType tagDetectedEventType: selectedChargerThing ? selectedChargerThing.thingClass.eventTypes.findByName(wizardRootPage.chargerDetectionEventName) : null
                     readonly property var scanSpriteSources: [
                         "qrc:/icons/rfid-reader-00.svg",
                         "qrc:/icons/rfid-reader-01.svg",
@@ -674,9 +671,36 @@ SettingsPageBase {
                     ]
                     property bool completed: false
                     property int scanSpriteFrame: 0
+                    property int remainingSeconds: 0
 
-                    onBack: pageStack.pop()
-                    onExtraButtonPressed: pageStack.pop()
+                    function updateRemainingSeconds() {
+                        if (wizardRootPage.pendingEnrollmentExpiresAt === "") {
+                            waitForTagPage.remainingSeconds = 0
+                            return
+                        }
+                        var expiresAt = new Date(wizardRootPage.pendingEnrollmentExpiresAt)
+                        waitForTagPage.remainingSeconds = Math.max(0, Math.round((expiresAt.getTime() - Date.now()) / 1000))
+                    }
+
+                    function formattedRemainingTime() {
+                        var minutes = Math.floor(waitForTagPage.remainingSeconds / 60)
+                        var seconds = waitForTagPage.remainingSeconds % 60
+                        return minutes + ":" + (seconds < 10 ? "0" + seconds : seconds)
+                    }
+
+                    function cancelEnrollmentAndLeave() {
+                        if (waitForTagPage.completed)
+                            return
+
+                        waitForTagPage.completed = true
+                        wizardRootPage.cancelPendingEnrollment()
+                        pageStack.pop()
+                    }
+
+                    onBack: cancelEnrollmentAndLeave()
+                    onExtraButtonPressed: cancelEnrollmentAndLeave()
+
+                    Component.onCompleted: waitForTagPage.updateRemainingSeconds()
 
                     Timer {
                         interval: Style.slowAnimationDuration
@@ -685,6 +709,15 @@ SettingsPageBase {
                                  && waitForTagPage.selectedChargerThing !== null
                                  && !waitForTagPage.completed
                         onTriggered: waitForTagPage.scanSpriteFrame = (waitForTagPage.scanSpriteFrame + 1) % waitForTagPage.scanSpriteSources.length
+                    }
+
+                    Timer {
+                        interval: 1000
+                        repeat: true
+                        running: waitForTagPage.visible
+                                 && waitForTagPage.selectedChargerThing !== null
+                                 && !waitForTagPage.completed
+                        onTriggered: waitForTagPage.updateRemainingSeconds()
                     }
 
                     content: ColumnLayout {
@@ -711,9 +744,17 @@ SettingsPageBase {
                             wrapMode: Text.WordWrap
                             horizontalAlignment: Text.AlignHCenter
                             visible: waitForTagPage.selectedChargerThing !== null
-                            text: qsTr("Listening for %1 on %2.")
-                                .arg(wizardRootPage.chargerDetectionEventName)
-                                .arg(waitForTagPage.selectedChargerThing ? waitForTagPage.selectedChargerThing.name : "")
+                            text: qsTr("The next RFID tag detected on %1 will be stored.")
+                                  .arg(waitForTagPage.selectedChargerThing ? waitForTagPage.selectedChargerThing.name : "")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Text.AlignHCenter
+                            visible: waitForTagPage.selectedChargerThing !== null && !waitForTagPage.completed
+                            font: Style.bigFont
+                            text: qsTr("Time remaining: %1").arg(waitForTagPage.formattedRemainingTime())
                         }
 
                         Label {
@@ -728,24 +769,39 @@ SettingsPageBase {
                     }
 
                     Connections {
-                        target: waitForTagPage.selectedChargerThing
+                        target: rfidManager
 
-                        function onEventTriggered(eventTypeId, params) {
-                            if (waitForTagPage.completed || !waitForTagPage.tagDetectedEventType)
+                        function onEnrollmentFinished(enrollmentId, thingId, error, tagInfo) {
+                            if (waitForTagPage.completed || root.uuidString(enrollmentId) !== root.uuidString(wizardRootPage.pendingEnrollmentId))
                                 return
-
-                            if (root.uuidString(eventTypeId) !== root.uuidString(waitForTagPage.tagDetectedEventType.id))
-                                return
-
-                            var detectedCode = root.extractDetectedCode(waitForTagPage.tagDetectedEventType, params)
-                            if (detectedCode === "") {
-                                root.showErrorDialog(qsTr("The charger reported a tag, but no RFID code could be read."))
-                                return
-                            }
 
                             waitForTagPage.completed = true
-                            wizardRootPage.scannedOrEnteredCode = detectedCode
-                            pageStack.push(addTagFinalizeComponent)
+                            wizardRootPage.clearPendingEnrollment()
+
+                            if (error === RfidManager.RfidErrorNoError) {
+                                pageStack.pop(root)
+                            } else {
+                                root.showRfidError(error)
+                                pageStack.pop()
+                            }
+                        }
+
+                        function onEnrollmentTimedOut(enrollmentId, thingId) {
+                            if (waitForTagPage.completed || root.uuidString(enrollmentId) !== root.uuidString(wizardRootPage.pendingEnrollmentId))
+                                return
+
+                            waitForTagPage.completed = true
+                            wizardRootPage.clearPendingEnrollment()
+                            root.showErrorDialog(qsTr("No RFID tag was detected before the scan expired."))
+                            pageStack.pop()
+                        }
+
+                        function onEnrollmentCanceled(enrollmentId, thingId) {
+                            if (root.uuidString(enrollmentId) !== root.uuidString(wizardRootPage.pendingEnrollmentId))
+                                return
+
+                            waitForTagPage.completed = true
+                            wizardRootPage.clearPendingEnrollment()
                         }
                     }
                 }
@@ -801,16 +857,20 @@ SettingsPageBase {
                 WizardPageBase {
                     id: addTagFinalizePage
                     title: qsTr("Finish RFID tag")
-                    text: qsTr("Name the RFID tag and configure its charging profile.")
-                    nextButtonText: qsTr("Create RFID tag")
+                    text: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan
+                          ? qsTr("Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.")
+                          : qsTr("Name the RFID tag and configure its charging profile.")
+                    nextButtonText: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan ? qsTr("Start scan") : qsTr("Create RFID tag")
                     nextButtonEnabled: addTagFinalizePage.pendingCommandId === -1
-                                       && wizardRootPage.scannedOrEnteredCode !== ""
+                                       && (wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan
+                                           || wizardRootPage.scannedOrEnteredCode !== "")
                                        && userManager.users.contains(wizardRootPage.selectedOwnerUsername)
                                        && (modeComboBox.selectedMode !== "Quick"
                                            || maxChargingCurrentField.text === ""
                                            || maxChargingCurrentField.acceptableInput)
 
                     property int pendingCommandId: -1
+                    property string pendingCommandType: ""
 
                     function updateDraftProfile() {
                         if (!modeComboBox || !maxChargingCurrentField || !phaseCountComboBox)
@@ -832,12 +892,23 @@ SettingsPageBase {
                         }
 
                         updateDraftProfile()
-                        pendingCommandId = rfidManager.addTag(
-                                    wizardRootPage.selectedOwnerUsername,
-                                    wizardRootPage.scannedOrEnteredCode,
-                                    wizardRootPage.newDisplayName,
-                                    wizardRootPage.newEnabled,
-                                    wizardRootPage.newProfile)
+                        if (wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan) {
+                            pendingCommandType = "enrollment"
+                            pendingCommandId = rfidManager.startEnrollment(
+                                        wizardRootPage.selectedChargerThingId,
+                                        wizardRootPage.selectedOwnerUsername,
+                                        wizardRootPage.newDisplayName,
+                                        wizardRootPage.newEnabled,
+                                        wizardRootPage.newProfile)
+                        } else {
+                            pendingCommandType = "addTag"
+                            pendingCommandId = rfidManager.addTag(
+                                        wizardRootPage.selectedOwnerUsername,
+                                        wizardRootPage.scannedOrEnteredCode,
+                                        wizardRootPage.newDisplayName,
+                                        wizardRootPage.newEnabled,
+                                        wizardRootPage.newProfile)
+                        }
                     }
 
                     onBack: pageStack.pop()
@@ -868,6 +939,15 @@ SettingsPageBase {
 
                         SettingsPageSectionHeader {
                             text: qsTr("RFID tag")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            wrapMode: Text.WordWrap
+                            visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan
+                            text: qsTr("The charger will store the next RFID tag it detects.")
                         }
 
                         NymeaTextField {
@@ -996,12 +1076,28 @@ SettingsPageBase {
                         target: rfidManager
 
                         function onAddTagReply(commandId, error) {
-                            if (commandId !== addTagFinalizePage.pendingCommandId)
+                            if (addTagFinalizePage.pendingCommandType !== "addTag" || commandId !== addTagFinalizePage.pendingCommandId)
                                 return
 
                             addTagFinalizePage.pendingCommandId = -1
+                            addTagFinalizePage.pendingCommandType = ""
                             if (error === RfidManager.RfidErrorNoError) {
                                 pageStack.pop(root)
+                            } else {
+                                root.showRfidError(error)
+                            }
+                        }
+
+                        function onStartEnrollmentReply(commandId, error, enrollmentId, expiresAt) {
+                            if (addTagFinalizePage.pendingCommandType !== "enrollment" || commandId !== addTagFinalizePage.pendingCommandId)
+                                return
+
+                            addTagFinalizePage.pendingCommandId = -1
+                            addTagFinalizePage.pendingCommandType = ""
+                            if (error === RfidManager.RfidErrorNoError) {
+                                wizardRootPage.pendingEnrollmentId = enrollmentId
+                                wizardRootPage.pendingEnrollmentExpiresAt = expiresAt
+                                pageStack.push(waitForTagComponent)
                             } else {
                                 root.showRfidError(error)
                             }

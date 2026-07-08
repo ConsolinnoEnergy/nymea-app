@@ -2,6 +2,8 @@
 
 #include "rfidmanager.h"
 
+#include "rfidtaginfo.h"
+
 #include <QJsonDocument>
 #include <QMetaEnum>
 
@@ -65,6 +67,11 @@ int RfidManager::authorizationTimeout() const
     return m_authorizationTimeout;
 }
 
+int RfidManager::enrollmentTimeout() const
+{
+    return m_enrollmentTimeout;
+}
+
 int RfidManager::refreshTags(const QString &username)
 {
     QVariantMap params;
@@ -106,16 +113,39 @@ int RfidManager::removeTag(const QUuid &inventoryItemId)
     return m_engine->jsonRpcClient()->sendCommand("Rfid.RemoveTag", {{"inventoryItemId", inventoryItemId}}, this, "removeTagResponse");
 }
 
+int RfidManager::startEnrollment(const QUuid &thingId, const QString &username, const QString &displayName, bool enabled, const QVariantMap &profile)
+{
+    QVariantMap params;
+    params.insert("thingId", thingId);
+    params.insert("username", username.trimmed());
+
+    if (!displayName.trimmed().isEmpty())
+        params.insert("displayName", displayName.trimmed());
+
+    params.insert("enabled", enabled);
+
+    if (!profile.isEmpty())
+        params.insert("profile", profile);
+
+    return m_engine->jsonRpcClient()->sendCommand("Rfid.StartEnrollment", params, this, "startEnrollmentResponse");
+}
+
+int RfidManager::cancelEnrollment(const QUuid &enrollmentId)
+{
+    return m_engine->jsonRpcClient()->sendCommand("Rfid.CancelEnrollment", {{"enrollmentId", enrollmentId}}, this, "cancelEnrollmentResponse");
+}
+
 int RfidManager::refreshConfig()
 {
     return m_engine->jsonRpcClient()->sendCommand("Rfid.GetConfig", {}, this, "getConfigResponse");
 }
 
-int RfidManager::setConfig(int plugInTimeout, int authorizationTimeout)
+int RfidManager::setConfig(int plugInTimeout, int authorizationTimeout, int enrollmentTimeout)
 {
     QVariantMap params;
     params.insert("plugInTimeout", plugInTimeout);
     params.insert("authorizationTimeout", authorizationTimeout);
+    params.insert("enrollmentTimeout", enrollmentTimeout);
     return m_engine->jsonRpcClient()->sendCommand("Rfid.SetConfig", params, this, "setConfigResponse");
 }
 
@@ -134,6 +164,21 @@ void RfidManager::notificationReceived(const QVariantMap &data)
             m_tags->removeTag(inventoryItemId);
     } else if (notification == "Rfid.ConfigChanged") {
         applyConfig(params);
+    } else if (notification == "Rfid.EnrollmentFinished") {
+        const QUuid enrollmentId = params.value("enrollmentId").toUuid();
+        const QUuid thingId = params.value("thingId").toUuid();
+        const RfidError error = parseError(params);
+        const QVariantMap tagMap = extractTagMap(params);
+        RfidTagInfo *tagInfo = nullptr;
+        if (!tagMap.isEmpty()) {
+            m_tags->upsertTag(tagMap);
+            tagInfo = m_tags->getTagInfo(tagMap.value("inventoryItemId").toUuid());
+        }
+        emit enrollmentFinished(enrollmentId, thingId, error, tagInfo);
+    } else if (notification == "Rfid.EnrollmentCanceled") {
+        emit enrollmentCanceled(params.value("enrollmentId").toUuid(), params.value("thingId").toUuid());
+    } else if (notification == "Rfid.EnrollmentTimedOut") {
+        emit enrollmentTimedOut(params.value("enrollmentId").toUuid(), params.value("thingId").toUuid());
     } else if (notification == "Rfid.Authorized" || notification == "Rfid.Denied") {
         qCDebug(dcRfidExperience()) << "RFID authorization notification:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson(QJsonDocument::Compact));
     } else {
@@ -166,6 +211,18 @@ void RfidManager::removeTagResponse(int commandId, const QVariantMap &params)
 {
     qCDebug(dcRfidExperience()) << "RemoveTag response:" << commandId << params;
     emit removeTagReply(commandId, parseError(params));
+}
+
+void RfidManager::startEnrollmentResponse(int commandId, const QVariantMap &params)
+{
+    qCDebug(dcRfidExperience()) << "StartEnrollment response:" << commandId << params;
+    emit startEnrollmentReply(commandId, parseError(params), params.value("enrollmentId").toUuid(), params.value("expiresAt").toString());
+}
+
+void RfidManager::cancelEnrollmentResponse(int commandId, const QVariantMap &params)
+{
+    qCDebug(dcRfidExperience()) << "CancelEnrollment response:" << commandId << params;
+    emit cancelEnrollmentReply(commandId, parseError(params));
 }
 
 void RfidManager::getConfigResponse(int commandId, const QVariantMap &params)
@@ -216,6 +273,14 @@ void RfidManager::applyConfig(const QVariantMap &params)
         const int value = params.value("authorizationTimeout").toInt();
         if (value != m_authorizationTimeout) {
             m_authorizationTimeout = value;
+            changed = true;
+        }
+    }
+
+    if (params.contains("enrollmentTimeout")) {
+        const int value = params.value("enrollmentTimeout").toInt();
+        if (value != m_enrollmentTimeout) {
+            m_enrollmentTimeout = value;
             changed = true;
         }
     }

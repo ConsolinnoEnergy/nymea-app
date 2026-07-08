@@ -18,11 +18,14 @@ SettingsPageBase {
     property bool configLoaded: false
     property int originalPlugInTimeout: 0
     property int originalAuthorizationTimeout: 0
+    property int originalEnrollmentTimeout: 0
     readonly property int plugInTimeout: plugInTimeoutCheckDelegate.checked ? plugInTimeoutSpinBox.value : 0
     readonly property int authorizationTimeout: authorizationTimeoutCheckDelegate.checked ? authorizationTimeoutSpinBox.value : 0
+    readonly property int enrollmentTimeout: enrollmentTimeoutCheckDelegate.checked ? enrollmentTimeoutSpinBox.value : 0
     readonly property bool hasChanges: configLoaded
                                        && (plugInTimeout !== originalPlugInTimeout
-                                           || authorizationTimeout !== originalAuthorizationTimeout)
+                                           || authorizationTimeout !== originalAuthorizationTimeout
+                                           || enrollmentTimeout !== originalEnrollmentTimeout)
 
     function showErrorDialog(text) {
         var popup = errorDialogComponent.createObject(app, {text: text})
@@ -40,6 +43,7 @@ SettingsPageBase {
     function syncFromManager() {
         originalPlugInTimeout = normalizeTimeout(rfidManager.plugInTimeout)
         originalAuthorizationTimeout = normalizeTimeout(rfidManager.authorizationTimeout)
+        originalEnrollmentTimeout = normalizeTimeout(rfidManager.enrollmentTimeout)
 
         plugInTimeoutCheckDelegate.checked = originalPlugInTimeout > 0
         plugInTimeoutSpinBox.value = originalPlugInTimeout > 0 ? originalPlugInTimeout : 300
@@ -47,13 +51,17 @@ SettingsPageBase {
         authorizationTimeoutCheckDelegate.checked = originalAuthorizationTimeout > 0
         authorizationTimeoutSpinBox.value = originalAuthorizationTimeout > 0 ? originalAuthorizationTimeout : 60
 
+        enrollmentTimeoutCheckDelegate.checked = originalEnrollmentTimeout > 0
+        enrollmentTimeoutSpinBox.value = originalEnrollmentTimeout > 0 ? originalEnrollmentTimeout : 60
+
         configLoaded = true
     }
 
     function saveConfig() {
         root.busy = true
         root.pendingCommandId = rfidManager.setConfig(root.plugInTimeout,
-                                                      root.authorizationTimeout)
+                                                      root.authorizationTimeout,
+                                                      root.enrollmentTimeout)
     }
 
     function handleBack() {
@@ -263,6 +271,55 @@ SettingsPageBase {
         font: Style.smallFont
         visible: authorizationTimeoutCheckDelegate.checked
         text: qsTr("After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.")
+    }
+
+    CheckDelegate {
+        id: enrollmentTimeoutCheckDelegate
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        enabled: root.configLoaded && root.pendingCommandId === -1
+        text: qsTr("Limit time to scan a new tag")
+    }
+
+    ItemDelegate {
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        Layout.preferredHeight: implicitHeight
+        topPadding: 0
+        bottomPadding: 0
+        visible: enrollmentTimeoutCheckDelegate.checked
+
+        contentItem: RowLayout {
+            Label {
+                Layout.fillWidth: true
+                wrapMode: Text.WordWrap
+                text: qsTr("Enrollment timeout")
+            }
+
+            SpinBox {
+                id: enrollmentTimeoutSpinBox
+                from: 1
+                to: 86400
+                editable: true
+                enabled: root.configLoaded && root.pendingCommandId === -1
+            }
+
+            Label {
+                text: qsTr("seconds")
+            }
+        }
+    }
+
+    Label {
+        Layout.fillWidth: true
+        Layout.leftMargin: Style.margins
+        Layout.rightMargin: Style.margins
+        wrapMode: Text.WordWrap
+        font: Style.smallFont
+        visible: enrollmentTimeoutCheckDelegate.checked
+        text: qsTr("When adding a tag from a charger, the scan request expires if no tag is presented within this time.")
     }
 
     Button {
