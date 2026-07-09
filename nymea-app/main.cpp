@@ -50,6 +50,7 @@
 #include "libnymea-app-airconditioning.h"
 #include "libnymea-app-evdash.h"
 #include "libnymea-app-rfid.h"
+#include "libnymea-app-ngw.h"
 
 #include "stylecontroller.h"
 #include "pushnotifications.h"
@@ -161,6 +162,7 @@ int main(int argc, char *argv[])
     Nymea::AirConditioning::registerQmlTypes();
     Nymea::EvDash::registerQmlTypes();
     Nymea::Rfid::registerQmlTypes();
+    Nymea::Ngw::registerQmlTypes();
 
     QQmlApplicationEngine *engine = new QQmlApplicationEngine();
 

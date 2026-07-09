@@ -139,6 +139,22 @@ SettingsPageBase {
         }
     }
 
+    function showNetworkAccessWarning(title, text, acceptedCallback, rejectedCallback) {
+        var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
+        var popup = dialog.createObject(app,
+                                        {
+                                            headerIcon: "qrc:/icons/dialog-warning-symbolic.svg",
+                                            title: title,
+                                            text: text + "\n\n" + qsTr("Do you want to proceed?"),
+                                            standardButtons: Dialog.Ok | Dialog.Cancel
+                                        });
+        popup.open();
+        popup.accepted.connect(acceptedCallback)
+        if (rejectedCallback) {
+            popup.rejected.connect(rejectedCallback)
+        }
+    }
+
     RowLayout {
         Layout.topMargin: app.margins * 6
         Layout.leftMargin: app.margins
@@ -224,22 +240,13 @@ SettingsPageBase {
             checked: networkManager.networkingEnabled
             onClicked: {
                 if (!checked) {
-                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
-                    var text = qsTr("Disabling networking will disconnect all connected clients. Be aware that you will not be able to interact remotely with this %1 system any more. Do not proceed unless you know what your are doing.").arg(Configuration.systemName)
-                            + "\n\n"
-                            + qsTr("Do you want to proceed?")
-                    var popup = dialog.createObject(app,
-                                                    {
-                                                        headerIcon: "qrc:/icons/dialog-warning-symbolic.svg",
-                                                        title: qsTr("Disable networking?"),
-                                                        text: text,
-                                                        standardButtons: Dialog.Ok | Dialog.Cancel
-                                                    });
-                    popup.open();
-                    popup.accepted.connect(function() {
+                    root.showNetworkAccessWarning(
+                                qsTr("Disable networking?"),
+                                qsTr("Disabling networking will disconnect all connected clients and may make this %1 system inaccessible from this app. Do not proceed unless you have another way to access the system.").arg(Configuration.systemName),
+                                function() {
                         d.pendingCallId = networkManager.enableNetworking(false);
-                    })
-                    popup.rejected.connect(function() {
+                    },
+                    function() {
                         checked = true;
                     })
                 } else {
@@ -293,6 +300,20 @@ SettingsPageBase {
         }
     }
 
+    // SettingsPageSectionHeader {
+    //     text: qsTr("LAN network")
+    //     visible: engine.jsonRpcClient.experiences.hasOwnProperty("Ngw")
+    // }
+
+    NymeaItemDelegate {
+        Layout.fillWidth: true
+        text: qsTr("Configure LAN network")
+        subText: qsTr("Configure the dedicated LAN")
+        iconName: "configure"
+        visible: engine.jsonRpcClient.experiences.hasOwnProperty("Ngw")
+        onClicked: pageStack.push(Qt.resolvedUrl("NgwSettingsPage.qml"))
+    }
+
     SettingsPageSectionHeader {
         text: qsTr("Wireless network")
         visible: networkManager.available && networkManager.networkingEnabled
@@ -311,22 +332,13 @@ SettingsPageBase {
             visible: networkManager.available && networkManager.networkingEnabled
             onClicked: {
                 if (!checked) {
-                    var dialog = Qt.createComponent(Qt.resolvedUrl("../components/NymeaDialog.qml"));
-                    var text = qsTr("Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.").arg(Configuration.systemName)
-                            + "\n\n"
-                            + qsTr("Do you want to proceed?")
-                    var popup = dialog.createObject(app,
-                                                    {
-                                                        headerIcon: "qrc:/icons/dialog-warning-symbolic.svg",
-                                                        title: qsTr("Disable WiFi?"),
-                                                        text: text,
-                                                        standardButtons: Dialog.Ok | Dialog.Cancel
-                                                    });
-                    popup.open();
-                    popup.accepted.connect(function() {
+                    root.showNetworkAccessWarning(
+                                qsTr("Disable WiFi?"),
+                                qsTr("Disabling WiFi will disconnect all clients connected via WiFi and may make this %1 system inaccessible from this app unless another network connection is available.").arg(Configuration.systemName),
+                                function() {
                         d.pendingCallId = networkManager.enableWirelessNetworking(false);
-                    })
-                    popup.rejected.connect(function() {
+                    },
+                    function() {
                         checked = true;
                     })
                 } else {
@@ -731,8 +743,13 @@ SettingsPageBase {
                 Layout.margins: app.margins
                 text: qsTr("Disconnect")
                 onClicked: {
-                    d.pendingCallId = networkManager.disconnectInterface(currentEthernetConnectionPage.wiredNetworkDevice.interface)
-                    pageStack.pop(root);
+                    root.showNetworkAccessWarning(
+                                qsTr("Disconnect network interface?"),
+                                qsTr("Disconnecting this network interface may make this %1 system inaccessible from this app. If this is the LAN or WAN interface currently carrying your connection, you may lose access until another network path is available.").arg(Configuration.systemName),
+                                function() {
+                        d.pendingCallId = networkManager.disconnectInterface(currentEthernetConnectionPage.wiredNetworkDevice.interface)
+                        pageStack.pop(root);
+                    })
                 }
             }
         }
@@ -794,8 +811,13 @@ SettingsPageBase {
                 Layout.margins: app.margins
                 text: qsTr("Disconnect")
                 onClicked: {
-                    d.pendingCallId = networkManager.disconnectInterface(currentApPage.wirelessNetworkDevice.interface)
-                    pageStack.pop(root);
+                    root.showNetworkAccessWarning(
+                                qsTr("Disconnect network interface?"),
+                                qsTr("Disconnecting this network interface may make this %1 system inaccessible from this app. If this interface is currently carrying your connection, you may lose access until another network path is available.").arg(Configuration.systemName),
+                                function() {
+                        d.pendingCallId = networkManager.disconnectInterface(currentApPage.wirelessNetworkDevice.interface)
+                        pageStack.pop(root);
+                    })
                 }
             }
         }

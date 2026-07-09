@@ -5245,16 +5245,8 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <translation>Trennen</translation>
     </message>
     <message>
-        <source>Disabling networking will disconnect all connected clients. Be aware that you will not be able to interact remotely with this %1 system any more. Do not proceed unless you know what your are doing.</source>
-        <translation>Das Deaktivieren der Netzwerk-Funktionalität wird alle verbunden Geräte trennen. Bitte beachte, dass es nicht mehr möglich sein wird, über das Netzwerk mit diesem %1 System zu interagieren. Es wird nicht empfohlen fortzufahren insofern dies nicht ausdrücklich gewünscht ist.</translation>
-    </message>
-    <message>
         <source>Do you want to proceed?</source>
         <translation>Möchtest Du fortfahren?</translation>
-    </message>
-    <message>
-        <source>Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.</source>
-        <translation>Das Deaktivieren der WLAN-Verbindung wird alle über WLAN verbundenen Geräte trennen. Bitte beachte, dass es nicht mehr möglich sein wird, mit diesem %1 System zu interagieren insofern kein Netzwerk-Kabel angeschlossen ist.</translation>
     </message>
     <message>
         <source>General</source>
@@ -5396,6 +5388,34 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <source>This feature is not supported on this platform.</source>
         <translation>Diese Funktion wird auf diese Plattform nicht unterstützt.</translation>
     </message>
+    <message>
+        <source>Disabling networking will disconnect all connected clients and may make this %1 system inaccessible from this app. Do not proceed unless you have another way to access the system.</source>
+        <translation>Wenn die Netzwerkfunktion deaktiviert wird, werden alle verbundenen Clients getrennt und dieses %1 System ist möglicherweise über diese App nicht mehr erreichbar. Fahre nur fort, wenn Du eine andere Möglichkeit hast, auf das System zuzugreifen.</translation>
+    </message>
+    <message>
+        <source>Configure LAN network</source>
+        <translation>LAN-Netzwerk einrichten</translation>
+    </message>
+    <message>
+        <source>Configure the dedicated LAN</source>
+        <translation>Dediziertes LAN einrichten</translation>
+    </message>
+    <message>
+        <source>Disabling WiFi will disconnect all clients connected via WiFi and may make this %1 system inaccessible from this app unless another network connection is available.</source>
+        <translation>Wenn WLAN deaktiviert wird, werden alle über WLAN verbundenen Clients getrennt und dieses %1 System ist möglicherweise über diese App nicht mehr erreichbar, sofern keine andere Netzwerkverbindung verfügbar ist.</translation>
+    </message>
+    <message>
+        <source>Disconnect network interface?</source>
+        <translation>Netzwerkschnittstelle trennen?</translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this is the LAN or WAN interface currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation>Das Trennen dieser Netzwerkschnittstelle kann dazu führen, dass dieses %1 System über diese App nicht mehr erreichbar ist. Wenn dies die LAN- oder WAN-Schnittstelle ist, über die Deine Verbindung gerade läuft, verlierst Du möglicherweise den Zugriff, bis ein anderer Netzwerkpfad verfügbar ist.</translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this interface is currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation>Das Trennen dieser Netzwerkschnittstelle kann dazu führen, dass dieses %1 System über diese App nicht mehr erreichbar ist. Wenn Deine Verbindung gerade über diese Schnittstelle läuft, verlierst Du möglicherweise den Zugriff, bis ein anderer Netzwerkpfad verfügbar ist.</translation>
+    </message>
 </context>
 <context>
     <name>NewMagicPage</name>
@@ -5459,6 +5479,105 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
     <message>
         <source>Install plugins</source>
         <translation>Plugins installieren</translation>
+    </message>
+</context>
+<context>
+    <name>NgwSettingsPage</name>
+    <message>
+        <source>LAN network</source>
+        <translation>LAN-Netzwerk</translation>
+    </message>
+    <message>
+        <source>An unexpected error happened while updating the LAN configuration.</source>
+        <translation>Beim Aktualisieren der LAN-Konfiguration ist ein unerwarteter Fehler aufgetreten.</translation>
+    </message>
+    <message>
+        <source>Disable dedicated LAN?</source>
+        <translation>Dediziertes LAN deaktivieren?</translation>
+    </message>
+    <message>
+        <source>Disabling the dedicated LAN may make this %1 system inaccessible from clients connected through the LAN interface. Do not proceed unless another network path is available.</source>
+        <translation>Wenn das dedizierte LAN deaktiviert wird, ist dieses %1 System möglicherweise für Clients, die über die LAN-Schnittstelle verbunden sind, nicht mehr erreichbar. Fahre nur fort, wenn ein anderer Netzwerkpfad verfügbar ist.</translation>
+    </message>
+    <message>
+        <source>Do you want to proceed?</source>
+        <translation>Möchtest Du fortfahren?</translation>
+    </message>
+    <message>
+        <source>The dedicated LAN creates a separate local network on this system. When enabled, gateway services and internet sharing can be configured for devices connected to that LAN.</source>
+        <translation>Das dedizierte LAN erstellt ein separates lokales Netzwerk auf diesem System. Wenn es aktiviert ist, können Gateway-Dienste und die Internetfreigabe für Geräte konfiguriert werden, die mit diesem LAN verbunden sind.</translation>
+    </message>
+    <message>
+        <source>Dedicated LAN</source>
+        <translation>Dediziertes LAN</translation>
+    </message>
+    <message>
+        <source>Dedicated LAN enabled</source>
+        <translation>Dediziertes LAN aktiviert</translation>
+    </message>
+    <message>
+        <source>Run a separate, dedicated local network on this system</source>
+        <translation>Ein separates, dediziertes lokales Netzwerk auf diesem System betreiben</translation>
+    </message>
+    <message>
+        <source>Gateway services access</source>
+        <translation>Zugriff auf Gateway-Dienste</translation>
+    </message>
+    <message>
+        <source>Which nymea services can be reached from the dedicated LAN</source>
+        <translation>Welche nymea Dienste über das dedizierte LAN erreichbar sind</translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation>Deaktiviert</translation>
+    </message>
+    <message>
+        <source>nymea services only</source>
+        <translation>Nur nymea Dienste</translation>
+    </message>
+    <message>
+        <source>All ports</source>
+        <translation>Alle Ports</translation>
+    </message>
+    <message>
+        <source>Internet sharing</source>
+        <translation>Internetfreigabe</translation>
+    </message>
+    <message>
+        <source>Share this system&apos;s internet connection with the dedicated LAN</source>
+        <translation>Die Internetverbindung dieses Systems mit dem dedizierten LAN teilen</translation>
+    </message>
+    <message>
+        <source>Status: enabled</source>
+        <translation>Status: aktiviert</translation>
+    </message>
+    <message>
+        <source>Status: disabled</source>
+        <translation>Status: deaktiviert</translation>
+    </message>
+    <message>
+        <source>LAN interface</source>
+        <translation>LAN-Schnittstelle</translation>
+    </message>
+    <message>
+        <source>WAN interface</source>
+        <translation>WAN-Schnittstelle</translation>
+    </message>
+    <message>
+        <source>LAN subnet</source>
+        <translation>LAN-Subnetz</translation>
+    </message>
+    <message>
+        <source>LAN address</source>
+        <translation>LAN-Adresse</translation>
+    </message>
+    <message>
+        <source>DHCP range</source>
+        <translation>DHCP-Bereich</translation>
+    </message>
+    <message>
+        <source>Configured gateway ports</source>
+        <translation>Konfigurierte Gateway-Ports</translation>
     </message>
 </context>
 <context>
