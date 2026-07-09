@@ -17,9 +17,12 @@ import android.content.IntentFilter;
 import android.content.BroadcastReceiver;
 import android.location.LocationManager;
 import androidx.core.content.FileProvider;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.graphics.Insets;
@@ -39,6 +42,7 @@ public class NymeaAppActivity extends QtActivity
     private static native void darkModeEnabledChangedJNI();
     private static native void notificationActionReceivedJNI(String data);
     private static native void locationServicesEnabledChangedJNI();
+    private static native void imeHeightChangedJNI(int heightPx);
 
     private BroadcastReceiver m_gpsSwitchStateReceiver = new BroadcastReceiver() {
         @Override
@@ -69,10 +73,33 @@ public class NymeaAppActivity extends QtActivity
         // On API 36+, setDecorFitsSystemWindows(true) is ignored - edge-to-edge is mandatory.
         // mDecorFitsSystemWindows stays false so topPadding() reads the actual insets.
         this.context = getApplicationContext();
+        setupImeHeightListener();
     }
 
-    public void onNewIntent (Intent intent) {
-        Log.d(TAG, "New intent: " + intent);
+    /**
+     * Registers a ViewTreeObserver listener on the decor view that fires
+     * whenever the global layout changes (e.g. keyboard appears/disappears).
+     * Reads the IME inset height via WindowInsetsCompat and reports it to
+     * the Qt layer via imeHeightChangedJNI so PlatformHelper.imeHeight stays
+     * up to date even with windowSoftInputMode=adjustNothing.
+     */
+    private void setupImeHeightListener() {
+        final View decorView = getWindow().getDecorView();
+        decorView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                WindowInsetsCompat insetsCompat = ViewCompat.getRootWindowInsets(decorView);
+                int imeHeightPx = 0;
+                if (insetsCompat != null) {
+                    androidx.core.graphics.Insets imeInsets = insetsCompat.getInsets(WindowInsetsCompat.Type.ime());
+                    imeHeightPx = imeInsets.bottom;
+                }
+                NymeaAppActivity.imeHeightChangedJNI(imeHeightPx);
+            }
+        });
+    }
+
+    public void onNewIntent (Intent intent) {        Log.d(TAG, "New intent: " + intent);
         String notificationData = intent.getStringExtra("notificationData");
         if (notificationData != null) {
             Log.d(TAG, "Intent data: " + notificationData);

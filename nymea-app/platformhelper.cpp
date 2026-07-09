@@ -205,6 +205,11 @@ int PlatformHelper::rightPadding() const
     return m_rightPadding;
 }
 
+int PlatformHelper::imeHeight() const
+{
+    return m_imeHeight;
+}
+
 bool PlatformHelper::darkModeEnabled() const
 {
     return false;
@@ -263,6 +268,14 @@ void PlatformHelper::setSafeAreaPadding(int top, int right, int bottom, int left
         emit leftPaddingChanged();
     }
     Q_UNUSED(changed)
+}
+
+void PlatformHelper::setImeHeight(int height)
+{
+    if (m_imeHeight == height)
+        return;
+    m_imeHeight = height;
+    emit imeHeightChanged();
 }
 
 void PlatformHelper::toClipBoard(const QString &text)

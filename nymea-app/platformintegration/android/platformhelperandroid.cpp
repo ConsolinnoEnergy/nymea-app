@@ -49,6 +49,7 @@ static JNINativeMethod methods[] = {
     { "darkModeEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::darkModeEnabledChangedJNI },
     { "notificationActionReceivedJNI", "(Ljava/lang/String;)V", (void *)PlatformHelperAndroid::notificationActionReceivedJNI },
     { "locationServicesEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::locationServicesEnabledChangedJNI },
+    { "imeHeightChangedJNI", "(I)V", (void *)PlatformHelperAndroid::imeHeightChangedJNI },
     };
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/)
@@ -439,4 +440,18 @@ void PlatformHelperAndroid::locationServicesEnabledChangedJNI()
     if (platformHelper) {
         emit platformHelper->locationServicesEnabledChanged();
     }
+}
+
+void PlatformHelperAndroid::imeHeightChangedJNI(JNIEnv*, jobject, jint heightPx)
+{
+    PlatformHelperAndroid *instance = static_cast<PlatformHelperAndroid*>(PlatformHelper::instance(false));
+    if (!instance)
+        return;
+    QMetaObject::invokeMethod(instance, [instance, heightPx]() {
+        QScreen *screen = qApp->primaryScreen();
+        qreal dpr = screen ? screen->devicePixelRatio() : 1.0;
+        if (dpr <= 0.0)
+            dpr = 1.0;
+        instance->setImeHeight(qRound(heightPx / dpr));
+    }, Qt::QueuedConnection);
 }
