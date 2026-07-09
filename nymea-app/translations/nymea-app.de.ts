@@ -159,6 +159,18 @@
         <source>This action has not been executed yet.</source>
         <translation>Diese Aktion wurde noch nicht ausgeführt.</translation>
     </message>
+    <message>
+        <source>User action by %1 (%2)</source>
+        <translation>Benutzeraktion von %1 (%2)</translation>
+    </message>
+    <message>
+        <source>User action by %1</source>
+        <translation>Benutzeraktion von %1</translation>
+    </message>
+    <message>
+        <source>Automation by %1</source>
+        <translation>Automatisierung von %1</translation>
+    </message>
 </context>
 <context>
     <name>AdvancedConnectionInterfacesPage</name>
@@ -6303,6 +6315,396 @@ Möchtest Du fortfahren?</translation>
     </message>
 </context>
 <context>
+    <name>RfidManagerSettingsPage</name>
+    <message>
+        <source>RFID settings</source>
+        <translation>RFID-Einstellungen</translation>
+    </message>
+    <message>
+        <source>Unsaved RFID settings</source>
+        <translation>Nicht gespeicherte RFID-Einstellungen</translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation>Möchten Sie die Änderungen speichern, bevor Sie diese Seite verlassen?</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Verwerfen</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>Zurück</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be loaded.</source>
+        <translation>Die RFID-Einstellungen konnten nicht geladen werden.</translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be saved.</source>
+        <translation>Die RFID-Einstellungen konnten nicht gespeichert werden.</translation>
+    </message>
+    <message>
+        <source>RFID authorization</source>
+        <translation>RFID-Autorisierung</translation>
+    </message>
+    <message>
+        <source>Charging starts after a valid RFID tag authorizes the charger. Time limits can revoke unused authorizations automatically.</source>
+        <translation>Der Ladevorgang startet, nachdem ein gültiger RFID-Tag die Ladestation autorisiert hat. Zeitlimits können ungenutzte Autorisierungen automatisch widerrufen.</translation>
+    </message>
+    <message>
+        <source>Limit time to plug in</source>
+        <translation>Zeit zum Einstecken begrenzen</translation>
+    </message>
+    <message>
+        <source>Plug-in timeout</source>
+        <translation>Einsteck-Timeout</translation>
+    </message>
+    <message>
+        <source>seconds</source>
+        <translation>Sekunden</translation>
+    </message>
+    <message>
+        <source>After a tag was accepted, the authorization expires if the vehicle is not plugged in within this time.</source>
+        <translation>Nachdem ein Tag akzeptiert wurde, läuft die Autorisierung ab, wenn das Fahrzeug nicht innerhalb dieser Zeit eingesteckt wird.</translation>
+    </message>
+    <message>
+        <source>Limit time to present a tag</source>
+        <translation>Zeit zum Vorhalten eines Tags begrenzen</translation>
+    </message>
+    <message>
+        <source>Tag timeout</source>
+        <translation>Tag-Timeout</translation>
+    </message>
+    <message>
+        <source>After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.</source>
+        <translation>Nachdem das Fahrzeug eingesteckt wurde, läuft die Autorisierung ab, wenn innerhalb dieser Zeit kein gültiger Tag vorgehalten wird.</translation>
+    </message>
+    <message>
+        <source>Limit time to scan a new tag</source>
+        <translation>Zeit zum Scannen eines neuen Tags begrenzen</translation>
+    </message>
+    <message>
+        <source>Enrollment timeout</source>
+        <translation>Registrierungs-Timeout</translation>
+    </message>
+    <message>
+        <source>When adding a tag from a charger, the scan request expires if no tag is presented within this time.</source>
+        <translation>Beim Hinzufügen eines Tags über eine Ladestation läuft die Scan-Anfrage ab, wenn innerhalb dieser Zeit kein Tag vorgehalten wird.</translation>
+    </message>
+</context>
+<context>
+    <name>RfidSettingsPage</name>
+    <message>
+        <source>RFID charging</source>
+        <translation>RFID-Laden</translation>
+    </message>
+    <message>
+        <source>Eco</source>
+        <translation>Eco</translation>
+    </message>
+    <message>
+        <source>Quick</source>
+        <translation>Schnell</translation>
+    </message>
+    <message>
+        <source>Eco charging</source>
+        <translation>Eco-Laden</translation>
+    </message>
+    <message>
+        <source>Quick charging</source>
+        <translation>Schnellladen</translation>
+    </message>
+    <message>
+        <source>Max charging current: %1 A</source>
+        <translation>Max. Ladestrom: %1 A</translation>
+    </message>
+    <message>
+        <source>Phase count: %1</source>
+        <translation>Anzahl Phasen: %1</translation>
+    </message>
+    <message>
+        <source>This RFID tag is already assigned.</source>
+        <translation>Dieser RFID-Tag ist bereits zugewiesen.</translation>
+    </message>
+    <message>
+        <source>The selected charging profile is not valid.</source>
+        <translation>Das ausgewählte Ladeprofil ist ungültig.</translation>
+    </message>
+    <message>
+        <source>The selected user no longer exists.</source>
+        <translation>Der ausgewählte Benutzer existiert nicht mehr.</translation>
+    </message>
+    <message>
+        <source>The selected RFID tag no longer exists.</source>
+        <translation>Der ausgewählte RFID-Tag existiert nicht mehr.</translation>
+    </message>
+    <message>
+        <source>The RFID tag data is not valid.</source>
+        <translation>Die RFID-Tag-Daten sind ungültig.</translation>
+    </message>
+    <message>
+        <source>This charger is already waiting for an RFID tag.</source>
+        <translation>Diese Ladestation wartet bereits auf einen RFID-Tag.</translation>
+    </message>
+    <message>
+        <source>The RFID tag scan is no longer active.</source>
+        <translation>Der RFID-Tag-Scan ist nicht mehr aktiv.</translation>
+    </message>
+    <message>
+        <source>The RFID tag request could not be completed. (Error code: %1)</source>
+        <translation>Die RFID-Tag-Anfrage konnte nicht abgeschlossen werden. (Fehlercode: %1)</translation>
+    </message>
+    <message>
+        <source>All users</source>
+        <translation>Alle Benutzer</translation>
+    </message>
+    <message>
+        <source>Available to %1</source>
+        <translation>Verfügbar für %1</translation>
+    </message>
+    <message>
+        <source>Remove RFID tag</source>
+        <translation>RFID-Tag entfernen</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot; for %2?</source>
+        <translation>Sind Sie sicher, dass Sie &quot;%1&quot; für %2 entfernen möchten?</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation>Filter</translation>
+    </message>
+    <message>
+        <source>Add RFID tag</source>
+        <translation>RFID-Tag hinzufügen</translation>
+    </message>
+    <message>
+        <source>RFID tags</source>
+        <translation>RFID-Tags</translation>
+    </message>
+    <message>
+        <source>No RFID tags configured.</source>
+        <translation>Keine RFID-Tags konfiguriert.</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>Benutzer</translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation>Aktion</translation>
+    </message>
+    <message>
+        <source>Select the user this RFID tag belongs to.</source>
+        <translation>Wählen Sie den Benutzer aus, dem dieser RFID-Tag gehört.</translation>
+    </message>
+    <message>
+        <source>Choose how to read the RFID tag for %1.</source>
+        <translation>Wählen Sie aus, wie der RFID-Tag für %1 gelesen werden soll.</translation>
+    </message>
+    <message>
+        <source>Scan on charger</source>
+        <translation>An Ladestation scannen</translation>
+    </message>
+    <message>
+        <source>Select a charger and prepare it for the next RFID tag.</source>
+        <translation>Wählen Sie eine Ladestation aus und bereiten Sie sie auf den nächsten RFID-Tag vor.</translation>
+    </message>
+    <message>
+        <source>Enter manually</source>
+        <translation>Manuell eingeben</translation>
+    </message>
+    <message>
+        <source>Type the RFID code manually.</source>
+        <translation>Geben Sie den RFID-Code manuell ein.</translation>
+    </message>
+    <message>
+        <source>Scan with phone NFC</source>
+        <translation>Mit NFC des Telefons scannen</translation>
+    </message>
+    <message>
+        <source>Planned for a future version.</source>
+        <translation>Für eine zukünftige Version geplant.</translation>
+    </message>
+    <message>
+        <source>Scan RFID tag</source>
+        <translation>RFID-Tag scannen</translation>
+    </message>
+    <message>
+        <source>Select the charger that should scan the RFID tag.</source>
+        <translation>Wählen Sie die Ladestation aus, die den RFID-Tag scannen soll.</translation>
+    </message>
+    <message>
+        <source>Find charger</source>
+        <translation>Ladestation suchen</translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is currently available.</source>
+        <translation>Derzeit ist keine Ladestation mit RFID-Scan-Unterstützung verfügbar.</translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is available for %1.</source>
+        <translation>Für %1 ist keine Ladestation mit RFID-Scan-Unterstützung verfügbar.</translation>
+    </message>
+    <message>
+        <source>Show user chargers</source>
+        <translation>Ladestationen des Benutzers anzeigen</translation>
+    </message>
+    <message>
+        <source>Show all chargers</source>
+        <translation>Alle Ladestationen anzeigen</translation>
+    </message>
+    <message>
+        <source>Not available to %1</source>
+        <translation>Nicht verfügbar für %1</translation>
+    </message>
+    <message>
+        <source>Use this charger to scan the next tag</source>
+        <translation>Diese Ladestation zum Scannen des nächsten Tags verwenden</translation>
+    </message>
+    <message>
+        <source>Present the RFID tag to %1 now.</source>
+        <translation>Halten Sie den RFID-Tag jetzt an %1.</translation>
+    </message>
+    <message>
+        <source>The selected charger is no longer available.</source>
+        <translation>Die ausgewählte Ladestation ist nicht mehr verfügbar.</translation>
+    </message>
+    <message>
+        <source>Cancel scan</source>
+        <translation>Scan abbrechen</translation>
+    </message>
+    <message>
+        <source>The next RFID tag detected on %1 will be stored.</source>
+        <translation>Der nächste an %1 erkannte RFID-Tag wird gespeichert.</translation>
+    </message>
+    <message>
+        <source>Time remaining: %1</source>
+        <translation>Verbleibende Zeit: %1</translation>
+    </message>
+    <message>
+        <source>Please go back and select another charger.</source>
+        <translation>Bitte gehen Sie zurück und wählen Sie eine andere Ladestation aus.</translation>
+    </message>
+    <message>
+        <source>No RFID tag was detected before the scan expired.</source>
+        <translation>Vor Ablauf des Scans wurde kein RFID-Tag erkannt.</translation>
+    </message>
+    <message>
+        <source>Enter RFID tag</source>
+        <translation>RFID-Tag eingeben</translation>
+    </message>
+    <message>
+        <source>Enter the RFID code manually.</source>
+        <translation>Geben Sie den RFID-Code manuell ein.</translation>
+    </message>
+    <message>
+        <source>RFID code</source>
+        <translation>RFID-Code</translation>
+    </message>
+    <message>
+        <source>This flow is planned for a future version.</source>
+        <translation>Dieser Ablauf ist für eine zukünftige Version geplant.</translation>
+    </message>
+    <message>
+        <source>Finish RFID tag</source>
+        <translation>RFID-Tag fertigstellen</translation>
+    </message>
+    <message>
+        <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
+        <translation>Benennen Sie den RFID-Tag, konfigurieren Sie sein Ladeprofil und bereiten Sie anschließend die Ladestation auf den nächsten Tag vor.</translation>
+    </message>
+    <message>
+        <source>Name the RFID tag and configure its charging profile.</source>
+        <translation>Benennen Sie den RFID-Tag und konfigurieren Sie sein Ladeprofil.</translation>
+    </message>
+    <message>
+        <source>Start scan</source>
+        <translation>Scan starten</translation>
+    </message>
+    <message>
+        <source>Create RFID tag</source>
+        <translation>RFID-Tag erstellen</translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation>Nicht festgelegt</translation>
+    </message>
+    <message>
+        <source>Owner</source>
+        <translation>Besitzer</translation>
+    </message>
+    <message>
+        <source>RFID tag</source>
+        <translation>RFID-Tag</translation>
+    </message>
+    <message>
+        <source>The charger will store the next RFID tag it detects.</source>
+        <translation>Die Ladestation speichert den nächsten RFID-Tag, den sie erkennt.</translation>
+    </message>
+    <message>
+        <source>Display name</source>
+        <translation>Anzeigename</translation>
+    </message>
+    <message>
+        <source>Enabled</source>
+        <translation>Aktiviert</translation>
+    </message>
+    <message>
+        <source>Charging profile</source>
+        <translation>Ladeprofil</translation>
+    </message>
+    <message>
+        <source>Max charging current (A)</source>
+        <translation>Max. Ladestrom (A)</translation>
+    </message>
+    <message>
+        <source>EV chargers</source>
+        <translation>Ladestationen</translation>
+    </message>
+    <message>
+        <source>This RFID tag is not available on any EV charger for the selected user.</source>
+        <translation>Dieser RFID-Tag ist auf keiner Ladestation für den ausgewählten Benutzer verfügbar.</translation>
+    </message>
+    <message>
+        <source>Edit RFID tag</source>
+        <translation>RFID-Tag bearbeiten</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <source>Technical details</source>
+        <translation>Technische Details</translation>
+    </message>
+    <message>
+        <source>RFID hash</source>
+        <translation>RFID-Hash</translation>
+    </message>
+    <message>
+        <source>Unsaved RFID tag</source>
+        <translation>Nicht gespeicherter RFID-Tag</translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation>Möchten Sie die Änderungen speichern, bevor Sie diese Seite verlassen?</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Verwerfen</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>Zurück</translation>
+    </message>
+</context>
+<context>
     <name>RootItem</name>
     <message>
         <source>Connection error</source>
@@ -6934,6 +7336,14 @@ Möchtest Du fortfahren?</translation>
         <source>Manage system configuration backup</source>
         <translation>Systemkonfigurationssicherung verwalten</translation>
     </message>
+    <message>
+        <source>RFID charging</source>
+        <translation>RFID-Laden</translation>
+    </message>
+    <message>
+        <source>Manage RFID tags for charger authorization</source>
+        <translation>RFID-Tags für die Autorisierung von Ladestationen verwalten</translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -7488,6 +7898,26 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>No</source>
         <translation>Nein</translation>
+    </message>
+    <message>
+        <source>User: %1 (%2)</source>
+        <translation>Benutzer: %1 (%2)</translation>
+    </message>
+    <message>
+        <source>User: %1</source>
+        <translation>Benutzer: %1</translation>
+    </message>
+    <message>
+        <source>User action</source>
+        <translation>Benutzeraktion</translation>
+    </message>
+    <message>
+        <source>Automation: %1</source>
+        <translation>Automatisierung: %1</translation>
+    </message>
+    <message>
+        <source>Automation</source>
+        <translation>Automatisierung</translation>
     </message>
 </context>
 <context>
@@ -8124,6 +8554,22 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>Optional</source>
         <translation>Optional</translation>
+    </message>
+    <message>
+        <source>User not added</source>
+        <translation>Benutzer nicht hinzugefügt</translation>
+    </message>
+    <message>
+        <source>The user has not been added yet. Do you want to discard the changes or return to editing?</source>
+        <translation>Der Benutzer wurde noch nicht hinzugefügt. Möchten Sie die Änderungen verwerfen oder zur Bearbeitung zurückkehren?</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Verwerfen</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>Zurück</translation>
     </message>
 </context>
 <context>

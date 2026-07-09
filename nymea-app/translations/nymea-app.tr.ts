@@ -159,6 +159,18 @@
         <source>This action has not been executed yet.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>User action by %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User action by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automation by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AdvancedConnectionInterfacesPage</name>
@@ -6275,6 +6287,396 @@ Do you want to proceed?</source>
     </message>
 </context>
 <context>
+    <name>RfidManagerSettingsPage</name>
+    <message>
+        <source>RFID settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsaved RFID settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID authorization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging starts after a valid RFID tag authorizes the charger. Time limits can revoke unused authorizations automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit time to plug in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plug-in timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>seconds</source>
+        <translation type="unfinished">saniye</translation>
+    </message>
+    <message>
+        <source>After a tag was accepted, the authorization expires if the vehicle is not plugged in within this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit time to present a tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit time to scan a new tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enrollment timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When adding a tag from a charger, the scan request expires if no tag is presented within this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RfidSettingsPage</name>
+    <message>
+        <source>RFID charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max charging current: %1 A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phase count: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This RFID tag is already assigned.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected charging profile is not valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected user no longer exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected RFID tag no longer exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag data is not valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This charger is already waiting for an RFID tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag scan is no longer active.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag request could not be completed. (Error code: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot; for %2?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No RFID tags configured.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation type="unfinished">kullanıcı</translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the user this RFID tag belongs to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose how to read the RFID tag for %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan on charger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select a charger and prepare it for the next RFID tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type the RFID code manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan with phone NFC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Planned for a future version.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the charger that should scan the RFID tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find charger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is currently available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is available for %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show user chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show all chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use this charger to scan the next tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Present the RFID tag to %1 now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected charger is no longer available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The next RFID tag detected on %1 will be stored.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time remaining: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please go back and select another charger.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No RFID tag was detected before the scan expired.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the RFID code manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This flow is planned for a future version.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name the RFID tag and configure its charging profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The charger will store the next RFID tag it detects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enabled</source>
+        <translation type="unfinished">Etkin</translation>
+    </message>
+    <message>
+        <source>Charging profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max charging current (A)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EV chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This RFID tag is not available on any EV charger for the selected user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Technical details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID hash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsaved RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RootItem</name>
     <message>
         <source>Connection error</source>
@@ -6906,6 +7308,14 @@ Do you want to proceed?</source>
         <source>Manage system configuration backup</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>RFID charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage RFID tags for charger authorization</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -7457,6 +7867,26 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     </message>
     <message>
         <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automation: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automation</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -8094,6 +8524,22 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     <message>
         <source>Optional</source>
         <translation type="unfinished">İsteğe bağlı</translation>
+    </message>
+    <message>
+        <source>User not added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The user has not been added yet. Do you want to discard the changes or return to editing?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
