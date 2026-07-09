@@ -49,6 +49,15 @@ There is an additional make target named "wininstaller" available. You need to
 have windeployqt and binarycreator (from Qt Install Framework 3.0) in your
 system's Path.
 
+To create a standalone zip archive from the deployed Windows package data after
+running `wininstaller`, use:
+
+    powershell -NoProfile -ExecutionPolicy Bypass -File packaging\windows\create-standalone-zip.ps1
+
+The script detects the package data directory created by the current build, so
+it works for the default package and for overlay brandings with their own
+package path and package id.
+
 # Running the tests
 
 Required Packages:
