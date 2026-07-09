@@ -218,7 +218,7 @@ else()
     message(WARNING "Qt6::GuiPrivate not found; continuing without private GUI APIs.")
 endif()
 
-if(UNIX AND NOT APPLE AND NYMEA_ENABLE_ZEROCONF)
+if(UNIX AND NOT APPLE AND NOT ANDROID AND NYMEA_ENABLE_ZEROCONF)
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(AVAHI REQUIRED IMPORTED_TARGET avahi-client)
     target_link_libraries(nymea-app PRIVATE PkgConfig::AVAHI)
