@@ -71,6 +71,18 @@ if (-not $packageData) {
 if ($installer) {
     $zipBaseName = $installer.BaseName
     Write-Host ("Using installer: " + $installer.FullName)
+
+    $installerDestination = Join-Path $workspacePath $installer.Name
+    if ([System.IO.Path]::GetFullPath($installer.FullName) -ieq [System.IO.Path]::GetFullPath($installerDestination)) {
+        Write-Host ("Installer already in workspace root: " + $installerDestination)
+    } else {
+        Write-Host ("Copying installer to workspace root: " + $installerDestination)
+        Copy-Item -LiteralPath $installer.FullName -Destination $installerDestination -Force
+    }
+
+    if (-not (Test-Path -LiteralPath $installerDestination -PathType Leaf)) {
+        throw "Failed to copy Windows installer EXE to workspace root: $installerDestination"
+    }
 } else {
     $versionFile = Join-Path $workspacePath "version.txt"
     if (Test-Path -LiteralPath $versionFile) {
