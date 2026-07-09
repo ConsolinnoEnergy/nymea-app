@@ -1,3 +1,12 @@
+nymea-app (1.13.8) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add RFID experience
+  * Windows: Update installer and improve build process
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 16:01:47 +0200
+
 nymea-app (1.13.7) bionic; urgency=medium
 
   [ Simon Stürz ]
