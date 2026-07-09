@@ -1,3 +1,10 @@
+nymea-app (1.13.11) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 21:22:34 +0200
+
 nymea-app (1.13.10) bionic; urgency=medium
 
   [ Simon Stürz ]
