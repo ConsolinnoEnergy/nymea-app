@@ -5219,16 +5219,8 @@ Use a timeout value greater or equal to 10 ms.</source>
         <translation>연결 끊기</translation>
     </message>
     <message>
-        <source>Disabling networking will disconnect all connected clients. Be aware that you will not be able to interact remotely with this %1 system any more. Do not proceed unless you know what your are doing.</source>
-        <translation>네트워킹을 사용하지 않도록 설정하면 연결된 모든 클라이언트의 연결이 끊어집니다. 이 %1 시스템과 더 이상 원격으로 상호 작용할 수 없다는 점에 유의하십시오. 당신이 무엇을 하고 있는지 모른다면 진행하지 마십시오.</translation>
-    </message>
-    <message>
         <source>Do you want to proceed?</source>
         <translation>계속하시겠습니까?</translation>
-    </message>
-    <message>
-        <source>Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.</source>
-        <translation>WiFi를 비활성화하면 WiFi를 통해 연결된 모든 클라이언트의 연결이 끊어집니다. LAN 케이블이 연결되어 있지 않으면 이 %1 시스템과 더 이상 원격으로 상호 작용할 수 없다는 점에 유의하십시오.</translation>
     </message>
     <message>
         <source>General</source>
@@ -5370,6 +5362,34 @@ Use a timeout value greater or equal to 10 ms.</source>
         <source>This feature is not supported on this platform.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Disabling networking will disconnect all connected clients and may make this %1 system inaccessible from this app. Do not proceed unless you have another way to access the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure LAN network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure the dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling WiFi will disconnect all clients connected via WiFi and may make this %1 system inaccessible from this app unless another network connection is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnect network interface?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this is the LAN or WAN interface currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this interface is currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NewMagicPage</name>
@@ -5432,6 +5452,105 @@ Use a timeout value greater or equal to 10 ms.</source>
     </message>
     <message>
         <source>Install plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NgwSettingsPage</name>
+    <message>
+        <source>LAN network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An unexpected error happened while updating the LAN configuration.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable dedicated LAN?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling the dedicated LAN may make this %1 system inaccessible from clients connected through the LAN interface. Do not proceed unless another network path is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to proceed?</source>
+        <translation type="unfinished">계속하시겠습니까?</translation>
+    </message>
+    <message>
+        <source>The dedicated LAN creates a separate local network on this system. When enabled, gateway services and internet sharing can be configured for devices connected to that LAN.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dedicated LAN enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run a separate, dedicated local network on this system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gateway services access</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Which nymea services can be reached from the dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nymea services only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All ports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internet sharing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share this system&apos;s internet connection with the dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status: enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status: disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LAN interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WAN interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LAN subnet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LAN address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DHCP range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configured gateway ports</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
