@@ -452,6 +452,9 @@ void PlatformHelperAndroid::imeHeightChangedJNI(JNIEnv*, jobject, jint heightPx)
         qreal dpr = screen ? screen->devicePixelRatio() : 1.0;
         if (dpr <= 0.0)
             dpr = 1.0;
-        instance->setImeHeight(qRound(heightPx / dpr));
+        int logicalHeight = qRound(heightPx / dpr);
+        qDebug() << "PlatformHelperAndroid: imeHeightChanged heightPx=" << heightPx
+                 << "dpr=" << dpr << "logical=" << logicalHeight;
+        instance->setImeHeight(logicalHeight);
     }, Qt::QueuedConnection);
 }

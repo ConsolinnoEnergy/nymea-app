@@ -111,12 +111,25 @@ Page {
             if (PlatformHelper.imeHeight <= 0)
                 return
             var focused = Window.activeFocusItem
-            if (!focused)
+            if (!focused) {
+                console.log("SettingsPageBase: heightChanged, imeHeight=" + PlatformHelper.imeHeight
+                            + " flickable.height=" + flickable.height
+                            + " — no activeFocusItem")
                 return
+            }
             var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
             var visibleBottom = flickable.contentY + flickable.height
+            console.log("SettingsPageBase: heightChanged"
+                        + " imeHeight=" + PlatformHelper.imeHeight
+                        + " flickable.height=" + flickable.height
+                        + " contentY=" + flickable.contentY
+                        + " itemBottom=" + itemBottom
+                        + " visibleBottom=" + visibleBottom
+                        + " focused=" + focused)
             if (itemBottom > visibleBottom) {
-                flickable.contentY = itemBottom - flickable.height + Style.margins
+                var newContentY = itemBottom - flickable.height + Style.margins
+                console.log("SettingsPageBase: scrolling to contentY=" + newContentY)
+                flickable.contentY = newContentY
             }
         }
 
