@@ -111,30 +111,15 @@ Page {
             if (PlatformHelper.imeHeight <= 0)
                 return
             var focused = Window.activeFocusItem
-            if (!focused) {
-                console.log("SettingsPageBase: heightChanged, imeHeight=" + PlatformHelper.imeHeight
-                            + " flickable.height=" + flickable.height
-                            + " — no activeFocusItem")
+            if (!focused)
                 return
-            }
             var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
             // Subtract navigationFooterHeight: the nav bar overlaps the bottom
             // of the Flickable and is not part of the usable visible area.
             var usableHeight = flickable.height - root.navigationFooterHeight
             var visibleBottom = flickable.contentY + usableHeight
-            console.log("SettingsPageBase: heightChanged"
-                        + " imeHeight=" + PlatformHelper.imeHeight
-                        + " flickable.height=" + flickable.height
-                        + " navFooter=" + root.navigationFooterHeight
-                        + " usableHeight=" + usableHeight
-                        + " contentY=" + flickable.contentY
-                        + " itemBottom=" + itemBottom
-                        + " visibleBottom=" + visibleBottom
-                        + " focused=" + focused)
             if (itemBottom > visibleBottom) {
-                var newContentY = itemBottom - usableHeight + Style.margins
-                console.log("SettingsPageBase: scrolling to contentY=" + newContentY)
-                flickable.contentY = newContentY
+                flickable.contentY = itemBottom - usableHeight + Style.margins
             }
         }
 
