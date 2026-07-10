@@ -103,21 +103,20 @@ Page {
             }
         }
 
-        Connections {
-            target: PlatformHelper
-            function onImeHeightChanged() {
-                if (PlatformHelper.imeHeight <= 0)
-                    return
-                var focused = Window.activeFocusItem
-                if (!focused)
-                    return
-                // Map the bottom edge of the focused item into contentColumn coordinates,
-                // then scroll just enough to keep it above the (now-shrunk) viewport.
-                var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
-                var visibleBottom = flickable.contentY + flickable.height
-                if (itemBottom > visibleBottom) {
-                    flickable.contentY = itemBottom - flickable.height + Style.margins
-                }
+        // When the keyboard is visible, the Flickable shrinks via a 130 ms
+        // animation on KeyboardLoader.implicitHeight. React to heightChanged
+        // (fired throughout the animation) so the focused item is scrolled
+        // into view as soon as the viewport is small enough to obscure it.
+        onHeightChanged: {
+            if (PlatformHelper.imeHeight <= 0)
+                return
+            var focused = Window.activeFocusItem
+            if (!focused)
+                return
+            var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
+            var visibleBottom = flickable.contentY + flickable.height
+            if (itemBottom > visibleBottom) {
+                flickable.contentY = itemBottom - flickable.height + Style.margins
             }
         }
 
