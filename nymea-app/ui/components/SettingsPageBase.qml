@@ -103,6 +103,24 @@ Page {
             }
         }
 
+        Connections {
+            target: PlatformHelper
+            function onImeHeightChanged() {
+                if (PlatformHelper.imeHeight <= 0)
+                    return
+                var focused = Window.activeFocusItem
+                if (!focused)
+                    return
+                // Map the bottom edge of the focused item into contentColumn coordinates,
+                // then scroll just enough to keep it above the (now-shrunk) viewport.
+                var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
+                var visibleBottom = flickable.contentY + flickable.height
+                if (itemBottom > visibleBottom) {
+                    flickable.contentY = itemBottom - flickable.height + Style.margins
+                }
+            }
+        }
+
         ColumnLayout {
             id: contentColumn
             anchors.horizontalCenter: parent.horizontalCenter
