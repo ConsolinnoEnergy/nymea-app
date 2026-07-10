@@ -4,7 +4,7 @@ nymea-app (1.13.12) bionic; urgency=medium
   * Fix windows standalone script for copying the final installer
   * Add NGW experience in to the network settings
 
- -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 21:50:25 +0200
+ -- jenkins <developer@nymea.io>  Fri, 10 Jul 2026 14:47:39 +0200
 
 nymea-app (1.13.11) bionic; urgency=medium
 
