@@ -91,8 +91,15 @@ public class NymeaAppActivity extends QtActivity
                 WindowInsetsCompat insetsCompat = ViewCompat.getRootWindowInsets(decorView);
                 int imeHeightPx = 0;
                 if (insetsCompat != null) {
-                    androidx.core.graphics.Insets imeInsets = insetsCompat.getInsets(WindowInsetsCompat.Type.ime());
-                    imeHeightPx = imeInsets.bottom;
+                    int imeBottom = insetsCompat.getInsets(WindowInsetsCompat.Type.ime()).bottom;
+                    if (imeBottom > 0) {
+                        // ime().bottom is measured from the physical screen bottom (decorView).
+                        // It therefore includes the navigation bar height when the nav bar sits
+                        // below the keyboard. Subtract it so we only report the keyboard area
+                        // that actually overlaps the app content.
+                        int navBarBottom = insetsCompat.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom;
+                        imeHeightPx = Math.max(0, imeBottom - navBarBottom);
+                    }
                 }
                 NymeaAppActivity.imeHeightChangedJNI(imeHeightPx);
             }
