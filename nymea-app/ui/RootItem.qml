@@ -63,9 +63,6 @@ Item {
     function openMagicSettings() {
         d.pushSettingsPage("MagicPage.qml")
     }
-    function openAppSettings() {
-        d.pushSettingsPage("appsettings/ConsolinnoAppSettingsPage.qml")
-    }
     function openSystemSettings() {
         var current = swipeView.currentItem
         if (!current) return
