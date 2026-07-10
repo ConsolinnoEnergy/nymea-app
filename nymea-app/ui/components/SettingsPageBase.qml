@@ -103,6 +103,26 @@ Page {
             }
         }
 
+        // When the keyboard is visible, the Flickable shrinks via a 130 ms
+        // animation on KeyboardLoader.implicitHeight. React to heightChanged
+        // (fired throughout the animation) so the focused item is scrolled
+        // into view as soon as the viewport is small enough to obscure it.
+        onHeightChanged: {
+            if (PlatformHelper.imeHeight <= 0)
+                return
+            var focused = Window.activeFocusItem
+            if (!focused)
+                return
+            var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
+            // Subtract navigationFooterHeight: the nav bar overlaps the bottom
+            // of the Flickable and is not part of the usable visible area.
+            var usableHeight = flickable.height - root.navigationFooterHeight
+            var visibleBottom = flickable.contentY + usableHeight
+            if (itemBottom > visibleBottom) {
+                flickable.contentY = itemBottom - usableHeight + Style.margins
+            }
+        }
+
         ColumnLayout {
             id: contentColumn
             anchors.horizontalCenter: parent.horizontalCenter

@@ -56,6 +56,7 @@ class PlatformHelper : public QObject
     Q_PROPERTY(int bottomPadding READ bottomPadding NOTIFY bottomPaddingChanged)
     Q_PROPERTY(int leftPadding READ leftPadding NOTIFY leftPaddingChanged)
     Q_PROPERTY(int rightPadding READ rightPadding NOTIFY rightPaddingChanged)
+    Q_PROPERTY(int imeHeight READ imeHeight NOTIFY imeHeightChanged)
 
 public:
     enum HapticsFeedback {
@@ -90,6 +91,7 @@ public:
     virtual int bottomPadding() const;
     virtual int leftPadding() const;
     virtual int rightPadding() const;
+    virtual int imeHeight() const;
 
     virtual bool darkModeEnabled() const;
 
@@ -127,10 +129,12 @@ signals:
     void bottomPaddingChanged();
     void leftPaddingChanged();
     void rightPaddingChanged();
+    void imeHeightChanged();
 
 protected:
     explicit PlatformHelper(QObject *parent = nullptr);
     void setSafeAreaPadding(int top, int right, int bottom, int left);
+    void setImeHeight(int height);
 
 private:
     static PlatformHelper *s_instance;
@@ -146,6 +150,7 @@ private:
     int m_bottomPadding = 0;
     int m_leftPadding = 0;
     int m_rightPadding = 0;
+    int m_imeHeight = 0;
 };
 
 #endif // PLATFORMHELPER_H
