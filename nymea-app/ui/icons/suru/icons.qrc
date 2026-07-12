@@ -278,6 +278,8 @@
         <file>icons/zigbee/zigbee-sibling.svg</file>
         <file>icons/zigbee/zigbee-previous-child.svg</file>
         <file>icons/arrow-down.svg</file>
+        <file>icons/setp-down.svg</file>
+        <file>icons/step-up.svg</file>
         <file>icons/sensors/voc.svg</file>
         <file>icons/sensors/pm25.svg</file>
         <file>icons/sensors/o3.svg</file>
