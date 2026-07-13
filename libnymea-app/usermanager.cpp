@@ -104,13 +104,16 @@ int UserManager::createUser(const QString &username, const QString &password, co
         params.insert("displayName", displayName);
         params.insert("email", email);
 
-        // Backports compatibility for pre 8.4
-        UserInfo::PermissionScopes scopes = static_cast<UserInfo::PermissionScopes>(permissionScopes);
+        // Backports compatibility for pre 8.4: remove AccessAllThings from the list.
+        // NOTE: Do NOT use setFlag() on the scopes value before calling scopesToList(), because
+        // PermissionScopeAdmin (0xFFFF) is a composite "all bits" sentinel. Clearing any single
+        // bit (e.g. AccessAllThings = 0x0004) produces 0xFFFB, which causes testFlag(Admin) to
+        // return false and "PermissionScopeAdmin" to be silently dropped from the output list.
+        QStringList scopeList = UserInfo::scopesToList(static_cast<UserInfo::PermissionScopes>(permissionScopes));
         if (!m_engine->jsonRpcClient()->ensureServerVersion("8.4"))
-            scopes.setFlag(UserInfo::PermissionScopeAccessAllThings, false);
+            scopeList.removeAll("PermissionScopeAccessAllThings");
 
-
-        params.insert("scopes", UserInfo::scopesToList(scopes));
+        params.insert("scopes", scopeList);
     }
 
     if (m_engine->jsonRpcClient()->ensureServerVersion("8.4") && !allowedThingIds.isEmpty()) {
@@ -153,12 +156,16 @@ int UserManager::setUserScopes(const QString &username, int scopes, const QList<
     QVariantMap params;
     params.insert("username", username);
 
-    // Backports compatibility for pre 8.4
-    UserInfo::PermissionScopes finalScopes = static_cast<UserInfo::PermissionScopes>(scopes);
+    // Backports compatibility for pre 8.4: remove AccessAllThings from the list.
+    // NOTE: Do NOT use setFlag() on the scopes value before calling scopesToList(), because
+    // PermissionScopeAdmin (0xFFFF) is a composite "all bits" sentinel. Clearing any single
+    // bit (e.g. AccessAllThings = 0x0004) produces 0xFFFB, which causes testFlag(Admin) to
+    // return false and "PermissionScopeAdmin" to be silently dropped from the output list.
+    QStringList finalScopeList = UserInfo::scopesToList(static_cast<UserInfo::PermissionScopes>(scopes));
     if (!m_engine->jsonRpcClient()->ensureServerVersion("8.4"))
-        finalScopes.setFlag(UserInfo::PermissionScopeAccessAllThings, false);
+        finalScopeList.removeAll("PermissionScopeAccessAllThings");
 
-    params.insert("scopes", UserInfo::scopesToList(finalScopes));
+    params.insert("scopes", finalScopeList);
 
     if (m_engine->jsonRpcClient()->ensureServerVersion("8.4")) {
         QVariantList thingIds;
