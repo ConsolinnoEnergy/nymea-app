@@ -278,6 +278,19 @@ void PlatformHelper::setImeHeight(int height)
     emit imeHeightChanged();
 }
 
+QString PlatformHelper::imeActionButtonText() const
+{
+    return m_imeActionButtonText;
+}
+
+void PlatformHelper::setImeActionButtonText(const QString &text)
+{
+    if (m_imeActionButtonText == text)
+        return;
+    m_imeActionButtonText = text;
+    emit imeActionButtonTextChanged();
+}
+
 void PlatformHelper::toClipBoard(const QString &text)
 {
     QApplication::clipboard()->setText(text);

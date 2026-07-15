@@ -57,6 +57,10 @@ class PlatformHelper : public QObject
     Q_PROPERTY(int leftPadding READ leftPadding NOTIFY leftPaddingChanged)
     Q_PROPERTY(int rightPadding READ rightPadding NOTIFY rightPaddingChanged)
     Q_PROPERTY(int imeHeight READ imeHeight NOTIFY imeHeightChanged)
+    // Title of the "dismiss keyboard" button shown in the iOS keyboard
+    // accessory bar for numeric keyboards (which have no return key). Set from
+    // QML with a translated string; ignored on platforms without such a bar.
+    Q_PROPERTY(QString imeActionButtonText READ imeActionButtonText WRITE setImeActionButtonText NOTIFY imeActionButtonTextChanged)
 
 public:
     enum HapticsFeedback {
@@ -92,6 +96,9 @@ public:
     virtual int leftPadding() const;
     virtual int rightPadding() const;
     virtual int imeHeight() const;
+
+    virtual QString imeActionButtonText() const;
+    virtual void setImeActionButtonText(const QString &text);
 
     virtual bool darkModeEnabled() const;
 
@@ -130,6 +137,10 @@ signals:
     void leftPaddingChanged();
     void rightPaddingChanged();
     void imeHeightChanged();
+    void imeActionButtonTextChanged();
+    // Emitted when the user taps the keyboard accessory "dismiss" button on
+    // iOS. Handled in QML by hiding the input panel and dropping focus.
+    void imeActionTriggered();
 
 protected:
     explicit PlatformHelper(QObject *parent = nullptr);
@@ -151,6 +162,7 @@ private:
     int m_leftPadding = 0;
     int m_rightPadding = 0;
     int m_imeHeight = 0;
+    QString m_imeActionButtonText;
 };
 
 #endif // PLATFORMHELPER_H

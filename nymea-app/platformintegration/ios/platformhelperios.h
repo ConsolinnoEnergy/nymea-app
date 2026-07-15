@@ -48,6 +48,8 @@ public:
     void setTopPanelColor(const QColor &color) override;
     void setBottomPanelColor(const QColor &color) override;
 
+    void setImeActionButtonText(const QString &text) override;
+
     bool darkModeEnabled() const override;
 
     void shareFile(const QString &fileName) override;
@@ -71,6 +73,12 @@ private:
     // Registers UIKit keyboard notification observers that keep
     // PlatformHelper::imeHeight in sync with the on-screen keyboard.
     void setupKeyboardObservers();
+
+    // Attaches or detaches the "dismiss" accessory bar (inputAccessoryView) on
+    // the active text responder depending on whether a numeric keyboard - which
+    // has no return key - is currently shown. No-op when the responder is not a
+    // Qt text input responder.
+    void updateKeyboardAccessory();
 };
 
 #endif // PLATFORMHELPERIOS_H
