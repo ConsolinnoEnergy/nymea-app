@@ -67,6 +67,10 @@ private:
 
     void applyPanelColors();
     void updateSafeAreaPadding();
+
+    // Registers UIKit keyboard notification observers that keep
+    // PlatformHelper::imeHeight in sync with the on-screen keyboard.
+    void setupKeyboardObservers();
 };
 
 #endif // PLATFORMHELPERIOS_H

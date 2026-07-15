@@ -211,6 +211,8 @@ PlatformHelperIOS::PlatformHelperIOS(QObject *parent) : PlatformHelper(parent)
         }
     });
     QTimer::singleShot(0, this, &PlatformHelperIOS::applyPanelColors);
+
+    setupKeyboardObservers();
 }
 
 void PlatformHelperIOS::hideSplashScreen()

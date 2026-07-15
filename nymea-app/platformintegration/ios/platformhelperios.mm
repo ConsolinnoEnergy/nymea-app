@@ -222,3 +222,59 @@ void PlatformHelperIOS::updateSafeAreaPadding()
     }
     setSafeAreaPadding(qRound(insets.top), qRound(insets.right), qRound(insets.bottom), qRound(insets.left));
 }
+
+void PlatformHelperIOS::setupKeyboardObservers()
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    // Fires for keyboard show, hide and any frame change (keyboard type
+    // switches, autocorrect bar, interactive drag-to-dismiss). We always
+    // recompute from the reported end frame.
+    [center addObserverForName:UIKeyboardWillChangeFrameNotification
+                        object:nil
+                         queue:[NSOperationQueue mainQueue]
+                    usingBlock:^(NSNotification *note) {
+        NSValue *frameValue = note.userInfo[UIKeyboardFrameEndUserInfoKey];
+        if (!frameValue) {
+            return;
+        }
+
+        UIWindow *window = activeWindow();
+        if (!window) {
+            return;
+        }
+
+        // The keyboard end frame is given in screen coordinates. Convert it
+        // into the window's coordinate space and intersect it with the window
+        // bounds so we only account for the part of the keyboard that actually
+        // overlaps the app content. This keeps split/floating keyboards, the
+        // hardware-keyboard accessory bar and multi-window (Stage Manager)
+        // layouts on iPad correct.
+        CGRect keyboardFrameScreen = [frameValue CGRectValue];
+        CGRect keyboardFrameInWindow = [window convertRect:keyboardFrameScreen fromWindow:nil];
+        CGRect overlapRect = CGRectIntersection(window.bounds, keyboardFrameInWindow);
+        CGFloat overlap = CGRectIsNull(overlapRect) ? 0.0 : overlapRect.size.height;
+
+        // UIKit works in points, which map 1:1 onto Qt's device independent
+        // pixels on iOS (QWindow/QScreen geometry is expressed in points there,
+        // with devicePixelRatio carrying the retina scale factor).
+        // PlatformHelper::imeHeight is likewise a device-independent-pixel
+        // value, so the point value is passed straight through.
+        //
+        // IMPORTANT: unlike the Android bridge - which receives *physical*
+        // pixels from WindowInsets and therefore divides by devicePixelRatio -
+        // we must NOT scale here. Dividing by devicePixelRatio would report a
+        // keyboard height that is 2-3x too small on retina devices. This
+        // mirrors updateSafeAreaPadding(), which also forwards UIKit points
+        // unscaled.
+        this->setImeHeight(qRound(overlap));
+    }];
+
+    // Guarantee a return to zero once the keyboard is fully dismissed.
+    [center addObserverForName:UIKeyboardWillHideNotification
+                        object:nil
+                         queue:[NSOperationQueue mainQueue]
+                    usingBlock:^(NSNotification *) {
+        this->setImeHeight(0);
+    }];
+}

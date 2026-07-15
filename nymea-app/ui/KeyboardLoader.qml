@@ -30,12 +30,22 @@ Item {
     id: root
     implicitHeight: d.active
                     ? d.kbd.height
-                    : Math.max(
-                        PlatformHelper.imeHeight,
-                        Qt.inputMethod.visible
-                            ? Math.max(0, Qt.inputMethod.keyboardRectangle.height / Screen.devicePixelRatio)
-                            : 0
-                      )
+                    : Qt.platform.os === "ios"
+                        // On iOS PlatformHelperIOS observes the UIKit keyboard
+                        // notifications and reports an authoritative imeHeight
+                        // (in device independent pixels). Prefer it over
+                        // Qt.inputMethod.keyboardRectangle, which is unreliable
+                        // there: it reports 0 for some keyboards (e.g. the
+                        // numeric pad, hiding the Quick-Nav bar) and an oversized
+                        // rectangle on newer iOS versions (leaving a gap between
+                        // the content and the keyboard).
+                        ? PlatformHelper.imeHeight
+                        : Math.max(
+                            PlatformHelper.imeHeight,
+                            Qt.inputMethod.visible
+                                ? Math.max(0, Qt.inputMethod.keyboardRectangle.height / Screen.devicePixelRatio)
+                                : 0
+                          )
 
 
     Behavior on implicitHeight { NumberAnimation { duration: 130; easing.type: Easing.InOutQuad } }
