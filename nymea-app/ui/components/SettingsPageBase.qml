@@ -48,6 +48,7 @@ Page {
         id: coHeader
         anchors { left: parent.left; right: parent.right; top: parent.top }
         z: 1
+        visible: header === null
         blurSource: flickable
         text: root.headerText
         backButtonVisible: root.headerBackButtonVisible
@@ -83,7 +84,7 @@ Page {
     Flickable {
         id: flickable
         anchors.fill: parent
-        topMargin: coHeader.height
+        topMargin: coHeader.visible ? coHeader.height : 0
         contentHeight: contentColumn.height + Style.margins + root.navigationFooterHeight
         clip: true
 
@@ -96,6 +97,7 @@ Page {
         Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
         Connections {
             target: coHeader
+            enabled: coHeader.visible
             function onHeightChanged() {
                 if (flickable.contentY > -coHeader.height && flickable.contentY <= 0) {
                     flickable.contentY = -coHeader.height
