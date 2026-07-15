@@ -226,6 +226,20 @@ endif()
 
 if(WIN32)
     target_compile_definitions(nymea-app PRIVATE NOMINMAX)
+
+    # Embed the app icon so it appears in the Windows taskbar and Explorer.
+    # The old qmake build achieved this via RC_ICONS; CMake requires an explicit
+    # Windows resource file (.rc) to be compiled into the executable.
+    # Pass -DNYMEA_WINDOWS_APP_ICON=<path-to-icon.ico> to enable this.
+    if(NYMEA_WINDOWS_APP_ICON AND EXISTS "${NYMEA_WINDOWS_APP_ICON}")
+        # Copy the icon next to the generated .rc so rc.exe can resolve it by filename.
+        configure_file("${NYMEA_WINDOWS_APP_ICON}" "${CMAKE_CURRENT_BINARY_DIR}/app_icon.ico" COPYONLY)
+        file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/app_icon.rc" "IDI_ICON1 ICON \"app_icon.ico\"\n")
+        target_sources(nymea-app PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/app_icon.rc")
+    elseif(NYMEA_WINDOWS_APP_ICON)
+        message(WARNING "NYMEA_WINDOWS_APP_ICON is set to '${NYMEA_WINDOWS_APP_ICON}' but the file does not exist — "
+            "the executable will show the generic Windows icon in the taskbar.")
+    endif()
 endif()
 
 if(ANDROID)
