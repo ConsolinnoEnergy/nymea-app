@@ -112,6 +112,30 @@
         <source>App version:</source>
         <translation>App verze:</translation>
     </message>
+    <message>
+        <source>Suru icons by Ubuntu</source>
+        <translation type="unfinished">Ikony Suru z Ubuntu</translation>
+    </message>
+    <message>
+        <source>Ubuntu font by Ubuntu</source>
+        <translation type="unfinished">Písmo Ubuntu</translation>
+    </message>
+    <message>
+        <source>QtZeroConf library by Jonathan Bagg</source>
+        <translation type="unfinished">Knihovna QtZeroConf od Jonathana Bagga</translation>
+    </message>
+    <message>
+        <source>OpenSSL libraries by Eric Young</source>
+        <translation type="unfinished">Knihovna OpenSSL od Erica Younga</translation>
+    </message>
+    <message>
+        <source>Oswald font by The Oswald Project</source>
+        <translation type="unfinished">Písmo Oswald z &quot;The Oswald Project&quot;</translation>
+    </message>
+    <message>
+        <source>Revision:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActionLogPage</name>
@@ -2085,6 +2109,57 @@
     </message>
 </context>
 <context>
+    <name>EvDashSettingsPage</name>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove user</source>
+        <translation type="unfinished">Odebrat uživatele</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given username is already in use. Please choose a different username.</source>
+        <translation type="unfinished">Dané uživatelské jméno se již používá. Vyberte prosím jiné uživatelské jméno.</translation>
+    </message>
+    <message>
+        <source>The given password is not valid.</source>
+        <translation type="unfinished">Zadané heslo není platné.</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
+        <translation type="unfinished">Při vytváření uživatele došlo k neočekávané chybě. Je nám to líto. (Kód chyby: %1)</translation>
+    </message>
+    <message>
+        <source>Create a new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Add user</source>
+        <translation type="unfinished">Přidat uživatele</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashboard enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage users</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EventDescriptorDelegate</name>
     <message>
         <source>anytime</source>
@@ -2661,10 +2736,6 @@ Prosím zkuste to znovu.</translation>
     </message>
     <message>
         <source>Google fonts and material icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chargebyte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3756,6 +3827,13 @@ Prosím zkuste to znovu.</translation>
     </message>
 </context>
 <context>
+    <name>KeyboardLoader</name>
+    <message>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LightThingPage</name>
     <message>
         <source>Color</source>
@@ -3911,18 +3989,6 @@ Prosím zkuste to znovu.</translation>
     <message>
         <source>In order to use your %1 system, please create an account.</source>
         <translation>Abyste mohli používat svůj systém %1, vytvořte si účet.</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Uživatelské jméno</translation>
-    </message>
-    <message>
-        <source>Your e-mail address</source>
-        <translation>Vaše e-mailová adresa</translation>
-    </message>
-    <message>
-        <source>Required</source>
-        <translation>Povinné</translation>
     </message>
     <message>
         <source>Password</source>
@@ -4109,14 +4175,6 @@ Prosím zkuste to znovu.</translation>
         <translation>Nastavení hlavního pohledu</translation>
     </message>
     <message>
-        <source>App settings</source>
-        <translation type="vanished">Nastavení aplikací</translation>
-    </message>
-    <message>
-        <source>System settings</source>
-        <translation type="vanished">Nastavení systému</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>Nové připojení</translation>
     </message>
@@ -4156,18 +4214,6 @@ Prosím zkuste to znovu.</translation>
         <translation>Scény</translation>
     </message>
     <message>
-        <source>Connected to</source>
-        <translation>Připojen k</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation>Odpojit</translation>
-    </message>
-    <message>
         <source>Groups</source>
         <translation>Skupiny</translation>
     </message>
@@ -4182,14 +4228,6 @@ Prosím zkuste to znovu.</translation>
     <message>
         <source>Media</source>
         <translation>Media</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="vanished">Hotovo</translation>
-    </message>
-    <message>
-        <source>Configure</source>
-        <translation type="vanished">Nastavit</translation>
     </message>
     <message>
         <source>Dashboard</source>
@@ -5457,6 +5495,34 @@ Použijte hodnotu časového limitu větší nebo rovnou 10 ms.</translation>
         <source>Configure magic</source>
         <translation>Nastavení &quot;kouzla&quot;</translation>
     </message>
+    <message>
+        <source>Full access to the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute actions and use things and services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new things and change settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute rules, scenes and scripts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create new rules and scripts in the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access all things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow to see and use all things of the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PackageDetailsPage</name>
@@ -5909,14 +5975,6 @@ Chcete pokračovat?</translation>
     <message>
         <source>Sorry, something went wrong during the setup. Try again please.</source>
         <translation>Je nám líto, během nastavování se něco pokazilo. Zkuste to prosím znovu.</translation>
-    </message>
-    <message>
-        <source>Authentication required</source>
-        <translation type="vanished">Vyžadováno ověření</translation>
-    </message>
-    <message>
-        <source>Please press the button on your %1 gateway to authenticate this device.</source>
-        <translation type="vanished">Chcete-li toto zařízení ověřit, stiskněte tlačítko na bráně %1.</translation>
     </message>
     <message>
         <source>Finish authentication</source>
@@ -6566,6 +6624,14 @@ Chcete pokračovat?</translation>
     <message>
         <source>Configure Z-Wave networks</source>
         <translation>Nastavení sítí Z-Wave</translation>
+    </message>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashboard settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7424,6 +7490,17 @@ Toto prosím používejte pouze v případě, že jste si jisti tím co děláte
     </message>
 </context>
 <context>
+    <name>UsernameTextField</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Your e-mail address</source>
+        <translation type="unfinished">Vaše e-mailová adresa</translation>
+    </message>
+</context>
+<context>
     <name>UsersSettingsPage</name>
     <message>
         <source>User settings</source>
@@ -7550,20 +7627,12 @@ Toto prosím používejte pouze v případě, že jste si jisti tím co děláte
         <translation>Přidat uživatele</translation>
     </message>
     <message>
-        <source>Username:</source>
-        <translation>Uživatelské jméno:</translation>
-    </message>
-    <message>
         <source>Password:</source>
         <translation>Heslo:</translation>
     </message>
     <message>
         <source>Full name:</source>
         <translation>Celé jméno:</translation>
-    </message>
-    <message>
-        <source>e-mail:</source>
-        <translation>E-Mail:</translation>
     </message>
     <message>
         <source>Create new user</source>
@@ -7587,6 +7656,26 @@ Toto prosím používejte pouze v případě, že jste si jisti tím co děláte
     </message>
     <message>
         <source>Authenticated user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accessable things for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acessable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allowed things for this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>things accessable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

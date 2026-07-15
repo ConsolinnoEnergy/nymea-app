@@ -112,6 +112,30 @@
         <source>App version:</source>
         <translation>Uygulama versiyon:</translation>
     </message>
+    <message>
+        <source>Suru icons by Ubuntu</source>
+        <translation type="unfinished">Ubuntu&apos;dan Suru simgeleri</translation>
+    </message>
+    <message>
+        <source>Ubuntu font by Ubuntu</source>
+        <translation type="unfinished">Ubuntu&apos;dan Ubuntu yazı tipi</translation>
+    </message>
+    <message>
+        <source>QtZeroConf library by Jonathan Bagg</source>
+        <translation type="unfinished">QtZeroConf kütüphanesi, Jonathan Bagg</translation>
+    </message>
+    <message>
+        <source>OpenSSL libraries by Eric Young</source>
+        <translation type="unfinished">Eric Young tarafından OpenSSL kütüphaneleri</translation>
+    </message>
+    <message>
+        <source>Oswald font by The Oswald Project</source>
+        <translation type="unfinished">Oswald yazı tipi by The Oswald Project</translation>
+    </message>
+    <message>
+        <source>Revision:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActionLogPage</name>
@@ -2080,6 +2104,57 @@
     </message>
 </context>
 <context>
+    <name>EvDashSettingsPage</name>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove user</source>
+        <translation type="unfinished">Kullanıcıyı kaldır</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given username is already in use. Please choose a different username.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given password is not valid.</source>
+        <translation type="unfinished">Verilen şifre geçerli değil.</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Kullanıcı adı</translation>
+    </message>
+    <message>
+        <source>Add user</source>
+        <translation type="unfinished">Kullanıcı Ekle</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">İptal</translation>
+    </message>
+    <message>
+        <source>Dashboard enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage users</source>
+        <translation type="unfinished">Kullanıcıları Yönet</translation>
+    </message>
+</context>
+<context>
     <name>EventDescriptorDelegate</name>
     <message>
         <source>anytime</source>
@@ -2641,10 +2716,6 @@ Please try again.</source>
     </message>
     <message>
         <source>Google fonts and material icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chargebyte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3716,6 +3787,13 @@ Please try again.</source>
     </message>
 </context>
 <context>
+    <name>KeyboardLoader</name>
+    <message>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LightThingPage</name>
     <message>
         <source>Color</source>
@@ -3870,18 +3948,6 @@ Please try again.</source>
     </message>
     <message>
         <source>In order to use your %1 system, please create an account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Kullanıcı adı</translation>
-    </message>
-    <message>
-        <source>Your e-mail address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4069,14 +4135,6 @@ Please try again.</source>
         <translation>Ana görünümü yapılandır</translation>
     </message>
     <message>
-        <source>App settings</source>
-        <translation type="vanished">Uygulama ayarları</translation>
-    </message>
-    <message>
-        <source>System settings</source>
-        <translation type="vanished">Sistem ayarları</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>Yeni bağlantı</translation>
     </message>
@@ -4116,18 +4174,6 @@ Please try again.</source>
         <translation>Veri yükleniyor...</translation>
     </message>
     <message>
-        <source>Connected to</source>
-        <translation>Bağlı</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>tamam</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation>bağlantıyı kes</translation>
-    </message>
-    <message>
         <source>Groups</source>
         <translation>Gruplar</translation>
     </message>
@@ -4142,14 +4188,6 @@ Please try again.</source>
     <message>
         <source>Media</source>
         <translation>medya</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="vanished">Tamamlandı</translation>
-    </message>
-    <message>
-        <source>Configure</source>
-        <translation type="vanished">Yapılandır</translation>
     </message>
     <message>
         <source>Dashboard</source>
@@ -5413,6 +5451,34 @@ Use a timeout value greater or equal to 10 ms.</source>
         <source>Configure magic</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Full access to the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute actions and use things and services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new things and change settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute rules, scenes and scripts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create new rules and scripts in the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access all things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow to see and use all things of the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PackageDetailsPage</name>
@@ -6513,6 +6579,14 @@ Do you want to proceed?</source>
         <source>Configure Z-Wave networks</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashboard settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -7367,6 +7441,17 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     </message>
 </context>
 <context>
+    <name>UsernameTextField</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Kullanıcı adı</translation>
+    </message>
+    <message>
+        <source>Your e-mail address</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UsersSettingsPage</name>
     <message>
         <source>User settings</source>
@@ -7493,19 +7578,11 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Username:</source>
-        <translation>Kullanıcı adı:</translation>
-    </message>
-    <message>
         <source>Password:</source>
         <translation>Şifre:</translation>
     </message>
     <message>
         <source>Full name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>e-mail:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7531,6 +7608,26 @@ Lütfen bunu istediğinizden eminseniz kullanın ve yayınlanmamış kanalları 
     <message>
         <source>Authenticated user</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accessable things for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acessable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allowed things for this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>things accessable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional</source>
+        <translation type="unfinished">İsteğe bağlı</translation>
     </message>
 </context>
 <context>

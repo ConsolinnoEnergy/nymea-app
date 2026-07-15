@@ -56,7 +56,7 @@ Item {
     Binding {
         target: PlatformHelper
         property: "imeActionButtonText"
-        value: qsTr("Ok")
+        value: qsTr("Done")
     }
 
     // Neutral focus target. Numeric keyboards on iOS have no return key, so the
