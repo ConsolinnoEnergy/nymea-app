@@ -138,7 +138,7 @@ void ThingManager::notificationReceived(const QVariantMap &data)
     } else if (notification == "Integrations.ThingAdded") {
         Thing *thing = unpackThing(this, data.value("params").toMap().value("thing").toMap(), m_thingClasses);
         if (!thing) {
-            qWarning() << "Cannot parse thing json:" << data;
+            qCWarning(dcThingManager()) << "Cannot parse thing json:" << data;
             return;
         }
         ThingClass *thingClass = thingClasses()->getThingClass(thing->thingClassId());
@@ -155,7 +155,7 @@ void ThingManager::notificationReceived(const QVariantMap &data)
 //        qDebug() << "JsonRpc: Notification: Thing removed" << thingId.toString();
         Thing *thing = m_things->getThing(thingId);
         if (!thing) {
-            qWarning() << "Received a ThingRemoved notification for a thing we don't know!";
+            qCWarning(dcThingManager()) << "Received a ThingRemoved notification for a thing we don't know!";
             return;
         }
         m_things->removeThing(thing);
@@ -166,11 +166,11 @@ void ThingManager::notificationReceived(const QVariantMap &data)
         qCDebug(dcThingManager()) << "Thing changed notification" << thingId << data.value("params").toMap();
         Thing *oldThing = m_things->getThing(thingId);
         if (!oldThing) {
-            qWarning() << "Received a thing changed notification for a thing we don't know";
+            qCWarning(dcThingManager()) << "Received a thing changed notification for a thing we don't know";
             return;
         }
         if (!unpackThing(this, data.value("params").toMap().value("thing").toMap(), m_thingClasses, oldThing)) {
-            qWarning() << "Error parsing thing changed notification" << data;
+            qCWarning(dcThingManager()) << "Error parsing thing changed notification" << data;
             return;
         }
     } else if (notification == "Integrations.ThingSettingChanged") {
@@ -180,12 +180,12 @@ void ThingManager::notificationReceived(const QVariantMap &data)
 //        qDebug() << "Thing settings changed notification for thing" << thingId << data.value("params").toMap().value("settings").toList();
         Thing *thing = m_things->getThing(thingId);
         if (!thing) {
-            qWarning() << "Thing settings changed notification for a thing we don't know" << thingId.toString();
+            qCWarning(dcThingManager()) << "Thing settings changed notification for a thing we don't know" << thingId.toString();
             return;
         }
         Param *p = thing->settings()->getParam(paramTypeId);
         if (!p) {
-            qWarning() << "Thing" << thing->name() << thing->id().toString() << "does not have a setting of id" << paramTypeId;
+            qCWarning(dcThingManager()) << "Thing" << thing->name() << thing->id().toString() << "does not have a setting of id" << paramTypeId;
             return;
         }
         p->setValue(value);
@@ -216,12 +216,12 @@ void ThingManager::notificationReceived(const QVariantMap &data)
     } else if (notification == "Integrations.IOConnectionRemoved") {
         QUuid connectionId = data.value("params").toMap().value("ioConnectionId").toUuid();
         if (!m_ioConnections->getIOConnection(connectionId)) {
-            qWarning() << "Received an IO connection removed event for an IO connection we don't know.";
+            qCWarning(dcThingManager()) << "Received an IO connection removed event for an IO connection we don't know.";
             return;
         }
         m_ioConnections->removeIOConnection(connectionId);
     } else {
-        qWarning() << "ThingManager unhandled thing notification received" << notification;
+        qCWarning(dcThingManager()) << "ThingManager unhandled thing notification received" << notification;
     }
 }
 
@@ -273,7 +273,7 @@ void ThingManager::getThingsResponse(int /*commandId*/, const QVariantMap &param
         foreach (QVariant thingVariant, thingsList) {
             Thing *thing = unpackThing(this, thingVariant.toMap(), m_thingClasses);
             if (!thing) {
-                qWarning() << "Error unpacking thing" << thingVariant.toMap().value("name").toString();
+                qCWarning(dcThingManager()) << "Error unpacking thing" << thingVariant.toMap().value("name").toString();
                 continue;
             }
 
@@ -283,7 +283,7 @@ void ThingManager::getThingsResponse(int /*commandId*/, const QVariantMap &param
                 QUuid stateTypeId = stateMap.toMap().value("stateTypeId").toUuid();
                 StateType *st = thing->thingClass()->stateTypes()->getStateType(stateTypeId);
                 if (!st) {
-                    qWarning() << "Can't find a statetype for this state";
+                    qCWarning(dcThingManager()) << "Can't find a statetype for this state";
                     continue;
                 }
                 QVariant value = stateMap.toMap().value("value");
@@ -301,7 +301,7 @@ void ThingManager::getThingsResponse(int /*commandId*/, const QVariantMap &param
         }
         things()->addThings(newThings);
     }
-    qDebug() << "Initializing thing manager took" << m_connectionBenchmark.msecsTo(QDateTime::currentDateTime()) << "ms";
+    qCInfo(dcThingManager()) << "Initializing thing manager took" << m_connectionBenchmark.msecsTo(QDateTime::currentDateTime()) << "ms";
     m_fetchingData = false;
     emit fetchingDataChanged();
 
@@ -312,16 +312,16 @@ void ThingManager::getThingsResponse(int /*commandId*/, const QVariantMap &param
 
 void ThingManager::addThingResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Error from string:" << errorFromString(params.value("thingError").toByteArray()) << params.value("thingError");
+    qCDebug(dcThingManager()) << "Add thing response:" << errorFromString(params.value("thingError").toByteArray()) << params.value("thingError");
     emit addThingReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("thingId").toUuid(), params.value("displayMessage").toString());
 
     if (params.value("thingError").toString() != "ThingErrorNoError") {
-        qWarning() << "Failed to add thing:" << params.value("thingError").toString();
+        qCWarning(dcThingManager()) << "Failed to add thing:" << params.value("thingError").toString();
     } else if (params.keys().contains("thing")) {
         QVariantMap thingVariant = params.value("thing").toMap();
         Thing *thing = unpackThing(this, thingVariant, m_thingClasses);
         if (!thing) {
-            qWarning() << "Couldn't parse json in addThingResponse";
+            qCWarning(dcThingManager()) << "Couldn't parse json in addThingResponse";
             return;
         }
 
@@ -332,7 +332,7 @@ void ThingManager::addThingResponse(int commandId, const QVariantMap &params)
 
 void ThingManager::removeThingResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Thing removed response" << params;
+    qCDebug(dcThingManager()) << "Thing removed response" << params;
     emit removeThingReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("ruleIds").toStringList());
 }
 
@@ -348,19 +348,19 @@ void ThingManager::pairThingResponse(int commandId, const QVariantMap &params)
 
 void ThingManager::confirmPairingResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "ConfirmPairingResponse" << params;
+    qCDebug(dcThingManager()) << "ConfirmPairingResponse" << params;
     emit confirmPairingReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("thingId").toUuid(), params.value("displayMessage").toString());
 }
 
 void ThingManager::setPluginConfigResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "set plugin config response" << params;
+    qCDebug(dcThingManager()) << "set plugin config response" << params;
     emit savePluginConfigReply(commandId, errorFromString(params.value("thingError").toByteArray()));
 }
 
 void ThingManager::editThingResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Edit thing response" << params;
+    qCDebug(dcThingManager()) << "Edit thing response" << params;
     emit editThingReply(commandId, errorFromString(params.value("thingError").toByteArray()));
 }
 
@@ -372,7 +372,7 @@ void ThingManager::executeActionResponse(int commandId, const QVariantMap &param
 
 void ThingManager::reconfigureThingResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Reconfigure device response" << params;
+    qCDebug(dcThingManager()) << "Reconfigure device response" << params;
     emit reconfigureThingReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("displayMessage").toString());
 }
 
@@ -414,7 +414,7 @@ int ThingManager::pairThing(const QUuid &thingClassId, const QVariantList &thing
 
 int ThingManager::rePairThing(const QUuid &thingId, const QVariantList &thingParams, const QString &name)
 {
-    qDebug() << "JsonRpc: pair thing (reconfigure)" << thingId;
+    qCDebug(dcThingManager()) << "JsonRpc: pair thing (reconfigure)" << thingId;
     QVariantMap params;
     params.insert("thingId", thingId.toString());
     params.insert("thingParams", thingParams);
@@ -426,7 +426,7 @@ int ThingManager::rePairThing(const QUuid &thingId, const QVariantList &thingPar
 
 int ThingManager::confirmPairing(const QUuid &pairingTransactionId, const QString &secret, const QString &username)
 {
-    qDebug() << "JsonRpc: confirm pairing" << pairingTransactionId.toString();
+    qCDebug(dcThingManager()) << "JsonRpc: confirm pairing" << pairingTransactionId.toString();
     QVariantMap params;
     params.insert("pairingTransactionId", pairingTransactionId.toString());
     params.insert("secret", secret);
@@ -438,7 +438,7 @@ int ThingManager::confirmPairing(const QUuid &pairingTransactionId, const QStrin
 
 int ThingManager::removeThing(const QUuid &thingId, ThingManager::RemovePolicy policy)
 {
-    qDebug() << "JsonRpc: remove thing" << thingId.toString();
+    qCDebug(dcThingManager()) << "JsonRpc: remove thing" << thingId.toString();
     QVariantMap params;
     params.insert("thingId", thingId.toString());
     if (policy != RemovePolicyNone) {
@@ -543,13 +543,13 @@ void ThingManager::browseThingResponse(int commandId, const QVariantMap &params)
 {
 //    qDebug() << "Browsing response:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson(QJsonDocument::Indented));
     if (!m_browsingRequests.contains(commandId)) {
-        qWarning() << "Received a browsing reply for an id we don't know.";
+        qCWarning(dcThingManager()) << "Received a browsing reply for an id we don't know.";
         return;
     }
 
     QPointer<BrowserItems> itemModel = m_browsingRequests.take(commandId);
     if (!itemModel) {
-        qDebug() << "BrowserItems model seems to have disappeared. Discarding browsing result.";
+        qCDebug(dcThingManager()) << "BrowserItems model seems to have disappeared. Discarding browsing result.";
         return;
     }
 
@@ -589,15 +589,15 @@ void ThingManager::browseThingResponse(int commandId, const QVariantMap &params)
 
 void ThingManager::browserItemResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Browser item details response:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson(QJsonDocument::Indented));
+    qCDebug(dcThingManager()) << "Browser item details response:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson(QJsonDocument::Indented));
     if (!m_browserDetailsRequests.contains(commandId)) {
-        qWarning() << "Received a browser item details reply for an id we don't know.";
+        qCWarning(dcThingManager()) << "Received a browser item details reply for an id we don't know.";
         return;
     }
 
     QPointer<BrowserItem> item = m_browserDetailsRequests.take(commandId);
     if (!item) {
-        qDebug() << "BrowserItem seems to have disappeared. Discarding browser item details result.";
+        qCDebug(dcThingManager()) << "BrowserItem seems to have disappeared. Discarding browser item details result.";
         return;
     }
 
@@ -624,7 +624,7 @@ int ThingManager::executeBrowserItem(const QUuid &thingId, const QString &itemId
 
 void ThingManager::executeBrowserItemResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Execute Browser Item finished" << params;
+    qCDebug(dcThingManager()) << "Execute Browser Item finished" << params;
     emit executeBrowserItemReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("displayMessage").toString());
 }
 
@@ -635,7 +635,7 @@ int ThingManager::executeBrowserItemAction(const QUuid &thingId, const QString &
     data.insert("itemId", itemId);
     data.insert("actionTypeId", actionTypeId);
     data.insert("params", params);
-    qDebug() << "params:" << params;
+    qCDebug(dcThingManager()) << "Execute browser item action params:" << params;
     return m_jsonClient->sendCommand("Integrations.ExecuteBrowserItemAction", data, this, "executeBrowserItemActionResponse");
 }
 
@@ -674,7 +674,7 @@ int ThingManager::disconnectIO(const QUuid &ioConnectionId)
 
 void ThingManager::executeBrowserItemActionResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "Execute Browser Item Action finished" << params;
+    qCDebug(dcThingManager()) << "Execute Browser Item Action finished" << params;
     emit executeBrowserItemActionReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("displayMessage").toString());
 }
 
@@ -697,12 +697,12 @@ void ThingManager::getIOConnectionsResponse(int /*commandId*/, const QVariantMap
 
 void ThingManager::connectIOResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "ConnectIO response" << commandId << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
+    qCDebug(dcThingManager()) << "ConnectIO response" << commandId << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
 }
 
 void ThingManager::disconnectIOResponse(int commandId, const QVariantMap &params)
 {
-    qDebug() << "DisconnectIO response" << commandId << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
+    qCDebug(dcThingManager()) << "DisconnectIO response" << commandId << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
 }
 
 void ThingManager::setStateLoggingResponse(int commandId, const QVariantMap &params)
@@ -904,7 +904,7 @@ Thing* ThingManager::unpackThing(ThingManager *thingManager, const QVariantMap &
     QUuid thingClassId = thingMap.value("thingClassId").toUuid();
     ThingClass *thingClass = thingClasses->getThingClass(thingClassId);
     if (!thingClass) {
-        qWarning() << "Cannot find a thing class for this thing";
+        qCWarning(dcThingManager()) << "Cannot find a thing class for this thing";
         return nullptr;
     }
 
