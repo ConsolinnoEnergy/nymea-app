@@ -28,11 +28,17 @@
 #include <QDebug>
 #include <QApplication>
 
+#include "platformhelper.h"
 #include "stylecontroller.h"
 
 StyleController::StyleController(const QString &defaultStyle, QObject *parent) : QObject(parent),
     m_defaultStyle(defaultStyle)
 {
+    m_darkModeEnabled = PlatformHelper::instance()->darkModeEnabled();
+    auto style = currentStyle();
+    if (style == "auto") {
+        style = m_darkModeEnabled ? "dark" : "light";
+    }
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QQuickStyle::setStyle(currentStyle());
 #else
@@ -44,11 +50,24 @@ QString StyleController::currentStyle() const
 {
     QSettings settings;
     QString currentSetting = settings.value("style", m_defaultStyle).toString();
+    if (currentSetting == "auto") {
+        currentSetting = m_darkModeEnabled ? "dark" : "light";
+    }
     // ensure style is available
     if (allStyles().contains(currentSetting)) {
         return currentSetting;
     }
     return allStyles().first();
+}
+
+QString StyleController::rawCurrentStyle() const
+{
+    QSettings settings;
+    QString currentSetting = settings.value("style", m_defaultStyle).toString();
+    if (!allStyles().contains(currentSetting)) {
+        qWarning() << "Raw current Style not in allStyles():" << currentSetting;
+    }
+    return currentSetting;
 }
 
 void StyleController::setCurrentStyle(const QString &currentStyle)
@@ -78,7 +97,11 @@ QStringList StyleController::allStyles() const
 {
     QDir dir(":/styles/");
 //    qDebug() << "styles:" << dir.entryList();
-    return dir.entryList(QDir::Dirs);
+    QStringList styles = dir.entryList(QDir::Dirs);
+    if (!styles.contains("auto")) {
+        styles << "auto";
+    }
+    return styles;
 }
 
 bool StyleController::locked() const

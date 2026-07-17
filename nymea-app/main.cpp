@@ -236,12 +236,12 @@ int main(int argc, char *argv[])
     QString defaultStyle;
     if (parser.isSet(defaultStyleOption)) {
         defaultStyle = parser.value(defaultStyleOption);
-#ifndef DISABLE_DARK_MODE
-    } else if (PlatformHelper::instance()->darkModeEnabled()) {
-        defaultStyle = "dark";
-#endif
     } else {
+#ifndef DISABLE_DARK_MODE
+        defaultStyle = "auto";
+#else
         defaultStyle = "light";
+#endif
     }
     StyleController styleController(defaultStyle);
     if (parser.isSet(styleOption)) {
