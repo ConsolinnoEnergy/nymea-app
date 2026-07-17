@@ -40,48 +40,63 @@ Dialog {
     default property alias children: content.children
 
     standardButtons: Dialog.Ok
+    dim: true
 
     onClosed: root.destroy()
 
-    // Connections {
-    //     target: root.parent
-    //     onDestroye: root.destroy()
-    // }
+    Overlay.modeless: Rectangle {
+        color: "#44000000"
+    }
 
-    // MouseArea {
-    //     // parent: app.overlay
-    //     anchors.fill: parent
-    //     z: -1
-    //     onPressed: {
-    //         print("Dialog: eating mouse press", root.title)
-    //         mouse.accepted = true
-    //     }
-    // }
+    Overlay.modal: Rectangle {
+        color: "#44000000"
+    }
+
+    background: Rectangle {
+        radius: Style.largeCornerRadius
+        color: Style.colors.typography_Background_Default
+    }
 
     header: Item {
-        implicitHeight: headerRow.height + app.margins
+        implicitHeight: headerRow.height + 2 * Style.smallMargins
         implicitWidth: parent.width
         visible: root.title.length > 0
+
+        Rectangle {
+            id: headerBackground
+            anchors.fill: parent
+            color: Style.colors.menu_Header_Footer_Background
+            topLeftRadius: Style.largeCornerRadius
+            topRightRadius: Style.largeCornerRadius
+        }
+
         RowLayout {
             id: headerRow
-            anchors { left: parent.left; right: parent.right; top: parent.top; margins: app.margins }
-            spacing: app.margins
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                topMargin: Style.smallMargins
+                leftMargin: Style.margins
+                rightMargin: Style.margins
+            }
+            spacing: Style.margins
             ColorIcon {
                 id: headerColorIcon
                 Layout.preferredHeight: Style.hugeIconSize
                 Layout.preferredWidth: height
-                color: Style.accentColor
+                color: Style.colors.brand_Basic_Icon_accent
                 visible: name.length > 0
             }
 
             Label {
                 id: titleLabel
                 Layout.fillWidth: true
-                Layout.margins: app.margins
+                Layout.margins: Style.smallMargins
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: root.title
-                color: Style.accentColor
-                font.pixelSize: app.largeFont
+                color: Style.colors.typography_Headlines_H2
+                font: Style.newH2Font
             }
         }
     }
@@ -93,6 +108,8 @@ Dialog {
             Layout.fillWidth: true
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             visible: text.length > 0
+            font: Style.newParagraphFont
+            color: Style.colors.typography_Basic_Default
         }
     }
 }
