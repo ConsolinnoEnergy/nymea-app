@@ -33,11 +33,13 @@ class StyleController : public QObject
     Q_PROPERTY(QString currentStyle READ currentStyle WRITE setCurrentStyle NOTIFY currentStyleChanged)
     Q_PROPERTY(QStringList allStyles READ allStyles CONSTANT)
     Q_PROPERTY(bool locked READ locked CONSTANT)
+    Q_PROPERTY(QString rawCurrentStyle READ rawCurrentStyle)
 
 public:
     explicit StyleController(const QString &defaultStyle, QObject *parent = nullptr);
 
     QString currentStyle() const;
+    QString rawCurrentStyle() const;
     void setCurrentStyle(const QString &currentStyle);
     void lockToStyle(const QString &style);
 
@@ -51,6 +53,7 @@ signals:
 
 private:
     QString m_defaultStyle;
+    bool m_darkModeEnabled = false;
     bool m_locked = false;
 };
 

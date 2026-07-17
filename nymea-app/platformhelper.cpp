@@ -30,6 +30,7 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QJsonDocument>
+#include <QStyleHints>
 
 #if defined Q_OS_ANDROID
 #include "platformintegration/android/platformhelperandroid.h"
@@ -212,7 +213,7 @@ int PlatformHelper::imeHeight() const
 
 bool PlatformHelper::darkModeEnabled() const
 {
-    return false;
+    return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark;
 }
 
 QVariantList PlatformHelper::pendingNotificationActions() const
