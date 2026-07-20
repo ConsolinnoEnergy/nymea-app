@@ -33,77 +33,122 @@ Item {
     implicitWidth: size * 7
 
     property Thing thing: null
-    readonly property State openState: thing.stateByName("state")
-    readonly property bool canStop: thing && thing.thingClass.actionTypes.findByName("stop")
+    readonly property State openState: thing ? thing.stateByName("state") : null
+    readonly property ActionType stepUpActionType: thing ? thing.thingClass.actionTypes.findByName("stepUp") : null
+    readonly property ActionType stepDownActionType: thing ? thing.thingClass.actionTypes.findByName("stepDown") : null
+    readonly property bool canStop: thing && thing.thingClass.actionTypes.findByName("stop") !== null
 
     property bool invert: false
     property bool backgroundEnabled: false
+    property bool showStepControls: true
     property int size: Style.iconSize
 
     signal activated(string button);
 
-    RowLayout {
+    ColumnLayout {
         anchors { left: parent.left; right: parent.right; verticalCenter: parent.verticalCenter }
-        spacing: 0
+        anchors.verticalCenterOffset: stepControls.visible ? -(stepControls.implicitHeight + spacing) / 2 : 0
+        spacing: Style.margins
 
-        Item { Layout.fillWidth: true; Layout.fillHeight: true }
+        RowLayout {
+            id: stepControls
+            Layout.fillWidth: true
+            spacing: 0
+            visible: root.showStepControls && (root.stepUpActionType !== null || root.stepDownActionType !== null)
 
-        ProgressButton {
-            imageSource: root.invert ? "qrc:/icons/down.svg" : "qrc:/icons/up.svg"
-            backgroundColor: root.backgroundEnabled ? Style.green : "transparent"
-            color:  root.backgroundEnabled ? Style.white : Style.iconColor
-            size: root.size
-            busy: root.openState ? root.openState.value === "opening" : openBusyTimer.running
-            onClicked: {
-                engine.thingManager.executeAction(root.thing.id, root.thing.thingClass.actionTypes.findByName("open").id)
-                root.activated("open")
-                openBusyTimer.start()
-                closeBusyTimer.stop()
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+            ProgressButton {
+                visible: root.stepUpActionType !== null
+                imageSource: root.invert ? "qrc:/icons/setp-down.svg" : "qrc:/icons/step-up.svg"
+                backgroundColor: root.backgroundEnabled ? Style.green : "transparent"
+                color: root.backgroundEnabled ? Style.white : Style.iconColor
+                size: root.size
+                onClicked: {
+                    engine.thingManager.executeAction(root.thing.id, root.stepUpActionType.id)
+                    root.activated("stepUp")
+                }
             }
 
-            Timer {
-                id: openBusyTimer
-                interval: 5000
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+            ProgressButton {
+                visible: root.stepDownActionType !== null
+                imageSource: root.invert ? "qrc:/icons/step-up.svg" : "qrc:/icons/setp-down.svg"
+                backgroundColor: root.backgroundEnabled ? Style.red : "transparent"
+                color: root.backgroundEnabled ? Style.white : Style.iconColor
+                size: root.size
+                onClicked: {
+                    engine.thingManager.executeAction(root.thing.id, root.stepDownActionType.id)
+                    root.activated("stepDown")
+                }
             }
+
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
         }
 
-        Item { Layout.fillWidth: true; Layout.fillHeight: true }
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 0
 
-        ProgressButton {
-            visible: root.canStop
-            backgroundColor: root.backgroundEnabled ? Style.yellow : "transparent"
-            color:  root.backgroundEnabled ? Style.white : Style.iconColor
-            size: root.size
-            imageSource: "qrc:/icons/media-playback-stop.svg"
-            onClicked: {
-                engine.thingManager.executeAction(root.thing.id, root.thing.thingClass.actionTypes.findByName("stop").id)
-                root.activated("stop")
-                openBusyTimer.stop()
-                closeBusyTimer.stop()
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+            ProgressButton {
+                imageSource: root.invert ? "qrc:/icons/down.svg" : "qrc:/icons/up.svg"
+                backgroundColor: root.backgroundEnabled ? Style.green : "transparent"
+                color:  root.backgroundEnabled ? Style.white : Style.iconColor
+                size: root.size
+                busy: root.openState ? root.openState.value === "opening" : openBusyTimer.running
+                onClicked: {
+                    engine.thingManager.executeAction(root.thing.id, root.thing.thingClass.actionTypes.findByName("open").id)
+                    root.activated("open")
+                    openBusyTimer.start()
+                    closeBusyTimer.stop()
+                }
+
+                Timer {
+                    id: openBusyTimer
+                    interval: 5000
+                }
             }
+
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+            ProgressButton {
+                visible: root.canStop
+                backgroundColor: root.backgroundEnabled ? Style.yellow : "transparent"
+                color:  root.backgroundEnabled ? Style.white : Style.iconColor
+                size: root.size
+                imageSource: "qrc:/icons/media-playback-stop.svg"
+                onClicked: {
+                    engine.thingManager.executeAction(root.thing.id, root.thing.thingClass.actionTypes.findByName("stop").id)
+                    root.activated("stop")
+                    openBusyTimer.stop()
+                    closeBusyTimer.stop()
+                }
+            }
+
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+            ProgressButton {
+                imageSource: root.invert ? "qrc:/icons/up.svg" : "qrc:/icons/down.svg"
+                backgroundColor: root.backgroundEnabled ? Style.red : "transparent"
+                color:  root.backgroundEnabled ? Style.white : Style.iconColor
+                size: root.size
+                busy: root.openState ? root.openState.value === "closing" : closeBusyTimer.running
+                onClicked: {
+                    engine.thingManager.executeAction(root.thing.id, root.thing.thingClass.actionTypes.findByName("close").id)
+                    root.activated("close")
+                    openBusyTimer.stop();
+                    closeBusyTimer.start()
+                }
+                Timer {
+                    id: closeBusyTimer
+                    interval: 5000
+                }
+            }
+
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
         }
-
-        Item { Layout.fillWidth: true; Layout.fillHeight: true }
-
-        ProgressButton {
-            imageSource: root.invert ? "qrc:/icons/up.svg" : "qrc:/icons/down.svg"
-            backgroundColor: root.backgroundEnabled ? Style.red : "transparent"
-            color:  root.backgroundEnabled ? Style.white : Style.iconColor
-            size: root.size
-            busy: root.openState ? root.openState.value === "closing" : closeBusyTimer.running
-            onClicked: {
-                engine.thingManager.executeAction(root.thing.id, root.thing.thingClass.actionTypes.findByName("close").id)
-                root.activated("close")
-                openBusyTimer.stop();
-                closeBusyTimer.start()
-            }
-            Timer {
-                id: closeBusyTimer
-                interval: 5000
-            }
-        }
-
-        Item { Layout.fillWidth: true; Layout.fillHeight: true }
     }
 }
-
