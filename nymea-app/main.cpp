@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
         if (loadedTranslations.contains(qmFile.baseName())) {
             continue;
         }
-        QTranslator *translator = new QTranslator();
+        QTranslator *translator = new QTranslator(&application);
         bool loadResult = translator->load(qmFile.baseName() + "." + QLocale().name(), ":/translations");
         if (loadResult) {
             application.installTranslator(translator);
