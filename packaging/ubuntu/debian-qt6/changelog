@@ -1,3 +1,10 @@
+nymea-app (1.13.15) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Update debian dependencies
+
+ -- jenkins <developer@nymea.io>  Mon, 20 Jul 2026 15:10:56 +0200
+
 nymea-app (1.13.14) bionic; urgency=medium
 
   [ Michael Schwarz ]
