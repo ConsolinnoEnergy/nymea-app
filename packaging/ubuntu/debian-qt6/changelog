@@ -1,3 +1,15 @@
+nymea-app (1.13.14) bionic; urgency=medium
+
+  [ Michael Schwarz ]
+  * Fix typo in implicitWidth in StateDelegate.qml
+  * Fix QTranslator leak in main.cpp
+  * Add missing UnitMilliSeconds and UnitOhm units
+
+  [ Simon Stürz ]
+  * Improve shutter view and add step up/down
+
+ -- jenkins <developer@nymea.io>  Mon, 20 Jul 2026 09:35:48 +0200
+
 nymea-app (1.13.12) bionic; urgency=medium
 
   [ Simon Stürz ]
