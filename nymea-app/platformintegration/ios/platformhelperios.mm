@@ -406,7 +406,7 @@ void PlatformHelperIOS::updateKeyboardAccessory()
             textResponder.inputAccessoryView = s_accessoryToolbar;
             [responder reloadInputViews];
         }
-    } else if (current == s_accessoryToolbar) {
+    } else if (s_accessoryToolbar && current == s_accessoryToolbar) {
         textResponder.inputAccessoryView = nil;
         [responder reloadInputViews];
     }
