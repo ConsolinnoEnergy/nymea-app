@@ -5227,17 +5227,17 @@ Probeer het nog een keer.</translation>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../ui/MainMenu.qml" line="337"/>
+        <location filename="../ui/MainMenu.qml" line="348"/>
         <source>Configure things</source>
         <translation>Dingen instellen</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="351"/>
+        <location filename="../ui/MainMenu.qml" line="362"/>
         <source>Magic</source>
         <translation>Magie</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="365"/>
+        <location filename="../ui/MainMenu.qml" line="376"/>
         <source>Configure main view</source>
         <translation>Stel het thuisscherm in</translation>
     </message>
@@ -5257,12 +5257,22 @@ Probeer het nog een keer.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="307"/>
+        <location filename="../ui/MainMenu.qml" line="229"/>
+        <source>Remove</source>
+        <translation type="unfinished">Verwijderen</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="234"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuleren</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="318"/>
         <source>Set up another...</source>
         <translation>Stel een andere in...</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="378"/>
+        <location filename="../ui/MainMenu.qml" line="389"/>
         <source>Settings</source>
         <translation type="unfinished">Instellingen</translation>
     </message>

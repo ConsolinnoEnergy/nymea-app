@@ -5202,17 +5202,17 @@ Please try again.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../ui/MainMenu.qml" line="337"/>
+        <location filename="../ui/MainMenu.qml" line="348"/>
         <source>Configure things</source>
         <translation>사물(장치) 구성</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="351"/>
+        <location filename="../ui/MainMenu.qml" line="362"/>
         <source>Magic</source>
         <translation>마술</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="365"/>
+        <location filename="../ui/MainMenu.qml" line="376"/>
         <source>Configure main view</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5232,12 +5232,22 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="307"/>
+        <location filename="../ui/MainMenu.qml" line="229"/>
+        <source>Remove</source>
+        <translation type="unfinished">제거</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="234"/>
+        <source>Cancel</source>
+        <translation type="unfinished">취소</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="318"/>
         <source>Set up another...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="378"/>
+        <location filename="../ui/MainMenu.qml" line="389"/>
         <source>Settings</source>
         <translation type="unfinished">설정</translation>
     </message>

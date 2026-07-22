@@ -223,7 +223,18 @@ Drawer {
                             property int index
                             title: qsTr("Remove connection?")
                             text: qsTr("Are you sure you want to <b>remove</b> the connection to <b>\“%1\“</b>?").arg(configuredHostsModel.get(index).name)
-                            standardButtons: Dialog.Yes | Dialog.No
+                            standardButtons: Dialog.NoButton
+                            footer: DialogButtonBox {
+                                Button {
+                                    text: qsTr("Remove")
+                                    DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+                                    height: implicitHeight
+                                }
+                                Button {
+                                    text: qsTr("Cancel")
+                                    DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
+                                }
+                            }
                             onAccepted: {
                                 tokenSettings.setValue(uuid, "")
                                 configuredHostsModel.removeHost(index)

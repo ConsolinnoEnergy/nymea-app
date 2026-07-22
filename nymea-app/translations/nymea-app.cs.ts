@@ -5241,17 +5241,17 @@ Prosím zkuste to znovu.</translation>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../ui/MainMenu.qml" line="337"/>
+        <location filename="../ui/MainMenu.qml" line="348"/>
         <source>Configure things</source>
         <translation>Nastavení &quot;věcí&quot;</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="351"/>
+        <location filename="../ui/MainMenu.qml" line="362"/>
         <source>Magic</source>
         <translation>Kouzlo</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="365"/>
+        <location filename="../ui/MainMenu.qml" line="376"/>
         <source>Configure main view</source>
         <translation>Nastavení hlavního pohledu</translation>
     </message>
@@ -5271,12 +5271,22 @@ Prosím zkuste to znovu.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="307"/>
+        <location filename="../ui/MainMenu.qml" line="229"/>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="234"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="318"/>
         <source>Set up another...</source>
         <translation>Nastavit další...</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="378"/>
+        <location filename="../ui/MainMenu.qml" line="389"/>
         <source>Settings</source>
         <translation type="unfinished">Nastavení</translation>
     </message>
@@ -7624,7 +7634,6 @@ Chcete pokračovat?</translation>
         <location filename="../ui/magic/EventDescriptorDelegate.qml" line="94"/>
         <source></source>
         <comment>example: &quot;and temperature &gt; 5&quot;</comment>
-        <translatorcomment>příklad: &quot;a teplota &gt; 5&quot;</translatorcomment>
         <translation></translation>
     </message>
 </context>

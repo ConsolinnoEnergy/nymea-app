@@ -5223,17 +5223,17 @@ Bitte versuche es erneut.</translation>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../ui/MainMenu.qml" line="337"/>
+        <location filename="../ui/MainMenu.qml" line="348"/>
         <source>Configure things</source>
         <translation>&quot;Things&quot; einrichten</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="351"/>
+        <location filename="../ui/MainMenu.qml" line="362"/>
         <source>Magic</source>
         <translation>Magie</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="365"/>
+        <location filename="../ui/MainMenu.qml" line="376"/>
         <source>Configure main view</source>
         <translation>Hauptansicht einrichten</translation>
     </message>
@@ -5253,12 +5253,22 @@ Bitte versuche es erneut.</translation>
         <translation>Möchtest du die Verbindung zu &lt;b&gt;„%1“&lt;/b&gt; wirklich &lt;b&gt;entfernen?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="307"/>
+        <location filename="../ui/MainMenu.qml" line="229"/>
+        <source>Remove</source>
+        <translation>Entfernen</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="234"/>
+        <source>Cancel</source>
+        <translation>Abbrechen</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainMenu.qml" line="318"/>
         <source>Set up another...</source>
         <translation>Ein weiteres einrichten...</translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="378"/>
+        <location filename="../ui/MainMenu.qml" line="389"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
