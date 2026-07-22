@@ -221,8 +221,8 @@ Drawer {
                         NymeaDialog {
                             property string uuid
                             property int index
-                            title: qsTr("Are you sure?")
-                            text: qsTr("Do you want to log out from %1 and remove it from your connections?").arg(configuredHostsModel.get(index).name)
+                            title: qsTr("Remove connection?")
+                            text: qsTr("Are you sure you want to <b>remove</b> the connection to <b>\“%1\“</b>?").arg(configuredHostsModel.get(index).name)
                             standardButtons: Dialog.Yes | Dialog.No
                             onAccepted: {
                                 tokenSettings.setValue(uuid, "")
