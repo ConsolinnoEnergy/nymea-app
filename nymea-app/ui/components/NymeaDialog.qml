@@ -58,7 +58,7 @@ Dialog {
     }
 
     header: Item {
-        implicitHeight: headerRow.height + 2 * Style.smallMargins
+        implicitHeight: headerRow.height
         implicitWidth: parent.width
         visible: root.title.length > 0
 
@@ -76,9 +76,8 @@ Dialog {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: Style.smallMargins
-                leftMargin: Style.margins
-                rightMargin: Style.margins
+                leftMargin: Style.smallMargins
+                rightMargin: Style.smallMargins
             }
             spacing: Style.margins
             ColorIcon {
