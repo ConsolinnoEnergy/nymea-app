@@ -42,11 +42,11 @@ ColumnLayout {
 
     Label {
         id: titleLabel
-        font.pixelSize: app.largeFont
         Layout.fillWidth: true
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignHCenter
-        color: Style.accentColor
+        color: Style.colors.typography_Headlines_H2
+        font: Style.newH2Font
     }
     Label {
         id: textLabel
@@ -55,6 +55,8 @@ ColumnLayout {
         Layout.alignment: Qt.AlignHCenter
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignHCenter
+        font: Style.newParagraphFont
+        color: Style.colors.typography_Basic_Default
     }
     Image {
         id: image
