@@ -85,13 +85,13 @@ NymeaSwipeDelegate {
                       : root.stateType
 
             if (i === 0) {
-                // TRANSLATORS: example: "only if temperature > 5"
+                //: example: "only if temperature > 5"
                 ret = qsTr("only if %1 %2 %3")
                 .arg(paramType.displayName)
                 .arg(operatorString)
                 .arg(paramDescriptor.value)
             } else {
-                // TRANSLATORS: example: "and temperature > 5"
+                //: example: "and temperature > 5"
                 ret += " " + qsTr("and %1 %2 %3")
                 .arg(paramType.displayName)
                 .arg(operatorString)

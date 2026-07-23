@@ -2718,12 +2718,24 @@
     <message>
         <location filename="../ui/magic/EventDescriptorDelegate.qml" line="89"/>
         <source>only if %1 %2 %3</source>
+        <extracomment>example: &quot;only if temperature &gt; 5&quot;</extracomment>
         <translation type="unfinished">nur wenn %1 %2 %3</translation>
     </message>
     <message>
         <location filename="../ui/magic/EventDescriptorDelegate.qml" line="95"/>
         <source>and %1 %2 %3</source>
+        <extracomment>example: &quot;and temperature &gt; 5&quot;</extracomment>
         <translation type="unfinished">und %1 %2 %3</translation>
+    </message>
+    <message>
+        <source>only if %1 %2 %3</source>
+        <comment>example: &quot;only if temperature &gt; 5&quot;</comment>
+        <translation type="obsolete">nur wenn %1 %2 %3</translation>
+    </message>
+    <message>
+        <source>and %1 %2 %3</source>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <translation type="obsolete">und %1 %2 %3</translation>
     </message>
 </context>
 <context>
@@ -7602,15 +7614,6 @@ Möchtest Du fortfahren?</translation>
         <location filename="../ui/magic/RuleActionDelegate.qml" line="67"/>
         <source>No</source>
         <translation>Nein</translation>
-    </message>
-</context>
-<context>
-    <name>S:</name>
-    <message>
-        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="88"/>
-        <source></source>
-        <comment>example: &quot;only if temperature &gt; 5&quot;</comment>
-        <translation>Beispiel: &quot;und Temperatur &gt; 5&quot;</translation>
     </message>
 </context>
 <context>

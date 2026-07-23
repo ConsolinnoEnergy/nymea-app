@@ -2714,11 +2714,13 @@
     <message>
         <location filename="../ui/magic/EventDescriptorDelegate.qml" line="89"/>
         <source>only if %1 %2 %3</source>
+        <extracomment>example: &quot;only if temperature &gt; 5&quot;</extracomment>
         <translation type="unfinished">%1 %2 %3인 경우에만 해당</translation>
     </message>
     <message>
         <location filename="../ui/magic/EventDescriptorDelegate.qml" line="95"/>
         <source>and %1 %2 %3</source>
+        <extracomment>example: &quot;and temperature &gt; 5&quot;</extracomment>
         <translation type="unfinished">%1 %2 %3</translation>
     </message>
 </context>
@@ -7576,21 +7578,6 @@ Do you want to proceed?</source>
         <location filename="../ui/magic/RuleActionDelegate.qml" line="67"/>
         <source>No</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>S:</name>
-    <message>
-        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="88"/>
-        <source></source>
-        <comment>example: &quot;only if temperature &gt; 5&quot;</comment>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="94"/>
-        <source></source>
-        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
-        <translation></translation>
     </message>
 </context>
 <context>
