@@ -88,7 +88,7 @@ Page {
         contentHeight: contentColumn.height + Style.margins + root.navigationFooterHeight
         clip: true
 
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.vertical: null
 
         // Flickable's default contentY is 0, which would show the first
         // contentHeight pixels of content behind the header. Snap to the
