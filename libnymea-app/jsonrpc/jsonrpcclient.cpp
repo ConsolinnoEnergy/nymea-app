@@ -106,7 +106,8 @@ int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params,
             f.close();
             const auto readEndTime = QDateTime::currentDateTime();
             if (error.error == QJsonParseError::NoError) {
-                qCInfo(dcJsonRpc()) << "Loaded results for"
+                qCInfo(dcJsonRpc()) << QTime::currentTime().toString(Qt::ISODateWithMs)
+                                    << "Loaded results for"
                                     << reply->nameSpace() + '.' + reply->method() << "from cache in"
                                     << readStartTime.msecsTo(readEndTime) << "ms";
                 // We want to make sure this is an async operation even if we have stuff in cache, so only call callbacks using Qt::QueuedConnection
@@ -120,7 +121,10 @@ int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params,
         }
     }
 
-    qCInfo(dcJsonRpc()) << "Sending command" << reply->nameSpace() + '.' + reply->method();
+    qCInfo(dcJsonRpc())
+        << QTime::currentTime().toString(Qt::ISODateWithMs)
+        << "Sending command"
+        << reply->nameSpace() + '.' + reply->method();
     m_replies.insert(reply->commandId(), reply);
     m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     sendRequest(reply->requestMap());
@@ -610,7 +614,8 @@ void JsonRpcClient::dataReceived(const QByteArray &data)
         const auto commandSendTime = m_commandSendTimes.take(commandId);
         if (commandSendTime.isValid()) {
             const auto durationMs = commandSendTime.msecsTo(QDateTime::currentDateTime());
-            qCInfo(dcJsonRpc()) << "Response for" << QString("%1.%2").arg(reply->nameSpace(), reply->method())
+            qCInfo(dcJsonRpc()) << QTime::currentTime().toString(Qt::ISODateWithMs)
+                                << "Response for" << QString("%1.%2").arg(reply->nameSpace(), reply->method())
                                 << "took" << durationMs << "ms"
                                 << "(" << m_commandSendTimes.size() << "commands still on the fly)";
         }
