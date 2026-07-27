@@ -2482,6 +2482,14 @@
         <source>anytime</source>
         <translation>immer</translation>
     </message>
+    <message>
+        <source>only if %1 %2 %3</source>
+        <translation type="unfinished">nur wenn %1 %2 %3</translation>
+    </message>
+    <message>
+        <source>and %1 %2 %3</source>
+        <translation type="unfinished">und %1 %2 %3</translation>
+    </message>
 </context>
 <context>
     <name>EventLogPage</name>
@@ -5482,6 +5490,69 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
     </message>
 </context>
 <context>
+    <name>NfcHelper</name>
+    <message>
+        <source>Proprietary tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MIFARE tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Unbekannt</translation>
+    </message>
+    <message>
+        <source>NFC tag scanning is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not start NFC tag scanning.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag UID could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag-specific</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NgwSettingsPage</name>
     <message>
         <source>LAN network</source>
@@ -6647,8 +6718,20 @@ Möchtest Du fortfahren?</translation>
         <translation>Mit NFC des Telefons scannen</translation>
     </message>
     <message>
-        <source>Planned for a future version.</source>
-        <translation>Für eine zukünftige Version geplant.</translation>
+        <source>Hold the RFID tag near this phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The NFC scan is not running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan again</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Scan RFID tag</source>
@@ -6727,16 +6810,16 @@ Möchtest Du fortfahren?</translation>
         <translation>RFID-Code</translation>
     </message>
     <message>
-        <source>This flow is planned for a future version.</source>
-        <translation>Dieser Ablauf ist für eine zukünftige Version geplant.</translation>
-    </message>
-    <message>
         <source>Finish RFID tag</source>
         <translation>RFID-Tag fertigstellen</translation>
     </message>
     <message>
         <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
         <translation>Benennen Sie den RFID-Tag, konfigurieren Sie sein Ladeprofil und bereiten Sie anschließend die Ladestation auf den nächsten Tag vor.</translation>
+    </message>
+    <message>
+        <source>Review the scanned RFID tag, name it, and configure its charging profile.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Name the RFID tag and configure its charging profile.</source>
@@ -6765,6 +6848,42 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>The charger will store the next RFID tag it detects.</source>
         <translation>Die Ladestation speichert den nächsten RFID-Tag, den sie erkennt.</translation>
+    </message>
+    <message>
+        <source>UID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Unbekannt</translation>
+    </message>
+    <message>
+        <source>Access methods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum command length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 bytes</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display name</source>
@@ -6805,6 +6924,10 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>RFID hash</source>
         <translation>RFID-Hash</translation>
+    </message>
+    <message>
+        <source>RFID hash copied</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unsaved RFID tag</source>
@@ -6873,16 +6996,13 @@ Möchtest Du fortfahren?</translation>
     <name>S:</name>
     <message>
         <source></source>
-        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <comment>example: &quot;only if temperature &gt; 5&quot;</comment>
         <translation>Beispiel: &quot;und Temperatur &gt; 5&quot;</translation>
     </message>
     <message>
-        <source>only if %1 %2 %3</source>
-        <translation>nur wenn %1 %2 %3</translation>
-    </message>
-    <message>
-        <source>and %1 %2 %3</source>
-        <translation>und %1 %2 %3</translation>
+        <source></source>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -2483,6 +2483,14 @@
         <source>anytime</source>
         <translation>vždy</translation>
     </message>
+    <message>
+        <source>only if %1 %2 %3</source>
+        <translation type="unfinished">jen když %1 %2 %3</translation>
+    </message>
+    <message>
+        <source>and %1 %2 %3</source>
+        <translation type="unfinished">a %1 %2 %3</translation>
+    </message>
 </context>
 <context>
     <name>EventLogPage</name>
@@ -5499,6 +5507,69 @@ Použijte hodnotu časového limitu větší nebo rovnou 10 ms.</translation>
     </message>
 </context>
 <context>
+    <name>NfcHelper</name>
+    <message>
+        <source>Proprietary tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MIFARE tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag scanning is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not start NFC tag scanning.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag UID could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag-specific</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NgwSettingsPage</name>
     <message>
         <source>LAN network</source>
@@ -6664,7 +6735,19 @@ Chcete pokračovat?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Planned for a future version.</source>
+        <source>Hold the RFID tag near this phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The NFC scan is not running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6744,15 +6827,15 @@ Chcete pokračovat?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This flow is planned for a future version.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Finish RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Review the scanned RFID tag, name it, and configure its charging profile.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6781,6 +6864,42 @@ Chcete pokračovat?</translation>
     </message>
     <message>
         <source>The charger will store the next RFID tag it detects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access methods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum command length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6821,6 +6940,10 @@ Chcete pokračovat?</translation>
     </message>
     <message>
         <source>RFID hash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID hash copied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6890,17 +7013,13 @@ Chcete pokračovat?</translation>
     <name>S:</name>
     <message>
         <source></source>
-        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
-        <translatorcomment>příklad: &quot;a teplota &gt; 5&quot;</translatorcomment>
+        <comment>example: &quot;only if temperature &gt; 5&quot;</comment>
         <translation></translation>
     </message>
     <message>
-        <source>only if %1 %2 %3</source>
-        <translation>jen když %1 %2 %3</translation>
-    </message>
-    <message>
-        <source>and %1 %2 %3</source>
-        <translation>a %1 %2 %3</translation>
+        <source></source>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <translation></translation>
     </message>
 </context>
 <context>

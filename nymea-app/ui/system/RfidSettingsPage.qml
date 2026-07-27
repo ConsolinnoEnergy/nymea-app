@@ -436,6 +436,7 @@ SettingsPageBase {
             property string selectedAddMethod: ""
             property var selectedChargerThingId: null
             property string scannedOrEnteredCode: ""
+            property var scannedTagInformation: ({})
             property string newDisplayName: ""
             property bool newEnabled: true
             property var newProfile: ({"mode": "Eco"})
@@ -444,11 +445,12 @@ SettingsPageBase {
 
             readonly property string addMethodChargerScan: "chargerScan"
             readonly property string addMethodManual: "manual"
-            readonly property string addMethodPhoneNfcFuture: "phoneNfcFuture"
+            readonly property string addMethodPhoneNfc: "phoneNfc"
             readonly property string chargerDetectionEventName: "tagDetected"
 
             function resetScannedCodeState() {
                 scannedOrEnteredCode = ""
+                scannedTagInformation = ({})
                 selectedChargerThingId = null
             }
 
@@ -535,11 +537,16 @@ SettingsPageBase {
 
                         NymeaItemDelegate {
                             Layout.fillWidth: true
-                            enabled: false
-                            progressive: false
+                            visible: NfcHelper.tagUidScanningAvailable
+                            progressive: true
                             iconName: "qrc:/icons/nfc.svg"
                             text: qsTr("Scan with phone NFC")
-                            subText: qsTr("Planned for a future version.")
+                            subText: qsTr("Hold the RFID tag near this phone.")
+                            onClicked: {
+                                wizardRootPage.selectedAddMethod = wizardRootPage.addMethodPhoneNfc
+                                wizardRootPage.resetScannedCodeState()
+                                pageStack.push(phoneNfcScanComponent)
+                            }
                         }
                     }
                 }
@@ -839,15 +846,91 @@ SettingsPageBase {
                 }
             }
 
-            // Placeholder for a future NFC-based add flow. The method is intentionally not reachable yet.
             Component {
-                id: phoneNfcPlaceholderComponent
+                id: phoneNfcScanComponent
 
                 WizardPageBase {
+                    id: phoneNfcScanPage
                     title: qsTr("Scan with phone NFC")
-                    text: qsTr("This flow is planned for a future version.")
+                    text: NfcHelper.scanning
+                          ? qsTr("Hold the RFID tag near the phone.")
+                          : qsTr("The NFC scan is not running.")
                     showNextButton: false
-                    onBack: pageStack.pop()
+
+                    property string scanError: ""
+
+                    function startScan() {
+                        scanError = ""
+                        NfcHelper.startTagUidScan()
+                    }
+
+                    onBack: {
+                        NfcHelper.stopTagUidScan()
+                        pageStack.pop()
+                    }
+
+                    Component.onCompleted: startScan()
+                    Component.onDestruction: NfcHelper.stopTagUidScan()
+
+                    content: ColumnLayout {
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: 500
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: phoneNfcScanPage.visibleContentHeight
+                        spacing: Style.margins
+
+                        Item { Layout.fillHeight: true }
+
+                        Image {
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.preferredWidth: Style.hugeIconSize * 2
+                            Layout.preferredHeight: Layout.preferredWidth
+                            source: "qrc:/icons/nfc.svg"
+                            sourceSize.width: width
+                            sourceSize.height: height
+                            fillMode: Image.PreserveAspectFit
+                        }
+
+                        BusyIndicator {
+                            Layout.alignment: Qt.AlignHCenter
+                            visible: NfcHelper.scanning
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: phoneNfcScanPage.scanError !== ""
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Text.AlignHCenter
+                            text: phoneNfcScanPage.scanError
+                        }
+
+                        Button {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: !NfcHelper.scanning
+                            text: qsTr("Scan again")
+                            onClicked: phoneNfcScanPage.startScan()
+                        }
+
+                        Item { Layout.fillHeight: true }
+                    }
+
+                    Connections {
+                        target: NfcHelper
+
+                        function onTagDetected(tagInformation) {
+                            wizardRootPage.scannedTagInformation = tagInformation
+                            wizardRootPage.scannedOrEnteredCode = tagInformation.code
+                            pageStack.push(addTagFinalizeComponent)
+                        }
+
+                        function onScanFailed(message) {
+                            phoneNfcScanPage.scanError = message
+                        }
+                    }
                 }
             }
 
@@ -859,7 +942,9 @@ SettingsPageBase {
                     title: qsTr("Finish RFID tag")
                     text: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan
                           ? qsTr("Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.")
-                          : qsTr("Name the RFID tag and configure its charging profile.")
+                          : wizardRootPage.selectedAddMethod === wizardRootPage.addMethodPhoneNfc
+                            ? qsTr("Review the scanned RFID tag, name it, and configure its charging profile.")
+                            : qsTr("Name the RFID tag and configure its charging profile.")
                     nextButtonText: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan ? qsTr("Start scan") : qsTr("Create RFID tag")
                     nextButtonEnabled: addTagFinalizePage.pendingCommandId === -1
                                        && (wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan
@@ -948,6 +1033,59 @@ SettingsPageBase {
                             wrapMode: Text.WordWrap
                             visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodChargerScan
                             text: qsTr("The charger will store the next RFID tag it detects.")
+                        }
+
+                        NymeaItemDelegate {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodPhoneNfc
+                            progressive: false
+                            text: qsTr("UID")
+                            subText: wizardRootPage.scannedTagInformation.uid || ""
+                        }
+
+                        NymeaItemDelegate {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodPhoneNfc
+                            progressive: false
+                            text: qsTr("Tag type")
+                            subText: wizardRootPage.scannedTagInformation.tagType || qsTr("Unknown")
+                        }
+
+                        NymeaItemDelegate {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodPhoneNfc
+                            progressive: false
+                            text: qsTr("Access methods")
+                            subText: wizardRootPage.scannedTagInformation.accessMethods
+                                     ? wizardRootPage.scannedTagInformation.accessMethods.join(", ")
+                                     : qsTr("Unknown")
+                        }
+
+                        NymeaItemDelegate {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodPhoneNfc
+                            progressive: false
+                            text: qsTr("NDEF message")
+                            subText: wizardRootPage.scannedTagInformation.hasNdefMessage ? qsTr("Available") : qsTr("Not available")
+                        }
+
+                        NymeaItemDelegate {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Style.margins
+                            Layout.rightMargin: Style.margins
+                            visible: wizardRootPage.selectedAddMethod === wizardRootPage.addMethodPhoneNfc
+                                     && wizardRootPage.scannedTagInformation.maxCommandLength !== undefined
+                            progressive: false
+                            text: qsTr("Maximum command length")
+                            subText: qsTr("%1 bytes").arg(wizardRootPage.scannedTagInformation.maxCommandLength || 0)
                         }
 
                         NymeaTextField {
@@ -1393,6 +1531,10 @@ SettingsPageBase {
                 progressive: false
                 text: qsTr("RFID hash")
                 subText: editorPage.tagInfo ? editorPage.tagInfo.tagHash : ""
+                onClicked: {
+                    PlatformHelper.toClipBoard(editorPage.tagInfo.tagHash)
+                    ToolTip.show(qsTr("RFID hash copied"), 500)
+                }
             }
 
             SettingsPageSectionHeader {
