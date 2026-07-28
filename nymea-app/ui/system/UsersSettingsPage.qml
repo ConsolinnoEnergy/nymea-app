@@ -36,6 +36,21 @@ import "../delegates"
 SettingsPageBase {
     id: root
     title: qsTr("User settings")
+    property string initialUsername: ""
+    property bool initialUserOpened: false
+
+    function openInitialUser() {
+        if (initialUserOpened || initialUsername === "")
+            return
+
+        var initialUserInfo = userManager.users.getUserInfo(initialUsername)
+        if (initialUserInfo) {
+            initialUserOpened = true
+            pageStack.push(userDetailsComponent, {userInfo: initialUserInfo})
+        }
+    }
+
+    Component.onCompleted: Qt.callLater(openInitialUser)
 
     UserManager {
         id: userManager
@@ -63,6 +78,13 @@ SettingsPageBase {
                 var popup = component.createObject(app, {text: text});
                 popup.open()
             }
+        }
+    }
+
+    Connections {
+        target: userManager.users
+        function onCountChanged() {
+            Qt.callLater(root.openInitialUser)
         }
     }
 

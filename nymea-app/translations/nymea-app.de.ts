@@ -2482,14 +2482,6 @@
         <source>anytime</source>
         <translation>immer</translation>
     </message>
-    <message>
-        <source>only if %1 %2 %3</source>
-        <translation type="unfinished">nur wenn %1 %2 %3</translation>
-    </message>
-    <message>
-        <source>and %1 %2 %3</source>
-        <translation type="unfinished">und %1 %2 %3</translation>
-    </message>
 </context>
 <context>
     <name>EventLogPage</name>
@@ -6945,6 +6937,30 @@ Möchtest Du fortfahren?</translation>
         <source>Return</source>
         <translation>Zurück</translation>
     </message>
+    <message>
+        <source>Basic information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The charger will apply the following profile when this tag is detected on an assigned charger.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco uses available surplus energy. Quick charges as fast as the configured limits allow.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select how many phases the charger should use. Leave this unset to let the charger decide.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tag details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This tag can authorize charging on the EV chargers listed below because they are accessible to its owner.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RootItem</name>
@@ -6996,13 +7012,16 @@ Möchtest Du fortfahren?</translation>
     <name>S:</name>
     <message>
         <source></source>
-        <comment>example: &quot;only if temperature &gt; 5&quot;</comment>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
         <translation>Beispiel: &quot;und Temperatur &gt; 5&quot;</translation>
     </message>
     <message>
-        <source></source>
-        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
-        <translation></translation>
+        <source>only if %1 %2 %3</source>
+        <translation type="unfinished">nur wenn %1 %2 %3</translation>
+    </message>
+    <message>
+        <source>and %1 %2 %3</source>
+        <translation type="unfinished">und %1 %2 %3</translation>
     </message>
 </context>
 <context>

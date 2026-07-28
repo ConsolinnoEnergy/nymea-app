@@ -1288,7 +1288,7 @@ SettingsPageBase {
                 if (modeComboBox.selectedMode === "Quick" && maxChargingCurrentField.text !== "" && !maxChargingCurrentField.acceptableInput)
                     return false
 
-                return true
+                return createMode || hasUnsavedChanges()
             }
 
             function hasUnsavedChanges() {
@@ -1388,6 +1388,24 @@ SettingsPageBase {
                 }
             }
 
+            footer: Rectangle {
+                implicitHeight: saveButton.implicitHeight + Style.margins * 2
+                color: Style.backgroundColor
+
+                Button {
+                    id: saveButton
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                        margins: Style.margins
+                    }
+                    text: editorPage.createMode ? qsTr("Create RFID tag") : qsTr("Save")
+                    enabled: editorPage.canSubmit()
+                    onClicked: editorPage.saveIfValid()
+                }
+            }
+
             ListModel {
                 id: phaseCountModel
                 ListElement { text: qsTr("Not set"); value: 0 }
@@ -1396,7 +1414,7 @@ SettingsPageBase {
             }
 
             SettingsPageSectionHeader {
-                text: qsTr("Owner")
+                text: qsTr("Basic information")
             }
 
             ComboBox {
@@ -1407,6 +1425,10 @@ SettingsPageBase {
                 visible: editorPage.createMode
                 model: userManager.users
                 textRole: "username"
+                displayText: {
+                    var selectedUser = userManager.users.get(currentIndex)
+                    return selectedUser ? root.userLabel(selectedUser) : ""
+                }
                 onCurrentIndexChanged: {
                     var selectedUser = userManager.users.get(currentIndex)
                     editorPage.selectedOwnerUsername = selectedUser ? selectedUser.username : ""
@@ -1417,17 +1439,16 @@ SettingsPageBase {
                 }
             }
 
-            Label {
+            NymeaItemDelegate {
                 Layout.fillWidth: true
-                Layout.leftMargin: Style.margins
-                Layout.rightMargin: Style.margins
                 visible: !editorPage.createMode && editorPage.tagInfo
-                text: editorPage.tagInfo ? editorPage.tagInfo.username : ""
-                wrapMode: Text.WordWrap
-            }
-
-            SettingsPageSectionHeader {
-                text: qsTr("RFID tag")
+                readonly property UserInfo ownerInfo: editorPage.currentUserInfo()
+                text: ownerInfo ? root.userLabel(ownerInfo) : (editorPage.tagInfo ? editorPage.tagInfo.username : "")
+                subText: ownerInfo ? ownerInfo.email : ""
+                iconName: "qrc:/icons/account.svg"
+                progressive: true
+                onClicked: pageStack.push(Qt.resolvedUrl("UsersSettingsPage.qml"),
+                                          {initialUsername: editorPage.tagInfo.username})
             }
 
             TextField {
@@ -1459,6 +1480,16 @@ SettingsPageBase {
                 text: qsTr("Charging profile")
             }
 
+            Label {
+                Layout.fillWidth: true
+                Layout.leftMargin: Style.margins
+                Layout.rightMargin: Style.margins
+                text: qsTr("The charger will apply the following profile when this tag is detected on an assigned charger.")
+                color: Style.unobtrusiveForegroundColor
+                font: Style.smallFont
+                wrapMode: Text.WordWrap
+            }
+
             ComboBox {
                 id: modeComboBox
                 Layout.fillWidth: true
@@ -1475,11 +1506,22 @@ SettingsPageBase {
                 }
             }
 
+            Label {
+                Layout.fillWidth: true
+                Layout.leftMargin: Style.margins
+                Layout.rightMargin: Style.margins
+                text: qsTr("Eco uses available surplus energy. Quick charges as fast as the configured limits allow.")
+                color: Style.unobtrusiveForegroundColor
+                font: Style.smallFont
+                wrapMode: Text.WordWrap
+            }
+
             TextField {
                 id: maxChargingCurrentField
                 Layout.fillWidth: true
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
+                Layout.topMargin: Style.smallMargins
                 visible: modeComboBox.selectedMode === "Quick"
                 placeholderText: qsTr("Max charging current (A)")
                 text: editorPage.tagInfo && editorPage.tagInfo.profile.maxChargingCurrent !== undefined ? editorPage.tagInfo.profile.maxChargingCurrent : ""
@@ -1509,36 +1551,44 @@ SettingsPageBase {
                 }
             }
 
-            Button {
+            Label {
                 Layout.fillWidth: true
                 Layout.leftMargin: Style.margins
                 Layout.rightMargin: Style.margins
-                text: editorPage.createMode ? qsTr("Create RFID tag") : qsTr("Save")
-                enabled: editorPage.canSubmit()
-                onClicked: editorPage.saveIfValid()
+                visible: modeComboBox.selectedMode === "Quick"
+                text: qsTr("Select how many phases the charger should use. Leave this unset to let the charger decide.")
+                color: Style.unobtrusiveForegroundColor
+                font: Style.smallFont
+                wrapMode: Text.WordWrap
             }
 
             SettingsPageSectionHeader {
-                text: qsTr("Technical details")
+                text: qsTr("RFID tag details")
                 visible: !editorPage.createMode && editorPage.tagInfo
             }
 
-            NymeaSwipeDelegate {
+            NymeaItemDelegate {
                 Layout.fillWidth: true
-                Layout.leftMargin: Style.margins
-                Layout.rightMargin: Style.margins
                 visible: !editorPage.createMode && editorPage.tagInfo
-                progressive: false
-                text: qsTr("RFID hash")
-                subText: editorPage.tagInfo ? editorPage.tagInfo.tagHash : ""
-                onClicked: {
-                    PlatformHelper.toClipBoard(editorPage.tagInfo.tagHash)
-                    ToolTip.show(qsTr("RFID hash copied"), 500)
-                }
+                progressive: true
+                text: qsTr("Technical details")
+                iconName: "qrc:/icons/info.svg"
+                onClicked: pageStack.push(tagDetailsComponent, {tagInfo: editorPage.tagInfo})
             }
 
             SettingsPageSectionHeader {
                 text: qsTr("EV chargers")
+            }
+
+            Label {
+                Layout.fillWidth: true
+                Layout.leftMargin: Style.margins
+                Layout.rightMargin: Style.margins
+                wrapMode: Text.WordWrap
+                color: Style.unobtrusiveForegroundColor
+                font: Style.smallFont
+                visible: root.usableChargerCount(editorPage.tagInfo ? editorPage.tagInfo.username : editorPage.selectedOwnerUsername) > 0
+                text: qsTr("This tag can authorize charging on the EV chargers listed below because they are accessible to its owner.")
             }
 
             Label {
@@ -1575,6 +1625,30 @@ SettingsPageBase {
                     text: chargerThing ? chargerThing.name : model.name
                     subText: root.chargerAccessSubtitle(ownerUsername)
                     iconName: chargerThing ? app.interfacesToIcon(chargerThing.thingClass.interfaces) : "qrc:/icons/things.svg"
+                }
+            }
+
+            Component {
+                id: tagDetailsComponent
+
+                SettingsPageBase {
+                    title: qsTr("RFID tag details")
+                    property RfidTagInfo tagInfo: null
+
+                    SettingsPageSectionHeader {
+                        text: qsTr("Technical details")
+                    }
+
+                    NymeaSwipeDelegate {
+                        Layout.fillWidth: true
+                        progressive: false
+                        text: qsTr("RFID hash")
+                        subText: tagInfo ? tagInfo.tagHash : ""
+                        onClicked: {
+                            PlatformHelper.toClipBoard(tagInfo.tagHash)
+                            ToolTip.show(qsTr("RFID hash copied"), 500)
+                        }
+                    }
                 }
             }
 
