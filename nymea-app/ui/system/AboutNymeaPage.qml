@@ -52,7 +52,7 @@ SettingsPageBase {
     }
 
 
-    ConsolinnoImprintSystem {
+    Imprint {
         id: imprint
         Layout.fillWidth: true
         title: Configuration.systemName

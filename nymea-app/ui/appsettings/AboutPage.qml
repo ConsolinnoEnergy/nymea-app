@@ -34,17 +34,10 @@ SettingsPageBase {
     id: root
     title: qsTr("About %1").arg(Configuration.appName)
 
-    ConsolinnoImprintApp {
+    Imprint {
         id: imprint
         Layout.fillWidth: true
         title: Configuration.appName
-        additionalLicenses: ListModel {
-            ListElement { license: "CC-BY-SA-3.0"; component: "Suru icons"; infoText: qsTr("Suru icons by Ubuntu"); platforms: "*" }
-            ListElement { license: "CC-BY-SA-3.0"; component: "Ubuntu font"; infoText: qsTr("Ubuntu font by Ubuntu"); platforms: "*" }
-            ListElement { license: "LGPL3"; component: "QtZeroConf"; infoText: qsTr("QtZeroConf library by Jonathan Bagg"); platforms: "android,ios,linux,osx" }
-            ListElement { license: "OpenSSL"; component: "OpenSSL"; infoText: qsTr("OpenSSL libraries by Eric Young"); platforms: "android,windows" }
-            ListElement { license: "OFL"; component: "Oswald font"; infoText: qsTr("Oswald font by The Oswald Project"); platforms: "*" }
-        }
 
         githubLink: "https://github.com/nymea/nymea-app"
 
