@@ -1,3 +1,10 @@
+nymea-app (1.13.16) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * RFID: Add NFC learning mode
+
+ -- jenkins <developer@nymea.io>  Tue, 28 Jul 2026 13:43:07 +0200
+
 nymea-app (1.13.15) bionic; urgency=medium
 
   [ Simon Stürz ]
