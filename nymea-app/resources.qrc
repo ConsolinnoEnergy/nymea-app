@@ -112,11 +112,13 @@
         <file>ui/fonts/UbuntuMono-Italic.ttf</file>
         <file>ui/fonts/UbuntuMono-Regular.ttf</file>
         <file>qtquickcontrols2.conf</file>
-        <file>../LICENSE.GPL3</file>
+        <file>../LICENSE.APACHE2</file>
         <file>../LICENSE.CC-BY-SA-3.0</file>
+        <file>../LICENSE.GPL3</file>
+        <file>../LICENSE.LGPL3</file>
         <file>../LICENSE.OFL</file>
         <file>../LICENSE.OpenSSL</file>
-        <file>../LICENSE.LGPL3</file>
+        <file>../LICENSE.UFL</file>
         <file>ui/customviews/GenericTypeGraph.qml</file>
         <file>ui/devicepages/SmartMeterDevicePage.qml</file>
         <file>ui/devicelistpages/SmartMeterDeviceListPage.qml</file>
