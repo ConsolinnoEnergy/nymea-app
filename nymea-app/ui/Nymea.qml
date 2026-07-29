@@ -412,6 +412,7 @@ ApplicationWindow {
         case "extendedawning":
             return Qt.resolvedUrl("qrc:/icons/awning/awning-100.svg")
         case "battery":
+        case "controllablebattery":
             return Qt.resolvedUrl("qrc:/icons/battery/battery-060.svg")
         case "uncategorized":
             return Qt.resolvedUrl("qrc:/icons/select-none.svg")
