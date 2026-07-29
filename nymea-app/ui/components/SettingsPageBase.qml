@@ -65,6 +65,7 @@ Page {
     default property alias content: contentColumn.data
     property alias busy: busyOverlay.shown
     property alias busyText: busyOverlay.text
+    enabled: !busy
 
     // Page lives behind the navigation footer in RootItem so the footer's
     // blur effect has real content to sample. RootItem propagates its
