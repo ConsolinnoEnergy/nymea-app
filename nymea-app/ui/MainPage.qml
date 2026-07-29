@@ -74,13 +74,17 @@ Page {
     }
 
     function configureViews() {
+        if (!settings.showHiddenOptions) {
+            console.warn("Main views configuration is disabled when showHiddenOptions is off");
+            return;
+        }
         if (Configuration.hasOwnProperty("mainViewsFilter")) {
-            console.warn("Main views configuration is disabled by app configuration")
-            return
+            console.warn("Main views configuration is disabled by app configuration");
+            return;
         }
 
-        PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection)
-        d.configOverlay = configComponent.createObject(contentContainer)
+        PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection);
+        d.configOverlay = configComponent.createObject(contentContainer);
     }
 
     function goToView(viewName, data, immediate) {
@@ -237,6 +241,13 @@ Page {
         property var editRulePage: null
         property var configOverlay: null
 
+        // When showHiddenOptions is off, enforce a fixed set of main views regardless
+        // of what the user previously configured, so the view selection cannot be
+        // changed or observed by regular users.
+        readonly property var effectiveFilterList: settings.showHiddenOptions
+            ? mainViewSettings.filterList
+            : Configuration.defaultMainViews
+
         function isHiddenView(name) {
             if (!Configuration.hasOwnProperty("hiddenMainViews")) { return false; }
             return Configuration.hiddenMainViews.indexOf(name) >= 0;
@@ -361,7 +372,7 @@ Page {
             let startViewIndex = 0;
             for (let i = 0; i < mainMenuModel.count; i++) {
                 let item = mainMenuModel.get(i);
-                if (mainViewSettings.filterList.indexOf(item.name) === -1) { continue; }
+                if (d.effectiveFilterList.indexOf(item.name) === -1) { continue; }
                 if (item.name === "consolinnoDashboard") { break; }
                 ++startViewIndex;
             }
@@ -375,7 +386,7 @@ Page {
         id: filteredContentModel
         sourceModel: mainMenuModel
         filterList: {
-            var list = mainViewSettings.filterList.slice();
+            var list = d.effectiveFilterList.slice();
             if (Configuration.hasOwnProperty("hiddenMainViews")) {
                 list = list.concat(Configuration.hiddenMainViews);
             }

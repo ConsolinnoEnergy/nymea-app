@@ -301,7 +301,11 @@ Item {
                                                 mainPage.activateTab(index, poppedItem !== null);
                                             }
                                         }
-                                        onPressAndHold: if (mainPage) mainPage.configureViews()
+                                        onPressAndHold: {
+                                            if (mainPage && settings.showHiddenOptions) {
+                                                mainPage.configureViews();
+                                            }
+                                        }
                                     }
                                 }
                             }
