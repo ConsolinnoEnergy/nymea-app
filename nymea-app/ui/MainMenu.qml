@@ -100,7 +100,7 @@ Drawer {
                         Layout.fillWidth: true
                         fillMode: Image.PreserveAspectFit
                         horizontalAlignment: Image.AlignLeft
-                        source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
+                        source: styleController ? "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle) : ""
                     }
                     ProgressButton {
                         imageSource: "qrc:/icons/edit.svg"

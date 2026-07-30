@@ -163,7 +163,7 @@ Page {
 
         Image {
             id: mainHeaderLogo
-            source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
+            source: styleController ? "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle) : ""
             anchors {
                 top: parent.top;
                 topMargin: contentContainer.safeAreaTop + (contentContainer.headerSize - height) / 2
