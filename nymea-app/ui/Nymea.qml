@@ -73,7 +73,6 @@ ApplicationWindow {
 
     property int margins: Style.margins
 
-    // #TODO can we replace these font sizes with whole fonts defined in Style(Base).qml?
     property int extraSmallFont: Style.extraSmallFont.pixelSize
     property int smallFont: Style.smallFont.pixelSize
     property int mediumFont: Style.font.pixelSize
