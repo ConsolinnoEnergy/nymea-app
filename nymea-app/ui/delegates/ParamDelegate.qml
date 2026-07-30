@@ -367,9 +367,6 @@ ItemDelegate {
                 property int activatedIndex: -1
             }
 
-            // #TODO
-            // - highlighted index when filter text changes
-
             popup: Popup {
                 id: comboPopup
                 width: control.width
