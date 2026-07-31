@@ -16,6 +16,8 @@ import android.content.res.Configuration;
 import android.content.IntentFilter;
 import android.content.BroadcastReceiver;
 import android.location.LocationManager;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
 import androidx.core.content.FileProvider;
 import androidx.core.view.WindowCompat;
 import android.view.WindowInsets;
@@ -68,13 +70,66 @@ public class NymeaAppActivity extends QtActivity
         this.context = getApplicationContext();
     }
 
-    public void onNewIntent (Intent intent) {
+    @Override
+    public void onNewIntent(Intent intent) {
         Log.d(TAG, "New intent: " + intent);
+        logNfcIntent(intent);
+
+        // QtActivityBase forwards the intent to QtNative. In particular, the Qt NFC
+        // backend relies on this call to receive foreground-dispatch NFC intents.
+        super.onNewIntent(intent);
+        Log.d(TAG, "Intent forwarded to Qt");
+
         String notificationData = intent.getStringExtra("notificationData");
         if (notificationData != null) {
             Log.d(TAG, "Intent data: " + notificationData);
             notificationActionReceivedJNI(notificationData);
         }
+    }
+
+    private void logNfcIntent(Intent intent) {
+        String action = intent.getAction();
+        if (!NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)
+                && !NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)
+                && !NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
+            return;
+        }
+
+        Tag tag = nfcTagFromIntent(intent);
+        if (tag == null) {
+            Log.w(TAG, "NFC intent has no android.nfc.extra.TAG; action=" + action
+                    + ", extras=" + (intent.getExtras() == null
+                            ? "none" : intent.getExtras().keySet()));
+            return;
+        }
+
+        Log.d(TAG, "NFC intent details: action=" + action
+                + ", uid=" + bytesToHex(tag.getId())
+                + ", technologies=" + java.util.Arrays.toString(tag.getTechList())
+                + ", flags=0x" + Integer.toHexString(intent.getFlags()));
+    }
+
+    @SuppressWarnings("deprecation")
+    private Tag nfcTagFromIntent(Intent intent) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            return intent.getParcelableExtra(NfcAdapter.EXTRA_TAG, Tag.class);
+        }
+        return intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+    }
+
+    private String bytesToHex(byte[] bytes) {
+        if (bytes == null || bytes.length == 0) {
+            return "<empty>";
+        }
+
+        StringBuilder result = new StringBuilder(bytes.length * 3 - 1);
+        for (int index = 0; index < bytes.length; ++index) {
+            if (index > 0) {
+                result.append(':');
+            }
+            result.append(String.format(java.util.Locale.ROOT, "%02X", bytes[index] & 0xff));
+        }
+        return result.toString();
     }
 
     @Override

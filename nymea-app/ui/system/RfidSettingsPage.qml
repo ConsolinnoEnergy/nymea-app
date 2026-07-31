@@ -861,7 +861,10 @@ SettingsPageBase {
 
                     function startScan() {
                         scanError = ""
-                        NfcHelper.startTagUidScan()
+                        var started = NfcHelper.startTagUidScan()
+                        console.info("[RFID NFC] Scan requested; started=" + started
+                                     + ", scanning=" + NfcHelper.scanning
+                                     + ", available=" + NfcHelper.tagUidScanningAvailable)
                     }
 
                     onBack: {
@@ -922,12 +925,17 @@ SettingsPageBase {
                         target: NfcHelper
 
                         function onTagDetected(tagInformation) {
+                            console.info("[RFID NFC] Tag received by scan page: "
+                                         + JSON.stringify(tagInformation))
                             wizardRootPage.scannedTagInformation = tagInformation
                             wizardRootPage.scannedOrEnteredCode = tagInformation.code
                             pageStack.push(addTagFinalizeComponent)
+                            console.info("[RFID NFC] Finalize page pushed; code="
+                                         + wizardRootPage.scannedOrEnteredCode)
                         }
 
                         function onScanFailed(message) {
+                            console.warn("[RFID NFC] Scan failed: " + message)
                             phoneNfcScanPage.scanError = message
                         }
                     }
