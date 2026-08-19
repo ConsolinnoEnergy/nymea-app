@@ -2,10 +2,15 @@
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
 #import <UIKit/UIKit.h>
+#import <objc/message.h>
+#import <objc/runtime.h>
 
 #include <QtDebug>
 #include <QtGlobal>
+#include "logging.h"
 #include "platformintegration/ios/platformhelperios.h"
+
+NYMEA_LOGGING_CATEGORY(dcIOSPasswordPaste, "IOSPasswordPaste")
 
 static UIWindow *activeWindow()
 {
@@ -118,6 +123,182 @@ static BOOL consoIsNumericKeyboardType(UIKeyboardType type)
     default:
         return NO;
     }
+}
+
+// #TODO Remove when Qt fixed QTBUG-146020
+// -----------------------------------------------------------------------
+// Crash guard for Qt's *internal, private* QIOSTapRecognizer class (see
+// qtbase's src/plugins/platforms/ios/qiostextinputoverlay.mm - not part of
+// any public Qt header; the class name and ivar name below are private
+// implementation details of Qt and may change or disappear in any future
+// Qt release without notice).
+//
+// Background (QTBUG-146020): QIOSTapRecognizer keeps a raw ivar
+// "UIView *_focusView". When the user taps a text field to open the native
+// edit menu, -touchesEnded:withEvent: schedules a dispatch_async() block on
+// the main queue that later reads that *same ivar* (not a captured copy) and
+// passes it to showEditMenu(). If -setEnabled:NO runs in between - which
+// happens whenever focus moves away from the field - Qt releases and nils
+// out _focusView synchronously, before the already-scheduled block runs.
+// Qt's showEditMenu() does not nil-check its argument, so the pending block
+// then crashes with a SIGSEGV.
+//
+// ESUI-1565 originally worked around this by disabling the whole text input
+// overlay for password fields via Qt.ImhNoTextHandles, which also silently
+// disabled pasting into those fields (ESUI-1615), since Qt's password
+// fields are custom QML items and rely entirely on this overlay for
+// copy/paste, unlike native UITextFields.
+//
+// To restore paste we instead close the actual race: we swizzle
+// -setEnabled: so that, on the enabled->disabled transition, we do NOT let
+// Qt release/nil _focusView synchronously. Instead we perform that exact
+// teardown (and nothing else) one tick later, via dispatch_async() on the
+// main queue. Because GCD's main queue is FIFO and any pending
+// touchesEnded: block was necessarily scheduled *before* this -setEnabled:NO
+// call (both run on the main thread, in call order), our deferred teardown
+// is guaranteed to run *after* that pending block, so _focusView stays
+// valid for its entire lifetime. We do not add any extra retain of our own:
+// we simply delay the release that Qt's own code already owes from the
+// matching retain it performed when the recognizer was enabled.
+//
+// This is written defensively throughout: every runtime lookup (class,
+// selector, ivar) is checked at install time, and again in the swizzled
+// function itself. On any mismatch we log a warning and fall back to
+// calling Qt's original, unpatched implementation - i.e. we never guess
+// about Qt's private internals, we bail out to the previously-shipped
+// behaviour instead.
+namespace {
+
+IMP g_originalTapRecognizerSetEnabled = nullptr;
+Ivar g_tapRecognizerFocusViewIvar = nullptr;
+
+// Replacement for -[QIOSTapRecognizer setEnabled:]. Behaves identically to
+// Qt's original implementation for every case except the enabled->disabled
+// transition, where the final "release _focusView and set it to nil" step
+// is deferred by one main-queue tick (see comment above) instead of
+// happening synchronously.
+void swizzled_tapRecognizer_setEnabled(id self, SEL _cmd, BOOL enabled)
+{
+    if (!g_originalTapRecognizerSetEnabled) {
+        qCWarning(dcIOSPasswordPaste()) << "QTBUG-146020 guard: original QIOSTapRecognizer -setEnabled: implementation is missing; ignoring call to avoid undefined behaviour.";
+        return;
+    }
+
+    typedef void (*SetEnabledFn)(id, SEL, BOOL);
+
+    // Mirror Qt's own early-return ("if (enabled == self.enabled) return;")
+    // so a redundant call never touches _focusView at all.
+    const BOOL currentlyEnabled = [self isEnabled];
+    if (enabled == currentlyEnabled) {
+        return;
+    }
+
+    // Enabling (re-)establishes _focusView from scratch and is not part of
+    // the race described above; call straight through to Qt's original code.
+    if (enabled || !g_tapRecognizerFocusViewIvar) {
+        ((SetEnabledFn) g_originalTapRecognizerSetEnabled)(self, _cmd, enabled);
+        return;
+    }
+
+    // Disabling path: this is exactly the QTBUG-146020 race window.
+    __unsafe_unretained UIView *focusView = (__bridge UIView *) object_getIvar(self, g_tapRecognizerFocusViewIvar);
+
+    qCDebug(dcIOSPasswordPaste()) << "QTBUG-146020 guard: QIOSTapRecognizer disabling, deferring _focusView teardown by one runloop tick. focusView present:" << (focusView != nil);
+
+    // Replicate Qt's own bookkeeping for "[super setEnabled:enabled]" so
+    // UIGestureRecognizer's internal state stays consistent, exactly as Qt's
+    // original code does - we just do it ourselves so we can hold back the
+    // final release/nil of _focusView below.
+    struct objc_super superInfo = { self, class_getSuperclass(object_getClass(self)) };
+    typedef void (*SuperSetEnabledFn)(struct objc_super *, SEL, BOOL);
+    ((SuperSetEnabledFn) objc_msgSendSuper)(&superInfo, _cmd, enabled);
+
+    if (focusView) {
+        [focusView removeGestureRecognizer:self];
+    }
+
+    // Explicitly keep `self` (the recognizer) alive across the dispatch gap
+    // below, rather than relying on the block's default capture of `self`.
+    // Whether a captured `id` is retained by a dispatched block's copy
+    // helper differs between ARC and non-ARC compilation of this file - and
+    // we do not know which applies here. Managing it ourselves via
+    // CFRetain/CFRelease bridging is correct and safe under both, and avoids
+    // reintroducing exactly the kind of use-after-free this guard exists to
+    // prevent, just one level up (on the recognizer itself instead of its
+    // focusView).
+    CFRetain((__bridge CFTypeRef) self);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // By the time this runs, any touchesEnded: block that was already
+        // pending on this same (FIFO) main queue before we got here has
+        // executed and read a still-valid focusView.
+        __unsafe_unretained UIView *stillCurrentFocusView = (__bridge UIView *) object_getIvar(self, g_tapRecognizerFocusViewIvar);
+        if (stillCurrentFocusView != focusView) {
+            // The recognizer was re-enabled (new focus view assigned) before
+            // our deferred teardown ran; nothing to release here, releasing
+            // the new view would be a double-release/use-after-free of its
+            // own. Just log for visibility.
+            qCDebug(dcIOSPasswordPaste()) << "QTBUG-146020 guard: focusView changed before deferred teardown ran (recognizer re-enabled); skipping release.";
+            CFRelease((__bridge CFTypeRef) self);
+            return;
+        }
+
+        if (focusView) {
+            // CFRelease (rather than an explicit "-release" message) so this
+            // compiles correctly whether or not this translation unit itself
+            // is built with ARC; either way it performs the exact same
+            // retain-count decrement Qt's own code would have done.
+            CFRelease((__bridge CFTypeRef) focusView);
+        }
+        object_setIvar(self, g_tapRecognizerFocusViewIvar, nil);
+        qCDebug(dcIOSPasswordPaste()) << "QTBUG-146020 guard: deferred _focusView teardown completed.";
+        CFRelease((__bridge CFTypeRef) self);
+    });
+}
+
+} // namespace
+
+// #TODO Remove when Qt fixed QTBUG-146020
+// Installs the crash guard above exactly once for the lifetime of the
+// process. Safe to call multiple times. No-ops (with a warning) if Qt's
+// private QIOSTapRecognizer class, its -setEnabled: method or its
+// _focusView ivar cannot be found - e.g. because a future Qt release
+// renamed, restructured or fixed the class - leaving Qt's own, unpatched
+// behaviour in place rather than risking a crash from our own wrong
+// assumptions about Qt's internals.
+void PlatformHelperIOS::installPasswordPasteCrashGuard()
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class tapRecognizerClass = NSClassFromString(@"QIOSTapRecognizer");
+        if (!tapRecognizerClass) {
+            qCWarning(dcIOSPasswordPaste()) << "QTBUG-146020 guard NOT installed: QIOSTapRecognizer class not found. Password field paste may still crash - keep Qt.ImhNoTextHandles as a fallback until this is investigated.";
+            return;
+        }
+
+        SEL setEnabledSelector = @selector(setEnabled:);
+        Method originalMethod = class_getInstanceMethod(tapRecognizerClass, setEnabledSelector);
+        if (!originalMethod) {
+            qCWarning(dcIOSPasswordPaste()) << "QTBUG-146020 guard NOT installed: QIOSTapRecognizer -setEnabled: not found.";
+            return;
+        }
+
+        Ivar focusViewIvar = class_getInstanceVariable(tapRecognizerClass, "_focusView");
+        if (!focusViewIvar) {
+            qCWarning(dcIOSPasswordPaste()) << "QTBUG-146020 guard NOT installed: QIOSTapRecognizer _focusView ivar not found.";
+            return;
+        }
+
+        g_tapRecognizerFocusViewIvar = focusViewIvar;
+        g_originalTapRecognizerSetEnabled = method_setImplementation(originalMethod, (IMP) swizzled_tapRecognizer_setEnabled);
+        if (!g_originalTapRecognizerSetEnabled) {
+            qCWarning(dcIOSPasswordPaste()) << "QTBUG-146020 guard NOT installed: method_setImplementation failed unexpectedly.";
+            g_tapRecognizerFocusViewIvar = nullptr;
+            return;
+        }
+
+        qCInfo(dcIOSPasswordPaste()) << "QTBUG-146020 guard installed for QIOSTapRecognizer -setEnabled:.";
+    });
 }
 
 QString PlatformHelperIOS::deviceName() const
