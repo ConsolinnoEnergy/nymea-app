@@ -4325,13 +4325,10 @@ Prosím zkuste to znovu.</translation>
         <translation>Abyste mohli používat svůj systém %1, vytvořte si účet.</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Password</source>
         <translation>Heslo</translation>
     </message>
     <message>
-=======
->>>>>>> 8d977d2c74ddf4fccdbf65d766914546a3210f52
         <source>Your name</source>
         <translation>Vaše jméno</translation>
     </message>

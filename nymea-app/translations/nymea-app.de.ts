@@ -7235,15 +7235,12 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <translation>Intelligente Stromzähler</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../ui/Nymea.qml" line="261"/>
         <source>EV-chargers</source>
         <translation>EV-Ladestationen</translation>
     </message>
     <message>
         <location filename="../ui/Nymea.qml" line="263"/>
-=======
->>>>>>> ded13bd02441aa7239b96ce0d09a60d24fee17d8
         <source>Power sockets</source>
         <translation>Steckdosen</translation>
     </message>

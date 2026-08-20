@@ -4312,7 +4312,6 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../../libnymea-app/types/interfaces.cpp" line="130"/>
         <source>Maximum charging current</source>
         <translation type="unfinished"></translation>
@@ -4328,10 +4327,7 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="141"/>
         <location filename="../../libnymea-app/types/interfaces.cpp" line="146"/>
-=======
->>>>>>> ded13bd02441aa7239b96ce0d09a60d24fee17d8
         <source>Percentage</source>
         <translation type="unfinished"></translation>
     </message>
