@@ -42,6 +42,8 @@
         <string>nymea:app is not using the device location at this point.</string>
         <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
         <string>nymea:app is not using the device location at this point.</string>
+        <key>NFCReaderUsageDescription</key>
+        <string>nymea:app uses NFC to scan RFID tags for EV charger authorization.</string>
         <key>NSBonjourServices</key>
         <array>
             <string>_jsonrpc._tcp</string>

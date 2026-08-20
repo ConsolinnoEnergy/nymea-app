@@ -28,6 +28,7 @@
 #include <QObject>
 #include <QColor>
 #include <QHash>
+#include <QUrl>
 #include <QUuid>
 #include <QVariant>
 
@@ -115,7 +116,15 @@ public:
     Q_INVOKABLE virtual void toClipBoard(const QString &text);
     Q_INVOKABLE virtual QString fromClipBoard();
 
+    Q_INVOKABLE virtual bool usesTemporaryExportFile() const;
+    Q_INVOKABLE virtual QUrl prepareTemporaryExportFile(const QString &fileName) const;
+    Q_INVOKABLE virtual void exportTemporaryFile(const QUrl &fileUrl);
     Q_INVOKABLE virtual void shareFile(const QString &fileName);
+    Q_INVOKABLE virtual void shareTemporaryFile(const QString &fileName);
+    Q_INVOKABLE virtual void removeFile(const QUrl &fileUrl);
+    Q_INVOKABLE virtual QString fileNameForUrl(const QUrl &fileUrl) const;
+    Q_INVOKABLE virtual bool usesNativeFilePicker() const;
+    Q_INVOKABLE virtual void pickFile();
 
     static QObject *platformHelperProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
 
@@ -141,6 +150,9 @@ signals:
     // Emitted when the user taps the keyboard accessory "dismiss" button on
     // iOS. Handled in QML by hiding the input panel and dropping focus.
     void imeActionTriggered();
+    void filePicked(const QUrl &fileUrl, const QString &fileName);
+    void filePickCanceled();
+    void filePickError(const QString &errorString);
 
 protected:
     explicit PlatformHelper(QObject *parent = nullptr);

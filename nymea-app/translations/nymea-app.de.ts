@@ -230,6 +230,18 @@
         <source>This action has not been executed yet.</source>
         <translation>Diese Aktion wurde noch nicht ausgeführt.</translation>
     </message>
+    <message>
+        <source>User action by %1 (%2)</source>
+        <translation>Benutzeraktion von %1 (%2)</translation>
+    </message>
+    <message>
+        <source>User action by %1</source>
+        <translation>Benutzeraktion von %1</translation>
+    </message>
+    <message>
+        <source>Automation by %1</source>
+        <translation>Automatisierung von %1</translation>
+    </message>
 </context>
 <context>
     <name>AdvancedConnectionInterfacesPage</name>
@@ -447,6 +459,250 @@
         <location filename="../ui/devicelistpages/AwningThingsListPage.qml" line="28"/>
         <source>Awnings</source>
         <translation>Markisen</translation>
+    </message>
+</context>
+<context>
+    <name>BackupSettingsPage</name>
+    <message>
+        <source>Backup settings</source>
+        <translation>Backup Einstellungen</translation>
+    </message>
+    <message>
+        <source>Creating backup...</source>
+        <translation>Erstelle Backup...</translation>
+    </message>
+    <message>
+        <source>Transferring backup...</source>
+        <translation>Übertrage Backup...</translation>
+    </message>
+    <message>
+        <source>%1 of %2</source>
+        <translation>%1 von %2</translation>
+    </message>
+    <message>
+        <source>Backup files</source>
+        <translation>Backup Dateien</translation>
+    </message>
+    <message>
+        <source>Create backup</source>
+        <translation>Erstelle Backup</translation>
+    </message>
+    <message>
+        <source>Create and download backup</source>
+        <translation>Backup erstellen und herunterladen</translation>
+    </message>
+    <message>
+        <source>Upload and restore backup</source>
+        <translation>Hochladen und wiederherstellen von Backup</translation>
+    </message>
+    <message>
+        <source>Save backup</source>
+        <translation>Backup speichern</translation>
+    </message>
+    <message>
+        <source>Backup archives (*.tar.gz)</source>
+        <translation>Backup Archive (*.tar.gz)</translation>
+    </message>
+    <message>
+        <source>Select backup file</source>
+        <translation>Wähle Backup Datei</translation>
+    </message>
+    <message>
+        <source>Failed to create the backup: %1</source>
+        <translation>Das Backup konnte nicht erstellt werden: %1</translation>
+    </message>
+    <message>
+        <source>Backup created successfully.</source>
+        <translation>Backup erfolgreich erstellt.</translation>
+    </message>
+    <message>
+        <source>Failed to prepare the backup download: %1</source>
+        <translation>Fehler bei der Vorbereitung des Downloads: %1</translation>
+    </message>
+    <message>
+        <source>The server did not provide a download for the requested backup.</source>
+        <translation>Der Server konnte keinen Download für das angefragte Backup zur Verfügung stellen.</translation>
+    </message>
+    <message>
+        <source>Failed to prepare the backup file download: %1</source>
+        <translation>Fehler bei der Vorbereitung des Backup Downloads: %1</translation>
+    </message>
+    <message>
+        <source>The server did not provide a download for the selected backup file.</source>
+        <translation>Der Server konnte keinen Download für das angefragte Backup zur Verfügung stellen.</translation>
+    </message>
+    <message>
+        <source>Backup saved to %1</source>
+        <translation>Backup gespeichert unter %1</translation>
+    </message>
+    <message>
+        <source>Backup uploaded. The server is restoring it and will reboot once finished.</source>
+        <translation>Backup hochgeladen. Der Server stellt es wieder her und startet anschließend neu.</translation>
+    </message>
+    <message>
+        <source>Saving backup settings...</source>
+        <translation>Speichere Backup Einstellungen</translation>
+    </message>
+    <message>
+        <source>1 Day</source>
+        <translation>1 Tag</translation>
+    </message>
+    <message>
+        <source>2 Days</source>
+        <translation>2 Tage</translation>
+    </message>
+    <message>
+        <source>Weekly</source>
+        <translation>Wöchentlich</translation>
+    </message>
+    <message>
+        <source>Once a month</source>
+        <translation>Einmal im Monat</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Benutzerdefiniert</translation>
+    </message>
+    <message>
+        <source>Backup configuration</source>
+        <translation>Backup Konfiguration</translation>
+    </message>
+    <message>
+        <source>Backup destination directory on the server</source>
+        <translation>Backup Zielordner auf dem Server</translation>
+    </message>
+    <message>
+        <source>Destination directory</source>
+        <translation>Zielordner</translation>
+    </message>
+    <message>
+        <source>Number of backups to keep (Select 0 to keep all backups)</source>
+        <translation>Anzahl der Backup die behalten werden sollen (Stelle 0 ein um alle zu behalten)</translation>
+    </message>
+    <message>
+        <source>Automatic backups</source>
+        <translation>Automatische Backups</translation>
+    </message>
+    <message>
+        <source>Automatic backup interval</source>
+        <translation>Intervall für automatische Backups</translation>
+    </message>
+    <message>
+        <source>Custom interval in hours</source>
+        <translation>Benutzerdefiniertes Intervall in Stunden</translation>
+    </message>
+    <message>
+        <source>Apply backup settings</source>
+        <translation>Backup Einstellungen übernehmen</translation>
+    </message>
+    <message>
+        <source>Failed to update the backup settings: %1</source>
+        <translation>Fehler beim Aktualisieren der Backup-Einstellungen: %1</translation>
+    </message>
+    <message>
+        <source>Backup settings updated successfully.</source>
+        <translation>Backup Einstellungen übernommen.</translation>
+    </message>
+    <message>
+        <source>Deleting backup file...</source>
+        <translation>Lösche Backup Datei...</translation>
+    </message>
+    <message>
+        <source>Restoring backup file...</source>
+        <translation>Stelle Backup wieder her...</translation>
+    </message>
+    <message>
+        <source>Backup file</source>
+        <translation>Backup Datei</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Größe</translation>
+    </message>
+    <message>
+        <source>Server version</source>
+        <translation>Server Version</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Erstellt</translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation>Herunterladen</translation>
+    </message>
+    <message>
+        <source>Delete backup</source>
+        <translation>Lösche Backup</translation>
+    </message>
+    <message>
+        <source>Restore backup</source>
+        <translation>Backup wiederherstellen</translation>
+    </message>
+    <message>
+        <source>Failed to delete the backup file: %1</source>
+        <translation>Fehler beim Löschen der Backup Datei: %1</translation>
+    </message>
+    <message>
+        <source>Backup file deleted.</source>
+        <translation>Backup-Datei wurde gelöscht.</translation>
+    </message>
+    <message>
+        <source>Failed to restore the backup file: %1</source>
+        <translation>Fehler beim Wiederherstellen der Backup-Datei: %1</translation>
+    </message>
+    <message>
+        <source>Backup restore started. The server will reboot once finished.</source>
+        <translation>Backup Wiederherstellung gestartet. Der Server wird anschließend neu starten.</translation>
+    </message>
+    <message>
+        <source>Delete backup file?</source>
+        <translation>Backup Datei löschen?</translation>
+    </message>
+    <message>
+        <source>Do you really want to delete the backup file 
+%1?</source>
+        <translation>Möchtest du die Backup Datei %1 wirklich löschen?</translation>
+    </message>
+    <message>
+        <source>Restore backup file?</source>
+        <translation>Backup Datei wiederherstellen?</translation>
+    </message>
+    <message>
+        <source>Do you really want to restore the backup file %1? All current settings will be removed and the server will reboot once finished.</source>
+        <translation>Möchten Sie die Sicherungsdatei %1 wirklich wiederherstellen? Alle aktuellen Einstellungen werden entfernt und der Server wird nach Abschluss des Vorgangs neu gestartet.</translation>
+    </message>
+    <message>
+        <source>Upload and restore backup?</source>
+        <translation>Backup hochladen und wiederherstellen?</translation>
+    </message>
+    <message>
+        <source>Do you really want to upload and restore the backup file %1? All current settings will be removed and the server will reboot once finished.</source>
+        <translation>Möchten Sie die Sicherungsdatei %1 wirklich hochladen und wiederherstellen? Alle aktuellen Einstellungen werden gelöscht und der Server wird nach Abschluss des Vorgangs neu gestartet.</translation>
+    </message>
+    <message>
+        <source>Preparing backup download...</source>
+        <translation>Bereite Download vor...</translation>
+    </message>
+    <message>
+        <source>Could not prepare a local backup file for export.</source>
+        <translation>Die lokale Backup-Datei konnte nicht für den Export vorbereitet werden.</translation>
+    </message>
+    <message>
+        <source>Please select a backup archive (*.tar.gz).</source>
+        <translation>Bitte wähle ein Backup-Archiv (*.tar.gz).</translation>
+    </message>
+    <message>
+        <source>There is no backup file in the backup directory %1 yet.</source>
+        <translation>Es ist noch kein Backup im Sicherungsverzeichnis %1 vorhanden.</translation>
+    </message>
+    <message>
+        <source>Backup downloaded. Choose Save to Files to store it in Downloads.</source>
+        <translation>Backup heruntergeladen. Wähle „In Dateien sichern“, um es in Downloads zu speichern.</translation>
     </message>
 </context>
 <context>
@@ -717,7 +973,7 @@
     <message>
         <location filename="../ui/connection/CertificateErrorDialog.qml" line="38"/>
         <source>The certificate for this %1 system has changed. This could be because the configuration has been changed, but could also mean the system has been compromised. Do you want to accept the new certificate?</source>
-        <translation>Das Zeritifikat für dieses %1 system hat sich geändert. Dies könnte durch eine Änderung der Konfiguration verursacht worden sein, aber auch darauf hindeuten, dass das System kompromittiert wurde. Möchtest du diesem Zertifikat vertrauen?</translation>
+        <translation>Das Zertifikat für dieses %1-System hat sich geändert. Dies könnte durch eine Änderung der Konfiguration verursacht worden sein, aber auch darauf hindeuten, dass das System kompromittiert wurde. Möchtest du diesem Zertifikat vertrauen?</translation>
     </message>
 </context>
 <context>
@@ -816,7 +1072,7 @@
     <message>
         <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="357"/>
         <source>Connect Inputs/Outputs</source>
-        <translation>Verbundene Ein-/Ausgänge</translation>
+        <translation>Ein-/Ausgänge verbinden</translation>
     </message>
     <message>
         <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="367"/>
@@ -1153,7 +1409,7 @@
     <message>
         <location filename="../ui/connection/ConnectionWizard.qml" line="492"/>
         <source>Bluetooth is turned off. Please enable Bluetooth on this device.</source>
-        <translation>Bluetooth ist deaktiviert. Bitte aktivieren Bluetooth auf diesem Gerät.</translation>
+        <translation>Bluetooth ist deaktiviert. Bitte aktiviere Bluetooth auf diesem Gerät.</translation>
     </message>
     <message>
         <location filename="../ui/connection/ConnectionWizard.qml" line="512"/>
@@ -1224,7 +1480,7 @@
     <message>
         <location filename="../ui/connection/ConnectionWizard.qml" line="500"/>
         <source>Location services are disabled. Please enable location services on this device in order to search for nearby nymea systems.</source>
-        <translation>Standortdienste sind deaktivert. Bitte aktiviere die Standortdienste auf diesem Gerät damit nymea Systeme in deiner Umgebung gefunden werden können.</translation>
+        <translation>Standortdienste sind deaktiviert. Bitte aktiviere die Standortdienste auf diesem Gerät, damit nymea-Systeme in deiner Umgebung gefunden werden können.</translation>
     </message>
 </context>
 <context>
@@ -1382,6 +1638,10 @@
         <source>My energy consumption</source>
         <translation>Mein Energieverbrauch</translation>
     </message>
+    <message>
+        <source>From car</source>
+        <translation>Vom Auto</translation>
+    </message>
 </context>
 <context>
     <name>CurrentPowerBalancePage</name>
@@ -1397,6 +1657,10 @@
         <location filename="../ui/mainviews/energy/CurrentPowerBalancePieChart.qml" line="57"/>
         <source>My energy mix</source>
         <translation>Mein Energiemix</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
     </message>
 </context>
 <context>
@@ -1425,6 +1689,10 @@
         <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="169"/>
         <source>To battery</source>
         <translation>Batterie</translation>
+    </message>
+    <message>
+        <source>To car</source>
+        <translation>Zum Auto</translation>
     </message>
 </context>
 <context>
@@ -1776,6 +2044,22 @@
         <location filename="../ui/system/DeveloperTools.qml" line="121"/>
         <source>Server logging categories</source>
         <translation>Server Log-Kategorien</translation>
+    </message>
+    <message>
+        <source>No active LAN IPv4 address was found in the network settings.</source>
+        <translation>Es konnte keine aktive LAN IPv4 Adresse in den Netzwerkeinstellungen gefunden werden.</translation>
+    </message>
+    <message>
+        <source>No reachable web server configuration was found for %1. Please enable the web server on this address or on 0.0.0.0.</source>
+        <translation>Es wurde keine erreichbare Webserver-Einstellung für %1 gefunden. Bitte richte einen Webserver ein, der auf 0.0.0.0 hört.</translation>
+    </message>
+    <message>
+        <source>The debug interface can only be reached from the LAN. If you are using the remote connection, the following link might not work.</source>
+        <translation>Die Debug-Schnittstelle kann nur innerhalb des LANs erreicht werden. Wenn du über die Fernverbindung verbunden bist, könnte der folgende Link eventuell nicht funktionieren.</translation>
+    </message>
+    <message>
+        <source>Open debug interface</source>
+        <translation>Öffne Debug Schnittstelle</translation>
     </message>
 </context>
 <context>
@@ -2538,6 +2822,49 @@
         <source>Add things</source>
         <translation>&quot;Things&quot; hinzufügen</translation>
     </message>
+    <message>
+        <source>Valves</source>
+        <translation>Ventile</translation>
+    </message>
+    <message>
+        <source>Add valve</source>
+        <translation>Ventil hinzufügen</translation>
+    </message>
+    <message>
+        <source>Add valves</source>
+        <translation>Ventile hinzufügen</translation>
+    </message>
+    <message>
+        <source>No valves installed</source>
+        <translation>Keine Ventile installiert</translation>
+    </message>
+    <message>
+        <source>Before a valve can be assigned to this zone, it needs to be connected to nymea.</source>
+        <translation>Bevor ein Ventil einer Zone zugewiesen werden kann, muss er an nymea angebunden werden.</translation>
+    </message>
+    <message>
+        <source>Setup valves</source>
+        <translation>Richte Ventile ein</translation>
+    </message>
+</context>
+<context>
+    <name>ElectricVehiclesView</name>
+    <message>
+        <source>Electric vehicles</source>
+        <translation>Elektrisches Fahrzeug</translation>
+    </message>
+    <message>
+        <source>There are no electric vehicles set up.</source>
+        <translation>Es sind keine elektrischen Fahrzeuge eingerichtet.</translation>
+    </message>
+    <message>
+        <source>Connect your cars and chargers in order to access them from here.</source>
+        <translation>Verbinde dein Auto und den Lader um von hier aus zuzugreifen.</translation>
+    </message>
+    <message>
+        <source>Add things</source>
+        <translation>&quot;Things&quot; hinzufügen</translation>
+    </message>
 </context>
 <context>
     <name>EnergySettingsPage</name>
@@ -2625,6 +2952,21 @@
     </message>
 </context>
 <context>
+    <name>EvChargerDcThingPage</name>
+    <message>
+        <source>Charging power</source>
+        <translation>Ladeleistung</translation>
+    </message>
+    <message>
+        <source>The car is not plugged in.</source>
+        <translation>Das Fahrzeug ist nicht eingesteckt.</translation>
+    </message>
+    <message>
+        <source>Currently charging at %1.</source>
+        <translation>Aktuell wird mit %1 geladen.</translation>
+    </message>
+</context>
+<context>
     <name>EvChargerThingPage</name>
     <message>
         <location filename="../ui/devicepages/EvChargerThingPage.qml" line="81"/>
@@ -2705,7 +3047,23 @@
     <message>
         <location filename="../ui/system/EvDashSettingsPage.qml" line="193"/>
         <source>Manage users</source>
-        <translation type="unfinished">Benutzer verwalten</translation>
+        <translation>Benutzer verwalten</translation>
+    </message>
+    <message>
+        <source>The dashboard can only be reached from the LAN. If you are using the remote connection, the following link might not work.</source>
+        <translation>Das Dashboard kann nur innerhalb des LANs erreicht werden. Wenn du über die Fernverbindung verbunden bist, könnte der folgende Link eventuell nicht funktionieren.</translation>
+    </message>
+    <message>
+        <source>No active LAN IPv4 address was found in the network settings.</source>
+        <translation>Es konnte keine aktive LAN IPv4 Adresse in den Netzwerkeinstellungen gefunden werden.</translation>
+    </message>
+    <message>
+        <source>No reachable web server configuration was found for %1. Please enable the web server on this address or on 0.0.0.0.</source>
+        <translation>Es wurde keine erreichbare Webserver-Einstellung für %1 gefunden. Bitte richte einen Webserver ein, der auf 0.0.0.0 hört.</translation>
+    </message>
+    <message>
+        <source>Open EVDash</source>
+        <translation>Öffne EVDash</translation>
     </message>
 </context>
 <context>
@@ -2796,7 +3154,7 @@
     <message>
         <location filename="../ui/mainviews/FavoritesView.qml" line="268"/>
         <source>Favorites allow you to keep track of your most important things when you have lots of them. Watch out for the star when interacting with things and use it to mark them as your favorites.</source>
-        <translation>Favoriten erlauben es den Überblick über die wichtigsten &quot;Things&quot; zu behalten wenn Du viele davon eingebunden hast. Halte ausschau nach dem Stern wenn Du mit &quot;Things&quot; interagierst umd benutze ihn um diese als Favoriten zu markieren.</translation>
+        <translation>Favoriten erlauben es, den Überblick über die wichtigsten „Things“ zu behalten, wenn du viele davon eingebunden hast. Halte Ausschau nach dem Stern, wenn du mit „Things“ interagierst, und benutze ihn, um diese als Favoriten zu markieren.</translation>
     </message>
     <message>
         <location filename="../ui/mainviews/FavoritesView.qml" line="271"/>
@@ -4678,6 +5036,14 @@ Bitte versuche es erneut.</translation>
         <source>Vibration detected</source>
         <translation>Vibration erkannt</translation>
     </message>
+    <message>
+        <source>EV chargers</source>
+        <translation>Ladestationen</translation>
+    </message>
+    <message>
+        <source>Electric cars</source>
+        <translation>Elektrische Autos</translation>
+    </message>
 </context>
 <context>
     <name>IrrigationDevicePage</name>
@@ -5336,6 +5702,10 @@ Bitte versuche es erneut.</translation>
         <location filename="../ui/MainPage.qml" line="295"/>
         <source>AC</source>
         <translation>AC</translation>
+    </message>
+    <message>
+        <source>EVs</source>
+        <translation>Elektrische Fahrzeuge</translation>
     </message>
 </context>
 <context>
@@ -6416,6 +6786,34 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <source>This feature is not supported on this platform.</source>
         <translation>Diese Funktion wird auf diese Plattform nicht unterstützt.</translation>
     </message>
+    <message>
+        <source>Disabling networking will disconnect all connected clients and may make this %1 system inaccessible from this app. Do not proceed unless you have another way to access the system.</source>
+        <translation>Wenn die Netzwerkfunktion deaktiviert wird, werden alle verbundenen Clients getrennt und dieses %1 System ist möglicherweise über diese App nicht mehr erreichbar. Fahre nur fort, wenn Du eine andere Möglichkeit hast, auf das System zuzugreifen.</translation>
+    </message>
+    <message>
+        <source>Configure LAN network</source>
+        <translation>LAN-Netzwerk einrichten</translation>
+    </message>
+    <message>
+        <source>Configure the dedicated LAN</source>
+        <translation>Dediziertes LAN einrichten</translation>
+    </message>
+    <message>
+        <source>Disabling WiFi will disconnect all clients connected via WiFi and may make this %1 system inaccessible from this app unless another network connection is available.</source>
+        <translation>Wenn WLAN deaktiviert wird, werden alle über WLAN verbundenen Clients getrennt und dieses %1 System ist möglicherweise über diese App nicht mehr erreichbar, sofern keine andere Netzwerkverbindung verfügbar ist.</translation>
+    </message>
+    <message>
+        <source>Disconnect network interface?</source>
+        <translation>Netzwerkschnittstelle trennen?</translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this is the LAN or WAN interface currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation>Das Trennen dieser Netzwerkschnittstelle kann dazu führen, dass dieses %1 System über diese App nicht mehr erreichbar ist. Wenn dies die LAN- oder WAN-Schnittstelle ist, über die Deine Verbindung gerade läuft, verlierst Du möglicherweise den Zugriff, bis ein anderer Netzwerkpfad verfügbar ist.</translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this interface is currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation>Das Trennen dieser Netzwerkschnittstelle kann dazu führen, dass dieses %1 System über diese App nicht mehr erreichbar ist. Wenn Deine Verbindung gerade über diese Schnittstelle läuft, verlierst Du möglicherweise den Zugriff, bis ein anderer Netzwerkpfad verfügbar ist.</translation>
+    </message>
 </context>
 <context>
     <name>NewMagicPage</name>
@@ -6494,6 +6892,168 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <location filename="../ui/thingconfiguration/NewThingPage.qml" line="185"/>
         <source>Install plugins</source>
         <translation>Plugins installieren</translation>
+    </message>
+</context>
+<context>
+    <name>NfcHelper</name>
+    <message>
+        <source>Proprietary tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MIFARE tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Unbekannt</translation>
+    </message>
+    <message>
+        <source>NFC tag scanning is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not start NFC tag scanning.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag UID could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag-specific</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NgwSettingsPage</name>
+    <message>
+        <source>LAN network</source>
+        <translation>LAN-Netzwerk</translation>
+    </message>
+    <message>
+        <source>An unexpected error happened while updating the LAN configuration.</source>
+        <translation>Beim Aktualisieren der LAN-Konfiguration ist ein unerwarteter Fehler aufgetreten.</translation>
+    </message>
+    <message>
+        <source>Disable dedicated LAN?</source>
+        <translation>Dediziertes LAN deaktivieren?</translation>
+    </message>
+    <message>
+        <source>Disabling the dedicated LAN may make this %1 system inaccessible from clients connected through the LAN interface. Do not proceed unless another network path is available.</source>
+        <translation>Wenn das dedizierte LAN deaktiviert wird, ist dieses %1 System möglicherweise für Clients, die über die LAN-Schnittstelle verbunden sind, nicht mehr erreichbar. Fahre nur fort, wenn ein anderer Netzwerkpfad verfügbar ist.</translation>
+    </message>
+    <message>
+        <source>Do you want to proceed?</source>
+        <translation>Möchtest Du fortfahren?</translation>
+    </message>
+    <message>
+        <source>The dedicated LAN creates a separate local network on this system. When enabled, gateway services and internet sharing can be configured for devices connected to that LAN.</source>
+        <translation>Das dedizierte LAN erstellt ein separates lokales Netzwerk auf diesem System. Wenn es aktiviert ist, können Gateway-Dienste und die Internetfreigabe für Geräte konfiguriert werden, die mit diesem LAN verbunden sind.</translation>
+    </message>
+    <message>
+        <source>Dedicated LAN</source>
+        <translation>Dediziertes LAN</translation>
+    </message>
+    <message>
+        <source>Dedicated LAN enabled</source>
+        <translation>Dediziertes LAN aktiviert</translation>
+    </message>
+    <message>
+        <source>Run a separate, dedicated local network on this system</source>
+        <translation>Ein separates, dediziertes lokales Netzwerk auf diesem System betreiben</translation>
+    </message>
+    <message>
+        <source>Gateway services access</source>
+        <translation>Zugriff auf Gateway-Dienste</translation>
+    </message>
+    <message>
+        <source>Which nymea services can be reached from the dedicated LAN</source>
+        <translation>Welche nymea Dienste über das dedizierte LAN erreichbar sind</translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation>Deaktiviert</translation>
+    </message>
+    <message>
+        <source>nymea services only</source>
+        <translation>Nur nymea Dienste</translation>
+    </message>
+    <message>
+        <source>All ports</source>
+        <translation>Alle Ports</translation>
+    </message>
+    <message>
+        <source>Internet sharing</source>
+        <translation>Internetfreigabe</translation>
+    </message>
+    <message>
+        <source>Share this system&apos;s internet connection with the dedicated LAN</source>
+        <translation>Die Internetverbindung dieses Systems mit dem dedizierten LAN teilen</translation>
+    </message>
+    <message>
+        <source>Status: enabled</source>
+        <translation>Status: aktiviert</translation>
+    </message>
+    <message>
+        <source>Status: disabled</source>
+        <translation>Status: deaktiviert</translation>
+    </message>
+    <message>
+        <source>LAN interface</source>
+        <translation>LAN-Schnittstelle</translation>
+    </message>
+    <message>
+        <source>WAN interface</source>
+        <translation>WAN-Schnittstelle</translation>
+    </message>
+    <message>
+        <source>LAN subnet</source>
+        <translation>LAN-Subnetz</translation>
+    </message>
+    <message>
+        <source>LAN address</source>
+        <translation>LAN-Adresse</translation>
+    </message>
+    <message>
+        <source>DHCP range</source>
+        <translation>DHCP-Bereich</translation>
+    </message>
+    <message>
+        <source>Configured gateway ports</source>
+        <translation>Konfigurierte Gateway-Ports</translation>
     </message>
 </context>
 <context>
@@ -6869,6 +7429,24 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <source>Ozone sensors</source>
         <translation>Ozonsensoren</translation>
     </message>
+    <message>
+        <source>EV chargers</source>
+        <translation>Ladestationen</translation>
+    </message>
+    <message>
+        <source>Valves</source>
+        <translation>Ventile</translation>
+    </message>
+    <message>
+        <source>valve</source>
+        <extracomment>Select ...</extracomment>
+        <translation>Ventil</translation>
+    </message>
+    <message>
+        <source>EV charger</source>
+        <extracomment>Select ...</extracomment>
+        <translation>Ladestation</translation>
+    </message>
 </context>
 <context>
     <name>NymeaItemDelegate</name>
@@ -6994,7 +7572,7 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
     <message>
         <location filename="../ui/system/PackageDetailsPage.qml" line="88"/>
         <source>This will start a system update. Note that the update might take several minutes and your %1 might not be functioning properly or restart during this time.</source>
-        <translation>Diese Aktion wird ein System-Update starten. Dies kann mehrere Miuten dauern und Dein %1 System könnte in dieser Zeit gegebenenfalls nicht ordungsgemäß funktionieren.</translation>
+        <translation>Diese Aktion startet ein System-Update. Dies kann mehrere Minuten dauern und dein %1-System könnte in dieser Zeit gegebenenfalls nicht ordnungsgemäß funktionieren.</translation>
     </message>
     <message>
         <location filename="../ui/system/PackageDetailsPage.qml" line="90"/>
@@ -7017,7 +7595,7 @@ Möchtest Du fortfahren?</translation>
         <location filename="../ui/system/PackageDetailsPage.qml" line="112"/>
         <source>This will start a system update. Note that the update might take several minutes and your %1 system might not be functioning properly during this time and restart during the process.
 Do you want to proceed?</source>
-        <translation>Diese Aktion wird ein System-Update starten. Dies kann mehrere Miuten dauern und Dein %1 System könnte in dieser Zeit gegebenenfalls nicht ordungsgemäß funktionieren.
+        <translation>Diese Aktion startet ein System-Update. Dies kann mehrere Minuten dauern und dein %1-System könnte in dieser Zeit gegebenenfalls nicht ordnungsgemäß funktionieren.
 Möchtest Du fortfahren?</translation>
     </message>
     <message>
@@ -7561,6 +8139,472 @@ Möchtest Du fortfahren?</translation>
     </message>
 </context>
 <context>
+    <name>RfidManagerSettingsPage</name>
+    <message>
+        <source>RFID settings</source>
+        <translation>RFID-Einstellungen</translation>
+    </message>
+    <message>
+        <source>Unsaved RFID settings</source>
+        <translation>Nicht gespeicherte RFID-Einstellungen</translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation>Möchten Sie die Änderungen speichern, bevor Sie diese Seite verlassen?</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Verwerfen</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>Zurück</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be loaded.</source>
+        <translation>Die RFID-Einstellungen konnten nicht geladen werden.</translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be saved.</source>
+        <translation>Die RFID-Einstellungen konnten nicht gespeichert werden.</translation>
+    </message>
+    <message>
+        <source>RFID authorization</source>
+        <translation>RFID-Autorisierung</translation>
+    </message>
+    <message>
+        <source>Charging starts after a valid RFID tag authorizes the charger. Time limits can revoke unused authorizations automatically.</source>
+        <translation>Der Ladevorgang startet, nachdem ein gültiger RFID-Tag die Ladestation autorisiert hat. Zeitlimits können ungenutzte Autorisierungen automatisch widerrufen.</translation>
+    </message>
+    <message>
+        <source>Limit time to plug in</source>
+        <translation>Zeit zum Einstecken begrenzen</translation>
+    </message>
+    <message>
+        <source>Plug-in timeout</source>
+        <translation>Einsteck-Timeout</translation>
+    </message>
+    <message>
+        <source>seconds</source>
+        <translation>Sekunden</translation>
+    </message>
+    <message>
+        <source>After a tag was accepted, the authorization expires if the vehicle is not plugged in within this time.</source>
+        <translation>Nachdem ein Tag akzeptiert wurde, läuft die Autorisierung ab, wenn das Fahrzeug nicht innerhalb dieser Zeit eingesteckt wird.</translation>
+    </message>
+    <message>
+        <source>Limit time to present a tag</source>
+        <translation>Zeit zum Vorhalten eines Tags begrenzen</translation>
+    </message>
+    <message>
+        <source>Tag timeout</source>
+        <translation>Tag-Timeout</translation>
+    </message>
+    <message>
+        <source>After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.</source>
+        <translation>Nachdem das Fahrzeug eingesteckt wurde, läuft die Autorisierung ab, wenn innerhalb dieser Zeit kein gültiger Tag vorgehalten wird.</translation>
+    </message>
+    <message>
+        <source>Limit time to scan a new tag</source>
+        <translation>Zeit zum Scannen eines neuen Tags begrenzen</translation>
+    </message>
+    <message>
+        <source>Enrollment timeout</source>
+        <translation>Registrierungs-Timeout</translation>
+    </message>
+    <message>
+        <source>When adding a tag from a charger, the scan request expires if no tag is presented within this time.</source>
+        <translation>Beim Hinzufügen eines Tags über eine Ladestation läuft die Scan-Anfrage ab, wenn innerhalb dieser Zeit kein Tag vorgehalten wird.</translation>
+    </message>
+</context>
+<context>
+    <name>RfidSettingsPage</name>
+    <message>
+        <source>RFID charging</source>
+        <translation>RFID-Laden</translation>
+    </message>
+    <message>
+        <source>Eco</source>
+        <translation>Eco</translation>
+    </message>
+    <message>
+        <source>Quick</source>
+        <translation>Schnell</translation>
+    </message>
+    <message>
+        <source>Eco charging</source>
+        <translation>Eco-Laden</translation>
+    </message>
+    <message>
+        <source>Quick charging</source>
+        <translation>Schnellladen</translation>
+    </message>
+    <message>
+        <source>Max charging current: %1 A</source>
+        <translation>Max. Ladestrom: %1 A</translation>
+    </message>
+    <message>
+        <source>Phase count: %1</source>
+        <translation>Anzahl Phasen: %1</translation>
+    </message>
+    <message>
+        <source>This RFID tag is already assigned.</source>
+        <translation>Dieser RFID-Tag ist bereits zugewiesen.</translation>
+    </message>
+    <message>
+        <source>The selected charging profile is not valid.</source>
+        <translation>Das ausgewählte Ladeprofil ist ungültig.</translation>
+    </message>
+    <message>
+        <source>The selected user no longer exists.</source>
+        <translation>Der ausgewählte Benutzer existiert nicht mehr.</translation>
+    </message>
+    <message>
+        <source>The selected RFID tag no longer exists.</source>
+        <translation>Der ausgewählte RFID-Tag existiert nicht mehr.</translation>
+    </message>
+    <message>
+        <source>The RFID tag data is not valid.</source>
+        <translation>Die RFID-Tag-Daten sind ungültig.</translation>
+    </message>
+    <message>
+        <source>This charger is already waiting for an RFID tag.</source>
+        <translation>Diese Ladestation wartet bereits auf einen RFID-Tag.</translation>
+    </message>
+    <message>
+        <source>The RFID tag scan is no longer active.</source>
+        <translation>Der RFID-Tag-Scan ist nicht mehr aktiv.</translation>
+    </message>
+    <message>
+        <source>The RFID tag request could not be completed. (Error code: %1)</source>
+        <translation>Die RFID-Tag-Anfrage konnte nicht abgeschlossen werden. (Fehlercode: %1)</translation>
+    </message>
+    <message>
+        <source>All users</source>
+        <translation>Alle Benutzer</translation>
+    </message>
+    <message>
+        <source>Available to %1</source>
+        <translation>Verfügbar für %1</translation>
+    </message>
+    <message>
+        <source>Remove RFID tag</source>
+        <translation>RFID-Tag entfernen</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot; for %2?</source>
+        <translation>Sind Sie sicher, dass Sie &quot;%1&quot; für %2 entfernen möchten?</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation>Filter</translation>
+    </message>
+    <message>
+        <source>Add RFID tag</source>
+        <translation>RFID-Tag hinzufügen</translation>
+    </message>
+    <message>
+        <source>RFID tags</source>
+        <translation>RFID-Tags</translation>
+    </message>
+    <message>
+        <source>No RFID tags configured.</source>
+        <translation>Keine RFID-Tags konfiguriert.</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>Benutzer</translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation>Aktion</translation>
+    </message>
+    <message>
+        <source>Select the user this RFID tag belongs to.</source>
+        <translation>Wählen Sie den Benutzer aus, dem dieser RFID-Tag gehört.</translation>
+    </message>
+    <message>
+        <source>Choose how to read the RFID tag for %1.</source>
+        <translation>Wählen Sie aus, wie der RFID-Tag für %1 gelesen werden soll.</translation>
+    </message>
+    <message>
+        <source>Scan on charger</source>
+        <translation>An Ladestation scannen</translation>
+    </message>
+    <message>
+        <source>Select a charger and prepare it for the next RFID tag.</source>
+        <translation>Wählen Sie eine Ladestation aus und bereiten Sie sie auf den nächsten RFID-Tag vor.</translation>
+    </message>
+    <message>
+        <source>Enter manually</source>
+        <translation>Manuell eingeben</translation>
+    </message>
+    <message>
+        <source>Type the RFID code manually.</source>
+        <translation>Geben Sie den RFID-Code manuell ein.</translation>
+    </message>
+    <message>
+        <source>Scan with phone NFC</source>
+        <translation>Mit NFC des Telefons scannen</translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near this phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The NFC scan is not running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan RFID tag</source>
+        <translation>RFID-Tag scannen</translation>
+    </message>
+    <message>
+        <source>Select the charger that should scan the RFID tag.</source>
+        <translation>Wählen Sie die Ladestation aus, die den RFID-Tag scannen soll.</translation>
+    </message>
+    <message>
+        <source>Find charger</source>
+        <translation>Ladestation suchen</translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is currently available.</source>
+        <translation>Derzeit ist keine Ladestation mit RFID-Scan-Unterstützung verfügbar.</translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is available for %1.</source>
+        <translation>Für %1 ist keine Ladestation mit RFID-Scan-Unterstützung verfügbar.</translation>
+    </message>
+    <message>
+        <source>Show user chargers</source>
+        <translation>Ladestationen des Benutzers anzeigen</translation>
+    </message>
+    <message>
+        <source>Show all chargers</source>
+        <translation>Alle Ladestationen anzeigen</translation>
+    </message>
+    <message>
+        <source>Not available to %1</source>
+        <translation>Nicht verfügbar für %1</translation>
+    </message>
+    <message>
+        <source>Use this charger to scan the next tag</source>
+        <translation>Diese Ladestation zum Scannen des nächsten Tags verwenden</translation>
+    </message>
+    <message>
+        <source>Present the RFID tag to %1 now.</source>
+        <translation>Halten Sie den RFID-Tag jetzt an %1.</translation>
+    </message>
+    <message>
+        <source>The selected charger is no longer available.</source>
+        <translation>Die ausgewählte Ladestation ist nicht mehr verfügbar.</translation>
+    </message>
+    <message>
+        <source>Cancel scan</source>
+        <translation>Scan abbrechen</translation>
+    </message>
+    <message>
+        <source>The next RFID tag detected on %1 will be stored.</source>
+        <translation>Der nächste an %1 erkannte RFID-Tag wird gespeichert.</translation>
+    </message>
+    <message>
+        <source>Time remaining: %1</source>
+        <translation>Verbleibende Zeit: %1</translation>
+    </message>
+    <message>
+        <source>Please go back and select another charger.</source>
+        <translation>Bitte gehen Sie zurück und wählen Sie eine andere Ladestation aus.</translation>
+    </message>
+    <message>
+        <source>No RFID tag was detected before the scan expired.</source>
+        <translation>Vor Ablauf des Scans wurde kein RFID-Tag erkannt.</translation>
+    </message>
+    <message>
+        <source>Enter RFID tag</source>
+        <translation>RFID-Tag eingeben</translation>
+    </message>
+    <message>
+        <source>Enter the RFID code manually.</source>
+        <translation>Geben Sie den RFID-Code manuell ein.</translation>
+    </message>
+    <message>
+        <source>RFID code</source>
+        <translation>RFID-Code</translation>
+    </message>
+    <message>
+        <source>Finish RFID tag</source>
+        <translation>RFID-Tag fertigstellen</translation>
+    </message>
+    <message>
+        <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
+        <translation>Benennen Sie den RFID-Tag, konfigurieren Sie sein Ladeprofil und bereiten Sie anschließend die Ladestation auf den nächsten Tag vor.</translation>
+    </message>
+    <message>
+        <source>Review the scanned RFID tag, name it, and configure its charging profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name the RFID tag and configure its charging profile.</source>
+        <translation>Benennen Sie den RFID-Tag und konfigurieren Sie sein Ladeprofil.</translation>
+    </message>
+    <message>
+        <source>Start scan</source>
+        <translation>Scan starten</translation>
+    </message>
+    <message>
+        <source>Create RFID tag</source>
+        <translation>RFID-Tag erstellen</translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation>Nicht festgelegt</translation>
+    </message>
+    <message>
+        <source>Owner</source>
+        <translation>Besitzer</translation>
+    </message>
+    <message>
+        <source>RFID tag</source>
+        <translation>RFID-Tag</translation>
+    </message>
+    <message>
+        <source>The charger will store the next RFID tag it detects.</source>
+        <translation>Die Ladestation speichert den nächsten RFID-Tag, den sie erkennt.</translation>
+    </message>
+    <message>
+        <source>UID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Unbekannt</translation>
+    </message>
+    <message>
+        <source>Access methods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum command length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display name</source>
+        <translation>Anzeigename</translation>
+    </message>
+    <message>
+        <source>Enabled</source>
+        <translation>Aktiviert</translation>
+    </message>
+    <message>
+        <source>Charging profile</source>
+        <translation>Ladeprofil</translation>
+    </message>
+    <message>
+        <source>Max charging current (A)</source>
+        <translation>Max. Ladestrom (A)</translation>
+    </message>
+    <message>
+        <source>EV chargers</source>
+        <translation>Ladestationen</translation>
+    </message>
+    <message>
+        <source>This RFID tag is not available on any EV charger for the selected user.</source>
+        <translation>Dieser RFID-Tag ist auf keiner Ladestation für den ausgewählten Benutzer verfügbar.</translation>
+    </message>
+    <message>
+        <source>Edit RFID tag</source>
+        <translation>RFID-Tag bearbeiten</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <source>Technical details</source>
+        <translation>Technische Details</translation>
+    </message>
+    <message>
+        <source>RFID hash</source>
+        <translation>RFID-Hash</translation>
+    </message>
+    <message>
+        <source>RFID hash copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsaved RFID tag</source>
+        <translation>Nicht gespeicherter RFID-Tag</translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation>Möchten Sie die Änderungen speichern, bevor Sie diese Seite verlassen?</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Verwerfen</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>Zurück</translation>
+    </message>
+    <message>
+        <source>Basic information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The charger will apply the following profile when this tag is detected on an assigned charger.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco uses available surplus energy. Quick charges as fast as the configured limits allow.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select how many phases the charger should use. Leave this unset to let the charger decide.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tag details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This tag can authorize charging on the EV chargers listed below because they are accessible to its owner.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RootItem</name>
     <message>
         <location filename="../ui/RootItem.qml" line="658"/>
@@ -7575,7 +8619,7 @@ Möchtest Du fortfahren?</translation>
     <message>
         <location filename="../ui/RootItem.qml" line="664"/>
         <source>The version of the %1 system you are trying to connect to is too old. This app requires at least API version %2 but this %1 system only supports API version %3. Please update your %1 system.</source>
-        <translation>Die Version dieses %1 Systems ist zu alt. Diese App benötigt mindestens API Version %2, dieses %1 System unterstützt jedoch nur API Version %3. Bitte update Dein %1 System.</translation>
+        <translation>Die Version dieses %1-Systems ist zu alt. Diese App benötigt mindestens API-Version %2, dieses %1-System unterstützt jedoch nur API-Version %3. Bitte aktualisiere dein %1-System.</translation>
     </message>
     <message>
         <location filename="../ui/RootItem.qml" line="665"/>
@@ -7617,6 +8661,23 @@ Möchtest Du fortfahren?</translation>
     </message>
 </context>
 <context>
+    <name>S:</name>
+    <message>
+        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="88"/>
+        <source></source>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <translation>Beispiel: &quot;und Temperatur &gt; 5&quot;</translation>
+    </message>
+    <message>
+        <source>only if %1 %2 %3</source>
+        <translation type="unfinished">nur wenn %1 %2 %3</translation>
+    </message>
+    <message>
+        <source>and %1 %2 %3</source>
+        <translation type="unfinished">und %1 %2 %3</translation>
+    </message>
+</context>
+<context>
     <name>ScenesView</name>
     <message>
         <location filename="../ui/mainviews/ScenesView.qml" line="83"/>
@@ -7631,7 +8692,7 @@ Möchtest Du fortfahren?</translation>
     <message>
         <location filename="../ui/mainviews/ScenesView.qml" line="86"/>
         <source>Scenes provide a useful way to control your things with just one click.</source>
-        <translation>Szenen bieten einen einfachen Weg um deine &quot;Things&quot; mit nur einem klick zu steuern.</translation>
+        <translation>Szenen bieten einen einfachen Weg, um deine „Things“ mit nur einem Klick zu steuern.</translation>
     </message>
     <message>
         <location filename="../ui/mainviews/ScenesView.qml" line="88"/>
@@ -8316,6 +9377,22 @@ Möchtest Du fortfahren?</translation>
         <source>Dashboard settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Backup</source>
+        <translation>Backup</translation>
+    </message>
+    <message>
+        <source>Manage system configuration backup</source>
+        <translation>Systemkonfigurationssicherung verwalten</translation>
+    </message>
+    <message>
+        <source>RFID charging</source>
+        <translation>RFID-Laden</translation>
+    </message>
+    <message>
+        <source>Manage RFID tags for charger authorization</source>
+        <translation>RFID-Tags für die Autorisierung von Ladestationen verwalten</translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -8705,7 +9782,7 @@ A consumer, not consuming anything</extracomment>
     <message>
         <location filename="../ui/magic/StateEvaluatorDelegate.qml" line="160"/>
         <source>When a thing of a given type enters a state</source>
-        <translation>Wenn ein &quot;Things&quot; eines Typs einen Zustand betritt</translation>
+        <translation>Wenn ein „Thing“ eines bestimmten Typs einen Zustand annimmt</translation>
     </message>
 </context>
 <context>
@@ -8807,7 +9884,7 @@ A consumer, not consuming anything</extracomment>
         <location filename="../ui/system/SystemUpdatePage.qml" line="156"/>
         <source>This will start a system update. Note that the update might take several minutes and your %1 system might not be functioning properly during this time and restart during the process.
 Do you want to proceed?</source>
-        <translation>Diese Aktion wird ein System-Update starten. Dies kann mehrere Minuten dauern und Dein %1 System könnte in dieser Zeit gegebenenfalls nicht ordungsgemäß funktionieren.
+        <translation>Diese Aktion startet ein System-Update. Dies kann mehrere Minuten dauern und dein %1-System könnte in dieser Zeit gegebenenfalls nicht ordnungsgemäß funktionieren.
 Möchtest Du fortfahren?</translation>
     </message>
     <message>
@@ -8816,13 +9893,41 @@ Möchtest Du fortfahren?</translation>
 This can potentially break your system and lead to problems.
 Please only use this if you are sure you want this and consider reporting the issues you find when testing unreleased channels.</source>
         <translation>Das Aktivieren zusätzlicher Software-Quellen erlaubt das Installieren von %1 Vorschauversionen.
-Dies kann unter Umständen Deine Installation beschädigen und zu Problemen füren.
+Dies kann unter Umständen deine Installation beschädigen und zu Problemen führen.
 Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du möchtest und hilf uns Fehler zu finden indem Du uns darüber informierst.</translation>
     </message>
     <message>
         <location filename="../ui/system/SystemUpdatePage.qml" line="217"/>
         <source>Update sources</source>
         <translation>Quellen für die Aktualisierung</translation>
+    </message>
+    <message>
+        <source>Version:</source>
+        <translation>Version:</translation>
+    </message>
+    <message>
+        <source>Version copied to clipboard</source>
+        <translation>Version in Zwischenablage kopiert</translation>
+    </message>
+    <message>
+        <source>%1 update available</source>
+        <translation>%1 Update verfügbar</translation>
+    </message>
+    <message>
+        <source>Installed version:</source>
+        <translation>Installierte Version:</translation>
+    </message>
+    <message>
+        <source>Candidate version:</source>
+        <translation>Versionskandidat:</translation>
+    </message>
+    <message>
+        <source>Update changelog:</source>
+        <translation>Update Änderungsprotokoll</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Aktualisierung</translation>
     </message>
 </context>
 <context>
@@ -8988,6 +10093,26 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <location filename="../ui/devicepages/ThingLogPage.qml" line="381"/>
         <source>No</source>
         <translation>Nein</translation>
+    </message>
+    <message>
+        <source>User: %1 (%2)</source>
+        <translation>Benutzer: %1 (%2)</translation>
+    </message>
+    <message>
+        <source>User: %1</source>
+        <translation>Benutzer: %1</translation>
+    </message>
+    <message>
+        <source>User action</source>
+        <translation>Benutzeraktion</translation>
+    </message>
+    <message>
+        <source>Automation: %1</source>
+        <translation>Automatisierung: %1</translation>
+    </message>
+    <message>
+        <source>Automation</source>
+        <translation>Automatisierung</translation>
     </message>
 </context>
 <context>
@@ -9331,6 +10456,145 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     </message>
 </context>
 <context>
+    <name>TransfersManager</name>
+    <message>
+        <source>Another transfer is already running.</source>
+        <translation>Eine andere Übertragung läuft bereits.</translation>
+    </message>
+    <message>
+        <source>Not connected to a nymea server.</source>
+        <translation>Keine Verbindung zum nymea Server.</translation>
+    </message>
+    <message>
+        <source>Invalid download target.</source>
+        <translation>Ungültiges Downloadziel.</translation>
+    </message>
+    <message>
+        <source>Could not create the selected download directory.</source>
+        <translation>Das ausgewählte Downloadverzeichnis konnte nicht erstellt werden.</translation>
+    </message>
+    <message>
+        <source>Preparing download...</source>
+        <translation>Download wird vorbereitet...</translation>
+    </message>
+    <message>
+        <source>Invalid upload source.</source>
+        <translation>Ungültige Uploadquelle.</translation>
+    </message>
+    <message>
+        <source>The selected upload file could not be opened.</source>
+        <translation>Die ausgewählte Upload Datei konnte nicht geöffnet werden.</translation>
+    </message>
+    <message>
+        <source>Preparing upload...</source>
+        <translation>Bereite Upload vor...</translation>
+    </message>
+    <message>
+        <source>Downloading %1 (%2%)</source>
+        <translation>Lade herunter %1 (%2%)</translation>
+    </message>
+    <message>
+        <source>Downloading %1</source>
+        <translation>Lade herunter %1</translation>
+    </message>
+    <message>
+        <source>Uploading %1 (%2%)</source>
+        <translation>Lade hoch %1 (%2%)</translation>
+    </message>
+    <message>
+        <source>Uploading %1</source>
+        <translation>Lade hoch %1</translation>
+    </message>
+    <message>
+        <source>The current connection does not support file transfers.</source>
+        <translation>Die aktuelle Verbindung unterstützt keine Dateiübertragungen.</translation>
+    </message>
+    <message>
+        <source>Could not open the transfer connection.</source>
+        <translation>Die Übertragungsverbindung konnte nicht hergestellt werden.</translation>
+    </message>
+    <message>
+        <source>Transfer connection is not available.</source>
+        <translation>Es besteht keine Übertragungsverbindung.</translation>
+    </message>
+    <message>
+        <source>Upload source is not available.</source>
+        <translation>Die Uploadquelle ist nicht verfügbar.</translation>
+    </message>
+    <message>
+        <source>Failed to read the upload file.</source>
+        <translation>Die hochgeladene Datei konnte nicht gelesen werden.</translation>
+    </message>
+    <message>
+        <source>Download target is not available.</source>
+        <translation>Das Downloadziel ist nicht verfügbar.</translation>
+    </message>
+    <message>
+        <source>The server rejected the download request.</source>
+        <translation>Der Server hat die Downloadanfrage abgelehnt.</translation>
+    </message>
+    <message>
+        <source>Failed to prepare the backup restore upload: %1</source>
+        <translation>Fehler beim Vorbereiten des Backup-Wiederherstellungs-Uploads: %1</translation>
+    </message>
+    <message>
+        <source>The server rejected the upload request.</source>
+        <translation>Der Server hat die Upload-Anfrage abgelehnt.</translation>
+    </message>
+    <message>
+        <source>Could not open the selected upload file.</source>
+        <translation>Die ausgewählte Upload-Datei konnte nicht geöffnet werden.</translation>
+    </message>
+    <message>
+        <source>The server connection was lost.</source>
+        <translation>Die Serververbindung wurde unterbrochen.</translation>
+    </message>
+    <message>
+        <source>Connecting transfer...</source>
+        <translation>Verbindung für die Übertragung wird hergestellt...</translation>
+    </message>
+    <message>
+        <source>The transfer connection was closed unexpectedly.</source>
+        <translation>Die Übertragungsverbindung wurde unerwartet unterbrochen.</translation>
+    </message>
+    <message>
+        <source>The transfer connection reported an error.</source>
+        <translation>Bei der Übertragungsverbindung wurde ein Fehler gemeldet.</translation>
+    </message>
+    <message>
+        <source>The transfer connection could not be secured.</source>
+        <translation>Die Übertragungsverbindung konnte nicht hergestellt werden.</translation>
+    </message>
+    <message>
+        <source>The transfer failed.</source>
+        <translation>Die Übertragung ist fehlgeschlagen.</translation>
+    </message>
+    <message>
+        <source>The server returned an unexpected transfer direction.</source>
+        <translation>Der Server hat eine unerwartete Übertragungsrichtung zurückgegeben.</translation>
+    </message>
+    <message>
+        <source>Resuming downloads is not supported yet.</source>
+        <translation>Das Fortsetzen von Downloads wird derzeit nicht unterstützt.</translation>
+    </message>
+    <message>
+        <source>Could not open the selected download target.</source>
+        <translation>Das ausgewählte Downloadziel konnte nicht geöffnet werden.</translation>
+    </message>
+    <message>
+        <source>Could not resume the upload file.</source>
+        <translation>Der Upload der Datei konnte nicht fortgesetzt werden.</translation>
+    </message>
+    <message>
+        <source>Could not write the downloaded data.</source>
+        <translation>Die heruntergeladenen Daten konnten nicht geschrieben werden.</translation>
+    </message>
+    <message>
+        <source>The server returned an empty download chunk.</source>
+        <translation>Der Server hat einen leeren Download-Chunk zurückgegeben.</translation>
+    </message>
+</context>
+<context>
     <name>TunnelProxyServerConfigurationDialog</name>
     <message>
         <location filename="../ui/system/TunnelProxyServerConfigurationDialog.qml" line="33"/>
@@ -9636,6 +10900,22 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <location filename="../ui/system/UsersSettingsPage.qml" line="611"/>
         <source>Optional</source>
         <translation type="unfinished">Optional</translation>
+    </message>
+    <message>
+        <source>User not added</source>
+        <translation>Benutzer nicht hinzugefügt</translation>
+    </message>
+    <message>
+        <source>The user has not been added yet. Do you want to discard the changes or return to editing?</source>
+        <translation>Der Benutzer wurde noch nicht hinzugefügt. Möchten Sie die Änderungen verwerfen oder zur Bearbeitung zurückkehren?</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation>Verwerfen</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>Zurück</translation>
     </message>
 </context>
 <context>
@@ -10211,7 +11491,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ui/system/zwave/ZWaveNetworkSettingsPage.qml" line="164"/>
         <source>Are you sure you want to remove the network and all associated devices from the system?</source>
-        <translation>Bist Du sicher, dass das Netzwerk und alle verknüpften Geräte aus dem System enfernt werden sollen?</translation>
+        <translation>Bist du sicher, dass das Netzwerk und alle verknüpften Geräte aus dem System entfernt werden sollen?</translation>
     </message>
 </context>
 <context>
@@ -10512,7 +11792,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ui/system/zigbee/ZigbeeNetworkPage.qml" line="266"/>
         <source>There are no ZigBee devices connected yet. Open the network for new devices to join and start the pairing procedure from the ZigBee device. Please refer to the devices manual for more information on how to start the pairing.</source>
-        <translation>Es sind noch keine ZigBee Geräte verbunden. Öffne das Netzwerk für neue Geräte und beginne dein Einrichtungsprozess am ZigBee Gerät. Bitte ziehen Sie das Handbuch des Gerätes heran um zu erfahren wie dies am jeweiligen Gerät gemacht wird.</translation>
+        <translation>Es sind noch keine ZigBee-Geräte verbunden. Öffne das Netzwerk für neue Geräte und starte die Verbindungsprozedur am ZigBee-Gerät. Weitere Informationen findest du im Handbuch des jeweiligen Geräts.</translation>
     </message>
     <message>
         <location filename="../ui/system/zigbee/ZigbeeNetworkPage.qml" line="295"/>
@@ -10702,7 +11982,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ui/system/zigbee/ZigbeeNetworkSettingsPage.qml" line="161"/>
         <source>Are you sure you want to remove the network and all associated devices from the system?</source>
-        <translation>Bist Du sicher, dass das Netzwerk und alle verknüpften Geräte aus dem System enfernt werden sollen?</translation>
+        <translation>Bist du sicher, dass das Netzwerk und alle verknüpften Geräte aus dem System entfernt werden sollen?</translation>
     </message>
     <message>
         <location filename="../ui/system/zigbee/ZigbeeNetworkSettingsPage.qml" line="97"/>
@@ -11149,12 +12429,12 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ruletemplates/messages.h" line="4"/>
         <source>Alert me on denied access attempts</source>
-        <translation>Benachritige mich bei Fehlgeschlagenen Zutrittsversuchen</translation>
+        <translation>Benachrichtige mich bei fehlgeschlagenen Zutrittsversuchen</translation>
     </message>
     <message>
         <location filename="../ruletemplates/messages.h" line="6"/>
         <source>Notify my about access</source>
-        <translation>Benachrichtige me über Zugänge</translation>
+        <translation>Benachrichtige mich über Zugänge</translation>
     </message>
     <message>
         <location filename="../ruletemplates/messages.h" line="8"/>
@@ -11200,7 +12480,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ruletemplates/messages.h" line="22"/>
         <source>Turn on all lights when it gets dark outside</source>
-        <translation>Alle Lichter einschlalten wenn es dunkel wird</translation>
+        <translation>Alle Lichter einschalten, wenn es dunkel wird</translation>
     </message>
 </context>
 <context>
@@ -11265,7 +12545,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ruletemplates/messages.h" line="42"/>
         <source>Notify me when a device runs out of battery</source>
-        <translation>Benachrichtige mich wenn sich die Batterie eines Gerätes zu Ende neight</translation>
+        <translation>Benachrichtige mich, wenn die Batterie eines Geräts leer wird</translation>
     </message>
     <message>
         <location filename="../ruletemplates/messages.h" line="46"/>
@@ -11342,12 +12622,12 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ruletemplates/messages.h" line="7"/>
         <source>Access granted on %0</source>
-        <translation>Zugang erteikt bei %0</translation>
+        <translation>Zugang erteilt bei %0</translation>
     </message>
     <message>
         <location filename="../ruletemplates/messages.h" line="9"/>
         <source>Access granted to user on %0</source>
-        <translation>Zuggang für Benutzer bei %0 erlaubt</translation>
+        <translation>Zugang für Benutzer bei %0 erlaubt</translation>
     </message>
 </context>
 <context>
@@ -11496,7 +12776,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ruletemplates/messages.h" line="59"/>
         <source>Turn on %1 when %0 reports arriving</source>
-        <translation>%1 einschalten %0 Ankunft registiert</translation>
+        <translation>%1 einschalten, wenn %0 Ankunft registriert</translation>
     </message>
 </context>
 <context>
@@ -11517,7 +12797,7 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <location filename="../ruletemplates/messages.h" line="65"/>
         <source>%0 ...</source>
-        <translation></translation>
+        <translation>%0 ...</translation>
     </message>
 </context>
 <context>

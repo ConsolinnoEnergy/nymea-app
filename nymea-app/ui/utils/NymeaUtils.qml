@@ -47,6 +47,23 @@ Item {
         return str;
     }
 
+    function formatFileSize(size) {
+        var units = ["B", "kB", "MB", "GB", "TB"]
+        var value = size
+        var unitIndex = 0
+
+        while (value >= 1024 && unitIndex < units.length - 1) {
+            value /= 1024
+            unitIndex += 1
+        }
+
+        if (unitIndex === 0) {
+            return Math.round(value) + " " + units[unitIndex]
+        }
+
+        return value.toFixed(1) + " " + units[unitIndex]
+    }
+
     function interfaceListToDevicePage(interfaceList) {
         print("**** getting page for interfaces", interfaceList)
         var page;
@@ -82,7 +99,11 @@ Item {
             page = "NotificationsThingPage.qml";
         } else if (interfaceList.indexOf("fingerprintreader") >= 0) {
             page = "FingerprintReaderDevicePage.qml";
-        } else if (interfaceList.indexOf("evcharger") >= 0) {
+        } else if (interfaceList.indexOf("evchargerdc") >= 0) {
+            page = "EvChargerDcThingPage.qml"
+        } else if (interfaceList.indexOf("evchargerac") >= 0) {
+            page = "EvChargerThingPage.qml"
+        } else if (interfaceList.indexOf("evcharger") >= 0 || interfaceList.indexOf("chargers") >= 0) {
             page = "EvChargerThingPage.qml"
         } else if (interfaceList.indexOf("smartmeter") >= 0) {
             page = "SmartMeterDevicePage.qml"
@@ -103,6 +124,14 @@ Item {
         }
         print("Selecting page", page, "for interface list:", interfaceList)
         return page;
+    }
+
+    function thingToDevicePage(thing) {
+        if (!thing || !thing.thingClass) {
+            return "GenericThingPage.qml"
+        }
+
+        return interfaceListToDevicePage(thing.thingClass.interfaces.concat(thing.thingClass.providedInterfaces))
     }
 
     function isDark(color) {

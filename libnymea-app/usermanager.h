@@ -140,6 +140,7 @@ public:
 
     Q_INVOKABLE UserInfo *get(int index) const;
     Q_INVOKABLE UserInfo *getUserInfo(const QString &username) const;
+    Q_INVOKABLE bool contains(const QString &username) const;
 
 signals:
     void countChanged();

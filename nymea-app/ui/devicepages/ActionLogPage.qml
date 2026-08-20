@@ -37,7 +37,63 @@ Page {
     property Thing thing: null
     property ActionType actionType: null
 
-    readonly property bool isLogged: thing.loggedActionTypeIds.indexOf(actionType.id) >= 0
+    readonly property bool isLogged: thing !== null && actionType !== null && thing.loggedActionTypeIds.indexOf(actionType.id) >= 0
+
+    function logValue(values, key) {
+        if (!values || values[key] === undefined || values[key] === null)
+            return ""
+
+        return String(values[key])
+    }
+
+    function actionActorLabel(values) {
+        var triggeredBy = logValue(values, "triggeredBy")
+        var displayName = logValue(values, "actorDisplayName")
+        var username = logValue(values, "actorUsername")
+        var actorName = logValue(values, "actorName")
+        var sourceName = logValue(values, "sourceName")
+
+        if (triggeredBy === "TriggeredByUser") {
+            var label = displayName !== "" ? displayName : actorName
+            if (label === "")
+                label = username
+            if (label !== "" && username !== "" && label !== username)
+                return qsTr("User action by %1 (%2)").arg(label).arg(username)
+            if (label !== "")
+                return qsTr("User action by %1").arg(label)
+            return qsTr("User action")
+        }
+
+        if (sourceName !== "")
+            return qsTr("Automation by %1").arg(sourceName)
+
+        return qsTr("Automation")
+    }
+
+    function actionStatusLabel(values) {
+        var status = logValue(values, "status")
+        return status === "ThingErrorNoError" || status === ""
+                ? qsTr("success")
+                : qsTr("Failure: %1").arg(status)
+    }
+
+    function actionParamsLabel(values, actionType, separator) {
+        if (!values || !actionType || !values.params)
+            return ""
+
+        var params = {}
+        try {
+            params = JSON.parse(values.params)
+        } catch (e) {
+            return ""
+        }
+        var ret = []
+        for (var i = 0; i < actionType.paramTypes.count; i++) {
+            var paramType = actionType.paramTypes.get(i)
+            ret.push(paramType.displayName + ": " + Types.toUiValue(params[paramType.name], paramType.unit) + " " + Types.toUiUnit(paramType.unit))
+        }
+        return ret.join(separator)
+    }
 
     header: NymeaHeader {
         text: qsTr("History for %1").arg(root.actionType.displayName)
@@ -107,9 +163,7 @@ Page {
                     RowLayout {
                         Label {
                             Layout.fillWidth: true
-                            text: (delegate.entry.values.triggeredBy === "TriggeredByUser" ? qsTr("User action") : qsTr("Automation"))
-                                  + " - "
-                                  + (delegate.entry.values.status === "ThingErrorNoError" ? qsTr("success") : qsTr("Failure: %1").arg(delegate.entry.values.status))
+                            text: root.actionActorLabel(delegate.entry.values) + " - " + root.actionStatusLabel(delegate.entry.values)
                             elide: Text.ElideRight
                         }
                         Label {
@@ -121,15 +175,7 @@ Page {
 
                     Label {
                         Layout.fillWidth: true
-                        text: {
-                            var ret = []
-                            var values = JSON.parse(entry.values.params)
-                            for (var i = 0; i < root.actionType.paramTypes.count; i++) {
-                                var paramType = root.actionType.paramTypes.get(i)
-                                ret.push(paramType.displayName + ": " + Types.toUiValue(values[paramType.name], paramType.unit) + " " + Types.toUiUnit(paramType.unit))
-                            }
-                            return ret.join("<br>")
-                        }
+                        text: root.actionParamsLabel(entry.values, root.actionType, "<br>")
                         textFormat: Text.RichText
                         elide: Text.ElideRight
                         font: Style.smallFont
@@ -163,4 +209,3 @@ Page {
         }
     }
 }
-

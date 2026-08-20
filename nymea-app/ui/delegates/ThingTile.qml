@@ -388,7 +388,9 @@ MainPageTile {
 
     Component {
         id: closableComponent
-        ShutterControls {}
+        ShutterControls {
+            showStepControls: false
+        }
     }
 
     Component {

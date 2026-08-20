@@ -227,7 +227,7 @@ Page {
 
     Connections {
         target: engine.ruleManager
-        onAddRuleReply: (commandId, ruleError, ruleId) => {
+        function onAddRuleReply(commandId, ruleError, ruleId) {
             d.editRulePage.busy = false
             if (d.editRulePage) {
                 pageStack.pop();
@@ -301,6 +301,7 @@ Page {
         ListElement { name: "scenes"; source: "ScenesView"; displayName: qsTr("Scenes"); icon: "slideshow"; minVersion: "2.0" }
         ListElement { name: "garages"; source: "GaragesView"; displayName: qsTr("Garages"); icon: "garage/garage-100"; minVersion: "2.0" }
         ListElement { name: "energy"; source: "EnergyView"; displayName: qsTr("Energy"); icon: "smartmeter"; minVersion: "2.0" }
+        ListElement { name: "electricvehicles"; source: "ElectricVehiclesView"; displayName: qsTr("EVs"); icon: "car"; minVersion: "2.0" }
         ListElement { name: "media"; source: "MediaView"; displayName: qsTr("Media"); icon: "media"; minVersion: "2.0" }
         ListElement { name: "dashboard"; source: "DashboardView"; displayName: qsTr("Dashboard"); icon: "dashboard"; minVersion: "5.5" }
         ListElement { name: "airconditioning"; source: "AirConditioningView"; displayName: qsTr("AC"); icon: "sensors"; minVersion: "6.2" }

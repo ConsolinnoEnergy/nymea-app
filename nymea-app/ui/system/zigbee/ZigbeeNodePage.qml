@@ -77,7 +77,7 @@ SettingsPageBase {
 
     Connections {
         target: root.zigbeeManager
-        onCreateBindingReply: function(commandId, error) {
+        function onCreateBindingReply(commandId, error) {
             print("**** create binding reply", error)
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
@@ -99,7 +99,7 @@ SettingsPageBase {
                 popup.open();
             }
         }
-        onRemoveBindingReply: function(commandId, error) {
+        function onRemoveBindingReply(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
 
@@ -122,7 +122,7 @@ SettingsPageBase {
             }
         }
 
-        onRemoveNodeReply: function(commandId, error) {
+        function onRemoveNodeReply(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 var props = {};
                 switch (error) {

@@ -105,7 +105,7 @@ Page {
                     id: interfacesSortModel
                     interfacesModel: InterfacesModel {
                         engine: _engine
-                        shownInterfaces: app.supportedInterfaces
+                        shownInterfaces: _engine.interfaces.supportedInterfaces
                         showUncategorized: false
                     }
                 }
@@ -175,7 +175,7 @@ Page {
                 anchors.centerIn: parent
                 width: parent.width - Style.margins * 2
                 opacity: packagesFilterModel.count > 0 &&
-                         (thingClassesProxy.count == 0 || listView.contentY >= listView.contentHeight + listView.originY)
+                         (thingClassesProxy.count === 0 || listView.contentY >= listView.contentHeight + listView.originY)
                          ? 1 : 0
                 Behavior on opacity { NumberAnimation { duration: Style.shortAnimationDuration } }
                 visible: opacity > 0

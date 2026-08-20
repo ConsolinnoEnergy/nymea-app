@@ -24,25 +24,25 @@
 
 #include "thingpowerlogs.h"
 
+#include <QMap>
 #include <QMetaEnum>
+#include <QTimer>
+#include <limits>
 
 #include <QLoggingCategory>
 Q_DECLARE_LOGGING_CATEGORY(dcEnergyLogs)
 
-ThingPowerLogEntry::ThingPowerLogEntry(QObject *parent):
-    EnergyLogEntry(parent)
-{
-}
+ThingPowerLogEntry::ThingPowerLogEntry(QObject *parent)
+    : EnergyLogEntry(parent)
+{}
 
-ThingPowerLogEntry::ThingPowerLogEntry(const QDateTime &timestamp, const QUuid &thingId, double currentPower, double totalConsumption, double totalProduction, QObject *parent):
-    EnergyLogEntry(timestamp, parent),
-    m_thingId(thingId),
-    m_currentPower(currentPower),
-    m_totalConsumption(totalConsumption),
-    m_totalProduction(totalProduction)
-{
-
-}
+ThingPowerLogEntry::ThingPowerLogEntry(const QDateTime &timestamp, const QUuid &thingId, double currentPower, double totalConsumption, double totalProduction, QObject *parent)
+    : EnergyLogEntry(timestamp, parent)
+    , m_thingId(thingId)
+    , m_currentPower(currentPower)
+    , m_totalConsumption(totalConsumption)
+    , m_totalProduction(totalProduction)
+{}
 
 QUuid ThingPowerLogEntry::thingId() const
 {
@@ -64,9 +64,9 @@ double ThingPowerLogEntry::totalProduction() const
     return m_totalProduction;
 }
 
-ThingPowerLogs::ThingPowerLogs(QObject *parent) : EnergyLogs(parent)
-{
-}
+ThingPowerLogs::ThingPowerLogs(QObject *parent)
+    : EnergyLogs(parent)
+{}
 
 QUuid ThingPowerLogs::thingId() const
 {
@@ -95,11 +95,13 @@ void ThingPowerLogs::setLoader(ThingPowerLogsLoader *loader)
         m_loader = loader;
         emit loaderChanged();
 
-        loader->addThingId(m_thingId);
-        connect(loader, &ThingPowerLogsLoader::fetched, this, [=](int commandId, const QVariantMap &params){
-            qCDebug(dcEnergyLogs()) << "Loader fetched data.";
-            getLogsResponse(commandId, params);
-        });
+        if (loader) {
+            loader->addThingId(m_thingId);
+            connect(loader, &ThingPowerLogsLoader::fetched, this, [=](int commandId, const QVariantMap &params) {
+                qCDebug(dcEnergyLogs()) << "Loader fetched data.";
+                getLogsResponse(commandId, params);
+            });
+        }
     }
 }
 
@@ -110,8 +112,8 @@ ThingPowerLogEntry *ThingPowerLogs::liveEntry()
 
 void ThingPowerLogs::addEntries(const QList<ThingPowerLogEntry *> &entries)
 {
-    QList<EnergyLogEntry*> energyLogEntries;
-    foreach (ThingPowerLogEntry* entry, entries) {
+    QList<EnergyLogEntry *> energyLogEntries;
+    foreach (ThingPowerLogEntry *entry, entries) {
         energyLogEntries.append(entry);
     }
     appendEntries(energyLogEntries);
@@ -142,32 +144,44 @@ QVariantMap ThingPowerLogs::fetchParams() const
 
 QList<EnergyLogEntry *> ThingPowerLogs::unpackEntries(const QVariantMap &params, double *minValue, double *maxValue)
 {
+    qint64 newestCurrentTimestamp = std::numeric_limits<qint64>::min();
     foreach (const QVariant &variant, params.value("currentEntries").toList()) {
         QVariantMap map = variant.toMap();
         if (map.value("thingId").toUuid() != m_thingId) {
             continue;
         }
+        const qint64 timestamp = map.value("timestamp").toLongLong();
+        if (timestamp < newestCurrentTimestamp) {
+            continue;
+        }
+        newestCurrentTimestamp = timestamp;
         if (m_liveEntry) {
             m_liveEntry->deleteLater();
         }
         m_liveEntry = unpack(map);
         emit liveEntryChanged(m_liveEntry);
-        break;
     }
 
-    QList<EnergyLogEntry*> ret;
+    QList<EnergyLogEntry *> ret;
+    QMap<qint64, QVariantMap> deduplicatedEntries;
     foreach (const QVariant &variant, params.value("thingPowerLogEntries").toList()) {
         QVariantMap map = variant.toMap();
         if (map.value("thingId").toUuid() != m_thingId) {
             continue;
         }
+        // Keep the last row for a timestamp if the backend returned duplicates.
+        deduplicatedEntries.insert(map.value("timestamp").toLongLong(), map);
+    }
+
+    for (auto it = deduplicatedEntries.constBegin(); it != deduplicatedEntries.constEnd(); ++it) {
+        const QVariantMap &map = it.value();
         QDateTime timestamp = QDateTime::fromSecsSinceEpoch(map.value("timestamp").toLongLong());
         QUuid thingId = map.value("thingId").toUuid();
         double currentPower = map.value("currentPower").toDouble();
         double totalConsumption = map.value("totalConsumption").toDouble();
         double totalProduction = map.value("totalProduction").toDouble();
         ThingPowerLogEntry *entry = new ThingPowerLogEntry(timestamp, thingId, currentPower, totalConsumption, totalProduction, this);
-//        qWarning() << "Adding entry:" << entry->thingId() << entry->timestamp().toString() << entry->totalConsumption();
+        //        qWarning() << "Adding entry:" << entry->thingId() << entry->timestamp().toString() << entry->totalConsumption();
 
         *minValue = qMin(*minValue, currentPower);
         *maxValue = qMax(*maxValue, currentPower);
@@ -219,12 +233,9 @@ void ThingPowerLogs::notificationReceived(const QVariantMap &data)
     }
 }
 
-
-ThingPowerLogsLoader::ThingPowerLogsLoader(QObject *parent):
-    QObject(parent)
-{
-
-}
+ThingPowerLogsLoader::ThingPowerLogsLoader(QObject *parent)
+    : QObject(parent)
+{}
 
 Engine *ThingPowerLogsLoader::engine() const
 {
@@ -241,7 +252,7 @@ void ThingPowerLogsLoader::setEngine(Engine *engine)
             return;
         }
 
-        connect(engine, &Engine::destroyed, this, [=](){
+        connect(engine, &Engine::destroyed, this, [=]() {
             if (engine == m_engine) {
                 m_engine = nullptr;
                 emit engineChanged();
@@ -299,16 +310,29 @@ bool ThingPowerLogsLoader::fetchingData() const
 
 void ThingPowerLogsLoader::addThingId(const QUuid &thingId)
 {
-    if (!m_thingIds.contains(thingId)) {
-        m_thingIds.append(thingId);
+    if (thingId.isNull() || m_thingIds.contains(thingId))
+        return;
+
+    m_thingIds.append(thingId);
+    resetCachedRange();
+
+    if (m_fetchingData) {
+        m_fetchAgain = true;
+    } else if (m_fetchAgain) {
+        queueFetch();
     }
 }
 
 void ThingPowerLogsLoader::fetchLogs()
 {
-    qCDebug(dcEnergyLogs()) << "dafuq!";
     if (!m_engine || m_engine->jsonRpcClient()->experiences().value("Energy").toString() < "1.0") {
         qCDebug(dcEnergyLogs()) << "Not fetching logs" << m_engine;
+        return;
+    }
+
+    if (m_thingIds.isEmpty()) {
+        qCDebug(dcEnergyLogs()) << "No thing ids registered yet, delaying fetch";
+        m_fetchAgain = true;
         return;
     }
 
@@ -317,6 +341,8 @@ void ThingPowerLogsLoader::fetchLogs()
         m_fetchAgain = true;
         return;
     }
+
+    m_fetchAgain = false;
 
     QVariantMap params;
     QVariantList thingIds;
@@ -352,7 +378,6 @@ void ThingPowerLogsLoader::fetchLogs()
                 emit fetchingDataChanged();
                 return;
             }
-
         }
 
         params.insert("from", startTime.toSecsSinceEpoch());
@@ -380,4 +405,25 @@ void ThingPowerLogsLoader::getLogsResponse(int commandId, const QVariantMap &par
     } else {
         emit fetchingDataChanged();
     }
+}
+
+void ThingPowerLogsLoader::queueFetch()
+{
+    if (m_fetchQueued) {
+        return;
+    }
+
+    m_fetchQueued = true;
+    QTimer::singleShot(0, this, [this]() {
+        m_fetchQueued = false;
+        if (m_fetchAgain && !m_fetchingData) {
+            fetchLogs();
+        }
+    });
+}
+
+void ThingPowerLogsLoader::resetCachedRange()
+{
+    m_lastStartTime = QDateTime();
+    m_lastEndTime = QDateTime();
 }

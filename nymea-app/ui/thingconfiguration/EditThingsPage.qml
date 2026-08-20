@@ -56,8 +56,8 @@ Page {
 
     Connections {
         target: engine.thingManager
-        onRemoveThingReply: function(commandId, thingError, ruleIds) {
-            if (commandId != d.pendingCommandId) {
+        function onRemoveThingReply(commandId, thingError, ruleIds) {
+            if (commandId !== d.pendingCommandId) {
                 return;
             }
 
