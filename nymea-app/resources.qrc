@@ -18,6 +18,7 @@
         <file>ui/components/ColorIcon.qml</file>
         <file>ui/components/ThinDivider.qml</file>
         <file>ui/components/ThrottledSlider.qml</file>
+        <file>ui/components/FlowCurve.qml</file>
         <file>ui/components/ColorPickerCt.qml</file>
         <file>ui/components/IconMenuItem.qml</file>
         <file>ui/components/Graph.qml</file>
@@ -197,6 +198,7 @@
         <file>ui/devicepages/BarcodeScannerThingPage.qml</file>
         <file>ui/mainviews/GaragesView.qml</file>
         <file>ui/mainviews/EnergyView.qml</file>
+        <file>ui/mainviews/ElectricVehiclesView.qml</file>
         <file>ui/components/MainViewBase.qml</file>
         <file>ui/components/SmartMeterChart.qml</file>
         <file>ui/mainviews/MediaView.qml</file>
@@ -328,6 +330,14 @@
         <file>ui/shaders/brightnesscircle.frag.qsb</file>
         <file>ui/shaders/colorizedimage.frag.qsb</file>
         <file>ui/system/EvDashSettingsPage.qml</file>
+        <file>ui/system/RfidSettingsPage.qml</file>
+        <file>ui/system/RfidManagerSettingsPage.qml</file>
+        <file>ui/system/NgwSettingsPage.qml</file>
         <file>ui/components/UsernameTextField.qml</file>
+        <file>ui/system/BackupSettingsPage.qml</file>
+        <file>ui/devicepages/EvChargerDcThingPage.qml</file>
+        <file>ui/particles/trace_05_rotated.png</file>
+        <file>ui/particles/circle_05.png</file>
+        <file>ui/particles/trace_06.png</file>
     </qresource>
 </RCC>

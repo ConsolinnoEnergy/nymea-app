@@ -37,6 +37,7 @@ ItemDelegate {
     property alias value: d.value
     property Param param: Param {
         id: d
+
         paramTypeId: paramType.id
         value: paramType.defaultValue
     }
@@ -48,9 +49,11 @@ ItemDelegate {
     bottomPadding: 0
     contentItem: ColumnLayout {
         id: contentItemColumn
+
         anchors.fill: parent
         anchors.leftMargin: Style.margins
         anchors.rightMargin: Style.margins
+
         RowLayout {
             Layout.fillWidth: true
             spacing: Style.margins
@@ -131,9 +134,7 @@ ItemDelegate {
                 return null;
             }
         }
-
     }
-
 
     Component {
         id: stringComponent
@@ -163,8 +164,10 @@ ItemDelegate {
             }
         }
     }
+
     Component {
         id: boolComponent
+
         Item {
             implicitHeight: theSwitch.implicitHeight
             implicitWidth: theSwitch.implicitWidth
@@ -184,10 +187,11 @@ ItemDelegate {
                 }
             }
         }
-
     }
+
     Component {
         id: sliderComponent
+
         RowLayout {
             spacing: Style.margins
 
@@ -228,6 +232,7 @@ ItemDelegate {
                     root.param.value = newValue;
                 }
             }
+
             Label {
                 text: Types.toUiValue(root.param.value, root.paramType.unit).toFixed(slider.decimals) + Types.toUiUnit(root.paramType.unit)
             }
@@ -262,11 +267,12 @@ ItemDelegate {
                 Component.onCompleted: {
                     print("from:", from, "min", root.paramType.minValue)
                     print("to:", to, "max", root.paramType.maxValue)
-                    if (root.value === undefined) {
-                        root.value = value
+                    if (root.param.value === undefined) {
+                        root.param.value = value
                     }
                 }
             }
+
             Label {
                 text: Types.toUiUnit(root.paramType.unit)
                 visible: text.length > 0
@@ -279,40 +285,48 @@ ItemDelegate {
         TextField {
             text: root.param.value !== undefined
                   ? root.param.value
-                  : root.paramType.defaultValue
+                  : root.paramType.defaultValue !== undefined
                     ? root.paramType.defaultValue
                     : ""
+
+            placeholderText: root.placeholderText
             onEditingFinished: {
                 root.param.value = text
             }
+
             Component.onCompleted: {
                 if (root.param.value === undefined) {
                     root.param.value = text;
                 }
             }
-            placeholderText: root.placeholderText
+
         }
     }
 
     Component {
         id: comboBoxComponent
+
         ComboBox {
             id: control
             Layout.fillWidth: true
             model: root.paramType.allowedValues
-            displayText: currentText + ( root.paramType.unit != Types.UnitNone ? " " + Types.toUiUnit(root.paramType.unit) : "")
+            displayText: {
+                if (currentIndex < 0 || currentIndex >= root.paramType.allowedValues.length) {
+                    return "";
+                }
+                return Types.toUiValue(root.paramType.allowedValues[currentIndex], root.paramType.unit)
+                        + (root.paramType.unit !== Types.UnitNone ? " " + Types.toUiUnit(root.paramType.unit) : "");
+            }
             currentIndex: root.paramType.allowedValues.indexOf(root.param.value !== undefined ? root.param.value : root.paramType.defaultValue)
             delegate: ItemDelegate {
                 width: control.width
-                text: Types.toUiValue(modelData, root.paramType.unit) + ( root.paramType.unit != Types.UnitNone ? " " + Types.toUiUnit(root.paramType.unit) : "")
+                text: Types.toUiValue(modelData, root.paramType.unit) + ( root.paramType.unit !== Types.UnitNone ? " " + Types.toUiUnit(root.paramType.unit) : "")
                 highlighted: control.highlightedIndex === index
             }
-            onActivated: (index) => {
-                root.param.value = root.paramType.allowedValues[index]
-            }
+            onActivated: (index) => { root.param.value = root.paramType.allowedValues[index] }
             Component.onCompleted: {
-                if (root.value === undefined) {
-                    root.value = model[0]
+                if (root.param.value === undefined) {
+                    root.param.value = model[0]
                 }
             }
         }
@@ -504,6 +518,7 @@ ItemDelegate {
 
     Component {
         id: colorPickerComponent
+
         ColorPickerPre510 {
             id: colorPicker
             implicitHeight: 200
@@ -540,6 +555,7 @@ ItemDelegate {
 
     Component {
         id: colorTemperaturePickerComponent
+
         ColorPickerCt {
             id: colorPickerCt
             implicitHeight: 50
@@ -547,7 +563,7 @@ ItemDelegate {
             maxCt: root.paramType.maxValue
             ct: root.param.value !== undefined
                 ? root.param.value
-                : root.paramType.defaultValue
+                : root.paramType.defaultValue !== undefined
                   ? root.paramType.defaultValue
                   : root.paramType.minValue
 
@@ -566,6 +582,7 @@ ItemDelegate {
 
     Component {
         id: colorPreviewComponent
+
         Rectangle {
             implicitHeight: app.mediumFont
             implicitWidth: implicitHeight

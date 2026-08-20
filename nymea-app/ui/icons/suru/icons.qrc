@@ -258,6 +258,8 @@
         <file>icons/zigbee/zigbee-sibling.svg</file>
         <file>icons/zigbee/zigbee-previous-child.svg</file>
         <file>icons/arrow-down.svg</file>
+        <file>icons/setp-down.svg</file>
+        <file>icons/step-up.svg</file>
         <file>icons/sensors/voc.svg</file>
         <file>icons/sensors/pm25.svg</file>
         <file>icons/sensors/o3.svg</file>
@@ -276,5 +278,15 @@
         <file>icons/list-move.svg</file>
         <file>icons/system-log-out.svg</file>
         <file>icons/system-restart.svg</file>
+        <file>icons/backup.svg</file>
+        <file>icons/download.svg</file>
+        <file>icons/upload.svg</file>
+        <file>icons/valve.svg</file>
+        <file>icons/contactless.svg</file>
+        <file>icons/rfid.svg</file>
+        <file>icons/rfid-reader-00.svg</file>
+        <file>icons/rfid-reader-01.svg</file>
+        <file>icons/rfid-reader-02.svg</file>
+        <file>icons/rfid-reader-03.svg</file>
     </qresource>
 </RCC>

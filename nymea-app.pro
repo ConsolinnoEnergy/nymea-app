@@ -13,23 +13,23 @@ nymea-app.depends = libnymea-app experiences
 #     tests.depends = libnymea-app
 # }
 
-# Building a Windows installer:
-# Make sure your environment has the toolchain you want (e.g. msvc17 64 bit) by executing the command:
+# Building a Windows installer: see packaging/windows/README.md
 # $ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
 # $ make wininstaller
 win32: {
     wininstaller.depends = nymea-app
 
-    OLDSTRING="<Version>.*</Version>"
-    NEWSTRING="<Version>$${APP_VERSION}</Version>"
-    wininstaller.commands += @powershell -Command \"(gc $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\meta\package.xml) -replace \'$${OLDSTRING}\',\'$${NEWSTRING}\' | sc $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\meta\package.xml\" &&
     wininstaller.commands += rmdir /S /Q $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data & mkdir $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data &&
     wininstaller.commands += copy $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\meta\logo.ico $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data\logo.ico &&
     CONFIG(debug,debug|release):wininstaller.commands += copy nymea-app\debug\\$${APPLICATION_NAME}.exe $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data\\$${APPLICATION_NAME}.exe &&
     CONFIG(release,debug|release):wininstaller.commands += copy nymea-app\release\\$${APPLICATION_NAME}.exe $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data\\$${APPLICATION_NAME}.exe &&
     wininstaller.commands += copy \"$${top_srcdir}\"\3rdParty\windows\windows_openssl\*.dll $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data &&
+    wininstaller.commands += powershell -NoProfile -ExecutionPolicy Bypass -File \"$${top_srcdir}\"\packaging\windows\ensure-vcredist.ps1 &&
+    wininstaller.commands += copy \"$${top_srcdir}\"\3rdParty\windows\vc_redist\vc_redist.x64.exe $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data &&
     wininstaller.commands += windeployqt --compiler-runtime --qmldir \"$${top_srcdir}\"\nymea-app\ui $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_URN}\data\ &&
-    wininstaller.commands += binarycreator -c $${WIN_PACKAGE_DIR}\config\config.xml -p $${WIN_PACKAGE_DIR}\packages\ $${PACKAGE_NAME}-win-installer-$${APP_VERSION}
+    wininstaller.commands += if not exist $${top_builddir}\nymea-app\installer.iss (echo ERROR: $${top_builddir}\nymea-app\installer.iss was not generated - check the installerIss QMAKE_SUBSTITUTES entry in nymea-app/nymea-app.pro & exit /b 1) &&
+    wininstaller.commands += iscc $${top_builddir}\nymea-app\installer.iss &&
+    wininstaller.commands += if not exist $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_NAME}-win-installer-$${APP_VERSION}.exe (echo ERROR: Windows installer EXE was not created: $${WIN_PACKAGE_DIR}\packages\\$${PACKAGE_NAME}-win-installer-$${APP_VERSION}.exe & exit /b 1)
     message("Windows installer package directory: $${WIN_PACKAGE_DIR}")
     QMAKE_EXTRA_TARGETS += wininstaller
 }
@@ -46,17 +46,7 @@ equals(CODESIGN_IDENTITY, "") {
     CODESIGN_IDENTITY="Apple Development"
 }
 osxbundle.depends = nymea-app
-osxbundle.commands += cd nymea-app && rm -f ../*.dmg ../*pkg *.dmg || true &&
-osxbundle.commands += hdiutil eject /Volumes/$${APPLICATION_NAME} || true &&
-osxbundle.commands += macdeployqt $${APPLICATION_NAME}.app -appstore-compliant -qmldir=$$top_srcdir/nymea-app/ui -dmg &&
-osxbundle.commands += rm -r $${APPLICATION_NAME}.app/Contents/Frameworks/QtWebEngineCore.framework &&
-osxbundle.commands += codesign -s \"$$CODESIGN_IDENTITY\" --verbose --entitlements $${MACX_PACKAGE_DIR}/$${APPLICATION_NAME}.entitlements --deep $${APPLICATION_NAME}.app &&
-osxbundle.commands += hdiutil convert $${APPLICATION_NAME}.dmg -format UDRW -o $${APPLICATION_NAME}_writable.dmg &&
-osxbundle.commands += hdiutil attach -readwrite -noverify $${APPLICATION_NAME}_writable.dmg && sleep 2 &&
-osxbundle.commands += tar -xpf $${MACX_PACKAGE_DIR}/template.tar -C /Volumes/$${APPLICATION_NAME}/ &&
-osxbundle.commands += hdiutil eject /Volumes/$${APPLICATION_NAME} &&
-osxbundle.commands += hdiutil convert $${APPLICATION_NAME}_writable.dmg -format UDRO -o ../$${APPLICATION_NAME}-osx-bundle-$${APP_VERSION}.dmg &&
-osxbundle.commands += rm $${APPLICATION_NAME}.dmg $${APPLICATION_NAME}_writable.dmg
+osxbundle.commands += cd nymea-app && sh $${MACX_PACKAGE_DIR}/osxbundle.sh $${APPLICATION_NAME} $${APP_VERSION} $$top_srcdir/nymea-app/ui $${MACX_PACKAGE_DIR} \"$$CODESIGN_IDENTITY\"
 QMAKE_EXTRA_TARGETS += osxbundle
 
 # Create a .pkg osx installer.

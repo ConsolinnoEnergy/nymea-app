@@ -157,10 +157,20 @@ Page {
 
             SettingsTile {
                 Layout.fillWidth: true
+                iconSource: "qrc:/icons/key.svg"
+                text: qsTr("RFID charging")
+                subText: qsTr("Manage RFID tags for charger authorization")
+                visible: NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) &&
+                         engine.jsonRpcClient.experiences.hasOwnProperty("Rfid")
+                onClicked: pageStack.push(Qt.resolvedUrl("system/RfidSettingsPage.qml"))
+            }
+
+            SettingsTile {
+                Layout.fillWidth: true
                 iconSource: "qrc:/icons/sdk.svg"
                 text: qsTr("Developer tools")
                 subText: qsTr("Access tools for debugging and error reporting")
-                visible: NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin)
+                visible: settings.showHiddenOptions && NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin)
                 onClicked: pageStack.push(Qt.resolvedUrl("system/DeveloperTools.qml"))
             }
 
@@ -187,6 +197,15 @@ Page {
                         pageStack.push(Qt.resolvedUrl("system/LogViewerPagePre18.qml"))
                     }
                 }
+            }
+
+            SettingsTile {
+                Layout.fillWidth: true
+                iconSource: "qrc:/icons/backup.svg"
+                text: qsTr("Backup")
+                subText: qsTr("Manage system configuration backup")
+                visible: engine.jsonRpcClient.ensureServerVersion("9.0") && NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin)
+                onClicked:pageStack.push(Qt.resolvedUrl("system/BackupSettingsPage.qml"))
             }
 
             SettingsTile {

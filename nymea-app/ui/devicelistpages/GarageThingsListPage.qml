@@ -121,6 +121,7 @@ ThingsListPageBase {
                             height: parent.height
                             thing: itemDelegate.thing
                             invert: root.invertControls
+                            showStepControls: false
                             enabled: itemDelegate.isEnabled
                         }
                     }

@@ -51,7 +51,7 @@ SettingsPageBase {
 
     Connections {
         target: acManager
-        onSetZoneNameReply: function(commandId, error) {
+        function onSetZoneNameReply(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
             }
@@ -92,6 +92,47 @@ SettingsPageBase {
                                       })
             page.selected.connect(function(thingId) {
                 acManager.addZoneThermostat(zone.id, thingId)
+            })
+        }
+    }
+
+    SettingsPageSectionHeader {
+        visible: acManager && acManager.valvesSupported
+        text: qsTr("Valves")
+    }
+
+    Repeater {
+        model: acManager && acManager.valvesSupported ? zoneWrapper.valves : null
+        delegate: ThingDelegate {
+            Layout.fillWidth: true
+            thing: zoneWrapper.valves.get(index)
+            progressive: false
+            canDelete: true
+            onDeleteClicked: {
+                acManager.removeZoneValve(zone.id, thing.id)
+            }
+        }
+    }
+
+    Button {
+        visible: acManager && acManager.valvesSupported
+        Layout.fillWidth: true
+        Layout.margins: Style.margins
+        text: qsTr("Add valve")
+        onClicked: {
+            var page = pageStack.push(selectThingComponent, {
+                                          acManager: acManager,
+                                          zone: zone,
+                                          interfaces: ["valve"],
+                                          hiddenThingIds: zone.valves,
+                                          title: qsTr("Add valves"),
+                                          placeHolderTitle: qsTr("No valves installed"),
+                                          placeHolderText: qsTr("Before a valve can be assigned to this zone, it needs to be connected to nymea."),
+                                          placeHolderButtonText: qsTr("Setup valves"),
+                                          placeHolderFilterInterface: "valve"
+                                      })
+            page.selected.connect(function(thingId) {
+                acManager.addZoneValve(zone.id, thingId)
             })
         }
     }
@@ -276,7 +317,7 @@ SettingsPageBase {
 
             Connections {
                 target: acManager
-                onSetZoneThingsReply: function(commandId, error) {
+                function onSetZoneThingsReply(commandId, error) {
                     if (commandId == d.pendingCommandId) {
                         d.pendingCommandId = -1
                     }
@@ -321,5 +362,3 @@ SettingsPageBase {
         }
     }
 }
-
-

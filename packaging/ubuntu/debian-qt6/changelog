@@ -1,3 +1,165 @@
+nymea-app (1.13.19) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Fix android NFC reading for the RFID experience
+
+ -- jenkins <developer@nymea.io>  Tue, 04 Aug 2026 16:56:04 +0200
+
+nymea-app (1.13.18) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * iOS: Fix NFC build for newer SDK
+
+ -- jenkins <developer@nymea.io>  Tue, 28 Jul 2026 16:56:42 +0200
+
+nymea-app (1.13.16) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * RFID: Add NFC learning mode
+
+ -- jenkins <developer@nymea.io>  Tue, 28 Jul 2026 14:19:12 +0200
+
+nymea-app (1.13.15) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Update debian dependencies
+
+ -- jenkins <developer@nymea.io>  Mon, 20 Jul 2026 15:10:56 +0200
+
+nymea-app (1.13.14) bionic; urgency=medium
+
+  [ Michael Schwarz ]
+  * Fix typo in implicitWidth in StateDelegate.qml
+  * Fix QTranslator leak in main.cpp
+  * Add missing UnitMilliSeconds and UnitOhm units
+
+  [ Simon Stürz ]
+  * Improve shutter view and add step up/down
+
+ -- jenkins <developer@nymea.io>  Mon, 20 Jul 2026 09:35:48 +0200
+
+nymea-app (1.13.12) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Fix windows standalone script for copying the final installer
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Fri, 10 Jul 2026 14:47:39 +0200
+
+nymea-app (1.13.11) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 21:22:34 +0200
+
+nymea-app (1.13.10) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 20:57:32 +0200
+
+nymea-app (1.13.9) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 18:47:59 +0200
+
+nymea-app (1.13.8) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add RFID experience
+  * Windows: Update installer and improve build process
+  * Add NGW experience in to the network settings
+
+ -- jenkins <developer@nymea.io>  Thu, 09 Jul 2026 16:01:47 +0200
+
+nymea-app (1.13.7) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Improve battery percentage and adjust energy overview proportions
+  * AirConditioning: Add optional valve assignment to a zone
+  * Rework the energy flow graph
+
+ -- jenkins <developer@nymea.io>  Thu, 18 Jun 2026 09:12:02 +0200
+
+nymea-app (1.13.6) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Update translations
+  * AirConditioning: Add optional valve assignment to a zone
+  * Rework the energy flow graph
+
+ -- jenkins <developer@nymea.io>  Wed, 17 Jun 2026 20:33:12 +0200
+
+nymea-app (1.13.5) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Improve battery percentage in energy overview items
+  * AirConditioning: Add optional valve assignment to a zone
+  * Rework the energy flow graph
+
+ -- jenkins <developer@nymea.io>  Wed, 17 Jun 2026 15:31:19 +0200
+
+nymea-app (1.13.4) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Bump version
+  * AirConditioning: Add optional valve assignment to a zone
+  * Rework the energy flow graph
+
+ -- jenkins <developer@nymea.io>  Tue, 16 Jun 2026 11:20:53 +0200
+
+nymea-app (1.13.2) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Update macos building to Qt 6.11.1 and iOS SDK 26.5
+  * AirConditioning: Add optional valve assignment to a zone
+  * Rework the energy flow graph
+  * Update EC charger interfaces and add DC charger support
+
+ -- jenkins <developer@nymea.io>  Tue, 16 Jun 2026 10:48:20 +0200
+
+nymea-app (1.12.3) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Update to 1.12.3
+
+ -- jenkins <developer@nymea.io>  Wed, 13 May 2026 12:35:00 +0200
+
+nymea-app (1.12.2) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add iOS file selector for up and download backups
+
+ -- jenkins <developer@nymea.io>  Thu, 30 Apr 2026 10:38:55 +0200
+
+nymea-app (1.12.1) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add backup settings
+  * Improve server logging categories settings page
+
+ -- jenkins <developer@nymea.io>  Mon, 27 Apr 2026 12:30:51 +0200
+
+nymea-app (1.11.8) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Update singal connection handlers to the new syntax
+
+ -- jenkins <developer@nymea.io>  Wed, 04 Mar 2026 10:27:42 +0100
+
+nymea-app (1.11.6) bionic; urgency=medium
+
+  [ Simon Stürz ]
+  * Add and improve dashboard links in the settings
+  * Fix energy stats lookup and deduplicate fetched log samples
+  * Introduce system based updates and add progress and changelog
+
+ -- jenkins <developer@nymea.io>  Mon, 02 Mar 2026 11:36:43 +0100
+
 nymea-app (1.11.3) bionic; urgency=medium
 
   [ Simon Stürz ]

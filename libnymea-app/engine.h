@@ -30,6 +30,7 @@
 #include "thingmanager.h"
 #include "connection/nymeatransportinterface.h"
 #include "jsonrpc/jsonrpcclient.h"
+#include "types/interfaces.h"
 
 #include "rulemanager.h"
 #include "scriptmanager.h"
@@ -37,6 +38,7 @@
 #include "tagsmanager.h"
 #include "configuration/nymeaconfiguration.h"
 #include "system/systemcontroller.h"
+#include "transfersmanager.h"
 
 class Engine : public QObject
 {
@@ -46,8 +48,10 @@ class Engine : public QObject
     Q_PROPERTY(ScriptManager* scriptManager READ scriptManager CONSTANT)
     Q_PROPERTY(TagsManager* tagsManager READ tagsManager CONSTANT)
     Q_PROPERTY(JsonRpcClient* jsonRpcClient READ jsonRpcClient CONSTANT)
+    Q_PROPERTY(Interfaces* interfaces READ interfaces CONSTANT)
     Q_PROPERTY(NymeaConfiguration* nymeaConfiguration READ nymeaConfiguration CONSTANT)
     Q_PROPERTY(SystemController* systemController READ systemController CONSTANT)
+    Q_PROPERTY(TransfersManager* transfersManager READ transfersManager CONSTANT)
 
 public:
     explicit Engine(QObject *parent = nullptr);
@@ -57,12 +61,15 @@ public:
     ScriptManager *scriptManager() const;
     TagsManager *tagsManager() const;
     JsonRpcClient *jsonRpcClient() const;
+    Interfaces *interfaces() const;
     LogManager *logManager() const;
     NymeaConfiguration *nymeaConfiguration() const;
     SystemController *systemController() const;
+    TransfersManager *transfersManager() const;
 
 private:
     JsonRpcClient *m_jsonRpcClient;
+    Interfaces *m_interfaces;
     ThingManager *m_thingManager;
     RuleManager *m_ruleManager;
     ScriptManager *m_scriptManager;
@@ -70,6 +77,7 @@ private:
     TagsManager *m_tagsManager;
     NymeaConfiguration *m_nymeaConfiguration;
     SystemController *m_systemController;
+    TransfersManager *m_transfersManager;
 
 private slots:
     void onConnectedChanged();

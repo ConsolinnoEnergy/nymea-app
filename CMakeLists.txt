@@ -29,6 +29,8 @@ endif()
 
 project(nymea-app VERSION ${NYMEA_APP_VERSION} LANGUAGES CXX)
 
+include(CTest)
+
 if(IOS)
     enable_language(OBJCXX)
 endif()
@@ -129,3 +131,7 @@ endif()
 add_subdirectory(libnymea-app)
 add_subdirectory(experiences)
 add_subdirectory(nymea-app)
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()

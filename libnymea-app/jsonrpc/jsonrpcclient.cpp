@@ -715,7 +715,7 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
     m_connection->currentHost()->setName(name);
 
     QVersionNumber minimumRequiredVersion = QVersionNumber(5, 0);
-    QVersionNumber maximumMajorVersion = QVersionNumber(8);
+    QVersionNumber maximumMajorVersion = QVersionNumber(10);
     if (m_jsonRpcVersion < minimumRequiredVersion) {
         qCWarning(dcJsonRpc()) << "Nymea core doesn't support minimum required version. Required:" << minimumRequiredVersion << "Found:" << m_jsonRpcVersion;
         emit invalidMinimumVersion(m_jsonRpcVersion.toString(), minimumRequiredVersion.toString());
