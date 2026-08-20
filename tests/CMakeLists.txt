@@ -16,10 +16,13 @@ qt_add_executable(tst_nfchelper
     auto/tst_nfchelper.cpp
     ${NYMEA_APP_SOURCE_ROOT}/nymea-app/nfchelper.cpp
     ${NYMEA_APP_SOURCE_ROOT}/nymea-app/nfchelper.h
+    ${NYMEA_APP_SOURCE_ROOT}/libnymea-app/logging.cpp
+    ${NYMEA_APP_SOURCE_ROOT}/libnymea-app/logging.h
 )
 
 target_include_directories(tst_nfchelper PRIVATE
     ${NYMEA_APP_SOURCE_ROOT}/nymea-app
+    ${NYMEA_APP_SOURCE_ROOT}/libnymea-app
 )
 
 target_link_libraries(tst_nfchelper PRIVATE

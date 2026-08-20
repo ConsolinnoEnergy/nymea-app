@@ -10834,7 +10834,6 @@ Please only use this if you are sure you want this and consider reporting the is
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../ui/system/UsersSettingsPage.qml" line="386"/>
         <source>User login via authentication</source>
         <translation type="unfinished"></translation>
