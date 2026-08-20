@@ -106,13 +106,13 @@ MainViewBase {
         imageSource: "qrc:/icons/sensors.svg"
         buttonText: qsTr("Add zone")
         onButtonClicked: {
-            pendingAddCall = acManager.addZone(qsTr("Zone %1").arg(acManager.zoneInfos.count + 1), [], [], [], [])
+            pendingAddCall = acManager.addZone(qsTr("Zone %1").arg(acManager.zoneInfos.count + 1), [], [], [], [], [])
         }
         property int pendingAddCall: -1
 
         Connections {
             target: acManager
-            onAddZoneReply: function(commandId, error, zoneId) {
+            function onAddZoneReply(commandId, error, zoneId) {
                 if (commandId == noZonePlaceHolder.pendingAddCall) {
                     print("zone added", zoneId)
                     var zone = acManager.zoneInfos.getZoneInfo(zoneId)

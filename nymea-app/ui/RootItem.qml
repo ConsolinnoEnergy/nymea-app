@@ -39,8 +39,43 @@ import "connection"
 Item {
     id: root
 
+    readonly property var currentPage: swipeView.currentItem ? swipeView.currentItem.pageStack.currentItem : null
+    readonly property bool currentPageCompactsBottomMargin: currentPage
+                                                          && currentPage.hasOwnProperty("applyRootItemBottomMarginCompaction")
+                                                          && currentPage.applyRootItemBottomMarginCompaction
+    readonly property bool currentPageDefinesBottomMargin: currentPage && currentPage.hasOwnProperty("bottomMargin")
+    readonly property int currentPageBottomMargin: currentPageDefinesBottomMargin ? currentPage.bottomMargin : 0
+
+    readonly property int safeAreaBottomMargin: {
+        var margin = PlatformHelper.bottomPadding
+
+        if (Qt.platform.os === "ios") {
+            margin = Math.round(PlatformHelper.bottomPadding * Math.max(0, Configuration.iosSafeAreaBottomMarginScale))
+
+            if (currentPageCompactsBottomMargin && !app.landscape && currentPageBottomMargin > 0 && margin > 0) {
+                margin = Math.floor(margin * 0.5)
+            }
+        }
+
+        return margin
+    }
+
     function handleAndroidBackButton() {
         return swipeView.currentItem.handleAndroidBackButton()
+    }
+
+    function triggerCurrentPageBack(pageStack) {
+        var page = pageStack.currentItem
+        var pageHeader = page ? page.header : null
+        if (pageHeader && pageHeader.visible
+                && (!pageHeader.hasOwnProperty("backButtonVisible") || pageHeader.backButtonVisible)
+                && typeof pageHeader.backPressed === "function") {
+            pageHeader.backPressed()
+            return true
+        }
+
+        pageStack.pop()
+        return true
     }
 
     QtObject {
@@ -414,8 +449,7 @@ Item {
                         if ((engine.jsonRpcClient.connected && pageStack.depth > 1)
                                 // if we're not connected, only allow using the back button in wizards
                                 || (!engine.jsonRpcClient.connected && pageStack.depth > 3)) {
-                            pageStack.pop();
-                            return true;
+                            return root.triggerCurrentPageBack(pageStack);
                         }
                         return false;
                     }
@@ -468,10 +502,10 @@ Item {
 
                     Connections {
                         target: engine.jsonRpcClient
-                        onCurrentHostChanged: {
-                            init();
-                        }
-                        onVerifyConnectionCertificate: function(serverUuid, issuerInfo, pem) {
+
+                        function onCurrentHostChanged() { init(); }
+
+                        function onVerifyConnectionCertificate(serverUuid, issuerInfo, pem) {
                             print("Asking user to verify certificate:", serverUuid, issuerInfo, pem)
                             var certDialogComponent = Qt.createComponent(Qt.resolvedUrl("connection/CertificateErrorDialog.qml"));
                             var popup = certDialogComponent.createObject(root);
@@ -481,14 +515,15 @@ Item {
                             })
                             popup.open();
                         }
-                        onConnectedChanged: {
+
+                        function onConnectedChanged(connected) {
                             print("json client connected changed", engine.jsonRpcClient.connected, engine.jsonRpcClient.serverUuid)
                             if (engine.jsonRpcClient.connected) {
                                 nymeaDiscovery.cacheHost(engine.jsonRpcClient.currentHost)
                                 configuredHost.uuid = engine.jsonRpcClient.serverUuid
 
                                 for (var i = 0; i < configuredHostsModel.count; i++) {
-                                    if (i != index && configuredHostsModel.get(i).uuid == engine.jsonRpcClient.serverUuid) {
+                                    if (i != index && configuredHostsModel.get(i).uuid === engine.jsonRpcClient.serverUuid) {
                                         configuredHostsModel.removeHost(i);
                                         break;
                                     }
@@ -497,28 +532,31 @@ Item {
                             init();
                         }
 
-                        onAuthenticationRequiredChanged: {
+                        function onAuthenticationRequiredChanged() {
                             print("auth required changed")
                             init();
                         }
-                        onInitialSetupRequiredChanged: {
+
+                        function onInitialSetupRequiredChanged() {
                             print("setup required changed")
                             init();
                         }
 
-                        onInvalidMinimumVersion: function(actualVersion, minVersion) {
+                        function onInvalidMinimumVersion(actualVersion, minVersion) {
                             var popup = invalidVersionComponent.createObject(app.contentItem);
                             popup.actualVersion = actualVersion;
                             popup.minVersion = minVersion;
                             popup.open()
                         }
-                        onInvalidMaximumVersion: function(actualVersion, maxVersion) {
+
+                        function onInvalidMaximumVersion(actualVersion, maxVersion) {
                             var popup = invalidVersionComponent.createObject(app.contentItem);
                             popup.actualVersion = actualVersion;
                             popup.maxVersion = maxVersion;
                             popup.open()
                         }
-                        onInvalidServerUuid: function(uuid) {
+
+                        function onInvalidServerUuid(uuid) {
                             var connection = engine.jsonRpcClient.currentConnection;
                             engine.jsonRpcClient.disconnectFromHost();
                             engine.jsonRpcClient.currentHost.connections.removeConnection(connection);
@@ -528,7 +566,7 @@ Item {
 
                     Connections {
                         target: engine.nymeaConfiguration
-                        onFetchingDataChanged: {
+                        function onFetchingDataChanged() {
                             print("fetching NymeaConfigration:", engine.nymeaConfiguration.fetchingData)
                             if (!engine.nymeaConfiguration.fetchingData) {
                                 syncRemoteConnection()
@@ -537,7 +575,7 @@ Item {
                     }
                     Connections {
                         target: engine.nymeaConfiguration.tunnelProxyServerConfigurations
-                        onCountChanged: {
+                        function onCountChanged() {
                             print("tunnel proxy count changed:", engine.nymeaConfiguration.tunnelProxyServerConfigurations.count)
                             if (!engine.nymeaConfiguration.fetchingData) {
                                 syncRemoteConnection();
@@ -553,7 +591,9 @@ Item {
                             return;
                         }
 
-                        for (var i = 0; i < engine.jsonRpcClient.currentHost.connections.count; i++) {
+                        var i = 0;
+
+                        for (i = 0; i < engine.jsonRpcClient.currentHost.connections.count; i++) {
                             var connection = engine.jsonRpcClient.currentHost.connections.get(i)
                             if (connection.url.toString().startsWith("tunnel")) {
                                 console.log("Removing tunnel proxy connection:", connection.url)
@@ -561,7 +601,7 @@ Item {
                             }
                         }
 
-                        for (var i = 0; i < engine.nymeaConfiguration.tunnelProxyServerConfigurations.count; i++) {
+                        for (i = 0; i < engine.nymeaConfiguration.tunnelProxyServerConfigurations.count; i++) {
                             var tunnelProxyConfig = engine.nymeaConfiguration.tunnelProxyServerConfigurations.get(i);
                             console.debug("tunnelProxyConfig:", JSON.stringify(tunnelProxyConfig))
                             var url = tunnelProxyConfig.sslEnabled ? "tunnels://" : "tunnel://";
@@ -577,7 +617,7 @@ Item {
                     Connections {
                         target: Qt.application
                         enabled: engine.jsonRpcClient.connected && settings.returnToHome
-                        onStateChanged: {
+                        function onStateChanged(state) {
                             print("App active state changed:", state)
                             if (state !== Qt.ApplicationActive) {
                                 init();
@@ -587,7 +627,7 @@ Item {
 
                     Connections {
                         target: engine.thingManager
-                        onFetchingDataChanged: {
+                        function onFetchingDataChanged() {
                             if (!engine.thingManager.fetchingData) {
                                 processPendingPushNotificationActions();
                                 updatePushNotificationThings()
@@ -598,10 +638,11 @@ Item {
 
                     Connections {
                         target: PlatformHelper
-                        onPendingNotificationActionsChanged: {
+                        function onPendingNotificationActionsChanged() {
                             processPendingPushNotificationActions()
                         }
                     }
+
                     function processPendingPushNotificationActions() {
                         print("pending notification actions changed:", PlatformHelper.pendingNotificationActions)
                         if (PlatformHelper.pendingNotificationActions.length > 0) {
@@ -618,7 +659,7 @@ Item {
                                 var thing = engine.thingManager.things.getThing(target)
                                 if (thing) {
                                     print("opening thing:", thing.name)
-                                    pageStack.push("/ui/devicepages/" + NymeaUtils.interfaceListToDevicePage(thing.thingClass.interfaces), {thing: thing})
+                                    pageStack.push("/ui/devicepages/" + NymeaUtils.thingToDevicePage(thing), {thing: thing})
                                 } else {
                                     // or a view name
                                     console.log("going to main view:", target)
@@ -633,7 +674,6 @@ Item {
                                 print("executing:", thingId, action, actionParams)
                                 engine.thingManager.things.getThing(thingId).executeAction(action, actionParams);
                             }
-
 
                             PlatformHelper.notificationActionHandled(notificationAction.id)
                         }

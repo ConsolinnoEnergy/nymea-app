@@ -66,7 +66,7 @@ ThingPageBase {
         }
         delegate: SwipeDelegate {
             id: delegate
-            width: parent.width
+            width: flickable.width
 
             readonly property StateType stateType: model.type === ThingModel.TypeStateType ? root.thing.thingClass.stateTypes.getStateType(model.id) : null
             readonly property ActionType actionType: model.writable ? root.thing.thingClass.actionTypes.getActionType(model.id) : null
@@ -121,7 +121,7 @@ ThingPageBase {
             }
             Connections {
                 target: flickable
-                onContentYChanged: if (swipe.completed) swipe.close()
+                function onContentYChanged() { if (swipe.completed) swipe.close(); }
             }
 
             onPressAndHold: swipe.open(SwipeDelegate.Right)
@@ -352,14 +352,14 @@ ThingPageBase {
 
             Connections {
                 target: stateDelegateLoader.item && stateDelegateLoader.item.hasOwnProperty("changed") ? stateDelegateLoader.item : null
-                onChanged: function(value) {
+                function onChanged(value) {
                     print("Value changed:", value)
                     stateDelegate.enqueueSetValue(value)
                 }
             }
             Connections {
                 target: engine.thingManager
-                onExecuteActionReply: (commandId, thingError, displayMessage) => {
+                function onExecuteActionReply(commandId, thingError, displayMessage) {
                     if (stateDelegate.pendingActionId === commandId) {
                         stateDelegate.pendingActionId = -1
                         if (stateDelegate.valueCacheDirty) {
@@ -384,7 +384,7 @@ ThingPageBase {
 
             Connections {
                 target: engine.thingManager
-                onExecuteActionReply: (commandId, thingError, displayMessage) => {
+                function onExecuteActionReply(commandId, thingError, displayMessage) {
                     if (commandId === actionDelegate.pendingActionId) {
                         pendingTimer.start();
                         actionDelegate.lastSuccess = thingError === Thing.ThingErrorNoError
@@ -514,7 +514,7 @@ ThingPageBase {
             }
             Connections {
                 target: root.thing
-                onEventTriggered: function(eventTypeId, params) {
+                function onEventTriggered(eventTypeId, params) {
                     if (eventTypeId === eventComponentItem.eventType.id) {
                         flashlightAnimation.start();
                     }

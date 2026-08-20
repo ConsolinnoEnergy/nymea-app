@@ -230,6 +230,18 @@
         <source>This action has not been executed yet.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>User action by %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User action by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automation by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AdvancedConnectionInterfacesPage</name>
@@ -446,6 +458,250 @@
     <message>
         <location filename="../ui/devicelistpages/AwningThingsListPage.qml" line="28"/>
         <source>Awnings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BackupSettingsPage</name>
+    <message>
+        <source>Backup settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating backup...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Transferring backup...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create and download backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upload and restore backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup archives (*.tar.gz)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select backup file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create the backup: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup created successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to prepare the backup download: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server did not provide a download for the requested backup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to prepare the backup file download: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server did not provide a download for the selected backup file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup saved to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup uploaded. The server is restoring it and will reboot once finished.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saving backup settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2 Days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weekly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Once a month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup destination directory on the server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of backups to keep (Select 0 to keep all backups)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic backups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic backup interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom interval in hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apply backup settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to update the backup settings: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup settings updated successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting backup file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restoring backup file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to delete the backup file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup file deleted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to restore the backup file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup restore started. The server will reboot once finished.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete backup file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you really want to delete the backup file 
+%1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore backup file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you really want to restore the backup file %1? All current settings will be removed and the server will reboot once finished.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upload and restore backup?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you really want to upload and restore the backup file %1? All current settings will be removed and the server will reboot once finished.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preparing backup download...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not prepare a local backup file for export.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please select a backup archive (*.tar.gz).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There is no backup file in the backup directory %1 yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup downloaded. Choose Save to Files to store it in Downloads.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1382,6 +1638,10 @@
         <source>My energy consumption</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>From car</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CurrentPowerBalancePage</name>
@@ -1396,6 +1656,10 @@
     <message>
         <location filename="../ui/mainviews/energy/CurrentPowerBalancePieChart.qml" line="57"/>
         <source>My energy mix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1424,6 +1688,10 @@
     <message>
         <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="169"/>
         <source>To battery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To car</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1775,6 +2043,22 @@
     <message>
         <location filename="../ui/system/DeveloperTools.qml" line="121"/>
         <source>Server logging categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No active LAN IPv4 address was found in the network settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No reachable web server configuration was found for %1. Please enable the web server on this address or on 0.0.0.0.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The debug interface can only be reached from the LAN. If you are using the remote connection, the following link might not work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open debug interface</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2532,6 +2816,49 @@
         <source>Add things</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add valve</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No valves installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Before a valve can be assigned to this zone, it needs to be connected to nymea.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Setup valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ElectricVehiclesView</name>
+    <message>
+        <source>Electric vehicles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are no electric vehicles set up.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect your cars and chargers in order to access them from here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add things</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EnergySettingsPage</name>
@@ -2619,6 +2946,21 @@
     </message>
 </context>
 <context>
+    <name>EvChargerDcThingPage</name>
+    <message>
+        <source>Charging power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The car is not plugged in.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Currently charging at %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EvChargerThingPage</name>
     <message>
         <location filename="../ui/devicepages/EvChargerThingPage.qml" line="81"/>
@@ -2699,6 +3041,22 @@
     <message>
         <location filename="../ui/system/EvDashSettingsPage.qml" line="193"/>
         <source>Manage users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The dashboard can only be reached from the LAN. If you are using the remote connection, the following link might not work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No active LAN IPv4 address was found in the network settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No reachable web server configuration was found for %1. Please enable the web server on this address or on 0.0.0.0.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open EVDash</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3969,7 +4327,6 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="141"/>
         <location filename="../../libnymea-app/types/interfaces.cpp" line="146"/>
         <source>Percentage</source>
         <translation type="unfinished"></translation>
@@ -4661,6 +5018,14 @@ Please try again.</source>
         <source>Vibration detected</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>EV chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Electric cars</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IrrigationDevicePage</name>
@@ -5318,6 +5683,10 @@ Please try again.</source>
     <message>
         <location filename="../ui/MainPage.qml" line="295"/>
         <source>AC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EVs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6395,6 +6764,34 @@ Use a timeout value greater or equal to 10 ms.</source>
         <source>This feature is not supported on this platform.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Disabling networking will disconnect all connected clients and may make this %1 system inaccessible from this app. Do not proceed unless you have another way to access the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure LAN network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure the dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling WiFi will disconnect all clients connected via WiFi and may make this %1 system inaccessible from this app unless another network connection is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnect network interface?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this is the LAN or WAN interface currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this interface is currently carrying your connection, you may lose access until another network path is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NewMagicPage</name>
@@ -6472,6 +6869,168 @@ Use a timeout value greater or equal to 10 ms.</source>
     <message>
         <location filename="../ui/thingconfiguration/NewThingPage.qml" line="185"/>
         <source>Install plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NfcHelper</name>
+    <message>
+        <source>Proprietary tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag type 4B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MIFARE tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NFC tag scanning is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not start NFC tag scanning.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag UID could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag-specific</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NgwSettingsPage</name>
+    <message>
+        <source>LAN network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An unexpected error happened while updating the LAN configuration.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable dedicated LAN?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling the dedicated LAN may make this %1 system inaccessible from clients connected through the LAN interface. Do not proceed unless another network path is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to proceed?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The dedicated LAN creates a separate local network on this system. When enabled, gateway services and internet sharing can be configured for devices connected to that LAN.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dedicated LAN enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run a separate, dedicated local network on this system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gateway services access</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Which nymea services can be reached from the dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nymea services only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All ports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internet sharing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share this system&apos;s internet connection with the dedicated LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status: enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status: disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LAN interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WAN interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LAN subnet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LAN address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DHCP range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configured gateway ports</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6846,6 +7405,24 @@ Use a timeout value greater or equal to 10 ms.</source>
     <message>
         <location filename="../ui/Nymea.qml" line="283"/>
         <source>Ozone sensors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EV chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>valve</source>
+        <extracomment>Select ...</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EV charger</source>
+        <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7538,6 +8115,472 @@ Do you want to proceed?</source>
     </message>
 </context>
 <context>
+    <name>RfidManagerSettingsPage</name>
+    <message>
+        <source>RFID settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsaved RFID settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID settings could not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID authorization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging starts after a valid RFID tag authorizes the charger. Time limits can revoke unused authorizations automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit time to plug in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plug-in timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>After a tag was accepted, the authorization expires if the vehicle is not plugged in within this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit time to present a tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit time to scan a new tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enrollment timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When adding a tag from a charger, the scan request expires if no tag is presented within this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RfidSettingsPage</name>
+    <message>
+        <source>RFID charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max charging current: %1 A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phase count: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This RFID tag is already assigned.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected charging profile is not valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected user no longer exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected RFID tag no longer exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag data is not valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This charger is already waiting for an RFID tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag scan is no longer active.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The RFID tag request could not be completed. (Error code: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot; for %2?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No RFID tags configured.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the user this RFID tag belongs to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose how to read the RFID tag for %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan on charger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select a charger and prepare it for the next RFID tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type the RFID code manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan with phone NFC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near this phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the RFID tag near the phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The NFC scan is not running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the charger that should scan the RFID tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find charger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is currently available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No charger with RFID scan support is available for %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show user chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show all chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use this charger to scan the next tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Present the RFID tag to %1 now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected charger is no longer available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The next RFID tag detected on %1 will be stored.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time remaining: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please go back and select another charger.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No RFID tag was detected before the scan expired.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the RFID code manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Review the scanned RFID tag, name it, and configure its charging profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name the RFID tag and configure its charging profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The charger will store the next RFID tag it detects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tag type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access methods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NDEF message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum command length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max charging current (A)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EV chargers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This RFID tag is not available on any EV charger for the selected user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Technical details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID hash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID hash copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsaved RFID tag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to save the changes before leaving this page?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Basic information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The charger will apply the following profile when this tag is detected on an assigned charger.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eco uses available surplus energy. Quick charges as fast as the configured limits allow.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select how many phases the charger should use. Leave this unset to let the charger decide.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID tag details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This tag can authorize charging on the EV chargers listed below because they are accessible to its owner.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RootItem</name>
     <message>
         <location filename="../ui/RootItem.qml" line="658"/>
@@ -7591,6 +8634,21 @@ Do you want to proceed?</source>
         <location filename="../ui/magic/RuleActionDelegate.qml" line="67"/>
         <source>No</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>S:</name>
+    <message>
+        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="88"/>
+        <source></source>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="94"/>
+        <source></source>
+        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -8293,6 +9351,22 @@ Do you want to proceed?</source>
         <source>Dashboard settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage system configuration backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RFID charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage RFID tags for charger authorization</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -8798,6 +9872,34 @@ Please only use this if you are sure you want this and consider reporting the is
         <source>Update sources</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 update available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installed version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Candidate version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update changelog:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TemperatureScheduleEditor</name>
@@ -8961,6 +10063,26 @@ Please only use this if you are sure you want this and consider reporting the is
     <message>
         <location filename="../ui/devicepages/ThingLogPage.qml" line="381"/>
         <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automation: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automation</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -9305,6 +10427,145 @@ Please only use this if you are sure you want this and consider reporting the is
     </message>
 </context>
 <context>
+    <name>TransfersManager</name>
+    <message>
+        <source>Another transfer is already running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not connected to a nymea server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid download target.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not create the selected download directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preparing download...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid upload source.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected upload file could not be opened.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preparing upload...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading %1 (%2%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading %1 (%2%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The current connection does not support file transfers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not open the transfer connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Transfer connection is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upload source is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to read the upload file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download target is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server rejected the download request.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to prepare the backup restore upload: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server rejected the upload request.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not open the selected upload file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server connection was lost.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting transfer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The transfer connection was closed unexpectedly.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The transfer connection reported an error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The transfer connection could not be secured.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The transfer failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server returned an unexpected transfer direction.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resuming downloads is not supported yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not open the selected download target.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not resume the upload file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not write the downloaded data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The server returned an empty download chunk.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TunnelProxyServerConfigurationDialog</name>
     <message>
         <location filename="../ui/system/TunnelProxyServerConfigurationDialog.qml" line="33"/>
@@ -9580,6 +10841,23 @@ Please only use this if you are sure you want this and consider reporting the is
     <message>
         <location filename="../ui/system/UsersSettingsPage.qml" line="410"/>
         <source>Authenticated user</source>
+        <source>Accessable things for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acessable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allowed things for this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>things accessable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

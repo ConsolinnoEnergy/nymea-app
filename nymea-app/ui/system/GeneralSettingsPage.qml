@@ -260,7 +260,7 @@ SettingsPageBase {
 
     SettingsPageSectionHeader {
         text: qsTr("System")
-        visible: engine.systemController.powerManagementAvailable
+        visible: engine.jsonRpcClient.ensureServerVersion("9.0") || engine.systemController.powerManagementAvailable
     }
 
     Button {
@@ -308,6 +308,7 @@ SettingsPageBase {
             })
         }
     }
+
     Button {
         Layout.fillWidth: true
         Layout.leftMargin: app.margins

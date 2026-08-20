@@ -27,11 +27,17 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QVariantMap>
+
+class QNearFieldManager;
+class QNearFieldTarget;
 
 class NfcHelper : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool isAvailable READ isAvailable CONSTANT)
+    Q_PROPERTY(bool isAvailable READ isAvailable NOTIFY isAvailableChanged)
+    Q_PROPERTY(bool tagUidScanningAvailable READ tagUidScanningAvailable NOTIFY isAvailableChanged)
+    Q_PROPERTY(bool scanning READ scanning NOTIFY scanningChanged)
 
 public:
     static NfcHelper* instance();
@@ -39,9 +45,30 @@ public:
 
 
     bool isAvailable() const;
+    bool tagUidScanningAvailable() const;
+    bool scanning() const;
+
+    static QString formatUid(const QByteArray &uid);
+    static QString tagCode(const QByteArray &uid);
+
+    Q_INVOKABLE bool startTagUidScan();
+    Q_INVOKABLE void stopTagUidScan();
+
+signals:
+    void isAvailableChanged();
+    void scanningChanged();
+    void tagDetected(const QVariantMap &tagInformation);
+    void scanFailed(const QString &message);
 
 private:
     explicit NfcHelper(QObject *parent = nullptr);
+
+    void setScanning(bool scanning);
+    void targetDetected(QNearFieldTarget *target);
+    QVariantMap tagInformation(QNearFieldTarget *target) const;
+
+    QNearFieldManager *m_manager = nullptr;
+    bool m_scanning = false;
 };
 
 #endif // NFCHELPER_H

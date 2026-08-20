@@ -19,6 +19,8 @@
 
     <!-- %%INSERT_FEATURES -->
 
+    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"

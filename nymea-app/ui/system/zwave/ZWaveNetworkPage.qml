@@ -76,19 +76,19 @@ SettingsPageBase {
 
     Connections {
         target: root.zwaveManager
-        onAddNodeReply: function(commandId, error) {
+        function onAddNodeReply(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 processStatusCode(error)
             }
         }
-        onRemoveNodeReply: function(commandId, error) {
+        function onRemoveNodeReply(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 processStatusCode(error)
             }
         }
-        onRemoveFailedNodeReply: function(commandId, error) {
+        function onRemoveFailedNodeReply(commandId, error) {
             if (commandId == d.pendingCommandId) {
                 d.pendingCommandId = -1
                 processStatusCode(error)
@@ -117,7 +117,7 @@ SettingsPageBase {
 
     Connections {
         target: root.network
-        onWaitingForNodeAdditionChanged: {
+        function onWaitingForNodeAdditionChanged() {
             if (root.network.waitingForNodeAddition) {
                 var props = {
                     title: qsTr("Include Z-Wave device"),
@@ -131,7 +131,7 @@ SettingsPageBase {
                 }
             }
         }
-        onWaitingForNodeRemovalChanged: {
+        function onWaitingForNodeRemovalChanged() {
             if (root.network.waitingForNodeRemoval) {
                 var props = {
                     title: qsTr("Exclude Z-Wave device"),

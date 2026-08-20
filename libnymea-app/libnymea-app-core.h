@@ -26,9 +26,13 @@
 #define LIBNYMEAAPPCORE_H
 
 #include "engine.h"
+#include "transfersmanager.h"
 #include "connection/nymeahosts.h"
 #include "connection/nymeahost.h"
 #include "models/nymeahostsfiltermodel.h"
+#include "models/backupfile.h"
+#include "models/backupfiles.h"
+#include "models/backupfilesproxymodel.h"
 #include "connection/discovery/nymeadiscovery.h"
 #include "vendorsproxy.h"
 #include "thingclassesproxy.h"
@@ -144,6 +148,7 @@
 #include "serverdebug/serverdebugmanager.h"
 #include "serverdebug/serverloggingcategory.h"
 #include "serverdebug/serverloggingcategories.h"
+#include "serverdebug/serverloggingcategoriesproxy.h"
 
 #include <QtQml/qqml.h>
 
@@ -255,6 +260,10 @@ void registerQmlTypes() {
     qmlRegisterType<PluginConfigManager>(uri, 1, 0, "PluginConfigManager");
 
     qmlRegisterUncreatableType<NymeaConfiguration>(uri, 1, 0, "NymeaConfiguration", "Get it from Engine");
+    qmlRegisterUncreatableType<TransfersManager>(uri, 1, 0, "TransfersManager", "Get it from Engine");
+    qmlRegisterUncreatableType<BackupFile>(uri, 1, 0, "BackupFile", "Get it from BackupFiles");
+    qmlRegisterUncreatableType<BackupFiles>(uri, 1, 0, "BackupFiles", "Get it from NymeaConfiguration");
+    qmlRegisterType<BackupFilesProxyModel>(uri, 1, 0, "BackupFilesProxyModel");
     qmlRegisterUncreatableType<ServerConfiguration>(uri, 1, 0, "ServerConfiguration", "Get it from NymeaConfiguration");
     qmlRegisterUncreatableType<ServerConfigurations>(uri, 1, 0, "ServerConfigurations", "Get it from NymeaConfiguration");
     qmlRegisterUncreatableType<WebServerConfiguration>(uri, 1, 0, "WebServerConfiguration", "Get it from NymeaConfiguration");
@@ -361,6 +370,7 @@ void registerQmlTypes() {
     qmlRegisterType<ServerDebugManager>(uri, 1, 0, "ServerDebugManager");
     qmlRegisterUncreatableType<ServerLoggingCategory>(uri, 1, 0, "ServerLoggingCategory", "Get it from ServerDebugManager");
     qmlRegisterUncreatableType<ServerLoggingCategories>(uri, 1, 0, "ServerLoggingCategories", "Get it from ServerDebugManager");
+    qmlRegisterType<ServerLoggingCategoriesProxy>(uri, 1, 0, "ServerLoggingCategoriesProxy");
 
     qmlRegisterUncreatableType<ScriptManager>(uri, 1, 0, "ScriptManager", "Get it from Engine");
     qmlRegisterUncreatableType<Scripts>(uri, 1, 0, "Scripts", "Getit from ScriptManager");

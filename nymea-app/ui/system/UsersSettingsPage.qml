@@ -36,6 +36,21 @@ import "../delegates"
 SettingsPageBase {
     id: root
     title: qsTr("User settings")
+    property string initialUsername: ""
+    property bool initialUserOpened: false
+
+    function openInitialUser() {
+        if (initialUserOpened || initialUsername === "")
+            return
+
+        var initialUserInfo = userManager.users.getUserInfo(initialUsername)
+        if (initialUserInfo) {
+            initialUserOpened = true
+            pageStack.push(userDetailsComponent, {userInfo: initialUserInfo})
+        }
+    }
+
+    Component.onCompleted: Qt.callLater(openInitialUser)
 
     UserManager {
         id: userManager
@@ -63,6 +78,13 @@ SettingsPageBase {
                 var popup = component.createObject(app, {text: text});
                 popup.open()
             }
+        }
+    }
+
+    Connections {
+        target: userManager.users
+        function onCountChanged() {
+            Qt.callLater(root.openInitialUser)
         }
     }
 
@@ -125,7 +147,7 @@ SettingsPageBase {
 
     SettingsPageSectionHeader {
         text: qsTr("Admin")
-        visible: (userManager.userInfo.scopes & UserInfo.PermissionScopeAdmin) //&& !engine.jsonRpcClient.pushButtonAuthAvailable
+        visible: NymeaUtils.hasPermissionScope(engine.jsonRpcClient.permissions, UserInfo.PermissionScopeAdmin) //&& !engine.jsonRpcClient.pushButtonAuthAvailable
     }
 
     NymeaItemDelegate {
@@ -174,7 +196,7 @@ SettingsPageBase {
 
             Connections {
                 target: userManager
-                onSetUserInfoReply: (id, error) => {
+                function onSetUserInfoReply(id, error) {
                     editUserInfoPage.busy = false
                     if (error !== UserManager.UserErrorNoError) {
                         var component = Qt.createComponent("../components/ErrorDialog.qml")
@@ -542,7 +564,7 @@ SettingsPageBase {
 
             Connections {
                 target: userManager
-                onRemoveUserReply: (id, error) => {
+                function onRemoveUserReply(id, error) {
                     userDetailsPage.busy = false
                     if (error !== UserManager.UserErrorNoError) {
                         var component = Qt.createComponent("../components/ErrorDialog.qml")
@@ -683,7 +705,7 @@ SettingsPageBase {
             }
             Connections {
                 target: userManager
-                onCreateUserReply: (id, error) => {
+                function onCreateUserReply(id, error) {
                     createUserPage.busy = false
                     if (error !== UserManager.UserErrorNoError) {
                         var component = Qt.createComponent("../components/ErrorDialog.qml")

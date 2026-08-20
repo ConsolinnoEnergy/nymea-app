@@ -27,6 +27,8 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QFile>
+#include <QFileInfo>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QJsonDocument>
@@ -302,9 +304,68 @@ QString PlatformHelper::fromClipBoard()
     return QApplication::clipboard()->text();
 }
 
+bool PlatformHelper::usesTemporaryExportFile() const
+{
+    return false;
+}
+
+QUrl PlatformHelper::prepareTemporaryExportFile(const QString &fileName) const
+{
+    Q_UNUSED(fileName)
+    return QUrl();
+}
+
+void PlatformHelper::exportTemporaryFile(const QUrl &fileUrl)
+{
+    Q_UNUSED(fileUrl)
+}
+
 void PlatformHelper::shareFile(const QString &fileName)
 {
-    QDesktopServices::openUrl(QUrl(fileName));
+    const QUrl url(fileName);
+    if (url.isLocalFile()) {
+        QDesktopServices::openUrl(url);
+        return;
+    }
+
+    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+}
+
+void PlatformHelper::shareTemporaryFile(const QString &fileName)
+{
+    shareFile(fileName);
+}
+
+void PlatformHelper::removeFile(const QUrl &fileUrl)
+{
+    if (!fileUrl.isLocalFile()) {
+        return;
+    }
+
+    const QFileInfo fileInfo(fileUrl.toLocalFile());
+    if (!fileInfo.exists() || !fileInfo.isFile()) {
+        return;
+    }
+
+    QFile::remove(fileInfo.absoluteFilePath());
+}
+
+QString PlatformHelper::fileNameForUrl(const QUrl &fileUrl) const
+{
+    if (fileUrl.isLocalFile()) {
+        return QFileInfo(fileUrl.toLocalFile()).fileName();
+    }
+
+    return fileUrl.fileName();
+}
+
+bool PlatformHelper::usesNativeFilePicker() const
+{
+    return false;
+}
+
+void PlatformHelper::pickFile()
+{
 }
 
 bool PlatformHelper::locationServicesEnabled() const
