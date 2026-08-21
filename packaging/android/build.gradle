@@ -31,7 +31,9 @@ println "Package source root ${nymeaAppRoot}"
 
 buildscript {
     repositories {
-        jcenter()
+        // jcenter() removed: JCenter/Bintray was shut down in 2021 and the
+        // jcenter() DSL method no longer exists in Gradle 9+. All
+        // dependencies below are already available via google()/mavenCentral().
         google()
         mavenCentral()
     }
@@ -45,7 +47,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven {
             url "https://maven.google.com"
         }
