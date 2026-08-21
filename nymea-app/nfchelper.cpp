@@ -27,11 +27,14 @@
 #include <logging.h>
 
 #include <QMetaEnum>
+#ifdef HAVE_PHONE_NFC
 #include <QNearFieldManager>
 #include <QNearFieldTarget>
+#endif
 
 NYMEA_LOGGING_CATEGORY(dcNfcHelper, "NfcHelper")
 
+#ifdef HAVE_PHONE_NFC
 namespace {
 
 QString tagTypeName(QNearFieldTarget::Type type)
@@ -58,11 +61,15 @@ QString tagTypeName(QNearFieldTarget::Type type)
 }
 
 }
+#endif
 
 NfcHelper::NfcHelper(QObject *parent):
-    QObject(parent),
-    m_manager(new QNearFieldManager(this))
+    QObject(parent)
+#ifdef HAVE_PHONE_NFC
+    , m_manager(new QNearFieldManager(this))
+#endif
 {
+#ifdef HAVE_PHONE_NFC
     qCInfo(dcNfcHelper()) << "NFC helper initialized: enabled=" << isAvailable()
                           << "tag-specific access supported="
                           << m_manager->isSupported(QNearFieldTarget::TagTypeSpecificAccess);
@@ -89,6 +96,13 @@ NfcHelper::NfcHelper(QObject *parent):
         setScanning(false);
     });
 #endif
+#else
+    // Phone NFC support is disabled at build time (NYMEA_ENABLE_PHONE_NFC=OFF).
+    // This singleton stays registered so QML bindings like
+    // NfcHelper.isAvailable/NfcHelper.tagUidScanningAvailable keep working
+    // (they simply evaluate to false), avoiding the need for any QML changes.
+    qCInfo(dcNfcHelper()) << "Phone NFC support is disabled at build time (NYMEA_ENABLE_PHONE_NFC=OFF).";
+#endif
 }
 
 NfcHelper *NfcHelper::instance()
@@ -107,7 +121,9 @@ QObject *NfcHelper::nfcHelperProvider(QQmlEngine */*engine*/, QJSEngine */*scrip
 
 bool NfcHelper::isAvailable() const
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#ifndef HAVE_PHONE_NFC
+    return false;
+#elif QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     return m_manager->isAvailable();
 #else
     return m_manager->isEnabled();
@@ -116,7 +132,9 @@ bool NfcHelper::isAvailable() const
 
 bool NfcHelper::tagUidScanningAvailable() const
 {
-#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
+#if !defined(HAVE_PHONE_NFC)
+    return false;
+#elif defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
     return isAvailable()
             && m_manager->isSupported(QNearFieldTarget::TagTypeSpecificAccess);
 #else
@@ -146,6 +164,11 @@ QString NfcHelper::tagCode(const QByteArray &uid)
 
 bool NfcHelper::startTagUidScan()
 {
+#ifndef HAVE_PHONE_NFC
+    qCWarning(dcNfcHelper()) << "Cannot start NFC UID scan: phone NFC support is disabled at build time.";
+    emit scanFailed(tr("NFC tag scanning is not available."));
+    return false;
+#else
     qCInfo(dcNfcHelper()) << "NFC UID scan requested: scanning=" << m_scanning
                           << "enabled=" << isAvailable()
                           << "tag-specific access supported="
@@ -180,10 +203,12 @@ bool NfcHelper::startTagUidScan()
     emit scanFailed(tr("NFC tag scanning is not available."));
     return false;
 #endif
+#endif
 }
 
 void NfcHelper::stopTagUidScan()
 {
+#ifdef HAVE_PHONE_NFC
     if (!m_scanning) {
         qCDebug(dcNfcHelper()) << "Ignoring NFC UID scan stop request: no scan is running";
         return;
@@ -192,6 +217,7 @@ void NfcHelper::stopTagUidScan()
     qCInfo(dcNfcHelper()) << "Stopping NFC UID scan";
     m_manager->stopTargetDetection();
     setScanning(false);
+#endif
 }
 
 void NfcHelper::setScanning(bool scanning)
@@ -204,6 +230,7 @@ void NfcHelper::setScanning(bool scanning)
     emit scanningChanged();
 }
 
+#ifdef HAVE_PHONE_NFC
 void NfcHelper::targetDetected(QNearFieldTarget *target)
 {
     if (!target) {
@@ -262,3 +289,5 @@ QVariantMap NfcHelper::tagInformation(QNearFieldTarget *target) const
 
     return information;
 }
+#endif
+

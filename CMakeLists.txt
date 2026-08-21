@@ -49,6 +49,15 @@ set(ORGANISATION_NAME "nymea" CACHE STRING "Organisation name")
 option(NYMEA_ENABLE_ZEROCONF "Enable ZeroConf support" OFF)
 option(NYMEA_USE_MATERIAL_ICONS "Use the Material icon set instead of Suru" OFF)
 option(NYMEA_ENABLE_FIREBASE "Enable Firebase Cloud Messaging integration" ON)
+# Controls only the phone's own NFC reader/writer (Qt6::Nfc, CoreNFC on iOS):
+# scanning a tag's UID from within the RFID settings page, and the "Write NFC
+# tag" assistant. It does NOT affect RFID tag management itself (adding/
+# removing/enrolling tags), which talks to external RFID readers wired to the
+# charger via the nymea backend over JSON-RPC and has no Qt6::Nfc dependency.
+# Disable this when NFC hardware access is not needed, e.g. to avoid iOS
+# provisioning profiles having to include the NFC Tag Reading capability and
+# the com.apple.developer.nfc.readersession.formats entitlement.
+option(NYMEA_ENABLE_PHONE_NFC "Enable using the phone's NFC reader/writer for RFID tag scanning and the Write NFC tag assistant" ON)
 set(NYMEA_OVERLAY_PATH "" CACHE PATH "Optional overlay directory for branding")
 set(NYMEA_IOS_BUNDLE_IDENTIFIER "io.guh.nymeaApp" CACHE STRING "iOS bundle identifier")
 set(NYMEA_IOS_TEAM_ID "" CACHE STRING "Apple Development Team ID")
@@ -65,9 +74,13 @@ find_package(Qt6 REQUIRED COMPONENTS
     WebSockets
     Bluetooth
     Charts
-    Nfc
     LinguistTools
 )
+
+# See NYMEA_ENABLE_PHONE_NFC comment above for what this gates.
+if(NYMEA_ENABLE_PHONE_NFC)
+    find_package(Qt6 REQUIRED COMPONENTS Nfc)
+endif()
 
 find_package(OpenSSL QUIET)
 

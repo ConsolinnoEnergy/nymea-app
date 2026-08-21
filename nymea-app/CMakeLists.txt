@@ -5,7 +5,6 @@ set(NYMEA_APP_SOURCES
     dashboard/dashboardmodel.cpp
     mouseobserver.cpp
     nfchelper.cpp
-    nfcthingactionwriter.cpp
     platformintegration/platformpermissions.cpp
     stylecontroller.cpp
     pushnotifications.cpp
@@ -21,7 +20,6 @@ set(NYMEA_APP_HEADERS
     dashboard/dashboardmodel.h
     mouseobserver.h
     nfchelper.h
-    nfcthingactionwriter.h
     platformintegration/generic/screenhelper.h
     platformintegration/platformpermissions.h
     stylecontroller.h
@@ -31,6 +29,17 @@ set(NYMEA_APP_HEADERS
     utils/privacypolicyhelper.h
     utils/qhashqml.h
 )
+
+# NfcThingActionWriter (the "Write NFC tag" feature) directly needs
+# Qt6::Nfc types (QNearFieldManager, QNdefMessage) in its own header, so
+# unlike NfcHelper it cannot be stubbed out without Qt6::Nfc. It is only
+# ever instantiated from WriteNfcTagPage.qml, which in turn is only pushed
+# when NfcHelper.isAvailable is true (see nfchelper.cpp), so simply
+# excluding it from the build when NYMEA_ENABLE_PHONE_NFC is off is safe.
+if(NYMEA_ENABLE_PHONE_NFC)
+    list(APPEND NYMEA_APP_SOURCES nfcthingactionwriter.cpp)
+    list(APPEND NYMEA_APP_HEADERS nfcthingactionwriter.h)
+endif()
 
 if(NOT APPLE AND NOT ANDROID)
     list(APPEND NYMEA_APP_SOURCES
@@ -187,8 +196,14 @@ target_link_libraries(nymea-app
         Qt6::WebSockets
         Qt6::Bluetooth
         Qt6::Charts
-        Qt6::Nfc
 )
+
+# See NYMEA_ENABLE_PHONE_NFC comment near the top of the top-level
+# CMakeLists.txt for what this gates and why.
+if(NYMEA_ENABLE_PHONE_NFC)
+    target_link_libraries(nymea-app PRIVATE Qt6::Nfc)
+    target_compile_definitions(nymea-app PRIVATE HAVE_PHONE_NFC)
+endif()
 
 if(TARGET Qt6::WebView)
     target_link_libraries(nymea-app PRIVATE Qt6::WebView)
@@ -276,9 +291,23 @@ if(IOS)
     target_link_libraries(nymea-app PRIVATE
         "-framework CoreLocation"
         "-framework CoreBluetooth"
-        "-framework CoreNFC"
         "-framework UserNotifications"
     )
+
+    # See NYMEA_ENABLE_PHONE_NFC comment near the top of the top-level
+    # CMakeLists.txt for what this gates and why. CoreNFC is only linked, and
+    # the NFC entitlement/usage description are only embedded into the
+    # generated Info.plist / app.entitlements, when phone NFC is enabled -
+    # otherwise the provisioning profile does not need the NFC Tag Reading
+    # capability at all.
+    if(NYMEA_ENABLE_PHONE_NFC)
+        target_link_libraries(nymea-app PRIVATE "-framework CoreNFC")
+        set(NYMEA_IOS_NFC_USAGE_DESCRIPTION_BLOCK "        <key>NFCReaderUsageDescription</key>\n        <string>nymea:app uses NFC to scan RFID tags for EV charger authorization.</string>\n")
+        set(NYMEA_IOS_NFC_ENTITLEMENT_BLOCK "        <key>com.apple.developer.nfc.readersession.formats</key>\n        <array>\n                <string>TAG</string>\n        </array>\n")
+    else()
+        set(NYMEA_IOS_NFC_USAGE_DESCRIPTION_BLOCK "")
+        set(NYMEA_IOS_NFC_ENTITLEMENT_BLOCK "")
+    endif()
 
     set(_nymea_ios_plist "${CMAKE_CURRENT_BINARY_DIR}/ios/Info.plist")
     file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/ios")
@@ -288,12 +317,19 @@ if(IOS)
         @ONLY
     )
 
+    set(_nymea_ios_entitlements "${CMAKE_CURRENT_BINARY_DIR}/ios/app.entitlements")
+    configure_file(
+        ${CMAKE_SOURCE_DIR}/packaging/ios/app.entitlements.in
+        ${_nymea_ios_entitlements}
+        @ONLY
+    )
+
     set_target_properties(nymea-app PROPERTIES
         MACOSX_BUNDLE_INFO_PLIST "${_nymea_ios_plist}"
         MACOSX_BUNDLE_GUI_IDENTIFIER "${NYMEA_IOS_BUNDLE_IDENTIFIER}"
         MACOSX_BUNDLE_BUNDLE_VERSION "${APP_REVISION}"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}"
-        XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${CMAKE_SOURCE_DIR}/packaging/ios/app.entitlements"
+        XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${_nymea_ios_entitlements}"
     )
 
     if(NYMEA_IOS_TEAM_ID)
