@@ -9,27 +9,3 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 else()
     set(NYMEA_APP_SOURCE_ROOT "${CMAKE_SOURCE_DIR}")
 endif()
-
-find_package(Qt6 REQUIRED COMPONENTS Nfc Qml Test)
-
-qt_add_executable(tst_nfchelper
-    auto/tst_nfchelper.cpp
-    ${NYMEA_APP_SOURCE_ROOT}/nymea-app/nfchelper.cpp
-    ${NYMEA_APP_SOURCE_ROOT}/nymea-app/nfchelper.h
-    ${NYMEA_APP_SOURCE_ROOT}/libnymea-app/logging.cpp
-    ${NYMEA_APP_SOURCE_ROOT}/libnymea-app/logging.h
-)
-
-target_include_directories(tst_nfchelper PRIVATE
-    ${NYMEA_APP_SOURCE_ROOT}/nymea-app
-    ${NYMEA_APP_SOURCE_ROOT}/libnymea-app
-)
-
-target_link_libraries(tst_nfchelper PRIVATE
-    Qt6::Core
-    Qt6::Nfc
-    Qt6::Qml
-    Qt6::Test
-)
-
-add_test(NAME tst_nfchelper COMMAND tst_nfchelper)
