@@ -41,7 +41,7 @@ if(NYMEA_ENABLE_PHONE_NFC)
     list(APPEND NYMEA_APP_HEADERS nfcthingactionwriter.h)
 endif()
 
-if(NOT APPLE AND NOT ANDROID)
+if(NOT IOS AND NOT ANDROID)
     list(APPEND NYMEA_APP_SOURCES
         platformintegration/generic/platformhelpergeneric.cpp
     )
