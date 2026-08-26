@@ -47,7 +47,7 @@ Item {
     readonly property int largeCornerRadius: 24
     readonly property int extraLargeCornerRadius: 48
 
-    readonly property int extraExtraSmallMargins: 2
+    readonly property int extraExtraSmallMargins: 4
     readonly property int extraSmallMargins: 6
     readonly property int smallMargins: 8
     readonly property int mediumMargins: 12
