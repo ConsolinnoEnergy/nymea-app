@@ -112,6 +112,30 @@
         <source>App version:</source>
         <translation>App versie:</translation>
     </message>
+    <message>
+        <source>Suru icons by Ubuntu</source>
+        <translation type="unfinished">Suru icons door Ubuntu</translation>
+    </message>
+    <message>
+        <source>Ubuntu font by Ubuntu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QtZeroConf library by Jonathan Bagg</source>
+        <translation type="unfinished">QtZeroConf library door Jonathan Bagg</translation>
+    </message>
+    <message>
+        <source>OpenSSL libraries by Eric Young</source>
+        <translation type="unfinished">OpenSSL libraries door Eric Young</translation>
+    </message>
+    <message>
+        <source>Oswald font by The Oswald Project</source>
+        <translation type="unfinished">Oswald font door The Oswald Project</translation>
+    </message>
+    <message>
+        <source>Revision:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActionLogPage</name>
@@ -2086,6 +2110,57 @@
     </message>
 </context>
 <context>
+    <name>EvDashSettingsPage</name>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove user</source>
+        <translation type="unfinished">Verwijder gebruiker</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given username is already in use. Please choose a different username.</source>
+        <translation type="unfinished">Deze gebruikersnaam bestaat al. Kies een andere gebruikersnaam.</translation>
+    </message>
+    <message>
+        <source>The given password is not valid.</source>
+        <translation type="unfinished">Dit wachtwoord is niet geldig.</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
+        <translation type="unfinished">Er ging onverwacht iets fout toen je de gebruiker toevoegde. Sorry daarvoor. (Foutcode: %1)</translation>
+    </message>
+    <message>
+        <source>Create a new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Add user</source>
+        <translation type="unfinished">Voeg gebruiker toe</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuleren</translation>
+    </message>
+    <message>
+        <source>Dashboard enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage users</source>
+        <translation type="unfinished">Gebruikers beheren</translation>
+    </message>
+</context>
+<context>
     <name>EventDescriptorDelegate</name>
     <message>
         <source>anytime</source>
@@ -3738,6 +3813,13 @@ Probeer het nog een keer.</translation>
     </message>
 </context>
 <context>
+    <name>KeyboardLoader</name>
+    <message>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LightThingPage</name>
     <message>
         <source>Color</source>
@@ -3893,18 +3975,6 @@ Probeer het nog een keer.</translation>
     <message>
         <source>In order to use your %1 system, please create an account.</source>
         <translation>Creëer een account om je %1 systeem te gebruiken.</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Your e-mail address</source>
-        <translation>Je e-mailadres</translation>
-    </message>
-    <message>
-        <source>Required</source>
-        <translation>Vereist</translation>
     </message>
     <message>
         <source>Password</source>
@@ -4091,14 +4161,6 @@ Probeer het nog een keer.</translation>
         <translation>Stel het thuisscherm in</translation>
     </message>
     <message>
-        <source>App settings</source>
-        <translation type="vanished">App instellingen</translation>
-    </message>
-    <message>
-        <source>System settings</source>
-        <translation type="vanished">Systeem instellingen</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>Nieuwe verbinding</translation>
     </message>
@@ -4138,18 +4200,6 @@ Probeer het nog een keer.</translation>
         <translation>Gegevens laden...</translation>
     </message>
     <message>
-        <source>Connected to</source>
-        <translation>Verbonden met</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation>Verbreek verbinding</translation>
-    </message>
-    <message>
         <source>Groups</source>
         <translation>Groepen</translation>
     </message>
@@ -4164,14 +4214,6 @@ Probeer het nog een keer.</translation>
     <message>
         <source>Media</source>
         <translation>Media</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="vanished">Gereed</translation>
-    </message>
-    <message>
-        <source>Configure</source>
-        <translation type="vanished">Instellen</translation>
     </message>
     <message>
         <source>Dashboard</source>
@@ -5439,6 +5481,34 @@ Gebruik een timeout waarde die groter of gelijk is dan 10 ms.</translation>
         <source>Configure magic</source>
         <translation>Magie instellen</translation>
     </message>
+    <message>
+        <source>Full access to the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute actions and use things and services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new things and change settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute rules, scenes and scripts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create new rules and scripts in the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access all things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow to see and use all things of the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PackageDetailsPage</name>
@@ -6541,6 +6611,14 @@ Wil je doorgaan?</translation>
         <source>Configure Z-Wave networks</source>
         <translation>Stel Z-Wave netwerken in</translation>
     </message>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashboard settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -7398,6 +7476,17 @@ Als je fouten in de niet-officiële software vindt, geef deze dan door aan de on
     </message>
 </context>
 <context>
+    <name>UsernameTextField</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Your e-mail address</source>
+        <translation type="unfinished">Je e-mailadres</translation>
+    </message>
+</context>
+<context>
     <name>UsersSettingsPage</name>
     <message>
         <source>User settings</source>
@@ -7524,20 +7613,12 @@ Als je fouten in de niet-officiële software vindt, geef deze dan door aan de on
         <translation>Voeg een gebruiker toe</translation>
     </message>
     <message>
-        <source>Username:</source>
-        <translation>Gebruikersnaam:</translation>
-    </message>
-    <message>
         <source>Password:</source>
         <translation>Wachtwoord:</translation>
     </message>
     <message>
         <source>Full name:</source>
         <translation>Volledige naam:</translation>
-    </message>
-    <message>
-        <source>e-mail:</source>
-        <translation>e-mail:</translation>
     </message>
     <message>
         <source>Create new user</source>
@@ -7562,6 +7643,26 @@ Als je fouten in de niet-officiële software vindt, geef deze dan door aan de on
     <message>
         <source>Authenticated user</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accessable things for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acessable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allowed things for this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>things accessable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional</source>
+        <translation type="unfinished">Optioneel</translation>
     </message>
 </context>
 <context>

@@ -38,10 +38,40 @@ import "mainviews"
 Page {
     id: root
 
-    // Removing the background from this page only because the MainViewBase adds it again in
-    // a deepter layer as we need to include it in the blurring of the header and footer.
+    // Removing the background from this page only because MainViewBase adds it again in
+    // a deeper layer so the header and footer chrome can sample it for the blur effect.
     // We don't want to paint the background on the entire screen twice (overdraw is costly)
     background: null
+    bottomPadding: 0  // footer lives at RootItem level; main views handle spacing themselves
+
+    // Footer lives at RootItem level; MainPage receives its height here so views can adjust bottomMargin.
+    property int navigationFooterHeight: 0
+
+    // Properties exposed for the RootItem-level navigation footer
+    property alias tabsModel: filteredContentModel
+    property alias currentMainViewIndex: swipeView.currentIndex
+    readonly property bool hasConfigOverlay: d.configOverlay !== null
+
+    function isViewHidden(name) { return d.isHiddenView(name); }
+
+    function toggleConfigOverlay() {
+        if (d.configOverlay) {
+            d.configOverlay.destroy()
+            d.configOverlay = null
+        } else {
+            configureViews()
+        }
+    }
+
+    // Switch to a tab by index, suppressing animation when coming from a hidden view.
+    function activateTab(index, immediate) {
+        if (d.isHiddenView(filteredContentModel.modelData(swipeView.currentIndex, "name")) ||
+                immediate) {
+            setSwipeViewIndexWithoutAnimation(index);
+        } else {
+            swipeView.currentIndex = index;
+        }
+    }
 
     function configureViews() {
         if (Configuration.hasOwnProperty("mainViewsFilter")) {
@@ -53,7 +83,7 @@ Page {
         d.configOverlay = configComponent.createObject(contentContainer)
     }
 
-    function goToView(viewName, data) {
+    function goToView(viewName, data, immediate) {
         // We allow separating the target by : and pass more stuff to
         console.log("Going to main view", viewName, filteredContentModel.count, data)
         for (var i = 0; i < filteredContentModel.count; i++) {
@@ -62,10 +92,25 @@ Page {
                 console.log("activating", i)
 //                mainViewSettings.currentIndex = i;
 //                tabBar.currentIndex = i;
-                swipeView.setCurrentIndex(i)
+                if (immediate) {
+                    setSwipeViewIndexWithoutAnimation(i);
+                } else {
+                    swipeView.setCurrentIndex(i)
+                }
                 swipeView.currentItem.item.handleEvent(data)
                 break;
             }
+        }
+    }
+
+    function setSwipeViewIndexWithoutAnimation(index) {
+        if (swipeView.contentItem && swipeView.contentItem.hasOwnProperty("highlightMoveDuration")) {
+            const old = swipeView.contentItem.highlightMoveDuration;
+            swipeView.contentItem.highlightMoveDuration = 0;
+            swipeView.currentIndex = index;
+            swipeView.contentItem.highlightMoveDuration = old;
+        } else {
+            swipeView.currentIndex = index;
         }
     }
 
@@ -88,6 +133,10 @@ Page {
         //         app.mainMenu.open()
         //     }
         // }
+
+        // Top inset reserved for the system status bar / display cutout.
+        // The header chrome is shifted down by this amount; the page itself
+        // still reaches the physical screen edge.
         RoundButton {
             id: menuButton
             icon.source: "qrc:/icons/menu.svg"
@@ -96,12 +145,13 @@ Page {
                 left: parent.left
                 leftMargin: Style.smallMargins
                 top: parent.top
-                topMargin: Style.smallMargins
+                topMargin: Style.smallMargins + contentContainer.safeAreaTop
             }
 
             onClicked: {
                 if (d.configOverlay != null) {
                     d.configOverlay.destroy();
+                    d.configOverlay = null
                 }
                 app.mainMenu.open()
             }
@@ -112,7 +162,7 @@ Page {
             source: "qrc:/styles/%1/logo-wide.svg".arg(styleController.currentStyle)
             anchors {
                 top: parent.top;
-                topMargin: (contentContainer.headerSize - height) / 2
+                topMargin: contentContainer.safeAreaTop + (contentContainer.headerSize - height) / 2
                 right: parent.right
                 rightMargin: Style.margins
             }
@@ -124,7 +174,7 @@ Page {
 
         Row {
             id: additionalIcons
-            anchors { right: parent.right; top: parent.top }
+            anchors { right: parent.right; top: parent.top; topMargin: contentContainer.safeAreaTop }
             visible: !d.configOverlay
             width: visible ? implicitWidth : 0
 
@@ -164,7 +214,7 @@ Page {
                 right: parent.right
                 left: parent.left
                 top: parent.top
-                topMargin: contentContainer.headerSize - 1
+                topMargin: contentContainer.safeAreaTop + contentContainer.headerSize - 1
             }
             height: 1
             color: Style.colors.menu_Header_Footer_Border
@@ -186,6 +236,11 @@ Page {
         property bool blurEnabled: PlatformHelper.deviceManufacturer !== "raspbian"
         property var editRulePage: null
         property var configOverlay: null
+
+        function isHiddenView(name) {
+            if (!Configuration.hasOwnProperty("hiddenMainViews")) { return false; }
+            return Configuration.hiddenMainViews.indexOf(name) >= 0;
+        }
     }
 
     Settings {
@@ -248,11 +303,16 @@ Page {
             var configList = {}
             var newList = {}
             var newItems = 0
+            var hiddenList = []
 
             // Add extra views first to make them appear first in the list unless the config says otherwise
             if (Configuration.hasOwnProperty("additionalMainViews")) {
                 for (var i = 0; i < Configuration.additionalMainViews.count; i++) {
                     var item = Configuration.additionalMainViews.get(i);
+                    if (d.isHiddenView(item.name)) {
+                        hiddenList.push(item);
+                        continue;
+                    }
                     var idx = mainViewSettings.sortOrder.indexOf(item.name);
                     if (idx === -1) {
                         newList[newItems++] = item;
@@ -293,6 +353,10 @@ Page {
                     mainMenuModel.append(item)
                 }
             }
+            // Hidden views always go last and are never subject to branding filter or sort order
+            for (var i = 0; i < hiddenList.length; i++) {
+                mainMenuModel.append(hiddenList[i]);
+            }
 
             let startViewIndex = 0;
             for (let i = 0; i < mainMenuModel.count; i++) {
@@ -310,7 +374,13 @@ Page {
     SortFilterProxyModel {
         id: filteredContentModel
         sourceModel: mainMenuModel
-        filterList: mainViewSettings.filterList
+        filterList: {
+            var list = mainViewSettings.filterList.slice();
+            if (Configuration.hasOwnProperty("hiddenMainViews")) {
+                list = list.concat(Configuration.hiddenMainViews);
+            }
+            return list;
+        }
         filterRoleName: "name"
     }
 
@@ -322,9 +392,19 @@ Page {
 
         property int headerSize: 64
         property int footerSize: 58
+        // Top inset reserved for the system status bar / display cutout.
+        // On Android <= 15 and on iOS without notch this is 0; on Android 16+
+        // or iOS with notch it is the actual inset returned by Qt.
+        // The interactive header band keeps its `headerSize` (64) and is
+        // shifted down by this amount so it stays below the system bar.
+        property int safeAreaTop: SafeArea.margins.top
 
         readonly property int scrollOffset: swipeView.currentItem ? swipeView.currentItem.item.contentY : 0
         readonly property int headerBlurSize: Math.min(headerSize, scrollOffset * 2)
+        // Total visual extent of the header overlay (status-bar inset plus
+        // the blurred interactive band).
+        readonly property int visualHeaderHeight: safeAreaTop
+                                                  + (d.configOverlay ? headerSize : headerBlurSize)
 
         Background {
             anchors.fill: parent
@@ -335,6 +415,7 @@ Page {
             anchors.fill: parent
             opacity: d.configOverlay === null ? 1 : 0
             visible: !engine.thingManager.fetchingData
+            interactive: false
             Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
 
             Repeater {
@@ -357,8 +438,14 @@ Page {
 
                     Binding {
                         target: mainViewLoader.item
+                        property: "topMargin"
+                        value: contentContainer.safeAreaTop + contentContainer.headerSize
+                    }
+
+                    Binding {
+                        target: mainViewLoader.item
                         property: "bottomMargin"
-                        value: footer.visible ? contentContainer.footerSize : 0
+                        value: root.navigationFooterHeight
                     }
                 }
             }
@@ -385,9 +472,9 @@ Page {
     ShaderEffectSource {
         id: headerBlurSource
         width: contentContainer.width
-        height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
+        height: contentContainer.visualHeaderHeight
         sourceItem: d.blurEnabled ? contentContainer : null
-        sourceRect: Qt.rect(0, 0, contentContainer.width, d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize)
+        sourceRect: Qt.rect(0, 0, contentContainer.width, contentContainer.visualHeaderHeight)
         visible: false
     }
 
@@ -397,7 +484,7 @@ Page {
             top: parent.top;
             right: parent.right;
         }
-        height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
+        height: contentContainer.visualHeaderHeight
         radius: 40
         transparentBorder: false
         source: d.blurEnabled ? headerBlurSource : null
@@ -411,97 +498,8 @@ Page {
             top: parent.top
             right: parent.right
         }
-        height: d.configOverlay ? contentContainer.headerSize : contentContainer.headerBlurSize
+        height: contentContainer.visualHeaderHeight
         color: Style.colors.menu_Header_Footer_Background
-    }
-
-    ShaderEffectSource {
-        id: footerBlurSource
-        width: contentContainer.width
-        height: contentContainer.footerSize
-        sourceItem: d.blurEnabled ? contentContainer : null
-        sourceRect: Qt.rect(0, contentContainer.height - height, contentContainer.width, contentContainer.footerSize)
-        visible: false
-        enabled: d.blurEnabled && footer.shown
-    }
-
-    FastBlur {
-        anchors {
-            left: parent.left;
-            bottom: parent.bottom;
-            right: parent.right;
-        }
-        height: contentContainer.footerSize
-        radius: 40
-        transparentBorder: false
-        source: d.blurEnabled ? footerBlurSource : null
-        visible: d.blurEnabled && footer.shown
-    }
-
-    Rectangle {
-        id: footer
-        readonly property bool shown: tabsRepeater.count > 1 || d.configOverlay
-        visible: shown
-        anchors {
-            left: parent.left
-            bottom: parent.bottom
-            right: parent.right
-        }
-        height:  contentContainer.footerSize
-        Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }}
-        color: Style.colors.menu_Header_Footer_Background
-
-        Rectangle {
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-            }
-            height: 1
-            color: Style.colors.menu_Header_Footer_Border
-        }
-
-        RowLayout {
-            id: tabsLayout
-            anchors.fill: parent
-            spacing: 0
-
-            opacity: d.configOverlay ? 0 : 1
-            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-
-            Repeater {
-                id: tabsRepeater
-                model: d.configOverlay != null ? null : filteredContentModel
-                delegate: MainPageTabButton {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    checked: index === swipeView.currentIndex
-                    iconSource: "qrc:/icons/" + model.icon + ".svg"
-                    onClicked: swipeView.currentIndex = index
-                    onPressAndHold: {
-                        root.configureViews();
-                    }
-                }
-            }
-        }
-
-
-        MainPageTabButton {
-            anchors.fill: parent
-            iconSource: "qrc:/icons/configure.svg"
-            opacity: d.configOverlay ? 1 : 0
-            Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
-            visible: opacity > 0
-            checked: true
-            onClicked: {
-                if (d.configOverlay) {
-                    d.configOverlay.destroy()
-                } else {
-                    PlatformHelper.vibrate(PlatformHelper.HapticsFeedbackSelection)
-                    d.configOverlay = configComponent.createObject(contentContainer)
-                }
-            }
-        }
     }
 
     Component {
@@ -515,7 +513,7 @@ Page {
                 id: configListView
                 anchors.fill: parent
                 model: mainMenuModel
-                topMargin: contentContainer.headerSize
+                topMargin: contentContainer.safeAreaTop + contentContainer.headerSize
                 bottomMargin: contentContainer.footerSize
 
                 property bool itemDragging: draggingIndex >= 0
@@ -530,7 +528,7 @@ Page {
                     iconName: Qt.resolvedUrl("qrc:/icons/" + model.icon + ".svg")
                     progressive: false
                     checked: mainViewSettings.filterList.indexOf(model.name) >= 0
-                    visible: index !== configListView.draggingIndex
+                    visible: !d.isHiddenView(model.name) && index !== configListView.draggingIndex
                     additionalItem: CheckBox {
                         checked: viewConfigDelegate.checked
                         anchors.verticalCenter: parent.verticalCenter

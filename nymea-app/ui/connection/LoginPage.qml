@@ -31,13 +31,8 @@ import "../components"
 
 SettingsPageBase {
     id: root
-    signal backPressed();
 
-    header: NymeaHeader {
-        text: qsTr("Welcome!")
-        backButtonVisible: true
-        onBackPressed: root.backPressed()
-    }
+    headerText: qsTr("Welcome!")
 
     Connections {
         target: engine.jsonRpcClient

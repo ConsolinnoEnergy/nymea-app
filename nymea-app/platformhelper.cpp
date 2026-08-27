@@ -205,6 +205,11 @@ int PlatformHelper::rightPadding() const
     return m_rightPadding;
 }
 
+int PlatformHelper::imeHeight() const
+{
+    return m_imeHeight;
+}
+
 bool PlatformHelper::darkModeEnabled() const
 {
     return false;
@@ -263,6 +268,27 @@ void PlatformHelper::setSafeAreaPadding(int top, int right, int bottom, int left
         emit leftPaddingChanged();
     }
     Q_UNUSED(changed)
+}
+
+void PlatformHelper::setImeHeight(int height)
+{
+    if (m_imeHeight == height)
+        return;
+    m_imeHeight = height;
+    emit imeHeightChanged();
+}
+
+QString PlatformHelper::imeActionButtonText() const
+{
+    return m_imeActionButtonText;
+}
+
+void PlatformHelper::setImeActionButtonText(const QString &text)
+{
+    if (m_imeActionButtonText == text)
+        return;
+    m_imeActionButtonText = text;
+    emit imeActionButtonTextChanged();
 }
 
 void PlatformHelper::toClipBoard(const QString &text)

@@ -112,6 +112,30 @@
         <source>App version:</source>
         <translation>App Version:</translation>
     </message>
+    <message>
+        <source>Suru icons by Ubuntu</source>
+        <translation>Suru-Icons von Ubuntu</translation>
+    </message>
+    <message>
+        <source>Ubuntu font by Ubuntu</source>
+        <translation>Ubuntu-Schrift von Ubuntu</translation>
+    </message>
+    <message>
+        <source>QtZeroConf library by Jonathan Bagg</source>
+        <translation>QtZeroConf-Bibliothek von Jonathan Bagg</translation>
+    </message>
+    <message>
+        <source>OpenSSL libraries by Eric Young</source>
+        <translation>OpenSSL-Bibliotheken von Eric Young</translation>
+    </message>
+    <message>
+        <source>Oswald font by The Oswald Project</source>
+        <translation>Oswald-Schrift von &quot;The Oswald Project&quot;</translation>
+    </message>
+    <message>
+        <source>Revision:</source>
+        <translation>Revision:</translation>
+    </message>
 </context>
 <context>
     <name>ActionLogPage</name>
@@ -544,24 +568,6 @@
     </message>
 </context>
 <context>
-    <name>CloudLoginPage</name>
-    <message>
-        <source>Password</source>
-        <translation type="obsolete">Passwort</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">OK</translation>
-    </message>
-</context>
-<context>
-    <name>CloudSettingsPage</name>
-    <message>
-        <source>Remote connection</source>
-        <translation type="obsolete">Fernverbindung</translation>
-    </message>
-</context>
-<context>
     <name>ComposeEventDescriptorPage</name>
     <message>
         <source>Select event</source>
@@ -684,21 +690,6 @@
     <message>
         <source>Details</source>
         <translation>Details</translation>
-    </message>
-</context>
-<context>
-    <name>ConnectPage</name>
-    <message>
-        <source>Uh oh</source>
-        <translation type="obsolete">Oh oh</translation>
-    </message>
-    <message>
-        <source>Info</source>
-        <translation type="obsolete">Information</translation>
-    </message>
-    <message>
-        <source>Available connections</source>
-        <translation type="obsolete">Verfügbare Verbindungen</translation>
     </message>
 </context>
 <context>
@@ -2114,6 +2105,57 @@
     <message>
         <source>Currently charging at %1.</source>
         <translation>Aktuell wird mit %1 geladen.</translation>
+    </message>
+</context>
+<context>
+    <name>EvDashSettingsPage</name>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove user</source>
+        <translation type="unfinished">Benutzer entfernen</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given username is already in use. Please choose a different username.</source>
+        <translation type="unfinished">Der gewählte Benutzername wird bereits verwendet. Bitte wähle einen anderen Benutzernamen.</translation>
+    </message>
+    <message>
+        <source>The given password is not valid.</source>
+        <translation type="unfinished">Das eingegebene Passwort ist nicht gültig.</translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
+        <translation type="unfinished">Beim Erstellen des Benutzers ist ein unerwarteter Fehler aufgetreten. Wir bitten dies zu entschuldigen. (Fehler-Code: %1)</translation>
+    </message>
+    <message>
+        <source>Create a new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Benutzername</translation>
+    </message>
+    <message>
+        <source>Add user</source>
+        <translation type="unfinished">Benutzer hinzufügen</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Abbrechen</translation>
+    </message>
+    <message>
+        <source>Dashboard enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage users</source>
+        <translation type="unfinished">Benutzer verwalten</translation>
     </message>
 </context>
 <context>
@@ -3767,6 +3809,13 @@ Bitte versuche es erneut.</translation>
     </message>
 </context>
 <context>
+    <name>KeyboardLoader</name>
+    <message>
+        <source>Done</source>
+        <translation>Fertig</translation>
+    </message>
+</context>
+<context>
     <name>LightThingPage</name>
     <message>
         <source>Color</source>
@@ -3922,18 +3971,6 @@ Bitte versuche es erneut.</translation>
     <message>
         <source>In order to use your %1 system, please create an account.</source>
         <translation>Erstelle ein Benutzerkonto, um dieses %1 System zu benutzen.</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Benutzername</translation>
-    </message>
-    <message>
-        <source>Your e-mail address</source>
-        <translation>Deine E-Mail Adresse</translation>
-    </message>
-    <message>
-        <source>Required</source>
-        <translation>Erforderlich</translation>
     </message>
     <message>
         <source>Password</source>
@@ -4120,14 +4157,6 @@ Bitte versuche es erneut.</translation>
         <translation>Hauptansicht einrichten</translation>
     </message>
     <message>
-        <source>App settings</source>
-        <translation type="vanished">App Einstellungen</translation>
-    </message>
-    <message>
-        <source>System settings</source>
-        <translation type="vanished">Systemeinstellungen</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>Neue Verbindung</translation>
     </message>
@@ -4167,18 +4196,6 @@ Bitte versuche es erneut.</translation>
         <translation>Szenen</translation>
     </message>
     <message>
-        <source>Connected to</source>
-        <translation>Verbunden mit</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation>Trennen</translation>
-    </message>
-    <message>
         <source>Groups</source>
         <translation>Gruppen</translation>
     </message>
@@ -4195,51 +4212,12 @@ Bitte versuche es erneut.</translation>
         <translation>Medien</translation>
     </message>
     <message>
-        <source>Done</source>
-        <translation type="vanished">Erledigt</translation>
-    </message>
-    <message>
-        <source>Configure</source>
-        <translation type="vanished">Einrichten</translation>
-    </message>
-    <message>
         <source>Dashboard</source>
         <translation>Dashboard</translation>
     </message>
     <message>
         <source>AC</source>
         <translation>AC</translation>
-    </message>
-</context>
-<context>
-    <name>ManualConnectPage</name>
-    <message>
-        <source>Manual connection</source>
-        <translation type="obsolete">Manuelle Verbindung</translation>
-    </message>
-    <message>
-        <source>Protocol</source>
-        <translation type="obsolete">Protokoll</translation>
-    </message>
-    <message>
-        <source>TCP</source>
-        <translation type="obsolete">TCP</translation>
-    </message>
-    <message>
-        <source>Websocket</source>
-        <translation type="obsolete">Websocket</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation type="obsolete">Adresse:</translation>
-    </message>
-    <message>
-        <source>Port:</source>
-        <translation type="obsolete">Port:</translation>
-    </message>
-    <message>
-        <source>Connect</source>
-        <translation type="obsolete">Verbinden</translation>
     </message>
 </context>
 <context>
@@ -5499,6 +5477,34 @@ Die Versuchsdauer muss mindestens 10 ms betragen.</translation>
         <source>Configure magic</source>
         <translation>Magie einrichten</translation>
     </message>
+    <message>
+        <source>Full access to the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute actions and use things and services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new things and change settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute rules, scenes and scripts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create new rules and scripts in the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access all things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow to see and use all things of the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PackageDetailsPage</name>
@@ -6274,13 +6280,6 @@ Möchtest Du fortfahren?</translation>
     </message>
 </context>
 <context>
-    <name>SelectStateEventDescriptorParamPage</name>
-    <message>
-        <source>Only consider state change if</source>
-        <translation type="obsolete">Zustandsänderung nur berücksichtigen wenn</translation>
-    </message>
-</context>
-<context>
     <name>SelectStatePage</name>
     <message>
         <source>Select state</source>
@@ -6606,6 +6605,14 @@ Möchtest Du fortfahren?</translation>
     <message>
         <source>Configure Z-Wave networks</source>
         <translation>Z-Wave Netzwerke einrichten</translation>
+    </message>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashboard settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7463,6 +7470,17 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     </message>
 </context>
 <context>
+    <name>UsernameTextField</name>
+    <message>
+        <source>Username</source>
+        <translation>Benutzername</translation>
+    </message>
+    <message>
+        <source>Your e-mail address</source>
+        <translation>Deine E-Mail Adresse</translation>
+    </message>
+</context>
+<context>
     <name>UsersSettingsPage</name>
     <message>
         <source>User settings</source>
@@ -7589,20 +7607,12 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
         <translation>Benutzer hinzufügen</translation>
     </message>
     <message>
-        <source>Username:</source>
-        <translation>Benutzername:</translation>
-    </message>
-    <message>
         <source>Password:</source>
         <translation>Passwort:</translation>
     </message>
     <message>
         <source>Full name:</source>
         <translation>Vollständiger Name:</translation>
-    </message>
-    <message>
-        <source>e-mail:</source>
-        <translation>E-Mail:</translation>
     </message>
     <message>
         <source>Create new user</source>
@@ -7627,6 +7637,26 @@ Bitte benutze diese Funktion nur wenn Du sicher bist, dass es das ist was Du mö
     <message>
         <source>Authenticated user</source>
         <translation>Authentifizierter Benutzer</translation>
+    </message>
+    <message>
+        <source>Accessable things for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acessable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allowed things for this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>things accessable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional</source>
+        <translation type="unfinished">Optional</translation>
     </message>
 </context>
 <context>

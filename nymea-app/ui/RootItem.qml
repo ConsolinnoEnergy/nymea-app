@@ -28,6 +28,8 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtCore
 import QtQuick.Window
+import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import Nymea
 import NymeaApp.Utils
 
@@ -61,11 +63,13 @@ Item {
     function openMagicSettings() {
         d.pushSettingsPage("MagicPage.qml")
     }
-    function openAppSettings() {
-        d.pushSettingsPage("appsettings/ConsolinnoAppSettingsPage.qml")
-    }
     function openSystemSettings() {
-        d.pushSettingsPage("ConsolinnoSettingsPage.qml")
+        var current = swipeView.currentItem
+        if (!current) return
+        var page = current.mainPage
+        if (!page) return
+        current.pageStack.pop(page)
+        page.goToView("consolinnoSettings", undefined, true)
     }
     function openCustomPage(page) {
         d.pushSettingsPage(page)
@@ -79,10 +83,15 @@ Item {
     ColumnLayout {
         anchors.fill: parent
 
-        anchors.topMargin: PlatformHelper.topPadding
-        anchors.bottomMargin: PlatformHelper.bottomPadding
-        anchors.leftMargin: PlatformHelper.leftPadding
-        anchors.rightMargin: PlatformHelper.rightPadding
+        // The window is edge-to-edge. Left/right system insets (display
+        // cutout, gesture areas on the sides) are still consumed at the
+        // root so page content does not slide under them. Top/bottom
+        // insets are intentionally NOT applied here; they are handled by
+        // each page's header (CoHeader / MainPage header) and by the
+        // navigation footer below so the app chrome can reach the screen
+        // edges while the system bars stay system-drawn.
+        anchors.leftMargin: SafeArea.margins.left
+        anchors.rightMargin: SafeArea.margins.right
 
         spacing: 0
 
@@ -146,11 +155,167 @@ Item {
                     }
 
                     readonly property alias pageStack: _pageStack
+                    readonly property var mainPage: (function() {
+                        if (!engine.jsonRpcClient.connected || _pageStack.depth === 0) return null
+                        for (var i = 0; i < _pageStack.depth; i++) {
+                            var p = _pageStack.get(i)
+                            if (p && p.hasOwnProperty("tabsModel")) return p
+                        }
+                        return null
+                    })()
+
+                    Binding {
+                        target: mainPage
+                        property: "navigationFooterHeight"
+                        value: navigationFooterContainer.shown ? navigationFooterContainer.height : 0
+                        when: mainPage !== null
+                    }
+
+                    readonly property var currentStackPage: _pageStack.currentItem
+
+                    Binding {
+                        target: currentStackPage
+                        property: "navigationFooterHeight"
+                        value: navigationFooterContainer.shown ? navigationFooterContainer.height : 0
+                        when: currentStackPage !== null
+                              && currentStackPage !== mainPage
+                              && "navigationFooterHeight" in currentStackPage
+                    }
+
                     StackView {
                         id: _pageStack
                         objectName: "pageStack"
                         anchors.fill: parent
                         initialItem: Page {}
+                    }
+
+                    readonly property bool blurEnabled: PlatformHelper.deviceManufacturer !== "raspbian"
+
+                    ShaderEffectSource {
+                        id: footerBlurSource
+                        width: _pageStack.width
+                        height: navigationFooterContainer.height
+                        sourceItem: blurEnabled ? _pageStack : null
+                        sourceRect: Qt.rect(0, _pageStack.height - height, _pageStack.width, height)
+                        recursive: true
+                        live: true
+                        mipmap: true
+                        visible: false
+                        enabled: blurEnabled && navigationFooterContainer.shown
+                    }
+
+                    MultiEffect {
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: navigationFooterContainer.height
+                        source: blurEnabled ? footerBlurSource : null
+                        blurEnabled: true
+                        blur: 1.0
+                        blurMax: 40
+                        blurMultiplier: 0
+                        autoPaddingEnabled: false
+                        visible: blurEnabled && navigationFooterContainer.shown
+                    }
+
+                    Item {
+                        id: navigationFooterContainer
+                        readonly property bool shown: navigationFooter.shown || navbarControlsLoader.active
+                        // The footer reaches the physical bottom of the screen so
+                        // the footer chrome stays flush with the edge. Interactive
+                        // children are pushed above the gesture/navigation inset
+                        // via safeAreaBottom.
+                        readonly property int safeAreaBottom: SafeArea.margins.bottom
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.smallMargins : 0)
+                                + (navigationFooter.shown ? navigationFooter.height : 0)
+                                + safeAreaBottom
+                        visible: shown
+
+                        Rectangle {
+                            anchors.fill: parent
+                            color: Style.colors.menu_Header_Footer_Background
+                        }
+
+                        Rectangle {
+                            anchors { left: parent.left; right: parent.right; top: parent.top }
+                            height: 1
+                            color: Style.colors.menu_Header_Footer_Border
+                        }
+
+                        Loader {
+                            id: navbarControlsLoader
+                            anchors {
+                                left: parent.left; leftMargin: Style.mediumMargins
+                                right: parent.right; rightMargin: Style.mediumMargins
+                                top: parent.top; topMargin: Style.mediumMargins
+                            }
+                            // Pages may opt in by declaring:
+                            //   property Component navbarControls: Component { /* RowLayout etc. */ }
+                            // The component is rendered above the tab footer and its height
+                            // (plus Style.margins padding around it) is included in the page's
+                            // navigationFooterHeight.
+                            active: currentStackPage !== null
+                                    && "navbarControls" in currentStackPage
+                                    && currentStackPage.navbarControls !== null
+                            sourceComponent: active ? currentStackPage.navbarControls : null
+                            // When the current page reports busy, disable the navbar controls so
+                            // they cannot be activated while the page-level BusyOverlay is shown.
+                            enabled: !(currentStackPage !== null
+                                       && "busy" in currentStackPage
+                                       && currentStackPage.busy === true)
+                        }
+
+                        Item {
+                            id: navigationFooter
+                            readonly property bool shown: mainPage !== null
+                                                          && mainPage.tabsModel !== undefined
+                                                          && (mainPage.tabsModel.count > 1 || mainPage.hasConfigOverlay)
+                            visible: shown
+                            anchors {
+                                left: parent.left; right: parent.right
+                                bottom: parent.bottom; bottomMargin: navigationFooterContainer.safeAreaBottom
+                            }
+                            height: shown ? 58 : 0
+
+                            RowLayout {
+                                anchors.fill: parent
+                                spacing: 0
+                                opacity: mainPage && mainPage.hasConfigOverlay ? 0 : 1
+                                Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+
+                                Repeater {
+                                    model: mainPage && !mainPage.hasConfigOverlay ? mainPage.tabsModel : null
+                                    delegate: MainPageTabButton {
+                                        required property int index
+                                        required property string icon
+                                        required property string name
+                                        Layout.fillWidth: true
+                                        Layout.fillHeight: true
+                                        checked: mainPage !== null
+                                                 && currentStackPage === mainPage
+                                                 && index === mainPage.currentMainViewIndex
+                                        iconSource: "qrc:/icons/" + icon + ".svg"
+                                        visible: mainPage ? !mainPage.isViewHidden(name) : true
+                                        onClicked: {
+                                            if (mainPage) {
+                                                const poppedItem = _pageStack.pop(mainPage);
+                                                mainPage.activateTab(index, poppedItem !== null);
+                                            }
+                                        }
+                                        onPressAndHold: if (mainPage) mainPage.configureViews()
+                                    }
+                                }
+                            }
+
+                            MainPageTabButton {
+                                anchors.fill: parent
+                                iconSource: "qrc:/icons/configure.svg"
+                                opacity: mainPage && mainPage.hasConfigOverlay ? 1 : 0
+                                Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+                                visible: opacity > 0
+                                checked: true
+                                onClicked: if (mainPage) mainPage.toggleConfigOverlay()
+                            }
+                        }
                     }
 
                     Component.onCompleted: {

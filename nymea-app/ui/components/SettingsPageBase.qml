@@ -29,26 +29,101 @@ import Nymea
 
 Page {
     id: root
-    header: CoHeader {
-        text: root.title
-        backButtonVisible: true
-        onBackPressed: pageStack.pop()
+    header: null
+
+    // Header configuration knobs. Derived pages should set these instead of
+    // overriding the header slot.
+    property alias coHeader: coHeader
+    property string headerText: root.title
+    property bool headerBackButtonVisible: true
+    property bool headerMenuButtonVisible: false
+    // Optional. Extra item placed after the title inside the header (e.g. a
+    // quick-action RoundButton).
+    property Component headerExtras: null
+    signal backPressed()
+    signal menuPressed()
+    onBackPressed: pageStack.pop()
+
+    CoHeader {
+        id: coHeader
+        anchors { left: parent.left; right: parent.right; top: parent.top }
+        z: 1
+        visible: header === null
+        blurSource: flickable
+        text: root.headerText
+        backButtonVisible: root.headerBackButtonVisible
+        menuButtonVisible: root.headerMenuButtonVisible
+        onBackPressed: root.backPressed()
+        onMenuPressed: root.menuPressed()
+
+        Loader {
+            active: root.headerExtras !== null
+            sourceComponent: root.headerExtras
+        }
     }
 
     default property alias content: contentColumn.data
     property alias busy: busyOverlay.shown
     property alias busyText: busyOverlay.text
 
+    // Page lives behind the navigation footer in RootItem so the footer's
+    // blur effect has real content to sample. RootItem propagates its
+    // footer height into this property; we use it for scroll clearance only.
+    property int navigationFooterHeight: 0
+
+    // Opt out of the style-level bottomPadding (58 px). We render the
+    // Flickable across the full page area instead, and add the footer
+    // height to contentHeight so the last item can be scrolled above
+    // the footer. This makes the footer's blur work on sub-pages.
+    bottomPadding: 0
+
     BackgroundFocusHandler { anchors.fill: parent }
+
+    background: Rectangle { color: Style.backgroundColor }
 
     Flickable {
         id: flickable
         anchors.fill: parent
-        contentHeight: contentColumn.height + Style.margins
-        interactive: contentHeight > height
+        topMargin: coHeader.visible ? coHeader.height : 0
+        contentHeight: contentColumn.height + Style.margins + root.navigationFooterHeight
         clip: true
 
         ScrollBar.vertical: ScrollBar {}
+
+        // Flickable's default contentY is 0, which would show the first
+        // contentHeight pixels of content behind the header. Snap to the
+        // topMargin position so the page opens with content visible just
+        // below the header.
+        Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
+        Connections {
+            target: coHeader
+            enabled: coHeader.visible
+            function onHeightChanged() {
+                if (flickable.contentY > -coHeader.height && flickable.contentY <= 0) {
+                    flickable.contentY = -coHeader.height
+                }
+            }
+        }
+
+        // When the keyboard is visible, the Flickable shrinks via a 130 ms
+        // animation on KeyboardLoader.implicitHeight. React to heightChanged
+        // (fired throughout the animation) so the focused item is scrolled
+        // into view as soon as the viewport is small enough to obscure it.
+        onHeightChanged: {
+            if (PlatformHelper.imeHeight <= 0)
+                return
+            var focused = Window.activeFocusItem
+            if (!focused)
+                return
+            var itemBottom = focused.mapToItem(contentColumn, 0, focused.height).y
+            // Subtract navigationFooterHeight: the nav bar overlaps the bottom
+            // of the Flickable and is not part of the usable visible area.
+            var usableHeight = flickable.height - root.navigationFooterHeight
+            var visibleBottom = flickable.contentY + usableHeight
+            if (itemBottom > visibleBottom) {
+                flickable.contentY = itemBottom - usableHeight + Style.margins
+            }
+        }
 
         ColumnLayout {
             id: contentColumn

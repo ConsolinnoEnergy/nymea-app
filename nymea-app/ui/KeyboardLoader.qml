@@ -24,15 +24,54 @@
 
 import QtQuick
 import QtQuick.Window
+import Nymea
 
 Item {
     id: root
     implicitHeight: d.active
                     ? d.kbd.height
-                    : (Qt.inputMethod.visible ? Math.max(0, Qt.inputMethod.keyboardRectangle.height / Screen.devicePixelRatio) : 0)
+                    : Qt.platform.os === "ios"
+                        // On iOS PlatformHelperIOS observes the UIKit keyboard
+                        // notifications and reports an authoritative imeHeight
+                        // (in device independent pixels). Prefer it over
+                        // Qt.inputMethod.keyboardRectangle, which is unreliable
+                        // there: it reports 0 for some keyboards (e.g. the
+                        // numeric pad, hiding the Quick-Nav bar) and an oversized
+                        // rectangle on newer iOS versions (leaving a gap between
+                        // the content and the keyboard).
+                        ? PlatformHelper.imeHeight
+                        : Math.max(
+                            PlatformHelper.imeHeight,
+                            Qt.inputMethod.visible
+                                ? Math.max(0, Qt.inputMethod.keyboardRectangle.height / Screen.devicePixelRatio)
+                                : 0
+                          )
 
 
     Behavior on implicitHeight { NumberAnimation { duration: 130; easing.type: Easing.InOutQuad } }
+
+    // Provides the (translated) label for the iOS numeric-keyboard dismiss bar.
+    // Bound rather than assigned once so it follows runtime language changes.
+    // Ignored on platforms that don't show such a bar.
+    Binding {
+        target: PlatformHelper
+        property: "imeActionButtonText"
+        value: qsTr("Done")
+    }
+
+    // Neutral focus target. Numeric keyboards on iOS have no return key, so the
+    // native accessory bar's button drives this: we move focus away from the
+    // text field (so Qt does not immediately reopen the keyboard) and then hide
+    // the input panel - mirroring BackgroundFocusHandler's dismiss idiom.
+    Item { id: focusSink }
+
+    Connections {
+        target: PlatformHelper
+        function onImeActionTriggered() {
+            focusSink.forceActiveFocus()
+            Qt.inputMethod.hide()
+        }
+    }
 
     QtObject {
         id: d

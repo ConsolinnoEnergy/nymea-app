@@ -41,7 +41,6 @@ Drawer {
 
     signal openThingSettings()
     signal openMagicSettings()
-    signal openAppSettings()
     signal openSystemSettings()
     signal openCustomPage(string page)
     signal configureMainView()

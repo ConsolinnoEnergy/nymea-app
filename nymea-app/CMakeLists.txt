@@ -141,8 +141,14 @@ else()
     list(APPEND NYMEA_APP_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/ui/icons/suru/icons.qrc)
 endif()
 
+set(NYMEA_APP_EXECUTABLE_OPTIONS)
+if(WIN32)
+    list(APPEND NYMEA_APP_EXECUTABLE_OPTIONS WIN32)
+endif()
+list(APPEND NYMEA_APP_EXECUTABLE_OPTIONS MANUAL_FINALIZATION)
+
 qt_add_executable(nymea-app
-    MANUAL_FINALIZATION
+    ${NYMEA_APP_EXECUTABLE_OPTIONS}
     ${NYMEA_APP_SOURCES}
     ${NYMEA_APP_HEADERS}
     ${NYMEA_APP_RESOURCES}
@@ -192,6 +198,26 @@ endif()
 if(TARGET Qt6::WebView)
     target_link_libraries(nymea-app PRIVATE Qt6::WebView)
     target_compile_definitions(nymea-app PRIVATE HAVE_WEBVIEW)
+
+    if(ANDROID)
+        # The native Android WebView backend plugin (qandroidwebview) is loaded
+        # at runtime via QFactoryLoader and therefore NOT auto-discovered by
+        # androiddeployqt through ELF dependency scanning. We must declare it
+        # explicitly via QT_ANDROID_EXTRA_PLUGINS so androiddeployqt includes it
+        # in the APK. The path must point to the plugins/ root (parent of the
+        # plugin-type subdirectories, e.g. plugins/webview/). Each ABI sub-build
+        # has its own Qt6WebView_DIR pointing to the correct ABI sysroot, so this
+        # works correctly for all ABIs in a multi-ABI build.
+        get_filename_component(_qt_webview_plugins_dir
+            "${Qt6WebView_DIR}/../../../plugins" ABSOLUTE)
+        if(EXISTS "${_qt_webview_plugins_dir}/webview")
+            message(STATUS "nymea-app: bundling WebView backend plugin from ${_qt_webview_plugins_dir}/webview")
+            set_property(TARGET nymea-app APPEND PROPERTY
+                QT_ANDROID_EXTRA_PLUGINS "${_qt_webview_plugins_dir}")
+        else()
+            message(WARNING "nymea-app: WebView backend plugin not found at ${_qt_webview_plugins_dir}/webview")
+        endif()
+    endif()
 endif()
 
 find_package(Qt6 COMPONENTS GuiPrivate QUIET)
@@ -201,14 +227,28 @@ else()
     message(WARNING "Qt6::GuiPrivate not found; continuing without private GUI APIs.")
 endif()
 
-if(UNIX AND NOT APPLE AND NYMEA_ENABLE_ZEROCONF)
+if(UNIX AND NOT APPLE AND NOT ANDROID AND NYMEA_ENABLE_ZEROCONF)
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(AVAHI REQUIRED IMPORTED_TARGET avahi-client avahi-common)
+    pkg_check_modules(AVAHI REQUIRED IMPORTED_TARGET avahi-client)
     target_link_libraries(nymea-app PRIVATE PkgConfig::AVAHI)
 endif()
 
 if(WIN32)
     target_compile_definitions(nymea-app PRIVATE NOMINMAX)
+
+    # Embed the app icon so it appears in the Windows taskbar and Explorer.
+    # The old qmake build achieved this via RC_ICONS; CMake requires an explicit
+    # Windows resource file (.rc) to be compiled into the executable.
+    # Pass -DNYMEA_WINDOWS_APP_ICON=<path-to-icon.ico> to enable this.
+    if(NYMEA_WINDOWS_APP_ICON AND EXISTS "${NYMEA_WINDOWS_APP_ICON}")
+        # Copy the icon next to the generated .rc so rc.exe can resolve it by filename.
+        configure_file("${NYMEA_WINDOWS_APP_ICON}" "${CMAKE_CURRENT_BINARY_DIR}/app_icon.ico" COPYONLY)
+        file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/app_icon.rc" "IDI_ICON1 ICON \"app_icon.ico\"\n")
+        target_sources(nymea-app PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/app_icon.rc")
+    elseif(NYMEA_WINDOWS_APP_ICON)
+        message(WARNING "NYMEA_WINDOWS_APP_ICON is set to '${NYMEA_WINDOWS_APP_ICON}' but the file does not exist — "
+            "the executable will show the generic Windows icon in the taskbar.")
+    endif()
 endif()
 
 if(ANDROID)

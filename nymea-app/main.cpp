@@ -42,6 +42,15 @@
 #include <QOperatingSystemVersion>
 #include <QWindow>
 
+#ifdef Q_OS_WIN
+#define WIN32_LEAN_AND_MEAN
+#include <cstdio>
+#include <windows.h>
+// <combaseapi.h> defines `interface` as `struct`, which collides with
+// parameter names in nymea-app headers (e.g. thingmanager.h, networkdevices.h).
+#undef interface
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) && !defined(Q_OS_WASM)
 #include <QNetworkInformation>
 #endif
@@ -75,11 +84,27 @@
 #include OVERLAY_QMLTYPES
 #endif
 
+#ifdef HAVE_WEBVIEW
+#include <QtWebView>
+#endif
+
 NYMEA_LOGGING_CATEGORY(dcApplication, "Application")
 NYMEA_LOGGING_CATEGORY(qml, "qml")
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_WIN
+    if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+        const bool stdoutRedirected = freopen("CONOUT$", "w", stdout) != nullptr;
+        const bool stderrRedirected = freopen("CONOUT$", "w", stderr) != nullptr;
+        if (!stdoutRedirected) {
+            OutputDebugStringA("Failed to redirect stdout to parent console.\n");
+        }
+        if (!stderrRedirected) {
+            OutputDebugStringA("Failed to redirect stderr to parent console.\n");
+        }
+    }
+#endif
 
 #ifdef Q_OS_OSX
     qputenv("QT_WEBVIEW_PLUGIN", "native");
@@ -87,6 +112,12 @@ int main(int argc, char *argv[])
     // Qt6: XMLHttpRequest on local files is disabled by default. Re-enable it as the app
     // uses XHR to load local SVG and HTML files from the QRC resource file system.
     qputenv("QML_XHR_ALLOW_FILE_READ", "1");
+
+#ifdef HAVE_WEBVIEW
+    // Must be called before QApplication on Android; is a no-op on platforms
+    // where the platform helper constructor handles initialization instead.
+    QtWebView::initialize();
+#endif
 
     QApplication application(argc, argv);
     application.setApplicationName(APPLICATION_NAME);
@@ -130,7 +161,7 @@ int main(int argc, char *argv[])
             uuid = qurlQ.queryItemValue("uuid");
             token = qurlQ.queryItemValue("token");
 
-            
+
             qDebug() << "Scheme:" << scheme;
             qDebug() << "HostAddress:" << hostAddress;
             qDebug() << "Port:" << port;
@@ -185,14 +216,14 @@ int main(int argc, char *argv[])
         if (loadedTranslations.contains(qmFile.baseName())) {
             continue;
         }
-        QTranslator *translator = new QTranslator();
+        QTranslator *translator = new QTranslator(&application);
         bool loadResult = translator->load(qmFile.baseName() + "." + QLocale().name(), ":/translations");
         if (loadResult) {
             application.installTranslator(translator);
             loadedTranslations.append(qmFile.baseName());
             qCInfo(dcApplication()) << "Loaded translation" << qmFile.baseName();
         } else {
-            delete translator;
+            translator->deleteLater();
             qCInfo(dcApplication()) << "Failed to load translation" << qmFile.baseName();
         }
     }
@@ -334,7 +365,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_IOS
     if (!engine->rootObjects().isEmpty()) {
         if (QWindow *window = qobject_cast<QWindow*>(engine->rootObjects().constFirst())) {
-            const QRect screenRect = window->screen()->availableGeometry();
+            const QRect screenRect = window->screen()->geometry();
             window->setPosition(screenRect.topLeft());
             window->resize(screenRect.size());
             window->showFullScreen();

@@ -144,6 +144,7 @@ private:
     QHash<QObject *, QString> m_notificationHandlerMethods;
     QMultiHash<QString, QObject *> m_notificationHandlers;
     QHash<int, JsonRpcReply *> m_replies;
+    QHash<int, QDateTime> m_commandSendTimes;
     NymeaConnection *m_connection = nullptr;
 
     JsonRpcReply *createReply(const QString &method, const QVariantMap &params, QObject *caller, const QString &callback);

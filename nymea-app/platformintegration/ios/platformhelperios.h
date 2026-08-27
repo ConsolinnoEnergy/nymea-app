@@ -48,6 +48,8 @@ public:
     void setTopPanelColor(const QColor &color) override;
     void setBottomPanelColor(const QColor &color) override;
 
+    void setImeActionButtonText(const QString &text) override;
+
     bool darkModeEnabled() const override;
 
     void shareFile(const QString &fileName) override;
@@ -67,6 +69,25 @@ private:
 
     void applyPanelColors();
     void updateSafeAreaPadding();
+
+    // Registers UIKit keyboard notification observers that keep
+    // PlatformHelper::imeHeight in sync with the on-screen keyboard.
+    void setupKeyboardObservers();
+
+    // Attaches or detaches the "dismiss" accessory bar (inputAccessoryView) on
+    // the active text responder depending on whether a numeric keyboard - which
+    // has no return key - is currently shown. No-op when the responder is not a
+    // Qt text input responder.
+    void updateKeyboardAccessory();
+
+    // #TODO Remove when Qt fixed QTBUG-146020
+    // Installs a defensive runtime crash guard for Qt's private
+    // QIOSTapRecognizer class, restoring the ability to paste into password
+    // fields without reintroducing the crash that Qt.ImhNoTextHandles was
+    // originally added to work around (see ESUI-1565, ESUI-1615). Safe to
+    // call more than once; a no-op after the first successful (or failed)
+    // installation attempt. See platformhelperios.mm for the full rationale.
+    void installPasswordPasteCrashGuard();
 };
 
 #endif // PLATFORMHELPERIOS_H

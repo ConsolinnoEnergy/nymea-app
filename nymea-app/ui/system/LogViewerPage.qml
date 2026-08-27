@@ -31,7 +31,15 @@ import "../components"
 
 Page {
     id: root
-    header: CoHeader {
+    bottomPadding: 0
+    property int navigationFooterHeight: 0
+    header: null
+
+    CoHeader {
+        id: header
+        anchors { left: parent.left; right: parent.right; top: parent.top }
+        z: 1
+        blurSource: listView
         text: qsTr("Log viewer")
         onBackPressed: pageStack.pop()
 
@@ -66,11 +74,15 @@ Page {
     }
 
     ListView {
+        bottomMargin: root.navigationFooterHeight
+        topMargin: header.height
         id: listView
         model: newLogsModel
         anchors.fill: parent
         clip: true
         headerPositioning: ListView.OverlayHeader
+
+        Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
 
         onDraggingChanged: {
             if (dragging) {

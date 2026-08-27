@@ -30,12 +30,20 @@ import Nymea
 import "../components"
 
 Page {
-    header: NymeaHeader {
+    id: root
+
+    header: null
+
+    CoHeader {
+        id: header
+        anchors { left: parent.left; right: parent.right; top: parent.top }
+        z: 1
+        blurSource: listView
         text: qsTr("Application logs")
-        backButtonVisible: true
         onBackPressed: pageStack.pop()
-        HeaderButton {
-            imageSource: "qrc:/icons/state-out.svg"
+        RoundButton {
+            icon.source: "qrc:/icons/state-out.svg"
+            flat: true
             onClicked: {
                 var exportedFile = AppLogController.exportLogs()
                 PlatformHelper.shareFile(exportedFile)
@@ -46,7 +54,10 @@ Page {
     ListView {
         id: listView
         anchors.fill: parent
+        topMargin: header.height
         clip: true
+
+        Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
 
         ScrollBar.vertical: ScrollBar {}
 

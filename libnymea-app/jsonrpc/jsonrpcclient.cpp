@@ -101,7 +101,6 @@ void JsonRpcClient::unregisterNotificationHandler(QObject *handler)
 
 int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params, QObject *caller, const QString &callbackMethod)
 {
-
     JsonRpcReply *reply = createReply(method, params, caller, callbackMethod);
 
     if (m_cacheHashes.contains(method)) {
@@ -111,10 +110,14 @@ int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params,
         QFile f(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + '/' + method + '-' + callSignatureHash + '-' + hash + ".cache");
         if (f.exists() && f.open(QFile::ReadOnly)) {
             QJsonParseError error;
+            const auto readStartTime = QDateTime::currentDateTime();
             QVariantMap cachedParams = QJsonDocument::fromJson(f.readAll(), &error).toVariant().toMap();
             f.close();
+            const auto readEndTime = QDateTime::currentDateTime();
             if (error.error == QJsonParseError::NoError) {
-                qDebug() << "Loaded results for" << reply->nameSpace() + '.' + reply->method() << "from cache";
+                qCInfo(dcJsonRpc()) << "Loaded results for"
+                                    << reply->nameSpace() + '.' + reply->method() << "from cache in"
+                                    << readStartTime.msecsTo(readEndTime) << "ms";
                 // We want to make sure this is an async operation even if we have stuff in cache, so only call callbacks using Qt::QueuedConnection
                 if (!reply->caller().isNull() && !reply->callback().isEmpty()) {
                     QMetaObject::invokeMethod(reply->caller(), reply->callback().toLatin1().data(), Qt::QueuedConnection, Q_ARG(int, reply->commandId()), Q_ARG(QVariantMap, cachedParams));
@@ -126,7 +129,9 @@ int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params,
         }
     }
 
+    qCInfo(dcJsonRpc()) << "Sending command" << reply->nameSpace() + '.' + reply->method();
     m_replies.insert(reply->commandId(), reply);
+    m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     sendRequest(reply->requestMap());
     return reply->commandId();
 }
@@ -362,6 +367,7 @@ int JsonRpcClient::createUser(const QString &username, const QString &password, 
     }
     JsonRpcReply* reply = createReply("JSONRPC.CreateUser", params, this, "processCreateUser");
     m_replies.insert(reply->commandId(), reply);
+    m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     m_connection->sendData(QJsonDocument::fromVariant(reply->requestMap()).toJson());
     return reply->commandId();
 }
@@ -375,6 +381,7 @@ int JsonRpcClient::authenticate(const QString &username, const QString &password
     qDebug() << "Authenticating:" << username << password << deviceName;
     JsonRpcReply* reply = createReply("JSONRPC.Authenticate", params, this, "processAuthenticate");
     m_replies.insert(reply->commandId(), reply);
+    m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     m_connection->sendData(QJsonDocument::fromVariant(reply->requestMap()).toJson());
     return reply->commandId();
 }
@@ -386,6 +393,7 @@ int JsonRpcClient::requestPushButtonAuth(const QString &deviceName)
     params.insert("deviceName", deviceName);
     JsonRpcReply *reply = createReply("JSONRPC.RequestPushButtonAuth", params, this, "processRequestPushButtonAuth");
     m_replies.insert(reply->commandId(), reply);
+    m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     m_connection->sendData(QJsonDocument::fromVariant(reply->requestMap()).toJson());
     return reply->commandId();
 }
@@ -482,6 +490,7 @@ void JsonRpcClient::setNotificationsEnabled()
     }
     JsonRpcReply *reply = createReply("JSONRPC.SetNotificationStatus", params, this, "setNotificationsEnabledResponse");
     m_replies.insert(reply->commandId(), reply);
+    m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     qCDebug(dcJsonRpc) << "Setting notification status";
     sendRequest(reply->requestMap());
 }
@@ -570,6 +579,8 @@ void JsonRpcClient::dataReceived(const QByteArray &data)
     }
     QJsonParseError error;
     QJsonDocument jsonDoc = QJsonDocument::fromJson(m_receiveBuffer.left(splitIndex), &error);
+    qCDebug(dcJsonRpc()) << "Received JSON doc. Error:" << error.errorString();
+    qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(jsonDoc.toJson());
     if (error.error != QJsonParseError::NoError) {
         //        qWarning() << "Could not parse json data from nymea" << m_receiveBuffer.left(splitIndex) << error.errorString();
         return;
@@ -608,6 +619,14 @@ void JsonRpcClient::dataReceived(const QByteArray &data)
     if (reply) {
         reply->deleteLater();
 //        qWarning() << QString("JsonRpc: got response for %1.%2: %3").arg(reply->nameSpace(), reply->method(), QString::fromUtf8(jsonDoc.toJson(QJsonDocument::Indented))) << reply->callback() << reply->callback();
+
+        const auto commandSendTime = m_commandSendTimes.take(commandId);
+        if (commandSendTime.isValid()) {
+            const auto durationMs = commandSendTime.msecsTo(QDateTime::currentDateTime());
+            qCInfo(dcJsonRpc()) << "Response for" << QString("%1.%2").arg(reply->nameSpace(), reply->method())
+                                << "took" << durationMs << "ms"
+                                << "(" << m_commandSendTimes.size() << "commands still on the fly)";
+        }
 
         if (dataMap.value("status").toString() == "unauthorized") {
             qCWarning(dcJsonRpc()) << "Something's off with the token";

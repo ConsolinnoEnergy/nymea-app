@@ -31,19 +31,14 @@ import "../components"
 
 SettingsPageBase {
     id: root
-    header: CoHeader {
-        text: qsTr("Plugins")
-        backButtonVisible: true
-        onBackPressed: pageStack.pop()
-
-        RoundButton {
-            visible: false
-            icon.source: "qrc:/icons/configure.svg"
-            icon.color: pluginsProxy.showOnlyConfigurable ? Style.accentColor : Style.iconColor
-            flat: true
-            onClicked: {
-                pluginsProxy.showOnlyConfigurable = !pluginsProxy.showOnlyConfigurable
-            }
+    headerText: qsTr("Plugins")
+    headerExtras: RoundButton {
+        visible: false
+        icon.source: "qrc:/icons/configure.svg"
+        icon.color: pluginsProxy.showOnlyConfigurable ? Style.accentColor : Style.iconColor
+        flat: true
+        onClicked: {
+            pluginsProxy.showOnlyConfigurable = !pluginsProxy.showOnlyConfigurable
         }
     }
 

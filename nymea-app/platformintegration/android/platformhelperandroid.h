@@ -69,6 +69,7 @@ public:
     static void darkModeEnabledChangedJNI();
     static void notificationActionReceivedJNI(JNIEnv *env, jobject /*thiz*/, jstring data);
     static void locationServicesEnabledChangedJNI();
+    static void imeHeightChangedJNI(JNIEnv *env, jobject /*thiz*/, jint heightPx);
 
 private:
     void updateSafeAreaPadding();

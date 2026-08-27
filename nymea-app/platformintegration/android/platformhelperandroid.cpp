@@ -49,6 +49,7 @@ static JNINativeMethod methods[] = {
     { "darkModeEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::darkModeEnabledChangedJNI },
     { "notificationActionReceivedJNI", "(Ljava/lang/String;)V", (void *)PlatformHelperAndroid::notificationActionReceivedJNI },
     { "locationServicesEnabledChangedJNI", "()V", (void *)PlatformHelperAndroid::locationServicesEnabledChangedJNI },
+    { "imeHeightChangedJNI", "(I)V", (void *)PlatformHelperAndroid::imeHeightChangedJNI },
     };
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/)
@@ -91,11 +92,19 @@ PlatformHelperAndroid::PlatformHelperAndroid(QObject *parent) : PlatformHelper(p
     // }
 
     connect(qApp, &QApplication::applicationStateChanged, this, [this](Qt::ApplicationState state){
-        qCritical() << "----> Application state changed" << state;
         if (state == Qt::ApplicationActive) {
             emit locationServicesEnabledChanged();
             updateSafeAreaPadding();
         }
+    });
+
+    // Re-apply system bar icon colours whenever the system dark mode changes.
+    // On API 31-35 the correct icon colour depends on the system theme (not
+    // the app colour), so we need to reapply even if topPanelColor hasn't
+    // changed (e.g. the app has a fixed light/dark theme).
+    connect(this, &PlatformHelper::darkModeEnabledChanged, this, [this]() {
+        setTopPanelColor(topPanelColor());
+        setBottomPanelColor(bottomPanelColor());
     });
 
     if (QScreen *screen = qApp->primaryScreen()) {
@@ -229,41 +238,79 @@ void PlatformHelperAndroid::setTopPanelColor(const QColor &color)
 {
     PlatformHelper::setTopPanelColor(color);
 
-    // if (QtAndroid::androidSdkVersion() < 21)
-    //     return;
+    const jint sdkInt = QJniObject::getStaticField<jint>("android/os/Build$VERSION", "SDK_INT");
 
-    // QtAndroid::runOnAndroidThread([=]() {
-    //     QJniObject window = getAndroidWindow();
-    //     window.callMethod<void>("addFlags", "(I)V", FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    //     window.callMethod<void>("clearFlags", "(I)V", FLAG_TRANSLUCENT_STATUS);
-    //     window.callMethod<void>("setStatusBarColor", "(I)V", color.rgba());
-    // });
+    bool darkIcons;
+    if (sdkInt >= 36) {
+        // API 36+: window is fully edge-to-edge; the app background IS visible
+        // behind the status bar, so base icon colour on the app's background luminance.
+        darkIcons = qGray(color.rgb()) > 128;
+        qDebug("status bar icons: api=%d trigger=topPanelColor "
+               "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF, qGray(color.rgb()),
+               darkIcons ? "true" : "false");
+    } else if (sdkInt >= 31) {
+        // API 31-35: the status bar has its own background drawn by
+        // Theme.DeviceDefault.DayNight (follows system theme). Qt's Material
+        // plugin independently sets icon colour based on Material.theme (app
+        // theme). When app theme != system theme that produces wrong contrast.
+        // Override with the system-theme-correct value.
+        const bool systemDark = darkModeEnabled();
+        darkIcons = !systemDark;
+        qDebug("status bar icons: api=%d trigger=topPanelColor "
+               "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF,
+               systemDark ? "true" : "false", darkIcons ? "true" : "false");
+    } else {
+        qDebug("status bar icons: api=%d skipped (< 31)", (int)sdkInt);
+        return;
+    }
 
-    // if (((color.red() * 299 + color.green() * 587 + color.blue() * 114) / 1000) > 123) {
-    //     setTopPanelTheme(Light);
-    // } else {
-    //     setTopPanelTheme(Dark);
-    // }
+    QJniObject activity = QJniObject::callStaticObjectMethod(
+            "org/qtproject/qt/android/QtNative",
+            "activity",
+            "()Landroid/app/Activity;");
+    if (activity.isValid()) {
+        activity.callMethod<void>("setLightStatusBar", "(Z)V", darkIcons);
+    } else {
+        qDebug("status bar icons: could not get activity");
+    }
 }
 
 void PlatformHelperAndroid::setBottomPanelColor(const QColor &color)
 {
     PlatformHelper::setBottomPanelColor(color);
 
-    // if (QtAndroid::androidSdkVersion() < 21)
-    //     return;
+    const jint sdkInt = QJniObject::getStaticField<jint>("android/os/Build$VERSION", "SDK_INT");
 
-    // QtAndroid::runOnAndroidThread([=]() {
-    //     QJniObject window = getAndroidWindow();
-    //     window.callMethod<void>("clearFlags", "(I)V", FLAG_TRANSLUCENT_NAVIGATION);
-    //     window.callMethod<void>("setNavigationBarColor", "(I)V", color.rgba());
+    bool darkIcons;
+    if (sdkInt >= 36) {
+        darkIcons = qGray(color.rgb()) > 128;
+        qDebug("navigation bar icons: api=%d trigger=bottomPanelColor "
+               "color=#%06x luminance=%d -> darkIcons=%s (edge-to-edge)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF, qGray(color.rgb()),
+               darkIcons ? "true" : "false");
+    } else if (sdkInt >= 31) {
+        const bool systemDark = darkModeEnabled();
+        darkIcons = !systemDark;
+        qDebug("navigation bar icons: api=%d trigger=bottomPanelColor "
+               "color=#%06x systemDark=%s -> darkIcons=%s (system-theme override)",
+               (int)sdkInt, color.rgb() & 0xFFFFFF,
+               systemDark ? "true" : "false", darkIcons ? "true" : "false");
+    } else {
+        qDebug("navigation bar icons: api=%d skipped (< 31)", (int)sdkInt);
+        return;
+    }
 
-    //     if (((color.red() * 299 + color.green() * 587 + color.blue() * 114) / 1000) > 123) {
-    //         setBottomPanelTheme(Light);
-    //     } else {
-    //         setBottomPanelTheme(Dark);
-    //     }
-    // });
+    QJniObject activity = QJniObject::callStaticObjectMethod(
+            "org/qtproject/qt/android/QtNative",
+            "activity",
+            "()Landroid/app/Activity;");
+    if (activity.isValid()) {
+        activity.callMethod<void>("setLightNavigationBar", "(Z)V", darkIcons);
+    } else {
+        qDebug("navigation bar icons: could not get activity");
+    }
 }
 
 void PlatformHelperAndroid::setTopPanelTheme(PlatformHelperAndroid::Theme theme)
@@ -393,4 +440,19 @@ void PlatformHelperAndroid::locationServicesEnabledChangedJNI()
     if (platformHelper) {
         emit platformHelper->locationServicesEnabledChanged();
     }
+}
+
+void PlatformHelperAndroid::imeHeightChangedJNI(JNIEnv*, jobject, jint heightPx)
+{
+    PlatformHelperAndroid *instance = static_cast<PlatformHelperAndroid*>(PlatformHelper::instance(false));
+    if (!instance)
+        return;
+    QMetaObject::invokeMethod(instance, [instance, heightPx]() {
+        QScreen *screen = qApp->primaryScreen();
+        qreal dpr = screen ? screen->devicePixelRatio() : 1.0;
+        if (dpr <= 0.0)
+            dpr = 1.0;
+        int logicalHeight = qRound(heightPx / dpr);
+        instance->setImeHeight(logicalHeight);
+    }, Qt::QueuedConnection);
 }

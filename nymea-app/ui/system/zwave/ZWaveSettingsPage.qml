@@ -31,18 +31,13 @@ import "qrc:/ui/components"
 
 SettingsPageBase {
     id: root
-    header: CoHeader {
-        text: qsTr("Z-Wave")
-        backButtonVisible: true
-        onBackPressed: pageStack.pop()
-
-        RoundButton {
-            icon.source: "qrc:/icons/add.svg"
-            text: qsTr("Add Z-Wave network")
-            flat: true
-            onClicked: {
-                addNetwork()
-            }
+    headerText: qsTr("Z-Wave")
+    headerExtras: RoundButton {
+        icon.source: "qrc:/icons/add.svg"
+        text: qsTr("Add Z-Wave network")
+        flat: true
+        onClicked: {
+            addNetwork()
         }
     }
 
@@ -59,7 +54,7 @@ SettingsPageBase {
 
     Item {
         Layout.fillWidth: true
-        Layout.preferredHeight: root.height - root.header.height - Style.margins
+        Layout.preferredHeight: root.height - root.coHeader.height - Style.margins
         visible: !zwaveManager.fetchingData && (!zwaveManager.zwaveAvailable || zwaveManager.networks.count == 0)
 
         BusyIndicator {

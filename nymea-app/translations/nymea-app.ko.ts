@@ -112,6 +112,30 @@
         <source>App version:</source>
         <translation>App 버전:</translation>
     </message>
+    <message>
+        <source>Suru icons by Ubuntu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ubuntu font by Ubuntu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QtZeroConf library by Jonathan Bagg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OpenSSL libraries by Eric Young</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oswald font by The Oswald Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Revision:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActionLogPage</name>
@@ -636,7 +660,7 @@
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">연결 끊기</translation>
     </message>
     <message>
         <source>Connect</source>
@@ -2080,6 +2104,57 @@
     </message>
 </context>
 <context>
+    <name>EvDashSettingsPage</name>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given username is already in use. Please choose a different username.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The given password is not valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">사용자명</translation>
+    </message>
+    <message>
+        <source>Add user</source>
+        <translation type="unfinished">사용자 추가</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">취소</translation>
+    </message>
+    <message>
+        <source>Dashboard enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage users</source>
+        <translation type="unfinished">사용자 관리</translation>
+    </message>
+</context>
+<context>
     <name>EventDescriptorDelegate</name>
     <message>
         <source>anytime</source>
@@ -2642,10 +2717,6 @@ Please try again.</source>
     </message>
     <message>
         <source>Google fonts and material icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chargebyte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3717,6 +3788,13 @@ Please try again.</source>
     </message>
 </context>
 <context>
+    <name>KeyboardLoader</name>
+    <message>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LightThingPage</name>
     <message>
         <source>Color</source>
@@ -3871,18 +3949,6 @@ Please try again.</source>
     </message>
     <message>
         <source>In order to use your %1 system, please create an account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>사용자명</translation>
-    </message>
-    <message>
-        <source>Your e-mail address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4070,14 +4136,6 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>App settings</source>
-        <translation type="vanished">앱 설정</translation>
-    </message>
-    <message>
-        <source>System settings</source>
-        <translation type="vanished">시스템 설정</translation>
-    </message>
-    <message>
         <source>New connection</source>
         <translation>새 연결</translation>
     </message>
@@ -4115,18 +4173,6 @@ Please try again.</source>
     <message>
         <source>Loading data...</source>
         <translation>데이터를 불러 오는 중...</translation>
-    </message>
-    <message>
-        <source>Connected to</source>
-        <translation>연결됨</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>확인</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation>연결 끊음</translation>
     </message>
     <message>
         <source>Groups</source>
@@ -5406,6 +5452,34 @@ Use a timeout value greater or equal to 10 ms.</source>
         <source>Configure magic</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Full access to the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute actions and use things and services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new things and change settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Execute rules, scenes and scripts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create new rules and scripts in the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access all things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow to see and use all things of the system.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PackageDetailsPage</name>
@@ -6506,6 +6580,14 @@ Do you want to proceed?</source>
         <source>Configure Z-Wave networks</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>EV Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashboard settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetupWizard</name>
@@ -7358,6 +7440,17 @@ Please only use this if you are sure you want this and consider reporting the is
     </message>
 </context>
 <context>
+    <name>UsernameTextField</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">사용자명</translation>
+    </message>
+    <message>
+        <source>Your e-mail address</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UsersSettingsPage</name>
     <message>
         <source>User settings</source>
@@ -7484,19 +7577,11 @@ Please only use this if you are sure you want this and consider reporting the is
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Username:</source>
-        <translation>사용자명:</translation>
-    </message>
-    <message>
         <source>Password:</source>
         <translation>비밀번호:</translation>
     </message>
     <message>
         <source>Full name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>e-mail:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7522,6 +7607,26 @@ Please only use this if you are sure you want this and consider reporting the is
     <message>
         <source>Authenticated user</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accessable things for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acessable things</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allowed things for this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>things accessable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional</source>
+        <translation type="unfinished">선택가능</translation>
     </message>
 </context>
 <context>

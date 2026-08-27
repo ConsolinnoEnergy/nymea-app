@@ -38,6 +38,10 @@ ApplicationWindow {
     visible: true
     width: Qt.platform.os === "ios" ? Screen.width : 360
     height: Qt.platform.os === "ios" ? Screen.height : 580
+    // The ApplicationWindow draws edge-to-edge. System-bar insets are consumed
+    // inside the page headers and the navigation footer (see RootItem and the
+    // CoHeader component) so the app chrome can reach the screen edges while
+    // the system bars remain system-drawn.
     maximumWidth: 768
     minimumWidth: 360
     minimumHeight: 580
@@ -114,6 +118,19 @@ ApplicationWindow {
 
     ConfiguredHostsModel {
         id: configuredHostsModel
+
+        // Captures the active slot index just before a new empty setup slot is appended.
+        // createHost() triggers countChanged before setCurrentIndex() is called, so
+        // currentIndex still holds the previously active slot at that moment.
+        property int setupWizardReturnIndex: 0
+
+        onCountChanged: {
+            const lastSlot = configuredHostsModel.get(configuredHostsModel.count - 1);
+            const nullUuid = "{00000000-0000-0000-0000-000000000000}";
+            if (lastSlot && lastSlot.uuid.toString() === nullUuid) {
+                setupWizardReturnIndex = configuredHostsModel.currentIndex;
+            }
+        }
     }
 
     property alias mainMenu: m
@@ -126,7 +143,6 @@ ApplicationWindow {
         configuredHosts: configuredHostsModel
         onOpenThingSettings: rootItem.openThingSettings();
         onOpenMagicSettings: rootItem.openMagicSettings();
-        onOpenAppSettings: rootItem.openAppSettings();
         onOpenSystemSettings: rootItem.openSystemSettings();
         onOpenCustomPage: (page) => rootItem.openCustomPage(page);
         onConfigureMainView: rootItem.configureMainView();
