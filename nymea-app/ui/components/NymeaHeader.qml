@@ -33,7 +33,7 @@ Item {
     // System status-bar / display-cutout inset. The interactive row is
     // shifted down by this amount while the page chrome itself still reaches
     // the screen edge.
-    property int safeAreaTop: SafeArea.margins.top
+    property int safeAreaTop: typeof SafeArea !== "undefined" ? SafeArea.margins.top : 0
     implicitHeight: safeAreaTop + layout.implicitHeight + infoPane.height
     property string text
     property alias backButtonVisible: backButton.visible

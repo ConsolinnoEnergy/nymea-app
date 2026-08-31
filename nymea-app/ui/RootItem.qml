@@ -64,12 +64,14 @@ Item {
         d.pushSettingsPage("MagicPage.qml")
     }
     function openSystemSettings() {
-        var current = swipeView.currentItem
-        if (!current) return
-        var page = current.mainPage
-        if (!page) return
-        current.pageStack.pop(page)
-        page.goToView("consolinnoSettings", undefined, true)
+        // Upstream refactored this to navigate via goToView("consolinnoSettings", ...),
+        // assuming a "consolinnoSettings" entry registered in the main content model
+        // (filteredContentModel in MainPage.qml). The Consolinno overlay's
+        // Configuration.qml never registers such an entry (only
+        // "consolinnoDashboard"/"consolinnoStats" exist there), so that call
+        // silently did nothing and Settings stopped opening. Push
+        // ConsolinnoSettingsPage.qml directly instead, as before the merge.
+        d.pushSettingsPage("ConsolinnoSettingsPage.qml")
     }
     function openCustomPage(page) {
         d.pushSettingsPage(page)
@@ -90,8 +92,10 @@ Item {
         // each page's header (CoHeader / MainPage header) and by the
         // navigation footer below so the app chrome can reach the screen
         // edges while the system bars stay system-drawn.
-        anchors.leftMargin: SafeArea.margins.left
-        anchors.rightMargin: SafeArea.margins.right
+        // SafeArea is only available since Qt 6.10; guard with typeof so
+        // this still works on older Qt versions.
+        anchors.leftMargin: typeof SafeArea !== "undefined" ? SafeArea.margins.left : 0
+        anchors.rightMargin: typeof SafeArea !== "undefined" ? SafeArea.margins.right : 0
 
         spacing: 0
 
@@ -223,7 +227,7 @@ Item {
                         // the footer chrome stays flush with the edge. Interactive
                         // children are pushed above the gesture/navigation inset
                         // via safeAreaBottom.
-                        readonly property int safeAreaBottom: SafeArea.margins.bottom
+                        readonly property int safeAreaBottom: typeof SafeArea !== "undefined" ? SafeArea.margins.bottom : 0
                         anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
                         height: (navbarControlsLoader.active ? navbarControlsLoader.height + 2 * Style.smallMargins : 0)
                                 + (navigationFooter.shown ? navigationFooter.height : 0)

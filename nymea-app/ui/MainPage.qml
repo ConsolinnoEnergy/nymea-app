@@ -397,7 +397,11 @@ Page {
         // or iOS with notch it is the actual inset returned by Qt.
         // The interactive header band keeps its `headerSize` (64) and is
         // shifted down by this amount so it stays below the system bar.
-        property int safeAreaTop: SafeArea.margins.top
+        // SafeArea is a QtQuick attached type only available since Qt 6.10.
+        // Guard with typeof (safe for unresolved identifiers, unlike a direct
+        // reference) so this still works on older Qt versions, where the
+        // inset is simply unavailable/0.
+        property int safeAreaTop: typeof SafeArea !== "undefined" ? SafeArea.margins.top : 0
 
         readonly property int scrollOffset: swipeView.currentItem ? swipeView.currentItem.item.contentY : 0
         readonly property int headerBlurSize: Math.min(headerSize, scrollOffset * 2)
