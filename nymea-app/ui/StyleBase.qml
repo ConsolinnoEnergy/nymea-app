@@ -47,7 +47,7 @@ Item {
     readonly property int largeCornerRadius: 24
     readonly property int extraLargeCornerRadius: 48
 
-    readonly property int extraExtraSmallMargins: 2
+    readonly property int extraExtraSmallMargins: 4
     readonly property int extraSmallMargins: 6
     readonly property int smallMargins: 8
     readonly property int mediumMargins: 12
@@ -70,6 +70,10 @@ Item {
         readonly property double components_Disabled_opacity: 0.3
         readonly property int components_Forms_Buttons_Horizontal_padding: 32
         readonly property int components_Forms_Buttons_Vertical_padding: 10
+        // Different from Figma Export on purpose since Qt rendering in Charts seems
+        // be a little different from Figma so we need to set this value to 3 here
+        // to get the visual appearance of the value 2 in Figma.
+        readonly property int components_Statistics_Bar_spacing_L: 3
     }
 
     // Note: Font files need to be provided in a "fonts" folder in the style
