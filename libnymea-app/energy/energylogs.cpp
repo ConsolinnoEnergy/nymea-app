@@ -301,6 +301,7 @@ void EnergyLogs::appendEntries(const QList<EnergyLogEntry *> &entries)
     endInsertRows();
     emit entriesAdded(index, entries);
     emit countChanged();
+    trimCache();
 }
 
 QVariantMap EnergyLogs::fetchParams() const
@@ -393,6 +394,8 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
             emit maxValueChanged();
         }
 
+        trimCache();
+
     } else {
         qCDebug(dcEnergyLogs()) << "Received empty log entries set.";
     }
@@ -420,6 +423,54 @@ void EnergyLogs::notificationReceivedInternal(const QVariantMap &data)
     }
 
     notificationReceived(data);
+}
+
+void EnergyLogs::trimCache()
+{
+    if (m_list.isEmpty() || !m_startTime.isValid() || !m_endTime.isValid()) {
+        return;
+    }
+
+    qint64 windowMs = m_startTime.msecsTo(m_endTime);
+    if (windowMs <= 0) {
+        return;
+    }
+
+    // Keep a generous buffer around the currently visible window so casual
+    // back-and-forth scrolling stays refetch-free, while still bounding
+    // memory usage over a long session.
+    qint64 marginMs = windowMs * 20;
+    QDateTime keepFrom = m_startTime.addMSecs(-marginMs);
+    QDateTime keepTo = m_endTime.addMSecs(marginMs);
+
+    int trimFrontCount = 0;
+    while (trimFrontCount < m_list.count() && m_list.at(trimFrontCount)->timestamp() < keepFrom) {
+        trimFrontCount++;
+    }
+    if (trimFrontCount > 0) {
+        beginRemoveRows(QModelIndex(), 0, trimFrontCount - 1);
+        for (int i = 0; i < trimFrontCount; i++) {
+            m_list.takeFirst()->deleteLater();
+        }
+        endRemoveRows();
+        emit countChanged();
+        emit entriesRemoved(0, trimFrontCount);
+    }
+
+    int trimBackCount = 0;
+    while (trimBackCount < m_list.count() && m_list.at(m_list.count() - 1 - trimBackCount)->timestamp() > keepTo) {
+        trimBackCount++;
+    }
+    if (trimBackCount > 0) {
+        int startIndex = m_list.count() - trimBackCount;
+        beginRemoveRows(QModelIndex(), startIndex, m_list.count() - 1);
+        for (int i = 0; i < trimBackCount; i++) {
+            m_list.takeLast()->deleteLater();
+        }
+        endRemoveRows();
+        emit countChanged();
+        emit entriesRemoved(startIndex, trimBackCount);
+    }
 }
 
 void EnergyLogs::clear()

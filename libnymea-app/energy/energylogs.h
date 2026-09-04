@@ -144,6 +144,13 @@ protected:
     void appendEntry(EnergyLogEntry *entry, double minValue, double maxValue);
     void appendEntries(const QList<EnergyLogEntry *> &entries);
 
+    // Bounds memory usage for long sessions (e.g. scrubbing back and forth
+    // through a chart): discards cached entries that fall further than
+    // 20x the currently visible [startTime, endTime] window outside of it
+    // on either side. The generous multiplier keeps casual back-and-forth
+    // scrolling refetch-free while still capping unbounded growth.
+    void trimCache();
+
 protected slots:
     void getLogsResponse(int commandId, const QVariantMap &params);
     void notificationReceivedInternal(const QVariantMap &data);
