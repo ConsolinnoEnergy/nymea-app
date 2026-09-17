@@ -101,6 +101,10 @@ void ThingPowerLogs::setLoader(ThingPowerLogsLoader *loader)
                 qCDebug(dcEnergyLogs()) << "Loader fetched data.";
                 getLogsResponse(commandId, params);
             });
+            connect(loader, &ThingPowerLogsLoader::cacheReset, this, [=]() {
+                qCDebug(dcEnergyLogs()) << "Loader reset its cached range. Discarding our own stale cache too.";
+                clear();
+            });
         }
     }
 }
@@ -358,6 +362,24 @@ void ThingPowerLogsLoader::fetchLogs()
     if (!m_startTime.isNull() && !m_endTime.isNull()) {
         QDateTime startTime;
         QDateTime endTime;
+
+        // If the previously requested window doesn't overlap the newly
+        // requested one at all (e.g. jumping to a distant, non-adjacent
+        // day/period), an incremental gap-fill request below would only
+        // cover the gap up to m_endTime/from m_startTime and would never
+        // reconnect with whatever is cached in each ThingPowerLogs sharing
+        // this loader. Reset our own bookkeeping and tell those models to
+        // discard their stale cache, then fetch the requested window fully -
+        // no retry loop, so ranges that legitimately have no data (e.g. a
+        // future day) still end up empty.
+        if (!m_lastStartTime.isNull() && !m_lastEndTime.isNull()
+                && (m_lastEndTime < m_startTime || m_lastStartTime > m_endTime)) {
+            qCDebug(dcEnergyLogs()) << "Previously requested timeframe does not overlap requested timeframe at all. Resetting cached range.";
+            m_lastStartTime = QDateTime();
+            m_lastEndTime = QDateTime();
+            emit cacheReset();
+        }
+
         if (m_lastStartTime.isNull() || m_lastEndTime.isNull()) {
             startTime = m_startTime;
             endTime = m_endTime;

@@ -301,6 +301,7 @@ void EnergyLogs::appendEntries(const QList<EnergyLogEntry *> &entries)
     endInsertRows();
     emit entriesAdded(index, entries);
     emit countChanged();
+    trimCache();
 }
 
 QVariantMap EnergyLogs::fetchParams() const
@@ -393,6 +394,8 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
             emit maxValueChanged();
         }
 
+        trimCache();
+
     } else {
         qCDebug(dcEnergyLogs()) << "Received empty log entries set.";
     }
@@ -420,6 +423,54 @@ void EnergyLogs::notificationReceivedInternal(const QVariantMap &data)
     }
 
     notificationReceived(data);
+}
+
+void EnergyLogs::trimCache()
+{
+    if (m_list.isEmpty() || !m_startTime.isValid() || !m_endTime.isValid()) {
+        return;
+    }
+
+    qint64 windowMs = m_startTime.msecsTo(m_endTime);
+    if (windowMs <= 0) {
+        return;
+    }
+
+    // Keep a generous buffer around the currently visible window so casual
+    // back-and-forth scrolling stays refetch-free, while still bounding
+    // memory usage over a long session.
+    qint64 marginMs = windowMs * 20;
+    QDateTime keepFrom = m_startTime.addMSecs(-marginMs);
+    QDateTime keepTo = m_endTime.addMSecs(marginMs);
+
+    int trimFrontCount = 0;
+    while (trimFrontCount < m_list.count() && m_list.at(trimFrontCount)->timestamp() < keepFrom) {
+        trimFrontCount++;
+    }
+    if (trimFrontCount > 0) {
+        beginRemoveRows(QModelIndex(), 0, trimFrontCount - 1);
+        for (int i = 0; i < trimFrontCount; i++) {
+            m_list.takeFirst()->deleteLater();
+        }
+        endRemoveRows();
+        emit countChanged();
+        emit entriesRemoved(0, trimFrontCount);
+    }
+
+    int trimBackCount = 0;
+    while (trimBackCount < m_list.count() && m_list.at(m_list.count() - 1 - trimBackCount)->timestamp() > keepTo) {
+        trimBackCount++;
+    }
+    if (trimBackCount > 0) {
+        int startIndex = m_list.count() - trimBackCount;
+        beginRemoveRows(QModelIndex(), startIndex, m_list.count() - 1);
+        for (int i = 0; i < trimBackCount; i++) {
+            m_list.takeLast()->deleteLater();
+        }
+        endRemoveRows();
+        emit countChanged();
+        emit entriesRemoved(startIndex, trimBackCount);
+    }
 }
 
 void EnergyLogs::clear()
@@ -461,6 +512,24 @@ void EnergyLogs::fetchLogs()
 
         QDateTime oldestExisting = m_list.count() > 0 ? m_list.first()->timestamp() : QDateTime();
         QDateTime newestExisting = m_list.count() > 0 ? m_list.last()->timestamp() : QDateTime();
+
+        // If the cached range doesn't overlap the newly requested window at all
+        // (e.g. jumping to a distant, non-adjacent day/period), an incremental
+        // gap-fill request below would only cover the gap up to m_endTime and
+        // would never reconnect with the stale cache. If that gap-fill response
+        // then comes back empty (no retry is done for that, see getLogsResponse),
+        // the model would be stuck showing the old, mismatched cached data
+        // indefinitely. Discard the stale cache once and do a single full fetch
+        // of the requested window instead - no retry loop, so ranges that
+        // legitimately have no data (e.g. a future day) still end up empty.
+        if (!oldestExisting.isNull() && !newestExisting.isNull()
+                && (newestExisting < m_startTime || oldestExisting > m_endTime)) {
+            qCDebug(dcEnergyLogs()) << "Existing cache does not overlap requested timeframe at all. Discarding stale cache and fetching requested timeframe fully.";
+            clear();
+            oldestExisting = QDateTime();
+            newestExisting = QDateTime();
+        }
+
         qCDebug(dcEnergyLogs()) << "request timeframe: " << m_startTime.toString() << " - " << m_endTime.toString();
         qCDebug(dcEnergyLogs()) << "existing timeframe:" << oldestExisting.toString() << "- " << newestExisting.toString();
 
