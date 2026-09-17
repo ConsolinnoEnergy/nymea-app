@@ -512,6 +512,24 @@ void EnergyLogs::fetchLogs()
 
         QDateTime oldestExisting = m_list.count() > 0 ? m_list.first()->timestamp() : QDateTime();
         QDateTime newestExisting = m_list.count() > 0 ? m_list.last()->timestamp() : QDateTime();
+
+        // If the cached range doesn't overlap the newly requested window at all
+        // (e.g. jumping to a distant, non-adjacent day/period), an incremental
+        // gap-fill request below would only cover the gap up to m_endTime and
+        // would never reconnect with the stale cache. If that gap-fill response
+        // then comes back empty (no retry is done for that, see getLogsResponse),
+        // the model would be stuck showing the old, mismatched cached data
+        // indefinitely. Discard the stale cache once and do a single full fetch
+        // of the requested window instead - no retry loop, so ranges that
+        // legitimately have no data (e.g. a future day) still end up empty.
+        if (!oldestExisting.isNull() && !newestExisting.isNull()
+                && (newestExisting < m_startTime || oldestExisting > m_endTime)) {
+            qCDebug(dcEnergyLogs()) << "Existing cache does not overlap requested timeframe at all. Discarding stale cache and fetching requested timeframe fully.";
+            clear();
+            oldestExisting = QDateTime();
+            newestExisting = QDateTime();
+        }
+
         qCDebug(dcEnergyLogs()) << "request timeframe: " << m_startTime.toString() << " - " << m_endTime.toString();
         qCDebug(dcEnergyLogs()) << "existing timeframe:" << oldestExisting.toString() << "- " << newestExisting.toString();
 
