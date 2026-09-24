@@ -131,6 +131,16 @@ signals:
     void fetchingDataChanged();
     void fetched(int commandId, const QVariantMap &params);
 
+    // Emitted when the loader discards its own incremental fetch bookkeeping
+    // because the newly requested [startTime, endTime] window doesn't overlap
+    // the previously requested one at all (e.g. jumping to a distant,
+    // non-adjacent day/period). Every ThingPowerLogs sharing this loader keeps
+    // its own independently cached entry list and has no other way of knowing
+    // that a gap-fill request will no longer reconnect with its stale cache -
+    // so it must clear() itself here to avoid ending up stuck with mismatched
+    // data indefinitely.
+    void cacheReset();
+
 private slots:
     void getLogsResponse(int commandId, const QVariantMap &params);
 
