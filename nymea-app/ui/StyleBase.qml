@@ -74,6 +74,9 @@ Item {
         // be a little different from Figma so we need to set this value to 3 here
         // to get the visual appearance of the value 2 in Figma.
         readonly property int components_Statistics_Bar_spacing_L: 3
+        readonly property int components_Statistics_Chart_height_default: 370
+        readonly property int components_Statistics_Chart_height_small: 270
+        readonly property int components_Statistics_Chart_height_extra_small: 200
     }
 
     // Note: Font files need to be provided in a "fonts" folder in the style
