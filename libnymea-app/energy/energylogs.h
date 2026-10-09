@@ -144,6 +144,12 @@ protected:
     void appendEntry(EnergyLogEntry *entry, double minValue, double maxValue);
     void appendEntries(const QList<EnergyLogEntry *> &entries);
 
+    // Sends a single Energy.Get<Logs> request for an explicit [from, to]
+    // range, bypassing fetchLogs()'s own gap detection. Used to fetch the
+    // future-side gap once the past-side gap has been handled (see
+    // m_backGapPending).
+    void fetchGap(const QDateTime &from, const QDateTime &to);
+
     // Bounds memory usage for long sessions (e.g. scrubbing back and forth
     // through a chart): discards cached entries that fall further than
     // 20x the currently visible [startTime, endTime] window outside of it
@@ -166,6 +172,12 @@ private:
     bool m_loadingInhibited = false;
     bool m_ready = false;
     bool m_fetchAgain = false;
+    // Set when fetchLogs() finds that the requested window grew on both
+    // edges at once (e.g. zooming out) and had to prioritize the past-side
+    // gap. Triggers exactly one follow-up fetch for the future-side gap
+    // once the past-side response has been processed (see
+    // getLogsResponse()) - not a retry loop.
+    bool m_backGapPending = false;
 
     double m_minValue = 0;
     double m_maxValue = 0;

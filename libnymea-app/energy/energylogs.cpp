@@ -406,6 +406,21 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
         qCDebug(dcEnergyLogs()) << "Fetching again...";
         m_fetchAgain = false;
         fetchLogs();
+    } else if (m_backGapPending) {
+        // Past-side gap handled above (whether it actually contained data or
+        // not): fetch the remaining future-side gap directly, using a
+        // dedicated request rather than calling fetchLogs() again - that
+        // would re-run the gap detection from scratch and, if the past-side
+        // fetch came back empty, would just pick the same past-side gap
+        // again, forever. This is a one-shot follow-up, not a retry loop.
+        m_backGapPending = false;
+        QDateTime newestExisting = m_list.count() > 0 ? m_list.last()->timestamp() : QDateTime();
+        if (!newestExisting.isNull() && newestExisting < m_endTime) {
+            qCDebug(dcEnergyLogs()) << "Fetching remaining future-side gap...";
+            fetchGap(qMax(m_startTime, newestExisting.addSecs(m_sampleRate * 60)), m_endTime);
+        } else {
+            emit fetchingDataChanged();
+        }
     } else {
         emit fetchingDataChanged();
     }
@@ -502,6 +517,11 @@ void EnergyLogs::fetchLogs()
         return;
     }
 
+    // Any pending future-side gap follow-up from a previous, possibly
+    // superseded request decision is no longer relevant once we (re-)decide
+    // what to fetch here; it will be set again below if still applicable.
+    m_backGapPending = false;
+
     QVariantMap params = fetchParams();
     QMetaEnum metaEnum = QMetaEnum::fromType<SampleRate>();
     params.insert("sampleRate", metaEnum.valueToKey(m_sampleRate));
@@ -538,10 +558,25 @@ void EnergyLogs::fetchLogs()
             endTime = m_endTime;
         } else {
 
-            if (m_startTime < oldestExisting) {
+            bool frontGapExists = m_startTime < oldestExisting;
+            bool backGapExists = newestExisting < m_endTime;
+
+            if (frontGapExists) {
                 startTime = m_startTime;
                 endTime = qMin(m_endTime, oldestExisting.addSecs(-m_sampleRate * 60));
-            } else if (newestExisting < m_endTime) {
+                // The requested window may have grown on both edges at once
+                // (e.g. zooming out): a single request can only cover one
+                // contiguous gap, so the past-side gap above is prioritized
+                // and the future-side gap is deferred to a one-shot
+                // follow-up fetch once this response has been processed
+                // (see getLogsResponse()). Without this, zooming out would
+                // never fetch the future-side gap: every further zoom-out
+                // step moves m_startTime earlier too, so this branch would
+                // keep winning over the "else if" below forever.
+                if (backGapExists) {
+                    m_backGapPending = true;
+                }
+            } else if (backGapExists) {
                 startTime = qMax(m_startTime, newestExisting.addSecs(m_sampleRate * 60));
                 endTime = m_endTime;
             } else {
@@ -559,5 +594,20 @@ void EnergyLogs::fetchLogs()
     fetchingDataChanged();
 
     qCDebug(dcEnergyLogs()) << "Fetching energy logs:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
+    m_engine->jsonRpcClient()->sendCommand("Energy.Get" + logsName(), params, this, "getLogsResponse");
+}
+
+void EnergyLogs::fetchGap(const QDateTime &from, const QDateTime &to)
+{
+    QVariantMap params = fetchParams();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SampleRate>();
+    params.insert("sampleRate", metaEnum.valueToKey(m_sampleRate));
+    params.insert("from", from.toSecsSinceEpoch());
+    params.insert("to", to.toSecsSinceEpoch());
+
+    m_fetchingData = true;
+    fetchingDataChanged();
+
+    qCDebug(dcEnergyLogs()) << "Fetching energy logs (gap follow-up):" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
     m_engine->jsonRpcClient()->sendCommand("Energy.Get" + logsName(), params, this, "getLogsResponse");
 }
