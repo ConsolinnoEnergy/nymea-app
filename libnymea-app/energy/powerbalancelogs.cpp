@@ -32,7 +32,7 @@ PowerBalanceLogEntry::PowerBalanceLogEntry(QObject *parent): EnergyLogEntry(pare
 
 }
 
-PowerBalanceLogEntry::PowerBalanceLogEntry(const QDateTime &timestamp, double consumption, double production, double acquisition, double storage, double totalConsumption, double totalProduction, double totalAcquisition, double totalReturn, QObject *parent):
+PowerBalanceLogEntry::PowerBalanceLogEntry(const QDateTime &timestamp, double consumption, double production, double acquisition, double storage, double totalConsumption, double totalProduction, double totalAcquisition, double totalReturn, double totalToStorage, double totalFromStorage, int stateOfCharge, QObject *parent):
     EnergyLogEntry(timestamp, parent),
     m_consumption(consumption),
     m_production(production),
@@ -41,7 +41,10 @@ PowerBalanceLogEntry::PowerBalanceLogEntry(const QDateTime &timestamp, double co
     m_totalConsumption(totalConsumption),
     m_totalProduction(totalProduction),
     m_totalAcquisition(totalAcquisition),
-    m_totalReturn(totalReturn)
+    m_totalReturn(totalReturn),
+    m_totalToStorage(totalToStorage),
+    m_totalFromStorage(totalFromStorage),
+    m_stateOfCharge(stateOfCharge)
 {
 
 }
@@ -86,6 +89,21 @@ double PowerBalanceLogEntry::totalReturn() const
     return m_totalReturn;
 }
 
+double PowerBalanceLogEntry::totalToStorage() const
+{
+    return m_totalToStorage;
+}
+
+double PowerBalanceLogEntry::totalFromStorage() const
+{
+    return m_totalFromStorage;
+}
+
+int PowerBalanceLogEntry::stateOfCharge() const
+{
+    return m_stateOfCharge;
+}
+
 PowerBalanceLogs::PowerBalanceLogs(QObject *parent) : EnergyLogs(parent)
 {
 
@@ -117,7 +135,10 @@ QList<EnergyLogEntry *> PowerBalanceLogs::unpackEntries(const QVariantMap &param
         double totalProduction = map.value("totalProduction").toDouble();
         double totalAcquisition = map.value("totalAcquisition").toDouble();
         double totalReturn = map.value("totalReturn").toDouble();
-        PowerBalanceLogEntry *entry = new PowerBalanceLogEntry(timestamp, consumption, production, acquisition, storage, totalConsumption, totalProduction, totalAcquisition, totalReturn, this);
+        double totalToStorage = map.value("totalToStorage").toDouble();
+        double totalFromStorage = map.value("totalFromStorage").toDouble();
+        int stateOfCharge = map.value("stateOfCharge").toInt();
+        PowerBalanceLogEntry *entry = new PowerBalanceLogEntry(timestamp, consumption, production, acquisition, storage, totalConsumption, totalProduction, totalAcquisition, totalReturn, totalToStorage, totalFromStorage, stateOfCharge, this);
 
         *minValue = qMin(qMin(qMin(qMin(*minValue, consumption), production), acquisition), storage);
         *maxValue = qMax(qMax(qMax(qMax(*maxValue, consumption), production), acquisition), storage);
@@ -150,7 +171,10 @@ void PowerBalanceLogs::notificationReceived(const QVariantMap &data)
         double totalProduction = map.value("totalProduction").toDouble();
         double totalAcquisition = map.value("totalAcquisition").toDouble();
         double totalReturn = map.value("totalReturn").toDouble();
-        PowerBalanceLogEntry *entry = new PowerBalanceLogEntry(timestamp, consumption, production, acquisition, storage, totalConsumption, totalProduction, totalAcquisition, totalReturn, this);
+        double totalToStorage = map.value("totalToStorage").toDouble();
+        double totalFromStorage = map.value("totalFromStorage").toDouble();
+        int stateOfCharge = map.value("stateOfCharge").toInt();
+        PowerBalanceLogEntry *entry = new PowerBalanceLogEntry(timestamp, consumption, production, acquisition, storage, totalConsumption, totalProduction, totalAcquisition, totalReturn, totalToStorage, totalFromStorage, stateOfCharge, this);
         double minValue = qMin(qMin(qMin(consumption, production), acquisition), storage);
         double maxValue = qMax(qMax(qMax(consumption, production), acquisition), storage);
         appendEntry(entry, minValue, maxValue);
