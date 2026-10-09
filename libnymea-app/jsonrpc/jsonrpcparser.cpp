@@ -13,6 +13,11 @@ JsonRpcParser::JsonRpcParser(QObject *parent):
 {
 }
 
+void JsonRpcParser::setLatestGeneration(int generation)
+{
+    m_latestGeneration = generation;
+}
+
 void JsonRpcParser::reset(int generation)
 {
     m_generation = generation;
@@ -21,7 +26,7 @@ void JsonRpcParser::reset(int generation)
 
 void JsonRpcParser::parse(const QByteArray &data, int generation)
 {
-    if (generation != m_generation) {
+    if (generation != m_generation || generation != m_latestGeneration) {
         // Data from a previous connection
         return;
     }
@@ -29,6 +34,10 @@ void JsonRpcParser::parse(const QByteArray &data, int generation)
     m_receiveBuffer.append(data);
 
     while (!m_receiveBuffer.isEmpty()) {
+        if (generation != m_latestGeneration) {
+            m_receiveBuffer.clear();
+            return;
+        }
         int splitIndex = static_cast<int>(m_receiveBuffer.indexOf("}\n{")) + 1;
         if (splitIndex <= 0) {
             splitIndex = m_receiveBuffer.length();

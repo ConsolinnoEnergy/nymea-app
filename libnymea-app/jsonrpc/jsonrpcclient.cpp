@@ -587,7 +587,8 @@ void JsonRpcClient::dataReceived(const QByteArray &data)
 void JsonRpcClient::resetParser()
 {
     // Messages still in flight from the previous connection are dropped by their outdated generation
-    emit parserResetRequested(++m_parserGeneration);
+    m_parser->setLatestGeneration(++m_parserGeneration);
+    emit parserResetRequested(m_parserGeneration);
 }
 
 void JsonRpcClient::messageReceived(const QVariantMap &dataMap, int generation)
