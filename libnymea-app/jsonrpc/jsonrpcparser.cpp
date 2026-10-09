@@ -33,6 +33,19 @@ void JsonRpcParser::parse(const QByteArray &data, int generation)
 
     m_receiveBuffer.append(data);
 
+    // Parsing is deferred until all chunks that are already queued have been appended.
+    // Otherwise every chunk of a large message would trigger a new parse of the whole buffer.
+    if (!m_processScheduled) {
+        m_processScheduled = true;
+        QMetaObject::invokeMethod(this, &JsonRpcParser::process, Qt::QueuedConnection);
+    }
+}
+
+void JsonRpcParser::process()
+{
+    m_processScheduled = false;
+    const int generation = m_generation;
+
     while (!m_receiveBuffer.isEmpty()) {
         if (generation != m_latestGeneration) {
             m_receiveBuffer.clear();
@@ -52,6 +65,6 @@ void JsonRpcParser::parse(const QByteArray &data, int generation)
         }
         m_receiveBuffer = m_receiveBuffer.right(m_receiveBuffer.length() - splitIndex - 1);
 
-        emit messageParsed(jsonDoc.toVariant().toMap(), m_generation);
+        emit messageParsed(jsonDoc.toVariant().toMap(), generation);
     }
 }

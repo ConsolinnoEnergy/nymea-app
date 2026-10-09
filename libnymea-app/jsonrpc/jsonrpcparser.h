@@ -26,8 +26,12 @@ public slots:
 signals:
     void messageParsed(const QVariantMap &message, int generation);
 
+private slots:
+    void process();
+
 private:
     QByteArray m_receiveBuffer;
+    bool m_processScheduled = false;
     int m_generation = 0;
     std::atomic<int> m_latestGeneration{0};
 };
