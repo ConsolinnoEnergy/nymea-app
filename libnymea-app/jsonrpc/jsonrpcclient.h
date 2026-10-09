@@ -30,6 +30,9 @@
 #include <QVariantMap>
 #include <QVersionNumber>
 
+class QThread;
+class JsonRpcParser;
+
 #include "connection/nymeaconnection.h"
 #include "types/userinfo.h"
 
@@ -61,6 +64,7 @@ class JsonRpcClient : public QObject
 
 public:
     explicit JsonRpcClient(QObject *parent = nullptr);
+    ~JsonRpcClient() override;
 
     void registerNotificationHandler(QObject *handler, const QString &nameSpace, const QString &method);
     void unregisterNotificationHandler(QObject *handler);
@@ -131,9 +135,13 @@ signals:
 
     void responseReceived(const int &commandId, const QVariantMap &response);
 
+    void parseRequested(const QByteArray &data, int generation);
+    void parserResetRequested(int generation);
+
 private slots:
     void onInterfaceConnectedChanged(bool connected);
     void dataReceived(const QByteArray &data);
+    void messageReceived(const QVariantMap &dataMap, int generation);
 
     void helloReply(int commandId, const QVariantMap &params);
 
@@ -160,7 +168,10 @@ private:
     QString m_serverQtVersion;
     QString m_serverQtBuildVersion;
     QByteArray m_token;
-    QByteArray m_receiveBuffer;
+    QThread *m_parserThread = nullptr;
+    JsonRpcParser *m_parser = nullptr;
+    int m_parserGeneration = 0;
+    void resetParser();
     QHash<QString, QString> m_cacheHashes;
     QVariantMap m_experiences;
     UserInfo::PermissionScopes m_permissionScopes = UserInfo::PermissionScopeNone;

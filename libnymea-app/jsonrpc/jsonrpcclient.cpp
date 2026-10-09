@@ -26,6 +26,7 @@
 #include "connection/nymeaconnection.h"
 #include "types/param.h"
 #include "types/params.h"
+#include "jsonrpcparser.h"
 
 #include "connection/tcpsockettransport.h"
 #include "connection/websockettransport.h"
@@ -43,6 +44,7 @@
 #include <QDir>
 #include <QStandardPaths>
 #include <QRegularExpression>
+#include <QThread>
 
 #include "logging.h"
 NYMEA_LOGGING_CATEGORY(dcJsonRpc, "JsonRpc")
@@ -66,7 +68,25 @@ JsonRpcClient::JsonRpcClient(QObject *parent) :
     // Especially on mobile platforms (hello Android) we get a huge queue of buffers upon resume from suspend just to get a disconnect after that.
     connect(m_connection, &NymeaConnection::dataAvailable, this, &JsonRpcClient::dataReceived, Qt::QueuedConnection);
 
+    // Parsing large replies (e.g. Introspect, thing classes) can take several seconds on mobile devices.
+    // Do it in a worker thread to not block the main thread (iOS would kill the app via watchdog).
+    m_parserThread = new QThread(this);
+    m_parserThread->setObjectName("JsonRpcParser");
+    m_parser = new JsonRpcParser();
+    m_parser->moveToThread(m_parserThread);
+    connect(m_parserThread, &QThread::finished, m_parser, &QObject::deleteLater);
+    connect(this, &JsonRpcClient::parseRequested, m_parser, &JsonRpcParser::parse, Qt::QueuedConnection);
+    connect(this, &JsonRpcClient::parserResetRequested, m_parser, &JsonRpcParser::reset, Qt::QueuedConnection);
+    connect(m_parser, &JsonRpcParser::messageParsed, this, &JsonRpcClient::messageReceived, Qt::QueuedConnection);
+    m_parserThread->start();
+
     registerNotificationHandler(this, QStringLiteral("JSONRPC"), "notificationReceived");
+}
+
+JsonRpcClient::~JsonRpcClient()
+{
+    m_parserThread->quit();
+    m_parserThread->wait();
 }
 
 void JsonRpcClient::registerNotificationHandler(QObject *handler, const QString &nameSpace, const QString &method)
@@ -529,7 +549,7 @@ void JsonRpcClient::onInterfaceConnectedChanged(bool connected)
         m_initialSetupRequired = false;
         m_authenticationRequired = false;
         m_authenticated = false;
-        m_receiveBuffer.clear();
+        resetParser();
         m_serverQtVersion.clear();
         m_serverQtBuildVersion.clear();
         if (m_connected) {
@@ -539,7 +559,7 @@ void JsonRpcClient::onInterfaceConnectedChanged(bool connected)
     } else {
         qCInfo(dcJsonRpc()) << "JsonRpcClient: Transport connected. Starting handshake.";
         // Clear anything that might be left in the buffer from a previous connection.
-        m_receiveBuffer.clear();
+        resetParser();
 
         // Load token for this host
         QSettings settings;
@@ -561,32 +581,25 @@ void JsonRpcClient::dataReceived(const QByteArray &data)
         // In that case we can discard all pending packages as we'll have to reconnect anyways.
         return;
     }
-    //    qDebug() << "JsonRpcClient: received data:" << qUtf8Printable(data);
-    m_receiveBuffer.append(data);
+    emit parseRequested(data, m_parserGeneration);
+}
 
-    int splitIndex = static_cast<int>(m_receiveBuffer.indexOf("}\n{")) + 1;
-    if (splitIndex <= 0) {
-        splitIndex = m_receiveBuffer.length();
-    }
-    QJsonParseError error;
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(m_receiveBuffer.left(splitIndex), &error);
-    qCDebug(dcJsonRpc()) << "Received JSON doc. Error:" << error.errorString();
-    qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(jsonDoc.toJson());
-    if (error.error != QJsonParseError::NoError) {
-        //        qWarning() << "Could not parse json data from nymea" << m_receiveBuffer.left(splitIndex) << error.errorString();
+void JsonRpcClient::resetParser()
+{
+    // Messages still in flight from the previous connection are dropped by their outdated generation
+    m_parser->setLatestGeneration(++m_parserGeneration);
+    emit parserResetRequested(m_parserGeneration);
+}
+
+void JsonRpcClient::messageReceived(const QVariantMap &dataMap, int generation)
+{
+    if (generation != m_parserGeneration) {
         return;
     }
-    //    qDebug() << "received response" << qUtf8Printable(jsonDoc.toJson(QJsonDocument::Indented));
-    m_receiveBuffer = m_receiveBuffer.right(m_receiveBuffer.length() - splitIndex - 1);
-    if (!m_receiveBuffer.isEmpty()) {
-        staticMetaObject.invokeMethod(this, "dataReceived", Qt::QueuedConnection, Q_ARG(QByteArray, QByteArray()));
-    }
-
-    QVariantMap dataMap = jsonDoc.toVariant().toMap();
 
     // check if this is a notification
     if (dataMap.contains("notification")) {
-        qCDebug(dcJsonRpc()) << "Incoming notification:" << qUtf8Printable(jsonDoc.toJson());
+        qCDebug(dcJsonRpc()) << "Incoming notification:" << qUtf8Printable(QJsonDocument::fromVariant(dataMap).toJson());
         // Check if our permissions changed
         if (dataMap.value("notification").toString() == "Users.UserChanged") {
             QVariantMap userMap = dataMap.value("params").toMap().value("userInfo").toMap();
