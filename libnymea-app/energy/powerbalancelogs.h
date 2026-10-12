@@ -43,9 +43,11 @@ class PowerBalanceLogEntry: public EnergyLogEntry
     Q_PROPERTY(double totalProduction READ totalProduction CONSTANT)
     Q_PROPERTY(double totalAcquisition READ totalAcquisition CONSTANT)
     Q_PROPERTY(double totalReturn READ totalReturn CONSTANT)
+    Q_PROPERTY(double totalToStorage READ totalToStorage CONSTANT)
+    Q_PROPERTY(double totalFromStorage READ totalFromStorage CONSTANT)
 public:
     PowerBalanceLogEntry(QObject *parent = nullptr);
-    PowerBalanceLogEntry(const QDateTime &timestamp, double consumption, double production, double acquisition, double storage, double totalConsumption, double totalProduction, double totalAcquisition, double totalReturn, QObject *parent);
+    PowerBalanceLogEntry(const QDateTime &timestamp, double consumption, double production, double acquisition, double storage, double totalConsumption, double totalProduction, double totalAcquisition, double totalReturn, double totalToStorage, double totalFromStorage, QObject *parent);
 
     double consumption() const;
     double production() const;
@@ -55,6 +57,8 @@ public:
     double totalProduction() const;
     double totalAcquisition() const;
     double totalReturn() const;
+    double totalToStorage() const;
+    double totalFromStorage() const;
 private:
     QDateTime m_timestamp;
     double m_consumption = 0;
@@ -65,6 +69,8 @@ private:
     double m_totalProduction = 0;
     double m_totalAcquisition = 0;
     double m_totalReturn = 0;
+    double m_totalToStorage = 0;
+    double m_totalFromStorage = 0;
 };
 
 class PowerBalanceLogs : public EnergyLogs
