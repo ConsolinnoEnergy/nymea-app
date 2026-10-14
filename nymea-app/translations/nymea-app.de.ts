@@ -5355,7 +5355,7 @@ Bitte versuche es erneut.</translation>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="95"/>
         <source>In order to use your %1 system, please log in.</source>
-        <translation>Um Dein %1 System zu nutzen, melden Sie sich bitte an.</translation>
+        <translation>Um dein %1 System zu nutzen, melde dich bitte an.</translation>
     </message>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="151"/>
@@ -5365,7 +5365,7 @@ Bitte versuche es erneut.</translation>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="66"/>
         <source>An error happened with the user storage. Please make sure your %1 system is installed correctly.</source>
-        <translation>In der Benutzerverwaltung ist ein Fehler aufgetreten. Bitte stelle sicher, dass Dein %1 System korrekt installiert ist.</translation>
+        <translation>In der Benutzerverwaltung ist ein Fehler aufgetreten. Bitte stelle sicher, dass dein %1 System korrekt installiert ist.</translation>
     </message>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="56"/>
@@ -5411,12 +5411,12 @@ Bitte versuche es erneut.</translation>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="173"/>
         <source>If you are the owner and do not have your own account, have your installer create an account for you.</source>
-        <translation>Wenn Sie Anlagenbesitzer sind und keinen Account besitzen, lassen Sie sich von Ihrem Installateur einen Account anlegen.</translation>
+        <translation>Wenn du Anlagenbesitzer bist und keinen Account besitzt, lasse dir von deinem Installateur einen Account anlegen.</translation>
     </message>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="180"/>
         <source>If you are an installer and do not have your own account, you can authenticate yourself using the test button on the leaflet (see quick start guide or user manual).</source>
-        <translation>Sind Sie Installateur und besitzen keinen Account, können Sie sich über den Test-Taster authentifizieren (siehe Kurzanleitung und Gebrauchsanleitung).</translation>
+        <translation>Bist du Installateur und besitzt keinen Account, kannst du dich über den Test-Taster authentifizieren (siehe Kurzanleitung und Gebrauchsanleitung).</translation>
     </message>
     <message>
         <location filename="../ui/connection/LoginPage.qml" line="35"/>
@@ -8097,7 +8097,7 @@ Möchtest Du fortfahren?</translation>
     <message>
         <location filename="../ui/PushButtonAuthPage.qml" line="52"/>
         <source>Sorry, something went wrong during the setup. Try again please.</source>
-        <translation>Entschuldigung, bei der Einrichtung ist etwas schief gelaufen. Bitte versuchen Sie es erneut.</translation>
+        <translation>Entschuldigung, bei der Einrichtung ist etwas schief gelaufen. Bitte versuche es erneut.</translation>
     </message>
     <message>
         <location filename="../ui/PushButtonAuthPage.qml" line="67"/>
@@ -8107,12 +8107,12 @@ Möchtest Du fortfahren?</translation>
     <message>
         <location filename="../ui/PushButtonAuthPage.qml" line="75"/>
         <source>To complete authentication, press the test button again for 5 sec. until the status LED lights up green.</source>
-        <translation>Um die Authentifizierung abzuschließen, drücken Sie erneut 5 Sekunden lang die Testtaste, bis die Status-LED grün aufleuchtet.</translation>
+        <translation>Um die Authentifizierung abzuschließen, drücke erneut 5 Sekunden lang die Testtaste, bis die Status-LED grün aufleuchtet.</translation>
     </message>
     <message>
         <location filename="../ui/PushButtonAuthPage.qml" line="82"/>
         <source>If the status LED flashes red briefly or this screen remains displayed, the authentication has failed. Please go back and restart the process.</source>
-        <translation>Falls die Status-LED kurz rot leuchtet oder dieser Bildschirm dauerhaft angezeigt wird, ist die Authentifizierung abgebrochen. Gehen Sie zurück und starten Sie den Prozess erneut.</translation>
+        <translation>Falls die Status-LED kurz rot leuchtet oder dieser Bildschirm dauerhaft angezeigt wird, ist die Authentifizierung abgebrochen. Gehe zurück und starte den Prozess erneut.</translation>
     </message>
 </context>
 <context>
@@ -8150,7 +8150,7 @@ Möchtest Du fortfahren?</translation>
     </message>
     <message>
         <source>Do you want to save the changes before leaving this page?</source>
-        <translation>Möchten Sie die Änderungen speichern, bevor Sie diese Seite verlassen?</translation>
+        <translation>Möchtest du die Änderungen speichern, bevor du diese Seite verlässt?</translation>
     </message>
     <message>
         <source>Discard</source>
