@@ -39,6 +39,7 @@ class PowerBalanceLogEntry: public EnergyLogEntry
     Q_PROPERTY(double production READ production CONSTANT)
     Q_PROPERTY(double acquisition READ acquisition CONSTANT)
     Q_PROPERTY(double storage READ storage CONSTANT)
+    Q_PROPERTY(double unknownConsumption READ unknownConsumption CONSTANT)
     Q_PROPERTY(double totalConsumption READ totalConsumption CONSTANT)
     Q_PROPERTY(double totalProduction READ totalProduction CONSTANT)
     Q_PROPERTY(double totalAcquisition READ totalAcquisition CONSTANT)
@@ -46,14 +47,16 @@ class PowerBalanceLogEntry: public EnergyLogEntry
     Q_PROPERTY(double totalToStorage READ totalToStorage CONSTANT)
     Q_PROPERTY(double totalFromStorage READ totalFromStorage CONSTANT)
     Q_PROPERTY(int stateOfCharge READ stateOfCharge CONSTANT)
+    Q_PROPERTY(double totalUnknownConsumption READ totalUnknownConsumption CONSTANT)
 public:
     PowerBalanceLogEntry(QObject *parent = nullptr);
-    PowerBalanceLogEntry(const QDateTime &timestamp, double consumption, double production, double acquisition, double storage, double totalConsumption, double totalProduction, double totalAcquisition, double totalReturn, double totalToStorage, double totalFromStorage, int stateOfCharge, QObject *parent);
+    PowerBalanceLogEntry(const QDateTime &timestamp, double consumption, double production, double acquisition, double storage, double unknownConsumption, double totalConsumption, double totalProduction, double totalAcquisition, double totalReturn, double totalToStorage, double totalFromStorage, int stateOfCharge, double totalUnknownConsumption, QObject *parent);
 
     double consumption() const;
     double production() const;
     double acquisition() const;
     double storage() const;
+    double unknownConsumption() const;
     double totalConsumption() const;
     double totalProduction() const;
     double totalAcquisition() const;
@@ -61,12 +64,14 @@ public:
     double totalToStorage() const;
     double totalFromStorage() const;
     int stateOfCharge() const;
+    double totalUnknownConsumption() const;
 private:
     QDateTime m_timestamp;
     double m_consumption = 0;
     double m_production = 0;
     double m_acquisition = 0;
     double m_storage = 0;
+    double m_unknownConsumption = 0;
     double m_totalConsumption = 0;
     double m_totalProduction = 0;
     double m_totalAcquisition = 0;
@@ -74,6 +79,7 @@ private:
     double m_totalToStorage = 0;
     double m_totalFromStorage = 0;
     int m_stateOfCharge = 0;
+    double m_totalUnknownConsumption = 0;
 };
 
 class PowerBalanceLogs : public EnergyLogs

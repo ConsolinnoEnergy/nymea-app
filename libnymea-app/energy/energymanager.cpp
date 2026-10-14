@@ -136,6 +136,11 @@ int EnergyManager::stateOfCharge() const
     return m_stateOfCharge;
 }
 
+double EnergyManager::totalUnknownConsumption() const
+{
+    return m_totalUnknownConsumption;
+}
+
 void EnergyManager::notificationReceived(const QVariantMap &data)
 {
     QString notification = data.value("notification").toString();
@@ -156,6 +161,7 @@ void EnergyManager::notificationReceived(const QVariantMap &data)
         m_totalToStorage = params.value("totalToStorage").toDouble();
         m_totalFromStorage = params.value("totalFromStorage").toDouble();
         m_stateOfCharge = params.value("stateOfCharge").toInt();
+        m_totalUnknownConsumption = params.value("totalUnknownConsumption").toDouble();
         emit powerBalanceChanged();
 
     } else if (notification == "Energy.PowerBalanceLogEntryAdded") {
@@ -191,6 +197,7 @@ void EnergyManager::getPowerBalanceResponse(int commandId, const QVariantMap &pa
     m_totalToStorage = params.value("totalToStorage").toDouble();
     m_totalFromStorage = params.value("totalFromStorage").toDouble();
     m_stateOfCharge = params.value("stateOfCharge").toInt();
+    m_totalUnknownConsumption = params.value("totalUnknownConsumption").toDouble();
     emit powerBalanceChanged();
 }
 

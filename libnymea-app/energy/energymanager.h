@@ -47,6 +47,7 @@ class EnergyManager : public QObject
     Q_PROPERTY(double totalToStorage READ totalToStorage NOTIFY powerBalanceChanged)
     Q_PROPERTY(double totalFromStorage READ totalFromStorage NOTIFY powerBalanceChanged)
     Q_PROPERTY(int stateOfCharge READ stateOfCharge NOTIFY powerBalanceChanged)
+    Q_PROPERTY(double totalUnknownConsumption READ totalUnknownConsumption NOTIFY powerBalanceChanged)
 
 public:
     explicit EnergyManager(QObject *parent = nullptr);
@@ -69,6 +70,7 @@ public:
     double totalToStorage() const;
     double totalFromStorage() const;
     int stateOfCharge() const;
+    double totalUnknownConsumption() const;
 
 signals:
     void engineChanged();
@@ -95,6 +97,7 @@ private:
     double m_totalToStorage = 0;
     double m_totalFromStorage = 0;
     int m_stateOfCharge = 0;
+    double m_totalUnknownConsumption = 0;
 };
 
 #endif // ENERGYMANAGER_H
