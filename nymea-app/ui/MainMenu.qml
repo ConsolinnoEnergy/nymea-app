@@ -228,7 +228,6 @@ Drawer {
                                 Button {
                                     text: qsTr("Remove")
                                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
-                                    height: implicitHeight
                                 }
                                 Button {
                                     text: qsTr("Cancel")
