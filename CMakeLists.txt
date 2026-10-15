@@ -98,7 +98,10 @@ if(ANDROID)
     FetchContent_Declare(
         android_openssl
         DOWNLOAD_EXTRACT_TIMESTAMP true
-        URL https://github.com/KDAB/android_openssl/archive/refs/heads/master.zip
+        # Consolinno fork: rebuilds ssl_3 against OpenSSL 3.5.9 (LTS) since
+        # KDAB upstream still ships the EOL'd OpenSSL 3.1.8. Pinned to a
+        # commit (not a branch) for reproducible builds.
+        URL https://github.com/ConsolinnoEnergy/android_openssl/archive/ba6c1790643a4bcadbd1cee1d45a0b36ad270e6e.zip
     )
     FetchContent_MakeAvailable(android_openssl)
     include(${android_openssl_SOURCE_DIR}/android_openssl.cmake)
