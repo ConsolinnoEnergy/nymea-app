@@ -35,13 +35,14 @@ Optional configuration flags to be passed to qmake:
 > Enables building the testrunner target
 
 ## Android
-When targeting Android, the build will download the KDAB
-[`android_openssl`](https://github.com/KDAB/android_openssl) package at
-configure time and automatically bundle the provided `libssl` and `libcrypto`
-shared libraries inside the APK. An active internet connection is therefore
-required the first time you configure an Android build directory. Other
-platforms will build without explicitly linking to OpenSSL if the development
-package is not installed.
+When targeting Android, the build will download the Consolinno fork of KDAB's
+[`android_openssl`](https://github.com/ConsolinnoEnergy/android_openssl)
+package (pinned to a specific commit, rebuilt against a current OpenSSL LTS
+release) at configure time and automatically bundle the provided `libssl` and
+`libcrypto` shared libraries inside the APK. An active internet connection is
+therefore required the first time you configure an Android build directory.
+Other platforms will build without explicitly linking to OpenSSL if the
+development package is not installed.
 
 ## Windows
 
