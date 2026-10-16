@@ -208,6 +208,12 @@ QString ThingClass::baseInterface() const
         if (interface == "fingerprintreader") {
             return "fingerprintreader";
         }
+        if (interface == "smartwhitegood" ||
+            interface == "smartdishwasher" ||
+            interface == "smartdryer" ||
+            interface == "smartwashingmachine") {
+            return "smartwhitegood";
+        }
     }
     return "uncategorized";
 }

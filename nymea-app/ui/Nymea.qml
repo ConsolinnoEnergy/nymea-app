@@ -285,6 +285,11 @@ ApplicationWindow {
             return qsTr("Door/Window sensors");
         case "o3sensor":
             return qsTr("Ozone sensors");
+        case "smartwhitegood":
+        case "smartdishwasher":
+        case "smartdryer":
+        case "smartwashingmachine":
+            return qsTr("Home appliances");
         case "uncategorized":
             return qsTr("Uncategorized")
         default:

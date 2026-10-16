@@ -4,32 +4,32 @@
 <context>
     <name>ACChartsPage</name>
     <message>
-        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="111"/>
+        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="114"/>
         <source>Hours</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="116"/>
+        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="119"/>
         <source>Days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="121"/>
+        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="124"/>
         <source>Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="126"/>
+        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="129"/>
         <source>Months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="1052"/>
+        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="1158"/>
         <source>Window open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="1057"/>
+        <location filename="../ui/mainviews/airconditioning/ACChartsPage.qml" line="1163"/>
         <source>Heating on</source>
         <translation type="unfinished"></translation>
     </message>
@@ -133,37 +133,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="53"/>
+        <location filename="../ui/appsettings/AboutPage.qml" line="46"/>
         <source>App version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="42"/>
-        <source>Suru icons by Ubuntu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="43"/>
-        <source>Ubuntu font by Ubuntu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="44"/>
-        <source>QtZeroConf library by Jonathan Bagg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="45"/>
-        <source>OpenSSL libraries by Eric Young</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="46"/>
-        <source>Oswald font by The Oswald Project</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/appsettings/AboutPage.qml" line="54"/>
+        <location filename="../ui/appsettings/AboutPage.qml" line="47"/>
         <source>Revision:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -171,74 +146,77 @@
 <context>
     <name>ActionLogPage</name>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="43"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="99"/>
         <source>History for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="57"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="113"/>
         <source>Remove logs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="58"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="114"/>
         <source>Do you want to remove the log for this action and disable logging?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="110"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="64"/>
         <source>User action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="110"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="70"/>
         <source>Automation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="112"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="76"/>
         <source>success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="112"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="77"/>
         <source>Failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="156"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="202"/>
         <source>Logging not enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="159"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="205"/>
         <source>Enable logging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="157"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="203"/>
         <source>This action is not being logged.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="146"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="192"/>
         <source>No data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ActionLogPage.qml" line="147"/>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="193"/>
         <source>This action has not been executed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="61"/>
         <source>User action by %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="63"/>
         <source>User action by %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ActionLogPage.qml" line="68"/>
         <source>Automation by %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -438,12 +416,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/AppSettingsPage.qml" line="70"/>
+        <location filename="../ui/appsettings/AppSettingsPage.qml" line="71"/>
         <source>About %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/AppSettingsPage.qml" line="71"/>
+        <location filename="../ui/appsettings/AppSettingsPage.qml" line="72"/>
         <source>Find app versions and licence information</source>
         <translation type="unfinished"></translation>
     </message>
@@ -464,243 +442,307 @@
 <context>
     <name>BackupSettingsPage</name>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="38"/>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="41"/>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="503"/>
         <source>Backup settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="52"/>
         <source>Creating backup...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="55"/>
         <source>Transferring backup...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="154"/>
         <source>%1 of %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="215"/>
         <source>Backup files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="252"/>
         <source>Create backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="264"/>
         <source>Create and download backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="278"/>
         <source>Upload and restore backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="295"/>
         <source>Save backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="298"/>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="341"/>
         <source>Backup archives (*.tar.gz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="339"/>
         <source>Select backup file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="400"/>
         <source>Failed to create the backup: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="404"/>
         <source>Backup created successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="415"/>
         <source>Failed to prepare the backup download: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="419"/>
         <source>The server did not provide a download for the requested backup.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="428"/>
         <source>Failed to prepare the backup file download: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="432"/>
         <source>The server did not provide a download for the selected backup file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="444"/>
         <source>Backup saved to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="461"/>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="472"/>
         <source>Backup uploaded. The server is restoring it and will reboot once finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="505"/>
         <source>Saving backup settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="511"/>
         <source>1 Day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="512"/>
         <source>2 Days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="513"/>
         <source>Weekly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="514"/>
         <source>Once a month</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="515"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="578"/>
         <source>Backup configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="585"/>
         <source>Backup destination directory on the server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="592"/>
         <source>Destination directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="599"/>
         <source>Number of backups to keep (Select 0 to keep all backups)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="617"/>
         <source>Automatic backups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="625"/>
         <source>Automatic backup interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="641"/>
         <source>Custom interval in hours</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="667"/>
         <source>Apply backup settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="709"/>
         <source>Failed to update the backup settings: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="713"/>
         <source>Backup settings updated successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="732"/>
         <source>Deleting backup file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="732"/>
         <source>Restoring backup file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="735"/>
         <source>Backup file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="769"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="777"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="785"/>
         <source>Server version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="793"/>
         <source>Created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="803"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="820"/>
         <source>Delete backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="832"/>
         <source>Restore backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="852"/>
         <source>Failed to delete the backup file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="856"/>
         <source>Backup file deleted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="868"/>
         <source>Failed to restore the backup file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="872"/>
         <source>Backup restore started. The server will reboot once finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="883"/>
         <source>Delete backup file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="884"/>
         <source>Do you really want to delete the backup file 
 %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="906"/>
         <source>Restore backup file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="907"/>
         <source>Do you really want to restore the backup file %1? All current settings will be removed and the server will reboot once finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="930"/>
         <source>Upload and restore backup?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="931"/>
         <source>Do you really want to upload and restore the backup file %1? All current settings will be removed and the server will reboot once finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="54"/>
         <source>Preparing backup download...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="133"/>
         <source>Could not prepare a local backup file for export.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="174"/>
         <source>Please select a backup archive (*.tar.gz).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="224"/>
         <source>There is no backup file in the backup directory %1 yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/BackupSettingsPage.qml" line="442"/>
         <source>Backup downloaded. Choose Save to Files to store it in Downloads.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -822,22 +864,22 @@
 <context>
     <name>ButtonControls</name>
     <message>
-        <location filename="../ui/components/ButtonControls.qml" line="63"/>
+        <location filename="../ui/components/ButtonControls.qml" line="65"/>
         <source>On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/ButtonControls.qml" line="73"/>
+        <location filename="../ui/components/ButtonControls.qml" line="75"/>
         <source>All off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/ButtonControls.qml" line="73"/>
+        <location filename="../ui/components/ButtonControls.qml" line="75"/>
         <source>%1 on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/ButtonControls.qml" line="63"/>
+        <location filename="../ui/components/ButtonControls.qml" line="65"/>
         <source>Off</source>
         <translation type="unfinished"></translation>
     </message>
@@ -997,12 +1039,12 @@
 <context>
     <name>Configuration</name>
     <message>
-        <location filename="../ui/Configuration.qml" line="51"/>
+        <location filename="../ui/Configuration.qml" line="52"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Configuration.qml" line="56"/>
+        <location filename="../ui/Configuration.qml" line="57"/>
         <source>Telegram</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1010,122 +1052,122 @@
 <context>
     <name>ConfigureThingPage</name>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="281"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="295"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="63"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="73"/>
         <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="67"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="78"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="72"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="79"/>
         <source>Reconfigure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="133"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="140"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="173"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="181"/>
         <source>Parameters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="250"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="263"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="159"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="167"/>
         <source>ID copied to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="165"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="173"/>
         <source>Thing class</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="166"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="174"/>
         <source>View the type definition for this thing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="188"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="196"/>
         <source>Input/Output Connections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="218"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="228"/>
         <source>Not connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="357"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="371"/>
         <source>Connect Inputs/Outputs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="367"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="381"/>
         <source>Connect &quot;%1&quot; to:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="439"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="453"/>
         <source>Inverted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="464"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="479"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="471"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="486"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="489"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="504"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="139"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="146"/>
         <source>Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="146"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="154"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="154"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="162"/>
         <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="313"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="327"/>
         <source>Remove thing?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="314"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="328"/>
         <source>Are you sure you want to remove %1 and all associated settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="75"/>
+        <location filename="../ui/thingconfiguration/ConfigureThingPage.qml" line="82"/>
         <source>Details</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1486,37 +1528,37 @@
 <context>
     <name>ConsumerStats</name>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="204"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="208"/>
         <source>Consumers totals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="219"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="223"/>
         <source>Hours</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="220"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="224"/>
         <source>Days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="221"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="225"/>
         <source>Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="222"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="226"/>
         <source>Months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="223"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="227"/>
         <source>Years</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="269"/>
+        <location filename="../ui/mainviews/energy/ConsumerStats.qml" line="273"/>
         <source>No data available</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1583,22 +1625,22 @@
 <context>
     <name>ConsumersPieChart</name>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="143"/>
+        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="174"/>
         <source>Consumers balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="121"/>
+        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="152"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="199"/>
+        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="230"/>
         <source>Total</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="126"/>
+        <location filename="../ui/mainviews/energy/ConsumersPieChart.qml" line="157"/>
         <source></source>
         <translation></translation>
     </message>
@@ -1606,7 +1648,7 @@
 <context>
     <name>ConsumersPieChartPage</name>
     <message>
-        <location filename="../ui/mainviews/energy/ConsumersPieChartPage.qml" line="39"/>
+        <location filename="../ui/mainviews/energy/ConsumersPieChartPage.qml" line="40"/>
         <source>Consumers balance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1614,22 +1656,22 @@
 <context>
     <name>CurrentConsumptionBalancePieChart</name>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="104"/>
+        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="153"/>
         <source>Total</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="126"/>
+        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="175"/>
         <source>From grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="148"/>
+        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="197"/>
         <source>From self production</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="168"/>
+        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="217"/>
         <source>From battery</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1639,6 +1681,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/energy/CurrentConsumptionBalancePieChart.qml" line="237"/>
         <source>From car</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1646,7 +1689,7 @@
 <context>
     <name>CurrentPowerBalancePage</name>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentPowerBalancePage.qml" line="40"/>
+        <location filename="../ui/mainviews/energy/CurrentPowerBalancePage.qml" line="41"/>
         <source>My energy mix</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1654,11 +1697,12 @@
 <context>
     <name>CurrentPowerBalancePieChart</name>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentPowerBalancePieChart.qml" line="57"/>
+        <location filename="../ui/mainviews/energy/CurrentPowerBalancePieChart.qml" line="180"/>
         <source>My energy mix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/energy/CurrentPowerBalancePieChart.qml" line="160"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1671,26 +1715,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="104"/>
+        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="149"/>
         <source>Total</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="127"/>
+        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="172"/>
         <source>Consumed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="149"/>
+        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="194"/>
         <source>To grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="169"/>
+        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="214"/>
         <source>To battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/energy/CurrentProductionBalancePieChart.qml" line="234"/>
         <source>To car</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2006,42 +2051,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="64"/>
+        <location filename="../ui/system/DeveloperTools.qml" line="147"/>
         <source>Debug server enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="73"/>
+        <location filename="../ui/system/DeveloperTools.qml" line="156"/>
         <source>In order to access the debug interface, please enable the web server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="84"/>
-        <source>The web server cannot be reached on %1.</source>
+        <location filename="../ui/system/DeveloperTools.qml" line="169"/>
+        <source>No active LAN IPv4 address was found in the network settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="95"/>
-        <source>Please enable the web server to be accessed on this address.</source>
+        <location filename="../ui/system/DeveloperTools.qml" line="178"/>
+        <source>No reachable web server configuration was found for %1. Please enable the web server on this address or on 0.0.0.0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="58"/>
+        <location filename="../ui/system/DeveloperTools.qml" line="186"/>
+        <source>The debug interface can only be reached from the LAN. If you are using the remote connection, the following link might not work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/DeveloperTools.qml" line="192"/>
+        <source>Open debug interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/DeveloperTools.qml" line="141"/>
         <source>Debug server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="109"/>
-        <source>Debug interface active at %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="115"/>
+        <location filename="../ui/system/DeveloperTools.qml" line="202"/>
         <source>Server logging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/DeveloperTools.qml" line="121"/>
+        <location filename="../ui/system/DeveloperTools.qml" line="207"/>
         <source>Server logging categories</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2063,12 +2113,12 @@
 <context>
     <name>DeviceDetailsPage</name>
     <message>
-        <location filename="../ui/devicepages/DeviceDetailsPage.qml" line="58"/>
+        <location filename="../ui/devicepages/DeviceDetailsPage.qml" line="62"/>
         <source>States</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/DeviceDetailsPage.qml" line="60"/>
+        <location filename="../ui/devicepages/DeviceDetailsPage.qml" line="64"/>
         <source>Events</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2706,121 +2756,127 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="100"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="141"/>
         <source>Window sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="119"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="160"/>
         <source>Add window sensor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="126"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="167"/>
         <source>Add window sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="127"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="168"/>
         <source>No window sensors installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="128"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="169"/>
         <source>Before a window sensor can be assigned to this zone, it needs to be connected to nymea.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="129"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="170"/>
         <source>Setup window sensor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="138"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="179"/>
         <source>Indoor sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="157"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="198"/>
         <source>Add indoor sensor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="164"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="205"/>
         <source>Add indoor sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="165"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="206"/>
         <source>No sensors installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="166"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="207"/>
         <source>Before a sensor be assigned to this zone, it needs to be connected to nymea.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="167"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="208"/>
         <source>Setup sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="216"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="257"/>
         <source>Notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="235"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="276"/>
         <source>Add notification target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="242"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="283"/>
         <source>Select notification target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="243"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="284"/>
         <source>No notification things installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="244"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="285"/>
         <source>Before a notification target can be assigned to this zone, it needs to be connected to nymea.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="245"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="286"/>
         <source>Setup notification targets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="315"/>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="356"/>
         <source>Add things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="101"/>
         <source>Valves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="121"/>
         <source>Add valve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="128"/>
         <source>Add valves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="129"/>
         <source>No valves installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="130"/>
         <source>Before a valve can be assigned to this zone, it needs to be connected to nymea.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/airconditioning/EditZoneThingsPage.qml" line="131"/>
         <source>Setup valves</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2828,18 +2884,22 @@
 <context>
     <name>ElectricVehiclesView</name>
     <message>
+        <location filename="../ui/mainviews/ElectricVehiclesView.qml" line="36"/>
         <source>Electric vehicles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/ElectricVehiclesView.qml" line="114"/>
         <source>There are no electric vehicles set up.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/ElectricVehiclesView.qml" line="115"/>
         <source>Connect your cars and chargers in order to access them from here.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainviews/ElectricVehiclesView.qml" line="117"/>
         <source>Add things</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2880,32 +2940,32 @@
 <context>
     <name>EnergyView</name>
     <message>
-        <location filename="../ui/mainviews/EnergyView.qml" line="182"/>
+        <location filename="../ui/mainviews/EnergyView.qml" line="183"/>
         <source>There are no energy meters installed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/EnergyView.qml" line="185"/>
+        <location filename="../ui/mainviews/EnergyView.qml" line="186"/>
         <source>Add things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/EnergyView.qml" line="169"/>
+        <location filename="../ui/mainviews/EnergyView.qml" line="170"/>
         <source>Install energy plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/EnergyView.qml" line="166"/>
+        <location filename="../ui/mainviews/EnergyView.qml" line="167"/>
         <source>Energy plugin not installed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/EnergyView.qml" line="167"/>
+        <location filename="../ui/mainviews/EnergyView.qml" line="168"/>
         <source>To get an overview of your current energy usage, install the energy plugin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/EnergyView.qml" line="183"/>
+        <location filename="../ui/mainviews/EnergyView.qml" line="184"/>
         <source>To get an overview of your current energy usage, set up an energy meter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2932,14 +2992,17 @@
 <context>
     <name>EvChargerDcThingPage</name>
     <message>
+        <location filename="../ui/devicepages/EvChargerDcThingPage.qml" line="86"/>
         <source>Charging power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/EvChargerDcThingPage.qml" line="119"/>
         <source>The car is not plugged in.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/EvChargerDcThingPage.qml" line="121"/>
         <source>Currently charging at %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2965,81 +3028,85 @@
 <context>
     <name>EvDashSettingsPage</name>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="46"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="136"/>
         <source>EV Dash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="79"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="173"/>
         <source>Remove user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="80"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="174"/>
         <source>Are you sure you want to remove &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="98"/>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="119"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="192"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="213"/>
         <source>The given username is already in use. Please choose a different username.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="101"/>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="122"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="195"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="216"/>
         <source>The given password is not valid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="104"/>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="125"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="198"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="219"/>
         <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="140"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="305"/>
         <source>Create a new user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="145"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="310"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="167"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="332"/>
         <source>Add user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="176"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="341"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="186"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="229"/>
         <source>Dashboard enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/EvDashSettingsPage.qml" line="193"/>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="274"/>
         <source>Manage users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="240"/>
         <source>The dashboard can only be reached from the LAN. If you are using the remote connection, the following link might not work.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="249"/>
         <source>No active LAN IPv4 address was found in the network settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="258"/>
         <source>No reachable web server configuration was found for %1. Please enable the web server on this address or on 0.0.0.0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/EvDashSettingsPage.qml" line="264"/>
         <source>Open EVDash</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3406,29 +3473,29 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="315"/>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="323"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="316"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="324"/>
         <source>Shut down %1 system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="319"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="320"/>
         <source>Are you sure you want to shut down your %1 sytem now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="337"/>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="355"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="338"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="356"/>
         <source>Reset to factory settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="368"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="369"/>
         <source>The factory reset restores all software settings to their factory defaults, thereby deleting all device settings, commissioning settings and data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/GeneralSettingsPage.qml" line="376"/>
+        <location filename="../ui/system/GeneralSettingsPage.qml" line="377"/>
         <source>I have read the message.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3768,7 +3835,7 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../ui/delegates/InterfaceTile.qml" line="288"/>
+        <location filename="../ui/delegates/InterfaceTile.qml" line="291"/>
         <source>%n things</source>
         <translation>
             <numerusform>%n thing</numerusform>
@@ -3779,1243 +3846,1233 @@ Please try again.</source>
 <context>
     <name>Interfaces</name>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="43"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="191"/>
         <source>Access control systems</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="44"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="191"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="201"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="192"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="353"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="363"/>
         <source>Access granted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="45"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="193"/>
         <source>Access denied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="47"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="195"/>
         <source>Connectable things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="48"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="196"/>
         <source>Connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="48"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="196"/>
         <source>Connected changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="50"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="198"/>
         <source>Gateways</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="52"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="200"/>
         <source>Accounts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="53"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="201"/>
         <source>User is logged in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="53"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="201"/>
         <source>User login changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="55"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="56"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="203"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="204"/>
         <source>Alert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="58"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="206"/>
         <source>Simple closables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="59"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="207"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="60"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="208"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="62"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="210"/>
         <source>Closables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="63"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="211"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="65"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="135"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="213"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="298"/>
         <source>Awnings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="67"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="215"/>
         <source>Barcode scanners</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="68"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="216"/>
         <source>Content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="69"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="217"/>
         <source>Code scanned</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="71"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="219"/>
         <source>Battery powered devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="72"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="220"/>
         <source>Battery level is critical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="72"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="220"/>
         <source>Battery level entered critical state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="73"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="221"/>
         <source>Battery level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="73"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="221"/>
         <source>Battery level changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="74"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="129"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="222"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="280"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="288"/>
         <source>Charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="74"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="222"/>
         <source>Charging started or stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="75"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="223"/>
         <source>Discharging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="75"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="223"/>
         <source>Discharging started or stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="76"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="224"/>
         <source>Plugged in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="76"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="224"/>
         <source>Plugged in or out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="78"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="137"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="226"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="300"/>
         <source>Blinds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="80"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="251"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="228"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="413"/>
         <source>Switches</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="81"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="229"/>
         <source>Button pressed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="83"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="231"/>
         <source>Sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="85"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="233"/>
         <source>Cleaning robots</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="86"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="234"/>
         <source>Robot state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="86"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="234"/>
         <source>Robot state changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="87"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="235"/>
         <source>Start cleaning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="88"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="236"/>
         <source>Stop cleaning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="89"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="237"/>
         <source>Pause cleaning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="90"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="238"/>
         <source>Return to base</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="92"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="240"/>
         <source>Closable sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="93"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="241"/>
         <source>Closed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="93"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="241"/>
         <source>Opened or closed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="95"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="243"/>
         <source>CO sensor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="96"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="244"/>
         <source>CO level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="96"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="244"/>
         <source>CO level changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="98"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="246"/>
         <source>CO2 sensor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="99"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="247"/>
         <source>CO2 level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="99"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="247"/>
         <source>CO2 level changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="101"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="249"/>
         <source>Flammable gas sensor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="102"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="250"/>
         <source>Flammable gas level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="102"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="250"/>
         <source>Flammable gas level changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="104"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="252"/>
         <source>Powered things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="105"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="253"/>
         <source>Thing is turned on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="105"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="253"/>
         <source>A thing is turned on or off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="105"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="253"/>
         <source>Turn things on or off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="107"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="255"/>
         <source>Lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="108"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="256"/>
         <source>Light is turned on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="108"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="256"/>
         <source>A light is turned on or off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="108"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="256"/>
         <source>Turn lights on or off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="110"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="258"/>
         <source>Dimmable lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="111"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="259"/>
         <source>Light&apos;s brightness is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="111"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="259"/>
         <source>A light&apos;s brightness has changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="111"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="259"/>
         <source>Set lights brightness</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="113"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="261"/>
         <source>Color temperature light</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="114"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="262"/>
         <source>Lights color temperature is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="114"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="262"/>
         <source>A lights color temperature has changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="114"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="262"/>
         <source>Set lights color temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="116"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="264"/>
         <source>Color lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="117"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="265"/>
         <source>Light&apos;s color is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="117"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="265"/>
         <source>A light&apos;s color has changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="117"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="265"/>
         <source>Set lights color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="119"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="267"/>
         <source>Conductivity sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="120"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="268"/>
         <source>Conductivity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="120"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="268"/>
         <source>Conductivity changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="122"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="270"/>
         <source>Daylight sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="123"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="271"/>
         <source>Daylight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="123"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="271"/>
         <source>Daylight changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="125"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="273"/>
         <source>Doorbells</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="126"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="274"/>
         <source>Doorbell pressed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="128"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="279"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="284"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="285"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="287"/>
         <source>EV charger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="129"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="280"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="288"/>
         <source>Charging changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="129"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="280"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="288"/>
         <source>Enable charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="130"/>
-        <source>Maximum charging current</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="130"/>
-        <source>Maximum charging current changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="130"/>
-        <source>Set maximum charging current</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="132"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="295"/>
         <source>Closable things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="133"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="296"/>
         <source>Moving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="133"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="296"/>
         <source>Moving changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="139"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="302"/>
         <source>Heating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="140"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="303"/>
         <source>Heating enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="140"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="303"/>
         <source>Heating enabled changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="140"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="303"/>
         <source>Enable heating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="141"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="146"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="304"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="308"/>
         <source>Percentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="141"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="146"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="304"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="308"/>
         <source>Percentage changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="141"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="146"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="304"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="308"/>
         <source>Set percentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="144"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="306"/>
         <source>Cooling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="145"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="307"/>
         <source>Cooling enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="145"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="307"/>
         <source>Cooling enabled changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="145"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="307"/>
         <source>Enable cooling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="148"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="310"/>
         <source>Media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="150"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="312"/>
         <source>Media controllers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="151"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="313"/>
         <source>Start playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="152"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="314"/>
         <source>Stop playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="153"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="315"/>
         <source>Pause playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="154"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="316"/>
         <source>Skip back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="155"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="317"/>
         <source>Skip next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="156"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="318"/>
         <source>Fast forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="157"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="319"/>
         <source>Fast rewind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="158"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="320"/>
         <source>Shuffle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="158"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="320"/>
         <source>Shuffle changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="158"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="320"/>
         <source>Set shuffle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="159"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="321"/>
         <source>Repeat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="159"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="321"/>
         <source>Repeat changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="159"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="321"/>
         <source>Set repeat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="161"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="323"/>
         <source>Navigation pad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="162"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="166"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="324"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="328"/>
         <source>To</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="163"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="167"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="325"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="329"/>
         <source>Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="165"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="327"/>
         <source>Navigation pad with menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="169"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="171"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="331"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="333"/>
         <source>Shutters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="173"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="335"/>
         <source>Smart meter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="175"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="179"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="183"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="337"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="341"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="345"/>
         <source>Smart meters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="176"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="184"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="338"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="346"/>
         <source>Total energy consumed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="176"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="184"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="338"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="346"/>
         <source>Total consumed energy changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="177"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="181"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="186"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="281"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="289"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="339"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="343"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="348"/>
         <source>Current power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="177"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="181"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="186"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="281"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="289"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="339"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="343"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="348"/>
         <source>Current power changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="180"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="185"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="342"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="347"/>
         <source>Total energy produced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="180"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="185"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="342"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="347"/>
         <source>Total produced energy changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="188"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="350"/>
         <source>User access control systems</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="189"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="198"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="351"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="360"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="189"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="198"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="351"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="360"/>
         <source>Users changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="190"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="192"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="194"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="199"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="202"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="205"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="352"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="354"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="356"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="361"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="364"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="367"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="193"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="204"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="355"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="366"/>
         <source>Add user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="195"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="206"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="357"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="368"/>
         <source>Remove user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="197"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="359"/>
         <source>Fingerprint readers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="200"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="203"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="362"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="365"/>
         <source>Finger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="208"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="210"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="213"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="215"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="218"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="221"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="370"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="372"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="375"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="377"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="380"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="383"/>
         <source>Garage doors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="211"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="373"/>
         <source>Operate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="216"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="222"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="281"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="378"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="384"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="443"/>
         <source>State</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="216"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="222"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="281"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="378"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="384"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="443"/>
         <source>State changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="223"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="385"/>
         <source>Intermediate position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="223"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="385"/>
         <source>Intermediate position changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="225"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="387"/>
         <source>Humidity sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="226"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="303"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="388"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="465"/>
         <source>Humidity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="226"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="303"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="388"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="465"/>
         <source>Humidity changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="228"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="390"/>
         <source>Incoming events</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="229"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="391"/>
         <source>Triggered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="231"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="393"/>
         <source>Irrigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="233"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="395"/>
         <source>Light sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="234"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="396"/>
         <source>Light intensity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="234"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="396"/>
         <source>Light intensity changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="236"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="398"/>
         <source>Buttons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="237"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="399"/>
         <source>Long pressed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="239"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="401"/>
         <source>Media sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="240"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="259"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="402"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="421"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="240"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="402"/>
         <source>Title changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="241"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="403"/>
         <source>Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="241"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="403"/>
         <source>Artist changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="242"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="404"/>
         <source>Collection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="242"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="404"/>
         <source>Collection changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="243"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="405"/>
         <source>Artwork</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="243"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="405"/>
         <source>Artwork changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="245"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="407"/>
         <source>Media players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="246"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="408"/>
         <source>Playback status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="246"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="408"/>
         <source>Playback status changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="246"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="408"/>
         <source>Set playback status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="248"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="410"/>
         <source>Moisture sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="249"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="411"/>
         <source>Moisture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="249"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="411"/>
         <source>Moisture changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="252"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="414"/>
         <source>Button name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="253"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="415"/>
         <source>Pressed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="255"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="417"/>
         <source>Noise sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="256"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="418"/>
         <source>Noise level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="256"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="418"/>
         <source>Noise level changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="258"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="420"/>
         <source>Notification services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="260"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="422"/>
         <source>Message body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="261"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="423"/>
         <source>Send notification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="263"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="425"/>
         <source>Outgoing events</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="264"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="426"/>
         <source>Trigger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="266"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="428"/>
         <source>Power sockets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="267"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="429"/>
         <source>Powered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="267"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="429"/>
         <source>Turned on/off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="267"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="429"/>
         <source>Turn on/off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="269"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="431"/>
         <source>Power switches</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="271"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="433"/>
         <source>Presence sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="272"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="434"/>
         <source>Is present</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="272"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="434"/>
         <source>Presence changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="274"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="436"/>
         <source>Vibration sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="275"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="437"/>
         <source>Vibration detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="277"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="439"/>
         <source>Pressure sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="278"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="304"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="440"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="466"/>
         <source>Pressure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="278"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="304"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="440"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="466"/>
         <source>Pressure changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="280"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="442"/>
         <source>Smart locks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="282"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="444"/>
         <source>Unlatch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="284"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="446"/>
         <source>Temperature sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="285"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="302"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="447"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="464"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="285"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="447"/>
         <source>Temperature has changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="287"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="449"/>
         <source>Thermostats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="288"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="450"/>
         <source>Target temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="288"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="450"/>
         <source>Target temperature changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="288"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="450"/>
         <source>Set target temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="290"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="452"/>
         <source>Ventilation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="291"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="453"/>
         <source>Air flow rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="291"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="453"/>
         <source>Air flow rate changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="291"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="453"/>
         <source>Set air flow rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="293"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="455"/>
         <source>Speakers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="294"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="456"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="456"/>
         <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="294"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="456"/>
         <source>Muted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="295"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="457"/>
         <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="295"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="457"/>
         <source>Volume changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="295"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="457"/>
         <source>Set volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="296"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="458"/>
         <source>Increase volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="297"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="459"/>
         <source>Decrease volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="299"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="461"/>
         <source>Weather</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="300"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="462"/>
         <source>Weather description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="300"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="462"/>
         <source>Weather description changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="301"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="463"/>
         <source>Weather condition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="301"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="463"/>
         <source>Weather condition changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="302"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="464"/>
         <source>Temperature changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="305"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="309"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="467"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="471"/>
         <source>Wind speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="305"/>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="309"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="467"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="471"/>
         <source>Wind speed changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="306"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="468"/>
         <source>Wind direction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="306"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="468"/>
         <source>Wind direction changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="308"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="470"/>
         <source>Wind speed sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="311"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="473"/>
         <source>Wireless devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="312"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="474"/>
         <source>Signal strength</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="312"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="474"/>
         <source>Signal strength changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="314"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="476"/>
         <source>Water sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="315"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="477"/>
         <source>Water detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="315"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="477"/>
         <source>Water detected changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="317"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="479"/>
         <source>Fire sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="318"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="480"/>
         <source>Fire detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../libnymea-app/types/interfaces.cpp" line="318"/>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="480"/>
         <source>Fire detected changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Vibration sensors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vibration detected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="277"/>
         <source>EV chargers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/types/interfaces.cpp" line="293"/>
         <source>Electric cars</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5407,77 +5464,77 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="75"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="77"/>
         <source>View mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="78"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="82"/>
         <source>Windowed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="78"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="82"/>
         <source>Maximized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="78"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="82"/>
         <source>Fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="139"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="143"/>
         <source>Return to home on idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="203"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="207"/>
         <source>Style changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="215"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="219"/>
         <source>The application needs to be restarted for style changes to take effect.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="147"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="151"/>
         <source>Turn screen off when idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="161"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="165"/>
         <source>Screen off timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="170"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="174"/>
         <source>seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="182"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="186"/>
         <source>Screen brightness</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="78"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="82"/>
         <source>Automatic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="121"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="125"/>
         <source>Unit system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="126"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="130"/>
         <source>Metric</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="126"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="130"/>
         <source>Imperial</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5487,12 +5544,12 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="112"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="116"/>
         <source>Regional</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="134"/>
+        <location filename="../ui/appsettings/LookAndFeelSettingsPage.qml" line="138"/>
         <source>Behavior</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5576,17 +5633,17 @@ Please try again.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../ui/MainMenu.qml" line="348"/>
+        <location filename="../ui/MainMenu.qml" line="347"/>
         <source>Configure things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="362"/>
+        <location filename="../ui/MainMenu.qml" line="361"/>
         <source>Magic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="376"/>
+        <location filename="../ui/MainMenu.qml" line="375"/>
         <source>Configure main view</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5611,17 +5668,17 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="234"/>
+        <location filename="../ui/MainMenu.qml" line="233"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="318"/>
+        <location filename="../ui/MainMenu.qml" line="317"/>
         <source>Set up another...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainMenu.qml" line="389"/>
+        <location filename="../ui/MainMenu.qml" line="388"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5629,56 +5686,57 @@ Please try again.</source>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../ui/MainPage.qml" line="288"/>
+        <location filename="../ui/MainPage.qml" line="299"/>
         <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="287"/>
+        <location filename="../ui/MainPage.qml" line="298"/>
         <source>Things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="290"/>
+        <location filename="../ui/MainPage.qml" line="301"/>
         <source>Scenes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="464"/>
+        <location filename="../ui/MainPage.qml" line="476"/>
         <source>Loading data...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="289"/>
+        <location filename="../ui/MainPage.qml" line="300"/>
         <source>Groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="291"/>
+        <location filename="../ui/MainPage.qml" line="302"/>
         <source>Garages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="292"/>
+        <location filename="../ui/MainPage.qml" line="303"/>
         <source>Energy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="293"/>
+        <location filename="../ui/MainPage.qml" line="305"/>
         <source>Media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="294"/>
+        <location filename="../ui/MainPage.qml" line="306"/>
         <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainPage.qml" line="295"/>
+        <location filename="../ui/MainPage.qml" line="307"/>
         <source>AC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/MainPage.qml" line="304"/>
         <source>EVs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5716,17 +5774,17 @@ Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/connection/ManualConnectionEntry.qml" line="101"/>
+        <location filename="../ui/connection/ManualConnectionEntry.qml" line="156"/>
         <source>%1 UUID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/connection/ManualConnectionEntry.qml" line="109"/>
+        <location filename="../ui/connection/ManualConnectionEntry.qml" line="118"/>
         <source>Port:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/connection/ManualConnectionEntry.qml" line="123"/>
+        <location filename="../ui/connection/ManualConnectionEntry.qml" line="109"/>
         <source>SSL:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6367,13 +6425,13 @@ Use a timeout value greater or equal to 10 ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="297"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="318"/>
         <source>Wireless network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/system/NetworkSettingsPage.qml" line="110"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="174"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="190"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6389,7 +6447,7 @@ Use a timeout value greater or equal to 10 ms.</source>
     </message>
     <message>
         <location filename="../ui/system/NetworkSettingsPage.qml" line="116"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="178"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="194"/>
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6439,157 +6497,146 @@ Use a timeout value greater or equal to 10 ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="168"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="184"/>
         <source>Current connection state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="176"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="192"/>
         <source>Asleep</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="180"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="196"/>
         <source>Disconnecting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="182"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="198"/>
         <source>Connecting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="184"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="200"/>
         <source>Locally connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="186"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="202"/>
         <source>Site connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="188"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="204"/>
         <source>Globally connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="217"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="233"/>
         <source>Networking enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="218"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="234"/>
         <source>Enable or disable networking altogether</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="234"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="244"/>
         <source>Disable networking?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="253"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="260"/>
         <source>Wired network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="275"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="282"/>
         <source>Plugged in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="275"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="282"/>
         <source>Unplugged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="304"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="325"/>
         <source>Enable or disable WiFi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="321"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="336"/>
         <source>Disable WiFi?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="399"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="411"/>
         <source>WiFi networks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="651"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="663"/>
         <source>Authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="660"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="672"/>
         <source>Enter the password for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="686"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="698"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="701"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="745"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="713"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="762"/>
         <source>Current connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="418"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="755"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="430"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="772"/>
         <source>SSID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="724"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="775"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="736"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="792"/>
         <source>MAC Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="781"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="798"/>
         <source>Signal strength</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="732"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="795"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="744"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="812"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="228"/>
-        <source>Disabling networking will disconnect all connected clients. Be aware that you will not be able to interact remotely with this %1 system any more. Do not proceed unless you know what your are doing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="230"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="317"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="148"/>
         <source>Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="315"/>
-        <source>Disabling WiFi will disconnect all clients connected via WiFi. Be aware that you will not be able to interact remotely with this %1 system any more unless a LAN cable is connected.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="162"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="178"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="261"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="268"/>
         <source>No wired network interfaces available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="303"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="324"/>
         <source>Enabled</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6635,110 +6682,110 @@ Use a timeout value greater or equal to 10 ms.</source>
     </message>
     <message>
         <location filename="../ui/system/NetworkSettingsPage.qml" line="135"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="750"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="767"/>
         <source>Hosting access point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="156"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="172"/>
         <source>Network management is unavailable on this system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="408"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="420"/>
         <source>Access Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="441"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="453"/>
         <source>Create Access Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="465"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="477"/>
         <source>Connect to wireless network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="482"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="494"/>
         <source>Hidden Network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="706"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="750"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="718"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="767"/>
         <source>Connected to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="711"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="762"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="723"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="779"/>
         <source>IPv4 Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="717"/>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="768"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="729"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="785"/>
         <source>IPv6 Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="787"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="804"/>
         <source>WiFi frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="343"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="355"/>
         <source>No wireless network interfaces available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="518"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="530"/>
         <source>New wired connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="523"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="535"/>
         <source>Method</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="536"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="548"/>
         <source>Automatic (DHCP client)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="541"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="553"/>
         <source>Manual</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="546"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="558"/>
         <source>Shared (DHCP server)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="551"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="563"/>
         <source>Address settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="564"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="576"/>
         <source>IP Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="593"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="605"/>
         <source>Gateway</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="606"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="618"/>
         <source>DNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/NetworkSettingsPage.qml" line="624"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="636"/>
         <source>Create connection</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6758,30 +6805,38 @@ Use a timeout value greater or equal to 10 ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="245"/>
         <source>Disabling networking will disconnect all connected clients and may make this %1 system inaccessible from this app. Do not proceed unless you have another way to access the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="310"/>
         <source>Configure LAN network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="311"/>
         <source>Configure the dedicated LAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="337"/>
         <source>Disabling WiFi will disconnect all clients connected via WiFi and may make this %1 system inaccessible from this app unless another network connection is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="747"/>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="815"/>
         <source>Disconnect network interface?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="748"/>
         <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this is the LAN or WAN interface currently carrying your connection, you may lose access until another network path is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NetworkSettingsPage.qml" line="816"/>
         <source>Disconnecting this network interface may make this %1 system inaccessible from this app. If this interface is currently carrying your connection, you may lose access until another network path is available.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6868,62 +6923,81 @@ Use a timeout value greater or equal to 10 ms.</source>
 <context>
     <name>NfcHelper</name>
     <message>
+        <location filename="../nfchelper.cpp" line="44"/>
         <source>Proprietary tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="46"/>
         <source>NFC tag type 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="48"/>
         <source>NFC tag type 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="50"/>
         <source>NFC tag type 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="52"/>
         <source>NFC tag type 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="54"/>
         <source>NFC tag type 4A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="56"/>
         <source>NFC tag type 4B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="58"/>
         <source>MIFARE tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="60"/>
+        <location filename="../nfchelper.cpp" line="277"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="169"/>
+        <location filename="../nfchelper.cpp" line="184"/>
+        <location filename="../nfchelper.cpp" line="203"/>
         <source>NFC tag scanning is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="190"/>
         <source>Hold the RFID tag near the phone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="194"/>
         <source>Could not start NFC tag scanning.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="255"/>
+        <location filename="../nfchelper.cpp" line="257"/>
         <source>The RFID tag UID could not be read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="273"/>
         <source>NDEF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../nfchelper.cpp" line="275"/>
         <source>Tag-specific</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6931,98 +7005,122 @@ Use a timeout value greater or equal to 10 ms.</source>
 <context>
     <name>NgwSettingsPage</name>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="37"/>
         <source>LAN network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="57"/>
         <source>An unexpected error happened while updating the LAN configuration.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="68"/>
         <source>Disable dedicated LAN?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="69"/>
         <source>Disabling the dedicated LAN may make this %1 system inaccessible from clients connected through the LAN interface. Do not proceed unless another network path is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="70"/>
         <source>Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="83"/>
         <source>The dedicated LAN creates a separate local network on this system. When enabled, gateway services and internet sharing can be configured for devices connected to that LAN.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="90"/>
         <source>Dedicated LAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="95"/>
         <source>Dedicated LAN enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="96"/>
         <source>Run a separate, dedicated local network on this system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="137"/>
         <source>Gateway services access</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="143"/>
         <source>Which nymea services can be reached from the dedicated LAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="153"/>
         <source>Disabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="153"/>
         <source>nymea services only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="153"/>
         <source>All ports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="168"/>
         <source>Internet sharing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="169"/>
         <source>Share this system&apos;s internet connection with the dedicated LAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="186"/>
         <source>Status: enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="186"/>
         <source>Status: disabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="191"/>
         <source>LAN interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="198"/>
         <source>WAN interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="205"/>
         <source>LAN subnet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="213"/>
         <source>LAN address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="221"/>
         <source>DHCP range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/NgwSettingsPage.qml" line="229"/>
         <source>Configured gateway ports</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7082,338 +7180,342 @@ Use a timeout value greater or equal to 10 ms.</source>
 <context>
     <name>Nymea</name>
     <message>
-        <location filename="../ui/Nymea.qml" line="197"/>
+        <location filename="../ui/Nymea.qml" line="196"/>
         <source>Lighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="199"/>
+        <location filename="../ui/Nymea.qml" line="198"/>
         <source>Weather</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="201"/>
+        <location filename="../ui/Nymea.qml" line="200"/>
         <source>Sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="203"/>
+        <location filename="../ui/Nymea.qml" line="202"/>
         <source>Media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="206"/>
+        <location filename="../ui/Nymea.qml" line="205"/>
         <source>Switches</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="208"/>
+        <location filename="../ui/Nymea.qml" line="207"/>
         <source>Gateways</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="210"/>
+        <location filename="../ui/Nymea.qml" line="209"/>
         <source>Notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="212"/>
+        <location filename="../ui/Nymea.qml" line="211"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="214"/>
+        <location filename="../ui/Nymea.qml" line="213"/>
         <source>Humidity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="216"/>
+        <location filename="../ui/Nymea.qml" line="215"/>
         <source>Pressure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="218"/>
+        <location filename="../ui/Nymea.qml" line="217"/>
         <source>Noise level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="222"/>
+        <location filename="../ui/Nymea.qml" line="221"/>
         <source>CO2 level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="230"/>
+        <location filename="../ui/Nymea.qml" line="229"/>
         <source>Incoming Events</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="232"/>
+        <location filename="../ui/Nymea.qml" line="231"/>
         <source>Events</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="235"/>
+        <location filename="../ui/Nymea.qml" line="234"/>
         <source>Shutters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="238"/>
+        <location filename="../ui/Nymea.qml" line="237"/>
         <source>Blinds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="241"/>
+        <location filename="../ui/Nymea.qml" line="240"/>
         <source>Awnings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="245"/>
+        <location filename="../ui/Nymea.qml" line="244"/>
         <source>Access control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="253"/>
+        <location filename="../ui/Nymea.qml" line="252"/>
         <source>Smart meters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="261"/>
-        <source>EV-chargers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/Nymea.qml" line="263"/>
+        <location filename="../ui/Nymea.qml" line="267"/>
         <source>Power sockets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="285"/>
+        <location filename="../ui/Nymea.qml" line="292"/>
+        <source>Home appliances</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/Nymea.qml" line="294"/>
         <source>Uncategorized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="532"/>
+        <location filename="../ui/Nymea.qml" line="547"/>
         <source>light</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="535"/>
+        <location filename="../ui/Nymea.qml" line="550"/>
         <source>sensor</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="538"/>
+        <location filename="../ui/Nymea.qml" line="553"/>
         <source>battery powered thing</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="541"/>
+        <location filename="../ui/Nymea.qml" line="556"/>
         <source>connectable thing</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="550"/>
+        <location filename="../ui/Nymea.qml" line="568"/>
         <source>switchable thing</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="553"/>
+        <location filename="../ui/Nymea.qml" line="571"/>
         <source>daylight sensor</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="556"/>
+        <location filename="../ui/Nymea.qml" line="574"/>
         <source>presence sensor</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="265"/>
+        <location filename="../ui/Nymea.qml" line="269"/>
         <source>Doorbells</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="562"/>
+        <location filename="../ui/Nymea.qml" line="580"/>
         <source>doorbell</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="565"/>
+        <location filename="../ui/Nymea.qml" line="583"/>
         <source>alert</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="570"/>
+        <location filename="../ui/Nymea.qml" line="588"/>
         <source>button</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="573"/>
+        <location filename="../ui/Nymea.qml" line="591"/>
         <source>access control</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="580"/>
+        <location filename="../ui/Nymea.qml" line="598"/>
         <source>smart meter</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="585"/>
+        <location filename="../ui/Nymea.qml" line="603"/>
         <source>media player</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="247"/>
+        <location filename="../ui/Nymea.qml" line="246"/>
         <source>Fingerprint reader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="588"/>
+        <location filename="../ui/Nymea.qml" line="606"/>
         <source>moisture sensor</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="591"/>
+        <location filename="../ui/Nymea.qml" line="609"/>
         <source>thing to notify</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="243"/>
+        <location filename="../ui/Nymea.qml" line="242"/>
         <source>Garage doors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="255"/>
+        <location filename="../ui/Nymea.qml" line="254"/>
         <source>Heating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="267"/>
+        <location filename="../ui/Nymea.qml" line="271"/>
         <source>Accounts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="269"/>
+        <location filename="../ui/Nymea.qml" line="273"/>
         <source>Smartlocks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="594"/>
+        <location filename="../ui/Nymea.qml" line="612"/>
         <source>smartlock</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="271"/>
+        <location filename="../ui/Nymea.qml" line="275"/>
         <source>Irrigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="273"/>
+        <location filename="../ui/Nymea.qml" line="277"/>
         <source>Ventilation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="544"/>
+        <location filename="../ui/Nymea.qml" line="562"/>
         <source>irrigation</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="547"/>
+        <location filename="../ui/Nymea.qml" line="565"/>
         <source>ventilation</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="259"/>
+        <location filename="../ui/Nymea.qml" line="258"/>
         <source>Thermostats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="275"/>
+        <location filename="../ui/Nymea.qml" line="279"/>
         <source>Barcode scanners</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="277"/>
+        <location filename="../ui/Nymea.qml" line="281"/>
         <source>Cleaning robots</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="220"/>
+        <location filename="../ui/Nymea.qml" line="219"/>
         <source>CO level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="226"/>
+        <location filename="../ui/Nymea.qml" line="225"/>
         <source>Flammable gas level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="257"/>
+        <location filename="../ui/Nymea.qml" line="256"/>
         <source>Cooling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="279"/>
+        <location filename="../ui/Nymea.qml" line="283"/>
         <source>Electric cars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="228"/>
+        <location filename="../ui/Nymea.qml" line="227"/>
         <source>VOC level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="224"/>
+        <location filename="../ui/Nymea.qml" line="223"/>
         <source>Nitrogen dioxide level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="559"/>
+        <location filename="../ui/Nymea.qml" line="577"/>
         <source>vibration sensor</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="281"/>
+        <location filename="../ui/Nymea.qml" line="285"/>
         <source>Door/Window sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/Nymea.qml" line="283"/>
+        <location filename="../ui/Nymea.qml" line="287"/>
         <source>Ozone sensors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/Nymea.qml" line="263"/>
         <source>EV chargers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/Nymea.qml" line="265"/>
         <source>Valves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/Nymea.qml" line="559"/>
         <source>valve</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/Nymea.qml" line="618"/>
         <source>EV charger</source>
         <extracomment>Select ...</extracomment>
         <translation type="unfinished"></translation>
@@ -7438,72 +7540,72 @@ Use a timeout value greater or equal to 10 ms.</source>
 <context>
     <name>NymeaUtils</name>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="171"/>
         <location filename="../ui/utils/NymeaUtils.qml" line="200"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="229"/>
         <source>Admin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="176"/>
         <location filename="../ui/utils/NymeaUtils.qml" line="205"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="234"/>
         <source>Control things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="181"/>
         <location filename="../ui/utils/NymeaUtils.qml" line="210"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="239"/>
         <source>Configure things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="186"/>
-        <location filename="../ui/utils/NymeaUtils.qml" line="220"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="215"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="249"/>
         <source>Execute magic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="191"/>
-        <location filename="../ui/utils/NymeaUtils.qml" line="225"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="220"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="254"/>
         <source>Configure magic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="172"/>
         <location filename="../ui/utils/NymeaUtils.qml" line="201"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="230"/>
         <source>Full access to the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="177"/>
         <location filename="../ui/utils/NymeaUtils.qml" line="206"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="235"/>
         <source>Execute actions and use things and services.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="182"/>
         <location filename="../ui/utils/NymeaUtils.qml" line="211"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="240"/>
         <source>Add new things and change settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="187"/>
-        <location filename="../ui/utils/NymeaUtils.qml" line="221"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="216"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="250"/>
         <source>Execute rules, scenes and scripts.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="192"/>
-        <location filename="../ui/utils/NymeaUtils.qml" line="226"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="221"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="255"/>
         <source>Create new rules and scripts in the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="215"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="244"/>
         <source>Access all things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/utils/NymeaUtils.qml" line="216"/>
+        <location filename="../ui/utils/NymeaUtils.qml" line="245"/>
         <source>Allow to see and use all things of the system.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7594,7 +7696,7 @@ Do you want to proceed?</source>
 <context>
     <name>ParamDelegate</name>
     <message>
-        <location filename="../ui/delegates/ParamDelegate.qml" line="453"/>
+        <location filename="../ui/delegates/ParamDelegate.qml" line="464"/>
         <source>Type to search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7645,42 +7747,42 @@ Do you want to proceed?</source>
 <context>
     <name>PasswordTextField</name>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="73"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="109"/>
         <source>Pick a password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="83"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="62"/>
         <source>Minimum %1 characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="86"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="68"/>
         <source>Lowercase letters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="90"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="75"/>
         <source>Uppercase letters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="94"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="82"/>
         <source>Numbers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="98"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="89"/>
         <source>Special characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="143"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="189"/>
         <source>Confirm password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/PasswordTextField.qml" line="73"/>
+        <location filename="../ui/components/PasswordTextField.qml" line="109"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7714,102 +7816,102 @@ Do you want to proceed?</source>
 <context>
     <name>PowerBalanceHistory</name>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="175"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="182"/>
         <source>My power balance history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="193"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="200"/>
         <source>Hours</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="198"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="205"/>
         <source>Days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="203"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="210"/>
         <source>Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="208"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="215"/>
         <source>Months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="268"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="275"/>
         <source>No data available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="353"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="360"/>
         <source>From self production</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="416"/>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="708"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="423"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="715"/>
         <source>To battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="444"/>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="671"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="451"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="678"/>
         <source>To grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="475"/>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="745"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="482"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="752"/>
         <source>From battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="504"/>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="635"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="511"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="642"/>
         <source>From grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="599"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="606"/>
         <source>Produced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="889"/>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="941"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="896"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="948"/>
         <source>Consumed: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="890"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="897"/>
         <source>Produced: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="918"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="925"/>
         <source>From grid: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="919"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="926"/>
         <source>To grid: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="940"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="947"/>
         <source>From self production: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="963"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="970"/>
         <source>To battery: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="964"/>
+        <location filename="../ui/mainviews/energy/PowerBalanceHistory.qml" line="971"/>
         <source>From battery: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8110,82 +8212,105 @@ Do you want to proceed?</source>
 <context>
     <name>RfidManagerSettingsPage</name>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="15"/>
         <source>RFID settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="101"/>
         <source>Unsaved RFID settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="102"/>
         <source>Do you want to save the changes before leaving this page?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="110"/>
         <source>Discard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="119"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="125"/>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="330"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="149"/>
         <source>The RFID settings could not be loaded.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="161"/>
         <source>The RFID settings could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="166"/>
         <source>RFID authorization</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="175"/>
         <source>Charging starts after a valid RFID tag authorizes the charger. Time limits can revoke unused authorizations automatically.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="184"/>
         <source>Limit time to plug in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="200"/>
         <source>Plug-in timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="212"/>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="261"/>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="310"/>
         <source>seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="224"/>
         <source>After a tag was accepted, the authorization expires if the vehicle is not plugged in within this time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="233"/>
         <source>Limit time to present a tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="249"/>
         <source>Tag timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="273"/>
         <source>After the vehicle is plugged in, authorization expires if no valid tag is presented within this time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="282"/>
         <source>Limit time to scan a new tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="298"/>
         <source>Enrollment timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidManagerSettingsPage.qml" line="322"/>
         <source>When adding a tag from a charger, the scan request expires if no tag is presented within this time.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8193,382 +8318,504 @@ Do you want to proceed?</source>
 <context>
     <name>RfidSettingsPage</name>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="15"/>
         <source>RFID charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="35"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1127"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1507"/>
         <source>Eco</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="35"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1128"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1508"/>
         <source>Quick</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="40"/>
         <source>Eco charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="42"/>
         <source>Quick charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="44"/>
         <source>Max charging current: %1 A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="46"/>
         <source>Phase count: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="78"/>
         <source>This RFID tag is already assigned.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="81"/>
         <source>The selected charging profile is not valid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="84"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="983"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1351"/>
         <source>The selected user no longer exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="87"/>
         <source>The selected RFID tag no longer exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="90"/>
         <source>The RFID tag data is not valid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="93"/>
         <source>This charger is already waiting for an RFID tag.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="96"/>
         <source>The RFID tag scan is no longer active.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="99"/>
         <source>The RFID tag request could not be completed. (Error code: %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="112"/>
         <source>All users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="196"/>
         <source>Available to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="241"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1390"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1670"/>
         <source>Remove RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="242"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1671"/>
         <source>Are you sure you want to remove &quot;%1&quot; for %2?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="284"/>
         <source>Filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="300"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="431"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="504"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1267"/>
         <source>Add RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="305"/>
         <source>RFID tags</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="314"/>
         <source>No RFID tags configured.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="377"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="398"/>
         <source>Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="432"/>
         <source>Select the user this RFID tag belongs to.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="505"/>
         <source>Choose how to read the RFID tag for %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="517"/>
         <source>Scan on charger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="518"/>
         <source>Select a charger and prepare it for the next RFID tag.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="529"/>
         <source>Enter manually</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="530"/>
         <source>Type the RFID code manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="543"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="854"/>
         <source>Scan with phone NFC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="544"/>
         <source>Hold the RFID tag near this phone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="856"/>
         <source>Hold the RFID tag near the phone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="857"/>
         <source>The NFC scan is not running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="917"/>
         <source>Scan again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="560"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="664"/>
         <source>Scan RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="561"/>
         <source>Select the charger that should scan the RFID tag.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="578"/>
         <source>Find charger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="586"/>
         <source>No charger with RFID scan support is currently available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="594"/>
         <source>No charger with RFID scan support is available for %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="608"/>
         <source>Show user chargers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="608"/>
         <source>Show all chargers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="643"/>
         <source>Not available to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="644"/>
         <source>Use this charger to scan the next tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="666"/>
         <source>Present the RFID tag to %1 now.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="667"/>
         <source>The selected charger is no longer available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="670"/>
         <source>Cancel scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="754"/>
         <source>The next RFID tag detected on %1 will be stored.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="764"/>
         <source>Time remaining: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="772"/>
         <source>Please go back and select another charger.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="802"/>
         <source>No RFID tag was detected before the scan expired.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="822"/>
         <source>Enter RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="823"/>
         <source>Enter the RFID code manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="843"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1468"/>
         <source>RFID code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="950"/>
         <source>Finish RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="952"/>
         <source>Name the RFID tag, configure its charging profile, then prepare the charger for the next tag.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="954"/>
         <source>Review the scanned RFID tag, name it, and configure its charging profile.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="955"/>
         <source>Name the RFID tag and configure its charging profile.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="956"/>
         <source>Start scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="956"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1411"/>
         <source>Create RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1011"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1419"/>
         <source>Not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1022"/>
         <source>Owner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1034"/>
         <source>RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1043"/>
         <source>The charger will store the next RFID tag it detects.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1052"/>
         <source>UID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1062"/>
         <source>Tag type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1063"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1075"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1072"/>
         <source>Access methods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1084"/>
         <source>NDEF message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1085"/>
         <source>Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1085"/>
         <source>Not available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1095"/>
         <source>Maximum command length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1096"/>
         <source>%1 bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1104"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1476"/>
         <source>Display name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1112"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1483"/>
         <source>Enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1118"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1488"/>
         <source>Charging profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1144"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1534"/>
         <source>Max charging current (A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1176"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1588"/>
         <source>EV chargers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1186"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1609"/>
         <source>This RFID tag is not available on any EV charger for the selected user.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1267"/>
         <source>Edit RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1411"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1716"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1582"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1647"/>
         <source>Technical details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1653"/>
         <source>RFID hash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1657"/>
         <source>RFID hash copied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1692"/>
         <source>Unsaved RFID tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1693"/>
         <source>Do you want to save the changes before leaving this page?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1701"/>
         <source>Discard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1710"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1425"/>
         <source>Basic information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1495"/>
         <source>The charger will apply the following profile when this tag is detected on an assigned charger.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1521"/>
         <source>Eco uses available surplus energy. Quick charges as fast as the configured limits allow.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1567"/>
         <source>Select how many phases the charger should use. Leave this unset to let the charger decide.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1574"/>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1643"/>
         <source>RFID tag details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/system/RfidSettingsPage.qml" line="1599"/>
         <source>This tag can authorize charging on the EV chargers listed below because they are accessible to its owner.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8576,22 +8823,22 @@ Do you want to proceed?</source>
 <context>
     <name>RootItem</name>
     <message>
-        <location filename="../ui/RootItem.qml" line="658"/>
+        <location filename="../ui/RootItem.qml" line="702"/>
         <source>Connection error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/RootItem.qml" line="671"/>
+        <location filename="../ui/RootItem.qml" line="715"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/RootItem.qml" line="664"/>
+        <location filename="../ui/RootItem.qml" line="708"/>
         <source>The version of the %1 system you are trying to connect to is too old. This app requires at least API version %2 but this %1 system only supports API version %3. Please update your %1 system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/RootItem.qml" line="665"/>
+        <location filename="../ui/RootItem.qml" line="709"/>
         <source>The version of the %1 system you are trying to connect to is too new. This app supports only up to API version %2 but this %1 system provides API version %3. Please update %4.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8627,21 +8874,6 @@ Do you want to proceed?</source>
         <location filename="../ui/magic/RuleActionDelegate.qml" line="67"/>
         <source>No</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>S:</name>
-    <message>
-        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="88"/>
-        <source></source>
-        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/magic/EventDescriptorDelegate.qml" line="94"/>
-        <source></source>
-        <comment>example: &quot;and temperature &gt; 5&quot;</comment>
-        <translation></translation>
     </message>
 </context>
 <context>
@@ -8932,7 +9164,7 @@ Do you want to proceed?</source>
 <context>
     <name>SelectThingPage</name>
     <message>
-        <location filename="../ui/magic/SelectThingPage.qml" line="91"/>
+        <location filename="../ui/magic/SelectThingPage.qml" line="92"/>
         <source>Any %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8952,7 +9184,7 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/magic/SelectThingPage.qml" line="146"/>
+        <location filename="../ui/magic/SelectThingPage.qml" line="147"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9162,27 +9394,27 @@ Do you want to proceed?</source>
 <context>
     <name>ServerLoggingCategoriesPage</name>
     <message>
-        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="34"/>
+        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="36"/>
         <source>Server logging categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="64"/>
+        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="103"/>
         <source>Critical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="71"/>
+        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="110"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="78"/>
+        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="117"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="85"/>
+        <location filename="../ui/system/ServerLoggingCategoriesPage.qml" line="124"/>
         <source>Debug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9200,12 +9432,12 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="180"/>
+        <location filename="../ui/SettingsPage.qml" line="190"/>
         <source>Log viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="181"/>
+        <location filename="../ui/SettingsPage.qml" line="191"/>
         <source>View system log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9240,22 +9472,22 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="161"/>
+        <location filename="../ui/SettingsPage.qml" line="171"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="162"/>
+        <location filename="../ui/SettingsPage.qml" line="172"/>
         <source>Access tools for debugging and error reporting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="196"/>
+        <location filename="../ui/SettingsPage.qml" line="215"/>
         <source>Find server UUID and versions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="170"/>
+        <location filename="../ui/SettingsPage.qml" line="180"/>
         <source>System update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9295,12 +9527,12 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="171"/>
+        <location filename="../ui/SettingsPage.qml" line="181"/>
         <source>Update your %1 system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/SettingsPage.qml" line="195"/>
+        <location filename="../ui/SettingsPage.qml" line="214"/>
         <source>About %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9345,18 +9577,22 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/SettingsPage.qml" line="205"/>
         <source>Backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/SettingsPage.qml" line="206"/>
         <source>Manage system configuration backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/SettingsPage.qml" line="161"/>
         <source>RFID charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/SettingsPage.qml" line="162"/>
         <source>Manage RFID tags for charger authorization</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9364,67 +9600,67 @@ Do you want to proceed?</source>
 <context>
     <name>SetupWizard</name>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="344"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="346"/>
         <source>Search again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="274"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="276"/>
         <source>Add thing manually</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="308"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="310"/>
         <source>Searching for things...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="315"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="317"/>
         <source>Too bad...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="322"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="324"/>
         <source>No things of this kind could be found...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="334"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="336"/>
         <source>Make sure your things are set up and connected, try searching again or go back and pick a different kind of thing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="359"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="361"/>
         <source>Name the thing:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="642"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="649"/>
         <source>Thing reconfigured!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="642"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="649"/>
         <source>Thing added!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="642"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="649"/>
         <source>Uh oh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="650"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="657"/>
         <source>All done. You can now start using %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="650"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="657"/>
         <source>Something went wrong setting up this thing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="676"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="683"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9449,69 +9685,69 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="543"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="549"/>
         <source>OAuth is not supported on this platform. Please use this app on a different device to set up this thing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="550"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="556"/>
         <source>In order to use OAuth on this platform, make sure qml-module-qtwebview is installed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="356"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="481"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="532"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="622"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="358"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="483"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="538"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="629"/>
         <source>Reconfigure %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="356"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="481"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="532"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="622"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="358"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="483"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="538"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="629"/>
         <source>Set up %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="225"/>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="267"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="227"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="269"/>
         <source>Discover %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="228"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="230"/>
         <source>Discovery options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="282"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="284"/>
         <source>Nymea found the following things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="374"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="376"/>
         <source>Thing parameters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="487"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="489"/>
         <source>Login required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="501"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="508"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="436"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="438"/>
         <source>Reset values to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="665"/>
+        <location filename="../ui/thingconfiguration/SetupWizard.qml" line="672"/>
         <source>Retry</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9788,44 +10024,84 @@ A consumer, not consuming anything</extracomment>
 <context>
     <name>SystemUpdatePage</name>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="36"/>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="160"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="37"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="234"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="346"/>
         <source>System update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="98"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="107"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="285"/>
         <source>Your system is up to date.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="151"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="114"/>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="120"/>
+        <source>Version copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="163"/>
+        <source>%1 update available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="177"/>
+        <source>Installed version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="184"/>
+        <source>Candidate version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="200"/>
+        <source>Update changelog:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="225"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="337"/>
         <source>Update all</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="234"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="419"/>
         <source>Enable package source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="41"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="42"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="98"/>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="137"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="107"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="163"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="285"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="323"/>
         <source>Checking for updates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="103"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="130"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="290"/>
         <source>Check for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../ui/system/SystemUpdatePage.qml" line="137"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="323"/>
         <source>%n update(s) available</source>
         <translation>
             <numerusform>%n update available</numerusform>
@@ -9833,35 +10109,37 @@ A consumer, not consuming anything</extracomment>
         </translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="143"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="170"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="329"/>
         <source>Check again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="205"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="390"/>
         <source>Install or remove software</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="53"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="54"/>
         <source>Failure adding repository.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="156"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="230"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="342"/>
         <source>This will start a system update. Note that the update might take several minutes and your %1 system might not be functioning properly during this time and restart during the process.
 Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="230"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="415"/>
         <source>Enabling additional software sources allows to install unreleased %1 packages.
 This can potentially break your system and lead to problems.
 Please only use this if you are sure you want this and consider reporting the issues you find when testing unreleased channels.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/SystemUpdatePage.qml" line="217"/>
+        <location filename="../ui/system/SystemUpdatePage.qml" line="402"/>
         <source>Update sources</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10011,42 +10289,47 @@ Please only use this if you are sure you want this and consider reporting the is
 <context>
     <name>ThingLogPage</name>
     <message>
-        <location filename="../ui/devicepages/ThingLogPage.qml" line="40"/>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="95"/>
         <source>History for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ThingLogPage.qml" line="128"/>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="183"/>
         <source>Filter by</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ThingLogPage.qml" line="381"/>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="424"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/devicepages/ThingLogPage.qml" line="381"/>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="424"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="58"/>
         <source>User: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="60"/>
         <source>User: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="61"/>
         <source>User action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="65"/>
         <source>Automation: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/devicepages/ThingLogPage.qml" line="67"/>
         <source>Automation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10394,138 +10677,178 @@ Please only use this if you are sure you want this and consider reporting the is
 <context>
     <name>TransfersManager</name>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="93"/>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="136"/>
         <source>Another transfer is already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="98"/>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="141"/>
         <source>Not connected to a nymea server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="104"/>
         <source>Invalid download target.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="111"/>
         <source>Could not create the selected download directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="121"/>
         <source>Preparing download...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="147"/>
         <source>Invalid upload source.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="153"/>
         <source>The selected upload file could not be opened.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="178"/>
         <source>Preparing upload...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="240"/>
         <source>Downloading %1 (%2%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="242"/>
         <source>Downloading %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="246"/>
         <source>Uploading %1 (%2%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="248"/>
         <source>Uploading %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="259"/>
         <source>The current connection does not support file transfers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="270"/>
         <source>Could not open the transfer connection.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="349"/>
         <source>Transfer connection is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="375"/>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="655"/>
         <source>Upload source is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="384"/>
         <source>Failed to read the upload file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="400"/>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="671"/>
         <source>Download target is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="479"/>
         <source>The server rejected the download request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="496"/>
         <source>Failed to prepare the backup restore upload: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="510"/>
         <source>The server rejected the upload request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="515"/>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="520"/>
         <source>Could not open the selected upload file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="543"/>
         <source>The server connection was lost.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="549"/>
         <source>Connecting transfer...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="560"/>
         <source>The transfer connection was closed unexpectedly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="567"/>
         <source>The transfer connection reported an error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="590"/>
         <source>The transfer connection could not be secured.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="618"/>
         <source>The transfer failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="631"/>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="650"/>
         <source>The server returned an unexpected transfer direction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="636"/>
         <source>Resuming downloads is not supported yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="643"/>
         <source>Could not open the selected download target.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="660"/>
         <source>Could not resume the upload file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="679"/>
         <source>Could not write the downloaded data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../libnymea-app/transfersmanager.cpp" line="689"/>
         <source>The server returned an empty download chunk.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10576,12 +10899,12 @@ Please only use this if you are sure you want this and consider reporting the is
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/UpdateRunningOverlay.qml" line="70"/>
+        <location filename="../ui/components/UpdateRunningOverlay.qml" line="79"/>
         <source>Please wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/UpdateRunningOverlay.qml" line="77"/>
+        <location filename="../ui/components/UpdateRunningOverlay.qml" line="86"/>
         <source>The system may restart in order to complete the update. %1:app will reconnect automatically after the update.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10607,250 +10930,234 @@ Please only use this if you are sure you want this and consider reporting the is
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="50"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="699"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="65"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="721"/>
         <source>The given password is not valid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="53"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="702"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="68"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="724"/>
         <source>Permission denied.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="56"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="71"/>
         <source>The new password could not be stored.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="59"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="74"/>
         <source>Un unexpected error happened when changing the password. We&apos;re sorry for this. (Error code: %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="99"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="254"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="259"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="121"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="276"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="281"/>
         <source>Change password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="322"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="344"/>
         <source>Created on %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="267"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="289"/>
         <source>Please enter the new password for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="168"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="280"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="190"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="302"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="112"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="143"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="134"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="165"/>
         <source>Edit user information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="120"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="142"/>
         <source>Manage authorized devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="127"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="149"/>
         <source>Admin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="133"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="155"/>
         <source>Manage users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="153"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="175"/>
         <source>Your name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="160"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="449"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="611"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="182"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="471"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="633"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="181"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="549"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="705"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="203"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="571"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="727"/>
         <source>Un unexpected error happened when creating the user. We&apos;re sorry for this. (Error code: %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="296"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="318"/>
         <source>Device access</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="302"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="324"/>
         <source>Remove device access</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="303"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="420"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="325"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="442"/>
         <source>Are you sure you want to remove %1 from accessing your %2 system?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="313"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="335"/>
         <source>Devices / Apps accessing %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="344"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="366"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="360"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="382"/>
         <source>Manage users for this %1 system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="410"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="432"/>
         <source>Manage %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="419"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="441"/>
         <source>Remove user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="431"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="453"/>
         <source>User information for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="442"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="464"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="457"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="479"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="464"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="617"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="486"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="639"/>
         <source>Permissions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="529"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="551"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="536"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="558"/>
         <source>Remove this user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="565"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="587"/>
         <source>Add a user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="594"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="616"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="605"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="627"/>
         <source>Full name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="674"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="696"/>
         <source>Create new user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="693"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="715"/>
         <source>The given username is not valid. It needs to be at least three characters long and not contain special characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="696"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="718"/>
         <source>The given username is already in use. Please choose a different username.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="579"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="601"/>
         <source>User information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="386"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="408"/>
         <source>User login via authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="410"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="432"/>
         <source>Authenticated user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="201"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="223"/>
         <source>Accessable things for</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="511"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="656"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="533"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="678"/>
         <source>Acessable things</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="520"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="665"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="542"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="687"/>
         <source>Allowed things for this user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="521"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="666"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="543"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="688"/>
         <source>things accessable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="605"/>
-        <location filename="../ui/system/UsersSettingsPage.qml" line="611"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="627"/>
+        <location filename="../ui/system/UsersSettingsPage.qml" line="633"/>
         <source>Optional</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>User not added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The user has not been added yet. Do you want to discard the changes or return to editing?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Discard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -10998,12 +11305,12 @@ Please only use this if you are sure you want this and consider reporting the is
 <context>
     <name>WizardPageBase</name>
     <message>
-        <location filename="../ui/components/WizardPageBase.qml" line="141"/>
+        <location filename="../ui/components/WizardPageBase.qml" line="143"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/components/WizardPageBase.qml" line="174"/>
+        <location filename="../ui/components/WizardPageBase.qml" line="178"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
