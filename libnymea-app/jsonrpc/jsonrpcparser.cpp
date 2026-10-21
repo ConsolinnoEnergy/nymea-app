@@ -57,12 +57,12 @@ void JsonRpcParser::process()
         }
         QJsonParseError error;
         QJsonDocument jsonDoc = QJsonDocument::fromJson(m_receiveBuffer.left(splitIndex), &error);
-        qCDebug(dcJsonRpc()) << "Received JSON doc. Error:" << error.errorString();
-        qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(jsonDoc.toJson());
         if (error.error != QJsonParseError::NoError) {
             // Incomplete message, wait for more data
             return;
         }
+        qCDebug(dcJsonRpc()) << "Received JSON doc:";
+        qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(jsonDoc.toJson());
         m_receiveBuffer = m_receiveBuffer.right(m_receiveBuffer.length() - splitIndex - 1);
 
         emit messageParsed(jsonDoc.toVariant().toMap(), generation);

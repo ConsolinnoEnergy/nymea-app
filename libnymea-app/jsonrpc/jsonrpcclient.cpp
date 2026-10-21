@@ -599,7 +599,6 @@ void JsonRpcClient::messageReceived(const QVariantMap &dataMap, int generation)
 
     // check if this is a notification
     if (dataMap.contains("notification")) {
-        qCDebug(dcJsonRpc()) << "Incoming notification:" << qUtf8Printable(QJsonDocument::fromVariant(dataMap).toJson());
         // Check if our permissions changed
         if (dataMap.value("notification").toString() == "Users.UserChanged") {
             QVariantMap userMap = dataMap.value("params").toMap().value("userInfo").toMap();
