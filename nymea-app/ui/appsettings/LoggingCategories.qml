@@ -42,31 +42,33 @@ SettingsPageBase {
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Critical")
             elide: Text.ElideRight
-            font: Style.smallFont
+            font: Style.newSmallFont
         }
         Label {
             Layout.preferredWidth: Style.smallDelegateHeight
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Warning")
             elide: Text.ElideRight
-            font: Style.smallFont
+            font: Style.newSmallFont
         }
         Label {
             Layout.preferredWidth: Style.smallDelegateHeight
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Info")
             elide: Text.ElideRight
-            font: Style.smallFont
+            font: Style.newSmallFont
         }
         Label {
             Layout.preferredWidth: Style.smallDelegateHeight
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Debug")
             elide: Text.ElideRight
-            font: Style.smallFont
+            font: Style.newSmallFont
         }
     }
-    ThinDivider {}
+    ThinDivider {
+        color: Style.colors.typography_Basic_Divider
+    }
 
     Repeater {
         model: AppLogController.loggingCategories
@@ -79,6 +81,7 @@ SettingsPageBase {
                     Layout.fillWidth: true
                     text: model.name
                     elide: Text.ElideRight
+                    font: Style.newParagraphFont
                 }
                 RadioButton {
                     Layout.fillHeight: true
@@ -104,17 +107,6 @@ SettingsPageBase {
                     checked: model.logLevel === AppLogController.LogLevelDebug
                     onClicked: AppLogController.setLogLevel(model.name, AppLogController.LogLevelDebug)
                 }
-
-//                Slider {
-//                    from: 0
-//                    to: 3
-//                    stepSize: 1
-//                    Layout.preferredWidth: 200
-//                    value: model.logLevel
-//                    onMoved: {
-//                        AppLogController.setLogLevel(model.name, value)
-//                    }
-//                }
             }
         }
     }

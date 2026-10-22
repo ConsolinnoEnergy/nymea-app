@@ -54,12 +54,15 @@ Page {
     ListView {
         id: listView
         anchors.fill: parent
+        anchors.leftMargin: Style.extraSmallMargins
+        anchors.rightMargin: Style.extraSmallMargins
         topMargin: header.height
         clip: true
+        spacing: Style.extraSmallMargins
 
         Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
 
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.vertical: null
 
         model: LogMessages {
 
@@ -73,17 +76,17 @@ Page {
             color: {
                 switch (model.level) {
                 case AppLogController.LogLevelCritical:
-                    return Style.red;
+                    return Style.colors.system_Danger_Accent;
                 case AppLogController.LogLevelWarning:
-                    return Style.orange;
+                    return Style.colors.system_Warning_Accent;
                 case AppLogController.LogLevelInfo:
-                    return Style.foregroundColor;
+                    return Style.colors.typography_Basic_Default;
                 case AppLogController.LogLevelDebug:
-                    return Qt.tint(Style.foregroundColor, Qt.rgba(Style.backgroundColor.r, Style.backgroundColor.g, Style.backgroundColor.b, .4))
+                    return Style.colors.typography_Basic_Secondary;
 
                 }
             }
-            font: Style.smallFont
+            font: Style.newSmallFont
         }
     }
 }
