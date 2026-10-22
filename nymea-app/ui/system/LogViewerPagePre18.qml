@@ -137,7 +137,7 @@ Page {
                     }
                 }
                 ColumnLayout {
-                    spacing: 0 //Style.extraExtraSmallMargins
+                    spacing: 0
                     RowLayout {
                         Label {
                             Layout.fillWidth: true
