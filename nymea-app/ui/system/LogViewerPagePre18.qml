@@ -45,7 +45,7 @@ Page {
 
         RoundButton {
             icon.source: "qrc:/icons/down.svg"
-            icon.color: root.autoScroll ? Style.accentColor : Style.iconColor
+            icon.color: root.autoScroll ? Style.colors.brand_Basic_Icon_accent : Style.colors.brand_Basic_Icon
             flat: true
             onClicked: {
                 listView.positionViewAtEnd();
@@ -75,6 +75,7 @@ Page {
         anchors.fill: parent
         clip: true
         headerPositioning: ListView.OverlayHeader
+        spacing: Style.extraSmallMargins
 
         Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
 
@@ -84,7 +85,7 @@ Page {
             }
         }
 
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.vertical: null
 
         BusyIndicator {
             anchors.centerIn: parent
@@ -112,12 +113,12 @@ Page {
                         case LogEntry.LoggingSourceSystem:
                         case LogEntry.LoggingSourceActions:
                         case LogEntry.LoggingSourceEvents:
-                            return Style.accentColor
+                            return Style.colors.brand_Basic_Icon_accent
                         case LogEntry.LoggingSourceRules:
                             if (model.loggingEventType === LogEntry.LoggingEventTypeActiveChange) {
-                                return model.value === true ? "green" : Style.iconColor
+                                return model.value === true ? Style.colors.system_Success_Status_light : Style.colors.brand_Basic_Icon
                             }
-                            return Style.accentColor
+                            return Style.colors.brand_Basic_Icon_accent
                         }
                     }
                     name: {
@@ -136,6 +137,7 @@ Page {
                     }
                 }
                 ColumnLayout {
+                    spacing: 0 //Style.extraExtraSmallMargins
                     RowLayout {
                         Label {
                             Layout.fillWidth: true
@@ -145,11 +147,12 @@ Page {
                                           engine.ruleManager.rules.getRule(model.typeId).name
                                         : delegate.thing.name
                             elide: Text.ElideRight
+                            font: Style.newParagraphFont
                         }
                         Label {
                             text: Qt.formatDateTime(model.timestamp,"dd.MM.yy - hh:mm:ss")
                             elide: Text.ElideRight
-                            font.pixelSize: app.smallFont
+                            font: Style.newSmallFont
                         }
                     }
                     Label {
@@ -186,7 +189,7 @@ Page {
                             return "N/A";
                         }
                         elide: Text.ElideRight
-                        font.pixelSize: app.smallFont
+                        font: Style.newSmallFont
                     }
                 }
             }

@@ -45,7 +45,8 @@ Page {
 
         RoundButton {
             icon.source: "qrc:/icons/down.svg"
-            icon.color: root.autoScroll ? Style.accentColor : Style.iconColor
+            icon.color: root.autoScroll ? Style.colors.brand_Basic_Icon_accent : Style.colors.brand_Basic_Icon
+            flat: true
             onClicked: {
                 listView.positionViewAtEnd();
                 root.autoScroll = !root.autoScroll
@@ -81,6 +82,7 @@ Page {
         anchors.fill: parent
         clip: true
         headerPositioning: ListView.OverlayHeader
+        spacing: Style.extraSmallMargins
 
         Component.onCompleted: Qt.callLater(() => contentY = -topMargin)
 
@@ -90,7 +92,7 @@ Page {
             }
         }
 
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.vertical: null
 
         BusyIndicator {
             anchors.centerIn: parent
@@ -128,10 +130,10 @@ Page {
                     Layout.preferredHeight: width
                     Layout.alignment: Qt.AlignVCenter
                     color: delegate.event == "started"
-                           ? Style.accentColor
+                           ? Style.colors.brand_Basic_Icon_accent
                            : delegate.entry.values.shutdownReason === "ShutdownReasonFailure"
-                             ? Style.red
-                             : Style.iconColor
+                             ? Style.colors.system_Danger_Status_light
+                             : Style.colors.brand_Basic_Icon
                     name: {
                         switch (delegate.event) {
                         case "started":
@@ -149,6 +151,7 @@ Page {
                     }
                 }
                 ColumnLayout {
+                    spacing: 0
                     RowLayout {
                         Label {
                             Layout.fillWidth: true
@@ -164,18 +167,19 @@ Page {
                                 }
                             }
                             elide: Text.ElideRight
+                            font: Style.newParagraphFont
                         }
                         Label {
                             text: Qt.formatDateTime(model.timestamp,"dd.MM.yy - hh:mm:ss")
                             elide: Text.ElideRight
-                            font: Style.smallFont
+                            font: Style.newSmallFont
                         }
                     }
                     Label {
                         text: delegate.shutdownReason
                         visible: delegate.event == "stopped"
                         elide: Text.ElideRight
-                        font: Style.smallFont
+                        font: Style.newSmallFont
                     }
                 }
             }
