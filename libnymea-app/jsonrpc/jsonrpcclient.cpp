@@ -145,6 +145,7 @@ int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params,
         << QTime::currentTime().toString(Qt::ISODateWithMs)
         << "Sending command"
         << reply->nameSpace() + '.' + reply->method();
+    qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(QJsonDocument::fromVariant(reply->requestMap()).toJson());
     m_replies.insert(reply->commandId(), reply);
     m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     sendRequest(reply->requestMap());
