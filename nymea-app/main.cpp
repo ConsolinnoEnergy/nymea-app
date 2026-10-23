@@ -213,6 +213,7 @@ int main(int argc, char *argv[])
             application.installTranslator(translator);
         } else {
             qCWarning(dcApplication()) << "Failed to load translations from" << fi.fileName();
+            translator->deleteLater();
         }
     }
 
@@ -224,12 +225,12 @@ int main(int argc, char *argv[])
         QTranslator *translator = new QTranslator(&application);
         bool loadResult = translator->load(qmFile.baseName() + "." + QLocale().name(), ":/translations");
         if (loadResult) {
+            qCInfo(dcApplication()) << "Loaded translations from" << qmFile.baseName() + "." + QLocale().name();
             application.installTranslator(translator);
             loadedTranslations.append(qmFile.baseName());
-            qCInfo(dcApplication()) << "Loaded translations from" << qmFile.fileName();
         } else {
+            qCWarning(dcApplication()) << "Failed to load translations from" << qmFile.baseName() + "." + QLocale().name();
             translator->deleteLater();
-            qCInfo(dcApplication()) << "Failed to load translations from" << qmFile.fileName();
         }
     }
 
