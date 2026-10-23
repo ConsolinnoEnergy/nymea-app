@@ -190,6 +190,7 @@ int main(int argc, char *argv[])
 
     qCInfo(dcApplication()) << "Locale:" << QLocale() << QLocale().name() << QLocale().language();
     qCInfo(dcApplication()) << "SSL version:" << QSslSocket::sslLibraryVersionString();
+    qCInfo(dcApplication()) << "Translations path:" << QLibraryInfo::path(QLibraryInfo::TranslationsPath);
 
     QScreen *screen = application.primaryScreen();
     qCInfo(dcApplication()).noquote() << QString("Screen name: %1").arg(screen->name());
@@ -202,12 +203,18 @@ int main(int argc, char *argv[])
         }
     }
 
-    QTranslator qtTranslator;
-    if (!qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
-        qCWarning(dcApplication()) << "Unable to load translations from" << QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+    QDir dir(QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+    const auto locale = QLocale::system().name().section('_', 0, 0);
+    const auto entryInfoList = dir.entryInfoList(QStringList() << "*_" + locale + ".qm", QDir::Files);
+    for (const auto &fi : entryInfoList) {
+        const auto translator = new QTranslator(&application);
+        if (translator->load(fi.absoluteFilePath())) {
+            qCInfo(dcApplication()) << "Loaded translations from" << fi.fileName();
+            application.installTranslator(translator);
+        } else {
+            qCWarning(dcApplication()) << "Failed to load translations from" << fi.fileName();
+        }
     }
-
-    application.installTranslator(&qtTranslator);
 
     QStringList loadedTranslations;
     foreach (const QFileInfo &qmFile, QDir(":/translations").entryInfoList({"*.qm"})) {
@@ -219,10 +226,10 @@ int main(int argc, char *argv[])
         if (loadResult) {
             application.installTranslator(translator);
             loadedTranslations.append(qmFile.baseName());
-            qCInfo(dcApplication()) << "Loaded translation" << qmFile.baseName();
+            qCInfo(dcApplication()) << "Loaded translations from" << qmFile.fileName();
         } else {
             translator->deleteLater();
-            qCInfo(dcApplication()) << "Failed to load translation" << qmFile.baseName();
+            qCInfo(dcApplication()) << "Failed to load translations from" << qmFile.fileName();
         }
     }
 
