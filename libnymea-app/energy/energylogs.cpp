@@ -550,6 +550,14 @@ void EnergyLogs::fetchLogs()
             newestExisting = QDateTime();
         }
 
+        if (m_sampleRate == EnergyLogs::SampleRate1Month ||
+            m_sampleRate == EnergyLogs::SampleRate1Year) {
+            qCDebug(dcEnergyLogs()) << "Gap filling not available for sample rate" << m_sampleRate << "Clearing cache";
+            clear();
+            oldestExisting = QDateTime();
+            newestExisting = QDateTime();
+        }
+
         qCDebug(dcEnergyLogs()) << "request timeframe: " << m_startTime.toString() << " - " << m_endTime.toString();
         qCDebug(dcEnergyLogs()) << "existing timeframe:" << oldestExisting.toString() << "- " << newestExisting.toString();
 
@@ -564,6 +572,7 @@ void EnergyLogs::fetchLogs()
             if (frontGapExists) {
                 startTime = m_startTime;
                 endTime = qMin(m_endTime, oldestExisting.addSecs(-m_sampleRate * 60));
+                qCDebug(dcEnergyLogs()) << "Front gap exists. Correcting end time from" << m_endTime.toString() << "to" << endTime.toString();
                 // The requested window may have grown on both edges at once
                 // (e.g. zooming out): a single request can only cover one
                 // contiguous gap, so the past-side gap above is prioritized
@@ -578,6 +587,7 @@ void EnergyLogs::fetchLogs()
                 }
             } else if (backGapExists) {
                 startTime = qMax(m_startTime, newestExisting.addSecs(m_sampleRate * 60));
+                qCDebug(dcEnergyLogs()) << "Back gap exists. Correcting start time from" << m_startTime.toString() << "to" << startTime.toString();
                 endTime = m_endTime;
             } else {
                 // Nothing to do...
