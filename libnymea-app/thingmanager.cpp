@@ -352,12 +352,6 @@ void ThingManager::confirmPairingResponse(int commandId, const QVariantMap &para
     emit confirmPairingReply(commandId, errorFromString(params.value("thingError").toByteArray()), params.value("thingId").toUuid(), params.value("displayMessage").toString());
 }
 
-void ThingManager::setPluginConfigResponse(int commandId, const QVariantMap &params)
-{
-    qCDebug(dcThingManager()) << "set plugin config response" << params;
-    emit savePluginConfigReply(commandId, errorFromString(params.value("thingError").toByteArray()));
-}
-
 void ThingManager::editThingResponse(int commandId, const QVariantMap &params)
 {
     qCDebug(dcThingManager()) << "Edit thing response" << params;

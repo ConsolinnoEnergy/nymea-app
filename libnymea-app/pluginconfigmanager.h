@@ -27,6 +27,7 @@
 
 #include "types/params.h"
 #include "types/paramtypes.h"
+#include "types/thing.h"
 #include "engine.h"
 
 #include <QObject>
@@ -56,11 +57,15 @@ public:
 signals:
     void engineChanged();
     void pluginChanged();
+    void savePluginConfigReply(int commandId, Thing::ThingError thingError);
 
 private slots:
-    void getPluginConfigResponse(int commandId, const QVariantMap &data);
+    Q_INVOKABLE void getPluginConfigResponse(int commandId, const QVariantMap &data);
+    Q_INVOKABLE void setPluginConfigResponse(int commandId, const QVariantMap &params);
 
 private:
+    static Thing::ThingError errorFromString(const QByteArray &thingErrorString);
+
     Engine *m_engine = nullptr;
     Plugin* m_plugin = nullptr;
     Params *m_params = nullptr;

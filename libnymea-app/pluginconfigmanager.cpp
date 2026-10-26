@@ -24,6 +24,8 @@
 
 #include "pluginconfigmanager.h"
 
+#include <QMetaEnum>
+
 PluginConfigManager::PluginConfigManager(QObject *parent)
     : QObject{parent}
 {
@@ -91,6 +93,12 @@ void PluginConfigManager::getPluginConfigResponse(int /*commandId*/, const QVari
     }
 }
 
+void PluginConfigManager::setPluginConfigResponse(int commandId, const QVariantMap &params)
+{
+    qCDebug(dcThingManager) << "set plugin config response" << params;
+    emit savePluginConfigReply(commandId, errorFromString(params.value("thingError").toByteArray()));
+}
+
 int PluginConfigManager::savePluginConfig()
 {
     QVariantMap params;
@@ -101,4 +109,10 @@ int PluginConfigManager::savePluginConfig()
     }
     params.insert("configuration", pluginParams);
     return m_engine->jsonRpcClient()->sendCommand("Integrations.SetPluginConfiguration", params, this, "setPluginConfigResponse");
+}
+
+Thing::ThingError PluginConfigManager::errorFromString(const QByteArray &thingErrorString)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<Thing::ThingError>();
+    return static_cast<Thing::ThingError>(metaEnum.keyToValue(thingErrorString.constData()));
 }

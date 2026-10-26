@@ -109,7 +109,6 @@ private:
     Q_INVOKABLE void removeThingResponse(int commandId, const QVariantMap &params);
     Q_INVOKABLE void pairThingResponse(int commandId, const QVariantMap &params);
     Q_INVOKABLE void confirmPairingResponse(int commandId, const QVariantMap &params);
-    Q_INVOKABLE void setPluginConfigResponse(int commandId, const QVariantMap &params);
     Q_INVOKABLE void editThingResponse(int commandId, const QVariantMap &params);
     Q_INVOKABLE void executeActionResponse(int commandId, const QVariantMap &params);
     Q_INVOKABLE void reconfigureThingResponse(int commandId, const QVariantMap &params);
@@ -132,7 +131,6 @@ signals:
     void pairThingReply(int commandId, Thing::ThingError thingError, const QUuid &pairingTransactionId, const QString &setupMethod, const QString &displayMessage, const QString &oAuthUrl);
     void confirmPairingReply(int commandId, Thing::ThingError thingError, const QUuid &thingId, const QString &displayMessage);
     void removeThingReply(int commandId, Thing::ThingError thingError, const QStringList ruleIds);
-    void savePluginConfigReply(int commandId, Thing::ThingError thingError);
     void editThingReply(int commandId, Thing::ThingError thingError);
     void reconfigureThingReply(int commandId, Thing::ThingError thingError, const QString &displayMessage);
     void executeActionReply(int commandId, Thing::ThingError thingError, const QString &displayMessage);
