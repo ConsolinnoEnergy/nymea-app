@@ -358,6 +358,12 @@ void ThingManager::editThingResponse(int commandId, const QVariantMap &params)
     emit editThingReply(commandId, errorFromString(params.value("thingError").toByteArray()));
 }
 
+void ThingManager::setThingSettingsResponse(int commandId, const QVariantMap &params)
+{
+    qCDebug(dcThingManager()) << "Set thing settings response" << params;
+    emit setThingSettingsReply(commandId, errorFromString(params.value("thingError").toByteArray()));
+}
+
 void ThingManager::executeActionResponse(int commandId, const QVariantMap &params)
 {
     qCDebug(dcThingManager()) << "Execute Action response" << params;
@@ -455,7 +461,7 @@ int ThingManager::setThingSettings(const QUuid &thingId, const QVariantList &set
     QVariantMap params;
     params.insert("thingId", thingId);
     params.insert("settings", settings);
-    return m_jsonClient->sendCommand("Integrations.SetThingSettings", params);
+    return m_jsonClient->sendCommand("Integrations.SetThingSettings", params, this, "setThingSettingsResponse");
 }
 
 int ThingManager::reconfigureThing(const QUuid &thingId, const QVariantList &thingParams)
