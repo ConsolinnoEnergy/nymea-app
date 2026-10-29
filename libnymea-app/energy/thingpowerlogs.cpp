@@ -98,11 +98,11 @@ void ThingPowerLogs::setLoader(ThingPowerLogsLoader *loader)
         if (loader) {
             loader->addThingId(m_thingId);
             connect(loader, &ThingPowerLogsLoader::fetched, this, [=](int commandId, const QVariantMap &params) {
-                qCDebug(dcEnergyLogs()) << "Loader fetched data.";
+                qCInfo(dcEnergyLogs()) << "Loader fetched data.";
                 getLogsResponse(commandId, params);
             });
             connect(loader, &ThingPowerLogsLoader::cacheReset, this, [=]() {
-                qCDebug(dcEnergyLogs()) << "Loader reset its cached range. Discarding our own stale cache too.";
+                qCInfo(dcEnergyLogs()) << "Loader reset its cached range. Discarding our own stale cache too.";
                 clear();
             });
         }
@@ -330,18 +330,18 @@ void ThingPowerLogsLoader::addThingId(const QUuid &thingId)
 void ThingPowerLogsLoader::fetchLogs()
 {
     if (!m_engine || m_engine->jsonRpcClient()->experiences().value("Energy").toString() < "1.0") {
-        qCDebug(dcEnergyLogs()) << "Not fetching logs" << m_engine;
+        qCInfo(dcEnergyLogs()) << "Not fetching logs" << m_engine;
         return;
     }
 
     if (m_thingIds.isEmpty()) {
-        qCDebug(dcEnergyLogs()) << "No thing ids registered yet, delaying fetch";
+        qCInfo(dcEnergyLogs()) << "No thing ids registered yet, delaying fetch";
         m_fetchAgain = true;
         return;
     }
 
     if (m_fetchingData) {
-        qCDebug(dcEnergyLogs()) << "Already busy.. queing up call";
+        qCInfo(dcEnergyLogs()) << "Already busy.. queing up call";
         m_fetchAgain = true;
         return;
     }
@@ -374,7 +374,7 @@ void ThingPowerLogsLoader::fetchLogs()
         // future day) still end up empty.
         if (!m_lastStartTime.isNull() && !m_lastEndTime.isNull()
                 && (m_lastEndTime < m_startTime || m_lastStartTime > m_endTime)) {
-            qCDebug(dcEnergyLogs()) << "Previously requested timeframe does not overlap requested timeframe at all. Resetting cached range.";
+            qCInfo(dcEnergyLogs()) << "Previously requested timeframe does not overlap requested timeframe at all. Resetting cached range.";
             m_lastStartTime = QDateTime();
             m_lastEndTime = QDateTime();
             emit cacheReset();
@@ -386,6 +386,12 @@ void ThingPowerLogsLoader::fetchLogs()
             m_lastStartTime = m_startTime;
             m_lastEndTime = m_endTime;
         } else {
+            if (m_startTime < m_lastStartTime) {
+                qCInfo(dcEnergyLogs()) << "Front gap exists. Start time:" << m_startTime.toString() << "Last start time:" << m_lastStartTime.toString();
+            }
+            if (m_lastEndTime < m_endTime) {
+                qCInfo(dcEnergyLogs()) << "Back gap exists. End time:" << m_endTime.toString() << "Last end time:" << m_lastEndTime.toString();
+            }
             if (m_startTime < m_lastStartTime) {
                 startTime = m_startTime;
                 endTime = m_lastStartTime;
@@ -404,19 +410,19 @@ void ThingPowerLogsLoader::fetchLogs()
 
         params.insert("from", startTime.toSecsSinceEpoch());
         params.insert("to", endTime.addSecs(-1).toSecsSinceEpoch());
-        qCDebug(dcEnergyLogs()) << "Fetching from" << startTime.toString() << "to" << endTime.toString() << "with sample rate" << m_sampleRate;
+        qCInfo(dcEnergyLogs()) << "Fetching from" << startTime.toString() << "to" << endTime.toString() << "with sample rate" << m_sampleRate;
     }
 
     m_fetchingData = true;
     emit fetchingDataChanged();
 
-    qCDebug(dcEnergyLogs()) << "Fetching logs";
+    qCInfo(dcEnergyLogs()) << "Fetching logs";
     m_engine->jsonRpcClient()->sendCommand("Energy.GetThingPowerLogs", params, this, "getLogsResponse");
 }
 
 void ThingPowerLogsLoader::getLogsResponse(int commandId, const QVariantMap &params)
 {
-    qCDebug(dcEnergyLogs()) << "Logs loader response!";
+    qCInfo(dcEnergyLogs()) << "Logs loader response!";
     emit fetched(commandId, params);
 
     m_fetchingData = false;

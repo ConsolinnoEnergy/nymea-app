@@ -316,7 +316,7 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
     double minValue = 0, maxValue = 0;
     qCDebug(dcEnergyLogs()) << "Logs response:" << qUtf8Printable(QJsonDocument::fromVariant(params).toJson());
     QList<EnergyLogEntry*> entries = unpackEntries(params, &minValue, &maxValue);
-    qCDebug(dcEnergyLogs()) << "Energy logs received" << entries.count();
+    qCInfo(dcEnergyLogs()) << "Energy logs received" << entries.count();
 
     if (!entries.isEmpty()) {
         if (m_list.isEmpty()) {
@@ -347,7 +347,7 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
                 }
             } else {
                 // End of fetched entries does not line up with start of existing entries. Discarding existing entries
-                qCDebug(dcEnergyLogs()) << "End of fetched entrie does not line up with start of existing entries. Discarding existing entries" << entries.last()->timestamp().addSecs(m_sampleRate * 60).toString() << " - " << m_list.first()->timestamp().toString();
+                qCInfo(dcEnergyLogs()) << "End of fetched entrie does not line up with start of existing entries. Discarding existing entries" << entries.last()->timestamp().addSecs(m_sampleRate * 60).toString() << " - " << m_list.first()->timestamp().toString();
                 clear();
 
                 // If the mismatch is in the visible area, we'll discard everything and fetch again
@@ -397,13 +397,13 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
         trimCache();
 
     } else {
-        qCDebug(dcEnergyLogs()) << "Received empty log entries set.";
+        qCInfo(dcEnergyLogs()) << "Received empty log entries set.";
     }
 
     m_fetchingData = false;
 
     if (m_fetchAgain) {
-        qCDebug(dcEnergyLogs()) << "Fetching again...";
+        qCInfo(dcEnergyLogs()) << "Fetching again...";
         m_fetchAgain = false;
         fetchLogs();
     } else if (m_backGapPending) {
@@ -416,7 +416,7 @@ void EnergyLogs::getLogsResponse(int commandId, const QVariantMap &params)
         m_backGapPending = false;
         QDateTime newestExisting = m_list.count() > 0 ? m_list.last()->timestamp() : QDateTime();
         if (!newestExisting.isNull() && newestExisting < m_endTime) {
-            qCDebug(dcEnergyLogs()) << "Fetching remaining future-side gap...";
+            qCInfo(dcEnergyLogs()) << "Fetching remaining future-side gap...";
             fetchGap(qMax(m_startTime, newestExisting.addSecs(m_sampleRate * 60)), m_endTime);
         } else {
             emit fetchingDataChanged();
@@ -512,7 +512,7 @@ void EnergyLogs::fetchLogs()
     }
 
     if (m_fetchingData) {
-        qCDebug(dcEnergyLogs()) << "Already busy.. queing up call";
+        qCInfo(dcEnergyLogs()) << "Already busy.. queing up call";
         m_fetchAgain = true;
         return;
     }
@@ -544,7 +544,7 @@ void EnergyLogs::fetchLogs()
         // legitimately have no data (e.g. a future day) still end up empty.
         if (!oldestExisting.isNull() && !newestExisting.isNull()
                 && (newestExisting < m_startTime || oldestExisting > m_endTime)) {
-            qCDebug(dcEnergyLogs()) << "Existing cache does not overlap requested timeframe at all. Discarding stale cache and fetching requested timeframe fully.";
+            qCInfo(dcEnergyLogs()) << "Existing cache does not overlap requested timeframe at all. Discarding stale cache and fetching requested timeframe fully.";
             clear();
             oldestExisting = QDateTime();
             newestExisting = QDateTime();
@@ -552,14 +552,14 @@ void EnergyLogs::fetchLogs()
 
         if (m_sampleRate == EnergyLogs::SampleRate1Month ||
             m_sampleRate == EnergyLogs::SampleRate1Year) {
-            qCDebug(dcEnergyLogs()) << "Gap filling not available for sample rate" << m_sampleRate << "Clearing cache";
+            qCInfo(dcEnergyLogs()) << "Gap filling not available for sample rate" << m_sampleRate << "Clearing cache";
             clear();
             oldestExisting = QDateTime();
             newestExisting = QDateTime();
         }
 
-        qCDebug(dcEnergyLogs()) << "request timeframe: " << m_startTime.toString() << " - " << m_endTime.toString();
-        qCDebug(dcEnergyLogs()) << "existing timeframe:" << oldestExisting.toString() << "- " << newestExisting.toString();
+        qCInfo(dcEnergyLogs()) << "request timeframe: " << m_startTime.toString() << " - " << m_endTime.toString();
+        qCInfo(dcEnergyLogs()) << "existing timeframe:" << oldestExisting.toString() << "- " << newestExisting.toString();
 
         if (oldestExisting.isNull() || newestExisting.isNull()) {
             startTime = m_startTime;
@@ -572,7 +572,7 @@ void EnergyLogs::fetchLogs()
             if (frontGapExists) {
                 startTime = m_startTime;
                 endTime = qMin(m_endTime, oldestExisting.addSecs(-m_sampleRate * 60));
-                qCDebug(dcEnergyLogs()) << "Front gap exists. Correcting end time from" << m_endTime.toString() << "to" << endTime.toString();
+                qCInfo(dcEnergyLogs()) << "Front gap exists. Correcting end time from" << m_endTime.toString() << "to" << endTime.toString();
                 // The requested window may have grown on both edges at once
                 // (e.g. zooming out): a single request can only cover one
                 // contiguous gap, so the past-side gap above is prioritized
@@ -587,7 +587,7 @@ void EnergyLogs::fetchLogs()
                 }
             } else if (backGapExists) {
                 startTime = qMax(m_startTime, newestExisting.addSecs(m_sampleRate * 60));
-                qCDebug(dcEnergyLogs()) << "Back gap exists. Correcting start time from" << m_startTime.toString() << "to" << startTime.toString();
+                qCInfo(dcEnergyLogs()) << "Back gap exists. Correcting start time from" << m_startTime.toString() << "to" << startTime.toString();
                 endTime = m_endTime;
             } else {
                 // Nothing to do...
@@ -597,7 +597,7 @@ void EnergyLogs::fetchLogs()
 
         params.insert("from", startTime.toSecsSinceEpoch());
         params.insert("to", endTime.toSecsSinceEpoch());
-        qCDebug(dcEnergyLogs()) << "Fetching from" << startTime.toString() << "to" << endTime.toString() << "with sample rate" << m_sampleRate;
+        qCInfo(dcEnergyLogs()) << "Fetching from" << startTime.toString() << "to" << endTime.toString() << "with sample rate" << m_sampleRate;
     }
 
     m_fetchingData = true;
