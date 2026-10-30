@@ -140,6 +140,10 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     endif()
 endif()
 
+if(MSVC)
+    add_compile_options(/FS)
+endif()
+
 if(NYMEA_ENABLE_ZEROCONF AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/QtZeroConf/CMakeLists.txt")
     add_subdirectory(QtZeroConf)
 endif()
