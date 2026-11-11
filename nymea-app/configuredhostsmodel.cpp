@@ -120,6 +120,16 @@ ConfiguredHost *ConfiguredHostsModel::createHost()
     return host;
 }
 
+ConfiguredHost *ConfiguredHostsModel::createEphemeralHost()
+{
+    ConfiguredHost *host = new ConfiguredHost();
+    // Mark as ephemeral before adding it, so the QML delegate already sees it
+    // and the model never writes it to the settings storage.
+    host->setEphemeral(true);
+    addHost(host);
+    return host;
+}
+
 void ConfiguredHostsModel::removeHost(int index)
 {
     if (index < 0 || index >= m_list.count()) {
@@ -240,8 +250,12 @@ void ConfiguredHostsModel::saveToDisk()
     settings.beginGroup("ConfiguredHosts");
     settings.remove("");
     settings.setValue("currentIndex", m_currentIndex);
+    int persistedIndex = 0;
     for (int i = 0; i < m_list.count(); i++) {
-        settings.beginGroup(QString::number(i));
+        if (m_list.at(i)->ephemeral()) {
+            continue;
+        }
+        settings.beginGroup(QString::number(persistedIndex++));
         settings.setValue("uuid", m_list.at(i)->uuid());
         settings.setValue("cachedName", m_list.at(i)->name());
         settings.endGroup();
@@ -278,6 +292,20 @@ Engine *ConfiguredHost::engine() const
 QString ConfiguredHost::name() const
 {
     return m_name;
+}
+
+bool ConfiguredHost::ephemeral() const
+{
+    return m_ephemeral;
+}
+
+void ConfiguredHost::setEphemeral(bool ephemeral)
+{
+    if (m_ephemeral == ephemeral) {
+        return;
+    }
+    m_ephemeral = ephemeral;
+    emit ephemeralChanged();
 }
 
 void ConfiguredHost::setName(const QString &name)

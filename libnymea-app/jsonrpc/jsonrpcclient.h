@@ -102,6 +102,12 @@ public:
     Q_INVOKABLE bool tokenExists(const QString &serverUuid) const;
     Q_INVOKABLE void addToken(const QString &serverUuid, const QByteArray &token);
 
+    // Registers a session token that is only kept in memory for the lifetime of
+    // this process. It is used before any token persisted in QSettings and is
+    // never written to disk. Used by the direct connect handoff.
+    bool setSessionToken(const QUuid &serverUuid, const QByteArray &token);
+    bool hasSessionToken(const QUuid &serverUuid) const;
+
     Q_INVOKABLE bool ensureServerVersion(const QString &jsonRpcVersion);
 
     Q_INVOKABLE int createUser(const QString &username, const QString &password, const QString &displayName, const QString &email);
@@ -168,6 +174,7 @@ private:
     QString m_serverQtVersion;
     QString m_serverQtBuildVersion;
     QByteArray m_token;
+    QHash<QUuid, QByteArray> m_sessionTokens;
     QThread *m_parserThread = nullptr;
     JsonRpcParser *m_parser = nullptr;
     int m_parserGeneration = 0;

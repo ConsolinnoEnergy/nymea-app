@@ -49,6 +49,65 @@
 #include "logging.h"
 NYMEA_LOGGING_CATEGORY(dcJsonRpc, "JsonRpc")
 
+namespace {
+
+// Values that must never end up in a log file. Covers the JSON-RPC session
+// token as well as credentials from password based authentication and
+// push-button auth notifications.
+bool isSensitiveKey(const QString &key)
+{
+    static const QStringList keys = {
+        QStringLiteral("token"),
+        QStringLiteral("password"),
+        QStringLiteral("secret"),
+        QStringLiteral("code"),
+        QStringLiteral("jwt"),
+        QStringLiteral("access_token"),
+        QStringLiteral("refresh_token"),
+    };
+    return keys.contains(key, Qt::CaseInsensitive);
+}
+
+QVariant redactSensitiveValues(const QVariant &value);
+
+QVariantMap redactSensitiveValues(const QVariantMap &map)
+{
+    QVariantMap result;
+    for (auto it = map.constBegin(); it != map.constEnd(); ++it) {
+        result.insert(it.key(), isSensitiveKey(it.key())
+                                    ? QVariant(QStringLiteral("<redacted>"))
+                                    : redactSensitiveValues(it.value()));
+    }
+    return result;
+}
+
+QVariant redactSensitiveValues(const QVariant &value)
+{
+    switch (value.typeId()) {
+    case QMetaType::QVariantMap:
+        return redactSensitiveValues(value.toMap());
+    case QMetaType::QVariantList: {
+        QVariantList list;
+        const QVariantList source = value.toList();
+        list.reserve(source.size());
+        for (const QVariant &entry : source) {
+            list.append(redactSensitiveValues(entry));
+        }
+        return list;
+    }
+    default:
+        return value;
+    }
+}
+
+QByteArray redactedJson(const QVariantMap &map)
+{
+    return QJsonDocument::fromVariant(redactSensitiveValues(map)).toJson(QJsonDocument::Compact);
+}
+
+} // namespace
+
+
 JsonRpcClient::JsonRpcClient(QObject *parent) :
     QObject(parent),
     m_id(0)
@@ -145,7 +204,7 @@ int JsonRpcClient::sendCommand(const QString &method, const QVariantMap &params,
         << QTime::currentTime().toString(Qt::ISODateWithMs)
         << "Sending command"
         << reply->nameSpace() + '.' + reply->method();
-    qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(QJsonDocument::fromVariant(reply->requestMap()).toJson());
+    qCDebug(dcJsonRpc()).noquote() << QString::fromUtf8(redactedJson(reply->requestMap()));
     m_replies.insert(reply->commandId(), reply);
     m_commandSendTimes.insert(reply->commandId(), QDateTime::currentDateTime());
     sendRequest(reply->requestMap());
@@ -193,9 +252,28 @@ void JsonRpcClient::acceptCertificate(const QUuid &serverUuid, const QByteArray 
 
 bool JsonRpcClient::tokenExists(const QString &serverUuid) const
 {
+    if (hasSessionToken(QUuid(serverUuid))) {
+        return true;
+    }
+
     QSettings settings;
     settings.beginGroup("jsonTokens");
     return settings.contains(QUuid(serverUuid).toString());
+}
+
+bool JsonRpcClient::setSessionToken(const QUuid &serverUuid, const QByteArray &token)
+{
+    if (serverUuid.isNull() || token.isEmpty()) {
+        return false;
+    }
+
+    m_sessionTokens.insert(serverUuid, token);
+    return true;
+}
+
+bool JsonRpcClient::hasSessionToken(const QUuid &serverUuid) const
+{
+    return m_sessionTokens.contains(serverUuid);
 }
 
 void JsonRpcClient::addToken(const QString &serverUuid, const QByteArray &token)
@@ -218,7 +296,7 @@ void JsonRpcClient::setNotificationsEnabledResponse(int commandId, const QVarian
 
 void JsonRpcClient::notificationReceived(const QVariantMap &data)
 {
-    qCDebug(dcJsonRpc()) << "Notification received:" << qUtf8Printable(QJsonDocument::fromVariant(data).toJson());
+    qCDebug(dcJsonRpc()) << "Notification received:" << qUtf8Printable(redactedJson(data));
     if (data.value("notification").toString() == "JSONRPC.PushButtonAuthFinished") {
         qCInfo(dcJsonRpc()) << "Push button auth finished.";
         if (data.value("params").toMap().value("transactionId").toInt() != m_pendingPushButtonTransaction) {
@@ -249,7 +327,7 @@ void JsonRpcClient::notificationReceived(const QVariantMap &data)
         return;
     }
 
-    qCWarning(dcJsonRpc()) << "JsonRpcClient: Unhandled notification received" << data;
+    qCWarning(dcJsonRpc()) << "JsonRpcClient: Unhandled notification received" << redactSensitiveValues(data);
 }
 
 void JsonRpcClient::getVersionsReply(int /*commandId*/, const QVariantMap &data)
@@ -427,10 +505,12 @@ void JsonRpcClient::processAuthenticate(int /*commandId*/, const QVariantMap &da
             m_permissionScopes = UserInfo::PermissionScopeAdmin;
         }
         emit permissionsChanged();
-        QSettings settings;
-        settings.beginGroup("jsonTokens");
-        settings.setValue(m_serverUuid.toString(), m_token);
-        settings.endGroup();
+        if (!hasSessionToken(m_serverUuid)) {
+            QSettings settings;
+            settings.beginGroup("jsonTokens");
+            settings.setValue(m_serverUuid.toString(), m_token);
+            settings.endGroup();
+        }
         emit authenticationRequiredChanged();
 
         m_authenticated = true;
@@ -438,14 +518,14 @@ void JsonRpcClient::processAuthenticate(int /*commandId*/, const QVariantMap &da
 
         setNotificationsEnabled();
     } else {
-        qCWarning(dcJsonRpc()) << "Authentication failed" << data;
+        qCWarning(dcJsonRpc()) << "Authentication failed" << redactSensitiveValues(data);
         emit authenticationFailed();
     }
 }
 
 void JsonRpcClient::processCreateUser(int /*commandId*/, const QVariantMap &data)
 {
-    qDebug() << "create user response:" << data;
+    qDebug() << "create user response:" << redactSensitiveValues(data);
     if (data.value("error").toString() == "UserErrorNoError") {
         emit createUserSucceeded();
         m_initialSetupRequired = false;
@@ -458,7 +538,7 @@ void JsonRpcClient::processCreateUser(int /*commandId*/, const QVariantMap &data
 
 void JsonRpcClient::processRequestPushButtonAuth(int /*commandId*/, const QVariantMap &data)
 {
-    qDebug() << "requestPushButtonAuth response" << data;
+    qDebug() << "requestPushButtonAuth response" << redactSensitiveValues(data);
     if (data.value("success").toBool()) {
         m_pendingPushButtonTransaction = data.value("transactionId").toInt();
     } else {
@@ -562,11 +642,15 @@ void JsonRpcClient::onInterfaceConnectedChanged(bool connected)
         // Clear anything that might be left in the buffer from a previous connection.
         resetParser();
 
-        // Load token for this host
-        QSettings settings;
-        settings.beginGroup("jsonTokens");
-        m_token = settings.value(currentHost()->uuid().toString()).toByteArray();
-        settings.endGroup();
+        // Load token for this host. Session tokens (direct connect handoff)
+        // take precedence and never touch the settings storage.
+        m_token = m_sessionTokens.value(currentHost()->uuid());
+        if (m_token.isEmpty()) {
+            QSettings settings;
+            settings.beginGroup("jsonTokens");
+            m_token = settings.value(currentHost()->uuid().toString()).toByteArray();
+            settings.endGroup();
+        }
 
 
         QVariantMap params;
@@ -637,10 +721,12 @@ void JsonRpcClient::messageReceived(const QVariantMap &dataMap, int generation)
             qCWarning(dcJsonRpc()) << "Something's off with the token";
             m_authenticationRequired = true;
             m_token.clear();
-            QSettings settings;
-            settings.beginGroup("jsonTokens");
-            settings.setValue(m_serverUuid.toString(), m_token);
-            settings.endGroup();
+            if (!hasSessionToken(m_serverUuid)) {
+                QSettings settings;
+                settings.beginGroup("jsonTokens");
+                settings.setValue(m_serverUuid.toString(), m_token);
+                settings.endGroup();
+            }
             emit authenticationRequiredChanged();
             m_authenticated = false;
             emit authenticatedChanged();
@@ -648,7 +734,7 @@ void JsonRpcClient::messageReceived(const QVariantMap &dataMap, int generation)
 
         if (dataMap.value("status").toString() == "error") {
             qCWarning(dcJsonRpc()) << "An error happened in the JSONRPC layer:" << dataMap.value("error").toString();
-            qCWarning(dcJsonRpc()) << "Request was:" << qUtf8Printable(QJsonDocument::fromVariant(reply->requestMap()).toJson());
+            qCWarning(dcJsonRpc()) << "Request was:" << qUtf8Printable(redactedJson(reply->requestMap()));
             if (reply->nameSpace() == "JSONRPC" && reply->method() == "Hello") {
                 qCInfo(dcJsonRpc()) << "Hello call failed. Trying again without locale";
                 m_id = 0;
@@ -783,10 +869,12 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
         if (!params.value("authenticated").toBool()) {
             qCWarning(dcJsonRpc) << "Seems our token is not valid!";
             m_token.clear();
-            QSettings settings;
-            settings.beginGroup("jsonTokens");
-            settings.setValue(serverUuid.toString(), m_token);
-            settings.endGroup();
+            if (!hasSessionToken(serverUuid)) {
+                QSettings settings;
+                settings.beginGroup("jsonTokens");
+                settings.setValue(serverUuid.toString(), m_token);
+                settings.endGroup();
+            }
             emit authenticationRequiredChanged();
             m_authenticated = false;
             emit authenticatedChanged();
@@ -810,10 +898,13 @@ void JsonRpcClient::helloReply(int /*commandId*/, const QVariantMap &params)
 
     if (m_authenticationRequired) {
         // Reload the token, now that we're certain about the server uuid.
-        QSettings settings;
-        settings.beginGroup("jsonTokens");
-        m_token = settings.value(m_serverUuid.toString()).toByteArray();
-        settings.endGroup();
+        m_token = m_sessionTokens.value(m_serverUuid);
+        if (m_token.isEmpty()) {
+            QSettings settings;
+            settings.beginGroup("jsonTokens");
+            m_token = settings.value(m_serverUuid.toString()).toByteArray();
+            settings.endGroup();
+        }
         emit authenticationRequiredChanged();
 
         if (m_token.isEmpty()) {
