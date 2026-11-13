@@ -99,6 +99,11 @@ AppLogController::AppLogController(QObject *parent) : QObject(parent)
     if (!settings.childKeys().contains("Application")) {
         m_logLevels["Application"] = LogLevelInfo;
     }
+    // The direct connect handoff is security relevant: keep its info messages
+    // visible by default so support logs show what was redeemed or rejected.
+    if (!settings.childKeys().contains("DirectConnect")) {
+        m_logLevels["DirectConnect"] = LogLevelInfo;
+    }
     settings.endGroup();
 
     updateFilters();

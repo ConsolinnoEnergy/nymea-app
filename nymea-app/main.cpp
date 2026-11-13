@@ -91,6 +91,27 @@
 NYMEA_LOGGING_CATEGORY(dcApplication, "Application")
 NYMEA_LOGGING_CATEGORY(qml, "qml")
 
+// URLs and deep links may carry credentials (handoff codes, session tokens,
+// JWTs) in their query string. Never write those to the log.
+static QString redactSensitiveArgument(const QString &argument)
+{
+    if (!argument.contains(QStringLiteral("://"))) {
+        return argument;
+    }
+
+    const QUrl url(argument, QUrl::StrictMode);
+    if (!url.isValid() || url.scheme().isEmpty()) {
+        return argument;
+    }
+
+    QString redacted = url.scheme() + QStringLiteral("://") + url.host() + url.path();
+    if (!url.query().isEmpty()) {
+        redacted.append(QStringLiteral("?<redacted>"));
+    }
+    return redacted;
+}
+
+
 int main(int argc, char *argv[])
 {
 #ifdef Q_OS_WIN
@@ -140,41 +161,15 @@ int main(int argc, char *argv[])
     parser.process(application);
 
 
-    QString scheme = "";
-    QString hostAddress = "";
-    QString port = "";
-    QString uuid = "";
-    QString token = "";
-
-    if (argc > 1) {
-        QString url = argv[1];
-        qDebug() << "Received URL:" << url;
-
-        // URL parsen
-        QUrl qurl(url);
-        QUrlQuery qurlQ(url);
-        if (qurl.scheme() == "hems-con-desktop") {
-            scheme = qurl.scheme();
-
-            hostAddress = qurlQ.queryItemValue("hostAddress");
-            port = qurlQ.queryItemValue("port");
-            uuid = qurlQ.queryItemValue("uuid");
-            token = qurlQ.queryItemValue("token");
-
-
-            qDebug() << "Scheme:" << scheme;
-            qDebug() << "HostAddress:" << hostAddress;
-            qDebug() << "Port:" << port;
-            qDebug() << "Token:" << token;
-            qDebug() << "Uuid:" << uuid;
-        }
-    }
-
     // Initialize app log controller as early as possible, but after setting app name and printing initial startup info
     AppLogController::instance();
 
     qCInfo(dcApplication()) << "-->" << application.applicationName() << APP_VERSION << QDateTime::currentDateTime().toString();
-    qCInfo(dcApplication()) << "Command line:" << application.arguments().join(" ");
+    QStringList redactedArguments;
+    foreach (const QString &argument, application.arguments()) {
+        redactedArguments.append(redactSensitiveArgument(argument));
+    }
+    qCInfo(dcApplication()) << "Command line:" << redactedArguments.join(" ");
     qCInfo(dcApplication()) << "System: Device model:" << PlatformHelper::instance()->deviceModel();
     qCInfo(dcApplication()) << "  Hostname:" << QSysInfo::machineHostName();
     qCInfo(dcApplication()) << "  Product name:" << QSysInfo::prettyProductName();
@@ -350,11 +345,6 @@ int main(int argc, char *argv[])
 
     engine->rootContext()->setContextProperty("useVirtualKeyboard", qgetenv("QT_IM_MODULE") == "qtvirtualkeyboard");
 
-    engine->rootContext()->setContextProperty("Action", scheme);
-    engine->rootContext()->setContextProperty("Uuid", uuid);
-    engine->rootContext()->setContextProperty("Token", token);
-    engine->rootContext()->setContextProperty("HostAddress", hostAddress);
-    engine->rootContext()->setContextProperty("Port", port);
 
 
     application.setWindowIcon(QIcon(QString(":/styles/%1/logo.svg").arg(styleController.currentStyle())));

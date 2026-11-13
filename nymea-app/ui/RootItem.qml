@@ -358,6 +358,12 @@ Item {
                     }
 
                     Component.onCompleted: {
+                        // Ephemeral slots (e.g. direct connect handoff) are
+                        // connected by the overlay hook, not by the wizard.
+                        if (configuredHost.ephemeral) {
+                            return;
+                        }
+
                         if (configuredHost.uuid.toString() !== "{00000000-0000-0000-0000-000000000000}") {
                             print("Configured host id is", configuredHost.uuid)
 
@@ -384,6 +390,21 @@ Item {
                     }
 
                     Timer { running: true; repeat: false; interval: 3000; onTriggered: PlatformHelper.hideSplashScreen(); }
+
+                    // Overlay hook for the direct connect deep link handoff.
+                    // The type is only registered by the Consolinno overlay, so
+                    // upstream builds skip the loader without a missing-file error.
+                    Loader {
+                        id: directConnectHook
+                        active: index === 0 && typeof DirectConnect !== "undefined"
+                        source: "qrc:/ui/overlay/DirectConnectHook.qml"
+                        onLoaded: {
+                            item.engine = engine
+                            item.nymeaDiscovery = nymeaDiscovery
+                            item.configuredHostsModel = configuredHostsModel
+                            item.rootItem = root
+                        }
+                    }
 
                     function init() {
                         print("calling init. Auth required:", engine.jsonRpcClient.authenticationRequired, "initial setup required:", engine.jsonRpcClient.initialSetupRequired, "jsonrpc connected:", engine.jsonRpcClient.connected, "Current host:", engine.jsonRpcClient.currentHost)
@@ -519,13 +540,21 @@ Item {
                         function onConnectedChanged(connected) {
                             print("json client connected changed", engine.jsonRpcClient.connected, engine.jsonRpcClient.serverUuid)
                             if (engine.jsonRpcClient.connected) {
-                                nymeaDiscovery.cacheHost(engine.jsonRpcClient.currentHost)
+                                if (!configuredHost.ephemeral) {
+                                    nymeaDiscovery.cacheHost(engine.jsonRpcClient.currentHost)
+                                }
                                 configuredHost.uuid = engine.jsonRpcClient.serverUuid
 
-                                for (var i = 0; i < configuredHostsModel.count; i++) {
-                                    if (i != index && configuredHostsModel.get(i).uuid === engine.jsonRpcClient.serverUuid) {
-                                        configuredHostsModel.removeHost(i);
-                                        break;
+                                // Never deduplicate against ephemeral slots: removing a
+                                // persisted device because a temporary session uses it
+                                // would lose the user's configuration.
+                                if (!configuredHost.ephemeral) {
+                                    for (var i = 0; i < configuredHostsModel.count; i++) {
+                                        var other = configuredHostsModel.get(i)
+                                        if (i != index && !other.ephemeral && other.uuid === engine.jsonRpcClient.serverUuid) {
+                                            configuredHostsModel.removeHost(i);
+                                            break;
+                                        }
                                     }
                                 }
                             }

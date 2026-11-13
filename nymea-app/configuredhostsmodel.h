@@ -37,6 +37,9 @@ class ConfiguredHost: public QObject
     Q_PROPERTY(QUuid uuid READ uuid WRITE setUuid NOTIFY uuidChanged)
     Q_PROPERTY(QString name READ name NOTIFY nameChanged)
     Q_PROPERTY(Engine *engine READ engine CONSTANT)
+    // Ephemeral hosts are runtime-only (e.g. a direct connect session) and are
+    // never written to the settings storage.
+    Q_PROPERTY(bool ephemeral READ ephemeral WRITE setEphemeral NOTIFY ephemeralChanged)
 
 public:
     ConfiguredHost(const QUuid &uuid = QUuid(), QObject *parent = nullptr);
@@ -49,14 +52,19 @@ public:
 
     Engine* engine() const;
 
+    bool ephemeral() const;
+    void setEphemeral(bool ephemeral);
+
 signals:
     void uuidChanged();
     void nameChanged();
+    void ephemeralChanged();
 
 private:
     QUuid m_uuid;
     Engine *m_engine = nullptr;
     QString m_name;
+    bool m_ephemeral = false;
 };
 
 class ConfiguredHostsModel : public QAbstractListModel
@@ -83,6 +91,8 @@ public:
     Q_INVOKABLE int indexOf(ConfiguredHost *host) const;
     Q_INVOKABLE ConfiguredHost *get(int index) const;
     Q_INVOKABLE ConfiguredHost *createHost();
+    // Creates a runtime-only slot that is never persisted (direct connect).
+    Q_INVOKABLE ConfiguredHost *createEphemeralHost();
     Q_INVOKABLE void removeHost(int index);
     Q_INVOKABLE void move(int from, int to);
 
