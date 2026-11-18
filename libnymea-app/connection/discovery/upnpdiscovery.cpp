@@ -115,11 +115,16 @@ void UpnpDiscovery::updateInterfaces()
                     port = i;
                     break;
                 }
+                // Only a port collision is worth retrying. Any other error (e.g. address not available
+                // on APIPA/VPN/virtual adapters on Windows) fails for every port and would block startup.
+                if (socket->error() != QAbstractSocket::AddressInUseError) {
+                    break;
+                }
             }
             qCWarning(dcUPnP()) << "TIMING: bind on" << iface.name() << netAddressEntry.ip()
                                 << "attempts:" << attempts << "took" << bindTimer.elapsed() << "ms"
                                 << "result port:" << port << "error:" << socket->error() << socket->errorString();
-            if (port == 65535 || socket->state() != QUdpSocket::BoundState) {
+            if (port == -1 || socket->state() != QUdpSocket::BoundState) {
                 socket->deleteLater();
                 qCWarning(dcUPnP()) << "Discovery could not bind to interface" << netAddressEntry.ip();
                 continue;
