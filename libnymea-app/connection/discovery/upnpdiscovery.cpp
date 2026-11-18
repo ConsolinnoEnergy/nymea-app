@@ -28,6 +28,7 @@
 #include <QUrl>
 #include <QXmlStreamReader>
 #include <QNetworkInterface>
+#include <QElapsedTimer>
 //#include <QNetworkConfigurationManager>
 
 #include "logging.h"
@@ -85,6 +86,8 @@ void UpnpDiscovery::stopDiscovery()
 
 void UpnpDiscovery::updateInterfaces()
 {
+    QElapsedTimer updateTimer;
+    updateTimer.start();
     QList<QHostAddress> existingSockets = m_sockets.keys();
 
     // Now add all the interfaces where we don't have a socket yet
@@ -103,12 +106,19 @@ void UpnpDiscovery::updateInterfaces()
 
             QUdpSocket *socket = new QUdpSocket(this);
             int port = -1;
+            int attempts = 0;
+            QElapsedTimer bindTimer;
+            bindTimer.start();
             for (int i = 49125; i < 65535; i++) {
+                attempts++;
                 if(socket->bind(netAddressEntry.ip(), i, QUdpSocket::DontShareAddress)){
                     port = i;
                     break;
                 }
             }
+            qCWarning(dcUPnP()) << "TIMING: bind on" << iface.name() << netAddressEntry.ip()
+                                << "attempts:" << attempts << "took" << bindTimer.elapsed() << "ms"
+                                << "result port:" << port << "error:" << socket->error() << socket->errorString();
             if (port == 65535 || socket->state() != QUdpSocket::BoundState) {
                 socket->deleteLater();
                 qCWarning(dcUPnP()) << "Discovery could not bind to interface" << netAddressEntry.ip();
@@ -135,6 +145,7 @@ void UpnpDiscovery::updateInterfaces()
         }
     }
 
+    qCWarning(dcUPnP()) << "TIMING: updateInterfaces() took" << updateTimer.elapsed() << "ms";
 }
 
 void UpnpDiscovery::writeDiscoveryPacket()

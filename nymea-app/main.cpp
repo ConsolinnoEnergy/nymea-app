@@ -41,6 +41,7 @@
 #include <QFileInfo>
 #include <QOperatingSystemVersion>
 #include <QWindow>
+#include <QElapsedTimer>
 
 #ifdef Q_OS_WIN
 #define WIN32_LEAN_AND_MEAN
@@ -93,6 +94,8 @@ NYMEA_LOGGING_CATEGORY(qml, "qml")
 
 int main(int argc, char *argv[])
 {
+    QElapsedTimer startupTimer;
+    startupTimer.start();
 #ifdef Q_OS_WIN
     if (AttachConsole(ATTACH_PARENT_PROCESS)) {
         const bool stdoutRedirected = freopen("CONOUT$", "w", stdout) != nullptr;
@@ -120,6 +123,7 @@ int main(int argc, char *argv[])
 #endif
 
     QApplication application(argc, argv);
+    qCInfo(dcApplication()) << "TIMING: QApplication created:" << startupTimer.elapsed() << "ms since main()";
     application.setApplicationName(APPLICATION_NAME);
     application.setOrganizationName(ORGANISATION_NAME);
 
@@ -284,7 +288,11 @@ int main(int argc, char *argv[])
     // Note: QNetworkInformation should always first be loaded in the same thread as the QCoreApplication object
     qCInfo(dcApplication()) << "Available network information backends" << QNetworkInformation::instance()->availableBackends();
 
-    if (QNetworkInformation::instance()->loadDefaultBackend()) {
+    QElapsedTimer netInfoTimer;
+    netInfoTimer.start();
+    const bool netInfoLoaded = QNetworkInformation::instance()->loadDefaultBackend();
+    qCInfo(dcApplication()) << "TIMING: QNetworkInformation::loadDefaultBackend took" << netInfoTimer.elapsed() << "ms";
+    if (netInfoLoaded) {
         qCInfo(dcApplication()) << "Loaded default network information backend" << QNetworkInformation::instance()->backendName();
         qCInfo(dcApplication()) << "Network infromation supported features:" << QNetworkInformation::instance()->supportedFeatures();
         qCInfo(dcApplication()) << "Network reachability:" << QNetworkInformation::instance()->reachability();
@@ -359,7 +367,9 @@ int main(int argc, char *argv[])
 
     application.setWindowIcon(QIcon(QString(":/styles/%1/logo.svg").arg(styleController.currentStyle())));
 
+    qCInfo(dcApplication()) << "TIMING: before engine->load:" << startupTimer.elapsed() << "ms since main()";
     engine->load(QUrl(QLatin1String("qrc:/ui/Nymea.qml")));
+    qCInfo(dcApplication()) << "TIMING: engine->load returned:" << startupTimer.elapsed() << "ms since main()";
 
 #ifdef Q_OS_IOS
     if (!engine->rootObjects().isEmpty()) {
