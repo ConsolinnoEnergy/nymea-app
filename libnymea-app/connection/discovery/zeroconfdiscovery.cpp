@@ -25,11 +25,29 @@
 #include "zeroconfdiscovery.h"
 
 #include <QUuid>
+#include <QTcpSocket>
+#include <QHostAddress>
+#include <QElapsedTimer>
 
 #include "../nymeahost.h"
 #include "logging.h"
 
 NYMEA_LOGGING_CATEGORY(dcZeroConf, "ZeroConf")
+
+#if defined(WITH_ZEROCONF) && defined(Q_OS_WIN)
+// The Bonjour client stub blocks the calling thread for many seconds (connect retries + sleep)
+// if the Bonjour service is not running. Probe its loopback port with a short timeout first.
+static bool bonjourServiceReachable()
+{
+    QElapsedTimer timer;
+    timer.start();
+    QTcpSocket socket;
+    socket.connectToHost(QHostAddress::LocalHost, 5354);
+    bool ok = socket.waitForConnected(300);
+    qCInfo(dcZeroConf()) << "TIMING: Bonjour service probe (127.0.0.1:5354):" << (ok ? "reachable" : "not reachable") << "took" << timer.elapsed() << "ms" << (ok ? QString() : socket.errorString());
+    return ok;
+}
+#endif
 
 ZeroconfDiscovery::ZeroconfDiscovery(NymeaHosts *nymeaHosts, QObject *parent) :
     QObject(parent),
@@ -45,6 +63,14 @@ ZeroconfDiscovery::ZeroconfDiscovery(NymeaHosts *nymeaHosts, QObject *parent) :
     connect(m_zeroconfJsonRPC, &QZeroConf::serviceUpdated, this, &ZeroconfDiscovery::serviceEntryAdded);
     connect(m_zeroconfJsonRPC, &QZeroConf::serviceRemoved, this, &ZeroconfDiscovery::serviceEntryRemoved);
 
+#ifdef Q_OS_WIN
+    if (!bonjourServiceReachable()) {
+        qCWarning(dcZeroConf()) << "Bonjour service not available. Zeroconf discovery disabled.";
+        m_zeroconfWebSocket = new QZeroConf(this);
+        return;
+    }
+#endif
+
     // if (m_zeroconfJsonRPC->isValid()) {
         m_zeroconfJsonRPC->startBrowser("_jsonrpc._tcp", QAbstractSocket::IPv4Protocol);
         qCInfo(dcZeroConf()) << "Created service browser for _jsonrpc._tcp:" << m_zeroconfJsonRPC->browserExists();
@@ -53,6 +79,10 @@ ZeroconfDiscovery::ZeroconfDiscovery(NymeaHosts *nymeaHosts, QObject *parent) :
     // }
 
     m_zeroconfWebSocket = new QZeroConf(this);
+    if (!m_zeroconfJsonRPC->browserExists()) {
+        qCWarning(dcZeroConf()) << "Failed to start _jsonrpc._tcp browser, not starting _ws._tcp browser.";
+        return;
+    }
     connect(m_zeroconfWebSocket, &QZeroConf::serviceAdded, this, &ZeroconfDiscovery::serviceEntryAdded);
     connect(m_zeroconfWebSocket, &QZeroConf::serviceUpdated, this, &ZeroconfDiscovery::serviceEntryAdded);
     connect(m_zeroconfWebSocket, &QZeroConf::serviceRemoved, this, &ZeroconfDiscovery::serviceEntryRemoved);
