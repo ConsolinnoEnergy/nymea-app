@@ -26,6 +26,9 @@
 #include <QCommandLineParser>
 #include <QtQml/QQmlContext>
 #include <QQmlApplicationEngine>
+#include <QQmlComponent>
+#include <QQuickWindow>
+#include <QSGRendererInterface>
 #include <QtQuickControls2>
 #include <QSysInfo>
 #include <QCommandLineParser>
@@ -96,6 +99,7 @@ int main(int argc, char *argv[])
 {
     QElapsedTimer startupTimer;
     startupTimer.start();
+    const qint64 startupEpochMs = QDateTime::currentMSecsSinceEpoch();
 #ifdef Q_OS_WIN
     if (AttachConsole(ATTACH_PARENT_PROCESS)) {
         const bool stdoutRedirected = freopen("CONOUT$", "w", stdout) != nullptr;
@@ -343,6 +347,7 @@ int main(int argc, char *argv[])
     registerOverlayTypes("Nymea", 1, 0);
 #endif
 
+    engine->rootContext()->setContextProperty("startupEpochMs", startupEpochMs);
     engine->rootContext()->setContextProperty("appVersion", APP_VERSION);
     engine->rootContext()->setContextProperty("appRevision", APP_REVISION);
     engine->rootContext()->setContextProperty("qtBuildVersion", QT_VERSION_STR);
@@ -368,8 +373,43 @@ int main(int argc, char *argv[])
     application.setWindowIcon(QIcon(QString(":/styles/%1/logo.svg").arg(styleController.currentStyle())));
 
     qCInfo(dcApplication()) << "TIMING: before engine->load:" << startupTimer.elapsed() << "ms since main()";
+
+    // Load and compile the whole QML type tree separately to tell compile time apart from
+    // object creation time. The component is kept alive so engine->load() reuses the compiled data.
+    QQmlComponent timingComponent(engine, QUrl(QLatin1String("qrc:/ui/Nymea.qml")));
+    qCInfo(dcApplication()) << "TIMING: Nymea.qml loaded/compiled (QQmlComponent status" << timingComponent.status() << "):" << startupTimer.elapsed() << "ms since main()";
+    if (timingComponent.isError()) {
+        qCWarning(dcApplication()) << "TIMING: Nymea.qml component errors:" << timingComponent.errors();
+    }
+
     engine->load(QUrl(QLatin1String("qrc:/ui/Nymea.qml")));
     qCInfo(dcApplication()) << "TIMING: engine->load returned:" << startupTimer.elapsed() << "ms since main()";
+
+    if (!engine->rootObjects().isEmpty()) {
+        if (QQuickWindow *window = qobject_cast<QQuickWindow*>(engine->rootObjects().constFirst())) {
+            // Window exposure and rendering happen in the event loop after load() returned
+            QObject::connect(window, &QQuickWindow::sceneGraphInitialized, window, [&startupTimer, window]() {
+                QString api = QStringLiteral("unknown");
+                if (QSGRendererInterface *ri = window->rendererInterface()) {
+                    switch (ri->graphicsApi()) {
+                    case QSGRendererInterface::Software: api = QStringLiteral("Software"); break;
+                    case QSGRendererInterface::OpenGL: api = QStringLiteral("OpenGL"); break;
+                    case QSGRendererInterface::Direct3D11: api = QStringLiteral("Direct3D11"); break;
+                    case QSGRendererInterface::Direct3D12: api = QStringLiteral("Direct3D12"); break;
+                    case QSGRendererInterface::Vulkan: api = QStringLiteral("Vulkan"); break;
+                    case QSGRendererInterface::Metal: api = QStringLiteral("Metal"); break;
+                    case QSGRendererInterface::Null: api = QStringLiteral("Null"); break;
+                    default: api = QString::number(static_cast<int>(ri->graphicsApi())); break;
+                    }
+                }
+                qCInfo(dcApplication()) << "TIMING: scene graph initialized, graphics API" << api
+                                        << "backend" << window->sceneGraphBackend() << ":" << startupTimer.elapsed() << "ms since main()";
+            }, Qt::DirectConnection);
+            QObject::connect(window, &QQuickWindow::frameSwapped, window, [&startupTimer]() {
+                qCInfo(dcApplication()) << "TIMING: first frame swapped:" << startupTimer.elapsed() << "ms since main()";
+            }, Qt::ConnectionType(Qt::DirectConnection | Qt::SingleShotConnection));
+        }
+    }
 
 #ifdef Q_OS_IOS
     if (!engine->rootObjects().isEmpty()) {

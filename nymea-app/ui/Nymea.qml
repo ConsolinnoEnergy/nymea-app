@@ -98,8 +98,14 @@ ApplicationWindow {
 
     property string privacyPolicyUrl: "https://nymea.io/privacy-statement/en/nymea_privacy.html"
 
+    function timing(what) {
+        console.warn("TIMING: " + what + ": " + (Date.now() - startupEpochMs) + " ms since main()")
+    }
+
     Component.onCompleted: {
+        timing("Nymea.qml root completed")
         styleController.setSystemFont(app.font)
+        timing("setSystemFont done")
     }
 
     Binding {
@@ -116,6 +122,7 @@ ApplicationWindow {
 
     ConfiguredHostsModel {
         id: configuredHostsModel
+        Component.onCompleted: app.timing("ConfiguredHostsModel completed")
 
         // Captures the active slot index just before a new empty setup slot is appended.
         // createHost() triggers countChanged before setCurrentIndex() is called, so
@@ -134,6 +141,7 @@ ApplicationWindow {
     property alias mainMenu: m
     MainMenu {
         id: m
+        Component.onCompleted: app.timing("MainMenu completed")
         property bool isMobile: app.width < 768
         height: app.height
         leftPadding: isMobile ? 0 : (app.width - 768) / 2
@@ -150,12 +158,14 @@ ApplicationWindow {
 
     RootItem {
         id: rootItem
+        Component.onCompleted: app.timing("RootItem completed")
         anchors.fill: parent
         anchors.bottomMargin: keyboardRect.height
     }
 
     property NymeaDiscovery nymeaDiscovery: NymeaDiscovery {
         objectName: "discovery"
+        Component.onCompleted: app.timing("NymeaDiscovery completed")
         bluetoothDiscoveryEnabled: false // PlatformPermissions.bluetoothPermission === PlatformPermissions.PermissionStatusGranted
     }
 
@@ -655,6 +665,7 @@ ApplicationWindow {
 
     FolderListModel {
         id: availableMainViews
+        Component.onCompleted: app.timing("FolderListModel completed")
         folder: "mainviews"
         showFiles: false
     }
