@@ -590,17 +590,24 @@ Page {
                         WebView {
                             id: oAuthWebView
 
+                            property bool pairingCompleted: false
+
                             url: oAuthPage.oAuthUrl
                             anchors.fill: parent
 
                             function finishProcess(url) {
+                                if (pairingCompleted)
+                                    return
+                                pairingCompleted = true
                                 print("Confirm pairing")
                                 engine.thingManager.confirmPairing(d.pairingTransactionId, url)
                                 busyIndicator.running = true
                                 oAuthWebView.visible = false
                             }
 
-                            onUrlChanged: (url) => {
+                            // urlChanged carries no argument, so read the current URL from the view.
+                            onUrlChanged: {
+                                var url = oAuthWebView.url
                                 print("OAUTH URL changed", url)
                                 if (url.toString().indexOf("https://127.0.0.1") == 0) {
                                     print("Redirect URL detected!")
@@ -611,6 +618,16 @@ Page {
                                     // The alternative would be a finished button below the webview.
                                     print("Device code finish URL detected!")
                                     finishProcess(url)
+                                }
+                            }
+
+                            // The redirect target (https://127.0.0.1) has no listener, so the load fails
+                            // and urlChanged is not emitted; take the callback URL from the failed request.
+                            onLoadingChanged: (request) => {
+                                if (request.status === WebView.LoadFailedStatus &&
+                                        request.url.toString().indexOf("https://127.0.0.1") == 0) {
+                                    print("Redirect URL detected!")
+                                    finishProcess(request.url)
                                 }
                             }
                         }
